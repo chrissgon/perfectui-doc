@@ -1,5 +1,7 @@
 {
   "name": "nuxt-app",
+  "displayName": "PefectUI",
+  "description": "An modern framework for crafting elegant interfaces",
   "private": true,
   "type": "module",
   "scripts": {

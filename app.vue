@@ -110,6 +110,7 @@
 </template>
 
 <script setup lang="ts">
+import pkg from "./package.json"
 import { setTheme } from "@chrissgon/perfectui";
 import "@chrissgon/perfectui/dist/perfectui.css";
 
@@ -125,6 +126,19 @@ const isDark = useCookie("darkmode", {
 
 // setup
 setTheme(getTheme.value);
+if (process.client) {
+  useSeoMeta({
+    description: pkg.description,
+    ogTitle: pkg.displayName,
+    ogDescription: pkg.description,
+    ogImage: "/thumb.png",
+    ogUrl: location.origin,
+    twitterTitle: pkg.displayName,
+    twitterDescription: pkg.description,
+    twitterImage: "/thumb.png",
+    twitterCard: "summary_large_image",
+  });
+}
 
 // methods
 function changeTheme(): void {
