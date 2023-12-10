@@ -8,18 +8,13 @@ export default defineNuxtConfig({
         {
           src: "https://cdn.tailwindcss.com",
         },
-        // {
-        //   src: "https://unpkg.com/@chrissgon/perfectui@0.4.8/dist/perfectui.js",
-        //   type: "module"
-        // },
       ],
       link: [
-        // {
-        //   rel: "stylesheet",
-        //   href: "https://unpkg.com/@chrissgon/perfectui@0.4.8/dist/perfectui.css",
-        // },
+        {
+          rel: "shortcut icon",
+          href: "/favicon.svg",
+        },
       ],
     },
   },
-  // devtools: { enabled: true }
 });
