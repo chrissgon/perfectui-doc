@@ -1,24 +1,15 @@
-![NAME](./public/thumb.png)
+![PerfectUI](./public/logo.svg)
 
-# NAME
+# PerfectUI
 
-Description.
-
-## 🌍 Translations
-
-- [English](https://github.com/chrissgon/myrepo/blob/main/README.md)
-- [Português Brasileiro](https://github.com/chrissgon/myrepo/blob/main/README-pt-BR.md)
-
-## ⚠️ Requirements
-
-This project requires the ... installed.
+Official PerfectUI Documentation: An modern framework for crafting elegant interfaces 📖🎨
 
 ## 📦 Install
 
 - Clone the repository.
 
 ```bash
-git clone git@github.com:chrissgon/myrepo.git
+git clone git@github.com:chrissgon/perfectui-doc.git
 ```
 
 ## 🚀 Quick Start
@@ -26,38 +17,26 @@ git clone git@github.com:chrissgon/myrepo.git
 - Install dependencies.
 
 ```bash
-npm i
+bun i
 ```
 
 - Run application.
 
 ```bash
-npm run dev
+bun run dev
 ```
-
-## 📚 Documentation
-
-Read all documentation in [docs](https://github.com/chrissgon/base/tree/main/docs) folder.
-
-## 🔒 Environment Variables
-
-When you run this project, you need set the following environment variables:
-
-- `XXXXX`: description.
 
 ## 📝 Anotations
 
 Application hosted in <a href="http://localhost:3000/">http://localhost:3000/</a>.
-
-## 🔗 References
-
-- [Reference](https://google.com)
 
 ## 💪🏻 Contribution
 
 This project is open source and welcomes community contributions. Feel free to fork, implement improvements, and submit a pull request. Every contribution is valued and appreciated!
 
 Feel free to explore the source code, provide feedback, and report any issues you encounter.
+
+[Perfect UI Figma](https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI?type=design&t=NFXUM1OyFfIo9Csc-6) is free for both commercial and personal projects.
 
 ## ❤️ Authors
 
