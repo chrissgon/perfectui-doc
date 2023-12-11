@@ -65,7 +65,7 @@
         <li class="list-item !flex items-center gap-5 !py-4 max-w-sm">
           <!-- icon -->
           <aside
-            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center bg-secondary rounded-md"
+            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center icon-gradient rounded-md"
           >
             <i class="bi-moon-stars text-md text-theme-500"></i>
           </aside>
@@ -85,7 +85,7 @@
         <li class="list-item !flex items-center gap-5 !py-4 max-w-sm">
           <!-- icon -->
           <aside
-            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center bg-secondary rounded-md"
+            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center icon-gradient rounded-md"
           >
             <i class="bi-bounding-box text-md text-theme-500"></i>
           </aside>
@@ -104,7 +104,7 @@
         <li class="list-item !flex items-center gap-5 !py-4 max-w-sm">
           <!-- icon -->
           <aside
-            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center bg-secondary rounded-md"
+            class="relative min-w-[40px] min-h-[40px] flex justify-center items-center icon-gradient rounded-md"
           >
             <i class="bi-lightning text-lg text-theme-500"></i>
           </aside>
@@ -227,5 +227,13 @@ body {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.icon-gradient {
+  background: linear-gradient(
+    150deg,
+    rgb(var(--backgroundGradientPrimary)),
+    rgb(var(--backgroundPrimary)) /* rgb(var(--backgroundGradientPrimary)) */
+  );
 }
 </style>
