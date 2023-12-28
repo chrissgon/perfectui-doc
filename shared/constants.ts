@@ -4,6 +4,7 @@ export const INSTALLATION_IMPORT_CDNS = {
   <head>
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import css cdn -->
     <link rel="stylesheet" href="https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.css">
   </head>
   <body>
@@ -11,6 +12,7 @@ export const INSTALLATION_IMPORT_CDNS = {
       My button
     </button>
     
+    <!-- import javascript cdn -->
     <script src="https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js"></script>
 
     <script>
@@ -21,7 +23,7 @@ export const INSTALLATION_IMPORT_CDNS = {
   </body>
 </html>`,
 
-  example: `
+  preview: `
   <button class="btn btn-solid-primary">
     My button
   </button>`,

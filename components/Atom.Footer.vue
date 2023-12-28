@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="flex flex-col items-center gap-2 text-center border-t border-solid border-secondary pt-10"
+    class="flex flex-col items-center gap-2 text-center border-t border-solid border-secondary pt-10 pb-5"
   >
     <img
       src="/logo.svg"

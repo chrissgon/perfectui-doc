@@ -48,7 +48,7 @@
       id="why"
       class="flex justify-center items-center max-md:flex-wrap gap-5"
     >
-      <ListItem>
+      <MoleculeListItem>
         <template #icon>
           <i class="bi-moon-stars text-md text-theme-500" />
         </template>
@@ -56,12 +56,12 @@
           Dark Mode & Theme Helpers
         </template>
         <template #description>
-          Perfect UI offers all components with dark mode and helpers for setting
-          theme and colors.
+          Perfect UI offers all components with dark mode and helpers for
+          setting theme and colors.
         </template>
-      </ListItem>
+      </MoleculeListItem>
 
-      <ListItem>
+      <MoleculeListItem>
         <template #icon>
           <i class="bi-bounding-box text-md text-theme-500" />
         </template>
@@ -71,9 +71,9 @@
         <template #description>
           All components are responsive, providing a better user experience.
         </template>
-      </ListItem>
+      </MoleculeListItem>
 
-      <ListItem>
+      <MoleculeListItem>
         <template #icon>
           <i class="bi-lightning text-lg text-theme-500" />
         </template>
@@ -84,11 +84,10 @@
           Perfect UI was designed with the aim of providing a minimal and
           customizable basis for developing interfaces.
         </template>
-      </ListItem>
+      </MoleculeListItem>
     </section>
-    <AtomFooterMain />
+    <AtomFooter />
   </div>
-
 
   <!-- <section class="flex flex-col gap-20">
         <article class="flex gap-4">
@@ -133,8 +132,6 @@
       </section> -->
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style></style>

@@ -26,8 +26,21 @@
         <span class="token">&lt;/body&gt;</span>.
       </p>
 
-      <MoleculeCodeView :input="INSTALLATION_IMPORT_CDNS.input" />
-      <AtomIconBun />
+      <OrganismTabs :tabs="['code', 'preview']">
+        <template #hpreview>
+          Preview
+        </template>
+        <template #hcode>
+          <AtomIconHTML />
+          index.html
+        </template>
+        <template #preview>
+          <MoleculeCodePreview :preview="INSTALLATION_IMPORT_CDNS.preview" />
+        </template>
+        <template #code>
+          <MoleculeCodeView :input="INSTALLATION_IMPORT_CDNS.input" />
+        </template>
+      </OrganismTabs>
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
@@ -40,17 +53,32 @@
         <code class="token">NPM</code> installed on your machine.
       </p>
 
-      <MoleculeCodeView
-        input="npm i @chrissgon/perfectui"
-        lang="bash"
-      />
+      <OrganismTabs>
+        <template #header>
+          <AtomIconBash />
+          Terminal
+        </template>
+        <MoleculeCodeView
+          input="npm i @chrissgon/perfectui"
+          lang="bash"
+        />
+      </OrganismTabs>
 
-      <p>After installation, import the styles and methods in your <span class="token">.js</span> or <span class="token">.ts</span> file.</p>
+      <p>
+        After installation, import the styles and methods in your
+        <span class="token">.js</span> or <span class="token">.ts</span> file.
+      </p>
 
-      <MoleculeCodeView
-        :input="INSTALLATION_IMPORT_MODULE.input"
-        lang="javascript"
-      />
+      <OrganismTabs>
+        <template #header>
+          <AtomIconTS />
+          index.ts
+        </template>
+        <MoleculeCodeView
+          :input="INSTALLATION_IMPORT_MODULE.input"
+          lang="javascript"
+        />
+      </OrganismTabs>
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
