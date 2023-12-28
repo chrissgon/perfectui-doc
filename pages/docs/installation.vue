@@ -1,21 +1,15 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Installation
-      </template>
-      <template #title>
-        Get started with Perfect UI
-      </template>
+      <template #subtitle> Installation </template>
+      <template #title> Get started with Perfect UI </template>
 
       An exceptionally lightweight and highly customizable CSS and JavaScript
       framework for crafting elegant user interfaces.
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
-      <template #title>
-        Play CDN
-      </template>
+      <template #title> Play CDN </template>
       <p>
         Place the <span class="token">&lt;link&gt;</span>
         tag in the
@@ -27,9 +21,7 @@
       </p>
 
       <OrganismTabs :tabs="['code', 'preview']">
-        <template #hpreview>
-          Preview
-        </template>
+        <template #hpreview> Preview </template>
         <template #hcode>
           <AtomIconHTML />
           index.html
@@ -44,24 +36,42 @@
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title>
-        Import via module
-      </template>
+      <template #title> Import via module </template>
       <p>
         You can also install Perfect UI via the package manager. First, you need
         to make sure you have <code class="token">Node</code> and
         <code class="token">NPM</code> installed on your machine.
       </p>
 
-      <OrganismTabs>
-        <template #header>
-          <AtomIconBash />
-          Terminal
+      <OrganismTabs :tabs="['npm', 'yarn', 'pnpm', 'bun']">
+        <template #hnpm>
+          <AtomIconNPM />
+          npm
         </template>
-        <MoleculeCodeView
-          input="npm i @chrissgon/perfectui"
-          lang="bash"
-        />
+        <template #hyarn>
+          <AtomIconYarn />
+          yarn
+        </template>
+        <template #hpnpm>
+          <AtomIconPNPM />
+          pnpm
+        </template>
+        <template #hbun>
+          <AtomIconBun />
+          bun
+        </template>
+        <template #npm>
+          <MoleculeCodeView input="npm i @chrissgon/perfectui" lang="bash" />
+        </template>
+        <template #yarn>
+          <MoleculeCodeView input="yarn add @chrissgon/perfectui" lang="bash" />
+        </template>
+        <template #pnpm>
+          <MoleculeCodeView input="pnpm i @chrissgon/perfectui" lang="bash" />
+        </template>
+        <template #bun>
+          <MoleculeCodeView input="bun i @chrissgon/perfectui" lang="bash" />
+        </template>
       </OrganismTabs>
 
       <p>
