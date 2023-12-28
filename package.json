@@ -9,16 +9,19 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/devtools": "latest",
     "nuxt": "^3.8.2",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@chrissgon/perfectui": "0.6.1",
+    "@chrissgon/perfectui": "0.6.2",
+    "highlight.js": "^11.9.0",
     "values.js": "^2.1.1"
   }
 }

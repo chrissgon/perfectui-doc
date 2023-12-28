@@ -1,7 +1,9 @@
 <template>
-  <article class="flex flex-col gap-10">
+  <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> License </template>
+      <template #subtitle>
+        License
+      </template>
       <template #title>
         Learn more about the licensing terms for Perfect UI
       </template>
@@ -13,7 +15,9 @@
 
     <!-- mit license -->
     <MoleculeDocsContent>
-      <template #title>MIT License</template>
+      <template #title>
+        MIT License
+      </template>
       <p>
         Permission is hereby granted, free of charge, to any person obtaining a
         copy of this software and associated documentation files (the
@@ -42,7 +46,9 @@
 
     <!-- it requires -->
     <MoleculeDocsContent>
-      <template #title>It requires you to:</template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <p>
         Keep the license and copyright notice included in Perfect UI's CSS and
@@ -56,7 +62,9 @@
 
     <!-- it permits -->
     <MoleculeDocsContent>
-      <template #title>It requires you to:</template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <p>
         Freely download and use Perfect UI, in whole or in part, for personal,
@@ -72,7 +80,9 @@
 
     <!-- it forbids -->
     <MoleculeDocsContent>
-      <template #title>It requires you to:</template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <p>
         Hold the authors and license owners liable for damages as Perfect UI is
@@ -92,7 +102,9 @@
 
     <!-- its not require -->
     <MoleculeDocsContent>
-      <template #title>It does not require you to:</template>
+      <template #title>
+        It does not require you to:
+      </template>
 
       <p>
         Include the source of Perfect UI itself, or of any modifications you may
@@ -105,13 +117,11 @@
       </p>
       <p>Credit Perfect UI when using HTML components only.</p>
     </MoleculeDocsContent>
-  </article>
+  </MoleculeDocsSection>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
-p {
-  opacity: 0.7;
-}
+
 </style>

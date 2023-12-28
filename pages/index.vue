@@ -6,7 +6,7 @@
     >
       <!-- header -->
       <header class="flex justify-between mb-10 max-sm:-mx-5">
-        <AtomLogoVersion/>
+        <AtomLogoVersion />
 
         <aside class="flex items-center gap-5">
           <AtomThemeColorPicker />
@@ -28,13 +28,17 @@
         </p>
 
         <div class="flex flex-wrap gap-5">
-          <NuxtLink to="/docs/installation" class="btn btn-solid-primary flex-1">
-            Get Started
-            <i class="bi bi-rocket-takeoff-fill text-base leading-none"></i>
-          </NuxtLink>
-          <a href="#why" class="btn btn-white !border-none flex-1"
-            >Why Perfect UI?</a
+          <NuxtLink
+            to="/docs/installation"
+            class="btn btn-solid-primary flex-1"
           >
+            Get Started
+            <i class="bi bi-rocket-takeoff-fill text-base leading-none" />
+          </NuxtLink>
+          <a
+            href="#why"
+            class="btn btn-white !border-none flex-1"
+          >Why Perfect UI?</a>
         </div>
       </main>
     </section>
@@ -46,9 +50,11 @@
     >
       <ListItem>
         <template #icon>
-          <i class="bi-moon-stars text-md text-theme-500"></i>
+          <i class="bi-moon-stars text-md text-theme-500" />
         </template>
-        <template #title>Dark Mode & Theme Helpers</template>
+        <template #title>
+          Dark Mode & Theme Helpers
+        </template>
         <template #description>
           Perfect UI offers all components with dark mode and helpers for setting
           theme and colors.
@@ -57,9 +63,11 @@
 
       <ListItem>
         <template #icon>
-          <i class="bi-bounding-box text-md text-theme-500"></i>
+          <i class="bi-bounding-box text-md text-theme-500" />
         </template>
-        <template #title>Fully Responsive Components</template>
+        <template #title>
+          Fully Responsive Components
+        </template>
         <template #description>
           All components are responsive, providing a better user experience.
         </template>
@@ -67,16 +75,20 @@
 
       <ListItem>
         <template #icon>
-          <i class="bi-lightning text-lg text-theme-500"></i>
+          <i class="bi-lightning text-lg text-theme-500" />
         </template>
-        <template #title>Lightweight & Customizable</template>
+        <template #title>
+          Lightweight & Customizable
+        </template>
         <template #description>
           Perfect UI was designed with the aim of providing a minimal and
           customizable basis for developing interfaces.
         </template>
       </ListItem>
     </section>
+    <AtomFooterMain />
   </div>
+
 
   <!-- <section class="flex flex-col gap-20">
         <article class="flex gap-4">

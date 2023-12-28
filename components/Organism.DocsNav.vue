@@ -3,16 +3,24 @@
     <!-- search -->
     <label class="field-group">
       <div class="input input-group">
-        <i class="bi-search"></i>
-        <input type="text" class="input" />
+        <i class="bi-search" />
+        <input
+          type="text"
+          class="input"
+        >
         <span>Ctrl K</span>
       </div>
     </label>
 
     <!-- links -->
     <ul class="list list-hoverable">
-      <template v-for="(links, i) in docs" :key="i">
-        <li class="text-secondary mt-5">{{ i }}</li>
+      <template
+        v-for="(links, i) in docs"
+        :key="i"
+      >
+        <li class="text-secondary mt-5">
+          {{ i }}
+        </li>
         <NuxtLink
           v-for="(link, j) in links"
           :key="j"
@@ -107,6 +115,7 @@ const getPrevPage = computed<string | undefined>(() => {
 const docs = ref<Sections>({
   "Getting Started": ["Installation", "License"],
   Customization: ["Dark Mode", "Theme"],
+  "Base Components": ["Button"],
 });
 
 // methods
@@ -130,7 +139,14 @@ function getDocPath(link: string): string {
 }
 
 // expose
-defineExpose({ getNextPage, getPrevPage, getCurrentSection, docs, normalizeLink, getDocPath });
+defineExpose({
+  getNextPage,
+  getPrevPage,
+  getCurrentSection,
+  docs,
+  normalizeLink,
+  getDocPath,
+});
 </script>
 
 <style scoped>

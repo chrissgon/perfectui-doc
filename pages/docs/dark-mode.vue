@@ -1,7 +1,7 @@
 <template>
-    <div>
-        darkmode
-    </div>
+  <div>
+    darkmode
+  </div>
 </template>
 
 <script setup lang="ts">

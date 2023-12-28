@@ -6,6 +6,7 @@
 import pkg from "./package.json";
 import "@chrissgon/perfectui/dist/perfectui.css";
 
+
 // setup
 if (process.client) {
   useSeoMeta({
@@ -30,16 +31,12 @@ html {
   overflow-x: initial;
 }
 
-code {
-  font-family: "Fira Code";
-}
-
 .dark .logo {
   filter: invert(1);
 }
 
 input[type="color"] {
-  -webkit-appearance: none;
+  appearance: none;
   outline: none !important;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
@@ -79,4 +76,49 @@ body {
 .dark {
   color-scheme: dark;
 }
+
+/* code */
+/* @media (prefers-color-scheme: light) {
+}
+@media (prefers-color-scheme: dark) {
+  .shiki.material-theme-lighter {
+    display: none;
+  }
+} */
+
+pre *,
+code * {
+  font-family: "Fira Code";
+}
+
+.shiki {
+  background-color: transparent !important;
+}
+.token {
+  font-family: "Fira Code";
+  color: #d82830;
+  /* font-weight: 900; */
+}
+.dark .token {
+  color: #f07178;
+}
+/* code */
+/* 
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #cbd5e1 !important;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #60d3ec !important;
+}
+.token.punctuation {
+  color: #64748b !important;
+} */
 </style>

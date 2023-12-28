@@ -1,13 +1,19 @@
 <template>
-  <label id="color" class="field-group cursor-pointer !flex-initial">
-    <div class="w-6 h-6 rounded-full" :style="{ background: hex }"></div>
+  <label
+    id="color"
+    class="field-group cursor-pointer !flex-initial"
+  >
+    <div
+      class="w-6 h-6 rounded-full"
+      :style="{ background: hex }"
+    />
     <input
       v-model="hex"
-      @change="changeThemeColor"
       type="color"
       name="color"
       class="invisible w-0"
-    />
+      @change="changeThemeColor"
+    >
   </label>
 </template>
 

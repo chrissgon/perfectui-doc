@@ -1,9 +1,13 @@
 <template>
-  <button @click="changeTheme" class="h-fit">
+  <button
+    class="h-fit"
+    @click="changeTheme"
+  >
     <i
       class="bi text-lg leading-none"
       :class="isDark ? 'bi-moon' : 'bi-brightness-high'"
-    ></i>
+    />
+    <!--  -->
   </button>
 </template>
 

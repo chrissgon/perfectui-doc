@@ -1,7 +1,7 @@
 <template>
-    <div>
-        button view
-    </div>
+  <div>
+    button view
+  </div>
 </template>
 
 <script setup lang="ts">

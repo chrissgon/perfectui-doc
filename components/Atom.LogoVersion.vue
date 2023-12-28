@@ -1,6 +1,14 @@
 <template>
-  <NuxtLink to="/" class="flex items-center gap-2">
-    <img src="/logo.svg" alt="Perfect UI Logo" width="90" class="logo" />
+  <NuxtLink
+    to="/"
+    class="flex items-center gap-2"
+  >
+    <img
+      src="/logo.svg"
+      alt="Perfect UI Logo"
+      width="90"
+      class="logo"
+    >
     <span class="badge badge-white rounded-full">{{ version }}</span>
   </NuxtLink>
 </template>
