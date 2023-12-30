@@ -1,13 +1,19 @@
 <template>
-  <div>
-    button view
-  </div>
+  <MoleculeDocsSection>
+    <MoleculeDocsHeader>
+      <template #subtitle>
+        Installation
+      </template>
+      <template #title>
+        Get started with Perfect UI
+      </template>
+
+      An exceptionally lightweight and highly customizable CSS and JavaScript
+      framework for crafting elegant user interfaces.
+    </MoleculeDocsHeader>
+  </MoleculeDocsSection>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { setTheme } from "@chrissgon/perfectui";
+import { setMode } from "@chrissgon/perfectui";
 
 // computed
 const getTheme = computed<"dark" | "light">(() =>
@@ -27,12 +27,12 @@ const isDark = useCookie("darkmode", {
 // methods
 function changeTheme(): void {
   isDark.value = !isDark.value;
-  setTheme(getTheme.value);
+  setMode(getTheme.value);
 }
 
 // setup
 if (process.client) {
-  setTheme(getTheme.value);
+  setMode(getTheme.value);
 }
 </script>
 

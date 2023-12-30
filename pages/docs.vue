@@ -11,6 +11,7 @@
           <AtomThemeColorPicker />
           <AtomDarkMode />
           <AtomGithubLink />
+          <AtomFigmaLink class="max-sm:hidden" />
         </aside>
       </div>
     </header>
@@ -95,7 +96,9 @@ const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
 
 // setup
-useRouter().push("/docs/installation");
+if (useRoute().name === "docs") {
+  navigateTo("/docs/installation");
+}
 onBeforeRouteUpdate(closeNav);
 
 // methods

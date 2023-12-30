@@ -52,7 +52,16 @@ const isPageActive = computed<Function>(() => (link: string) => {
   return have === expected;
 });
 const getCurrentSection = computed<SectionMap>(() => {
-  const articleName = normalizeArticleName(useRoute().path.split("/docs/")[1]);
+  const parts = useRoute().path.split("/docs/");
+
+  if (parts.length < 2) {
+    return {
+      sectionName: "Getting Started",
+      articleIndex: 0,
+    };
+  }
+
+  const articleName = normalizeArticleName(parts[1]);
 
   for (const [sectionName, articles] of Object.entries(docs.value)) {
     const articleIndex = articles.indexOf(articleName);
@@ -113,8 +122,8 @@ const getPrevPage = computed<string | undefined>(() => {
 
 // data
 const docs = ref<Sections>({
-  "Getting Started": ["Installation", "License"],
-  Customization: ["Dark Mode", "Theme"],
+  "Getting Started": ["Installation", "Typescript", "License"],
+  Customization: ["Dark Mode", "Theme", "Icons"],
   "Base Components": ["Button"],
 });
 

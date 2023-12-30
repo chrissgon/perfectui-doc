@@ -12,6 +12,7 @@
           <AtomThemeColorPicker />
           <AtomDarkMode />
           <AtomGithubLink />
+          <AtomFigmaLink />
         </aside>
       </header>
 
@@ -102,7 +103,7 @@
             <h2 class="text-3xl font-bold">Do you like dark mode? Use it</h2>
             <p class="text-base">
               PerfectUI provides native darkmode for all components, and helpers
-              such as <code class="text-theme-500">setTheme</code> to define a
+              such as <code class="text-theme-500">setMode</code> to define a
               preferred mode
             </p>
             <button class="btn btn-white w-fit mt-2">

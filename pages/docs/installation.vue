@@ -1,47 +1,80 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Installation </template>
-      <template #title> Get started with Perfect UI </template>
+      <template #subtitle>
+        Installation
+      </template>
+      <template #title>
+        Get started with Perfect UI
+      </template>
 
       An exceptionally lightweight and highly customizable CSS and JavaScript
       framework for crafting elegant user interfaces.
     </MoleculeDocsHeader>
 
+    <!--  play cdn -->
     <MoleculeDocsContent>
-      <template #title> Play CDN </template>
+      <template #title>
+        Play CDN
+      </template>
       <p>
-        Place the <span class="token">&lt;link&gt;</span>
+        Place the <AtomToken>&lt;link&gt;</AtomToken>
         tag in the
-        <span class="token">&lt;head&gt;</span>
+        <AtomToken>&lt;head&gt;</AtomToken>
         for our CSS, and the
-        <span class="token">&lt;script&gt;</span>
+        <AtomToken>&lt;script&gt;</AtomToken>
         tag for our JavaScript bundle before the closing
-        <span class="token">&lt;/body&gt;</span>.
+        <AtomToken>&lt;/body&gt;</AtomToken>.
       </p>
 
       <OrganismTabs :tabs="['code', 'preview']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           index.html
         </template>
         <template #preview>
-          <MoleculeCodePreview :preview="INSTALLATION_IMPORT_CDNS.preview" />
+          <MoleculeCodePreview :preview="CODE_PREVIEW_IMPORT_CDN" />
         </template>
         <template #code>
-          <MoleculeCodeView :input="INSTALLATION_IMPORT_CDNS.input" />
+          <MoleculeCodeView :input="CODE_VIEW_IMPORT_CDN" />
         </template>
+      </OrganismTabs>
+
+      <p>
+        When imported via CDN, Perfect UI provides methods in
+        <AtomToken>window</AtomToken> and <AtomToken>document</AtomToken>.
+      </p>
+
+      <OrganismTabs>
+        <template #header>
+          <AtomIconJS />
+          index.js
+        </template>
+        <MoleculeCodeView
+          :input="CODE_VIEW_IMPORT_CDN_SCRIPT"
+          lang="typescript"
+        />
+      </OrganismTabs>
+
+      <p>You can also import Perfect UI as a module by CDN.</p>
+
+      <OrganismTabs>
+        <template #header>
+          <AtomIconHTML />
+          index.html
+        </template>
+        <MoleculeCodeView :input="CODE_VIEW_IMPORT_CDN_MODULE" />
       </OrganismTabs>
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Import via module </template>
-      <p>
-        You can also install Perfect UI via the package manager. First, you need
-        to make sure you have <code class="token">Node</code> and
-        <code class="token">NPM</code> installed on your machine.
-      </p>
+      <template #title>
+        Install by package manager
+      </template>
+      <p>You can also install Perfect UI by package manager.</p>
 
       <OrganismTabs :tabs="['npm', 'yarn', 'pnpm', 'bun']">
         <template #hnpm>
@@ -61,22 +94,34 @@
           bun
         </template>
         <template #npm>
-          <MoleculeCodeView input="npm i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="npm i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #yarn>
-          <MoleculeCodeView input="yarn add @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="yarn add @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #pnpm>
-          <MoleculeCodeView input="pnpm i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="pnpm i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #bun>
-          <MoleculeCodeView input="bun i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="bun i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
       </OrganismTabs>
 
       <p>
         After installation, import the styles and methods in your
-        <span class="token">.js</span> or <span class="token">.ts</span> file.
+        <AtomToken>.js</AtomToken> or <AtomToken>.ts</AtomToken> file.
       </p>
 
       <OrganismTabs>
@@ -85,8 +130,8 @@
           index.ts
         </template>
         <MoleculeCodeView
-          :input="INSTALLATION_IMPORT_MODULE.input"
-          lang="javascript"
+          :input="CODE_VIEW_IMPORT_MODULE"
+          lang="typescript"
         />
       </OrganismTabs>
     </MoleculeDocsContent>
@@ -94,7 +139,39 @@
 </template>
 
 <script setup lang="ts">
-import { INSTALLATION_IMPORT_CDNS, INSTALLATION_IMPORT_MODULE } from "~/shared";
+// data
+const CODE_VIEW_IMPORT_CDN = `<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import css -->
+    <link rel="stylesheet" href="https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.css">
+
+  </head>
+  <body>
+    <button class="btn btn-solid-primary">
+      My button
+    </button>
+    
+    <!-- import javascript -->
+    <script src="https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js"><\/script>
+  </body>
+</html>`;
+
+const CODE_PREVIEW_IMPORT_CDN = `<button class="btn btn-solid-primary">My button</button>`;
+
+const CODE_VIEW_IMPORT_CDN_SCRIPT = `console.log(window.perfectui) // { setMode: ƒ ...}
+console.log(document.perfectui) // { setMode: ƒ ...}`;
+
+const CODE_VIEW_IMPORT_CDN_MODULE = `<script type="module">
+  import * as perfectUI from "https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js"
+  console.log(perfectUI) // { setMode: ƒ ...}
+<\/script>`;
+
+const CODE_VIEW_IMPORT_MODULE = `import { setMode } from "@chrissgon/perfectui";
+import "@chrissgon/perfectui/dist/perfectui.css";`;
 </script>
 
 <style scoped></style>
