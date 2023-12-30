@@ -8,7 +8,7 @@
         Dark Mode
       </template>
 
-      Easily implement a dark theme on your site
+      Implement different modes in your application easily with Perfectui through auxiliary methods.
     </MoleculeDocsHeader>
 
     <!-- how it works -->
@@ -19,7 +19,7 @@
 
       <p>
         Perfect ui provides methods to make customization easier. You can set
-        the theme using the <AtomToken>setMode</AtomToken> function.
+        the mode using the <AtomToken>setMode</AtomToken> function.
       </p>
 
       <!-- tabs -->
@@ -31,7 +31,7 @@
         </template>
         <!-- code -->
         <MoleculeCodeView
-          :input="CODE_VIEW_USING_SET_THEME"
+          :input="CODE_VIEW_USING_SET_MODE"
           lang="typescript"
         />
       </OrganismTabs>
@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 // data
-const CODE_VIEW_USING_SET_THEME = `import { setMode } from "@chrissgon/perfectui"
+const CODE_VIEW_USING_SET_MODE = `import { setMode } from "@chrissgon/perfectui"
 
 setMode("dark") // system, light or dark`;
 
@@ -95,8 +95,7 @@ const CODE_VIEW_MODE_BUTTON_HTML = `<!-- switch button -->
   });
 <\/script>`;
 
-const CODE_PREVIEW_MODE_BUTTON = `
-<label class="field-group gap-2 w-fit">
+const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
   <i class="bi-sun"></i>
   <input type="checkbox" class="switch" id="mode" />
   <i class="bi-moon"></i>

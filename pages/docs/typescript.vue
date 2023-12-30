@@ -9,7 +9,7 @@
       </template>
 
       Perfect UI is fully typed, developed in Typescript. All the methods and
-      interface are available for use.
+      interfaces are available for use.
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
