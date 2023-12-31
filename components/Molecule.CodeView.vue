@@ -1,20 +1,11 @@
 <template>
-  <div
-    v-if="template"
-    class="bg-secondary rounded-md"
-  >
-    <button
-      class="absolute right-0 p-3 m-1"
-      @click="copy(input)"
-    >
+  <div v-if="template" class="bg-secondary rounded-md">
+    <button class="absolute right-0 p-3 m-1" @click="copy(input)">
       <i
         v-if="copied"
         class="bi-check-circle-fill text-green-500 text-md bg-secondary"
       />
-      <i
-        v-else
-        class="bi-copy text-md bg-secondary"
-      />
+      <i v-else class="bi-copy text-md bg-secondary" />
     </button>
 
     <pre class="w-full overflow-auto p-5"><code
@@ -24,30 +15,37 @@
 </template>
 
 <script setup lang="ts">
-import hljs from "highlight.js/lib/core";
-import typescript from 'highlight.js/lib/languages/typescript';
-import xml from 'highlight.js/lib/languages/xml';
-import bash from 'highlight.js/lib/languages/bash';
-import "highlight.js/styles/github.min.css";
-
-hljs.registerLanguage('ts', typescript);
-hljs.registerLanguage('html', xml);
-hljs.registerLanguage('bash', bash);
-
 // props
 interface IProps {
   input: string;
   lang?: string;
 }
-const props = defineProps<IProps>();
+const props = withDefaults(defineProps<IProps>(), {
+  lang: "html",
+});
 
 // data
+const channelID = getChannelID();
 const copied = ref<boolean>(false);
-const template = hljs.highlight(props.input, {
-  language: props.lang ?? "html",
-}).value;
+const template = ref<string>();
 
 // methods
+function setup(): void {
+  const cache = sessionStorage.getItem(channelID);
+
+  if (cache) {
+    template.value = cache;
+    return;
+  }
+
+  const channel = new BroadcastChannel("highlight");
+  channel.postMessage({ channelID, input: props.input, lang: props.lang });
+  channel.onmessage = (e) => {
+    if (e.data.channelID === channelID) {
+      template.value = e.data.highlight;
+    }
+  };
+}
 async function copy(input: string): Promise<void> {
   await navigator.clipboard.writeText(input);
   copied.value = true;
@@ -55,6 +53,18 @@ async function copy(input: string): Promise<void> {
 }
 function unsetCopy(): void {
   copied.value = false;
+}
+function getChannelID(): string {
+  const length = props.input.length;
+  const start = props.input.substring(0, 5).trim();
+  const end = props.input.substring(length - 5, length).trim();
+  const lang = props.lang ?? "html";
+  return `${start}${length}${end}${lang}`.replaceAll("\n", "");
+}
+
+// setup
+if (process.client) {
+  setup();
 }
 </script>
 

@@ -20,9 +20,12 @@ export default defineNuxtConfig({
           rel: "shortcut icon",
           href: "/favicon.svg",
         },
+      ],
+
+      script: [
         {
-          rel: "stylesheet",
-          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css",
+          src: "/lazy-icons.js",
+          defer: true,
         },
       ],
     },

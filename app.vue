@@ -1,4 +1,5 @@
 <template>
+  <MoleculeCodeWorker/>
   <NuxtPage />
 </template>
 
@@ -24,6 +25,7 @@ if (process.client) {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css");
 
 body,
 html {
