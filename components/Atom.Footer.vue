@@ -5,6 +5,7 @@
       src="/logo.svg"
       alt="Perfect UI Logo"
       width="90"
+      height="16"
       class="logo"
     >
     <p class="text-secondary">

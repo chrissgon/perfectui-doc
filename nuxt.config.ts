@@ -1,9 +1,8 @@
 import pkg from "./package.json";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // ssr: false,
-  
+  modules: ["@nuxtjs/tailwindcss"],
+
   nitro: {
     compressPublicAssets: true,
   },
@@ -11,15 +10,11 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: "en"
+        lang: "en",
       },
 
       title: `${pkg.displayName} - ${pkg.description}`,
-      script: [
-        {
-          src: "https://cdn.tailwindcss.com",
-        },
-      ],
+
       link: [
         {
           rel: "shortcut icon",
@@ -27,9 +22,13 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css"
-        }
+          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css",
+        },
       ],
     },
+  },
+
+  tailwindcss: {
+    viewer: false,
   },
 });

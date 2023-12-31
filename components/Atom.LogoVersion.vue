@@ -7,6 +7,7 @@
       src="/logo.svg"
       alt="Perfect UI Logo"
       width="90"
+      height="16"
       class="logo"
     >
     <span class="badge badge-white rounded-full">{{ version }}</span>
