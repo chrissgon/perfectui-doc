@@ -22,7 +22,7 @@ const getTheme = computed<"dark" | "light">(() =>
 
 // data
 const isDark = useCookie("darkmode", {
-  default: () => false,
+  default: () => true,
 });
 
 // methods

@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         lang: "en",
+        class: "dark"
       },
 
       title: `${pkg.displayName} - ${pkg.description}`,

@@ -47,7 +47,7 @@
       </p>
 
       <!-- tabs -->
-      <OrganismTabs :tabs="['html', 'preview']">
+      <OrganismTabs :tabs="['preview', 'html']">
         <template #hhtml>
           <AtomIconHTML />
           index.html
@@ -93,15 +93,16 @@ const CODE_VIEW_MODE_BUTTON_HTML = `<!-- switch button -->
 
 const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
   <i class="bi-sun"></i>
-  <input type="checkbox" class="switch" id="mode" />
+  <input type="checkbox" class="switch" id="mode" onchange="changeMode(this.checked)" checked />
   <i class="bi-moon"></i>
 </label>
 
 <script>
-  document.getElementById("mode").addEventListener("change", (e) => {
-    const dark = e.target.checked;
+  document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
+
+  function changeMode(dark){
     window.perfectui.setMode(dark ? "dark" : "light");
-  });
+  }
 <\/script>`;
 </script>
 

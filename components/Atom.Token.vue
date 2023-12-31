@@ -1,6 +1,6 @@
 <template>
   <span class="token">
-    <slot />
+    `<slot />`
   </span>
 </template>
 

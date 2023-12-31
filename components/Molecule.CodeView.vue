@@ -1,16 +1,31 @@
 <template>
-  <div v-if="template" class="bg-secondary rounded-md">
-    <button class="absolute right-0 p-3 m-1" @click="copy(input)">
+  <div
+    v-show="template"
+    class="bg-secondary rounded-md"
+  >
+    <button
+      aria-label="Copy"
+      class="absolute right-0 p-3 m-1"
+      @click="copy(input)"
+    >
       <i
         v-if="copied"
         class="bi-check-circle-fill text-green-500 text-md bg-secondary"
       />
-      <i v-else class="bi-copy text-md bg-secondary" />
+      <i
+        v-else
+        class="bi-copy text-md bg-secondary"
+      />
     </button>
 
-    <pre class="w-full overflow-auto p-5"><code
-    v-html="template"
-    /></pre>
+    <ClientOnly>
+      <pre
+        v-if="template"
+        class="w-full overflow-auto p-5"
+      ><code
+      v-html="template"
+      /></pre>
+    </ClientOnly>
   </div>
 </template>
 

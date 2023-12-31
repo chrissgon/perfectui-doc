@@ -124,6 +124,7 @@ const getPrevPage = computed<string | undefined>(() => {
 const docs = ref<Sections>({
   "Getting Started": ["Installation", "Typescript", "License"],
   Customization: ["Dark Mode", "Theme Color"],
+  Layout: ["Group Elements"],
   "Base Components": ["Button"],
 });
 

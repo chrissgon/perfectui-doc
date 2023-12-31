@@ -1,5 +1,5 @@
 <template>
-  <MoleculeCodeWorker/>
+  <MoleculeCodeWorker />
   <NuxtPage />
 </template>
 
