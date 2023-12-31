@@ -1,7 +1,6 @@
 <template>
-  <footer
-    class="flex flex-col items-center gap-2 text-center border-t border-solid border-secondary pt-10 pb-5"
-  >
+  <hr>
+  <footer class="flex flex-col items-center gap-2 text-center pb-10">
     <img
       src="/logo.svg"
       alt="Perfect UI Logo"
@@ -14,10 +13,6 @@
   </footer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

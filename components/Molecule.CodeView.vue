@@ -24,8 +24,15 @@
 </template>
 
 <script setup lang="ts">
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/core";
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+import bash from 'highlight.js/lib/languages/bash';
 import "highlight.js/styles/github.min.css";
+
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('html', xml);
+hljs.registerLanguage('bash', bash);
 
 // props
 interface IProps {
@@ -37,7 +44,7 @@ const props = defineProps<IProps>();
 // data
 const copied = ref<boolean>(false);
 const template = hljs.highlight(props.input, {
-  language: props.lang ?? "xml",
+  language: props.lang ?? "html",
 }).value;
 
 // methods

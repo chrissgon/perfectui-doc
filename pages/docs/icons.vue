@@ -5,12 +5,20 @@
         Customization
       </template>
       <template #title>
-        Get started with Perfect UI
+        Bootstrap Icons
       </template>
   
-      An exceptionally lightweight and highly customizable CSS and JavaScript
-      framework for crafting elegant user interfaces.
+      PerfectUI uses Bootstrap Icons as its icon library, a free, high quality, open source icon library with over 2,000 icons.
     </MoleculeDocsHeader>
+    <MoleculeDocsContent>
+      <p>
+        The latest version of Bootstrap Icons is incorporated into PerfectUI by default. To better understand how to use them, see the <a
+          href="https://icons.getbootstrap.com/"
+          target="_blank"
+          class="btn btn-link-primary !p-0"
+        >official documentation</a>.
+      </p>
+    </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
   

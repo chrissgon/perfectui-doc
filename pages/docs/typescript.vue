@@ -20,7 +20,7 @@
         </template>
         <MoleculeCodeView
           :input="CODE_VIEW_TYPES"
-          lang="typescript"
+          lang="ts"
         />
       </OrganismTabs>
     </MoleculeDocsContent>

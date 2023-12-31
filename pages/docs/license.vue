@@ -8,7 +8,7 @@
         Learn more about the licensing terms for Perfect UI
       </template>
 
-      Perfect UI is released under the MIT license and is copyright 2023
+      Perfect UI is released under the MIT license and is copyright {{ new Date().getFullYear() }}
       Chrissgon. Boiled down to smaller chunks, it can be described with the
       following conditions.
     </MoleculeDocsHeader>

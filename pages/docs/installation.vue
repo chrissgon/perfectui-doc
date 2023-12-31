@@ -55,7 +55,7 @@
         </template>
         <MoleculeCodeView
           :input="CODE_VIEW_IMPORT_CDN_SCRIPT"
-          lang="typescript"
+          lang="ts"
         />
       </OrganismTabs>
 
@@ -131,7 +131,7 @@
         </template>
         <MoleculeCodeView
           :input="CODE_VIEW_IMPORT_MODULE"
-          lang="typescript"
+          lang="ts"
         />
       </OrganismTabs>
     </MoleculeDocsContent>

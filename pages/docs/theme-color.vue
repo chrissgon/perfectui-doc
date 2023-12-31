@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Customization </template>
-      <template #title> Define your own color palette </template>
+      <template #subtitle>
+        Customization
+      </template>
+      <template #title>
+        Define your own color palette
+      </template>
 
       Perfect UI allows you to define your own color palette, automatically
       adjusting all components to it.
@@ -10,7 +14,9 @@
 
     <!-- how it works -->
     <MoleculeDocsContent>
-      <template #title> How it works </template>
+      <template #title>
+        How it works
+      </template>
 
       <p>
         To better adapt to your visual identity, perfectui provides the
@@ -20,15 +26,13 @@
       </p>
       <!-- tabs -->
       <OrganismTabs>
-        <!-- header -->
         <template #header>
           <AtomIconTS />
           index.ts
         </template>
-        <!-- code -->
         <MoleculeCodeView
           :input="CODE_VIEW_USING_SET_THEME_COLOR"
-          lang="typescript"
+          lang="ts"
         />
       </OrganismTabs>
 
@@ -39,7 +43,7 @@
 
       <AtomNoteWarn>
         To satisfy the interface, you need to enter a shade from 50 to 950 in
-        RGB
+        RGB!
       </AtomNoteWarn>
 
       <OrganismTabs>
@@ -47,7 +51,10 @@
           <AtomIconTS />
           index.d.ts
         </template>
-        <MoleculeCodeView :input="CODE_VIEW_TYPES" lang="typescript" />
+        <MoleculeCodeView
+          :input="CODE_VIEW_TYPES"
+          lang="ts"
+        />
       </OrganismTabs>
     </MoleculeDocsContent>
   </MoleculeDocsSection>
@@ -71,7 +78,7 @@ const palette = {
   950: [6, 51, 75],
 }
 
-setThemeColor(pallete)`;
+setThemeColor(palette)`;
 
 const CODE_VIEW_TYPES = `export interface IThemeColor {
     50: number[] | string;

@@ -44,6 +44,7 @@
       <article
         :class="{ translateArticle: navIsOpen }"
         class="flex flex-col gap-6 lg:ml-[230px] min-h-screen pt-5 lg:pt-10 pl-10 max-lg:px-5"
+        @click="closeNav"
       >
         <NuxtPage />
 

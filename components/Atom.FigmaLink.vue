@@ -1,5 +1,6 @@
 <template>
   <a
+    aria-label="View the Figma project"
     href="https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI?type=design&t=NFXUM1OyFfIo9Csc-6"
     target="_blank"
   ><AtomIconFigma class="w-5 h-5" /></a>

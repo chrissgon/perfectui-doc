@@ -8,7 +8,8 @@
         Dark Mode
       </template>
 
-      Implement different modes in your application easily with Perfectui through auxiliary methods.
+      Implement different modes in your application easily with Perfectui
+      through auxiliary methods.
     </MoleculeDocsHeader>
 
     <!-- how it works -->
@@ -24,15 +25,13 @@
 
       <!-- tabs -->
       <OrganismTabs>
-        <!-- header -->
         <template #header>
           <AtomIconTS />
           index.ts
         </template>
-        <!-- code -->
         <MoleculeCodeView
           :input="CODE_VIEW_USING_SET_MODE"
-          lang="typescript"
+          lang="ts"
         />
       </OrganismTabs>
     </MoleculeDocsContent>
@@ -49,7 +48,6 @@
 
       <!-- tabs -->
       <OrganismTabs :tabs="['html', 'preview']">
-        <!-- header -->
         <template #hhtml>
           <AtomIconHTML />
           index.html
@@ -58,12 +56,10 @@
           Preview
         </template>
 
-        <!-- html -->
         <template #html>
           <MoleculeCodeView :input="CODE_VIEW_MODE_BUTTON_HTML" />
         </template>
 
-        <!-- preview -->
         <template #preview>
           <MoleculeCodePreview :preview="CODE_PREVIEW_MODE_BUTTON" />
         </template>

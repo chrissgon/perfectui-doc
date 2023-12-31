@@ -1,6 +1,6 @@
 {
-  "name": "nuxt-app",
-  "displayName": "PefectUI",
+  "name": "perfectui",
+  "displayName": "Perfect UI",
   "description": "An modern framework for crafting elegant interfaces",
   "private": false,
   "type": "module",
@@ -13,14 +13,14 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.1.1",
+    "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/devtools": "latest",
     "nuxt": "^3.8.2",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@chrissgon/perfectui": "0.6.3",
+    "@chrissgon/perfectui": "0.7.0",
     "highlight.js": "^11.9.0",
     "values.js": "^2.1.1"
   }

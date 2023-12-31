@@ -1,5 +1,6 @@
 <template>
   <button
+    aria-label="Dark Mode"
     class="h-fit"
     @click="changeTheme"
   >

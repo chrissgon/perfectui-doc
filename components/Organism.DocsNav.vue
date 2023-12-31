@@ -18,9 +18,9 @@
         v-for="(links, i) in docs"
         :key="i"
       >
-        <li class="text-secondary mt-5">
+        <p class="text-secondary mt-5">
           {{ i }}
-        </li>
+        </p>
         <NuxtLink
           v-for="(link, j) in links"
           :key="j"
@@ -123,7 +123,7 @@ const getPrevPage = computed<string | undefined>(() => {
 // data
 const docs = ref<Sections>({
   "Getting Started": ["Installation", "Typescript", "License"],
-  Customization: ["Dark Mode", "Theme Color", "Icons"],
+  Customization: ["Dark Mode", "Theme Color"],
   "Base Components": ["Button"],
 });
 
