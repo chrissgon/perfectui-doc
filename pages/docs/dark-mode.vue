@@ -98,11 +98,11 @@ const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
 </label>
 
 <script>
-  document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
-
   function changeMode(dark){
     window.perfectui.setMode(dark ? "dark" : "light");
   }
+  
+  document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
 <\/script>`;
 </script>
 

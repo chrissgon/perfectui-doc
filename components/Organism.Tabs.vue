@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full rounded-md overflow-hidden group group-column">
+  <section class="w-full rounded-md overflow-hidden group group-col">
     <!-- tabs -->
     <nav
       class="overflow-auto group-item flex gap-2 border border-solid border-secondary p-2"
