@@ -125,7 +125,7 @@ const docs = ref<Sections>({
   "Getting Started": ["Installation", "Typescript", "License"],
   Customization: ["Dark Mode", "Theme Color"],
   Layout: ["Group Elements"],
-  "Base Components": ["Button"],
+  "Base Components": ["Accordion", "Badge", "Button", "Card", "Lists", "Table", "Tooltip", ],
 });
 
 // methods

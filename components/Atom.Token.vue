@@ -1,5 +1,5 @@
 <template>
-  <span class="token">
+  <span class="token -mr-1">
     `<slot />`
   </span>
 </template>
