@@ -197,11 +197,6 @@
         to render cards as a single, attached element with equal width and
         height columns.
       </p>
-      <!-- <p>
-        To create a horizontal card, simply add
-        <AtomToken>display: flex</AtomToken> in the
-        <AtomToken>.card</AtomToken> parent.
-      </p> -->
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
           Preview
@@ -301,7 +296,7 @@ const CODE_VIEW_CARD_FOOTER = `<div class="card">
 </div>
 `;
 const CODE_VIEW_CARD_SIMPLE_HORIZONTAL = `<div class="card lg:flex">
-  <img class="lg:max-w-xs" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80">
+  <img class="lg:max-w-xs" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
   <article class="card-content flex flex-col justify-between">
     <div>
       <h1 class="font-semibold text-xl mb-2">Card Title</h1>

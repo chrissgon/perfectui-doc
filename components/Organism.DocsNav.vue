@@ -62,9 +62,10 @@ const getCurrentSection = computed<SectionMap>(() => {
   }
 
   const articleName = normalizeArticleName(parts[1]);
-
   for (const [sectionName, articles] of Object.entries(docs.value)) {
-    const articleIndex = articles.indexOf(articleName);
+    const articleIndex = articles.findIndex((article) =>
+      new RegExp(articleName, "i").test(article)
+    );
 
     if (articleIndex === -1) continue;
 
@@ -122,10 +123,15 @@ const getPrevPage = computed<string | undefined>(() => {
 
 // data
 const docs = ref<Sections>({
-  "Getting Started": ["Installation", "Typescript", "License"],
+  "Getting Started": ["Installation", "Typescript", "Tailwind CSS", "License"],
   Customization: ["Dark Mode", "Theme Color"],
   Layout: ["Group Elements"],
-  "Base Components": ["Accordion", "Badge", "Button", "Card", /*"Lists", "Table", "Tooltip",*/ ],
+  "Base Components": [
+    "Accordion",
+    "Badge",
+    "Button",
+    "Card" /*"Lists", "Table", "Tooltip",*/,
+  ],
 });
 
 // methods
