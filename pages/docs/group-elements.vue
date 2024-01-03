@@ -18,7 +18,8 @@
 
       <p>
         To deal with grouping elements, PerfectUI provides the
-        <AtomToken>.group-row</AtomToken>, <AtomToken>.group-col</AtomToken> and
+        <AtomToken>.group-row</AtomToken>, <AtomToken>.group-col</AtomToken>,
+        <AtomToken>.group-responsive</AtomToken> and
         <AtomToken>.group-item</AtomToken> classes. These will be useful for
         dealing with unnecessary borders and rounding of elements.
       </p>
@@ -71,8 +72,40 @@
       </OrganismTabs>
 
       <AtomNoteWarn>
-        The buttons need the <AtomToken>.group-item</AtomToken> class to work, because they have no class <AtomToken>.item</AtomToken>.
+        The buttons need the <AtomToken>.group-item</AtomToken> class to work,
+        because they have no class <AtomToken>.item</AtomToken>.
       </AtomNoteWarn>
+    </MoleculeDocsContent>
+
+    <MoleculeDocsContent>
+      <template #title>
+        Group responsive
+      </template>
+      <p>
+        If you need the group to change automatically with the screen size,
+        simply use <AtomToken>group-responsive</AtomToken>.
+      </p>
+      <p>
+        For screens larger than <AtomToken>1024px</AtomToken>,
+        <AtomToken>group-row</AtomToken> will be applied, for smaller screens
+        <AtomToken>group-col</AtomToken>.
+      </p>
+
+      <OrganismTabs :tabs="['preview', 'code']">
+        <template #hpreview>
+          Preview
+        </template>
+        <template #hcode>
+          <AtomIconHTML />
+          HTML
+        </template>
+        <template #preview>
+          <MoleculeCodePreview :preview="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
+        </template>
+        <template #code>
+          <MoleculeCodeView :input="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
+        </template>
+      </OrganismTabs>
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
@@ -94,6 +127,42 @@ const CODE_VIEW_BUTTON_GROUP = `<div class="group group-row">
   <button class="group-item btn btn-white">Middle</button>
   <button class="group-item btn btn-white">Right</button>
 </div>
+`;
+const CODE_VIEW_CARD_GROUP_RESPONSIVE = `<section class="group-responsive">
+  <!-- card #1 -->
+  <div class="card group-item">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <article class="card-content flex flex-col justify-between">
+      <div>
+        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
+        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
+    </article>
+  </div>
+  <!-- card #2 -->
+  <div class="card group-item">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <article class="card-content flex flex-col justify-between">
+      <div>
+        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
+        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
+    </article>
+  </div>
+  <!-- card #3 -->
+  <div class="card group-item">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <article class="card-content flex flex-col justify-between">
+      <div>
+        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
+        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
+    </article>
+  </div>
+</section>
 `;
 </script>
 

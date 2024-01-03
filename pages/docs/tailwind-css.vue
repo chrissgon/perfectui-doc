@@ -1,12 +1,8 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Getting Started
-      </template>
-      <template #title>
-        Tailwind CSS
-      </template>
+      <template #subtitle> Getting Started </template>
+      <template #title> Tailwind CSS </template>
 
       Combine Perfect UI components with
       <a
@@ -20,9 +16,7 @@
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
-      <template #title>
-        Perfect UI + Tailwind CSS = ❤️
-      </template>
+      <template #title> Perfect UI + Tailwind CSS = ❤️ </template>
       <p>
         Perfect UI is a framework inspired by Tailwind CSS, focused on providing
         basic components to create elegant user interfaces that are light, fast
@@ -30,7 +24,7 @@
       </p>
       <p>
         Because of this the framework does not provide classes for layout,
-        fonts, colors and so on.
+        breakpoints, fonts, colors and so on.
       </p>
       <p>
         We strongly recommend that Perfect UI is used with Tailwind CSS to

@@ -49,7 +49,7 @@
     <!-- content types -->
     <MoleculeDocsContent>
       <template #title>
-        Content Types
+        Content types
       </template>
       <p>
         Cards support a wide variety of content, including images, text, list
@@ -60,7 +60,7 @@
     <!-- simple body -->
     <MoleculeDocsContent>
       <template #title>
-        Simple Body
+        Simple body
       </template>
       <p>
         You can use <AtomToken>.card-content</AtomToken> class to create a
@@ -86,7 +86,7 @@
     <!-- simple card -->
     <MoleculeDocsContent>
       <template #title>
-        Simple Card
+        Simple card
       </template>
       <p>
         You can add others elements in the
@@ -184,7 +184,7 @@
     <!-- card group -->
     <MoleculeDocsContent>
       <template #title>
-        Card Group
+        Card group
       </template>
       <p>
         Use
@@ -207,22 +207,12 @@
         </template>
         <template #preview>
           <MoleculeCodePreview
-            class="max-lg:hidden"
-            :preview="CODE_VIEW_CARD_GROUP_ROW"
-          />
-          <MoleculeCodePreview
-            class="lg:hidden"
-            :preview="CODE_VIEW_CARD_GROUP_COL"
+            :preview="CODE_VIEW_CARD_GROUP_RESPONSIVE"
           />
         </template>
         <template #code>
           <MoleculeCodeView
-            class="max-lg:hidden"
-            :input="CODE_VIEW_CARD_GROUP_ROW"
-          />
-          <MoleculeCodeView
-            class="lg:hidden"
-            :input="CODE_VIEW_CARD_GROUP_COL"
+            :input="CODE_VIEW_CARD_GROUP_RESPONSIVE"
           />
         </template>
       </OrganismTabs>
@@ -237,7 +227,7 @@ const CODE_VIEW_CARD_BASIC = `<div class="card">
     <i class="bi-three-dots-vertical"></i>
   </header>
   <hr>
-  <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=300&q=80">  
+  <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=300&q=80">  
   <article class="card-content flex flex-col gap-2">
     <h1 class="font-semibold text-xl">Card Title</h1>
     <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -296,7 +286,7 @@ const CODE_VIEW_CARD_FOOTER = `<div class="card">
 </div>
 `;
 const CODE_VIEW_CARD_SIMPLE_HORIZONTAL = `<div class="card lg:flex">
-  <img class="lg:max-w-xs" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+  <img alt="Accordion Image" class="lg:max-w-xs" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
   <article class="card-content flex flex-col justify-between">
     <div>
       <h1 class="font-semibold text-xl mb-2">Card Title</h1>
@@ -306,10 +296,10 @@ const CODE_VIEW_CARD_SIMPLE_HORIZONTAL = `<div class="card lg:flex">
   </article>
 </div>
 `;
-const CODE_VIEW_CARD_GROUP_ROW = `<section class="group-row">
+const CODE_VIEW_CARD_GROUP_RESPONSIVE = `<section class="group-responsive">
   <!-- card #1 -->
   <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
     <article class="card-content flex flex-col justify-between">
       <div>
         <h1 class="font-semibold text-xl mb-2">Card Title</h1>
@@ -320,7 +310,7 @@ const CODE_VIEW_CARD_GROUP_ROW = `<section class="group-row">
   </div>
   <!-- card #2 -->
   <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
     <article class="card-content flex flex-col justify-between">
       <div>
         <h1 class="font-semibold text-xl mb-2">Card Title</h1>
@@ -331,43 +321,7 @@ const CODE_VIEW_CARD_GROUP_ROW = `<section class="group-row">
   </div>
   <!-- card #3 -->
   <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
-    <article class="card-content flex flex-col justify-between">
-      <div>
-        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
-        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
-    </article>
-  </div>
-</section>
-`;
-const CODE_VIEW_CARD_GROUP_COL = `<section class="group-col">
-  <!-- card #1 -->
-  <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
-    <article class="card-content flex flex-col justify-between">
-      <div>
-        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
-        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
-    </article>
-  </div>
-  <!-- card #2 -->
-  <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
-    <article class="card-content flex flex-col justify-between">
-      <div>
-        <h1 class="font-semibold text-xl mb-2">Card Title</h1>
-        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <p class="text-xs text-secondary mt-8">Last updated 5 mins ago</p>
-    </article>
-  </div>
-  <!-- card #3 -->
-  <div class="card group-item">
-    <img src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
+    <img alt="Accordion Image" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
     <article class="card-content flex flex-col justify-between">
       <div>
         <h1 class="font-semibold text-xl mb-2">Card Title</h1>

@@ -204,7 +204,7 @@
     <!-- group -->
     <MoleculeDocsContent>
       <template #title>
-        Button grouping
+        Button group
       </template>
       <p>
         You can group buttons using
