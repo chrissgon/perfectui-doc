@@ -38,7 +38,7 @@
       <OrganismDocsNav
         ref="OrganismDocsNavRef"
         :class="{ translateNav: navIsOpen }"
-        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-y-auto scrollbar lg:-ml-5 p-5 border-r border-solid border-secondary z-10"
+        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-y-auto scrollbar lg:-ml-5 p-5 max-lg:pb-16 border-r border-solid border-secondary z-10"
       />
 
       <article

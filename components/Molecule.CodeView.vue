@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+import {md5} from "js-md5"
+
 // props
 interface IProps {
   input: string;
@@ -71,10 +73,10 @@ function unsetCopy(): void {
 }
 function getChannelID(): string {
   const length = props.input.length;
-  const start = props.input.substring(0, 5).trim();
-  const end = props.input.substring(length - 5, length).trim();
+  const start = props.input.substring(0, 30).trim();
+  const end = props.input.substring(length - 20, length).trim();
   const lang = props.lang ?? "html";
-  return `${start}${length}${end}${lang}`.replaceAll("\n", "");
+  return md5(`${start}${length}${end}${lang}`);
 }
 
 // setup

@@ -13,6 +13,9 @@
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
+      <template #title>
+        Types
+      </template>
       <OrganismTabs>
         <template #header>
           <AtomIconTS />

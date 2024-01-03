@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full rounded-md overflow-hidden group group-col">
+  <section class="w-full rounded group group-col">
     <!-- tabs -->
     <nav
       class="overflow-auto group-item flex gap-2 border border-solid border-secondary p-2"
@@ -24,22 +24,20 @@
     </nav>
 
     <!-- contents -->
-    <article
-      v-for="tab in tabs"
-      v-show="tab === activeTab"
-      :key="tab"
-      class="group-item border border-solid border-secondary bg-secondary"
-    >
-      <slot :name="tab" />
-    </article>
+    <div class="group-item border border-solid border-secondary bg-secondary">
+      <article
+        v-for="tab in tabs"
+        v-show="tab === activeTab"
+        :key="tab"
+      >
+        <slot :name="tab" />
+      </article>
 
-    <!-- default -->
-    <article
-      v-if="!tabs"
-      class="group-item border border-solid border-secondary bg-secondary"
-    >
-      <slot />
-    </article>
+      <!-- default -->
+      <article v-if="!tabs">
+        <slot />
+      </article>
+    </div>
   </section>
 </template>
 

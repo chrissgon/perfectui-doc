@@ -94,14 +94,7 @@ code * {
   font-family: "Fira Code";
 }
 
-.token {
-  font-family: "Fira Code";
-  color: #d82830;
-  font-weight: 900;
-}
-.dark .token {
-  color: #ff7b72;
-}
+
 /* code */
 /* 
 

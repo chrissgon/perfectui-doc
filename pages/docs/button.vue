@@ -16,7 +16,12 @@
       <template #title>
         Types
       </template>
-      <p>The most commonly used button styles.</p>
+      <p>
+        The most commonly used button styles, we provide
+        <AtomToken>solid</AtomToken>, <AtomToken>outline</AtomToken>,
+        <AtomToken>link</AtomToken>, <AtomToken>white</AtomToken> and
+        <AtomToken>black</AtomToken>.
+      </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
           Preview
@@ -34,12 +39,40 @@
       </OrganismTabs>
     </MoleculeDocsContent>
 
+    <!-- rounded -->
+    <MoleculeDocsContent>
+      <template #title>
+        Rounded buttons
+      </template>
+      <p>
+        Use the <AtomToken>.rounded-full</AtomToken> class to create rounded buttons.
+      </p>
+      <OrganismTabs :tabs="['preview', 'code']">
+        <template #hpreview>
+          Preview
+        </template>
+        <template #hcode>
+          <AtomIconHTML />
+          HTML
+        </template>
+        <template #preview>
+          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
+        </template>
+        <template #code>
+          <MoleculeCodeView :input="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
+        </template>
+      </OrganismTabs>
+    </MoleculeDocsContent>
+
     <!-- solid -->
     <MoleculeDocsContent>
       <template #title>
-        Solid color variants
+        Solid buttons
       </template>
-      <p>Predefined solid color button styles.</p>
+      <p>
+        To create solid buttons, simply use the
+        <AtomToken>.btn-solid-[variant]</AtomToken> class.
+      </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
           Preview
@@ -60,9 +93,12 @@
     <!-- outline -->
     <MoleculeDocsContent>
       <template #title>
-        Outline color variants
+        Outline buttons
       </template>
-      <p>Predefined outline color button styles.</p>
+      <p>
+        To create outline buttons, simply use the
+        <AtomToken>.btn-outline-[variant]</AtomToken> class.
+      </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
           Preview
@@ -83,9 +119,12 @@
     <!-- link -->
     <MoleculeDocsContent>
       <template #title>
-        Link color variants
+        Link buttons
       </template>
-      <p>Predefined link color button styles.</p>
+      <p>
+        To create link buttons, simply use the
+        <AtomToken>.btn-link-[variant]</AtomToken> class.
+      </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
           Preview
@@ -108,10 +147,10 @@
       <template #title>
         White/Black buttons
       </template>
-      <p>The white and black buttons are basic buttons.</p>
       <p>
-        The white button goes with the background color, while the black button
-        contrasts with it.
+        To create white or black button, simply use the
+        <AtomToken>.btn-white</AtomToken> or
+        <AtomToken>.btn-black</AtomToken> class.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
@@ -133,7 +172,7 @@
     <!-- icons -->
     <MoleculeDocsContent>
       <template #title>
-        Icon
+        Icons
       </template>
       <p>
         You can add icons from any library. In the example below we used
@@ -142,8 +181,7 @@
           target="_blank"
           class="btn-link-primary"
         >
-          Bootstrap Icons
-        </a>.
+          Bootstrap Icons </a>.
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
@@ -166,10 +204,10 @@
     <!-- group -->
     <MoleculeDocsContent>
       <template #title>
-        Button group
+        Button grouping
       </template>
       <p>
-        Grouping buttons using
+        You can group buttons using
         <NuxtLink
           class="btn-link-primary"
           to="/docs/group-elements"
@@ -229,6 +267,12 @@ const CODE_VIEW_BUTTON_TYPES = `<button class="btn btn-solid-primary">Solid</but
 <button class="btn btn-link-primary">Link</button>
 <button class="btn btn-white">White</button>
 <button class="btn btn-black">Black</button>
+`;
+const CODE_VIEW_BUTTON_TYPES_ROUNDED = `<button class="btn btn-solid-primary rounded-full">Solid</button>
+<button class="btn btn-outline-primary rounded-full">Outline</button>
+<button class="btn btn-link-primary rounded-full">Link</button>
+<button class="btn btn-white rounded-full">White</button>
+<button class="btn btn-black rounded-full">Black</button>
 `;
 const CODE_VIEW_BUTTON_SOLID_COLORS = `<button class="btn btn-solid-primary">Primary</button>
 <button class="btn btn-solid-secondary">Secondary</button>

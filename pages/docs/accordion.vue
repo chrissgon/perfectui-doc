@@ -18,7 +18,7 @@
       </template>
       <p>
         To create accordions, simply add the
-        <AtomToken>accordion</AtomToken> class to the
+        <AtomToken>.accordion</AtomToken> class to the
         <AtomToken>details</AtomToken> parent component.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
@@ -45,7 +45,7 @@
       </template>
       <p>
         To create bordered accordions, simply add the
-        <AtomToken>accordion-bordered</AtomToken> class.
+        <AtomToken>.accordion-bordered</AtomToken> class.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
@@ -71,7 +71,7 @@
       </template>
       <p>
         To create accented accordions when opened, simply add the
-        <AtomToken>accordion-accented</AtomToken> class.
+        <AtomToken>.accordion-accented</AtomToken> class.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
         <template #hpreview>
@@ -97,7 +97,7 @@
       </template>
       <p>
         To create nested accordions, simply add the
-        <AtomToken>accordion</AtomToken> component inside the
+        <AtomToken>.accordion</AtomToken> element inside the
         <AtomToken>article</AtomToken> of another.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
@@ -118,7 +118,7 @@
 
       <p>
         For basic accordions you can use the
-        <AtomToken>accordion-aligned</AtomToken> class to align the arrows to
+        <AtomToken>.accordion-aligned</AtomToken> class to align the arrows to
         the right.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
@@ -162,7 +162,7 @@
       </template>
       <p>
         To create accordions with custom arrows, simply create an element with
-        the class <AtomToken>accordion-icon</AtomToken> inside
+        the class <AtomToken>.accordion-icon</AtomToken> inside
         <AtomToken>summary</AtomToken>.
       </p>
       <p>If you leave the element empty, there will be no arrow.</p>
