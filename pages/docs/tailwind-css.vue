@@ -20,6 +20,9 @@
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
+      <template #title>
+        Perfect UI + Tailwind CSS = ❤️
+      </template>
       <p>
         Perfect UI is a framework inspired by Tailwind CSS, focused on providing
         basic components to create elegant user interfaces that are light, fast
