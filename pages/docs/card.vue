@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Base Components </template>
-      <template #title> Card </template>
+      <template #subtitle>
+        Base Components
+      </template>
+      <template #title>
+        Card
+      </template>
 
       Cards provide a flexible and extensible content container with multiple
       variants and options.
@@ -10,7 +14,9 @@
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title> Basic </template>
+      <template #title>
+        Basic
+      </template>
       <p>
         A basic card containing a title, content and an extra corner content.
         Cards assume no specific width to start, so they'll be 100% wide unless
@@ -24,7 +30,9 @@
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -40,7 +48,9 @@
 
     <!-- content types -->
     <MoleculeDocsContent>
-      <template #title> Content Types </template>
+      <template #title>
+        Content Types
+      </template>
       <p>
         Cards support a wide variety of content, including images, text, list
         groups, links, and more. Below are examples of what's supported.
@@ -49,13 +59,17 @@
 
     <!-- simple body -->
     <MoleculeDocsContent>
-      <template #title> Simple Body </template>
+      <template #title>
+        Simple Body
+      </template>
       <p>
         You can use <AtomToken>.card-content</AtomToken> class to create a
         simple body example with text.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -71,13 +85,17 @@
 
     <!-- simple card -->
     <MoleculeDocsContent>
-      <template #title> Simple Card </template>
+      <template #title>
+        Simple Card
+      </template>
       <p>
         You can add others elements in the
         <AtomToken>.card-content</AtomToken> parent.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -93,13 +111,17 @@
 
     <!-- header / footer -->
     <MoleculeDocsContent>
-      <template #title> Header / Footer </template>
+      <template #title>
+        Header / Footer
+      </template>
       <p>
         You can use <AtomToken>.card-header</AtomToken> and
         <AtomToken>&lt;hr&gt;</AtomToken> tag to create a header or footer.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -112,7 +134,9 @@
         </template>
       </OrganismTabs>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -128,7 +152,9 @@
 
     <!-- horizontal -->
     <MoleculeDocsContent>
-      <template #title> Horizontal </template>
+      <template #title>
+        Horizontal
+      </template>
       <p>
         Using a combination of grid and utility classes, cards can be made
         horizontal in a mobile-friendly and responsive way.
@@ -139,7 +165,9 @@
         <AtomToken>.card</AtomToken> parent.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -155,10 +183,15 @@
 
     <!-- card group -->
     <MoleculeDocsContent>
-      <template #title> Card Group </template>
+      <template #title>
+        Card Group
+      </template>
       <p>
         Use
-        <NuxtLink class="btn-link-primary" to="/docs/group-elements">
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/group-elements"
+        >
           Layout Group
         </NuxtLink>
         to render cards as a single, attached element with equal width and
@@ -170,7 +203,9 @@
         <AtomToken>.card</AtomToken> parent.
       </p> -->
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
