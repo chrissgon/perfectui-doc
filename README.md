@@ -1,8 +1,8 @@
-![PerfectUI](./public/logo.svg)
+![PerfectUI](./public/thumb.png)
 
-# PerfectUI
+# Perfect UI
 
-Official PerfectUI Documentation: An modern framework for crafting elegant interfaces 📖🎨
+Official Perfect UI Documentation: An modern framework for crafting elegant interfaces ([Official repository](https://github.com/chrissgon/perfectui)) 📖🎨
 
 ## 📦 Install
 
