@@ -2,7 +2,7 @@ import pkg from "./package.json";
 
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
-
+  
   nitro: {
     compressPublicAssets: true,
   },
