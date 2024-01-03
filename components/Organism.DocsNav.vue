@@ -1,7 +1,7 @@
 <template>
   <nav>
     <!-- search -->
-    <label class="field-group">
+    <!-- <label class="field-group">
       <div class="input input-group">
         <i class="bi-search" />
         <input
@@ -10,7 +10,7 @@
         >
         <span>Ctrl K</span>
       </div>
-    </label>
+    </label> -->
 
     <!-- links -->
     <ul class="list list-hoverable">
