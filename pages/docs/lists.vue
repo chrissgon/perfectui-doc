@@ -385,7 +385,7 @@ const CODE_VIEW_LIST_NONE = `<ul class="list !bg-transparent">
   </li>
 </ul>
 `;
-const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex">
+const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex flex-wrap">
   <ul class="list !bg-transparent">
     <li class="list-item">
       <span class="marker bi-check text-success"></span>

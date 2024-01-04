@@ -13,12 +13,12 @@
     </label> -->
 
     <!-- links -->
-    <ul class="list list-hoverable">
+    <ul class="list list-hoverable !bg-transparent">
       <template
         v-for="(links, i) in docs"
         :key="i"
       >
-        <p class="text-secondary mt-5">
+        <p class="font-medium mb-5 mt-5 first:!mt-0">
           {{ i }}
         </p>
         <NuxtLink
@@ -26,7 +26,7 @@
           :key="j"
           :to="getDocPath(normalizeLink(link))"
           :class="{ active: isPageActive(link) }"
-          class="list-item"
+          class="list-item !bg-transparent text-secondary"
         >
           {{ link }}
         </NuxtLink>
@@ -132,8 +132,8 @@ const docs = ref<Sections>({
     "Button",
     "Card",
     "Lists",
-    "Table",
-    "Tooltip",
+    // "Table",
+    // "Tooltip",
   ],
 });
 
@@ -169,7 +169,17 @@ defineExpose({
 </script>
 
 <style scoped>
+.list-item {
+  border-left: 2px solid rgba(var(--borderSecondary), 0.3);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin-left: -2px;
+}
+.list-item:hover {
+  border-color: rgb(var(--borderSecondary));
+}
 .active {
   color: rgb(var(--theme500));
+  border-color: rgb(var(--theme500));
 }
 </style>
