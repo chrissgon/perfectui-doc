@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Base Components </template>
-      <template #title> Lists </template>
+      <template #subtitle>
+        Base Components
+      </template>
+      <template #title>
+        Lists
+      </template>
 
       Create engaging lists using Perfect UI, a powerful tool for styling
       ordered and unordered elements, enhancing readability, and user
@@ -10,7 +14,9 @@
     </MoleculeDocsHeader>
 
     <MoleculeDocsContent>
-      <template #title> Setting the list style type </template>
+      <template #title>
+        Setting the list style type
+      </template>
 
       <p>
         To create bulleted or numeric lists, use the
@@ -21,7 +27,9 @@
 
       <!-- list disc -->
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -36,7 +44,9 @@
 
       <!-- list decimal -->
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -51,7 +61,9 @@
 
       <!-- list none -->
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -67,14 +79,18 @@
 
     <!-- custom marker -->
     <MoleculeDocsContent>
-      <template #title> Custom marker </template>
+      <template #title>
+        Custom marker
+      </template>
 
       <p>
         To use customs markers, simply add <AtomToken>.marker</AtomToken> class
         in <AtomToken>.list-item</AtomToken> element.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -90,18 +106,25 @@
 
     <!-- list bordered -->
     <MoleculeDocsContent>
-      <template #title> List bordered </template>
+      <template #title>
+        List bordered
+      </template>
 
       <p>
         To create bordered lists, simply use the
         <AtomToken>.list-bordered</AtomToken> class with
-        <NuxtLink class="btn-link-primary" to="/docs/group-elements">
-          Layout Group </NuxtLink
-        >.
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/group-elements"
+        >
+          Layout Group
+        </NuxtLink>.
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -117,7 +140,9 @@
 
     <!-- states -->
     <MoleculeDocsContent>
-      <template #title> States </template>
+      <template #title>
+        States
+      </template>
 
       <p>
         Use the class <AtomToken>.active</AtomToken> to indicate an active
@@ -129,7 +154,9 @@
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -145,7 +172,9 @@
 
     <!-- list hoverable -->
     <MoleculeDocsContent>
-      <template #title> List hoverable </template>
+      <template #title>
+        List hoverable
+      </template>
 
       <p>
         To create hoverable lists, simply use the
@@ -153,7 +182,9 @@
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -169,7 +200,9 @@
 
     <!-- list striped -->
     <MoleculeDocsContent>
-      <template #title> List striped </template>
+      <template #title>
+        List striped
+      </template>
 
       <p>
         To create striped lists, simply use the
@@ -177,7 +210,9 @@
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -193,7 +228,9 @@
 
     <!-- icons -->
     <MoleculeDocsContent>
-      <template #title> Icons </template>
+      <template #title>
+        Icons
+      </template>
 
       <p>
         You can add icons from any library. In the example below we used
@@ -202,12 +239,13 @@
           target="_blank"
           class="btn-link-primary"
         >
-          Bootstrap Icons </a
-        >.
+          Bootstrap Icons </a>.
       </p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -223,16 +261,23 @@
 
     <!-- horizontal -->
     <MoleculeDocsContent>
-      <template #title> Horizontal </template>
+      <template #title>
+        Horizontal
+      </template>
 
       <p>
         To create horizontal lists, simply use the list classes with
-        <NuxtLink class="btn-link-primary" to="/docs/group-elements">
-          Layout Group </NuxtLink
-        >.
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/group-elements"
+        >
+          Layout Group
+        </NuxtLink>.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -248,14 +293,18 @@
 
     <!-- badge -->
     <MoleculeDocsContent>
-      <template #title> Badges </template>
+      <template #title>
+        Badges
+      </template>
 
       <p>
         Add badges to any list group item to show unread counts, activity, and
         more.
       </p>
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -271,12 +320,16 @@
 
     <!-- invoice -->
     <MoleculeDocsContent>
-      <template #title> Invoice </template>
+      <template #title>
+        Invoice
+      </template>
 
       <p>A simple list group example with a highlighted footer.</p>
 
       <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           HTML
@@ -293,7 +346,7 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_LIST_DISC = `<ul class="list list-disc">
+const CODE_VIEW_LIST_DISC = `<ul class="list list-disc !bg-transparent">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down
@@ -306,7 +359,7 @@ const CODE_VIEW_LIST_DISC = `<ul class="list list-disc">
   </li>
 </ul>
 `;
-const CODE_VIEW_LIST_DECIMAL = `<ul class="list list-decimal">
+const CODE_VIEW_LIST_DECIMAL = `<ul class="list list-decimal !bg-transparent">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down
@@ -319,7 +372,7 @@ const CODE_VIEW_LIST_DECIMAL = `<ul class="list list-decimal">
   </li>
 </ul>
 `;
-const CODE_VIEW_LIST_NONE = `<ul class="list">
+const CODE_VIEW_LIST_NONE = `<ul class="list !bg-transparent">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down
@@ -333,7 +386,7 @@ const CODE_VIEW_LIST_NONE = `<ul class="list">
 </ul>
 `;
 const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex">
-  <ul class="list">
+  <ul class="list !bg-transparent">
     <li class="list-item">
       <span class="marker bi-check text-success"></span>
       FAQ
@@ -347,7 +400,7 @@ const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex">
       Terms & Conditions
     </li>
   </ul>
-  <ul class="list">
+  <ul class="list !bg-transparent">
     <li class="list-item">
       <span class="marker bi-check-circle text-success"></span>
       FAQ
@@ -361,7 +414,7 @@ const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex">
       Terms & Conditions
     </li>
   </ul>
-  <ul class="list">
+  <ul class="list !bg-transparent">
     <li class="list-item">
       <span class="marker bi-check-circle-fill text-success"></span>
       FAQ
@@ -378,7 +431,7 @@ const CODE_VIEW_LIST_CUSTOM_MARKER = `<div class="flex">
 </div>
 `;
 
-const CODE_VIEW_LIST_BORDERED = `<ul class="sm:w-64 list list-bordered group-col bg-primary">
+const CODE_VIEW_LIST_BORDERED = `<ul class="sm:w-64 list list-bordered group-col">
   <li class="list-item">
     Profile
   </li>
@@ -391,7 +444,7 @@ const CODE_VIEW_LIST_BORDERED = `<ul class="sm:w-64 list list-bordered group-col
 </ul>
 `;
 
-const CODE_VIEW_LIST_STATE = `<ul class="sm:w-64 list list-bordered group-col bg-primary">
+const CODE_VIEW_LIST_STATE = `<ul class="sm:w-64 list list-bordered group-col">
   <a class="list-item active">
     <i class="bi-bell"></i>
     Newsletter
@@ -407,7 +460,7 @@ const CODE_VIEW_LIST_STATE = `<ul class="sm:w-64 list list-bordered group-col bg
 </ul>
 `;
 
-const CODE_VIEW_LIST_HOVERABLE = `<ul class="sm:w-64 list list-bordered list-hoverable group-col bg-primary">
+const CODE_VIEW_LIST_HOVERABLE = `<ul class="sm:w-64 list list-bordered list-hoverable group-col">
   <a class="list-item">
     <i class="bi-bell"></i>
     Newsletter
@@ -423,7 +476,7 @@ const CODE_VIEW_LIST_HOVERABLE = `<ul class="sm:w-64 list list-bordered list-hov
 </ul>
 `;
 
-const CODE_VIEW_LIST_STRIPED = `<ul class="sm:w-64 list list-bordered list-striped group-col bg-primary">
+const CODE_VIEW_LIST_STRIPED = `<ul class="sm:w-64 list list-bordered list-striped group-col">
   <li class="list-item">
     Newsletter
   </li>
@@ -442,7 +495,7 @@ const CODE_VIEW_LIST_STRIPED = `<ul class="sm:w-64 list list-bordered list-strip
 </ul>
 `;
 
-const CODE_VIEW_LIST_ICON = `<ul class="sm:w-64 list list-bordered group-col bg-primary">
+const CODE_VIEW_LIST_ICON = `<ul class="sm:w-64 list list-bordered group-col">
   <li class="list-item">
     <i class="bi-bell"></i>
     Newsletter
@@ -458,7 +511,7 @@ const CODE_VIEW_LIST_ICON = `<ul class="sm:w-64 list list-bordered group-col bg-
 </ul>
 `;
 
-const CODE_VIEW_LIST_HORIZONTAL = `<ul class="w-fit list list-bordered list-hoverable group-row bg-primary">
+const CODE_VIEW_LIST_HORIZONTAL = `<ul class="w-fit list list-bordered list-hoverable group-row">
   <a class="list-item">
     <i class="bi-bell"></i>
     Newsletter
@@ -473,7 +526,7 @@ const CODE_VIEW_LIST_HORIZONTAL = `<ul class="w-fit list list-bordered list-hove
   </a>
 </ul>
 `;
-const CODE_VIEW_LIST_BADGE = `<ul class="sm:w-64 list list-bordered list-hoverable group-col bg-primary">
+const CODE_VIEW_LIST_BADGE = `<ul class="sm:w-64 list list-bordered list-hoverable group-col">
   <a class="list-item">
     <span>
       <i class="bi-bell"></i>
@@ -493,7 +546,7 @@ const CODE_VIEW_LIST_BADGE = `<ul class="sm:w-64 list list-bordered list-hoverab
   </a>
 </ul>
 `;
-const CODE_VIEW_LIST_INVOICE = `<ul class="sm:w-64 list list-bordered group-col bg-primary">
+const CODE_VIEW_LIST_INVOICE = `<ul class="sm:w-64 list list-bordered group-col">
   <li class="list-item">
     <p>
       Payment to Front

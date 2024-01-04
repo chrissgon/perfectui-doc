@@ -14,7 +14,10 @@
 
     <!-- links -->
     <ul class="list list-hoverable">
-      <template v-for="(links, i) in docs" :key="i">
+      <template
+        v-for="(links, i) in docs"
+        :key="i"
+      >
         <p class="text-secondary mt-5">
           {{ i }}
         </p>
