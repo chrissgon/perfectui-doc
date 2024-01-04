@@ -14,10 +14,7 @@
 
     <!-- links -->
     <ul class="list list-hoverable">
-      <template
-        v-for="(links, i) in docs"
-        :key="i"
-      >
+      <template v-for="(links, i) in docs" :key="i">
         <p class="text-secondary mt-5">
           {{ i }}
         </p>
@@ -130,7 +127,10 @@ const docs = ref<Sections>({
     "Accordion",
     "Badge",
     "Button",
-    "Card" /*"Lists", "Table", "Tooltip",*/,
+    "Card",
+    "Lists",
+    "Table",
+    "Tooltip",
   ],
 });
 
@@ -144,7 +144,7 @@ function normalizeArticleName(link: string): string {
   for (const i in parts) {
     const part = parts[i];
     parts[i] = part.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
     });
   }
 
