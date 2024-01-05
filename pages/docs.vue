@@ -2,7 +2,7 @@
   <section class="flex flex-col items-center overflow-x-hidden lg:px-10">
     <!-- header -->
     <header
-      class="bg-nav fixed w-full flex justify-center items-center border-b border-secondary border-solid py-3 px-5 lg:px-10 z-10"
+      class="bg-nav fixed w-full flex justify-center items-center border-b border-secondary border-solid py-3 px-5 lg:px-10 z-20"
     >
       <div class="w-full max-w-7xl flex justify-between">
         <AtomLogoVersion />
@@ -17,7 +17,7 @@
     </header>
 
     <header
-      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[52px] z-10"
+      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
     >
       <i
         class="bi-list text-2xl leading-3 cursor-pointer"
@@ -38,7 +38,7 @@
       <OrganismDocsNav
         ref="OrganismDocsNavRef"
         :class="{ translateNav: navIsOpen }"
-        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-y-auto scrollbar lg:-ml-5 p-5 max-lg:pb-16 border-r border-solid border-secondary z-10"
+        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-y-auto scrollbar lg:-ml-5 p-5 max-lg:pb-24 border-r border-solid border-secondary z-10"
       />
 
       <article
@@ -105,8 +105,10 @@ onBeforeRouteUpdate(closeNav);
 // methods
 function toggleNav(): void {
   navIsOpen.value = !navIsOpen.value;
+  document.body.style.overflow = navIsOpen.value ? "hidden" : "auto"
 }
 function closeNav(): void {
+  document.body.style.overflow = "auto"
   navIsOpen.value = false;
 }
 </script>
