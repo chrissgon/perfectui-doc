@@ -20,21 +20,8 @@
         <AtomToken>solid</AtomToken>, <AtomToken>outline</AtomToken>,
         <AtomToken>white</AtomToken> and <AtomToken>black</AtomToken>.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_TYPES" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_TYPES" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_TYPES" />
     </MoleculeDocsContent>
 
     <!-- rounded -->
@@ -43,23 +30,11 @@
         Rounded badges
       </template>
       <p>
-        Use the <AtomToken>.rounded-full</AtomToken> class to create rounded badges.
+        Use the <AtomToken>.rounded-full</AtomToken> class to create rounded
+        badges.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_TYPES_ROUNDED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_TYPES_ROUNDED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_TYPES_ROUNDED" />
     </MoleculeDocsContent>
 
     <!-- solid -->
@@ -71,21 +46,8 @@
         To create solid badges, simply use the
         <AtomToken>.badge-solid-[variant]</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_SOLID_COLORS" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_SOLID_COLORS" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_SOLID_COLORS" />
     </MoleculeDocsContent>
 
     <!-- outline -->
@@ -97,21 +59,8 @@
         To create outline badges, simply use the
         <AtomToken>.badge-outline-[variant]</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_OUTLINE_COLORS" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_OUTLINE_COLORS" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_OUTLINE_COLORS" />
     </MoleculeDocsContent>
 
     <!-- white / black -->
@@ -124,21 +73,8 @@
         <AtomToken>.badge-white</AtomToken> or
         <AtomToken>.badge-black</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_WHITE_BLACK" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_WHITE_BLACK" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_WHITE_BLACK" />
     </MoleculeDocsContent>
 
     <!-- icons -->
@@ -156,21 +92,7 @@
           Bootstrap Icons </a>.
       </p>
 
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BADGE_ICON" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BADGE_ICON" />
-        </template>
-      </OrganismTabs>
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_ICON" />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
@@ -205,7 +127,6 @@ const CODE_VIEW_BADGE_ICON = `<span class="badge badge-solid-error"><i class="bi
 <span class="badge badge-outline-warn">Best ranking <i class="bi-star-fill"></i></span>
 <span class="badge badge-white">Recent viewed <i class="bi-eye-fill"></i></span>
 `;
-
 </script>
 
 <style scoped></style>

@@ -21,21 +21,8 @@
         <AtomToken>.accordion</AtomToken> class to the
         <AtomToken>details</AtomToken> parent component.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_BASIC" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_BASIC" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_BASIC" />
     </MoleculeDocsContent>
 
     <!-- bordered -->
@@ -47,21 +34,8 @@
         To create bordered accordions, simply add the
         <AtomToken>.accordion-bordered</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_BORDERED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_BORDERED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_BORDERED" />
     </MoleculeDocsContent>
 
     <!-- accented -->
@@ -73,21 +47,8 @@
         To create accented accordions when opened, simply add the
         <AtomToken>.accordion-accented</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_ACCENTED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_ACCENTED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_ACCENTED" />
     </MoleculeDocsContent>
 
     <!-- nested -->
@@ -100,59 +61,20 @@
         <AtomToken>.accordion</AtomToken> element inside the
         <AtomToken>article</AtomToken> of another.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_NESTED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_NESTED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_NESTED" />
 
       <p>
         For basic accordions you can use the
         <AtomToken>.accordion-aligned</AtomToken> class to align the arrows to
         the right.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_NESTED_ALIGNED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_NESTED_ALIGNED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_NESTED_ALIGNED" />
 
       <p>You can mix the variants to create complex accordions.</p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_COMPLEX" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_COMPLEX" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_COMPLEX" />
     </MoleculeDocsContent>
 
     <!-- icon -->
@@ -166,21 +88,8 @@
         <AtomToken>summary</AtomToken>.
       </p>
       <p>If you leave the element empty, there will be no arrow.</p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_ICON" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_ICON" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_ICON" />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>

@@ -1,7 +1,9 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> License </template>
+      <template #subtitle>
+        License
+      </template>
       <template #title>
         Learn more about the licensing terms for Perfect UI
       </template>
@@ -14,7 +16,9 @@
 
     <!-- mit license -->
     <MoleculeDocsContent>
-      <template #title> MIT License </template>
+      <template #title>
+        MIT License
+      </template>
       <p>
         Permission is hereby granted, free of charge, to any person obtaining a
         copy of this software and associated documentation files (the
@@ -43,7 +47,9 @@
 
     <!-- it requires -->
     <MoleculeDocsContent>
-      <template #title> It requires you to: </template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <ul class="list">
         <li class="list-item">
@@ -59,7 +65,9 @@
 
     <!-- it permits -->
     <MoleculeDocsContent>
-      <template #title> It requires you to: </template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <ul class="list">
         <li class="list-item">
@@ -69,7 +77,9 @@
         <li class="list-item">
           Use Perfect UI in packages or distributions that you create.
         </li>
-        <li class="list-item">Modify the source code.</li>
+        <li class="list-item">
+          Modify the source code.
+        </li>
         <li class="list-item">
           Grant a sublicense to modify and distribute Perfect UI to third
           parties not included in the license.
@@ -79,7 +89,9 @@
 
     <!-- it forbids -->
     <MoleculeDocsContent>
-      <template #title> It requires you to: </template>
+      <template #title>
+        It requires you to:
+      </template>
 
       <ul class="list">
         <li class="list-item">
@@ -105,7 +117,9 @@
 
     <!-- its not require -->
     <MoleculeDocsContent>
-      <template #title> It does not require you to: </template>
+      <template #title>
+        It does not require you to:
+      </template>
 
       <ul class="list">
         <li class="list-item">

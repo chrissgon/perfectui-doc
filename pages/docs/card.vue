@@ -29,21 +29,7 @@
         <AtomToken>&lt;hr&gt;</AtomToken> tag for the dividers.
       </p>
 
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_BASIC" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_BASIC" />
-        </template>
-      </OrganismTabs>
+      <OrganismComponentExample :code="CODE_VIEW_CARD_BASIC" />
     </MoleculeDocsContent>
 
     <!-- content types -->
@@ -66,21 +52,8 @@
         You can use <AtomToken>.card-content</AtomToken> class to create a
         simple body example with text.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_SIMPLE_BODY" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_SIMPLE_BODY" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_CARD_BODY" />
     </MoleculeDocsContent>
 
     <!-- simple card -->
@@ -92,21 +65,8 @@
         You can add others elements in the
         <AtomToken>.card-content</AtomToken> parent.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_SIMPLE_CARD" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_SIMPLE_CARD" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_CARD" />
     </MoleculeDocsContent>
 
     <!-- header / footer -->
@@ -118,36 +78,10 @@
         You can use <AtomToken>.card-header</AtomToken> and
         <AtomToken>&lt;hr&gt;</AtomToken> tag to create a header or footer.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_HEADER" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_HEADER" />
-        </template>
-      </OrganismTabs>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_FOOTER" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_FOOTER" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_CARD_HEADER" />
+    
+      <OrganismComponentExample :code="CODE_VIEW_CARD_FOOTER" />
     </MoleculeDocsContent>
 
     <!-- horizontal -->
@@ -164,21 +98,8 @@
         <AtomToken>display: flex</AtomToken> in the
         <AtomToken>.card</AtomToken> parent.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_SIMPLE_HORIZONTAL" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_SIMPLE_HORIZONTAL" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_CARD_HORIZONTAL" />
     </MoleculeDocsContent>
 
     <!-- card group -->
@@ -197,25 +118,8 @@
         to render cards as a single, attached element with equal width and
         height columns.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview
-            :preview="CODE_VIEW_CARD_GROUP_RESPONSIVE"
-          />
-        </template>
-        <template #code>
-          <MoleculeCodeView
-            :input="CODE_VIEW_CARD_GROUP_RESPONSIVE"
-          />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
@@ -235,13 +139,13 @@ const CODE_VIEW_CARD_BASIC = `<div class="card">
   </article>
 </div>
 `;
-const CODE_VIEW_CARD_SIMPLE_BODY = `<div class="card">  
+const CODE_VIEW_CARD_BODY = `<div class="card">  
   <article class="card-content">
     This is some text within a card body.
   </article>
 </div>
 `;
-const CODE_VIEW_CARD_SIMPLE_CARD = `<div class="card">  
+const CODE_VIEW_CARD = `<div class="card">  
   <article class="card-content flex flex-col gap-2">
     <h1 class="font-semibold text-xl">Card Title</h1>
     <h4 class="text-secondary">Card Subtitle</h4>
@@ -285,7 +189,7 @@ const CODE_VIEW_CARD_FOOTER = `<div class="card">
   <header class="card-header bg-secondary text-secondary text-xs">Last updated 5 mins ago</header>
 </div>
 `;
-const CODE_VIEW_CARD_SIMPLE_HORIZONTAL = `<div class="card lg:flex">
+const CODE_VIEW_CARD_HORIZONTAL = `<div class="card lg:flex">
   <img alt="Accordion Image" class="lg:max-w-xs" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80">
   <article class="card-content flex flex-col justify-between">
     <div>

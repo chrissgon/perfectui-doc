@@ -29,21 +29,7 @@
         <AtomToken>&lt;accordion&gt;</AtomToken>.
       </p>
 
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_ACCORDION_GROUP" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_ACCORDION_GROUP" />
-        </template>
-      </OrganismTabs>
+      <OrganismComponentExample :code="CODE_VIEW_ACCORDION_GROUP" />
 
       <AtomNoteWarn>
         If the children of the group have a class
@@ -55,21 +41,8 @@
         Other elements are optional, such as the
         <AtomToken>&lt;button&gt;</AtomToken>.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_GROUP" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_GROUP" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_GROUP" />
 
       <AtomNoteWarn>
         The buttons need the <AtomToken>.group-item</AtomToken> class to work,
@@ -91,21 +64,7 @@
         <AtomToken>group-col</AtomToken>.
       </p>
 
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
-        </template>
-      </OrganismTabs>
+      <OrganismComponentExample :code="CODE_VIEW_CARD_GROUP_RESPONSIVE" />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>

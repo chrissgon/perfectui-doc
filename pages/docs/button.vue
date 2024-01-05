@@ -22,21 +22,8 @@
         <AtomToken>link</AtomToken>, <AtomToken>white</AtomToken> and
         <AtomToken>black</AtomToken>.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_TYPES" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_TYPES" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_TYPES" />
     </MoleculeDocsContent>
 
     <!-- rounded -->
@@ -47,21 +34,8 @@
       <p>
         Use the <AtomToken>.rounded-full</AtomToken> class to create rounded buttons.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
     </MoleculeDocsContent>
 
     <!-- solid -->
@@ -73,21 +47,8 @@
         To create solid buttons, simply use the
         <AtomToken>.btn-solid-[variant]</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_SOLID_COLORS" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_SOLID_COLORS" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_SOLID_COLORS" />
     </MoleculeDocsContent>
 
     <!-- outline -->
@@ -99,21 +60,8 @@
         To create outline buttons, simply use the
         <AtomToken>.btn-outline-[variant]</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_OUTLINE_COLORS" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_OUTLINE_COLORS" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_OUTLINE_COLORS" />
     </MoleculeDocsContent>
 
     <!-- link -->
@@ -125,21 +73,8 @@
         To create link buttons, simply use the
         <AtomToken>.btn-link-[variant]</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_LINK_COLORS" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_LINK_COLORS" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_LINK_COLORS" />
     </MoleculeDocsContent>
 
     <!-- white / black -->
@@ -152,21 +87,8 @@
         <AtomToken>.btn-white</AtomToken> or
         <AtomToken>.btn-black</AtomToken> class.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_WHITE_BLACK" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_WHITE_BLACK" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_WHITE_BLACK" />
     </MoleculeDocsContent>
 
     <!-- icons -->
@@ -184,21 +106,7 @@
           Bootstrap Icons </a>.
       </p>
 
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_ICON" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_ICON" />
-        </template>
-      </OrganismTabs>
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_ICON" />
     </MoleculeDocsContent>
 
     <!-- group -->
@@ -215,21 +123,8 @@
           Layout Group
         </NuxtLink>.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_GROUP" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_GROUP" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_GROUP" />
     </MoleculeDocsContent>
 
     <!-- disabled -->
@@ -242,21 +137,8 @@
         <AtomToken>disabled</AtomToken> boolean attribute to any
         <AtomToken>&lt;button&gt;</AtomToken> element.
       </p>
-      <OrganismTabs :tabs="['preview', 'code']">
-        <template #hpreview>
-          Preview
-        </template>
-        <template #hcode>
-          <AtomIconHTML />
-          HTML
-        </template>
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_VIEW_BUTTON_DISABLED" />
-        </template>
-        <template #code>
-          <MoleculeCodeView :input="CODE_VIEW_BUTTON_DISABLED" />
-        </template>
-      </OrganismTabs>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_DISABLED" />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
