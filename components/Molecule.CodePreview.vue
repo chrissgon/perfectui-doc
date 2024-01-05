@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-5"
+    class="p-5 overflow-auto"
     v-html="preview"
   />
 </template>
