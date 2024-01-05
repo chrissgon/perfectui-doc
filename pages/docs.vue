@@ -116,6 +116,7 @@ function closeNav(): void {
 <style scoped>
 .height-nav {
   height: calc(100vh - 52px);
+  height: calc(100dvh - 52px);
 }
 .bg-nav {
   background: rgba(var(--backgroundPrimary), 0.9);
