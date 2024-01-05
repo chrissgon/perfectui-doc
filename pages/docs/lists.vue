@@ -28,10 +28,10 @@
       <p>Use the <AtomToken>.list-item</AtomToken> for the children.</p>
 
       <!-- list disc -->
-      <OrganismComponentExample :code="CODE_VIEW_LIST_DISC" />
+      <OrganismComponentExample :code="CODE_VIEW_LIST_UL" />
 
       <!-- list decimal -->
-      <OrganismComponentExample :code="CODE_VIEW_LIST_DECIMAL" />
+      <OrganismComponentExample :code="CODE_VIEW_LIST_OL" />
 
       <p>
         Use the <AtomToken>.unmarker</AtomToken> class to create unmarked lists.
@@ -189,7 +189,7 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_LIST_DISC = `<ul class="list list-disc">
+const CODE_VIEW_LIST_UL = `<ul class="list">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down
@@ -202,7 +202,7 @@ const CODE_VIEW_LIST_DISC = `<ul class="list list-disc">
   </li>
 </ul>
 `;
-const CODE_VIEW_LIST_DECIMAL = `<ol class="list list-decimal">
+const CODE_VIEW_LIST_OL = `<ol class="list">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down
