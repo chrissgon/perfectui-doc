@@ -135,6 +135,16 @@ const docs = ref<Sections>({
     "Table",
     // "Tooltip",
   ],
+  Forms: [
+    "Field Group",
+    "Input",
+    "Input Group",
+    // "Textarea",
+    // "Select",
+    // "Checkbox",
+    // "Radio",
+    // "Switch",
+  ],
 });
 
 // methods
@@ -175,9 +185,11 @@ defineExpose({
   border-top-left-radius: 0;
   margin-left: -2px;
 }
+
 .list-item:hover {
   border-color: rgb(var(--borderSecondary));
 }
+
 .active {
   color: rgb(var(--theme500));
   border-color: rgb(var(--theme500)) !important;

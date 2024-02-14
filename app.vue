@@ -72,6 +72,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.input {
+  width: fit-content !important;
+}
+.field-group .input {
+  width: 1px !important;
+}
+
 .icon-gradient {
   background: linear-gradient(
     150deg,
@@ -93,7 +100,6 @@ pre *,
 code * {
   font-family: "Fira Code";
 }
-
 
 /* code */
 /* 

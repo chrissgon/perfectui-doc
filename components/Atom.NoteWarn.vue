@@ -1,12 +1,16 @@
 <template>
-  <ul
-    class="list unmarker !w-full border-l-4 border-solid border-amber-500 !rounded-l-none"
-  >
-    <li class="list-item !cursor-default">
-      <i class="bi-exclamation-triangle-fill text-amber-500 mr-2" />
-      <slot />
-    </li>
-  </ul>
+  <div class="card border-warn">
+    <article class="flex gap-3 !px-6 card-content">
+      <i class="bi-exclamation-triangle-fill text-amber-500" />
+
+      <div class="whitespace-break-spaces">
+        <p class="text-amber-500 mb-2">
+          Attention needed
+        </p>
+        <slot />
+      </div>
+    </article>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
