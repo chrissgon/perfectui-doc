@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-5 overflow-auto bg-primary"
+    class="p-5 bg-primary"
     v-html="preview"
   />
 </template>

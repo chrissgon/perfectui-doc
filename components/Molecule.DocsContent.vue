@@ -11,6 +11,6 @@
 
 <style>
 .container  > p {
-  opacity: 0.7;
+  color: rgb(var(--contentSecondary));
 }
 </style>

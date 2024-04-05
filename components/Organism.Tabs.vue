@@ -24,7 +24,7 @@
     </nav>
 
     <!-- contents -->
-    <div class="group-item border border-solid border-secondary bg-secondary overflow-hidden">
+    <div class="group-item border border-solid border-secondary bg-secondary">
       <article
         v-for="tab in tabs"
         v-show="tab === activeTab"

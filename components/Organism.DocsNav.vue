@@ -36,14 +36,7 @@
 </template>
 
 <script setup lang="ts">
-// interfaces
-interface Sections {
-  [i: string]: string[];
-}
-interface SectionMap {
-  sectionName: string;
-  articleIndex: number;
-}
+import { type SectionMap, type Sections, NAV_SECTIONS } from "@/shared";
 
 // computed
 const isPageActive = computed<Function>(() => (link: string) => {
@@ -122,30 +115,7 @@ const getPrevPage = computed<string | undefined>(() => {
 });
 
 // data
-const docs = ref<Sections>({
-  "Getting Started": ["Installation", "Typescript", "Tailwind CSS", "License"],
-  Customization: ["Dark Mode", "Theme Color"],
-  Layout: ["Group Elements"],
-  "Base Components": [
-    "Accordion",
-    "Badge",
-    "Button",
-    "Card",
-    "Lists",
-    "Table",
-    // "Tooltip",
-  ],
-  Forms: [
-    "Field Group",
-    "Input",
-    "Input Group",
-    // "Textarea",
-    // "Select",
-    // "Checkbox",
-    // "Radio",
-    // "Switch",
-  ],
-});
+const docs = ref<Sections>(NAV_SECTIONS);
 
 // methods
 function normalizeLink(label: string): string {

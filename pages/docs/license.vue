@@ -142,7 +142,7 @@
 <script setup lang="ts"></script>
 
 <style scoped>
-.list-item{
-  opacity: .7;
+.list-item {
+  color: rgb(var(--contentSecondary));
 }
 </style>
