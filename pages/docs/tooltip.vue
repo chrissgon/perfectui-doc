@@ -34,7 +34,10 @@
         <AtomToken>tooltip</AtomToken> attribute.
       </p>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_BASIC" />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_BASIC"
+        overflow
+      />
 
       <AtomNoteWarn>
         <p>
@@ -55,10 +58,16 @@
         Directions
       </template>
       <p>
-        The tooltip has the top direction by default, but you can also use <AtomToken>.tooltip-right</AtomToken>, <AtomToken>.tooltip-left</AtomToken> and <AtomToken>.tooltip-bottom</AtomToken> directions.
+        The tooltip has the top direction by default, but you can also use
+        <AtomToken>.tooltip-right</AtomToken>,
+        <AtomToken>.tooltip-left</AtomToken> and
+        <AtomToken>.tooltip-bottom</AtomToken> directions.
       </p>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_DIRECTIONS" />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_DIRECTIONS"
+        overflow
+      />
     </MoleculeDocsContent>
 
     <!-- white / black -->
@@ -72,9 +81,10 @@
         <AtomToken>.btn-black</AtomToken> class.
       </p>
 
-      
-
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_WHITE_BLACK" />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_WHITE_BLACK"
+        overflow
+      />
     </MoleculeDocsContent>
 
     <!-- usage -->
@@ -88,7 +98,10 @@
         Simple usage
       </template>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_USAGE" />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_USAGE"
+        overflow
+      />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>

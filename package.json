@@ -1,5 +1,6 @@
 {
   "name": "perfectui",
+  "version": "0.1.0",
   "displayName": "Perfect UI",
   "description": "An modern framework for crafting elegant interfaces",
   "private": false,
