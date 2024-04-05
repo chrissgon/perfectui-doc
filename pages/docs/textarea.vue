@@ -11,39 +11,74 @@
       A textarea is an element on a webpage that you can type into.
     </MoleculeDocsHeader>
 
-    <label
-      class="field-group"
-      label="Note"
-    >
-      <textarea
-        type="text"
-        class="input"
-        placeholder="Some text"
-      />
-      <span class="addon bi-pencil-fill" />
-    </label>
-    <label
-      class="field-group"
-      label="Note"
-    >
-      <div class="input input-group relative">
-        <textarea
-          type="text"
-          class="input w-full h-full"
-          placeholder="Some text"
-        />
-        <i class="btn bi bi-clipboard" />
-        <span class="badge absolute -top-3 -right-3">0/100</span>
-      </div>
-      <span class="addon bi-pencil-fill" />
-    </label>
+    <!-- basic -->
+    <MoleculeDocsContent>
+      <template #title>
+        Basic
+      </template>
+
+      <p>
+        To create textareas, simply add the
+        <AtomToken>.input</AtomToken> class to the
+        <AtomToken>textarea</AtomToken> component.
+      </p>
+
+      <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_BASIC" />
+
+      <p>Also possible add a placeholder.</p>
+
+      <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER" />
+
+      <p>With label, placeholder and addon.</p>
+
+      <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER_LABEL" />
+    </MoleculeDocsContent>
+
+    <MoleculeDocsContent>
+      <template #title>
+        Simple usage
+      </template>
+
+      <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_USAGE" />
+    </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const CODE_VIEW_TEXTAREA_BASIC = `<textarea class="input"></textarea>`;
+const CODE_VIEW_TEXTAREA_PLACEHOLDER = `<textarea
+  class="input"
+  placeholder="This is placeholder"
+></textarea>
+`;
+const CODE_VIEW_TEXTAREA_PLACEHOLDER_LABEL = `<label
+  class="field-group"
+  label="Observation"
+>
+  <textarea
+    class="input"
+    placeholder="This is placeholder"
+  ></textarea>
+  <span class="addon bi-pencil-fill"></span>
+</label>
+`;
+const CODE_VIEW_TEXTAREA_USAGE = `<label
+  class="field-group"
+  label="Leave your question"
+  message="We'll get back to you soon."
+>
+  <div class="input input-group relative">
+    <textarea
+      type="text"
+      class="input w-full h-full"
+      placeholder="Say hi, we'll be happy to chat with you"
+    ></textarea>
+    <i class="btn bi bi-clipboard"></i>
+    <span class="badge absolute -top-3 -right-3">0/100</span>
+  </div>
+  <span class="addon bi-pencil-fill" />
+</label>
+`;
+</script>
 
-<style scoped>
-textarea {
-  line-height: normal !important;
-}
-</style>
+<style scoped></style>

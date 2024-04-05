@@ -17,7 +17,7 @@ export const NAV_SECTIONS = {
     "Field Group",
     "Input",
     "Input Group",
-    // "Textarea",
+    "Textarea",
     // "Select",
     // "Checkbox",
     // "Radio",
