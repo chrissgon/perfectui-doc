@@ -152,7 +152,7 @@
         Example with pagination using
         <NuxtLink
           class="btn-link-primary"
-          to="/docs/lists"
+          to="/docs/list"
         >
           Lists
         </NuxtLink>.
