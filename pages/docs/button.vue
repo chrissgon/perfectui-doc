@@ -32,7 +32,8 @@
         Rounded buttons
       </template>
       <p>
-        Use the <AtomToken>.rounded-full</AtomToken> class to create rounded buttons.
+        Use the <AtomToken>.rounded-full</AtomToken> class to create rounded
+        buttons.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_TYPES_ROUNDED" />
@@ -118,7 +119,7 @@
         You can group buttons using
         <NuxtLink
           class="btn-link-primary"
-          to="/docs/group-elements"
+          to="/docs/layout-group"
         >
           Layout Group
         </NuxtLink>.

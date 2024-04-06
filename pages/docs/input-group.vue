@@ -19,7 +19,7 @@
       <p>
         To extend inputs, simply add the
         <AtomToken>.input-group</AtomToken> class to the
-        <AtomToken>.input</AtomToken> component.
+        <AtomToken>.input</AtomToken> element.
       </p>
       <p>
         After, add <AtomToken>.input</AtomToken> element inside

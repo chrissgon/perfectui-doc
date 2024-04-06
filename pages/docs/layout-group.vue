@@ -5,7 +5,7 @@
         Layout
       </template>
       <template #title>
-        Group Elements
+        Layout Group
       </template>
 
       An easy way to deal with grouping elements.

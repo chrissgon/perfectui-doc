@@ -107,7 +107,7 @@
         Disabled
       </template>
       <p>
-        Make buttons look inactive by adding the
+        Make fields look inactive by adding the
         <AtomToken>disabled</AtomToken> boolean attribute to any
         <AtomToken>.field-group</AtomToken> or
         <AtomToken>.input</AtomToken> element.
@@ -228,6 +228,9 @@ const CODE_VIEW_FIELD_GROUP_MIXED = `<form class="flex flex-col gap-3">
       class="input"
       placeholder="You could control this field by switch"
     />
+  </label>
+  <label class="field-group" label="About me">
+    <textarea class="input" placeholder="Write a short description"></textarea>
   </label>
 </form>
 `;

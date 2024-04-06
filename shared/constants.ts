@@ -3,13 +3,16 @@ import type { Sections } from ".";
 export const NAV_SECTIONS = {
   "Getting Started": ["Installation", "Typescript", "Tailwind CSS", "License"],
   Customization: ["Dark Mode", "Theme Color"],
-  Layout: ["Group Elements"],
+  General: [
+    "Layout Group",
+    // "Disable Elements"
+  ],
   "Base Components": [
     "Accordion",
     "Badge",
     "Button",
     "Card",
-    "Lists",
+    "List",
     "Table",
     "Tooltip",
   ],
@@ -18,8 +21,8 @@ export const NAV_SECTIONS = {
     "Input",
     "Input Group",
     "Textarea",
-    // "Select",
-    // "Checkbox",
+    "Select",
+    "Checkbox",
     // "Radio",
     // "Switch",
   ],

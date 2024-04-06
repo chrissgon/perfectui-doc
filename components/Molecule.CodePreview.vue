@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-5 bg-primary"
+    class="p-5 bg-primary rounded-md"
     v-html="preview"
   />
 </template>

@@ -18,7 +18,7 @@
       <p>
         To create inputs, simply add the
         <AtomToken>.input</AtomToken> class to the
-        <AtomToken>input</AtomToken> component.
+        <AtomToken>input</AtomToken> element.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_INPUT_BASIC" />

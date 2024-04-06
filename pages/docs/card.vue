@@ -80,7 +80,7 @@
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_CARD_HEADER" />
-    
+
       <OrganismComponentExample :code="CODE_VIEW_CARD_FOOTER" />
     </MoleculeDocsContent>
 
@@ -111,7 +111,7 @@
         Use
         <NuxtLink
           class="btn-link-primary"
-          to="/docs/group-elements"
+          to="/docs/layout-group"
         >
           Layout Group
         </NuxtLink>

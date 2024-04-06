@@ -5,7 +5,7 @@
         Base Components
       </template>
       <template #title>
-        Lists
+        List
       </template>
 
       Create engaging lists using Perfect UI, a powerful tool for styling
@@ -64,7 +64,7 @@
         <AtomToken>.list-bordered</AtomToken> class with
         <NuxtLink
           class="btn-link-primary"
-          to="/docs/group-elements"
+          to="/docs/layout-group"
         >
           Layout Group
         </NuxtLink>.
@@ -152,7 +152,7 @@
         To create horizontal lists, simply use the list classes with
         <NuxtLink
           class="btn-link-primary"
-          to="/docs/group-elements"
+          to="/docs/layout-group"
         >
           Layout Group
         </NuxtLink>.

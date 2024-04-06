@@ -20,16 +20,36 @@
       <p>
         To create textareas, simply add the
         <AtomToken>.input</AtomToken> class to the
-        <AtomToken>textarea</AtomToken> component.
+        <AtomToken>textarea</AtomToken> element.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_BASIC" />
+    </MoleculeDocsContent>
 
-      <p>Also possible add a placeholder.</p>
+    <MoleculeDocsContent>
+      <template #title>
+        Placeholder
+      </template>
 
+      <p>Basic textarea with placeholder.</p>
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER" />
+    </MoleculeDocsContent>
 
-      <p>With label, placeholder and addon.</p>
+    <MoleculeDocsContent>
+      <template #title>
+        Label/Message
+      </template>
+
+      <p>
+        You can use
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/field-group"
+        >
+          Field Group
+        </NuxtLink>
+        with <AtomToken>textarea</AtomToken> to create complex elements.
+      </p>
 
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER_LABEL" />
     </MoleculeDocsContent>
@@ -38,6 +58,11 @@
       <template #title>
         Simple usage
       </template>
+
+      <p>
+        A textarea example with copy button, character counter, label and
+        message.
+      </p>
 
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_USAGE" />
     </MoleculeDocsContent>
@@ -52,12 +77,13 @@ const CODE_VIEW_TEXTAREA_PLACEHOLDER = `<textarea
 ></textarea>
 `;
 const CODE_VIEW_TEXTAREA_PLACEHOLDER_LABEL = `<label
-  class="field-group"
+  class="field-group field-group-error"
   label="Observation"
+  message="Required"
 >
   <textarea
     class="input"
-    placeholder="This is placeholder"
+    placeholder="Let your observation"
   ></textarea>
   <span class="addon bi-pencil-fill"></span>
 </label>
@@ -70,14 +96,24 @@ const CODE_VIEW_TEXTAREA_USAGE = `<label
   <div class="input input-group relative">
     <textarea
       type="text"
+      id="message"
       class="input w-full h-full"
       placeholder="Say hi, we'll be happy to chat with you"
     ></textarea>
     <i class="btn bi bi-clipboard"></i>
-    <span class="badge absolute -top-3 -right-3">0/100</span>
+    <span id="counter" class="badge absolute -top-3 -right-3">0/100</span>
   </div>
-  <span class="addon bi-pencil-fill" />
+  <span class="addon bi-pencil-fill"></span>
 </label>
+
+<script type="module">
+  const MAX_LENGTH = 100
+
+  document.getElementById("message").addEventListener("keyup", (e) => {
+    document.getElementById("counter").innerHTML =
+      e.target.value.length + "/" + MAX_LENGTH;
+  });
+<\/script>
 `;
 </script>
 

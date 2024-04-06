@@ -19,7 +19,7 @@
       <p>
         To create accordions, simply add the
         <AtomToken>.accordion</AtomToken> class to the
-        <AtomToken>details</AtomToken> parent component.
+        <AtomToken>details</AtomToken> parent element.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_ACCORDION_BASIC" />
