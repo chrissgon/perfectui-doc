@@ -173,7 +173,7 @@ const CODE_VIEW_CHECKBOX_FIELD_GROUP = `<div class="flex flex-col gap-2">
   </label>
   <label class="field-group">
     <div class="input">
-      Default checkbox
+      Checked checkbox
     </div>
     <span class="addon">
       <input type="checkbox" class="checkbox" />

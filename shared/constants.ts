@@ -23,7 +23,7 @@ export const NAV_SECTIONS = {
     "Textarea",
     "Select",
     "Checkbox",
-    // "Radio",
+    "Radio",
     // "Switch",
   ],
 } as Sections;

@@ -1,9 +1,7 @@
 forms
 hr and dividers
 Disabled
-tooltip
-addon
-checkbox and radios
+radios
 pagination
 dropdown
 carousel
