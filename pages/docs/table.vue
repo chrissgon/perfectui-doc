@@ -86,20 +86,20 @@
       <OrganismComponentExample :code="CODE_VIEW_TABLE_STRIPED_HOVERABLE" />
     </MoleculeDocsContent>
 
-    <!-- bordeless -->
+    <!-- borderless -->
     <MoleculeDocsContent>
       <template #title>
-        Bordeless
+        Borderless
       </template>
 
       <p>A table without borders.</p>
 
       <p>
-        To create a bordeless table, simply add the
-        <AtomToken>.table-bordeless</AtomToken> class.
+        To create a borderless table, simply add the
+        <AtomToken>.table-borderless</AtomToken> class.
       </p>
 
-      <OrganismComponentExample :code="CODE_VIEW_TABLE_BORDELESS" />
+      <OrganismComponentExample :code="CODE_VIEW_TABLE_BORDERLESS" />
     </MoleculeDocsContent>
 
     <!-- Headless -->
@@ -216,7 +216,7 @@ const CODE_VIEW_TABLE_STRIPED_HOVERABLE = `<table class="table table-striped tab
   ${TABLE_CONTENT}
 </table>
 `;
-const CODE_VIEW_TABLE_BORDELESS = `<table class="table table-bordeless">
+const CODE_VIEW_TABLE_BORDERLESS = `<table class="table table-borderless">
   ${TABLE_CONTENT}
 </table>
 `;

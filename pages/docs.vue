@@ -119,7 +119,7 @@ function closeNav(): void {
   height: calc(100dvh - 52px);
 }
 .bg-nav {
-  background: rgba(var(--backgroundPrimary), 0.9);
+  background: rgba(var(--backgroundPrimary), 0.7);
   backdrop-filter: blur(10px);
 }
 

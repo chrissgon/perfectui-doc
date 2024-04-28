@@ -22,7 +22,7 @@
     "vue-router": "^4.3.0"
   },
   "dependencies": {
-    "@chrissgon/perfectui": "^0.9.3",
+    "@chrissgon/perfectui": "^0.10.0",
     "highlight.js": "^11.9.0",
     "js-md5": "^0.8.3",
     "values.js": "^2.1.1"

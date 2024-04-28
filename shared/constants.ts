@@ -15,6 +15,8 @@ export const NAV_SECTIONS = {
     "List",
     "Table",
     "Tooltip",
+    // "Timeline",
+    // "Carousel"
   ],
   Forms: [
     "Field Group",
@@ -24,6 +26,6 @@ export const NAV_SECTIONS = {
     "Select",
     "Checkbox",
     "Radio",
-    // "Switch",
+    "Switch",
   ],
 } as Sections;
