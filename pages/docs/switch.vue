@@ -151,12 +151,12 @@ const CODE_VIEW_SWITCH_FIELD_GROUP = `<div class="flex flex-col gap-2">
       <input type="checkbox" class="switch" />
     </span>
     <div class="input">
-      Default checkbox
+      Default switch
     </div>
   </label>
   <label class="field-group">
     <div class="input">
-      Checked checkbox
+      Checked switch
     </div>
     <span class="addon">
       <input type="checkbox" class="switch" />
