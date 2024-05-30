@@ -87,6 +87,11 @@
         the class <AtomToken>.accordion-icon</AtomToken> inside
         <AtomToken>summary</AtomToken>.
       </p>
+      <p>
+        To define a custom arrow when the accordion is
+        <AtomToken>open</AtomToken>, simply create an element with
+        <AtomToken>.accordion-icon.open</AtomToken> class.
+      </p>
       <p>If you leave the element empty, there will be no arrow.</p>
 
       <OrganismComponentExample :code="CODE_VIEW_ACCORDION_ICON" />
@@ -243,6 +248,7 @@ const CODE_VIEW_ACCORDION_ICON = `<div class="accordion accordion-bordered group
       # Custom arrow
       <!-- custom arrow -->
       <i class="accordion-icon bi-plus-circle"></i>
+      <i class="accordion-icon open bi-dash-circle"></i>
     </summary>
     <article>${ACCORDION_TEXT}</article>
   </details>

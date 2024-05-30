@@ -46,24 +46,11 @@
         change according to their preference.
       </p>
 
-      <!-- tabs -->
-      <OrganismTabs :tabs="['preview', 'html']">
-        <template #hhtml>
-          <AtomIconHTML />
-          index.html
-        </template>
-        <template #hpreview>
-          Preview
-        </template>
+      <OrganismComponentExample :code="CODE_VIEW_MODE_BUTTON_HTML" />
 
-        <template #html>
-          <MoleculeCodeView :input="CODE_VIEW_MODE_BUTTON_HTML" />
-        </template>
-
-        <template #preview>
-          <MoleculeCodePreview :preview="CODE_PREVIEW_MODE_BUTTON" />
-        </template>
-      </OrganismTabs>
+      <AtomNoteWarn>
+        Copy and paste the code above in your app to see it working.
+      </AtomNoteWarn>
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
@@ -75,7 +62,7 @@ const CODE_VIEW_USING_SET_MODE = `import { setMode } from "@chrissgon/perfectui"
 setMode("dark") // system, light or dark`;
 
 const CODE_VIEW_MODE_BUTTON_HTML = `<!-- switch button -->
-<label class="field-group">
+<label class="field-group gap-2 w-fit">
   <i class="bi-sun"></i>
   <input type="checkbox" class="switch" id="mode" />
   <i class="bi-moon"></i>
@@ -91,19 +78,19 @@ const CODE_VIEW_MODE_BUTTON_HTML = `<!-- switch button -->
   });
 <\/script>`;
 
-const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
-  <i class="bi-sun"></i>
-  <input type="checkbox" class="switch" id="mode" onchange="changeMode(this.checked)" checked />
-  <i class="bi-moon"></i>
-</label>
+// const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
+//   <i class="bi-sun"></i>
+//   <input type="checkbox" class="switch" id="mode" onchange="changeMode(this.checked)" checked />
+//   <i class="bi-moon"></i>
+// </label>
 
-<script>
-  function changeMode(dark){
-    window.perfectui.setMode(dark ? "dark" : "light");
-  }
+// <script>
+//   function changeMode(dark){
+//     window.perfectui.setMode(dark ? "dark" : "light");
+//   }
   
-  document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
-<\/script>`;
+//   document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
+// <\/script>`;
 </script>
 
 <style scoped></style>

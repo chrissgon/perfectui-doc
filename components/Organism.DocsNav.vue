@@ -24,11 +24,17 @@
         <NuxtLink
           v-for="(link, j) in links"
           :key="j"
-          :to="getDocPath(normalizeLink(link))"
-          :class="{ active: isPageActive(link) }"
+          :to="getDocPath(normalizeLink(getLinkTreated(link)))"
+          :class="{ active: isPageActive(getLinkTreated(link)) }"
           class="list-item !bg-transparent text-secondary"
         >
-          {{ link }}
+          {{ getLinkTreated(link) }}
+          <span
+            v-if="isNewPage(link)"
+            class="badge badge-solid-primary"
+          >
+            New
+          </span>
         </NuxtLink>
       </template>
     </ul>
@@ -39,6 +45,12 @@
 import { type SectionMap, type Sections, NAV_SECTIONS } from "@/shared";
 
 // computed
+const getLinkTreated = computed<Function>(() => (link: string) => {
+  return link.replaceAll("$N", "").trim();
+});
+const isNewPage = computed<Function>(() => (link: string) => {
+  return /\$N/.test(link);
+});
 const isPageActive = computed<Function>(() => (link: string) => {
   const have = useRoute().path;
   const expected = getDocPath(normalizeLink(link));

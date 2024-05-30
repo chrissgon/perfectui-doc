@@ -8,7 +8,7 @@
         v-for="tab in tabs"
         :key="tab"
         class="btn btn-white !border-none !px-3 !py-2"
-        :class="{ active: tab === activeTab }"
+        :class="{ 'bg-secondary': tab === activeTab }"
         @click="changeTab(tab)"
       >
         <slot :name="`h${tab}`" />
@@ -57,8 +57,4 @@ function changeTab(tab: string): void {
 }
 </script>
 
-<style scoped>
-.active {
-  background-color: rgba(var(--contentPrimary), 0.05);
-}
-</style>
+<style scoped></style>

@@ -1,7 +1,5 @@
-forms
 hr and dividers
 Disabled
-radios
 pagination
 dropdown
 carousel

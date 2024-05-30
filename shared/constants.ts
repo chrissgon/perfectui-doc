@@ -14,8 +14,8 @@ export const NAV_SECTIONS = {
     "Card",
     "List",
     "Table",
+    "Timeline $N",
     "Tooltip",
-    // "Timeline",
     // "Carousel"
   ],
   Forms: [
