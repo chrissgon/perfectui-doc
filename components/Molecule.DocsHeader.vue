@@ -1,6 +1,6 @@
 <template>
   <header class="flex flex-col gap-4">
-    <h4 class="text-theme-500">
+    <h4 class="text-theme">
       <slot name="subtitle" />
     </h4>
     <h1 class="text-4xl font-bold">

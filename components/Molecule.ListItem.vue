@@ -1,13 +1,11 @@
 <template>
   <!-- item -->
-  <ul class="list">
-    <li class="list-item !flex items-center gap-5 !py-4 max-w-sm">
+  <a class="list">
+    <li class="list-item !flex items-center gap-5 !py-4 md:max-w-sm">
       <!-- icon -->
-      <aside
-        class="relative min-w-[40px] min-h-[40px] flex justify-center items-center icon-gradient rounded-md"
-      >
+      <AtomIconGradient>
         <slot name="icon" />
-      </aside>
+      </AtomIconGradient>
       <!-- info -->
       <article>
         <!-- title -->
@@ -20,13 +18,9 @@
         </p>
       </article>
     </li>
-  </ul>
+  </a>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

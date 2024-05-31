@@ -13,7 +13,7 @@
       name="color"
       class="invisible w-0"
       @change="changeThemeColor"
-    >
+    />
   </label>
 </template>
 
@@ -22,10 +22,13 @@ import { setThemeColor } from "@chrissgon/perfectui";
 import Values from "values.js";
 
 // data
+const chan = new BroadcastChannel("color:change");
 const hex = ref<string>("#07b6f0");
 
 // methods
 async function changeThemeColor(): Promise<void> {
+  chan.postMessage(hex.value);
+
   const pallete = new Values(hex.value).all(18);
 
   const tones = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
@@ -38,6 +41,13 @@ async function changeThemeColor(): Promise<void> {
 
   setThemeColor(theme);
 }
+
+// setup
+chan.onmessage = ({ data }) => {
+  if (data === hex.value) return;
+
+  hex.value = data;
+};
 </script>
 
 <style scoped></style>

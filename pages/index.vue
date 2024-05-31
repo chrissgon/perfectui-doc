@@ -2,7 +2,7 @@
   <!-- home -->
   <div class="p-5 sm:p-10 !pb-0 flex flex-col gap-10">
     <section
-      class="p-10 max-sm:p-5 pt-5 border sm:border-solid rounded-2xl border-secondary"
+      class="p-10 max-sm:p-5 pt-5 border rounded-2xl border-secondary pb-20"
     >
       <!-- header -->
       <header class="flex justify-between mb-10 max-sm:-mx-5">
@@ -47,11 +47,11 @@
     <!-- why -->
     <section
       id="why"
-      class="flex justify-center items-center max-md:flex-wrap gap-5"
+      class="flex md:justify-center md:items-center max-md:flex-wrap gap-5"
     >
-      <MoleculeListItem>
+      <MoleculeListItem href="#darkmode">
         <template #icon>
-          <i class="bi-moon-stars text-md text-theme-500" />
+          <i class="bi-moon-stars text-md text-theme" />
         </template>
         <template #title>
           Dark Mode & Theme Helpers
@@ -64,7 +64,7 @@
 
       <MoleculeListItem>
         <template #icon>
-          <i class="bi-bounding-box text-md text-theme-500" />
+          <i class="bi-bounding-box text-md text-theme" />
         </template>
         <template #title>
           Fully Responsive Components
@@ -76,7 +76,7 @@
 
       <MoleculeListItem>
         <template #icon>
-          <i class="bi-lightning text-lg text-theme-500" />
+          <i class="bi-lightning text-lg text-theme" />
         </template>
         <template #title>
           Lightweight & Customizable
@@ -87,31 +87,66 @@
         </template>
       </MoleculeListItem>
     </section>
+
+    <!-- darkmode -->
+    <OrganismReasonItem id="darkmode">
+      <template #icon>
+        <i class="bi-moon-stars text-md text-theme"></i>
+      </template>
+      <template #subtitle>
+        Native Dark Mode
+      </template>
+      <template #title>
+        Do you like dark mode? Use it
+      </template>
+
+      <p class="text-base">
+        PerfectUI provides native darkmode for all components, and helpers such
+        as <code class="text-theme text-base">setMode</code> to define a preferred
+        mode
+      </p>
+
+      <NuxtLink
+        to="/docs/dark-mode"
+        class="btn btn-white w-fit mt-2"
+      >
+        Learn more <i class="bi-chevron-right"></i>
+      </NuxtLink>
+
+      <template #widget>
+        <MoleculeWidgetMode />
+      </template>
+    </OrganismReasonItem>
+
+    <!-- theme -->
+    <OrganismReasonItem id="theme">
+      <template #icon>
+        <i class="bi-palette text-md text-theme"></i>
+      </template>
+      <template #subtitle>
+        Theme Color
+      </template>
+      <template #title>
+        Define your color palette
+      </template>
+
+      <p class="text-base">
+        To better match your platform, you can easily define a color palette to use across all components
+      </p>
+
+      <NuxtLink
+        to="/docs/theme-color"
+        class="btn btn-white w-fit mt-2"
+      >
+        Learn more <i class="bi-chevron-right"></i>
+      </NuxtLink>
+
+      <template #widget>
+        <MoleculeWidgetCalendar />
+      </template>
+    </OrganismReasonItem>
     <AtomFooter />
   </div>
-
-  <!-- <section class="flex flex-col gap-20">
-        <article class="flex gap-4">
-          <header class="flex flex-col gap-3">
-            <aside
-              class="w-fit relative min-w-[40px] min-h-[40px] flex justify-center items-center icon-gradient rounded-md"
-            >
-              <i class="bi-moon-stars text-md text-theme-500"></i>
-            </aside>
-  
-            <h4 class="text-theme-500 text-base font-medium">Native Dark Mode</h4>
-            <h2 class="text-3xl font-bold">Do you like dark mode? Use it</h2>
-            <p class="text-base">
-              PerfectUI provides native darkmode for all components, and helpers
-              such as <code class="text-theme-500">setMode</code> to define a
-              preferred mode
-            </p>
-            <button class="btn btn-white w-fit mt-2">
-              Learn more <i class="bi-chevron-right"></i>
-            </button>
-          </header>
-        </article>
-      </section> -->
 
   <!-- <section class="-mx-10 flex max-lg:flex-col flex-wrap">
         <header

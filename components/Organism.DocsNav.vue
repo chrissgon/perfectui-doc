@@ -52,12 +52,12 @@ const isNewPage = computed<Function>(() => (link: string) => {
   return /\$N/.test(link);
 });
 const isPageActive = computed<Function>(() => (link: string) => {
-  const have = useRoute().path;
+  const have = router.path;
   const expected = getDocPath(normalizeLink(link));
   return have === expected;
 });
 const getCurrentSection = computed<SectionMap>(() => {
-  const parts = useRoute().path.split("/docs/");
+  const parts = router.path.split("/docs/");
 
   if (parts.length < 2) {
     return {
@@ -128,6 +128,7 @@ const getPrevPage = computed<string | undefined>(() => {
 
 // data
 const docs = ref<Sections>(NAV_SECTIONS);
+const router = useRoute()
 
 // methods
 function normalizeLink(label: string): string {

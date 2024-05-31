@@ -95,9 +95,10 @@ const getLinkNextPage = computed<string>(() => {
 // data
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
+const router = useRoute()
 
 // setup
-if (useRoute().name === "docs") {
+if (router.name === "docs") {
   navigateTo("/docs/installation");
 }
 onBeforeRouteUpdate(closeNav);
