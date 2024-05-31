@@ -87,64 +87,77 @@
         </template>
       </MoleculeListItem>
     </section>
+    
 
-    <!-- darkmode -->
-    <OrganismReasonItem id="darkmode">
-      <template #icon>
-        <i class="bi-moon-stars text-md text-theme"></i>
-      </template>
-      <template #subtitle>
-        Native Dark Mode
-      </template>
-      <template #title>
-        Do you like dark mode? Use it
-      </template>
-
-      <p class="text-base">
-        PerfectUI provides native darkmode for all components, and helpers such
-        as <code class="text-theme text-base">setMode</code> to define a preferred
-        mode
-      </p>
-
-      <NuxtLink
-        to="/docs/dark-mode"
-        class="btn btn-white w-fit mt-2"
+    <div class="flex flex-col items-center">
+      <!-- darkmode -->
+      <OrganismReasonItem
+        id="darkmode"
+        class="max-w-[1300px]"
       >
-        Learn more <i class="bi-chevron-right"></i>
-      </NuxtLink>
+        <template #icon>
+          <i class="bi-moon-stars text-md text-theme"></i>
+        </template>
+        <template #subtitle>
+          Native Dark Mode
+        </template>
+        <template #title>
+          Do you like dark mode? Use it
+        </template>
+  
+        <p class="text-base">
+          PerfectUI provides native darkmode for all components, and helpers such
+          as <code class="text-theme text-base">setMode</code> to define a preferred
+          mode
+        </p>
+  
+        <NuxtLink
+          to="/docs/dark-mode"
+          class="btn btn-white w-fit mt-2"
+        >
+          Learn more <i class="bi-chevron-right"></i>
+        </NuxtLink>
+  
+        <template #widget>
+          <MoleculeWidgetMode />
+        </template>
+      </OrganismReasonItem>
+  
+      
 
-      <template #widget>
-        <MoleculeWidgetMode />
-      </template>
-    </OrganismReasonItem>
-
-    <!-- theme -->
-    <OrganismReasonItem id="theme">
-      <template #icon>
-        <i class="bi-palette text-md text-theme"></i>
-      </template>
-      <template #subtitle>
-        Theme Color
-      </template>
-      <template #title>
-        Define your color palette
-      </template>
-
-      <p class="text-base">
-        To better match your platform, you can easily define a color palette to use across all components
-      </p>
-
-      <NuxtLink
-        to="/docs/theme-color"
-        class="btn btn-white w-fit mt-2"
+      <!-- theme -->
+      <OrganismReasonItem
+        id="theme"
+        class="max-w-[1300px]"
       >
-        Learn more <i class="bi-chevron-right"></i>
-      </NuxtLink>
-
-      <template #widget>
-        <MoleculeWidgetCalendar />
-      </template>
-    </OrganismReasonItem>
+        <template #icon>
+          <i class="bi-palette text-md text-theme"></i>
+        </template>
+        <template #subtitle>
+          Theme Color
+        </template>
+        <template #title>
+          Define your color palette
+        </template>
+  
+        <p class="text-base">
+          To better match your platform, you can easily define a color palette to use across all components
+        </p>
+  
+        <NuxtLink
+          to="/docs/theme-color"
+          class="btn btn-white w-fit mt-2"
+        >
+          Learn more <i class="bi-chevron-right"></i>
+        </NuxtLink>
+  
+        <template #widget>
+          <div class="sm:min-w-[500px] flex justify-center">
+            <MoleculeWidgetCalendar class="w-fit" />
+          </div>
+        </template>
+      </OrganismReasonItem>
+    </div>
     <AtomFooter />
   </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="flex max-lg:flex-col items-center gap-10 p-5 sm:p-10">
+  <section class="flex items-center max-lg:flex-col gap-10 p-5 sm:p-10">
     <header class="flex flex-col gap-3">
       <!-- icon -->
       <AtomIconGradient>
@@ -17,7 +17,7 @@
       <!-- text -->
       <slot />
     </header>
-    <article class="flex justify-center items-center flex-1 gap-4 p-4">
+    <article class="flex flex-1 gap-4 p-4">
       <slot name="widget" />
     </article>
   </section>
