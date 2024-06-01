@@ -20,10 +20,13 @@ import Values from "values.js";
 
 // data
 const chan = new BroadcastChannel("color:change");
-const hex = ref<string>("#07b6f0");
+const hex = ref<string>(
+  process.client ? sessionStorage.getItem("themeColor") ?? "#07b6f0" : "#07b6f0"
+);
 
 // methods
 async function changeThemeColor(): Promise<void> {
+  sessionStorage.setItem("themeColor", hex.value);
   chan.postMessage(hex.value);
 
   const pallete = new Values(hex.value).all(18);

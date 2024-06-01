@@ -1,6 +1,6 @@
 <template>
   <!-- item -->
-  <a class="list">
+  <ul class="list">
     <li class="list-item !flex items-center gap-5 !py-4 md:max-w-sm">
       <!-- icon -->
       <AtomIconGradient>
@@ -18,7 +18,7 @@
         </p>
       </article>
     </li>
-  </a>
+  </ul>
 </template>
 
 <script setup lang="ts"></script>

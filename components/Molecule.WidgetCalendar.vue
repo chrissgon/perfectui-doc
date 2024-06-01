@@ -4,7 +4,7 @@
       <span class="text-base">July / 2024</span>
       <div class="flex items-center gap-2">
         <span class="badge badge-white">Pick Color</span>
-        <AtomThemeColorPicker /> 
+        <AtomThemeColorPicker />
       </div>
     </header>
     <article class="card-content flex flex-col gap-1">
@@ -44,7 +44,9 @@
       <div class="flex">
         <span class="btn-calendar-item btn-white">3</span>
         <span class="btn-calendar-item btn-white">4</span>
-        <span class="btn-calendar-item btn-solid-primary before:rounded-tl-full before:rounded-bl-full">5</span>
+        <span
+          class="btn-calendar-item btn-solid-primary before:rounded-tl-full before:rounded-bl-full"
+        >5</span>
         <span class="btn-calendar-item btn-range">6</span>
         <span class="btn-calendar-item btn-range">7</span>
         <span class="btn-calendar-item btn-range">8</span>
@@ -63,7 +65,9 @@
         <span class="btn-calendar-item btn-range">17</span>
         <span class="btn-calendar-item btn-range">18</span>
         <span class="btn-calendar-item btn-range">19</span>
-        <span class="btn-calendar-item btn-solid-primary before:rounded-tr-full before:rounded-br-full">20</span>
+        <span
+          class="btn-calendar-item btn-solid-primary before:rounded-tr-full before:rounded-br-full"
+        >20</span>
         <span class="btn-calendar-item btn-white">21</span>
         <span class="btn-calendar-item btn-white">22</span>
         <span class="btn-calendar-item btn-white">23</span>
@@ -79,12 +83,30 @@
       </div>
       <div class="flex">
         <span class="btn-calendar-item btn-white">31</span>
-        <span class="btn-calendar-item btn-white">1</span>
-        <span class="btn-calendar-item btn-white">2</span>
-        <span class="btn-calendar-item btn-white">3</span>
-        <span class="btn-calendar-item btn-white">4</span>
-        <span class="btn-calendar-item btn-white">5</span>
-        <span class="btn-calendar-item btn-white">6</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >1</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >2</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >3</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >4</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >5</span>
+        <span
+          class="btn-calendar-item text-secondary"
+          disabled
+        >6</span>
       </div>
     </article>
   </div>
@@ -116,13 +138,13 @@
   left: 0;
   background: rgba(var(--theme500), 0.1);
 }
-.btn-range:first-child{
-    border-top-left-radius: 100%;
-    border-bottom-left-radius: 100%;
+.btn-range:first-child {
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
 }
-.btn-range:last-child{
-    border-top-right-radius: 100%;
-    border-bottom-right-radius: 100%;
+.btn-range:last-child {
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
 }
 .btn-range {
   background-color: rgba(var(--theme500), 0.1);

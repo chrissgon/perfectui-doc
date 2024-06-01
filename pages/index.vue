@@ -44,50 +44,66 @@
       </main>
     </section>
 
-    <!-- why -->
-    <section
-      id="why"
-      class="flex md:justify-center md:items-center max-md:flex-wrap gap-5"
-    >
-      <MoleculeListItem href="#darkmode">
-        <template #icon>
-          <i class="bi-moon-stars text-md text-theme" />
-        </template>
-        <template #title>
-          Dark Mode & Theme Helpers
-        </template>
-        <template #description>
-          Perfect UI offers all components with dark mode and helpers for
-          setting theme and colors.
-        </template>
-      </MoleculeListItem>
+    <section class="w-full flex justify-center">
+      <!-- why -->
+      <div
+        id="why"
+        class="flex md:justify-center md:items-center max-w-[1300px] flex-wrap gap-5"
+      >
+        <a href="#darkmode">
+          <MoleculeListItem>
+            <template #icon>
+              <i class="bi-moon-stars text-md text-theme" />
+            </template>
+            <template #title> Dark Mode & Theme Helpers </template>
+            <template #description>
+              Perfect UI offers all components with dark mode and helpers for
+              setting theme and colors.
+            </template>
+          </MoleculeListItem>
+        </a>
 
-      <MoleculeListItem>
-        <template #icon>
-          <i class="bi-bounding-box text-md text-theme" />
-        </template>
-        <template #title>
-          Fully Responsive Components
-        </template>
-        <template #description>
-          All components are responsive, providing a better user experience.
-        </template>
-      </MoleculeListItem>
+        <a href="#responsive">
+          <MoleculeListItem>
+            <template #icon>
+              <i class="bi-bounding-box text-md text-theme" />
+            </template>
+            <template #title> Fully Responsive Components </template>
+            <template #description>
+              All components are responsive, providing a better user experience.
+            </template>
+          </MoleculeListItem>
+        </a>
 
-      <MoleculeListItem>
-        <template #icon>
-          <i class="bi-lightning text-lg text-theme" />
-        </template>
-        <template #title>
-          Lightweight & Customizable
-        </template>
-        <template #description>
-          Perfect UI was designed with the aim of providing a minimal and
-          customizable basis for developing interfaces.
-        </template>
-      </MoleculeListItem>
+        <a href="#faster">
+          <MoleculeListItem>
+            <template #icon>
+              <i class="bi-lightning text-lg text-theme" />
+            </template>
+            <template #title> Lightweight & Customizable </template>
+            <template #description>
+              Perfect UI was designed with the aim of providing a minimal and
+              customizable basis for developing interfaces.
+            </template>
+          </MoleculeListItem>
+        </a>
+
+        <NuxtLink to="/docs/tailwind-css">
+          <MoleculeListItem>
+            <template #icon>
+              <i class="bi-heart text-lg text-theme" />
+            </template>
+            <template #title>
+              Inspired by Tailwind CSS
+            </template>
+            <template #description>
+              Perfect UI is a framework inspired by Tailwind CSS, combine both
+              to strengthen your application.
+            </template>
+          </MoleculeListItem>
+        </NuxtLink>
+      </div>
     </section>
-    
 
     <div class="flex flex-col items-center">
       <!-- darkmode -->
@@ -104,26 +120,24 @@
         <template #title>
           Do you like dark mode? Use it
         </template>
-  
+
         <p class="text-base">
-          PerfectUI provides native darkmode for all components, and helpers such
-          as <code class="text-theme text-base">setMode</code> to define a preferred
-          mode
+          PerfectUI provides native darkmode for all components, and helpers
+          such as <code class="text-theme text-base">setMode</code> to define a
+          preferred mode.
         </p>
-  
+
         <NuxtLink
           to="/docs/dark-mode"
           class="btn btn-white w-fit mt-2"
         >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
-  
+
         <template #widget>
-          <MoleculeWidgetMode />
+          <MoleculeWidgetMode class="w-full" />
         </template>
       </OrganismReasonItem>
-  
-      
 
       <!-- theme -->
       <OrganismReasonItem
@@ -139,46 +153,84 @@
         <template #title>
           Define your color palette
         </template>
-  
+
         <p class="text-base">
-          To better match your platform, you can easily define a color palette to use across all components
+          To better match your platform, you can easily define a color palette
+          to use across all components.
         </p>
-  
+
         <NuxtLink
           to="/docs/theme-color"
           class="btn btn-white w-fit mt-2"
         >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
-  
+
         <template #widget>
           <div class="sm:min-w-[500px] flex justify-center">
             <MoleculeWidgetCalendar class="w-fit" />
           </div>
         </template>
       </OrganismReasonItem>
+
+      <!-- responsive -->
+      <OrganismReasonItem
+        id="responsive"
+        class="max-w-[1300px] flex-col !items-start"
+      >
+        <template #icon>
+          <i class="bi-bounding-box text-md text-theme"></i>
+        </template>
+        <template #subtitle>
+          Fully Responsive
+        </template>
+        <template #title>
+          Everything's responsive
+        </template>
+
+        <p class="text-base">
+          Don't worry about responsiveness anymore, every component is designed
+          to be responsive, ensuring a better user experience.
+        </p>
+
+        <template #widget>
+          <MoleculeResizableElement class="w-full">
+            <MoleculeWidgetResponsive class="p-1" />
+          </MoleculeResizableElement>
+        </template>
+      </OrganismReasonItem>
+
+      <!-- faster -->
+      <OrganismReasonItem
+        id="faster"
+        class="max-w-[1300px]"
+      >
+        <template #icon>
+          <i class="bi-lightning-fill text-md text-theme"></i>
+        </template>
+        <template #subtitle>
+          The faster
+        </template>
+        <template #title>
+          Lightweight & Customizable
+        </template>
+
+        <p class="text-base">
+          The goal of PerfectUI is to provide the essentials, enabling
+          customization and speed with under
+          <b class="text-base font-bold text-theme">30kb</b>.
+        </p>
+
+        <template #widget>
+          <div class="sm:min-w-[500px] flex justify-center w-full">
+            <MoleculeWidgetBuild class="max-w-[500px]" />
+          </div>
+        </template>
+      </OrganismReasonItem>
     </div>
+
     <AtomFooter />
   </div>
-
-  <!-- <section class="-mx-10 flex max-lg:flex-col flex-wrap">
-        <header
-          class="flex h-fit px-5 items-center gap-2 lg:hidden w-full border-secondary border-b border-t border-solid py-4 sticky top-0 bg-primary"
-        >
-          <i class="bi-list text-xl leading-none"></i>
-          Guides > Getting Started
-        </header>
-  
-        <nav
-          class="max-lg:hidden w-72 border-r border-solid border-secondary overflow-auto sticky h-screen top-0"
-          >
-          <h4 class="text-4xl">Guides</h4>
-        </nav>
-  
-        <article class="flex-1 overflow-auto p-5">
-          <NuxtPage />
-        </article>
-      </section> -->
 </template>
 
 <script setup lang="ts"></script>

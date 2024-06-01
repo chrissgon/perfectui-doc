@@ -11,6 +11,8 @@ import "@chrissgon/perfectui/dist/perfectui.css";
 
 // setup
 if (process.client) {
+  sessionStorage.removeItem("themeColor")
+
   useSeoMeta({
     description: pkg.description,
     ogTitle: pkg.displayName,
