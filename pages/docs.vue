@@ -30,7 +30,7 @@
       {{
         OrganismDocsNavRef?.docs[
           OrganismDocsNavRef?.getCurrentSection.sectionName
-        ][OrganismDocsNavRef?.getCurrentSection.articleIndex]
+        ][OrganismDocsNavRef?.getCurrentSection.articleIndex]?.replaceAll("$N", "")
       }}
     </header>
 

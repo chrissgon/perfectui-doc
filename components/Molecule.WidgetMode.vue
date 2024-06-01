@@ -6,7 +6,7 @@
         class="sm:max-w-64"
       />
     </div>
-    <article class="card-content flex flex-col gap-4 !p-6">
+    <article class="card-content flex flex-col flex-1 gap-4 !p-6">
       <h4 class="text-lg font-bold whitespace-nowrap">
         Classic Utility Jacket
         <div
@@ -41,14 +41,14 @@
 
       <hr class="my-2" />
 
-      <div class="flex gap-2">
+      <div class="flex max-sm:flex-wrap gap-2">
         <button class="btn btn-black">
           Buy now
         </button>
         <button class="btn btn-white">
           Add to bag
         </button>
-        <button class="btn btn-solid-error ml-4">
+        <button class="btn btn-solid-error sm:ml-4">
           <i class="bi-heart-fill"></i>
         </button>
       </div>
