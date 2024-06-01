@@ -12,7 +12,7 @@
         <div
           class="btn btn-white rounded-full !p-0 float-right w-10 h-10 -mt-2"
         >
-          <AtomDarkMode class="w-full h-full" />
+          <AtomDarkMode class="w-full h-full mt-0.5" />
         </div>
       </h4>
 
