@@ -53,7 +53,7 @@
         <a href="#darkmode">
           <MoleculeListItem>
             <template #icon>
-              <i class="bi-moon-stars text-md text-theme" />
+              <i class="bi-moon-stars-fill text-base text-theme" />
             </template>
             <template #title> Dark Mode & Theme Helpers </template>
             <template #description>
@@ -66,7 +66,7 @@
         <a href="#responsive">
           <MoleculeListItem>
             <template #icon>
-              <i class="bi-bounding-box text-md text-theme" />
+              <i class="bi-aspect-ratio-fill text-base text-theme" />
             </template>
             <template #title> Fully Responsive Components </template>
             <template #description>
@@ -78,7 +78,7 @@
         <a href="#faster">
           <MoleculeListItem>
             <template #icon>
-              <i class="bi-lightning text-lg text-theme" />
+              <i class="bi-lightning-fill text-base text-theme" />
             </template>
             <template #title> Lightweight & Customizable </template>
             <template #description>
@@ -91,7 +91,7 @@
         <NuxtLink to="/docs/tailwind-css">
           <MoleculeListItem>
             <template #icon>
-              <i class="bi-heart text-lg text-theme" />
+              <i class="bi-heart-fill text-base text-theme" />
             </template>
             <template #title>
               Inspired by Tailwind CSS
@@ -112,7 +112,7 @@
         class="max-w-[1300px]"
       >
         <template #icon>
-          <i class="bi-moon-stars text-md text-theme"></i>
+          <i class="bi-moon-stars-fill text-base text-theme"></i>
         </template>
         <template #subtitle>
           Native Dark Mode
@@ -145,7 +145,7 @@
         class="max-w-[1300px]"
       >
         <template #icon>
-          <i class="bi-palette text-md text-theme"></i>
+          <i class="bi-palette-fill text-base text-theme"></i>
         </template>
         <template #subtitle>
           Theme Color
@@ -179,7 +179,7 @@
         class="max-w-[1300px] flex-col !items-start"
       >
         <template #icon>
-          <i class="bi-bounding-box text-md text-theme"></i>
+          <i class="bi-aspect-ratio-fill text-base text-theme"></i>
         </template>
         <template #subtitle>
           Fully Responsive
@@ -206,7 +206,7 @@
         class="max-w-[1300px]"
       >
         <template #icon>
-          <i class="bi-lightning-fill text-md text-theme"></i>
+          <i class="bi-lightning-fill text-base text-theme"></i>
         </template>
         <template #subtitle>
           The faster
