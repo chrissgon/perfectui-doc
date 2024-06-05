@@ -5,7 +5,9 @@
 
       <div class="whitespace-break-spaces">
         <p class="text-amber-500 mb-2 font-semibold">
-          <template v-if="!titled">Attention needed</template>
+          <template v-if="!titled">
+            Attention needed
+          </template>
           <slot name="title" />
         </p>
         <slot />

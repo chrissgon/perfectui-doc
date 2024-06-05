@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Base Components </template>
-      <template #title> Dropdown </template>
+      <template #subtitle>
+        Base Components
+      </template>
+      <template #title>
+        Dropdown
+      </template>
 
       Toggle contextual overlays for displaying lists of links and more
     </MoleculeDocsHeader>

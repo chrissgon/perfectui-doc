@@ -19,7 +19,10 @@
     <header
       class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
     >
-      <i class="bi-list text-2xl leading-3 cursor-pointer" @click="toggleNav" />
+      <i
+        class="bi-list text-2xl leading-3 cursor-pointer"
+        @click="toggleNav"
+      />
       <span class="text-secondary">{{
         OrganismDocsNavRef?.getCurrentSection.sectionName
       }}</span>

@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Base Components </template>
-      <template #title> Tooltip </template>
+      <template #subtitle>
+        Base Components
+      </template>
+      <template #title>
+        Tooltip
+      </template>
 
       Tooltip is a floating, non-actionable label used to explain a user
       interface element or feature.
@@ -12,7 +16,9 @@
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title> Basic </template>
+      <template #title>
+        Basic
+      </template>
 
       <p>
         Tooltip are meant to be exactly that, a hint or tip on what a tool or
@@ -30,7 +36,10 @@
         <AtomToken>tooltip</AtomToken> attribute.
       </p>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_BASIC" overflow />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_BASIC"
+        overflow
+      />
 
       <AtomNoteWarn>
         <p>
@@ -47,7 +56,9 @@
 
     <!-- directions -->
     <MoleculeDocsContent>
-      <template #title> Directions </template>
+      <template #title>
+        Directions
+      </template>
       <p>
         The tooltip has the top direction by default, but you can also use
         <AtomToken>.tooltip-right</AtomToken>,
@@ -55,12 +66,17 @@
         <AtomToken>.tooltip-bottom</AtomToken> directions.
       </p>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_DIRECTIONS" overflow />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_DIRECTIONS"
+        overflow
+      />
     </MoleculeDocsContent>
 
     <!-- white / black -->
     <MoleculeDocsContent>
-      <template #title> White/Black tooltips </template>
+      <template #title>
+        White/Black tooltips
+      </template>
       <p>
         The tooltip has <AtomToken>.tooltip-white</AtomToken> class by default,
         but if you want use the black style, simply use the
@@ -80,9 +96,14 @@
         to be able to read the content while interacting with other parts of the
         page then a tooltip will not work.
       </p>
-      <template #title> Simple usage </template>
+      <template #title>
+        Simple usage
+      </template>
 
-      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_USAGE" overflow />
+      <OrganismComponentExample
+        :code="CODE_VIEW_TOOLTIP_USAGE"
+        overflow
+      />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>

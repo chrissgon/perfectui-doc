@@ -14,7 +14,10 @@
 
     <!-- links -->
     <ul class="list list-hoverable unmarker !bg-transparent">
-      <template v-for="(links, i) in docs" :key="i">
+      <template
+        v-for="(links, i) in docs"
+        :key="i"
+      >
         <p class="font-medium mb-5 mt-5 first:!mt-0">
           {{ i }}
         </p>
@@ -26,7 +29,10 @@
           class="list-item !bg-transparent text-secondary"
         >
           {{ getLinkTreated(link) }}
-          <span v-if="isNewPage(link)" class="badge badge-solid-primary">
+          <span
+            v-if="isNewPage(link)"
+            class="badge badge-solid-primary"
+          >
             New
           </span>
         </NuxtLink>
