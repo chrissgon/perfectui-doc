@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Installation
+        Getting Started
       </template>
       <template #title>
         Get started with Perfect UI

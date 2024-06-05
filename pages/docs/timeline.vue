@@ -191,7 +191,7 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-solid-success">
     <i class="checkpoint-icon bi-check-lg"></i>
     <article>
-      <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+      <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
         <a href="#" class="btn-link-primary">here</a>.
@@ -219,7 +219,7 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-white">
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
-      <h4 class="font-bold">📦 Update "PerfectUI" packages</h4>
+      <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
       <p class="badge badge-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
@@ -237,68 +237,68 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
 const CODE_VIEW_TIMELINE_SOLID = `<figure class="timeline">
   <figcaption class="checkpoint checkpoint-solid-primary">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-solid-success">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-solid-error">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-solid-warn">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
 </figure>
 `;
 const CODE_VIEW_TIMELINE_OUTLINE = `<figure class="timeline">
   <figcaption class="checkpoint checkpoint-outline-primary">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-outline-success">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-outline-error">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-outline-warn">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
 </figure>
 `;
 const CODE_VIEW_TIMELINE_LINK = `<figure class="timeline">
   <figcaption class="checkpoint checkpoint-link-primary">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-link-success">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-link-error">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-link-warn">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
 </figure>
 `;
 const CODE_VIEW_TIMELINE_WHITE_BLACK = `<figure class="timeline">
   <figcaption class="checkpoint checkpoint-white">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
   <figcaption class="checkpoint checkpoint-black">
     <i class="checkpoint-icon bi-person-fill"></i>
-    <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+    <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
   </figcaption>
 </figure>
 `;
@@ -308,7 +308,7 @@ const CODE_VIEW_TIMELINE_HORIZONTAL = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-solid-success">
     <i class="checkpoint-icon bi-check-lg"></i>
     <article>
-      <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+      <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
         <a href="#" class="btn-link-primary">here</a>.
@@ -328,7 +328,7 @@ const CODE_VIEW_TIMELINE_HORIZONTAL = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-white">
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
-      <h4 class="font-bold">📦 Update "PerfectUI" packages</h4>
+      <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
       <p class="badge badge-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
@@ -340,7 +340,7 @@ const CODE_VIEW_TIMELINE_RESPONSIVE = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-solid-success">
     <i class="checkpoint-icon bi-check-lg"></i>
     <article>
-      <h4 class="font-bold">Created "PerfectUI in Vue" task</h4>
+      <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
         <a href="#" class="btn-link-primary">here</a>.
@@ -360,7 +360,7 @@ const CODE_VIEW_TIMELINE_RESPONSIVE = `<!-- timeline -->
   <figcaption class="checkpoint checkpoint-white">
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
-      <h4 class="font-bold">📦 Update "PerfectUI" packages</h4>
+      <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
       <p class="badge badge-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>

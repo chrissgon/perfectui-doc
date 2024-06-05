@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Layout
+        General
       </template>
       <template #title>
         Layout Group
@@ -17,7 +17,7 @@
       </template>
 
       <p>
-        To deal with grouping elements, PerfectUI provides the
+        To deal with grouping elements, Perfect UI provides the
         <AtomToken>.group-row</AtomToken>, <AtomToken>.group-col</AtomToken>,
         <AtomToken>.group-responsive</AtomToken> and
         <AtomToken>.group-item</AtomToken> classes. These will be useful for

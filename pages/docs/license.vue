@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        License
+        Getting Started
       </template>
       <template #title>
         Learn more about the licensing terms for Perfect UI

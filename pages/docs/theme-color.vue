@@ -19,7 +19,7 @@
       </template>
 
       <p>
-        To better adapt to your visual identity, perfectui provides the
+        To better adapt to your visual identity, Perfect UI provides the
         <AtomToken>setThemeColor</AtomToken> method that allows you to define
         your color palette, setting it as the default for the entire
         application.

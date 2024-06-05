@@ -12,6 +12,7 @@ export const NAV_SECTIONS = {
     "Badge",
     "Button",
     "Card",
+    "Dropdown $N",
     "List",
     "Table",
     "Timeline $N",

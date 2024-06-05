@@ -14,10 +14,7 @@
 
     <!-- links -->
     <ul class="list list-hoverable unmarker !bg-transparent">
-      <template
-        v-for="(links, i) in docs"
-        :key="i"
-      >
+      <template v-for="(links, i) in docs" :key="i">
         <p class="font-medium mb-5 mt-5 first:!mt-0">
           {{ i }}
         </p>
@@ -29,10 +26,7 @@
           class="list-item !bg-transparent text-secondary"
         >
           {{ getLinkTreated(link) }}
-          <span
-            v-if="isNewPage(link)"
-            class="badge badge-solid-primary"
-          >
+          <span v-if="isNewPage(link)" class="badge badge-solid-primary">
             New
           </span>
         </NuxtLink>
@@ -46,7 +40,7 @@ import { type SectionMap, type Sections, NAV_SECTIONS } from "@/shared";
 
 // computed
 const getLinkTreated = computed<Function>(() => (link: string) => {
-  return link.replaceAll("$N", "").trim();
+  return link.replaceAll("$N", "");
 });
 const isNewPage = computed<Function>(() => (link: string) => {
   return /\$N/.test(link);
@@ -97,10 +91,10 @@ const getNextPage = computed<string | undefined>(() => {
 
     if (!nextSectionName) return;
 
-    return docs.value[nextSectionName][0];
+    return getLinkTreated.value(docs.value[nextSectionName][0]);
   }
 
-  return section[articleIndex + 1];
+  return getLinkTreated.value(section[articleIndex + 1]);
 });
 const getPrevPage = computed<string | undefined>(() => {
   const { sectionName, articleIndex } = getCurrentSection.value;
@@ -120,19 +114,19 @@ const getPrevPage = computed<string | undefined>(() => {
 
     const prevSection = docs.value[prevSectionName];
 
-    return prevSection[prevSection.length - 1];
+    return getLinkTreated.value(prevSection[prevSection.length - 1]);
   }
 
-  return section[articleIndex - 1];
+  return getLinkTreated.value(section[articleIndex - 1]);
 });
 
 // data
 const docs = ref<Sections>(NAV_SECTIONS);
-const router = useRoute()
+const router = useRoute();
 
 // methods
 function normalizeLink(label: string): string {
-  return label.toLowerCase().replaceAll(" ", "-");
+  return label.toLowerCase().trimEnd().replaceAll(" ", "-");
 }
 function normalizeArticleName(link: string): string {
   const parts = link.split("-");
@@ -158,6 +152,7 @@ defineExpose({
   docs,
   normalizeLink,
   getDocPath,
+  getLinkTreated
 });
 </script>
 

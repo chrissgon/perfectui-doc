@@ -19,18 +19,17 @@
     <header
       class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
     >
-      <i
-        class="bi-list text-2xl leading-3 cursor-pointer"
-        @click="toggleNav"
-      />
+      <i class="bi-list text-2xl leading-3 cursor-pointer" @click="toggleNav" />
       <span class="text-secondary">{{
         OrganismDocsNavRef?.getCurrentSection.sectionName
       }}</span>
       >
       {{
-        OrganismDocsNavRef?.docs[
-          OrganismDocsNavRef?.getCurrentSection.sectionName
-        ][OrganismDocsNavRef?.getCurrentSection.articleIndex]?.replaceAll("$N", "")
+        OrganismDocsNavRef?.getLinkTreated(
+          OrganismDocsNavRef?.docs[
+            OrganismDocsNavRef?.getCurrentSection.sectionName
+          ][OrganismDocsNavRef?.getCurrentSection.articleIndex]
+        )
       }}
     </header>
 
@@ -95,7 +94,7 @@ const getLinkNextPage = computed<string>(() => {
 // data
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
-const router = useRoute()
+const router = useRoute();
 
 // setup
 if (router.name === "docs") {
@@ -106,10 +105,10 @@ onBeforeRouteUpdate(closeNav);
 // methods
 function toggleNav(): void {
   navIsOpen.value = !navIsOpen.value;
-  document.body.style.overflow = navIsOpen.value ? "hidden" : "auto"
+  document.body.style.overflow = navIsOpen.value ? "hidden" : "auto";
 }
 function closeNav(): void {
-  document.body.style.overflow = "auto"
+  document.body.style.overflow = "auto";
   navIsOpen.value = false;
 }
 </script>

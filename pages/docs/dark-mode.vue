@@ -8,7 +8,7 @@
         Dark Mode
       </template>
 
-      Implement different modes in your application easily with Perfectui
+      Implement different modes in your application easily with Perfect UI
       through auxiliary methods.
     </MoleculeDocsHeader>
 

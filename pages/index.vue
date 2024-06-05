@@ -122,7 +122,7 @@
         </template>
 
         <p class="text-base">
-          PerfectUI provides native darkmode for all components, and helpers
+          Perfect UI provides native darkmode for all components, and helpers
           such as <code class="text-theme text-base">setMode</code> to define a
           preferred mode.
         </p>
@@ -176,7 +176,7 @@
       <!-- responsive -->
       <OrganismReasonItem
         id="responsive"
-        class="max-w-[1300px] flex-col !items-start"
+        class="max-w-[1300px] flex-col"
       >
         <template #icon>
           <i class="bi-aspect-ratio-fill text-base text-theme"></i>
@@ -216,7 +216,7 @@
         </template>
 
         <p class="text-base">
-          The goal of PerfectUI is to provide the essentials, enabling
+          The goal of Perfect UI is to provide the essentials, enabling
           customization and speed with under
           <b class="text-base font-bold text-theme">30kb</b>.
         </p>
