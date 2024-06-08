@@ -108,7 +108,7 @@
       </template>
 
       <p>
-        You can add icons from any library. In the example below we used
+        You can add icons from any library. In the example below was used
         <a
           href="https://icons.getbootstrap.com/"
           target="_blank"

@@ -1,5 +1,4 @@
 hr and dividers
 Disabled
 pagination
-dropdown
 carousel

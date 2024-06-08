@@ -59,6 +59,7 @@
       <template #title>
         Directions
       </template>
+      
       <p>
         The tooltip has the top direction by default, but you can also use
         <AtomToken>.tooltip-right</AtomToken>,

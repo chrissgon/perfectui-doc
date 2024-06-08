@@ -7,7 +7,7 @@
     Note that this component requires use our javascript file to works, else you can skip this message if you are already using Perfect UI as a package.
 
     <NuxtLink
-      class="block"
+      class="block w-fit"
       to="/docs/installation"
     >
       <button class="btn btn-white mt-4">

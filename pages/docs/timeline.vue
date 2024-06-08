@@ -21,7 +21,7 @@
 
       <p>
         The timeline component has three main classes,
-        <AtomToken>.timeline</AtomToken>, <AtomToken>.checkpoint</AtomToken>,
+        <AtomToken>.timeline</AtomToken>, <AtomToken>.checkpoint</AtomToken> and
         <AtomToken>.checkpoint-icon</AtomToken>.
       </p>
 

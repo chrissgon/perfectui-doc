@@ -60,13 +60,13 @@ const CODE_VIEW_INPUT_TYPES = `<form class="flex flex-col gap-3">
     <input class="input" type="search" placeholder="Search" />
   </label>
   <label class="field-group">
-    <input class="input" type="week" placeholder="Search" />
+    <input class="input" type="week" placeholder="Week" />
   </label>
   <label class="field-group">
-    <input class="input" type="month" placeholder="Search" />
+    <input class="input" type="month" placeholder="Month" />
   </label>
   <label class="field-group">
-    <input class="input" type="date" />
+    <input class="input" type="date" placeholder="Date" />
   </label>
 </form>
 `;
