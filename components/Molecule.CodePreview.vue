@@ -1,14 +1,14 @@
 <template>
   <div
     class="p-5 bg-primary rounded-md"
-    v-html="preview"
+    v-html="input"
   />
 </template>
 
 <script setup lang="ts">
 // props
 interface IProps {
-  preview: string;
+  input: string;
 }
 defineProps<IProps>();
 </script>

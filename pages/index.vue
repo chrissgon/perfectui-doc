@@ -12,7 +12,7 @@
           <AtomThemeColorPicker />
           <AtomDarkMode />
           <AtomGithubLink />
-          <AtomFigmaLink />
+          <AtomFigmaLink class="max-sm:hidden" />
         </aside>
       </header>
 
@@ -34,12 +34,22 @@
             class="btn btn-solid-primary flex-1"
           >
             Get Started
-            <i class="bi bi-rocket-takeoff-fill text-base leading-none" />
           </NuxtLink>
-          <a
-            href="#why"
-            class="btn btn-white !border-none flex-1"
-          >Why Perfect UI?</a>
+          <button
+            class="btn btn-white firacode flex items-center gap-3"
+            @click="copyInstallCode"
+          >
+            npm i @chrissgon/perfectui
+            <hr class="vertical" />
+            <i
+              v-if="!copied"
+              class="bi-copy"
+            ></i>
+            <i
+              v-if="copied"
+              class="bi-check-circle-fill text-success"
+            ></i>
+          </button>
         </div>
       </main>
     </section>
@@ -229,10 +239,65 @@
       </OrganismReasonItem>
     </div>
 
-    <AtomFooter />
+    <!-- download -->
+    <div
+      class="flex flex-col gap-2 items-center py-10 px-5 bg-secondary rounded-md bg-guideline !relative"
+    >
+      <h1 class="text-3xl text-center font-semibold">
+        Download <span class="text-theme text-3xl">Perfect UI</span>
+      </h1>
+      <p class="text-secondary text-center">
+        Our code is available for you to download, inspect, and modify:
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-5 mt-6">
+        <NuxtLink
+          to="/docs/installation"
+          class="btn btn-solid-primary flex-1 text-center"
+        >
+          Get Started
+        </NuxtLink>
+        <button
+          class="btn btn-white firacode flex items-center gap-3"
+          @click="copyInstallCode"
+        >
+          npm i @chrissgon/perfectui
+          <hr class="vertical" />
+          <i
+            v-if="!copied"
+            class="bi-copy"
+          ></i>
+          <i
+            v-if="copied"
+            class="bi-check-circle-fill text-success"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- TODO -->
+    <!-- Create a bot to hire us using lowbot -->
+    <!-- <button class="btn btn-solid-primary fixed bottom-10 right-10 !px-4 !py-3.5 rounded-full">
+      <i class="bi-chat-fill text-3xl"></i>
+    </button> -->
+
+    <OrganismFooter />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// data
+const copied = ref<boolean>(false);
+
+// methods
+function copyInstallCode(): void {
+  navigator.clipboard.writeText("npm i @chrissgon/perfectui");
+  copied.value = true;
+
+  setTimeout(() => {
+    copied.value = false;
+  }, 1000);
+}
+</script>
 
 <style></style>

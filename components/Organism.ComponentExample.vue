@@ -9,7 +9,7 @@
     </template>
     <template #preview>
       <MoleculeCodePreview
-        :preview="code"
+        :input="code"
         :class="{ 'overflow-auto': !overflow }"
       />
     </template>

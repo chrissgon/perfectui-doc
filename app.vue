@@ -11,7 +11,7 @@ import "@chrissgon/perfectui/dist/perfectui.css";
 
 // setup
 if (process.client) {
-  sessionStorage.removeItem("themeColor")
+  sessionStorage.removeItem("themeColor");
 
   useSeoMeta({
     description: pkg.description,
@@ -28,6 +28,7 @@ if (process.client) {
 </script>
 
 <style>
+@import "./assets/highlight.css";
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css");
 
@@ -77,7 +78,7 @@ input[type="color"]::-webkit-color-swatch {
   background: linear-gradient(
     195deg,
     rgb(var(--backgroundPrimary)) 5%,
-    rgba(var(--backgroundGradientPrimary), .8) 20%,
+    rgba(var(--backgroundGradientPrimary), 0.8) 20%,
     rgb(var(--backgroundPrimary)) 40%
   );
   background-size: 100% 100vh;
@@ -91,7 +92,7 @@ input[type="color"]::-webkit-color-swatch {
   left: 0;
   top: 0;
   background-image: var(--backgroundGuideline);
-  mask-image: linear-gradient(0deg, transparent, black);
+  mask-image: linear-gradient(35deg, transparent, black, black, transparent);
 }
 
 .input {
@@ -106,6 +107,10 @@ code,
 pre *,
 code * {
   font-family: "Fira Code";
+  font-size: 14px;
 }
 
+.firacode {
+  font-family: "Fira Code";
+}
 </style>

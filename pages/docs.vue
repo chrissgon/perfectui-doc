@@ -40,7 +40,9 @@
       <OrganismDocsNav
         ref="OrganismDocsNavRef"
         :class="{ translateNav: navIsOpen }"
-        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-y-auto scrollbar lg:-ml-5 p-5 max-lg:pb-24 border-r border-solid border-secondary z-10"
+        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-auto scrollbar lg:-ml-5 p-5 max-lg:pb-24 border-r border-solid border-secondary z-10"
+        @assistant="showAssistant"
+        @search="showSearch"
       />
 
       <article
@@ -71,14 +73,28 @@
           </NuxtLink>
         </div>
 
-        <AtomFooter />
+        <OrganismFooter />
       </article>
     </div>
+
+    <OrganismAssistantChatGPT
+      v-show="assistantIsVisible"
+      @close="hideAssistant"
+      @click.self="hideAssistant"
+    />
+    <!-- TODO -->
+    <!-- implements algolia search -->
+    <!-- <OrganismAlgolia
+      v-show="searchIsVisible"
+      @close="hideSearch"
+      @click.self="hideSearch"
+    /> -->
   </section>
 </template>
 
 <script setup lang="ts">
 import OrganismDocsNav from "../components/Organism.DocsNav.vue";
+import hotkeys from "hotkeys-js";
 
 // computed
 const getLinkPrevPage = computed<string>(() => {
@@ -98,14 +114,16 @@ const getLinkNextPage = computed<string>(() => {
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
 const router = useRoute();
-
-// setup
-if (router.name === "docs") {
-  navigateTo("/docs/installation");
-}
-onBeforeRouteUpdate(closeNav);
+const assistantIsVisible = ref<boolean>(false);
+const searchIsVisible = ref<boolean>(false);
 
 // methods
+function init(): void {
+  if (!process.client) return;
+  hotkeys("ctrl+k", () => {
+    searchIsVisible.value = true;
+  });
+}
 function toggleNav(): void {
   navIsOpen.value = !navIsOpen.value;
   document.body.style.overflow = navIsOpen.value ? "hidden" : "auto";
@@ -114,6 +132,29 @@ function closeNav(): void {
   document.body.style.overflow = "auto";
   navIsOpen.value = false;
 }
+function showAssistant(): void {
+  assistantIsVisible.value = true;
+  document.documentElement.style.overflow = "hidden";
+}
+function hideAssistant(): void {
+  assistantIsVisible.value = false;
+  document.documentElement.style.overflow = "auto";
+}
+function showSearch(): void {
+  searchIsVisible.value = true;
+  document.documentElement.style.overflow = "hidden";
+}
+function hideSearch(): void {
+  searchIsVisible.value = false;
+  document.documentElement.style.overflow = "auto";
+}
+
+// setup
+init();
+if (router.name === "docs") {
+  navigateTo("/docs/installation");
+}
+onBeforeRouteUpdate(closeNav);
 </script>
 
 <style scoped>
@@ -124,6 +165,10 @@ function closeNav(): void {
 .bg-nav {
   background: rgba(var(--backgroundPrimary), 0.7);
   backdrop-filter: blur(10px);
+}
+.bg-search {
+  background: rgba(var(--backgroundPrimary), 0.5);
+  backdrop-filter: blur(5px);
 }
 
 .translateNav {

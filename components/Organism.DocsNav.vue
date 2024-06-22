@@ -1,19 +1,99 @@
 <template>
   <nav>
-    <!-- search -->
-    <!-- <label class="field-group">
-      <div class="input input-group">
-        <i class="bi-search" />
+    <label
+      disabled
+      class="field-group mb-6"
+      @click="emit('search')"
+    >
+      <div class="input-group input">
+        <i class="bi-search"></i>
         <input
           type="text"
           class="input"
-        >
-        <span>Ctrl K</span>
+          placeholder="Quick search"
+        />
+        <span class="text- text-secondary font-medium">Ctrl K</span>
       </div>
-    </label> -->
+    </label>
+
+    <!-- resources -->
+    <ul
+      class="unmarker list flex flex-col gap-2 [&>.list-item]:cursor-pointer !bg-transparent [&>.list-item]:!bg-transparent font-medium mb-10 [&>.list-item]:!px-0 [&>.list-item_i]:p-[5px] [&>.list-item_i]:px-2 [&>.list-item_i]:opacity-50 [&>.list-item.active_i]:!opacity-100 [&>.list-item:hover_i]:!opacity-100 [&>.list-item_i]:rounded-md [&>.list-item_i]:mr-2 [&>.list-item]:opacity-75 [&>.list-item.active]:!opacity-100 [&>.list-item:hover]:!opacity-100"
+    >
+      <!-- assistant -->
+      <li
+        class="list-item active"
+        @click="emit('assistant')"
+      >
+        <i class="btn btn-white !bg-[#10A37F] !border-[#10A37F] !px-[7px]">
+          <AtomIconChatGPT class="inline w-4 scale-110 -translate-y-[1px]" />
+        </i>
+        Assistant
+      </li>
+      <!-- TODO -->
+      <!-- develop the pages below -->
+      <NuxtLink
+        to="/docs/examples"
+        disabled
+        :class="{ active: isPageActive(getLinkTreated('examples')) }"
+        class="list-item"
+      >
+        <i
+          class="bi-grid-1x2-fill btn btn-white [.active_&]:!border-sky-500 [.active_&]:!bg-sky-500 [.active_&]:!text-white"
+        ></i>
+        Examples
+
+        <span class="badge badge-white">In Progress</span>
+      </NuxtLink>
+
+      <!-- templates -->
+      <NuxtLink
+        to="/docs/templates"
+        disabled
+        :class="{ active: isPageActive(getLinkTreated('templates')) }"
+        class="list-item"
+      >
+        <i
+          class="bi-box-fill btn btn-white [.active_&]:!border-pink-500 [.active_&]:!bg-pink-500 [.active_&]:!text-white"
+        ></i>
+        Templates
+
+        <span class="badge badge-white">In Progress</span>
+      </NuxtLink>
+
+      <!-- resources -->
+      <NuxtLink
+        to="/docs/resources"
+        disabled
+        :class="{ active: isPageActive(getLinkTreated('resources')) }"
+        class="list-item"
+      >
+        <i
+          class="bi-stack btn btn-white [.active_&]:!border-violet-500 [.active_&]:!bg-violet-500 [.active_&]:!text-white"
+        ></i>
+        Resources
+
+        <span class="badge badge-white">In Progress</span>
+      </NuxtLink>
+
+      <!-- figma -->
+      <li class="list-item">
+        <a
+          href="https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI?type=design&t=NFXUM1OyFfIo9Csc-6"
+          target="_blank"
+        >
+          <i
+            class="btn btn-white [.active_&]:!border-white [.active_&]:!bg-white [.active_&]:!text-white !px-[7px]"
+          >
+            <AtomIconFigma class="inline" />
+          </i>
+          Figma
+        </a>
+      </li>
+    </ul>
 
     <!-- links -->
-    <ul class="list list-hoverable unmarker !bg-transparent">
+    <ul class="menu-list list list-hoverable unmarker !bg-transparent">
       <template
         v-for="(links, i) in docs"
         :key="i"
@@ -150,6 +230,13 @@ function getDocPath(link: string): string {
   return `/docs/${link}`;
 }
 
+// emit
+interface IEmits {
+  (e: "assistant"): void;
+  (e: "search"): void;
+}
+const emit = defineEmits<IEmits>();
+
 // expose
 defineExpose({
   getNextPage,
@@ -158,23 +245,23 @@ defineExpose({
   docs,
   normalizeLink,
   getDocPath,
-  getLinkTreated
+  getLinkTreated,
 });
 </script>
 
 <style scoped>
-.list-item {
+.menu-list .list-item {
   border-left: 2px solid rgba(var(--borderSecondary), 0.3);
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   margin-left: -2px;
 }
 
-.list-item:hover {
+.menu-list .list-item:hover {
   border-color: rgb(var(--borderSecondary));
 }
 
-.active {
+.menu-list .active {
   color: rgb(var(--theme500));
   border-color: rgb(var(--theme500)) !important;
 }

@@ -2,7 +2,7 @@
   <div class="widget-response w-full">
     <MoleculeCodePreview
       class="w-full !p-0"
-      :preview="CODE_VIEW_CARD_GROUP_RESPONSIVE"
+      :input="CODE_VIEW_CARD_GROUP_RESPONSIVE"
     />
   </div>
 </template>

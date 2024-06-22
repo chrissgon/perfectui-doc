@@ -36,7 +36,7 @@
           index.html
         </template>
         <template #preview>
-          <MoleculeCodePreview :preview="CODE_PREVIEW_IMPORT_CDN" />
+          <MoleculeCodePreview :input="CODE_PREVIEW_IMPORT_CDN" />
         </template>
         <template #code>
           <MoleculeCodeView :input="CODE_VIEW_IMPORT_CDN" />
