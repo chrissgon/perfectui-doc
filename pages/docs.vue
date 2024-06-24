@@ -19,10 +19,7 @@
     <header
       class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
     >
-      <i
-        class="bi-list text-2xl leading-3 cursor-pointer"
-        @click="toggleNav"
-      />
+      <i class="bi-list text-2xl leading-3 cursor-pointer" @click="toggleNav" />
       <span class="text-secondary">{{
         OrganismDocsNavRef?.getCurrentSection.sectionName
       }}</span>
@@ -135,6 +132,10 @@ function closeNav(): void {
 function showAssistant(): void {
   assistantIsVisible.value = true;
   document.documentElement.style.overflow = "hidden";
+
+  setTimeout(() => {
+    focusInput(".OrganismAssistantChatGPT .OrganismSearchCardInput");
+  }, 100);
 }
 function hideAssistant(): void {
   assistantIsVisible.value = false;
@@ -143,15 +144,23 @@ function hideAssistant(): void {
 function showSearch(): void {
   searchIsVisible.value = true;
   document.documentElement.style.overflow = "hidden";
+
+  setTimeout(() => {
+    focusInput(".OrganismAlgoliaSearch .OrganismSearchCardInput");
+  }, 100);
 }
 function hideSearch(): void {
   searchIsVisible.value = false;
   document.documentElement.style.overflow = "auto";
 }
-function hideAll():void{
-  closeNav()
-  hideAssistant()
-  hideSearch()
+function focusInput(selector: string): void {
+  const input = document.querySelector(selector) as HTMLInputElement;
+  input.focus();
+}
+function hideAll(): void {
+  closeNav();
+  hideAssistant();
+  hideSearch();
 }
 
 // setup

@@ -17,7 +17,7 @@
           v-model="doubt"
           :disabled="loading"
           type="text"
-          class="outline-none bg-transparent w-full mx-2"
+          class="OrganismSearchCardInput outline-none bg-transparent w-full mx-2"
           placeholder="What's your question?"
           focus
           @keydown.enter="message"

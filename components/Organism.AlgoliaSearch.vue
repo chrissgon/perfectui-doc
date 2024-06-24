@@ -3,6 +3,7 @@
     ref="OrganismSearchCardRef"
     @search="search"
     @close="close"
+    class="OrganismAlgoliaSearch"
   >
     <article class="flex flex-col gap-4 p-4">
       <div
