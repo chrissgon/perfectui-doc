@@ -9,10 +9,7 @@
       <label
         class="bg-secondary [html:not(.dark)_&]:!bg-white p-2 flex items-center sticky top-0 z-10"
       >
-        <i
-          class="bi-chevron-left btn"
-          @click="close"
-        ></i>
+        <i class="bi-chevron-left btn" @click="close"></i>
         <input
           v-model="doubt"
           :disabled="loading"
@@ -23,6 +20,13 @@
           @keydown.enter="message"
           @keyup="search"
         />
+        <!-- TODO -->
+        <!-- implements esc hotkey -->
+        <!-- <span
+          class="badge badge-white bg-tertiary !py-1.5 !px-1.5 font-bold !text-[10px]"
+          >ESC</span
+        >
+        <hr v-if="chat" class="vertical !h-[20px] mx-2" /> -->
         <button
           v-if="chat"
           :disabled="loading"

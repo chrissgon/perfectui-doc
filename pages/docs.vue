@@ -19,10 +19,7 @@
     <header
       class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
     >
-      <i
-        class="bi-list text-2xl leading-3 cursor-pointer"
-        @click="toggleNav"
-      />
+      <i class="bi-list text-2xl leading-3 cursor-pointer" @click="toggleNav" />
       <span class="text-secondary">{{
         OrganismDocsNavRef?.getCurrentSection.sectionName
       }}</span>
@@ -121,7 +118,7 @@ const searchIsVisible = ref<boolean>(false);
 function init(): void {
   if (!process.client) return;
   hotkeys("ctrl+k", () => {
-    searchIsVisible.value = true;
+    showSearch();
   });
 }
 function toggleNav(): void {
@@ -136,9 +133,7 @@ function showAssistant(): void {
   assistantIsVisible.value = true;
   document.documentElement.style.overflow = "hidden";
 
-  setTimeout(() => {
-    focusInput(".OrganismAssistantChatGPT .OrganismSearchCardInput");
-  }, 0);
+  focusInput(".OrganismAssistantChatGPT .OrganismSearchCardInput");
 }
 function hideAssistant(): void {
   assistantIsVisible.value = false;
@@ -148,9 +143,7 @@ function showSearch(): void {
   searchIsVisible.value = true;
   document.documentElement.style.overflow = "hidden";
 
-  setTimeout(() => {
-    focusInput(".OrganismAlgoliaSearch .OrganismSearchCardInput");
-  }, 0);
+  focusInput(".OrganismAlgoliaSearch .OrganismSearchCardInput");
 }
 function hideSearch(): void {
   searchIsVisible.value = false;
@@ -158,7 +151,17 @@ function hideSearch(): void {
 }
 function focusInput(selector: string): void {
   const input = document.querySelector(selector) as HTMLInputElement;
-  input.focus();
+
+  if (!input || !input.focus) {
+    setTimeout(() => {
+      focusInput(selector);
+    }, 1000);
+    return;
+  }
+
+  setTimeout(() => {
+    input?.focus();
+  }, 100);
 }
 function hideAll(): void {
   closeNav();
