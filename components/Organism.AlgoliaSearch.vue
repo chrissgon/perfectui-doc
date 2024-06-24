@@ -4,6 +4,7 @@
     class="OrganismAlgoliaSearch"
     @search="search"
     @close="close"
+    @click.self="reset"
   >
     <article class="flex flex-col gap-4 p-4">
       <div
@@ -18,16 +19,16 @@
         >
           <article class="card-content !flex gap-2 items-center !py-2">
             <i
-              class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-slate-700 !p-[5px] !px-2 rounded-md mr-2"
+              class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
             ></i>
 
-            <div class="w-full overflow-hidden whitespace-nowrap text-ellipsis">
-              <p class="badge badge-solid-primary mb-1">
+            <div class="w-full">
+              <p class="text-sm font-semibold text-theme mb-1">
                 {{ item.title }}
               </p>
 
               <p
-                class="text-xs w-full overflow-hidden whitespace-nowrap text-ellipsis"
+                class="text-xs "
               >
                 {{ item.description }}
               </p>

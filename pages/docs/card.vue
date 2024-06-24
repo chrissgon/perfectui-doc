@@ -32,17 +32,6 @@
       <OrganismComponentExample :code="CODE_VIEW_CARD_BASIC" />
     </MoleculeDocsContent>
 
-    <!-- content types -->
-    <MoleculeDocsContent>
-      <template #title>
-        Content types
-      </template>
-      <p>
-        Cards support a wide variety of content, including images, text, list
-        groups, links, and more. Below are examples of what's supported.
-      </p>
-    </MoleculeDocsContent>
-
     <!-- simple body -->
     <MoleculeDocsContent>
       <template #title>

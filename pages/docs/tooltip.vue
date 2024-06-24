@@ -118,8 +118,7 @@ const CODE_VIEW_TOOLTIP_BASIC = `<button
   <i class="bi-question-circle"></i>
 </button>
 `;
-const CODE_VIEW_TOOLTIP_DIRECTIONS = `
-<div class="grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit">
+const CODE_VIEW_TOOLTIP_DIRECTIONS = `<div class="grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit">
   <button
     class="tooltip btn btn-white rounded-full col-start-2 w-10 !px-2"
     tooltip="Tooltip on top"

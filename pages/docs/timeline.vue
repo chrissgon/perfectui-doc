@@ -8,7 +8,7 @@
         Timeline
       </template>
 
-      The Timeline Component is designed to display events in chronological
+      The timeline component is designed to display events in chronological
       order, ideal for showcasing history, project milestones, or event
       sequences.
     </MoleculeDocsHeader>

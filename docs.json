@@ -1,0 +1,935 @@
+{
+  "documentation": {
+    "getting-started": {
+      "installation": {
+        "tags": [
+          "installation",
+          "quick start",
+          "getting started",
+          "npm",
+          "bun",
+          "yarn",
+          "pnpm",
+          "install"
+        ],
+        "url": "https://perfectui.netlify.app/docs/installation",
+        "title": "Get started with Perfect UI",
+        "description": "An exceptionally lightweight and highly customizable CSS and JavaScript framework for crafting elegant user interfaces.",
+        "examples": [
+          {
+            "tags": ["cdn", "head", "script"],
+            "explanation": [
+              "Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle before the closing `</body>`"
+            ],
+            "code": "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.css'></head><body><button class='btn btn-solid-primary'>My button</button><script src='https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js'></script></body></html>"
+          },
+          {
+            "tags": ["cdn", "window", "document"],
+            "explanation": [
+              "When imported via CDN, Perfect UI provides methods in `window` and `document` "
+            ],
+            "code": "console.log(window.perfectui); // { setMode: ƒ ...} console.log(document.perfectui); // { setMode: ƒ ...}"
+          },
+          {
+            "tags": ["cdn", "module"],
+            "explanation": [
+              "You can also import Perfect UI as a module by CDN."
+            ],
+            "code": "<script type='module'>import * as perfectUI from 'https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js'; console.log(perfectUI); // { setMode: ƒ ...}</script>"
+          },
+          {
+            "tags": ["package manager", "npm", "yarn", "pnpm", "bun"],
+            "explanation": [
+              "Install by package manager",
+              "You can also install Perfect UI by package manager."
+            ],
+            "code": [
+              "npm i @chrissgon/perfectui",
+              "yarn add @chrissgon/perfectui",
+              "pnpm i @chrissgon/perfectui",
+              "bun i @chrissgon/perfectui"
+            ]
+          },
+          {
+            "tags": ["cdn", "import", "module"],
+            "explanation": [
+              "After installation, import the styles and methods in your `.js` or `.ts` file."
+            ],
+            "code": "import { setMode } from '@chrissgon/perfectui';import '@chrissgon/perfectui/dist/perfectui.css';"
+          }
+        ]
+      },
+      "typescript": {
+        "tags": ["typescript", "types", "theme color", "mode"],
+        "url": "https://perfectui.netlify.app/docs/typescript",
+        "title": "Typescript friendly",
+        "description": "Perfect UI is fully typed, developed in Typescript. All the methods and interfaces are available for use.",
+        "examples": [
+          {
+            "tags": [
+              "typescript",
+              "types",
+              "index.d.ts",
+              "setThemeColor",
+              "setMode",
+              "IThemeColor"
+            ],
+            "explanation": [
+              "Perfect UI is fully typed, developed in Typescript. All the methods and interfaces are available for use."
+            ],
+            "code": "export interface IThemeColor { 50: number[] | string; 100: number[] | string; 200: number[] | string; 300: number[] | string; 400: number[] | string; 500: number[] | string; 600: number[] | string; 700: number[] | string; 800: number[] | string; 900: number[] | string; 950: number[] | string;} export declare function setThemeColor(colors: IThemeColor): void; export declare function setMode(theme?: 'system' | 'dark' | 'light'): void;"
+          }
+        ]
+      },
+      "tailwind css": {
+        "tags": [
+          "tailwind css",
+          "perfectui",
+          "integration",
+          "combine",
+          "light",
+          "fast",
+          "customizable"
+        ],
+        "url": "https://perfectui.netlify.app/docs/tailwind-css",
+        "title": "Tailwind CSS",
+        "description": "Combine Perfect UI components with Tailwind CSS utilities for a light, fast and customizable solution.",
+        "examples": [
+          {
+            "tags": [
+              "tailwind css",
+              "perfectui",
+              "integration",
+              "combine",
+              "light",
+              "fast",
+              "customizable"
+            ],
+            "explanation": [
+              "Perfect UI + Tailwind CSS = ❤️",
+              "Perfect UI is a framework inspired by Tailwind CSS, focused on providing basic components to create elegant user interfaces that are light, fast and customizable.",
+              "Because of this the framework does not provide classes for layout, breakpoints, fonts, colors and so on.",
+              "We strongly recommend that Perfect UI is used with Tailwind CSS to provide a complete solution."
+            ]
+          }
+        ]
+      },
+      "license": {
+        "tags": ["license", "MIT", "copyright"],
+        "url": "https://perfectui.netlify.app/docs/license",
+        "title": "Learn more about the licensing terms for Perfect UI",
+        "description": "Perfect UI is released under the MIT license and is copyright 2024 Chrissgon. Boiled down to smaller chunks, it can be described with the following conditions.",
+        "examples": [
+          {
+            "tags": ["license", "MIT", "copyright"],
+            "explanation": [
+              "MIT License",
+              "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:",
+              "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+              "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+            ]
+          }
+        ]
+      }
+    },
+    "customization": {
+      "darkmode": {
+        "tags": ["darkmode", "setMode", "mode button"],
+        "url": "https://perfectui.netlify.app/docs/dark-mode",
+        "title": "Dark Mode",
+        "description": "Implement different modes in your application easily with Perfect UI through auxiliary methods.",
+        "examples": [
+          {
+            "tags": ["darkmode", "setMode"],
+            "explanation": [
+              "Perfect ui provides methods to make customization easier. You can set the mode using the `setMode` function."
+            ],
+            "code": "import { setMode } from '@chrissgon/perfectui'; setMode('dark'); // system, light or dark"
+          },
+          {
+            "tags": ["darkmode", "setMode", "mode button"],
+            "explanation": [
+              "Mode button",
+              "You can implement a mode button in your application for the user to change according to their preference."
+            ],
+            "code": "<label class='field-group gap-2 w-fit'><i class=bi-sun></i> <input class=switch id=mode type=checkbox> <i class=bi-moon></i></label><script type=module>import{setMode}from'https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js';document.getElementById('mode').addEventListener('change', (e) => {const dark = e.target.checked;setMode(dark ? 'dark' : 'light');});</script>"
+          }
+        ]
+      },
+      "theme color": {
+        "tags": [
+          "theme color",
+          "customizable",
+          "color",
+          "setThemeColor",
+          "palette"
+        ],
+        "url": "https://perfectui.netlify.app/docs/theme-color",
+        "title": "Define your own color palette",
+        "description": "Perfect UI allows you to define your own color palette, automatically adjusting all components to it.",
+        "examples": [
+          {
+            "tags": [
+              "theme color",
+              "customizable",
+              "color",
+              "setThemeColor",
+              "palette"
+            ],
+            "explanation": [
+              "To better adapt to your visual identity, Perfect UI provides the `setThemeColor` method that allows you to define your color palette, setting it as the default for the entire application."
+            ],
+            "code": "import{setThemeColor}from'@chrissgon/perfectui';const palette={50:'240, 250, 255',100:'223, 244, 255',200:'184, 235, 255',300:[121,220,255],400:[52,204,254],500:[7,182,240],600:[0,146,205],700:[0,116,166],800:[3,98,137],900:[9,81,113],950:[6,51,75]};setThemeColor(palette);"
+          },
+          {
+            "tags": [
+              "theme color",
+              "customizable",
+              "color",
+              "setThemeColor",
+              "palette"
+            ],
+            "explanation": [
+              "TThe `setThemeColor` method expects to receive an object that satisfies the `IThemeColor` interface."
+            ],
+            "code": "export interface IThemeColor { 50: number[] | string; 100: number[] | string; 200: number[] | string; 300: number[] | string; 400: number[] | string; 500: number[] | string; 600: number[] | string; 700: number[] | string; 800: number[] | string; 900: number[] | string; 950: number[] | string;}"
+          }
+        ]
+      }
+    },
+    "general": {
+      "layout group": {
+        "tags": [
+          "layout group",
+          "group row",
+          "group col",
+          "group responsive",
+          "group item"
+        ],
+        "url": "https://perfectui.netlify.app/docs/layout-group",
+        "title": "Layout Group",
+        "description": "An easy way to deal with grouping elements.",
+        "examples": [
+          {
+            "tags": [
+              "layout group",
+              "group row",
+              "group col",
+              "group responsive",
+              "group item"
+            ],
+            "explanation": [
+              "To deal with grouping elements, Perfect UI provides the `.group-row` , `.group-col` , `.group-responsive` and `.group-item` classes. These will be useful for dealing with unnecessary borders and rounding of elements.",
+              "For some elements, the use of this class is mandatory, such as the `<accordion>`.",
+              "If the children of the group have a class with `.item` , it is not necessary to add the class  `.group-item` , as in the case of accordion. "
+            ],
+            "code": "<div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary>First question</summary><article>First answer</article></details><details class='accordion-item'><summary>Second question</summary><article>Second answer</article></details></div>"
+          },
+          {
+            "tags": ["layout group", "group row", "group item", "button"],
+            "explanation": [
+              "Other elements are optional, such as the `<button>`.",
+              "The buttons need the `.group-item` class to work, because they have no class  `.item`."
+            ],
+            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Left</button><button class='group-item btn btn-white'>Middle</button><button class='group-item btn btn-white'>Right</button></div>"
+          },
+          {
+            "tags": ["layout group", "group responsive", "group item", "card"],
+            "explanation": [
+              "If you need the group to change automatically with the screen size, simply use `group-responsive`.",
+              "For screens larger than `1024px` , `group-row` will be applied, for smaller screens `group-col`."
+            ],
+            "code": "<section class='group-responsive'><!-- card #1 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div><!-- card #2 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div><!-- card #3 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div></section>"
+          }
+        ]
+      }
+    },
+    "components": {
+      "accordion": {
+        "tags": ["accordion", "collapse"],
+        "url": "https://perfectui.netlify.app/docs/accordion",
+        "title": "Accordion",
+        "description": "Build vertically collapsing accordions.",
+        "examples": [
+          {
+            "tags": ["accordion", "basic", "group col", "layout group"],
+            "explanation": [
+              "To create accordions, simply add the `.accordion` class to the `details` parent element."
+            ],
+            "code": "<div class='accordion group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": ["accordion", "bordered", "group col"],
+            "explanation": [
+              "To create bordered accordions, simply add the `.accordion-bordered` class."
+            ],
+            "code": "<div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": ["accordion", "bordered", "accented", "groupcol"],
+            "explanation": [
+              "To create accented accordions when opened, simply add the `.accordion-accented` class."
+            ],
+            "code": "<div class='accordion accordion-bordered accordion-accented group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": ["accordion", "bordered", "nested", "group col"],
+            "explanation": [
+              "To create nested accordions, simply add the `.accordion` element inside the `article` of another."
+            ],
+            "code": "<!-- mainly accordion --><div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary>Accordion #1</summary><article><!-- nested accordion --><div class='accordion group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article><!-- nested accordion --><div class='accordion group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div></article></details></div></article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": ["accordion", "bordered", "nested", "aligned", "group col"],
+            "explanation": [
+              "For basic accordions you can use the `.accordion-aligned` class to align the arrows to the right."
+            ],
+            "code": "<!-- mainly accordion --><div class='accordion accordion-bordered accordion-aligned group-col'><details class='accordion-item'><summary>Accordion #1</summary><article><!-- nested accordion --><div class='accordion accordion-aligned group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article><!-- nested accordion --><div class='accordion accordion-aligned group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div></article></details></div></article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": [
+              "accordion",
+              "bordered",
+              "nested",
+              "mixed",
+              "complex",
+              "group col"
+            ],
+            "explanation": [
+              "You can mix the variants to create complex accordions."
+            ],
+            "code": "<!-- mainly accordion --><div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary>Accordion #1</summary><article><!-- nested accordion --><div class='accordion accordion-bordered accordion-accented group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden by defaultuntil you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article><!-- nested accordion --><div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary>Accordion #1</summary><article>This is the body of the accordion item. It is hidden bdefault, until you expand it with a click.</article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden bdefault, until you expand it with a click.</article></details></div></article></details></div></article></details><details class='accordion-item'><summary>Accordion #2</summary><article>This is the body of the accordion item. It is hidden by default, untiyou expand it with a click.</article></details></div>"
+          },
+          {
+            "tags": ["accordion", "bordered", "arrows", "custom", "group col"],
+            "explanation": [
+              "To create accordions with custom arrows, simply create an element with the class `.accordion-icon` inside `summary`.",
+              "To define a custom arrow when the accordion is `open` , simply create an element with `.accordion-icon.open` class.",
+              "If you leave the element empty, there will be no arrow."
+            ],
+            "code": "<div class='accordion accordion-bordered group-col'><details class='accordion-item'><summary># Custom arrow<!-- custom arrow --><i class='accordion-icon bi-plus-circle'></i><i class='accordion-icon open bi-dash-circle'></i></summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details><details class='accordion-item'><summary># Empty arrow<!-- empty arrow --><i class='accordion-icon'></i></summary><article>This is the body of the accordion item. It is hidden by default, until you expand it with a click.</article></details></div>"
+          }
+        ]
+      },
+      "badge": {
+        "tags": ["badge", "indicator", "descriptor"],
+        "url": "https://perfectui.netlify.app/docs/badge",
+        "title": "Badge",
+        "description": "A visual indicator for a value or status descriptor for UI elements.",
+        "examples": [
+          {
+            "tags": ["badge", "types", "solid", "outline", "white", "black"],
+            "explanation": [
+              "The most commonly used badge styles, we provide `solid` , `outline` , `white` and `black`."
+            ],
+            "code": "<span class='badge badge-solid-primary'>Solid</span><span class='badge badge-outline-primary'>Outline</span><span class='badge badge-white'>White</span><span class='badge badge-black'>Black</span>"
+          },
+          {
+            "tags": ["badge", "rounded"],
+            "explanation": [
+              "Use the `.rounded-full` class to create rounded badges."
+            ],
+            "code": "<span class='badge badge-solid-primary rounded-full'>Solid</span><span class='badge badge-outline-primary rounded-full'>Outline</span><span class='badge badge-white rounded-full'>White</span><span class='badge badge-black rounded-full'>Black</span>"
+          },
+          {
+            "tags": [
+              "badge",
+              "solid",
+              "primary",
+              "secondary",
+              "success",
+              "warn",
+              "error"
+            ],
+            "explanation": [
+              "To create solid badges, simply use the `.badge-solid-[variant]` class."
+            ],
+            "code": "<span class='badge badge-solid-primary'>Primary</span><span class='badge badge-solid-secondary'>Secondary</span><span class='badge badge-solid-success'>Success</span><span class='badge badge-solid-warn'>Warn</span><span class='badge badge-solid-error'>Error</span>"
+          },
+          {
+            "tags": [
+              "badge",
+              "outline",
+              "primary",
+              "secondary",
+              "success",
+              "warn",
+              "error"
+            ],
+            "explanation": [
+              "To create outline badges, simply use the `.badge-outline-[variant]` class."
+            ],
+            "code": "<span class='badge badge-outline-primary'>Primary</span><span class='badge badge-outline-secondary'>Secondary</span><span class='badge badge-outline-success'>Success</span><span class='badge badge-outline-warn'>Warn</span><span class='badge badge-outline-error'>Error</span>"
+          },
+          {
+            "tags": ["badge", "white", "black"],
+            "explanation": [
+              "To create white or black badge, simply use the `.badge-white` or `.badge-black` class."
+            ],
+            "code": "<span class='badge badge-white'>White</span><span class='badge badge-black'>Black</span>"
+          },
+          {
+            "tags": ["badge", "icons"],
+            "explanation": [
+              "You can add icons from any library. In the example below we used Bootstrap Icons."
+            ],
+            "code": "<span class='badge badge-solid-error'><i class='bi-heart-fill'></i> Favorite</span><span class='badge badge-outline-warn'>Best ranking <i class='bi-star-fill'></i></span><span class='badge badge-white'>Recent viewed <i class='bi-eye-fill'></i></span>"
+          }
+        ]
+      },
+      "button": {
+        "tags": ["button", "btn", "solid", "outline", "link", "white", "black"],
+        "url": "https://perfectui.netlify.app/docs/button",
+        "title": "Button",
+        "description": "Use different button styles for actions in forms, dialogs and more.",
+        "examples": [
+          {
+            "tags": [
+              "button",
+              "types",
+              "solid",
+              "outline",
+              "link",
+              "white",
+              "black"
+            ],
+            "explanation": [
+              "The most commonly used button styles, we provide `solid` , `outline` , `link` , `white` and `black`."
+            ],
+            "code": "<button class='btn btn-solid-primary'>Solid</button><button class='btn btn-outline-primary'>Outline</button><button class='btn btn-link-primary'>Link</button><button class='btn btn-white'>White</button><button class='btn btn-black'>Black</button>"
+          },
+          {
+            "tags": ["button", "rounded"],
+            "explanation": [
+              "Use the `.rounded-full` class to create rounded buttons."
+            ],
+            "code": "<button class='btn btn-solid-primary rounded-full'>Solid</button><button class='btn btn-outline-primary rounded-full'>Outline</button><button class='btn btn-link-primary rounded-full'>Link</button><button class='btn btn-white rounded-full'>White</button><button class='btn btn-black rounded-full'>Black</button>"
+          },
+          {
+            "tags": [
+              "button",
+              "solid",
+              "primary",
+              "secondary",
+              "success",
+              "warn",
+              "error"
+            ],
+            "explanation": [
+              "To create solid buttons, simply use the `.btn-solid-[variant]` class."
+            ],
+            "code": "<button class='btn btn-solid-primary'>Primary</button><button class='btn btn-solid-secondary'>Secondary</button><button class='btn btn-solid-success'>Success</button><button class='btn btn-solid-warn'>Warn</button><button class='btn btn-solid-error'>Error</button>"
+          },
+          {
+            "tags": [
+              "button",
+              "outline",
+              "primary",
+              "secondary",
+              "success",
+              "warn",
+              "error"
+            ],
+            "explanation": [
+              "To create outline buttons, simply use the `.btn-outline-[variant]` class."
+            ],
+            "code": "<button class='btn btn-outline-primary'>Primary</button><button class='btn btn-outline-secondary'>Secondary</button><button class='btn btn-outline-success'>Success</button><button class='btn btn-outline-warn'>Warn</button><button class='btn btn-outline-error'>Error</button>"
+          },
+          {
+            "tags": [
+              "button",
+              "link",
+              "primary",
+              "secondary",
+              "success",
+              "warn",
+              "error"
+            ],
+            "explanation": [
+              "To create link buttons, simply use the `.btn-link-[variant]` class."
+            ],
+            "code": "<button class='btn btn-link-primary'>Primary</button><button class='btn btn-link-secondary'>Secondary</button><button class='btn btn-link-success'>Success</button><button class='btn btn-link-warn'>Warn</button><button class='btn btn-link-error'>Error</button>"
+          },
+          {
+            "tags": ["button", "white", "black"],
+            "explanation": [
+              "To create white or black button, simply use the `.btn-white` or `.btn-black` class."
+            ],
+            "code": "<button class='btn btn-white'>White</button><button class='btn btn-black'>Black</button>"
+          },
+          {
+            "tags": ["button", "icons"],
+            "explanation": [
+              "You can add icons from any library. In the example below we used Bootstrap Icons."
+            ],
+            "code": "<button class='btn btn-solid-primary'>Add to cart <i class='bi-basket2-fill'></i></button><button class='btn btn-white'>Signup free <i class='bi-chevron-right'></i></button><button class='btn btn-solid-error'><i class='bi-heart-fill'></i></button>"
+          },
+          {
+            "tags": ["button", "layout group"],
+            "explanation": ["You can group buttons using Layout Group."],
+            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Left</button><button class='group-item btn btn-white'>Middle</button><button class='group-item btn btn-white'>Right</button></div>"
+          },
+          {
+            "tags": ["button", "disabled"],
+            "explanation": [
+              "Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element."
+            ],
+            "code": "<button class='btn btn-solid-primary' disabled>Solid</button><button class='btn btn-outline-primary' disabled>Outline</button><button class='btn btn-link-primary' disabled>Link</button><button class='btn btn-white' disabled>White</button><button class='btn btn-black' disabled>Black</button>"
+          }
+        ]
+      },
+
+      "card": {
+        "tags": ["card"],
+        "url": "https://perfectui.netlify.app/docs/card",
+        "title": "Card",
+        "description": "Cards provide a flexible and extensible content container with multiple variants and options.",
+        "examples": [
+          {
+            "tags": ["card", "basic", "card header", "card content"],
+            "explanation": [
+              "A basic card containing a title, content and an extra corner content. Cards assume no specific width to start, so they'll be 100% wide unless otherwise stated.",
+              "To create cards, simply add the .card class.",
+              "You can use .card-content class for the content, .card-header class for the header and the <hr> tag for the dividers."
+            ],
+            "code": "<div class='card'><header class='card-header flex justify-between gap-2'>Header<i class='bi-three-dots-vertical'></i></header><hr><img alt='Accordion Image' src='https://images.unsplash.comphoto-1680868543815-b8666dba60f7?ixlib=rb-4.0.3ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000h=300&q=80'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk ofthe card's content.</p><button class='btn btn-solid-primary w-fit'>Some action</button></article></div>"
+          },
+          {
+            "tags": ["card", "simple body"],
+            "explanation": [
+              "You can use .card-content class to create a simple body example with text."
+            ],
+            "code": "<div class='card'><article class='card-content'>This is some text within a card body.</article></div>"
+          },
+          {
+            "tags": ["card", "simple card"],
+            "explanation": [
+              "You can add others elements in the `.card-content` parent."
+            ],
+            "code": "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><h4 class='text-secondary'>Card Subtitle</h4><p>This is some text within a card body.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>"
+          },
+          {
+            "tags": ["card", "header", "footer"],
+            "explanation": [
+              "You can use `.card-header` and `<hr>` tag to create a header or footer."
+            ],
+            "code": [
+              "<div class='card'><header class='card-header bg-secondary text-secondary'>Featured</header><hr><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>",
+              "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article><hr><header class='card-header bg-secondary text-secondary text-xs'>Last updated 5 mins ago</header></div>"
+            ]
+          },
+          {
+            "tags": ["card", "horizontal"],
+            "explanation": [
+              "Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way.",
+              "To create a horizontal card, simply add `display: flex` in the `.card` parent."
+            ],
+            "code": "<div class='card lg:flex'><img alt='Accordion Image' class='lg:max-w-xs' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div>"
+          },
+          {
+            "tags": ["card", "layout group", "responsive"],
+            "explanation": [
+              "Use Layout Group to render cards as a single, attached element with equal width and height columns."
+            ],
+            "code": "<section class='group-responsive'><!-- card #1 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div><!-- card #2 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div><!-- card #3 --><div class='card group-item'><img alt='Accordion Image' src='https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'><article class='card-content flex flex-col justify-between'><div><h1 class='font-semibold text-xl mb-2'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><p class='text-xs text-secondary mt-8'>Last updated 5 mins ago</p></article></div></section>"
+          }
+        ]
+      },
+
+      "dropdown": {
+        "tags": ["dropdown", "overlays", "lists", "trigger"],
+        "url": "https://perfectui.netlify.app/docs/dropdown",
+        "title": "Dropdown",
+        "description": "Toggle contextual overlays for displaying lists of links and more. Combine with Lists and other elements to create powerfull dropdowns.",
+        "requireJavascript": true,
+        "examples": [
+          {
+            "tags": ["dropdown", "basic", "trigger", "ignore"],
+            "explanation": [
+              "The dropdown component has two main classes, `.dropdown-trigger` , `.dropdown` and `.ignore`.",
+              "- `.dropdown-trigger` : Indicates the element that will trigger the dropdown.",
+              "- `.dropdown` : The dropdown container.",
+              "- `.ignore` : Ignore the click event on element, so the dropdown will not be closed.",
+              "Attention needed:  The  `.dropdown`  should be placed inside of  `.dropdown-trigger` , since it has parent-child relation."
+            ],
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><!-- ignore --><label class='field-group ignore'><input class='input' type='text' placeholder='Search'></label><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button>"
+          },
+          {
+            "tags": ["dropdown", "dividers"],
+            "explanation": ["The default dropdown menu with dividers."],
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Newsletter</li><li class='list-item'>Purchases</li><hr class='my-2'><li class='list-item'>Upgrade License</li><hr class='my-2'><li class='list-item'>Sign Out</li></ul></div></button>"
+          },
+          {
+            "tags": ["dropdown", "icons", "badges"],
+            "explanation": [
+              "You can add icons or badges. In the example below was used Bootstrap Icons."
+            ],
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
+          },
+          {
+            "tags": ["dropdown", "title"],
+            "explanation": ["The default dropdown menu with title."],
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><span class='list-item' disabled>Settings</span><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
+          },
+          {
+            "tags": ["dropdown", "directions"],
+            "explanation": [
+              "The `.dropdown` element has the bottom direction by default, but you can also use `.dropdown-right` , `.dropdown-left` and `.dropdown-top` directions."
+            ],
+            "code": "<div class='flex flex-wrap gap-2'><!-- dropdown bottom --><button class='dropdown-trigger btn btn-white'>Bottom<i class='bi-chevron-down'></i><div class='dropdown'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown top --><button class='dropdown-trigger btn btn-white'>Top<i class='bi-chevron-up'></i><div class='dropdown dropdown-top'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown left --><button class='dropdown-trigger btn btn-white'><i class='bi-chevron-left'></i>Left<div class='dropdown dropdown-left'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown right --><button class='dropdown-trigger btn btn-white'>Right<i class='bi-chevron-right'></i><div class='dropdown dropdown-right'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button></div>"
+          },
+          {
+            "tags": [
+              "dropdown",
+              "complex",
+              "input",
+              "title",
+              "badge",
+              "switch",
+              "list",
+              "icons"
+            ],
+            "explanation": [
+              "You can combine the dropdown element with many other. Be creative!"
+            ],
+            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Dropdown</button><!-- dropdown trigger --><button class='dropdown-trigger group-item btn btn-white'><i class='bi-chevron-up'></i><!-- dropdown --><div class='dropdown dropdown-top'><label class='field-group ignore mb-2'><i class='addon bi-search'></i><input class='input' type='text' placeholder='Search' /></label><ul class='list list-hoverable unmarker'><span class='list-item' disabled>Settings</span><li class='list-item active'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li><hr class='my-2' /><li class='list-item' disabled>Preferences</li><label class='list-item !flex gap-2'><input type='checkbox' class='switch !h-fit' /><div><p class='font-bold'>Darkmode</p><p class='text-secondary'>Define dark mode as default.</p></div></label></ul></div></button></div>"
+          }
+        ]
+      },
+
+      "list": {
+        "tags": ["list", "ordered", "unordered"],
+        "url": "https://perfectui.netlify.app/docs/list",
+        "title": "List",
+        "description": "Create engaging lists using Perfect UI, a powerful tool for styling ordered and unordered elements, enhancing readability, and user experience.",
+        "examples": [
+          {
+            "tags": ["list", "type", "ordered", "unordered", "list item"],
+            "explanation": [
+              "To create bulleted or numeric lists, use the `<ul>` or `<ol>` tag with `.list` class.",
+              "Use the `.list-item` for the children."
+            ],
+            "code": [
+              "<ul class='list'><li class='list-item'>Now this is a story all about how, my life got flipped turned upsidedown</li><li class='list-item'>And I like to take a minute and sit right here</li><li class='list-item'>I'll tell you how I became the prince of a town called Bel-Air</li></ul>",
+              "<ol class='list'><li class='list-item'>Now this is a story all about how, my life got flipped turned upsidedown</li><li class='list-item'>And I like to take a minute and sit right here</li><li class='list-item'>I'll tell you how I became the prince of a town called Bel-Air</li></ol>"
+            ]
+          },
+          {
+            "tags": ["list", "type", "unmarker"],
+            "explanation": [
+              "Use the `.unmarker` class to create unmarked lists."
+            ],
+            "code": "<ul class='unmarker list'><li class='list-item'>Now this is a story all about how, my life got flipped turned upsidedown</li><li class='list-item'>And I like to take a minute and sit right here</li><li class='list-item'>I'll tell you how I became the prince of a town called Bel-Air</li></ul>"
+          },
+          {
+            "tags": ["list", "custom marker", "marker"],
+            "explanation": [
+              "To use customs markers, simply add `.marker` class in `.list-item` element."
+            ],
+            "code": "<div class='flex flex-wrap'><ul class='unmarker list'><li class='list-item'><span class='marker bi-check text-success'></span>FAQ</li><li class='list-item'><span class='marker bi-check text-success'></span>License</li><li class='list-item'><span class='marker bi-check text-success'></span>Terms & Conditions</li></ul><ul class='unmarker list'><li class='list-item'><span class='marker bi-check-circle text-success'></span>FAQ</li><li class='list-item'><span class='marker bi-check-circle text-success'></span>License</li><li class='list-item'><span class='marker bi-check-circle text-success'></span>Terms & Conditions</li></ul><ul class='unmarker list'><li class='list-item'><span class='marker bi-check-circle-fill text-success'></span>FAQ</li><li class='list-item'><span class='marker bi-check-circle-fill text-success'></span>License</li><li class='list-item'><span class='marker bi-check-circle-fill text-success'></span>Terms & Conditions</li></ul></div>"
+          },
+          {
+            "tags": ["list", "bordered", "layout group"],
+            "explanation": [
+              "To create bordered lists, simply use the `.list-bordered` class with Layout Group."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul>"
+          },
+          {
+            "tags": ["list", "hoverable"],
+            "explanation": [
+              "To create hoverable lists, simply use the `.list-hoverable` class."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered list-hoverable group-col'><a class='list-item'>Newsletter</a><a class='list-item'>Downloads</a><a class='list-item'>Team Account</a></ul>"
+          },
+          {
+            "tags": ["list", "striped"],
+            "explanation": [
+              "To create striped lists, simply use the `.list-striped` class."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered list-striped group-col'><li class='list-item'>Newsletter</li><li class='list-item'>Downloads</li><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Team Account</li></ul>"
+          },
+          {
+            "tags": ["list", "icons"],
+            "explanation": [
+              "You can add icons from any library. In the example below was used Bootstrap Icons."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><li class='list-item'><i class='bi-bell'></i>Newsletter</li><li class='list-item'><i class='bi-cloud-download'></i>Downloads</li><li class='list-item'><i class='bi-people'></i>Team Account</li></ul>"
+          },
+          {
+            "tags": ["list", "active", "disabled"],
+            "explanation": [
+              "Use the class `.active` to indicate an active element.",
+              "Use the `disabled` attribute to indicate a disabled item.",
+              "Use `<a>` to create list group items with cursor pointer."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><a class='list-item active'><i class='bi-bell'></i>Newsletter</a><a class='list-item' disabled><i class='bi-cloud-download'></i>Downloads</a><a class='list-item'><i class='bi-people'></i>Team Account</a></ul>"
+          },
+          {
+            "tags": ["list", "horizontal", "layout group"],
+            "explanation": [
+              "To create horizontal lists, simply use the list classes with Layout Group."
+            ],
+            "code": "<ul class='unmarker w-fit list list-bordered list-hoverable group-row'><a class='list-item'><i class='bi-bell'></i>Newsletter</a><a class='list-item'><i class='bi-cloud-download'></i>Downloads</a><a class='list-item'><i class='bi-people'></i>Team Account</a></ul>"
+          },
+          {
+            "tags": ["list", "badges", "icons"],
+            "explanation": [
+              "Add badges to any list group item to show unread counts, activity, and more."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered list-hoverable group-col'><a class='list-item'><span><i class='bi-bell'></i>Profile</span><span class='badge badge-solid-primary float-right'>New</span></a><a class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></a><a class='list-item'><i class='bi-people'></i>Team Account<span class='badge badge-solid-primary rounded-full float-right'>99+</span></a></ul>"
+          },
+          {
+            "tags": ["list", "invoice"],
+            "explanation": [
+              "A simple list group example with a highlighted footer."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><li class='list-item'><p>Payment to Front<span class='float-right'>$264.00</span></p><hr class='my-2' /><p>Tax fee<span class='float-right'>$52.8</span></p></li><li class='list-item bg-secondary'>Amount paid<span class='float-right'>$316.8</span></li></ul>"
+          }
+        ]
+      },
+
+      "table": {
+        "tags": [
+          "table",
+          "bordered",
+          "striped",
+          "hoverable",
+          "pagination",
+          "selection",
+          "actions",
+          "paginate"
+        ],
+        "url": "https://perfectui.netlify.app/docs/table",
+        "title": "Table",
+        "description": "Documentation and examples of tables using Perfect UI.",
+        "examples": [
+          {
+            "tags": ["table", "basic", "responsive"],
+            "explanation": [
+              "Using the most basic table markup, here's how the tables look. All the examples are responsive - the tables allow them to be scrolled horizontally with ease.",
+              "To create a table, simply add the `.table` class.",
+              "To make your table responsive, simply add `.table-responsive` to its parent."
+            ],
+            "code": "<table class='table'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "bordered"],
+            "explanation": [
+              "Add border on all sides of the table and cells.",
+              "To create a bordered table, simply add the `.table-bordered` class."
+            ],
+            "code": "<table class='table table-bordered'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "striped"],
+            "explanation": [
+              "Add zebra-striping to any table row.",
+              "To create a striped table, simply add the `.table-striped` class."
+            ],
+            "code": "<table class='table table-striped'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "hoverable"],
+            "explanation": [
+              "To create a hoverable table, simply add the `.table-hoverable` class."
+            ],
+            "code": "<table class='table table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "striped", "hoverable"],
+            "explanation": [
+              "These hoverable rows can also be combined with the striped variant."
+            ],
+            "code": "<table class='table table-striped table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "borderless"],
+            "explanation": [
+              "A table without borders.",
+              "To create a borderless table, simply add the `.table-borderless` class."
+            ],
+            "code": "<table class='table table-borderless'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "headless"],
+            "explanation": [
+              "A table can render without a table header if no `<thead>` is supplied."
+            ],
+            "code": "<table class='table'><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "selection", "checkbox"],
+            "explanation": [
+              "Rows can be selectable by making first column as a selectable column.",
+              "Simply add a `checkbox` in the first column."
+            ],
+            "code": "<table class='table'><thead><tr><th><input type='checkbox' class='checkbox align-middle'></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": ["table", "search", "input", "selection", "checkbox"],
+            "explanation": [
+              "Search is used for making dropdown items searchable."
+            ],
+            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><inputtype='text'class='input'placeholder='Seach for items'/></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+          },
+          {
+            "tags": [
+              "table",
+              "pagination",
+              "paginate",
+              "search",
+              "input",
+              "selection",
+              "checkbox"
+            ],
+            "explanation": ["Example with pagination using Lists."],
+            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><input type='text' class='input' placeholder='Seach for items' /></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody><tfoot><tr><td colspan='5'><ul class='list list-hoverable unmarker group-row'><a class='list-item'><i class='bi-chevron-left'></i></a><a class='list-item active'>1</a><a class='list-item'>2</a><a class='list-item'>3</a><a class='list-item'><i class='bi-chevron-right'></i></a></ul></td></tr></tfoot></table>"
+          }
+        ]
+      },
+
+      "timeline": {
+        "tags": [
+          "timeline",
+          "checkpoint",
+          "chronological",
+          "history",
+          "events",
+          "sequence",
+          "sequential",
+          "time"
+        ],
+        "url": "https://perfectui.netlify.app/docs/timeline",
+        "title": "Timeline",
+        "description": "The timeline component is designed to display events in chronological order, ideal for showcasing history, project milestones, or event sequences.",
+        "examples": [
+          {
+            "tags": ["timeline", "basic", "checkpoint", "icon"],
+            "explanation": [
+              "The timeline component has three main classes, `.timeline` , `.checkpoint` and `.checkpoint-icon`.",
+              "- `.timeline` : Create a timeline. One timeline has multiple checkpoints.",
+              "- `.checkpoint` : Create a checkpoint.",
+              "- `.checkpoint-icon` : Define the checkpoint icon.",
+              "Attention needed: Everything inside the  `.checkpoint`  element that do not have the  `.checkpoint-icon`  class will be consider a  `content`."
+            ],
+            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint --><figcaption class='checkpoint checkpoint-link-error'><!-- checkpoint-icon --><i class='checkpoint-icon bi-exclamation-circle-fill'></i><!-- checkpoint content --><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p></article></figcaption></figure>"
+          },
+          {
+            "tags": [
+              "timeline",
+              "checkpoint",
+              "types",
+              "solid",
+              "outline",
+              "link",
+              "white",
+              "black"
+            ],
+            "explanation": [
+              "We provide differents checkpoints styles, such as `solid` , `outline` , `link` , `white` and `black`.",
+              "You can change the checkpoint style using differents classes in the `.checkpoint` element."
+            ],
+            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint link --><figcaption class='checkpoint checkpoint-link-secondary'><i class='checkpoint-icon bi-dot !text-4xl'></i><article><h4 class='font-bold'>Take a break ⛳️</h4><p class='text-secondary'>Just chill for now... 😉</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint black --><figcaption class='checkpoint checkpoint-black'><i class='checkpoint-icon bi-bookmark-fill'></i><article><h4 class='font-bold'>Feature fixed as a priority</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption></figure>"
+          },
+          {
+            "tags": ["timeline", "checkpoint", "solid"],
+            "explanation": [
+              "To create a solid checkpoint, simply use the `.checkpoint-solid-[variant]` classes."
+            ],
+            "code": "<figure class='timeline'><figcaption class='checkpoint checkpoint-solid-primary'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-solid-error'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-solid-warn'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption></figure>"
+          },
+          {
+            "tags": ["timeline", "checkpoint", "outline"],
+            "explanation": [
+              "To create a outline checkpoint, simply use the `.checkpoint-outline-[variant]` classes."
+            ],
+            "code": "<figure class='timeline'><figcaption class='checkpoint checkpoint-outline-primary'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-outline-success'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-outline-warn'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption></figure>"
+          },
+          {
+            "tags": ["timeline", "checkpoint", "link"],
+            "explanation": [
+              "To create a link checkpoint, simply use the `.checkpoint-link-[variant]` classes."
+            ],
+            "code": "<figure class='timeline'><figcaption class='checkpoint checkpoint-link-primary'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-link-success'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-link-error'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-link-warn'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption></figure>"
+          },
+          {
+            "tags": ["timeline", "checkpoint", "white", "black"],
+            "explanation": [
+              "To create a white or black checkpoint, simply use the `.checkpoint-white` or `.checkpoint-black` classes."
+            ],
+            "code": "<figure class='timeline'><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption><figcaption class='checkpoint checkpoint-black'><i class='checkpoint-icon bi-person-fill'></i><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4></figcaption></figure>"
+          },
+          {
+            "tags": [
+              "timeline",
+              "checkpoint",
+              "horizontal",
+              "layout group",
+              "group row"
+            ],
+            "explanation": [
+              "To create horizontal timelines, simply add the `.group-row` class in the `.timeline` parent."
+            ],
+            "code": "<!-- timeline --><figure class='timeline group-row min-w-[700px]'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
+          },
+          {
+            "tags": [
+              "timeline",
+              "checkpoint",
+              "responsive",
+              "layout group",
+              "group responsive"
+            ],
+            "explanation": [
+              "Use Layout Group to create responsible timelines.",
+              "Simply add the `.group-responsive` class in the `.timeline` parent."
+            ],
+            "code": "<!-- timeline --><figure class='timeline group-responsive'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
+          }
+        ]
+      },
+
+      "tooltip": {
+        "tags": ["tooltip", "floating", "label", "tip", "hint"],
+        "url": "https://perfectui.netlify.app/docs/tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip is a floating, non-actionable label used to explain a user interface element or feature.",
+        "requireJavascript": true,
+        "examples": [
+          {
+            "tags": ["tooltip", "hint", "basic"],
+            "explanation": [
+              "Tooltip are meant to be exactly that, a hint or tip on what a tool or other interaction does. They are meant to clarify or help you use the content that they hover over, not add additional content:",
+              "To create a tooltip, simply add the `.tooltip` class.",
+              "Provide the tooltip text through the `tooltip` attribute.",
+              "Attention needed: The  `.tooltip`  class uses pseudo elements  `::before`  and  `::after`  to works. Make sure you use it with an element that does not use pseudo classes as well."
+            ],
+            "code": "<button class='btn btn-white tooltip' tooltip='More details here'> Tooltip <i class='bi-question-circle'></i></button>"
+          },
+          {
+            "tags": ["tooltip", "hint", "directions"],
+            "explanation": [
+              "The tooltip has the top direction by default, but you can also use `.tooltip-right` , `.tooltip-left` and `.tooltip-bottom` directions."
+            ],
+            "code": "<div class='grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit'> <button class='tooltip btn btn-white rounded-full col-start-2 w-10 !px-2' tooltip='Tooltip on top' > <i class='bi-chevron-up'></i> </button> <button class='tooltip tooltip-left btn btn-white rounded-full col-start-1 w-10 !px-2' tooltip='Tooltip on left' > <i class='bi-chevron-left'></i> </button> <button class='tooltip tooltip-right btn btn-white rounded-full col-start-3 w-10 !px-2' tooltip='Tooltip on right' > <i class='bi-chevron-right'></i> </button> <button class='tooltip tooltip-bottom btn btn-white rounded-full col-start-2 w-10 !px-2' tooltip='Tooltip on bottom' > <i class='bi-chevron-down'></i> </button> </div>"
+          },
+          {
+            "tags": ["tooltip", "hint", "white", "black"],
+            "explanation": [
+              "The tooltip has `.tooltip-white` class by default, but if you want use the black style, simply use the `.btn-black` class."
+            ],
+            "code": "<div class='flex flex-col gap-2 w-fit'> <button class='btn btn-white tooltip tooltip-right' tooltip='More details here' > White Tooltip </button> <button class='btn btn-white tooltip tooltip-black tooltip-right' tooltip='More details here' > Black Tooltip </button> </div>"
+          },
+          {
+            "tags": ["tooltip", "hint", "simple usage"],
+            "explanation": [
+              "Tooltip are typically only visible on hover, for that reason if you need to be able to read the content while interacting with other parts of the page then a tooltip will not work."
+            ],
+            "code": "<div class='card'><article class='card-content'><ul class='list unmarker'><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Christopher Gonçalves</h4><small class='text-secondary text-xs'>christopher@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Amanda Ketellyn</h4><small class='text-secondary text-xs'>amanda@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li></ul></article><hr><footer class='card-content !px-8'>The public share <ahref='#'class='text-theme'>link settings</a><span class='tooltip'tooltip='The public share link allows people to view the project without giving access to full collaboration features.'><i class='bi-question-circle'></i></span></footer></div>"
+          }
+        ]
+      }
+    }
+  }
+}

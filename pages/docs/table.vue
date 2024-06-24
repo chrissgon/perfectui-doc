@@ -72,8 +72,6 @@
         Hoverable
       </template>
 
-      <p>Add zebra-striping to any table row.</p>
-
       <p>
         To create a hoverable table, simply add the
         <AtomToken>.table-hoverable</AtomToken> class.

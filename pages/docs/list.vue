@@ -15,7 +15,7 @@
 
     <MoleculeDocsContent>
       <template #title>
-        Setting the list style type
+        Setting the list type
       </template>
 
       <p>
