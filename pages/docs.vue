@@ -138,7 +138,7 @@ function showAssistant(): void {
 
   setTimeout(() => {
     focusInput(".OrganismAssistantChatGPT .OrganismSearchCardInput");
-  }, 200);
+  }, 0);
 }
 function hideAssistant(): void {
   assistantIsVisible.value = false;
@@ -150,7 +150,7 @@ function showSearch(): void {
 
   setTimeout(() => {
     focusInput(".OrganismAlgoliaSearch .OrganismSearchCardInput");
-  }, 200);
+  }, 0);
 }
 function hideSearch(): void {
   searchIsVisible.value = false;
