@@ -1,7 +1,7 @@
 <template>
   <dialog
-    @click.self="reset"
     class="fixed top-0 left-0 w-full h-screen z-30 bg-search flex justify-center items-ceter p-4"
+    @click.self="reset"
   >
     <div
       class="OrganismSearchCard card [html:not(.dark)_&]:!bg-white bg-tertiary w-full md:min-w-[700px] lg:min-w-[900px] max-w-[900px] h-fit max-h-full sm:max-h-[800px] !overflow-y-auto sm:mt-24"
@@ -9,7 +9,10 @@
       <label
         class="bg-secondary [html:not(.dark)_&]:!bg-white p-2 flex items-center sticky top-0 z-10"
       >
-        <i class="bi-chevron-left btn" @click="close"></i>
+        <i
+          class="bi-chevron-left btn"
+          @click="close"
+        ></i>
         <input
           v-model="doubt"
           :disabled="loading"

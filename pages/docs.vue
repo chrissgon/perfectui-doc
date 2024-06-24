@@ -79,15 +79,15 @@
 
     <OrganismAssistantChatGPT
       v-show="assistantIsVisible"
-      @close="hideAssistant"
-      @click.self="hideAssistant"
+      @close="hideAll"
+      @click.self="hideAll"
     />
     <!-- TODO -->
     <!-- implements algolia search -->
     <OrganismAlgoliaSearch
       v-show="searchIsVisible"
-      @close="hideSearch"
-      @click.self="hideSearch"
+      @close="hideAll"
+      @click.self="hideAll"
     />
   </section>
 </template>
@@ -148,17 +148,18 @@ function hideSearch(): void {
   searchIsVisible.value = false;
   document.documentElement.style.overflow = "auto";
 }
+function hideAll():void{
+  closeNav()
+  hideAssistant()
+  hideSearch()
+}
 
 // setup
 init();
 if (router.name === "docs") {
   navigateTo("/docs/installation");
 }
-onBeforeRouteUpdate(()=>{
-  closeNav(),
-  hideAssistant()
-  hideSearch()
-});
+onBeforeRouteUpdate(hideAll);
 </script>
 
 <style scoped>

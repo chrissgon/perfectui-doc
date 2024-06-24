@@ -17,11 +17,13 @@
         >
           <article class="card-content !flex gap-2 items-center !py-2">
             <i
-              class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-slate-600 !p-[5px] !px-2 rounded-md mr-2"
+              class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-slate-700 !p-[5px] !px-2 rounded-md mr-2"
             ></i>
 
             <div class="w-full overflow-hidden whitespace-nowrap text-ellipsis">
-              <p class="badge badge-solid-primary mb-1">{{ item.title }}</p>
+              <p class="badge badge-solid-primary mb-1">
+                {{ item.title }}
+              </p>
 
               <p
                 class="text-xs w-full overflow-hidden whitespace-nowrap text-ellipsis"
@@ -35,10 +37,22 @@
         </NuxtLink>
       </div>
 
-      <p v-if="!list.length" class="text-center text-secondary">
+      <p
+        v-if="!list.length"
+        class="text-center text-secondary"
+      >
         No results found
       </p>
     </article>
+
+    <hr />
+    <a
+      href="https://www.algolia.com/developers/?utm_source=perfectui&utm_medium=referral&utm_content=powered_by&utm_campaign=docsearch"
+      target="_blank"
+      class="card-header flex items-center justify-end gap-2 text-secondary text-xs !bg-transparent"
+    >
+      Search by <AtomIconAlgolia />
+    </a>
   </OrganismSearchCard>
 </template>
 
