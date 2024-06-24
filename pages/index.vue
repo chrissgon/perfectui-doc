@@ -28,7 +28,7 @@
           applications, with the aim of being lightweight and customizable.
         </p>
 
-        <div class="flex flex-wrap gap-5">
+        <div class="flex flex-wrap justify-center gap-5">
           <NuxtLink
             to="/docs/installation"
             class="btn btn-solid-primary flex-1"

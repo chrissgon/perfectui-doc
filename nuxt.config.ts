@@ -1,7 +1,7 @@
 import pkg from "./package.json";
 
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/algolia"],
 
   devtools: {
     enabled: false,

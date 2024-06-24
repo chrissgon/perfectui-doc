@@ -84,11 +84,11 @@
     />
     <!-- TODO -->
     <!-- implements algolia search -->
-    <!-- <OrganismAlgolia
+    <OrganismAlgoliaSearch
       v-show="searchIsVisible"
       @close="hideSearch"
       @click.self="hideSearch"
-    /> -->
+    />
   </section>
 </template>
 

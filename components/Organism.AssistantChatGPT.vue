@@ -2,9 +2,10 @@
   <OrganismSearchCard
     :loading="loading || error !== null"
     class="OrganismAssistantChatGPT"
+    chat
     @close="reset"
     @click.self="reset"
-    @search="search"
+    @message="search"
   >
     <article class="flex flex-col gap-4 p-4 text">
       <!-- error -->
@@ -126,6 +127,7 @@ Marked.setOptions({
 
 // methods
 function init(): void {
+  if(!process.client) return
   if (!runtime.public.SEARCH_ENDPOINT) return;
 
   reset();
