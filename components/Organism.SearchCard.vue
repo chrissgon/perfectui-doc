@@ -9,7 +9,7 @@
       <label
         class="bg-secondary [html:not(.dark)_&]:!bg-white p-2 flex items-center sticky top-0 z-10"
       >
-        <i class="bi-chevron-left btn" @click="emit('close')"></i>
+        <i class="bi-chevron-left btn" @click="close"></i>
         <input
           v-model="doubt"
           :disabled="loading"
@@ -57,6 +57,10 @@ function message(): void {
 function search(): void {
   emit("search", doubt.value);
 }
+function close(): void {
+  emit("close");
+  reset();
+}
 function reset(): void {
   doubt.value = "";
 }
@@ -68,6 +72,9 @@ interface IEmits {
   (e: "close"): void;
 }
 const emit = defineEmits<IEmits>();
+
+// expose
+defineExpose({ reset });
 </script>
 
 <style scoped>

@@ -154,7 +154,11 @@ init();
 if (router.name === "docs") {
   navigateTo("/docs/installation");
 }
-onBeforeRouteUpdate(closeNav);
+onBeforeRouteUpdate(()=>{
+  closeNav(),
+  hideAssistant()
+  hideSearch()
+});
 </script>
 
 <style scoped>

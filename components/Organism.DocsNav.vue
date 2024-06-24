@@ -1,7 +1,6 @@
 <template>
   <nav>
     <label
-      disabled
       class="field-group mb-6"
       @click="emit('search')"
     >
@@ -11,6 +10,7 @@
           type="text"
           class="input"
           placeholder="Quick search"
+          readonly
         />
         <span class="text- text-secondary font-medium">Ctrl K</span>
       </div>
