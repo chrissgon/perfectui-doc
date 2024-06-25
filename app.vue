@@ -92,7 +92,12 @@ input[type="color"]::-webkit-color-swatch {
   left: 0;
   top: 0;
   background-image: var(--backgroundGuideline);
+  mask-image: linear-gradient(0deg, transparent, black, black, transparent);
+}
+
+.bg-guideline-download{
   mask-image: linear-gradient(35deg, transparent, black, black, transparent);
+
 }
 
 .input {

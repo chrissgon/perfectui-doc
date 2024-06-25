@@ -930,6 +930,22 @@
           }
         ]
       }
+    },
+
+    "forms": {
+      "doc": {
+        "tags": [],
+        "url": "https://perfectui.netlify.app/docs/",
+        "title": "",
+        "description": "",
+        "examples": [
+          {
+            "tags": [],
+            "explanation": [],
+            "code": [""]
+          }
+        ]
+      }
     }
   }
 }

@@ -111,10 +111,11 @@ const getLinkNextPage = computed<string>(() => {
 });
 
 // data
+const route = useRoute()
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
 const router = useRoute();
-const assistantIsVisible = ref<boolean>(false);
+const assistantIsVisible = ref<boolean>(!!route.query.assistant);
 const searchIsVisible = ref<boolean>(false);
 
 // methods
