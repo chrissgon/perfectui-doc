@@ -905,28 +905,28 @@
               "Provide the tooltip text through the `tooltip` attribute.",
               "Attention needed: The  `.tooltip`  class uses pseudo elements  `::before`  and  `::after`  to works. Make sure you use it with an element that does not use pseudo classes as well."
             ],
-            "code": "<button class='btn btn-white tooltip' tooltip='More details here'> Tooltip <i class='bi-question-circle'></i></button>"
+            "code": "<button class='btn btn-white tooltip' data-tooltip='More details here'> Tooltip <i class='bi-question-circle'></i></button>"
           },
           {
             "tags": ["tooltip", "hint", "directions"],
             "explanation": [
               "The tooltip has the top direction by default, but you can also use `.tooltip-right` , `.tooltip-left` and `.tooltip-bottom` directions."
             ],
-            "code": "<div class='grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit'> <button class='tooltip btn btn-white rounded-full col-start-2 w-10 !px-2' tooltip='Tooltip on top' > <i class='bi-chevron-up'></i> </button> <button class='tooltip tooltip-left btn btn-white rounded-full col-start-1 w-10 !px-2' tooltip='Tooltip on left' > <i class='bi-chevron-left'></i> </button> <button class='tooltip tooltip-right btn btn-white rounded-full col-start-3 w-10 !px-2' tooltip='Tooltip on right' > <i class='bi-chevron-right'></i> </button> <button class='tooltip tooltip-bottom btn btn-white rounded-full col-start-2 w-10 !px-2' tooltip='Tooltip on bottom' > <i class='bi-chevron-down'></i> </button> </div>"
+            "code": "<div class='grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit'> <button class='tooltip btn btn-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on top' > <i class='bi-chevron-up'></i> </button> <button class='tooltip tooltip-left btn btn-white rounded-full col-start-1 w-10 !px-2' data-tooltip='Tooltip on left' > <i class='bi-chevron-left'></i> </button> <button class='tooltip tooltip-right btn btn-white rounded-full col-start-3 w-10 !px-2' data-tooltip='Tooltip on right' > <i class='bi-chevron-right'></i> </button> <button class='tooltip tooltip-bottom btn btn-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on bottom' > <i class='bi-chevron-down'></i> </button> </div>"
           },
           {
             "tags": ["tooltip", "hint", "white", "black"],
             "explanation": [
               "The tooltip has `.tooltip-white` class by default, but if you want use the black style, simply use the `.btn-black` class."
             ],
-            "code": "<div class='flex flex-col gap-2 w-fit'> <button class='btn btn-white tooltip tooltip-right' tooltip='More details here' > White Tooltip </button> <button class='btn btn-white tooltip tooltip-black tooltip-right' tooltip='More details here' > Black Tooltip </button> </div>"
+            "code": "<div class='flex flex-col gap-2 w-fit'> <button class='btn btn-white tooltip tooltip-right' data-tooltip='More details here' > White Tooltip </button> <button class='btn btn-white tooltip tooltip-black tooltip-right' data-tooltip='More details here' > Black Tooltip </button> </div>"
           },
           {
             "tags": ["tooltip", "hint", "simple usage"],
             "explanation": [
               "Tooltip are typically only visible on hover, for that reason if you need to be able to read the content while interacting with other parts of the page then a tooltip will not work."
             ],
-            "code": "<div class='card'><article class='card-content'><ul class='list unmarker'><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Christopher Gonçalves</h4><small class='text-secondary text-xs'>christopher@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Amanda Ketellyn</h4><small class='text-secondary text-xs'>amanda@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li></ul></article><hr><footer class='card-content !px-8'>The public share <ahref='#'class='text-theme'>link settings</a><span class='tooltip'tooltip='The public share link allows people to view the project without giving access to full collaboration features.'><i class='bi-question-circle'></i></span></footer></div>"
+            "code": "<div class='card'><article class='card-content'><ul class='list unmarker'><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Christopher Gonçalves</h4><small class='text-secondary text-xs'>christopher@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li><li class='list-item !flex justify-between'><header><h4 class='text-base font-medium'>Amanda Ketellyn</h4><small class='text-secondary text-xs'>amanda@gmail.com</small></header><button class='btn'disabled>Guest <i class='bi-chevron-down'></i></button></li></ul></article><hr><footer class='card-content !px-8'>The public share <ahref='#'class='text-theme'>link settings</a><span class='tooltip'data-tooltip='The public share link allows people to view the project without giving access to full collaboration features.'><i class='bi-question-circle'></i></span></footer></div>"
           }
         ]
       }
@@ -952,28 +952,28 @@
             "explanation": [
               "You can use the `.field-group` class to create complex forms with states, buttons, icons and others."
             ],
-            "code": "<form class='flex flex-col gap-3'> <!-- name --> <label class='field-group field-group-error' label='Full Name' message='Field required' > <select class='input !max-w-fit'> <option>Mr.</option> <option>Ms.</option> <option>Miss.</option> </select> <input class='input' placeholder='First Name' /> <input class='input' placeholder='Surname Name' /> </label> <!-- birth --> <label class='field-group' label='Birth' message='Optional'> <i class='addon bi-calendar-week'></i> <input class='input' type='date' /> </label> <!-- email --> <label class='field-group group-row field-group-success' label='Email' message='Code sended' > <i class='addon bi-check-circle-fill text-success'></i> <input type='text' class='input' value='email.example' /> <span class='addon'>@</span> <select class='input'> <option>gmail.com</option> <option>outlook.com</option> <option>hotmail.com</option> </select> <button class='group-item btn btn-solid-primary'>Send Code</button> </label></form>"
+            "code": "<form class='flex flex-col gap-3'> <!-- name --> <label class='field-group field-group-error' data-label='Full Name' data-message='Field required' > <select class='input !max-w-fit'> <option>Mr.</option> <option>Ms.</option> <option>Miss.</option> </select> <input class='input' placeholder='First Name' /> <input class='input' placeholder='Surname Name' /> </label> <!-- birth --> <label class='field-group' data-label='Birth' data-message='Optional'> <i class='addon bi-calendar-week'></i> <input class='input' type='date' /> </label> <!-- email --> <label class='field-group group-row field-group-success' data-label='Email' data-message='Code sended' > <i class='addon bi-check-circle-fill text-success'></i> <input type='text' class='input' value='email.example' /> <span class='addon'>@</span> <select class='input'> <option>gmail.com</option> <option>outlook.com</option> <option>hotmail.com</option> </select> <button class='group-item btn btn-solid-primary'>Send Code</button> </label></form>"
           },
           {
             "tags": ["field group", "label", "message"],
             "explanation": [
               "To create a field with label and message, simply add `label` and `message` properties."
             ],
-            "code": "<label class='field-group' label='Label' message='Some message'><input class='input'></label>"
+            "code": "<label class='field-group' data-label='Label' data-message='Some message'><input class='input'></label>"
           },
           {
             "tags": ["field group", "addon", "label", "message"],
             "explanation": [
               "To extend a field with a text or icon, simply add `.addon` class inside `.field-group` element."
             ],
-            "code": "<label class='field-group' label='Price' message='Required'><i class='addon bi-bank'></i><input class='input' type='number'><span class='addon'>R$</span></label>"
+            "code": "<label class='field-group' data-label='Price' data-message='Required'><i class='addon bi-bank'></i><input class='input' type='number'><span class='addon'>R$</span></label>"
           },
           {
             "tags": ["field group", "states", "label", "message"],
             "explanation": [
               "To set a field state, simply add `.field-group-success`, `.field-group-warn` or `.field-group-error` class in the `.field-group` element."
             ],
-            "code": "<form class='flex flex-col gap-3'> <!-- default --> <label class='field-group' label='Label' message='Some message'> <input class='input' placeholder='Default' /> </label> <!-- success --> <label class='field-group field-group-success' label='Label' message='Operation successfully' > <input class='input' placeholder='Success' /> </label> <!-- warning --> <label class='field-group field-group-warn' label='Label' message='Fill with attention' > <input class='input' placeholder='Warning' /> </label> <!-- error --> <label class='field-group field-group-error' label='Label' message='This field is invalid' > <input class='input' placeholder='Error' /> </label></form>"
+            "code": "<form class='flex flex-col gap-3'> <!-- default --> <label class='field-group' data-label='Label' data-message='Some message'> <input class='input' placeholder='Default' /> </label> <!-- success --> <label class='field-group field-group-success' data-label='Label' data-message='Operation successfully' > <input class='input' placeholder='Success' /> </label> <!-- warning --> <label class='field-group field-group-warn' data-label='Label' data-message='Fill with attention' > <input class='input' placeholder='Warning' /> </label> <!-- error --> <label class='field-group field-group-error' data-label='Label' data-message='This field is invalid' > <input class='input' placeholder='Error' /> </label></form>"
           },
           {
             "tags": [
@@ -989,7 +989,7 @@
             "explanation": [
               "To set a field state, simply add `.field-group-success`, `.field-group-warn` or `.field-group-error` class in the `.field-group` element."
             ],
-            "code": "<form class='flex flex-col gap-3'> <!-- social --> <label class='field-group' label='Social Profile' message='Optional'> <select class='input !max-w-fit'> <option>Linkedin</option> <option>Behance</option> <option>Github</option> </select> <input type='text' class='input' placeholder='https://www.example.com/your-profile' /> </label> <!-- range dates --> <label class='field-group' label='Between Dates'> <input type='date' class='input' /> <span class='addon'>to</span> <input type='date' class='input' /> </label> <!-- enable option --> <label class='field-group' label='Enable Option'> <span class='addon'> <input type='checkbox' class='switch' checked /> </span> <input type='text' class='input' placeholder='You could control this field by switch' /> </label> <label class='field-group' label='About me'> <textarea class='input' placeholder='Write a short description'></textarea> </label></form>"
+            "code": "<form class='flex flex-col gap-3'> <!-- social --> <label class='field-group' data-label='Social Profile' data-message='Optional'> <select class='input !max-w-fit'> <option>Linkedin</option> <option>Behance</option> <option>Github</option> </select> <input type='text' class='input' placeholder='https://www.example.com/your-profile' /> </label> <!-- range dates --> <label class='field-group' data-label='Between Dates'> <input type='date' class='input' /> <span class='addon'>to</span> <input type='date' class='input' /> </label> <!-- enable option --> <label class='field-group' data-label='Enable Option'> <span class='addon'> <input type='checkbox' class='switch' checked /> </span> <input type='text' class='input' placeholder='You could control this field by switch' /> </label> <label class='field-group' data-label='About me'> <textarea class='input' placeholder='Write a short description'></textarea> </label></form>"
           },
           {
             "tags": ["field group", "buttons", "newsletter"],
@@ -1004,7 +1004,7 @@
             "explanation": [
               "Make fields look inactive by adding the `disabled` boolean attribute to any `.field-group` or `.input` element."
             ],
-            "code": "<form class='flex flex-col gap-3'> <!-- field group disabled --> <label class='field-group' label='Payment method' message='Not Allowed' disabled > <span class='addon'>Credit Card</span> <input type='text' class='input' placeholder='Number' > <input type='month' class='input' placeholder='Expiration Date' > <input type='text' class='input' placeholder='CCV' > </label> <!-- input disabled --> <label class='field-group' label='Country/City' > <select class='input'> <option>Brazil</option> <option>Ireland</option> </select> <select class='input' disabled > <option>Select city by country</option> </select> </label></form>"
+            "code": "<form class='flex flex-col gap-3'> <!-- field group disabled --> <label class='field-group' data-label='Payment method' data-message='Not Allowed' disabled > <span class='addon'>Credit Card</span> <input type='text' class='input' placeholder='Number' > <input type='month' class='input' placeholder='Expiration Date' > <input type='text' class='input' placeholder='CCV' > </label> <!-- input disabled --> <label class='field-group' data-label='Country/City' > <select class='input'> <option>Brazil</option> <option>Ireland</option> </select> <select class='input' disabled > <option>Select city by country</option> </select> </label></form>"
           }
         ]
       },
@@ -1054,7 +1054,7 @@
             "explanation": [
               "You can add multiple `.input` inside a `.input-group`."
             ],
-            "code": "<label class='field-group field-group-success' message='Verified'><div class='input input-group'><i class='bi-envelope'></i><input type='text' class='input' placeholder='your_email' /><span>@</span><select class='input'><option>gmail.com</option><option>outlook.com</option><option>hotmail.com</option></select></div></label>"
+            "code": "<label class='field-group field-group-success' data-message='Verified'><div class='input input-group'><i class='bi-envelope'></i><input type='text' class='input' placeholder='your_email' /><span>@</span><select class='input'><option>gmail.com</option><option>outlook.com</option><option>hotmail.com</option></select></div></label>"
           },
           {
             "tags": ["input group", "input", "buttons", "task", "text"],
@@ -1097,7 +1097,7 @@
             "explanation": [
               "You can use Field Group with `textarea` to create complex elements."
             ],
-            "code": "<label class='field-group field-group-error' label='Observation' message='Required'> <textarea class='input' placeholder='Let your observation' ></textarea> <span class='addon bi-pencil-fill'></span></label>"
+            "code": "<label class='field-group field-group-error' data-label='Observation' data-message='Required'> <textarea class='input' placeholder='Let your observation' ></textarea> <span class='addon bi-pencil-fill'></span></label>"
           },
           {
             "tags": [
@@ -1113,7 +1113,7 @@
             "explanation": [
               "A textarea example with copy button, character counter, label and message."
             ],
-            "code": "<label class='field-group' label='Leave your question' message='We will get back to you soon.'> <div class='input input-group relative'> <textarea type='text' id='message' class='input w-full h-full' placeholder='Say hi, we will be happy to chat with you' ></textarea> <i class='btn bi bi-clipboard'></i> <span id='counter' class='badge absolute -top-3 -right-3'>0/100</span> </div> <span class='addon bi-pencil-fill'></span></label>"
+            "code": "<label class='field-group' data-label='Leave your question' data-message='We will get back to you soon.'> <div class='input input-group relative'> <textarea type='text' id='message' class='input w-full h-full' placeholder='Say hi, we will be happy to chat with you' ></textarea> <i class='btn bi bi-clipboard'></i> <span id='counter' class='badge absolute -top-3 -right-3'>0/100</span> </div> <span class='addon bi-pencil-fill'></span></label>"
           }
         ]
       },
@@ -1143,7 +1143,7 @@
             "explanation": [
               "You can use Field Group with `select` to create complex elements."
             ],
-            "code": "<label class='field-group field-group-error' label='Currency' message='Choose a currency'> <select class='input'> <option value='#' disabled selected>Select your currency</option> <option value='#'>Euro</option> <option value='#'>Dollar</option> <option value='#'>Pounds</option> </select> <span class='addon bi-bank'></span></label>"
+            "code": "<label class='field-group field-group-error' data-label='Currency' data-message='Choose a currency'> <select class='input'> <option value='#' disabled selected>Select your currency</option> <option value='#'>Euro</option> <option value='#'>Dollar</option> <option value='#'>Pounds</option> </select> <span class='addon bi-bank'></span></label>"
           }
         ]
       },
