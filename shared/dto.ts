@@ -1,4 +1,4 @@
-import type { IAlgoliaList } from "./interfaces";
+import type { IAlgoliaList } from ".";
 
 export function AlgoliaListDTO(primitives: any[]): IAlgoliaList {
   const list: IAlgoliaList = [];

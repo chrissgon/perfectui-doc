@@ -159,7 +159,7 @@ const CODE_VIEW_SWITCH_FIELD_GROUP = `<div class="flex flex-col gap-2">
       Checked switch
     </div>
     <span class="addon">
-      <input type="checkbox" class="switch" />
+      <input type="checkbox" class="switch" checked />
     </span>
   </label>
 </div>
@@ -167,7 +167,7 @@ const CODE_VIEW_SWITCH_FIELD_GROUP = `<div class="flex flex-col gap-2">
 
 const CODE_VIEW_SWITCH_LIST = `<ul class="list unmarker">
   <label class="list-item !flex gap-2">
-    <input type="checkbox" class="switch !h-fit" />
+    <input type="checkbox" class="switch !h-fit" checked />
     <div>
       <p class="font-bold">Delete</p>
       <p class="text-secondary">Notify me when this action happens.</p>
@@ -185,7 +185,7 @@ const CODE_VIEW_SWITCH_LIST = `<ul class="list unmarker">
 
 const CODE_VIEW_SWITCH_LIST_VERTICAL = `<ul class="unmarker sm:w-64 list list-bordered group-col">
   <label class="list-item">
-    <input type="checkbox" class="switch align-middle mr-2" />
+    <input type="checkbox" class="switch align-middle mr-2" checked />
     Christopher Gonçalves
   </label>
   <label class="list-item">
@@ -201,7 +201,7 @@ const CODE_VIEW_SWITCH_LIST_VERTICAL = `<ul class="unmarker sm:w-64 list list-bo
 
 const CODE_VIEW_SWITCH_LIST_HORIZONTAL = `<ul class="unmarker sm:w-64 list list-bordered group-row">
   <label class="list-item !flex gap-2 items-center whitespace-nowrap">
-    <input type="checkbox" class="switch" />
+    <input type="checkbox" class="switch" checked />
     Christopher Gonçalves
   </label>
   <label class="list-item !flex gap-2 items-center whitespace-nowrap">

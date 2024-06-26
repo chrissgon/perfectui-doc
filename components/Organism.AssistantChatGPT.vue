@@ -132,7 +132,17 @@ function init(): void {
 
   reset();
 
-  conn.value = new WebSocket(runtime.public.SEARCH_ENDPOINT);
+  let threadID = localStorage.getItem("assistant:thread")
+
+  if(!threadID){
+    threadID = crypto.randomUUID()
+    localStorage.setItem("assistant:thread", threadID)
+  }
+
+  const params = new URLSearchParams()
+  params.append("id", threadID)
+
+  conn.value = new WebSocket(`${runtime.public.SEARCH_ENDPOINT}?${params.toString()}`);
 
   conn.value.onmessage = processResponse;
   conn.value.onerror = setError;
@@ -236,7 +246,7 @@ init();
   display: block;
   padding: var(--spacingMD);
   padding-right: 40px;
-  font-size: 0.8rem;
+  font-size: 14px;
   cursor: pointer;
 }
 .text pre code[class*="lang"]::after {

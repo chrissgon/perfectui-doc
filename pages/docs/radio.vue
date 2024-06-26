@@ -156,10 +156,10 @@ const CODE_VIEW_RADIO_FIELD_GROUP = `<div class="flex flex-col gap-2">
   </label>
   <label class="field-group">
     <div class="input">
-      Default radio
+      Checked radio
     </div>
     <span class="addon">
-      <input type="radio" class="radio" />
+      <input type="radio" class="radio" checked />
     </span>
   </label>
 </div>

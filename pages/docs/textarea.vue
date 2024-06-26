@@ -104,17 +104,7 @@ const CODE_VIEW_TEXTAREA_USAGE = `<label
     <span id="counter" class="badge absolute -top-3 -right-3">0/100</span>
   </div>
   <span class="addon bi-pencil-fill"></span>
-</label>
-
-<script type="module">
-  const MAX_LENGTH = 100
-
-  document.getElementById("message").addEventListener("keyup", (e) => {
-    document.getElementById("counter").innerHTML =
-      e.target.value.length + "/" + MAX_LENGTH;
-  });
-<\/script>
-`;
+</label>`;
 </script>
 
 <style scoped></style>

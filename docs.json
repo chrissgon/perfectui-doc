@@ -933,16 +933,363 @@
     },
 
     "forms": {
-      "doc": {
-        "tags": [],
-        "url": "https://perfectui.netlify.app/docs/",
-        "title": "",
-        "description": "",
+      "field group": {
+        "tags": [
+          "field group",
+          "fields",
+          "input",
+          "form control",
+          "addon",
+          "label",
+          "message"
+        ],
+        "url": "https://perfectui.netlify.app/docs/field-group",
+        "title": "Field Group",
+        "description": "Easily extend fields by adding text, buttons, icons and more.",
         "examples": [
           {
-            "tags": [],
-            "explanation": [],
-            "code": [""]
+            "tags": ["field group", "complex", "fields", "states", "addon"],
+            "explanation": [
+              "You can use the `.field-group` class to create complex forms with states, buttons, icons and others."
+            ],
+            "code": "<form class='flex flex-col gap-3'> <!-- name --> <label class='field-group field-group-error' label='Full Name' message='Field required' > <select class='input !max-w-fit'> <option>Mr.</option> <option>Ms.</option> <option>Miss.</option> </select> <input class='input' placeholder='First Name' /> <input class='input' placeholder='Surname Name' /> </label> <!-- birth --> <label class='field-group' label='Birth' message='Optional'> <i class='addon bi-calendar-week'></i> <input class='input' type='date' /> </label> <!-- email --> <label class='field-group group-row field-group-success' label='Email' message='Code sended' > <i class='addon bi-check-circle-fill text-success'></i> <input type='text' class='input' value='email.example' /> <span class='addon'>@</span> <select class='input'> <option>gmail.com</option> <option>outlook.com</option> <option>hotmail.com</option> </select> <button class='group-item btn btn-solid-primary'>Send Code</button> </label></form>"
+          },
+          {
+            "tags": ["field group", "label", "message"],
+            "explanation": [
+              "To create a field with label and message, simply add `label` and `message` properties."
+            ],
+            "code": "<label class='field-group' label='Label' message='Some message'><input class='input'></label>"
+          },
+          {
+            "tags": ["field group", "addon", "label", "message"],
+            "explanation": [
+              "To extend a field with a text or icon, simply add `.addon` class inside `.field-group` element."
+            ],
+            "code": "<label class='field-group' label='Price' message='Required'><i class='addon bi-bank'></i><input class='input' type='number'><span class='addon'>R$</span></label>"
+          },
+          {
+            "tags": ["field group", "states", "label", "message"],
+            "explanation": [
+              "To set a field state, simply add `.field-group-success`, `.field-group-warn` or `.field-group-error` class in the `.field-group` element."
+            ],
+            "code": "<form class='flex flex-col gap-3'> <!-- default --> <label class='field-group' label='Label' message='Some message'> <input class='input' placeholder='Default' /> </label> <!-- success --> <label class='field-group field-group-success' label='Label' message='Operation successfully' > <input class='input' placeholder='Success' /> </label> <!-- warning --> <label class='field-group field-group-warn' label='Label' message='Fill with attention' > <input class='input' placeholder='Warning' /> </label> <!-- error --> <label class='field-group field-group-error' label='Label' message='This field is invalid' > <input class='input' placeholder='Error' /> </label></form>"
+          },
+          {
+            "tags": [
+              "field group",
+              "mixed",
+              "label",
+              "message",
+              "addon",
+              "select",
+              "switch",
+              "textarea"
+            ],
+            "explanation": [
+              "To set a field state, simply add `.field-group-success`, `.field-group-warn` or `.field-group-error` class in the `.field-group` element."
+            ],
+            "code": "<form class='flex flex-col gap-3'> <!-- social --> <label class='field-group' label='Social Profile' message='Optional'> <select class='input !max-w-fit'> <option>Linkedin</option> <option>Behance</option> <option>Github</option> </select> <input type='text' class='input' placeholder='https://www.example.com/your-profile' /> </label> <!-- range dates --> <label class='field-group' label='Between Dates'> <input type='date' class='input' /> <span class='addon'>to</span> <input type='date' class='input' /> </label> <!-- enable option --> <label class='field-group' label='Enable Option'> <span class='addon'> <input type='checkbox' class='switch' checked /> </span> <input type='text' class='input' placeholder='You could control this field by switch' /> </label> <label class='field-group' label='About me'> <textarea class='input' placeholder='Write a short description'></textarea> </label></form>"
+          },
+          {
+            "tags": ["field group", "buttons", "newsletter"],
+            "explanation": [
+              "To create a field with action buttons, simply add `.group-row` class in the `.field-group` element.",
+              "After, add a button with `.group-item` class."
+            ],
+            "code": "<div class='card'> <article class='card-content'> <h4 class='text-lg text-center mb-4'> You want to subscribe in our newsletter? </h4> <label class='field-group group-row'> <input type='email' class='input' placeholder='Your email' > <button class='btn btn-solid-primary group-item'>Subscribe</button> </label> </article></div>"
+          },
+          {
+            "tags": ["field group", "disabled"],
+            "explanation": [
+              "Make fields look inactive by adding the `disabled` boolean attribute to any `.field-group` or `.input` element."
+            ],
+            "code": "<form class='flex flex-col gap-3'> <!-- field group disabled --> <label class='field-group' label='Payment method' message='Not Allowed' disabled > <span class='addon'>Credit Card</span> <input type='text' class='input' placeholder='Number' > <input type='month' class='input' placeholder='Expiration Date' > <input type='text' class='input' placeholder='CCV' > </label> <!-- input disabled --> <label class='field-group' label='Country/City' > <select class='input'> <option>Brazil</option> <option>Ireland</option> </select> <select class='input' disabled > <option>Select city by country</option> </select> </label></form>"
+          }
+        ]
+      },
+      "input": {
+        "tags": ["input", "field", "text", "date", "number", "password"],
+        "url": "https://perfectui.netlify.app/docs/input",
+        "title": "Input",
+        "description": "A basic widget for getting the user input is a text field.",
+        "examples": [
+          {
+            "tags": ["input", "basic", "text"],
+            "explanation": [
+              "To create inputs, simply add the `.input` class to the `input` element."
+            ],
+            "code": "<input class='input'>"
+          },
+          {
+            "tags": ["input", "basic", "text", "placeholder"],
+            "explanation": ["Also possible add a placeholder."],
+            "code": "<input class='input' placeholder='This is placeholder'>"
+          },
+          {
+            "tags": ["input", "types"],
+            "explanation": ["The most commonly used input types."],
+            "code": "<form class='flex flex-col gap-3'><label class='field-group'><input class='input' placeholder='Text' /></label><label class='field-group'><input class='input' type='number' placeholder='Number' /></label><label class='field-group'><input class='input' type='email' placeholder='Email' /></label><label class='field-group'><input class='input' type='password' placeholder='Password' /></label><label class='field-group'><input class='input' type='search' placeholder='Search' /></label><label class='field-group'><input class='input' type='week' placeholder='Week' /></label><label class='field-group'><input class='input' type='month' placeholder='Month' /></label><label class='field-group'><input class='input' type='date' placeholder='Date' /></label></form>"
+          }
+        ]
+      },
+      "input group": {
+        "tags": ["input group", "input", "icons"],
+        "url": "https://perfectui.netlify.app/docs/input-group",
+        "title": "Input Group",
+        "description": "Easily extend input by adding text and icons.",
+        "examples": [
+          {
+            "tags": ["input group", "input", "basic", "loading"],
+            "explanation": [
+              "You can extend input with icons or texts.",
+              "To extend inputs, simply add the `.input-group` class to the `.input` element.",
+              "After, add `.input` element inside `.input-group` parent.",
+              "Others elements will be consider texts or icons."
+            ],
+            "code": "<label class='field-group'><div class='input input-group'><i class='bi-person'></i><input type='text' class='input' placeholder='Your name' /><span><svg class='animate-spin h-5 w-5 text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'><circle class='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' stroke-width='4' ></circle><path class='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path></svg></span></div></label>"
+          },
+          {
+            "tags": ["input group", "input", "mixed", "email", "select"],
+            "explanation": [
+              "You can add multiple `.input` inside a `.input-group`."
+            ],
+            "code": "<label class='field-group field-group-success' message='Verified'><div class='input input-group'><i class='bi-envelope'></i><input type='text' class='input' placeholder='your_email' /><span>@</span><select class='input'><option>gmail.com</option><option>outlook.com</option><option>hotmail.com</option></select></div></label>"
+          },
+          {
+            "tags": ["input group", "input", "buttons", "task", "text"],
+            "explanation": [
+              "You can also add buttons inside a `.input-group`."
+            ],
+            "code": "<label class='field-group'><div class='input input-group'><button class='btn btn-link-primary'>New<i class='bi-plus-lg'></i></button><input type='text' class='input' placeholder='Write a task' /><button class='btn btn-link-error'>Delete<i class='bi-trash'></i></button><button class='btn btn-solid-success'>Done<i class='bi-check-lg'></i></button></div></label>"
+          }
+        ]
+      },
+      "textarea": {
+        "tags": ["textarea", "description", "large text", "multiline"],
+        "url": "https://perfectui.netlify.app/docs/textarea",
+        "title": "Textarea",
+        "description": "A textarea is an element on a webpage that you can type into.",
+        "examples": [
+          {
+            "tags": ["textarea", "basic", "input"],
+            "explanation": [
+              "To create textareas, simply add the `.input` class to the `textarea` element."
+            ],
+            "code": "<textarea class='input'></textarea>"
+          },
+          {
+            "tags": ["textarea", "input", "placeholder"],
+            "explanation": [
+              "To create textareas, simply add the `.input` class to the `textarea` element."
+            ],
+            "code": "<textarea class='input' placeholder='This is placeholder'></textarea>"
+          },
+          {
+            "tags": [
+              "textarea",
+              "placeholder",
+              "label",
+              "message",
+              "field group",
+              "addon"
+            ],
+            "explanation": [
+              "You can use Field Group with `textarea` to create complex elements."
+            ],
+            "code": "<label class='field-group field-group-error' label='Observation' message='Required'> <textarea class='input' placeholder='Let your observation' ></textarea> <span class='addon bi-pencil-fill'></span></label>"
+          },
+          {
+            "tags": [
+              "textarea",
+              "placeholder",
+              "label",
+              "message",
+              "field group",
+              "addon",
+              "counter",
+              "button"
+            ],
+            "explanation": [
+              "A textarea example with copy button, character counter, label and message."
+            ],
+            "code": "<label class='field-group' label='Leave your question' message='We will get back to you soon.'> <div class='input input-group relative'> <textarea type='text' id='message' class='input w-full h-full' placeholder='Say hi, we will be happy to chat with you' ></textarea> <i class='btn bi bi-clipboard'></i> <span id='counter' class='badge absolute -top-3 -right-3'>0/100</span> </div> <span class='addon bi-pencil-fill'></span></label>"
+          }
+        ]
+      },
+      "select": {
+        "tags": ["select", "options", "list", "choices", "multiple"],
+        "url": "https://perfectui.netlify.app/docs/select",
+        "title": "Select",
+        "description": "Select allows users to make a single selection or multiple selections from a list of options.",
+        "examples": [
+          {
+            "tags": ["select", "basic", "input", "options"],
+            "explanation": [
+              "To create selects, simply add the `.input` class to the `select` element."
+            ],
+            "code": "<select class='input'><option value='#' disabled selected>Select an option</option><option value='#'>One</option><option value='#'>Two</option><option value='#'>Three</option></select>"
+          },
+          {
+            "tags": [
+              "select",
+              "input",
+              "options",
+              "label",
+              "message",
+              "field group",
+              "addon"
+            ],
+            "explanation": [
+              "You can use Field Group with `select` to create complex elements."
+            ],
+            "code": "<label class='field-group field-group-error' label='Currency' message='Choose a currency'> <select class='input'> <option value='#' disabled selected>Select your currency</option> <option value='#'>Euro</option> <option value='#'>Dollar</option> <option value='#'>Pounds</option> </select> <span class='addon bi-bank'></span></label>"
+          }
+        ]
+      },
+      "checkbox": {
+        "tags": ["checkbox", "selection", "options", "choices"],
+        "url": "https://perfectui.netlify.app/docs/checkbox",
+        "title": "Checkbox",
+        "description": "A checkbox is an input control that allows a user to select one or more options from a number of choices.",
+        "examples": [
+          {
+            "tags": [
+              "checkbox",
+              "basic",
+              "checked",
+              "indeterminate",
+              "disabled"
+            ],
+            "explanation": [
+              "To create checkboxes, simply add the `.checkbox` class to the `input` element."
+            ],
+            "code": "<ul class='list unmarker'><label class='list-item'><input type='checkbox' class='checkbox align-middle' />Default checkbox</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' indeterminate />Indeterminate checkbox</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' checked />Checked checkbox</label><label class='list-item' disabled><input type='checkbox' class='checkbox align-middle' />Disabled checkbox</label></ul>"
+          },
+          {
+            "tags": [
+              "checkbox",
+              "checked",
+              "indeterminate",
+              "disabled",
+              "group",
+              "list"
+            ],
+            "explanation": ["A group of checkboxes elements."],
+            "code": "<div class='flex flex-wrap'><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='checkbox align-middle' />Apple</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' indeterminate />Apple</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' checked />Apple</label><label class='list-item' disabled><input type='checkbox' class='checkbox align-middle' />Apple</label></ul><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='checkbox align-middle' />Pear</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' indeterminate />Pear</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' checked />Pear</label><label class='list-item' disabled><input type='checkbox' class='checkbox align-middle' />Pear</label></ul><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='checkbox align-middle' />Orange</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' indeterminate />Orange</label><label class='list-item'><input type='checkbox' class='checkbox align-middle' checked />Orange</label><label class='list-item' disabled><input type='checkbox' class='checkbox align-middle' />Orange</label></ul></div>"
+          },
+          {
+            "tags": ["checkbox", "field group", "addon"],
+            "explanation": ["You can use checkboxes with Field Group."],
+            "code": "<div class='flex flex-col gap-2'><label class='field-group'><span class='addon'><input type='checkbox' class='checkbox' /></span><div class='input'>Default checkbox</div></label><label class='field-group'><div class='input'>Checked checkbox</div><span class='addon'><input type='checkbox' class='checkbox' checked /></span></label></div>"
+          },
+          {
+            "tags": ["checkbox", "lists", "options"],
+            "explanation": ["You can use checkboxes with Lists."],
+            "code": "<ul class='list unmarker'><label class='list-item !flex gap-2'><input type='checkbox' class='checkbox' checked /><div><p class='font-bold'>Delete</p><p class='text-secondary'>Notify me when this action happens.</p></div></label><label class='list-item !flex gap-2'><input type='checkbox' class='checkbox' /><div><p class='font-bold'>Archive</p><p class='text-secondary'>Notify me when this action happens.</p></div></label></ul>"
+          },
+          {
+            "tags": ["checkbox", "lists", "options"],
+            "explanation": ["You can make the list item appear with checkbox."],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><label class='list-item'><input type='checkbox' class='checkbox align-middle mr-2' checked />Christopher Gonçalves</label><label class='list-item'><input type='checkbox' class='checkbox align-middle mr-2' />Amanda Ketellyn</label><label class='list-item'><input type='checkbox' class='checkbox align-middle mr-2' />Thais Emilly</label></ul>"
+          },
+          {
+            "tags": ["checkbox", "lists", "options", "horizontal"],
+            "explanation": [
+              "You can also make a horizontal list group item appear with checkbox."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-row'><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='checkbox' checked />Christopher Gonçalves</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='checkbox' />Amanda Ketellyn</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='checkbox' />Thais Emilly</label></ul>"
+          }
+        ]
+      },
+      "radio": {
+        "tags": ["radio", "selection", "options", "choices"],
+        "url": "https://perfectui.netlify.app/docs/radio",
+        "title": "Radio",
+        "description": "A radio input allows people to select only one option from a number of choices. Radio is generally displayed in a radio group.",
+        "examples": [
+          {
+            "tags": ["radio", "basic", "checked", "disabled"],
+            "explanation": [
+              "To create radios, simply add the `.radio` class to the `input` element."
+            ],
+            "code": "<ul class='list unmarker'><label class='list-item'><input type='radio' name='radio-basic' class='radio align-middle' />Default radio</label><label class='list-item'><input type='radio' name='radio-basic' class='radio align-middle' checked />Checked radio</label><label class='list-item' disabled><input type='radio' name='radio-basic' class='radio align-middle' />Disabled radio</label></ul>"
+          },
+          {
+            "tags": ["radio", "checked", "disabled", "group", "list"],
+            "explanation": ["A group of radios elements."],
+            "code": "<div class='flex flex-wrap'><ul class='list unmarker'><label class='list-item'><input type='radio' name='radio-apple' class='radio align-middle' />Apple</label><label class='list-item'><input type='radio' name='radio-apple' class='radio align-middle' checked />Apple</label><label class='list-item' disabled><input type='radio' name='radio-apple' class='radio align-middle' />Apple</label></ul><ul class='list unmarker'><label class='list-item'><input type='radio' name='radio-pear' class='radio align-middle' />Pear</label><label class='list-item'><input type='radio' name='radio-pear' class='radio align-middle' checked />Pear</label><label class='list-item' disabled><input type='radio' name='radio-pear' class='radio align-middle' />Pear</label></ul><ul class='list unmarker'><label class='list-item'><input type='radio' name='radio-orange' class='radio align-middle' />Orange</label><label class='list-item'><input type='radio' name='radio-orange' class='radio align-middle' checked />Orange</label><label class='list-item' disabled><input type='radio' name='radio-orange' class='radio align-middle' />Orange</label></ul></div>"
+          },
+          {
+            "tags": ["radio", "field group", "addon"],
+            "explanation": ["You can use radios with Field Group."],
+            "code": "<div class='flex flex-col gap-2'><label class='field-group'><span class='addon'><input type='radio' class='radio' /></span><div class='input'>Default radio</div></label><label class='field-group'><div class='input'>Checked radio</div><span class='addon'><input type='radio' class='radio' checked /></span></label></div>"
+          },
+          {
+            "tags": ["radio", "lists", "options"],
+            "explanation": ["You can use radios with Lists."],
+            "code": "<ul class='list unmarker'><label class='list-item !flex gap-2'><input type='radio' name='radio-list' class='radio' checked /><div><p class='font-bold'>Delete</p><p class='text-secondary'>Notify me when this action happens.</p></div></label><label class='list-item !flex gap-2'><input type='radio' name='radio-list' class='radio' /><div><p class='font-bold'>Archive</p><p class='text-secondary'>Notify me when this action happens.</p></div></label></ul>"
+          },
+          {
+            "tags": ["radio", "lists", "options"],
+            "explanation": ["You can make the list item appear with radio."],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><label class='list-item'><input type='radio' name='radio-list-vertical' class='radio align-middle mr-2' checked />Christopher Gonçalves</label><label class='list-item'><input type='radio' name='radio-list-vertical' class='radio align-middle mr-2' />Amanda Ketellyn</label><label class='list-item'><input type='radio' name='radio-list-vertical' class='radio align-middle mr-2' />Thais Emilly</label></ul>"
+          },
+          {
+            "tags": ["radio", "lists", "options", "horizontal"],
+            "explanation": [
+              "You can also make a horizontal list group item appear with radio."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-row'><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='radio' name='radio-list-horizontal' class='radio' checked />Christopher Gonçalves</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='radio' name='radio-list-horizontal' class='radio' />Amanda Ketellyn</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='radio' name='radio-list-horizontal' class='radio' />Thais Emilly</label></ul>"
+          }
+        ]
+      },
+      "switch": {
+        "tags": ["switch", "selection", "options", "choices", "toggle"],
+        "url": "https://perfectui.netlify.app/docs/switch",
+        "title": "Switch",
+        "description": "A toggle is used to view or switch between enabled or disabled states.",
+        "examples": [
+          {
+            "tags": ["switch", "basic", "checked", "indeterminate", "disabled"],
+            "explanation": [
+              "To create switches, simply add the `.switch` class to the `input` element."
+            ],
+            "code": "<div><label class='field-group gap-2'><input type='checkbox' class='switch' />Default switch</label><label class='field-group gap-2'><input type='checkbox' class='switch' checked />Checked switch</label><label class='field-group gap-2' disabled><input type='checkbox' class='switch' />Disabled switch</label></div>"
+          },
+          {
+            "tags": [
+              "switch",
+              "checked",
+              "indeterminate",
+              "disabled",
+              "group",
+              "list"
+            ],
+            "explanation": ["A group of switches elements."],
+            "code": "<div class='flex flex-wrap'><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='switch align-middle' />Apple</label><label class='list-item'><input type='checkbox' class='switch align-middle' checked />Apple</label><label class='list-item' disabled><input type='checkbox' class='switch align-middle' />Apple</label></ul><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='switch align-middle' />Pear</label><label class='list-item'><input type='checkbox' class='switch align-middle' checked />Pear</label><label class='list-item' disabled><input type='checkbox' class='switch align-middle' />Pear</label></ul><ul class='list unmarker'><label class='list-item'><input type='checkbox' class='switch align-middle' />Orange</label><label class='list-item'><input type='checkbox' class='switch align-middle' checked />Orange</label><label class='list-item' disabled><input type='checkbox' class='switch align-middle' />Orange</label></ul></div>"
+          },
+          {
+            "tags": ["switch", "field group", "addon"],
+            "explanation": ["You can use switches with Field Group."],
+            "code": "<div class='flex flex-col gap-2'><label class='field-group'><span class='addon'><input type='checkbox' class='switch' /></span><div class='input'>Default switch</div></label><label class='field-group'><div class='input'>Checked switch</div><span class='addon'><input type='checkbox' class='switch' checked /></span></label></div>"
+          },
+          {
+            "tags": ["switch", "lists", "options"],
+            "explanation": ["You can use switches with Lists."],
+            "code": "<ul class='list unmarker'><label class='list-item !flex gap-2'><input type='checkbox' class='switch !h-fit' checked /><div><p class='font-bold'>Delete</p><p class='text-secondary'>Notify me when this action happens.</p></div></label><label class='list-item !flex gap-2'><input type='checkbox' class='switch !h-fit' /><div><p class='font-bold'>Archive</p><p class='text-secondary'>Notify me when this action happens.</p></div></label></ul>"
+          },
+          {
+            "tags": ["switch", "lists", "options"],
+            "explanation": ["You can make the list item appear with switch."],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-col'><label class='list-item'><input type='checkbox' class='switch align-middle mr-2' checked />Christopher Gonçalves</label><label class='list-item'><input type='checkbox' class='switch align-middle mr-2' />Amanda Ketellyn</label><label class='list-item'><input type='checkbox' class='switch align-middle mr-2' />Thais Emilly</label></ul>"
+          },
+          {
+            "tags": ["switch", "lists", "options", "horizontal"],
+            "explanation": [
+              "You can also make a horizontal list group item appear with switch."
+            ],
+            "code": "<ul class='unmarker sm:w-64 list list-bordered group-row'><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='switch' checked />Christopher Gonçalves</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='switch' />Amanda Ketellyn</label><label class='list-item !flex gap-2 items-center whitespace-nowrap'><input type='checkbox' class='switch' />Thais Emilly</label></ul>"
           }
         ]
       }
