@@ -1,14 +1,20 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Forms </template>
-      <template #title> Input Group </template>
+      <template #subtitle>
+        Forms
+      </template>
+      <template #title>
+        Input Group
+      </template>
       Easily extend input by adding text and icons.
     </MoleculeDocsHeader>
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title> Basic </template>
+      <template #title>
+        Basic
+      </template>
       <p>You can extend input with icons or texts.</p>
       <p>
         To extend inputs, simply add the
@@ -26,7 +32,9 @@
 
     <!-- mixed -->
     <MoleculeDocsContent>
-      <template #title> Mixed </template>
+      <template #title>
+        Mixed
+      </template>
       <p>
         You can add multiple <AtomToken>.input</AtomToken> inside a
         <AtomToken>.input-group</AtomToken>.
@@ -37,7 +45,9 @@
 
     <!-- buttons -->
     <MoleculeDocsContent>
-      <template #title> Buttons </template>
+      <template #title>
+        Buttons
+      </template>
 
       <p>
         You can also add buttons inside a <AtomToken>.input-group</AtomToken>.

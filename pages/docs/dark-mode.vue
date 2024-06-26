@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Customization </template>
-      <template #title> Dark Mode </template>
+      <template #subtitle>
+        Customization
+      </template>
+      <template #title>
+        Dark Mode
+      </template>
 
       Implement different modes in your application easily with Perfect UI
       through auxiliary methods.
@@ -10,7 +14,9 @@
 
     <!-- how it works -->
     <MoleculeDocsContent>
-      <template #title> How it works </template>
+      <template #title>
+        How it works
+      </template>
 
       <p>
         Perfect ui provides methods to make customization easier. You can set
@@ -23,13 +29,18 @@
           <AtomIconTS />
           index.ts
         </template>
-        <MoleculeCodeView :input="CODE_VIEW_USING_SET_MODE" lang="ts" />
+        <MoleculeCodeView
+          :input="CODE_VIEW_USING_SET_MODE"
+          lang="ts"
+        />
       </OrganismTabs>
     </MoleculeDocsContent>
 
     <!-- mode button -->
     <MoleculeDocsContent>
-      <template #title> Mode button </template>
+      <template #title>
+        Mode button
+      </template>
       <p>
         You can implement a mode button in your application for the user to
         change according to their preference.

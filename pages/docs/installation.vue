@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Getting Started </template>
-      <template #title> Get started with Perfect UI </template>
+      <template #subtitle>
+        Getting Started
+      </template>
+      <template #title>
+        Get started with Perfect UI
+      </template>
 
       An exceptionally lightweight and highly customizable CSS and JavaScript
       framework for crafting elegant user interfaces.
@@ -10,7 +14,9 @@
 
     <!--  play cdn -->
     <MoleculeDocsContent>
-      <template #title> Play CDN </template>
+      <template #title>
+        Play CDN
+      </template>
       <p>
         Place the <AtomToken>&lt;link&gt;</AtomToken>
         tag in the
@@ -22,7 +28,9 @@
       </p>
 
       <OrganismTabs :tabs="['code', 'preview']">
-        <template #hpreview> Preview </template>
+        <template #hpreview>
+          Preview
+        </template>
         <template #hcode>
           <AtomIconHTML />
           index.html
@@ -45,7 +53,10 @@
           <AtomIconJS />
           index.js
         </template>
-        <MoleculeCodeView :input="CODE_VIEW_IMPORT_CDN_SCRIPT" lang="ts" />
+        <MoleculeCodeView
+          :input="CODE_VIEW_IMPORT_CDN_SCRIPT"
+          lang="ts"
+        />
       </OrganismTabs>
 
       <p>You can also import Perfect UI as a module by CDN.</p>
@@ -60,7 +71,9 @@
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Install by package manager </template>
+      <template #title>
+        Install by package manager
+      </template>
       <p>You can also install Perfect UI by package manager.</p>
 
       <OrganismTabs :tabs="['npm', 'yarn', 'pnpm', 'bun']">
@@ -81,16 +94,28 @@
           bun
         </template>
         <template #npm>
-          <MoleculeCodeView input="npm i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="npm i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #yarn>
-          <MoleculeCodeView input="yarn add @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="yarn add @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #pnpm>
-          <MoleculeCodeView input="pnpm i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="pnpm i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
         <template #bun>
-          <MoleculeCodeView input="bun i @chrissgon/perfectui" lang="bash" />
+          <MoleculeCodeView
+            input="bun i @chrissgon/perfectui"
+            lang="bash"
+          />
         </template>
       </OrganismTabs>
 
@@ -104,7 +129,10 @@
           <AtomIconTS />
           index.ts
         </template>
-        <MoleculeCodeView :input="CODE_VIEW_IMPORT_MODULE" lang="ts" />
+        <MoleculeCodeView
+          :input="CODE_VIEW_IMPORT_MODULE"
+          lang="ts"
+        />
       </OrganismTabs>
     </MoleculeDocsContent>
   </MoleculeDocsSection>

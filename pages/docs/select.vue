@@ -1,8 +1,12 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Forms </template>
-      <template #title> Select </template>
+      <template #subtitle>
+        Forms
+      </template>
+      <template #title>
+        Select
+      </template>
 
       Select allows users to make a single selection or multiple selections from
       a list of options.
@@ -10,7 +14,9 @@
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title> Basic </template>
+      <template #title>
+        Basic
+      </template>
 
       <p>
         To create selects, simply add the
@@ -22,11 +28,16 @@
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Label/Message </template>
+      <template #title>
+        Label/Message
+      </template>
 
       <p>
         You can use
-        <NuxtLink class="btn-link-primary" to="/docs/field-group">
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/field-group"
+        >
           Field Group
         </NuxtLink>
         with <AtomToken>select</AtomToken> to create complex elements.

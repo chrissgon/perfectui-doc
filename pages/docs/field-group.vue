@@ -1,14 +1,20 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Forms </template>
-      <template #title> Field Group </template>
+      <template #subtitle>
+        Forms
+      </template>
+      <template #title>
+        Field Group
+      </template>
       Easily extend fields by adding text, buttons, icons and more.
     </MoleculeDocsHeader>
 
     <!-- complex -->
     <MoleculeDocsContent>
-      <template #title> Complex fields </template>
+      <template #title>
+        Complex fields
+      </template>
       <p>
         You can use the <AtomToken>.field-group</AtomToken> class to create
         complex forms with states, buttons, icons and others.
@@ -19,7 +25,9 @@
 
     <!-- label/message -->
     <MoleculeDocsContent>
-      <template #title> Label/Message </template>
+      <template #title>
+        Label/Message
+      </template>
 
       <p>
         To create a field with label and message, simply add
@@ -32,7 +40,9 @@
 
     <!-- addon -->
     <MoleculeDocsContent>
-      <template #title> Addon </template>
+      <template #title>
+        Addon
+      </template>
 
       <p>
         To extend a field with a text or icon, simply add
@@ -45,7 +55,9 @@
 
     <!-- states -->
     <MoleculeDocsContent>
-      <template #title> States </template>
+      <template #title>
+        States
+      </template>
 
       <p>
         To set a field state, simply add
@@ -60,7 +72,9 @@
 
     <!-- mixed -->
     <MoleculeDocsContent>
-      <template #title> Mixed </template>
+      <template #title>
+        Mixed
+      </template>
 
       <p>You can create a more efficient field with mixed types.</p>
       <p>
@@ -74,7 +88,9 @@
 
     <!-- buttons -->
     <MoleculeDocsContent>
-      <template #title> Buttons </template>
+      <template #title>
+        Buttons
+      </template>
       <p>
         To create a field with action buttons, simply add
         <AtomToken>.group-row</AtomToken> class in the
@@ -87,7 +103,9 @@
 
     <!-- disabled -->
     <MoleculeDocsContent>
-      <template #title> Disabled </template>
+      <template #title>
+        Disabled
+      </template>
       <p>
         Make fields look inactive by adding the
         <AtomToken>disabled</AtomToken> boolean attribute to any

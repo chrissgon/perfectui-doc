@@ -1,15 +1,21 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle> Forms </template>
-      <template #title> Textarea </template>
+      <template #subtitle>
+        Forms
+      </template>
+      <template #title>
+        Textarea
+      </template>
 
       A textarea is an element on a webpage that you can type into.
     </MoleculeDocsHeader>
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title> Basic </template>
+      <template #title>
+        Basic
+      </template>
 
       <p>
         To create textareas, simply add the
@@ -21,18 +27,25 @@
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Placeholder </template>
+      <template #title>
+        Placeholder
+      </template>
 
       <p>Basic textarea with placeholder.</p>
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER" />
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Label/Message </template>
+      <template #title>
+        Label/Message
+      </template>
 
       <p>
         You can use
-        <NuxtLink class="btn-link-primary" to="/docs/field-group">
+        <NuxtLink
+          class="btn-link-primary"
+          to="/docs/field-group"
+        >
           Field Group
         </NuxtLink>
         with <AtomToken>textarea</AtomToken> to create complex elements.
@@ -42,7 +55,9 @@
     </MoleculeDocsContent>
 
     <MoleculeDocsContent>
-      <template #title> Simple usage </template>
+      <template #title>
+        Simple usage
+      </template>
 
       <p>
         A textarea example with copy button, character counter, label and

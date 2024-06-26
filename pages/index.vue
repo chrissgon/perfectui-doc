@@ -20,7 +20,8 @@
       <main
         class="text-center flex flex-col justify-center items-center gap-10"
       >
-        <NuxtLink to="/docs/installation?assistant=true"
+        <NuxtLink
+          to="/docs/installation?assistant=true"
           class="badge badge-black !text-white !bg-[#10A37F] !py-1 !px-2 -mb-5 font-semibold relative"
         >
           <AtomIconChatGPT
@@ -111,7 +112,9 @@
             <template #icon>
               <i class="bi-heart-fill text-base text-theme" />
             </template>
-            <template #title> Inspired by Tailwind CSS </template>
+            <template #title>
+              Inspired by Tailwind CSS
+            </template>
             <template #description>
               Perfect UI is a framework inspired by Tailwind CSS, combine both
               to strengthen your application.
@@ -123,12 +126,19 @@
 
     <div class="flex flex-col items-center">
       <!-- darkmode -->
-      <OrganismReasonItem id="darkmode" class="max-w-[1300px]">
+      <OrganismReasonItem
+        id="darkmode"
+        class="max-w-[1300px]"
+      >
         <template #icon>
           <i class="bi-moon-stars-fill text-base text-theme"></i>
         </template>
-        <template #subtitle> Native Dark Mode </template>
-        <template #title> Do you like dark mode? Use it </template>
+        <template #subtitle>
+          Native Dark Mode
+        </template>
+        <template #title>
+          Do you like dark mode? Use it
+        </template>
 
         <p class="text-base">
           Perfect UI provides native darkmode for all components, and helpers
@@ -136,7 +146,10 @@
           preferred mode.
         </p>
 
-        <NuxtLink to="/docs/dark-mode" class="btn btn-white w-fit mt-2">
+        <NuxtLink
+          to="/docs/dark-mode"
+          class="btn btn-white w-fit mt-2"
+        >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
 
@@ -146,19 +159,29 @@
       </OrganismReasonItem>
 
       <!-- theme -->
-      <OrganismReasonItem id="theme" class="max-w-[1300px]">
+      <OrganismReasonItem
+        id="theme"
+        class="max-w-[1300px]"
+      >
         <template #icon>
           <i class="bi-palette-fill text-base text-theme"></i>
         </template>
-        <template #subtitle> Theme Color </template>
-        <template #title> Define your color palette </template>
+        <template #subtitle>
+          Theme Color
+        </template>
+        <template #title>
+          Define your color palette
+        </template>
 
         <p class="text-base">
           To better match your platform, you can easily define a color palette
           to use across all components.
         </p>
 
-        <NuxtLink to="/docs/theme-color" class="btn btn-white w-fit mt-2">
+        <NuxtLink
+          to="/docs/theme-color"
+          class="btn btn-white w-fit mt-2"
+        >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
 
@@ -170,12 +193,19 @@
       </OrganismReasonItem>
 
       <!-- responsive -->
-      <OrganismReasonItem id="responsive" class="max-w-[1300px] flex-col">
+      <OrganismReasonItem
+        id="responsive"
+        class="max-w-[1300px] flex-col"
+      >
         <template #icon>
           <i class="bi-aspect-ratio-fill text-base text-theme"></i>
         </template>
-        <template #subtitle> Fully Responsive </template>
-        <template #title> Everything's responsive </template>
+        <template #subtitle>
+          Fully Responsive
+        </template>
+        <template #title>
+          Everything's responsive
+        </template>
 
         <p class="text-base">
           Don't worry about responsiveness anymore, every component is designed
@@ -190,12 +220,19 @@
       </OrganismReasonItem>
 
       <!-- faster -->
-      <OrganismReasonItem id="faster" class="max-w-[1300px]">
+      <OrganismReasonItem
+        id="faster"
+        class="max-w-[1300px]"
+      >
         <template #icon>
           <i class="bi-lightning-fill text-base text-theme"></i>
         </template>
-        <template #subtitle> The faster </template>
-        <template #title> Lightweight & Customizable </template>
+        <template #subtitle>
+          The faster
+        </template>
+        <template #title>
+          Lightweight & Customizable
+        </template>
 
         <p class="text-base">
           The goal of Perfect UI is to provide the essentials, enabling
@@ -235,8 +272,14 @@
         >
           npm i @chrissgon/perfectui
           <hr class="vertical" />
-          <i v-if="!copied" class="bi-copy"></i>
-          <i v-if="copied" class="bi-check-circle-fill text-success"></i>
+          <i
+            v-if="!copied"
+            class="bi-copy"
+          ></i>
+          <i
+            v-if="copied"
+            class="bi-check-circle-fill text-success"
+          ></i>
         </button>
       </div>
     </div>
