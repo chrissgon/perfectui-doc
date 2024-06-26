@@ -1,20 +1,14 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Forms
-      </template>
-      <template #title>
-        Field Group
-      </template>
+      <template #subtitle> Forms </template>
+      <template #title> Field Group </template>
       Easily extend fields by adding text, buttons, icons and more.
     </MoleculeDocsHeader>
 
     <!-- complex -->
     <MoleculeDocsContent>
-      <template #title>
-        Complex fields
-      </template>
+      <template #title> Complex fields </template>
       <p>
         You can use the <AtomToken>.field-group</AtomToken> class to create
         complex forms with states, buttons, icons and others.
@@ -25,9 +19,7 @@
 
     <!-- label/message -->
     <MoleculeDocsContent>
-      <template #title>
-        Label/Message
-      </template>
+      <template #title> Label/Message </template>
 
       <p>
         To create a field with label and message, simply add
@@ -40,9 +32,7 @@
 
     <!-- addon -->
     <MoleculeDocsContent>
-      <template #title>
-        Addon
-      </template>
+      <template #title> Addon </template>
 
       <p>
         To extend a field with a text or icon, simply add
@@ -55,9 +45,7 @@
 
     <!-- states -->
     <MoleculeDocsContent>
-      <template #title>
-        States
-      </template>
+      <template #title> States </template>
 
       <p>
         To set a field state, simply add
@@ -72,9 +60,7 @@
 
     <!-- mixed -->
     <MoleculeDocsContent>
-      <template #title>
-        Mixed
-      </template>
+      <template #title> Mixed </template>
 
       <p>You can create a more efficient field with mixed types.</p>
       <p>
@@ -88,9 +74,7 @@
 
     <!-- buttons -->
     <MoleculeDocsContent>
-      <template #title>
-        Buttons
-      </template>
+      <template #title> Buttons </template>
       <p>
         To create a field with action buttons, simply add
         <AtomToken>.group-row</AtomToken> class in the
@@ -103,9 +87,7 @@
 
     <!-- disabled -->
     <MoleculeDocsContent>
-      <template #title>
-        Disabled
-      </template>
+      <template #title> Disabled </template>
       <p>
         Make fields look inactive by adding the
         <AtomToken>disabled</AtomToken> boolean attribute to any
@@ -123,8 +105,8 @@ const CODE_VIEW_FIELD_GROUP_COMPLEX = `<form class="flex flex-col gap-3">
   <!-- name -->
   <label
     class="field-group field-group-error"
-    label="Full Name"
-    message="Field required"
+    data-label="Full Name"
+    data-message="Field required"
   >
     <select class="input !max-w-fit">
       <option>Mr.</option>
@@ -135,15 +117,15 @@ const CODE_VIEW_FIELD_GROUP_COMPLEX = `<form class="flex flex-col gap-3">
     <input class="input" placeholder="Surname Name" />
   </label>
   <!-- birth -->
-  <label class="field-group" label="Birth" message="Optional">
+  <label class="field-group" data-label="Birth" data-message="Optional">
     <i class="addon bi-calendar-week"></i>
     <input class="input" type="date" />
   </label>
   <!-- email -->
   <label
     class="field-group group-row field-group-success"
-    label="Email"
-    message="Code sended"
+    data-label="Email"
+    data-message="Code sended"
   >
     <i class="addon bi-check-circle-fill text-success"></i>
     <input type="text" class="input" value="email.example" />
@@ -157,11 +139,11 @@ const CODE_VIEW_FIELD_GROUP_COMPLEX = `<form class="flex flex-col gap-3">
   </label>
 </form>
 `;
-const CODE_VIEW_FIELD_GROUP_BASIC = `<label class="field-group" label="Label" message="Some message">
+const CODE_VIEW_FIELD_GROUP_BASIC = `<label class="field-group" data-label="Label" data-message="Some message">
   <input class="input">
 </label>
 `;
-const CODE_VIEW_FIELD_GROUP_ADDON = `<label class="field-group" label="Price" message="Required">
+const CODE_VIEW_FIELD_GROUP_ADDON = `<label class="field-group" data-label="Price" data-message="Required">
   <i class="addon bi-bank"></i>
   <input class="input" type="number">
   <span class="addon">R$</span>
@@ -169,30 +151,30 @@ const CODE_VIEW_FIELD_GROUP_ADDON = `<label class="field-group" label="Price" me
 `;
 const CODE_VIEW_FIELD_GROUP_STATES = `<form class="flex flex-col gap-3">
   <!-- default -->
-  <label class="field-group" label="Label" message="Some message">
+  <label class="field-group" data-label="Label" data-message="Some message">
     <input class="input" placeholder="Default" />
   </label>
   <!-- success -->
   <label
     class="field-group field-group-success"
-    label="Label"
-    message="Operation successfully"
+    data-label="Label"
+    data-message="Operation successfully"
   >
     <input class="input" placeholder="Success" />
   </label>
   <!-- warning -->
   <label
     class="field-group field-group-warn"
-    label="Label"
-    message="Fill with attention"
+    data-label="Label"
+    data-message="Fill with attention"
   >
     <input class="input" placeholder="Warning" />
   </label>
   <!-- error -->
   <label
     class="field-group field-group-error"
-    label="Label"
-    message="This field is invalid"
+    data-label="Label"
+    data-message="This field is invalid"
   >
     <input class="input" placeholder="Error" />
   </label>
@@ -200,7 +182,7 @@ const CODE_VIEW_FIELD_GROUP_STATES = `<form class="flex flex-col gap-3">
 `;
 const CODE_VIEW_FIELD_GROUP_MIXED = `<form class="flex flex-col gap-3">
   <!-- social -->
-  <label class="field-group" label="Social Profile" message="Optional">
+  <label class="field-group" data-label="Social Profile" data-message="Optional">
     <select class="input !max-w-fit">
       <option>Linkedin</option>
       <option>Behance</option>
@@ -213,13 +195,13 @@ const CODE_VIEW_FIELD_GROUP_MIXED = `<form class="flex flex-col gap-3">
     />
   </label>
   <!-- range dates -->
-  <label class="field-group" label="Between Dates">
+  <label class="field-group" data-label="Between Dates">
     <input type="date" class="input" />
     <span class="addon">to</span>
     <input type="date" class="input" />
   </label>
   <!-- enable option -->
-  <label class="field-group" label="Enable Option">
+  <label class="field-group" data-label="Enable Option">
     <span class="addon">
       <input type="checkbox" class="switch" checked />
     </span>
@@ -229,7 +211,7 @@ const CODE_VIEW_FIELD_GROUP_MIXED = `<form class="flex flex-col gap-3">
       placeholder="You could control this field by switch"
     />
   </label>
-  <label class="field-group" label="About me">
+  <label class="field-group" data-label="About me">
     <textarea class="input" placeholder="Write a short description"></textarea>
   </label>
 </form>
@@ -254,8 +236,8 @@ const CODE_VIEW_FIELD_GROUP_DISABLED = `<form class="flex flex-col gap-3">
   <!-- field group disabled -->
   <label
     class="field-group"
-    label="Payment method"
-    message="Not Allowed"
+    data-label="Payment method"
+    data-message="Not Allowed"
     disabled
   >
     <span class="addon">Credit Card</span>
@@ -278,7 +260,7 @@ const CODE_VIEW_FIELD_GROUP_DISABLED = `<form class="flex flex-col gap-3">
   <!-- input disabled -->
   <label
     class="field-group"
-    label="Country/City"
+    data-label="Country/City"
   >
     <select class="input">
       <option>Brazil</option>

@@ -21,7 +21,7 @@
             "explanation": [
               "Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle before the closing `</body>`"
             ],
-            "code": "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.css'></head><body><button class='btn btn-solid-primary'>My button</button><script src='https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js'></script></body></html>"
+            "code": "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.css'></head><body><button class='btn btn-solid-primary'>My button</button><script src='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js'></script></body></html>"
           },
           {
             "tags": ["cdn", "window", "document"],
@@ -35,7 +35,7 @@
             "explanation": [
               "You can also import Perfect UI as a module by CDN."
             ],
-            "code": "<script type='module'>import * as perfectUI from 'https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js'; console.log(perfectUI); // { setMode: ƒ ...}</script>"
+            "code": "<script type='module'>import * as perfectUI from 'https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js'; console.log(perfectUI); // { setMode: ƒ ...}</script>"
           },
           {
             "tags": ["package manager", "npm", "yarn", "pnpm", "bun"],
@@ -152,7 +152,7 @@
               "Mode button",
               "You can implement a mode button in your application for the user to change according to their preference."
             ],
-            "code": "<label class='field-group gap-2 w-fit'><i class=bi-sun></i> <input class=switch id=mode type=checkbox> <i class=bi-moon></i></label><script type=module>import{setMode}from'https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js';document.getElementById('mode').addEventListener('change', (e) => {const dark = e.target.checked;setMode(dark ? 'dark' : 'light');});</script>"
+            "code": "<label class='field-group gap-2 w-fit'><i class=bi-sun></i> <input class=switch id=mode type=checkbox> <i class=bi-moon></i></label><script type=module>import{setMode}from'https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js';document.getElementById('mode').addEventListener('change', (e) => {const dark = e.target.checked;setMode(dark ? 'dark' : 'light');});</script>"
           }
         ]
       },

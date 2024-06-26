@@ -26,7 +26,7 @@
       </p>
 
       <div>
-        <ul class="list !bg-transparent">
+        <ul class="list">
           <li class="list-item text-secondary">
             <AtomToken>.timeline</AtomToken>: Create a timeline. One timeline
             has multiple checkpoints.

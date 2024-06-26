@@ -10,7 +10,7 @@
       <div
         v-for="(item, i) in list"
         :key="i"
-        class="card !bg-transparent list unmarker list-hoverable"
+        class="card list unmarker list-hoverable"
         @click="close"
       >
         <NuxtLink

@@ -34,7 +34,7 @@
       </p>
 
       <div>
-        <ul class="list !bg-transparent">
+        <ul class="list">
           <li class="list-item text-secondary">
             <AtomToken>.dropdown-trigger</AtomToken>: Indicates the element that
             will trigger the dropdown.

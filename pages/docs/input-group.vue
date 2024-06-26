@@ -1,20 +1,14 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Forms
-      </template>
-      <template #title>
-        Input Group
-      </template>
+      <template #subtitle> Forms </template>
+      <template #title> Input Group </template>
       Easily extend input by adding text and icons.
     </MoleculeDocsHeader>
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title>
-        Basic
-      </template>
+      <template #title> Basic </template>
       <p>You can extend input with icons or texts.</p>
       <p>
         To extend inputs, simply add the
@@ -32,9 +26,7 @@
 
     <!-- mixed -->
     <MoleculeDocsContent>
-      <template #title>
-        Mixed
-      </template>
+      <template #title> Mixed </template>
       <p>
         You can add multiple <AtomToken>.input</AtomToken> inside a
         <AtomToken>.input-group</AtomToken>.
@@ -45,9 +37,7 @@
 
     <!-- buttons -->
     <MoleculeDocsContent>
-      <template #title>
-        Buttons
-      </template>
+      <template #title> Buttons </template>
 
       <p>
         You can also add buttons inside a <AtomToken>.input-group</AtomToken>.
@@ -72,7 +62,7 @@ const CODE_VIEW_INPUT_GROUP_BASIC = `<label class="field-group">
   </div>
 </label>
 `;
-const CODE_VIEW_INPUT_GROUP_MIXED = `<label class="field-group field-group-success" message="Verified">
+const CODE_VIEW_INPUT_GROUP_MIXED = `<label class="field-group field-group-success" data-message="Verified">
   <div class="input input-group">
     <i class="bi-envelope"></i>
     <input type="text" class="input" placeholder="your_email" />

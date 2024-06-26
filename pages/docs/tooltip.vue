@@ -1,12 +1,8 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Base Components
-      </template>
-      <template #title>
-        Tooltip
-      </template>
+      <template #subtitle> Base Components </template>
+      <template #title> Tooltip </template>
 
       Tooltip is a floating, non-actionable label used to explain a user
       interface element or feature.
@@ -16,9 +12,7 @@
 
     <!-- basic -->
     <MoleculeDocsContent>
-      <template #title>
-        Basic
-      </template>
+      <template #title> Basic </template>
 
       <p>
         Tooltip are meant to be exactly that, a hint or tip on what a tool or
@@ -36,10 +30,7 @@
         <AtomToken>tooltip</AtomToken> attribute.
       </p>
 
-      <OrganismComponentExample
-        :code="CODE_VIEW_TOOLTIP_BASIC"
-        overflow
-      />
+      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_BASIC" overflow />
 
       <AtomNoteWarn>
         <p>
@@ -56,10 +47,8 @@
 
     <!-- directions -->
     <MoleculeDocsContent>
-      <template #title>
-        Directions
-      </template>
-      
+      <template #title> Directions </template>
+
       <p>
         The tooltip has the top direction by default, but you can also use
         <AtomToken>.tooltip-right</AtomToken>,
@@ -67,17 +56,12 @@
         <AtomToken>.tooltip-bottom</AtomToken> directions.
       </p>
 
-      <OrganismComponentExample
-        :code="CODE_VIEW_TOOLTIP_DIRECTIONS"
-        overflow
-      />
+      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_DIRECTIONS" overflow />
     </MoleculeDocsContent>
 
     <!-- white / black -->
     <MoleculeDocsContent>
-      <template #title>
-        White/Black tooltips
-      </template>
+      <template #title> White/Black tooltips </template>
       <p>
         The tooltip has <AtomToken>.tooltip-white</AtomToken> class by default,
         but if you want use the black style, simply use the
@@ -97,14 +81,9 @@
         to be able to read the content while interacting with other parts of the
         page then a tooltip will not work.
       </p>
-      <template #title>
-        Simple usage
-      </template>
+      <template #title> Simple usage </template>
 
-      <OrganismComponentExample
-        :code="CODE_VIEW_TOOLTIP_USAGE"
-        overflow
-      />
+      <OrganismComponentExample :code="CODE_VIEW_TOOLTIP_USAGE" overflow />
     </MoleculeDocsContent>
   </MoleculeDocsSection>
 </template>
@@ -112,7 +91,7 @@
 <script setup lang="ts">
 const CODE_VIEW_TOOLTIP_BASIC = `<button
   class="btn btn-white tooltip"
-  tooltip="More details here"
+  data-tooltip="More details here"
 >
   Tooltip
   <i class="bi-question-circle"></i>
@@ -121,25 +100,25 @@ const CODE_VIEW_TOOLTIP_BASIC = `<button
 const CODE_VIEW_TOOLTIP_DIRECTIONS = `<div class="grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit">
   <button
     class="tooltip btn btn-white rounded-full col-start-2 w-10 !px-2"
-    tooltip="Tooltip on top"
+    data-tooltip="Tooltip on top"
   >
     <i class="bi-chevron-up"></i>
   </button>
   <button
     class="tooltip tooltip-left btn btn-white rounded-full col-start-1 w-10 !px-2"
-    tooltip="Tooltip on left"
+    data-tooltip="Tooltip on left"
   >
     <i class="bi-chevron-left"></i>
   </button>
   <button
     class="tooltip tooltip-right btn btn-white rounded-full col-start-3 w-10 !px-2"
-    tooltip="Tooltip on right"
+    data-tooltip="Tooltip on right"
   >
     <i class="bi-chevron-right"></i>
   </button>
   <button
     class="tooltip tooltip-bottom btn btn-white rounded-full col-start-2 w-10 !px-2"
-    tooltip="Tooltip on bottom"
+    data-tooltip="Tooltip on bottom"
   >
     <i class="bi-chevron-down"></i>
   </button>
@@ -148,14 +127,14 @@ const CODE_VIEW_TOOLTIP_DIRECTIONS = `<div class="grid grid-cols-3 gap-y-2 gap-x
 const CODE_VIEW_TOOLTIP_WHITE_BLACK = `<div class="flex flex-col gap-2 w-fit">
   <button
     class="btn btn-white tooltip tooltip-right"
-    tooltip="More details here"
+    data-tooltip="More details here"
   >
     White Tooltip
   </button>
   
   <button
     class="btn btn-white tooltip tooltip-black tooltip-right"
-    tooltip="More details here"
+    data-tooltip="More details here"
   >
     Black Tooltip
   </button>
@@ -208,7 +187,7 @@ const CODE_VIEW_TOOLTIP_USAGE = `<div class="card">
     >link settings</a>
     <span
       class="tooltip"
-      tooltip="The public share link allows people to view the project without giving access to full collaboration features."
+      data-tooltip="The public share link allows people to view the project without giving access to full collaboration features."
     >
       <i class="bi-question-circle"></i>
     </span>

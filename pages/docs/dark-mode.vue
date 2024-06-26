@@ -1,12 +1,8 @@
 <template>
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
-      <template #subtitle>
-        Customization
-      </template>
-      <template #title>
-        Dark Mode
-      </template>
+      <template #subtitle> Customization </template>
+      <template #title> Dark Mode </template>
 
       Implement different modes in your application easily with Perfect UI
       through auxiliary methods.
@@ -14,9 +10,7 @@
 
     <!-- how it works -->
     <MoleculeDocsContent>
-      <template #title>
-        How it works
-      </template>
+      <template #title> How it works </template>
 
       <p>
         Perfect ui provides methods to make customization easier. You can set
@@ -29,18 +23,13 @@
           <AtomIconTS />
           index.ts
         </template>
-        <MoleculeCodeView
-          :input="CODE_VIEW_USING_SET_MODE"
-          lang="ts"
-        />
+        <MoleculeCodeView :input="CODE_VIEW_USING_SET_MODE" lang="ts" />
       </OrganismTabs>
     </MoleculeDocsContent>
 
     <!-- mode button -->
     <MoleculeDocsContent>
-      <template #title>
-        Mode button
-      </template>
+      <template #title> Mode button </template>
       <p>
         You can implement a mode button in your application for the user to
         change according to their preference.
@@ -70,27 +59,13 @@ const CODE_VIEW_MODE_BUTTON_HTML = `<!-- switch button -->
 
 <!-- script -->
 <script type="module">
-  import { setMode } from "https://unpkg.com/@chrissgon/perfectui@latest/dist/perfectui.js";
+  import { setMode } from "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js";
 
   document.getElementById("mode").addEventListener("change", (e) => {
     const dark = e.target.checked;
     setMode(dark ? "dark" : "light");
   });
 <\/script>`;
-
-// const CODE_PREVIEW_MODE_BUTTON = `<label class="field-group gap-2 w-fit">
-//   <i class="bi-sun"></i>
-//   <input type="checkbox" class="switch" id="mode" onchange="changeMode(this.checked)" checked />
-//   <i class="bi-moon"></i>
-// </label>
-
-// <script>
-//   function changeMode(dark){
-//     window.perfectui.setMode(dark ? "dark" : "light");
-//   }
-  
-//   document.getElementById("mode").checked = document.cookie.includes("darkmode=true")
-// <\/script>`;
 </script>
 
 <style scoped></style>
