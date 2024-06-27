@@ -21,7 +21,7 @@
       class="unmarker list flex flex-col gap-2 [&>.list-item]:cursor-pointer [&>.list-item]:!bg-transparent font-medium mb-10 [&>.list-item]:!px-0 [&>.list-item_i]:p-[5px] [&>.list-item_i]:px-2 [&>.list-item_i]:opacity-50 [&>.list-item.active_i]:!opacity-100 [&>.list-item:hover_i]:!opacity-100 [&>.list-item_i]:rounded-md [&>.list-item_i]:mr-2 [&>.list-item]:opacity-75 [&>.list-item.active]:!opacity-100 [&>.list-item:hover]:!opacity-100"
     >
       <!-- assistant -->
-      <li
+      <!-- <li
         class="list-item active"
         @click="emit('assistant')"
       >
@@ -29,7 +29,7 @@
           <AtomIconChatGPT class="inline w-4 scale-110 -translate-y-[1px]" />
         </i>
         Assistant
-      </li>
+      </li> -->
       <!-- TODO -->
       <!-- develop the pages below -->
       <NuxtLink
