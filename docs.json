@@ -77,7 +77,7 @@
             "explanation": [
               "Perfect UI is fully typed, developed in Typescript. All the methods and interfaces are available for use."
             ],
-            "code": "export interface IThemeColor { 50: number[] | string; 100: number[] | string; 200: number[] | string; 300: number[] | string; 400: number[] | string; 500: number[] | string; 600: number[] | string; 700: number[] | string; 800: number[] | string; 900: number[] | string; 950: number[] | string;} export declare function setThemeColor(colors: IThemeColor): void; export declare function setMode(theme?: 'system' | 'dark' | 'light'): void;"
+            "code": "export interface IThemeColor { 50: number[]; 100: number[]; 200: number[]; 300: number[]; 400: number[]; 500: number[]; 600: number[]; 700: number[]; 800: number[]; 900: number[]; 950: number[];} export declare function setThemeColor(colors: IThemeColor): void; export declare function setMode(theme?: 'system' | 'dark' | 'light'): void;"
           }
         ]
       },
@@ -179,7 +179,7 @@
             "explanation": [
               "To better adapt to your visual identity, Perfect UI provides the `setThemeColor` method that allows you to define your color palette, setting it as the default for the entire application."
             ],
-            "code": "import{setThemeColor}from'@chrissgon/perfectui';const palette={50:'240, 250, 255',100:'223, 244, 255',200:'184, 235, 255',300:[121,220,255],400:[52,204,254],500:[7,182,240],600:[0,146,205],700:[0,116,166],800:[3,98,137],900:[9,81,113],950:[6,51,75]};setThemeColor(palette);"
+            "code": "import{setThemeColor}from'@chrissgon/perfectui';const palette={50:[240, 250, 255],100:[223, 244, 255],200:[184, 235, 255],300:[121,220,255],400:[52,204,254],500:[7,182,240],600:[0,146,205],700:[0,116,166],800:[3,98,137],900:[9,81,113],950:[6,51,75]};setThemeColor(palette);"
           },
           {
             "tags": [
@@ -192,7 +192,7 @@
             "explanation": [
               "TThe `setThemeColor` method expects to receive an object that satisfies the `IThemeColor` interface."
             ],
-            "code": "export interface IThemeColor { 50: number[] | string; 100: number[] | string; 200: number[] | string; 300: number[] | string; 400: number[] | string; 500: number[] | string; 600: number[] | string; 700: number[] | string; 800: number[] | string; 900: number[] | string; 950: number[] | string;}"
+            "code": "export interface IThemeColor { 50: number[]; 100: number[]; 200: number[]; 300: number[]; 400: number[]; 500: number[]; 600: number[]; 700: number[]; 800: number[]; 900: number[]; 950: number[];}"
           }
         ]
       }
@@ -250,6 +250,7 @@
         "url": "https://perfectui.netlify.app/docs/accordion",
         "title": "Accordion",
         "description": "Build vertically collapsing accordions.",
+        "requireJavascript": true,
         "examples": [
           {
             "tags": ["accordion", "basic", "group col", "layout group"],

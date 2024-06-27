@@ -10,6 +10,8 @@
 
       Build vertically collapsing accordions.
     </MoleculeDocsHeader>
+    
+    <AtomNoteWarnJS />
 
     <!-- basic -->
     <MoleculeDocsContent>

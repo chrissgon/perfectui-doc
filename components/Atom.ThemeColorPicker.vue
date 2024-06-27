@@ -29,13 +29,13 @@ async function changeThemeColor(): Promise<void> {
   sessionStorage.setItem("themeColor", hex.value);
   chan.postMessage(hex.value);
 
-  const pallete = new Values(hex.value).all(18);
+  const palette = new Values(hex.value).all(18);
 
   const tones = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
   const theme: any = {};
-  for (const tone in pallete) {
-    const { rgb } = pallete[tone];
+  for (const tone in palette) {
+    const { rgb } = palette[tone];
     theme[tones[tone]] = rgb;
   }
 

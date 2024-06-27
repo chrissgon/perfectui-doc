@@ -32,17 +32,17 @@
 
 <script setup lang="ts">
 const CODE_VIEW_TYPES = `export interface IThemeColor {
-    50: number[] | string;
-    100: number[] | string;
-    200: number[] | string;
-    300: number[] | string;
-    400: number[] | string;
-    500: number[] | string;
-    600: number[] | string;
-    700: number[] | string;
-    800: number[] | string;
-    900: number[] | string;
-    950: number[] | string;
+  50: number[];
+  100: number[];
+  200: number[];
+  300: number[];
+  400: number[];
+  500: number[];
+  600: number[];
+  700: number[];
+  800: number[];
+  900: number[];
+  950: number[];
 }
 export declare function setThemeColor(colors: IThemeColor): void;
 export declare function setMode(theme?: "system" | "dark" | "light"): void;

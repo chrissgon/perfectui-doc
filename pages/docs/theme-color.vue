@@ -65,9 +65,9 @@
 const CODE_VIEW_USING_SET_THEME_COLOR = `import { setThemeColor } from "@chrissgon/perfectui"
 
 const palette = {
-  50: "240, 250, 255",
-  100: "223, 244, 255",
-  200: "184, 235, 255",
+  50: [240, 250, 255],
+  100: [223, 244, 255],
+  200: [184, 235, 255],
   300: [121, 220, 255],
   400: [52, 204, 254],
   500: [7, 182, 240],
@@ -81,17 +81,17 @@ const palette = {
 setThemeColor(palette)`;
 
 const CODE_VIEW_TYPES = `export interface IThemeColor {
-    50: number[] | string;
-    100: number[] | string;
-    200: number[] | string;
-    300: number[] | string;
-    400: number[] | string;
-    500: number[] | string;
-    600: number[] | string;
-    700: number[] | string;
-    800: number[] | string;
-    900: number[] | string;
-    950: number[] | string;
+  50: number[];
+  100: number[];
+  200: number[];
+  300: number[];
+  400: number[];
+  500: number[];
+  600: number[];
+  700: number[];
+  800: number[];
+  900: number[];
+  950: number[];
 }`;
 </script>
 
