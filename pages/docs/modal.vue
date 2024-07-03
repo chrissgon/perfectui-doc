@@ -222,10 +222,10 @@ const CODE_VIEW_MODAL_SCROLL = `
 </dialog>
 `
 const CODE_VIEW_MODAL_TOGGLE = `
-<button class="btn btn-solid-primary" data-modal="toggle">
+<button class="btn btn-solid-primary" data-modal="modal-toggle">
   Open first modal
 </button>
-<dialog class="modal" id="toggle">
+<dialog class="modal" id="modal-toggle">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal 1</span>
@@ -238,11 +238,11 @@ const CODE_VIEW_MODAL_TOGGLE = `
     <hr />
     <footer class="card-header flex gap-2 justify-end">
       <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary" data-modal="toggle2">Open second modal</button>
+      <button class="btn btn-solid-primary" data-modal="modal-toggle2">Open second modal</button>
     </footer>
   </div>
 </dialog>
-<dialog class="modal" id="toggle2">
+<dialog class="modal" id="modal-toggle2">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal 2</span>

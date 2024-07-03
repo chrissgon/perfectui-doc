@@ -206,7 +206,7 @@ const CODE_VIEW_DROPDOWN_DIVIDERS = `<!-- dropdown trigger -->
       <hr class="my-2">
       <li class="list-item">Upgrade License</li>
       <hr class="my-2">
-      <li class="list-item">Sign Out</li>
+      <li class="list-item text-error">Sign Out</li>
     </ul>
   </div>
 </button>

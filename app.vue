@@ -38,7 +38,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html:has(.nav.opened) ,html:has(.sections.opened) {
+html:has(.nav.opened),
+html:has(.sections.opened) {
   overflow: hidden !important;
 }
 

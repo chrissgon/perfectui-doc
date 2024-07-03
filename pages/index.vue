@@ -29,10 +29,10 @@
           />
           Now with Chat GPT
           <div
-            class="bg-[#0d785e] [html.dark_&]:bg-[#2fedbe] w-3 h-3 block rounded-full animate-ping absolute -right-1 -top-1"
+            class="bg-[#0d785e] [.dark_&]:bg-[#2fedbe] w-3 h-3 block rounded-full animate-ping absolute -right-1 -top-1"
           ></div>
           <div
-            class="bg-[#0d785e] [html.dark_&]:bg-[#2fedbe] w-3 h-3 block rounded-full absolute -right-1 -top-1"
+            class="bg-[#0d785e] [.dark_&]:bg-[#2fedbe] w-3 h-3 block rounded-full absolute -right-1 -top-1"
           ></div>
         </NuxtLink> -->
         <h1 class="text-5xl max-sm:!text-4xl font-bold max-w-2xl">

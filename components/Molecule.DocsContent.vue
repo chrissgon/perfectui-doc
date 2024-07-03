@@ -1,5 +1,7 @@
 <template>
-  <article class="min-w-full lg:pt-[75px] lg:-mt-[75px] pt-[125px] -mt-[125px] container relative flex flex-col gap-4 docs-content">
+  <article
+    class="docs-content container min-w-full relative flex flex-col gap-4"
+  >
     <h1 class="text-xl font-semibold docs-title">
       <slot name="title" />
     </h1>
@@ -10,7 +12,7 @@
 <script setup lang="ts"></script>
 
 <style>
-.container  > p {
+.container > p {
   color: rgb(var(--contentSecondary));
 }
 </style>

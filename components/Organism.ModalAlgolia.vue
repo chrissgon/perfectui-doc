@@ -35,13 +35,13 @@
         >
           <NuxtLink
             :to="getRedirectURL(item)"
-            class="list-item !p-0 [html.dark_&]:hover:!bg-gray-800 [html.dark_&.active]:!bg-gray-800"
+            class="list-item !p-0 [.dark_&]:hover:!bg-gray-800 [.dark_&.active]:!bg-gray-800"
             :class="{ active: currentItemIndex === i }"
           >
-            <!-- :class="{'[html.dark_&]!bg-gray-700'}" -->
+            <!-- :class="{'[.dark_&]!bg-gray-700'}" -->
             <article class="card-content !flex gap-2 items-center !py-2">
               <i
-                class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
+                class="bi-book btn btn-white !bg-transparent [.dark_&]:!border-transparent [.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
               ></i>
 
               <div class="w-full">
@@ -74,13 +74,17 @@
         class="card-header flex items-center max-sm:flex-wrap max-sm:justify-center gap-2 whitespace-nowrap"
       >
         <!-- commands -->
-        <div class="max-sm:hidden text-xs text-secondary flex items-center gap-2">
+        <div
+          class="max-sm:hidden text-xs text-secondary flex items-center gap-2"
+        >
           <span class="badge badge-white kdb leading-none">
             <i class="bi-arrow-return-left text-xs px-0.5"></i>
           </span>
           to select
         </div>
-        <div class="max-sm:hidden text-xs text-secondary flex items-center gap-2">
+        <div
+          class="max-sm:hidden text-xs text-secondary flex items-center gap-2"
+        >
           <span class="badge badge-white kdb leading-none">
             <i class="bi-arrow-down text-xs px-0.5"></i>
           </span>
@@ -90,7 +94,9 @@
 
           to navigate
         </div>
-        <div class="max-sm:hidden sm:w-full text-xs text-secondary flex items-center gap-2">
+        <div
+          class="max-sm:hidden sm:w-full text-xs text-secondary flex items-center gap-2"
+        >
           <span class="badge badge-white kdb !px-1.5">ESC</span> to close
         </div>
 
@@ -145,7 +151,7 @@ function init(): void {
     if (!item) return;
 
     router.push(getRedirectURL(item));
-    close()
+    close();
   });
 }
 async function search(): Promise<void> {
@@ -154,12 +160,9 @@ async function search(): Promise<void> {
 
   lastDoubt.value = doubt.value;
 
-  
   await algolia({
     query: doubt.value,
   });
-  
-
 
   resetList();
   Object.assign(list, AlgoliaListDTO(result.value.hits));
@@ -169,15 +172,15 @@ function show(): void {
 }
 function close(): void {
   modalRef.value?.close();
-  reset()
+  reset();
 }
-function resetList():void{
+function resetList(): void {
   list.length = 0;
   currentItemIndex.value = -1;
 }
 function reset(): void {
-  doubt.value = ""
-  lastDoubt.value = ""
+  doubt.value = "";
+  lastDoubt.value = "";
   list.length = 0;
   currentItemIndex.value = -1;
 }

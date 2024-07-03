@@ -104,22 +104,53 @@
               </a>
             </ul>
 
-            <!-- <div class="p-px bg-gradient-to-tr from-blue-200 via-transparent rounded-2xl dark:from-blue-900 dark:via-transparent scale-90 max-w-[300px]">
-              <div class="p-3 bg-white rounded-2xl !bg-gray-900">
-                <img class="dark:hidden rounded-lg" src="https://preline.co/assets/img/others/pro.jpg" alt="Preline Pro">
-                <img class="dark:block hidden rounded-lg" src="https://preline.co/assets/img/others/pro-dark.jpg" alt="Preline Pro">
-                <p class="mt-3 text-sm text-gray-800 dark:text-white">Looking for more beautiful and advanced Tailwind examples?</p>
+            <div
+              class="p-px bg-gradient-to-tr from-blue-200 via-transparent rounded-2xl dark:from-blue-900 dark:via-transparent scale-90 max-w-[300px]"
+            >
+              <div class="p-3 bg-white rounded-2xl [.dark_&]:!bg-gray-900">
+                <img
+                  class="[.dark_&]:hidden rounded-lg"
+                  src="https://preline.co/assets/img/others/pro.jpg"
+                  alt="Preline Pro"
+                />
+                <img
+                  class="[.dark_&]:block hidden rounded-lg"
+                  src="https://preline.co/assets/img/others/pro-dark.jpg"
+                  alt="Preline Pro"
+                />
+                <p class="mt-3 text-sm text-gray-800 dark:text-white">
+                  Looking for more beautiful and advanced Tailwind examples?
+                </p>
                 <p class="mt-2">
-                  <span class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 font-medium dark:text-blue-500">
+                  <span
+                    class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 font-medium dark:text-blue-500"
+                  >
                     Visit Preline Pro
-                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path class="lg:opacity-0 lg:-translate-x-1 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:transition" d="M5 12h14"></path>
-                      <path class="lg:-translate-x-1.5 lg:group-hover:translate-x-0 lg:transition" d="m12 5 7 7-7 7"></path>
+                    <svg
+                      class="flex-shrink-0 size-3.5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        class="lg:opacity-0 lg:-translate-x-1 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:transition"
+                        d="M5 12h14"
+                      ></path>
+                      <path
+                        class="lg:-translate-x-1.5 lg:group-hover:translate-x-0 lg:transition"
+                        d="m12 5 7 7-7 7"
+                      ></path>
                     </svg>
                   </span>
                 </p>
               </div>
-            </div> -->
+            </div>
           </ClientOnly>
         </div>
       </aside>
@@ -154,7 +185,7 @@ const getLinkNextPage = computed<string>(() => {
 });
 
 // data
-const route = useRoute();
+// const route = useRoute();
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
 const sectionIsOpen = ref<boolean>(false);

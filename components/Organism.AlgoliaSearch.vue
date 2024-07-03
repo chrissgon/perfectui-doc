@@ -15,11 +15,11 @@
       >
         <NuxtLink
           :to="item.url.replace(DEFAULT_DOMAIN, '')"
-          class="list-item !p-0 [html.dark_&]:hover:!bg-gray-700"
+          class="list-item !p-0 [.dark_&]:hover:!bg-gray-700"
         >
           <article class="card-content !flex gap-2 items-center !py-2">
             <i
-              class="bi-book btn btn-white !bg-transparent [html.dark_&]:!border-transparent [html.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
+              class="bi-book btn btn-white !bg-transparent [.dark_&]:!border-transparent [.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
             ></i>
 
             <div class="w-full">
@@ -27,9 +27,7 @@
                 {{ item.title }}
               </p>
 
-              <p
-                class="text-xs "
-              >
+              <p class="text-xs">
                 {{ item.description }}
               </p>
             </div>
