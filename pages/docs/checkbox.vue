@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -27,7 +27,8 @@
       <OrganismComponentExample :code="CODE_VIEW_CHECKBOX_BASIC" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- checkbox group -->
+    <MoleculeDocsContent id="checkbox-group">
       <template #title>
         Checkbox group
       </template>
@@ -37,7 +38,8 @@
       <OrganismComponentExample :code="CODE_VIEW_CHECKBOX_GROUP" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- field group -->
+    <MoleculeDocsContent id="field-group">
       <template #title>
         Checkbox with Field Group
       </template>
@@ -55,7 +57,8 @@
       <OrganismComponentExample :code="CODE_VIEW_CHECKBOX_FIELD_GROUP" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- lists -->
+    <MoleculeDocsContent id="lists">
       <template #title>
         Checkbox with Lists
       </template>

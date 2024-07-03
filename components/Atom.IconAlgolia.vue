@@ -1,13 +1,12 @@
 <template>
   <svg
-    id="Layer_1"
+    class="algolia"
     width="77"
     height="19"
     aria-label="Algolia"
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 2196.2 500"
-    fill="#003dff"
   >
     <path
       class="cls-2"
@@ -55,4 +54,8 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.algolia{
+  fill: rgb(var(--theme500));
+}
+</style>

@@ -10,7 +10,9 @@
   
       Perfect UI uses Bootstrap Icons as its icon library, a free, high quality, open source icon library with over 2,000 icons.
     </MoleculeDocsHeader>
-    <MoleculeDocsContent>
+
+    <!-- icons -->
+    <MoleculeDocsContent id="icons">
       <p>
         The latest version of Bootstrap Icons is incorporated into Perfect UI by default. To better understand how to use them, see the <a
           href="https://icons.getbootstrap.com/"

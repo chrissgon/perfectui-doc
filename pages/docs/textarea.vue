@@ -12,7 +12,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -26,7 +26,8 @@
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_BASIC" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- placehodler -->
+    <MoleculeDocsContent id="placeholder">
       <template #title>
         Placeholder
       </template>
@@ -35,7 +36,8 @@
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- label message -->
+    <MoleculeDocsContent id="label-message">
       <template #title>
         Label/Message
       </template>
@@ -54,7 +56,8 @@
       <OrganismComponentExample :code="CODE_VIEW_TEXTAREA_PLACEHOLDER_LABEL" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- simple usage -->
+    <MoleculeDocsContent id="simple-usage">
       <template #title>
         Simple usage
       </template>

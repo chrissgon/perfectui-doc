@@ -808,7 +808,7 @@
           {
             "tags": ["timeline", "basic", "checkpoint", "icon"],
             "explanation": [
-              "The timeline component has three main classes, `.timeline` , `.checkpoint` and `.checkpoint-icon`.",
+              "The timeline component has three main classes `.timeline` , `.checkpoint` and `.checkpoint-icon`.",
               "- `.timeline` : Create a timeline. One timeline has multiple checkpoints.",
               "- `.checkpoint` : Create a checkpoint.",
               "- `.checkpoint-icon` : Define the checkpoint icon.",
@@ -890,7 +890,6 @@
           }
         ]
       },
-
       "tooltip": {
         "tags": ["tooltip", "floating", "label", "tip", "hint"],
         "url": "https://perfectui.netlify.app/docs/tooltip",

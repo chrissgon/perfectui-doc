@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Tooltip
@@ -15,7 +15,7 @@
     <AtomNoteWarnJS />
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -55,7 +55,7 @@
     </MoleculeDocsContent>
 
     <!-- directions -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="directions">
       <template #title>
         Directions
       </template>
@@ -74,7 +74,7 @@
     </MoleculeDocsContent>
 
     <!-- white / black -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="white-black">
       <template #title>
         White/Black tooltips
       </template>
@@ -91,7 +91,7 @@
     </MoleculeDocsContent>
 
     <!-- usage -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="usage">
       <p>
         Tooltip are typically only visible on hover, for that reason if you need
         to be able to read the content while interacting with other parts of the

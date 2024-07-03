@@ -1,5 +1,5 @@
 <template>
-  <div class="card border-warn">
+  <div class="card !bg-transparent border-warn">
     <article class="flex gap-3 !px-6 card-content">
       <i class="bi-exclamation-triangle-fill text-amber-500" />
 

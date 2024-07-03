@@ -2,14 +2,14 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Dropdown
       </template>
 
-      Toggle contextual overlays for displaying lists of links and more.
-      Combine with
+      Toggle contextual overlays for displaying lists of links and more. Combine
+      with
       <NuxtLink
         class="btn-link-primary text-base"
         to="/docs/list"
@@ -22,7 +22,7 @@
     <AtomNoteWarnJS />
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -62,7 +62,7 @@
     </MoleculeDocsContent>
 
     <!-- dividers -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="dividers">
       <template #title>
         Dividers
       </template>
@@ -76,7 +76,7 @@
     </MoleculeDocsContent>
 
     <!-- icons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="icons">
       <template #title>
         Icons / Badges
       </template>
@@ -98,7 +98,7 @@
     </MoleculeDocsContent>
 
     <!-- title -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="title">
       <template #title>
         Title
       </template>
@@ -112,7 +112,7 @@
     </MoleculeDocsContent>
 
     <!-- directions -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="directions">
       <template #title>
         Directions
       </template>
@@ -130,8 +130,35 @@
       />
     </MoleculeDocsContent>
 
-    <!-- directions -->
-    <MoleculeDocsContent>
+    <!-- center/end -->
+    <MoleculeDocsContent id="center-end">
+      <template #title>
+        Center / End aligns
+      </template>
+
+      <p>
+        Add <AtomToken>.dropdown-center</AtomToken> class to align the dropdown
+        to the center.
+      </p>
+
+      <OrganismComponentExample
+        :code="CODE_VIEW_DROPDOWN_CENTER"
+        overflow
+      />
+      
+      <p>
+        Add <AtomToken>.dropdown-end</AtomToken> class to align the dropdown
+        to the end.
+      </p>
+
+      <OrganismComponentExample
+        :code="CODE_VIEW_DROPDOWN_END"
+        overflow
+      />
+    </MoleculeDocsContent>
+
+    <!-- complex -->
+    <MoleculeDocsContent id="complex">
       <template #title>
         Complex
       </template>
@@ -241,7 +268,8 @@ const CODE_VIEW_DROPDOWN_TITLE = `<!-- dropdown trigger -->
   </div>
 </button>
 `;
-const CODE_VIEW_DROPDOWN_DIRECTIONS = `<div class="flex flex-wrap gap-2">
+const CODE_VIEW_DROPDOWN_DIRECTIONS = `
+<div class="flex flex-wrap gap-2">
   <!-- dropdown bottom -->
   <button class="dropdown-trigger btn btn-white">
     Bottom
@@ -292,13 +320,39 @@ const CODE_VIEW_DROPDOWN_DIRECTIONS = `<div class="flex flex-wrap gap-2">
   </button>
 </div>
 `;
+const CODE_VIEW_DROPDOWN_CENTER = `
+<button class="dropdown-trigger btn btn-white">
+  Center align
+  <i class="bi-chevron-down"></i>
+  <div class="dropdown dropdown-right dropdown-center">
+    <ul class="unmarker list list-hoverable">
+      <li class="list-item">Profile</li>
+      <li class="list-item">Settings</li>
+      <li class="list-item">Newsletter</li>
+    </ul>
+  </div>
+</button>
+`;
+const CODE_VIEW_DROPDOWN_END = `
+<button class="dropdown-trigger btn btn-white">
+  End align
+  <i class="bi-chevron-down"></i>
+  <div class="dropdown dropdown-right dropdown-end">
+    <ul class="unmarker list list-hoverable">
+      <li class="list-item">Profile</li>
+      <li class="list-item">Settings</li>
+      <li class="list-item">Newsletter</li>
+    </ul>
+  </div>
+</button>
+`;
 const CODE_VIEW_DROPDOWN_COMPLEX = `<div class="group group-row">
   <button class="group-item btn btn-white">Dropdown</button>
   <!-- dropdown trigger -->
   <button class="dropdown-trigger group-item btn btn-white">
     <i class="bi-chevron-up"></i>
     <!-- dropdown -->
-    <div class="dropdown dropdown-top">
+    <div class="dropdown dropdown-top dropdown-center">
       <label class="field-group ignore mb-2">
         <i class="addon bi-search"></i>
         <input class="input" type="text" placeholder="Search" />

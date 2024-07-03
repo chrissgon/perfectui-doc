@@ -14,6 +14,7 @@ hljs.registerLanguage("markdown", markdown);
 
 onmessage = (e) => {
   const { input, lang } = e.data;
+  if(!lang) return
   const highlight = hljs.highlight(input, {
     language: lang,
   }).value;

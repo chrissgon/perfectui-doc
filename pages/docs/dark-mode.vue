@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!-- how it works -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="how-works">
       <template #title>
         How it works
       </template>
@@ -37,7 +37,7 @@
     </MoleculeDocsContent>
 
     <!-- mode button -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="mode-button">
       <template #title>
         Mode button
       </template>

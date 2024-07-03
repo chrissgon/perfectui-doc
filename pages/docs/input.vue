@@ -11,7 +11,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -29,7 +29,7 @@
     </MoleculeDocsContent>
 
     <!-- types -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="types">
       <template #title>
         Types
       </template>

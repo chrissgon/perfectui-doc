@@ -11,7 +11,7 @@
     </MoleculeDocsHeader>
 
     <!-- complex -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="complex">
       <template #title>
         Complex fields
       </template>
@@ -24,7 +24,7 @@
     </MoleculeDocsContent>
 
     <!-- label/message -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="label-message">
       <template #title>
         Label/Message
       </template>
@@ -39,7 +39,7 @@
     </MoleculeDocsContent>
 
     <!-- addon -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="addon">
       <template #title>
         Addon
       </template>
@@ -54,7 +54,7 @@
     </MoleculeDocsContent>
 
     <!-- states -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="states">
       <template #title>
         States
       </template>
@@ -71,7 +71,7 @@
     </MoleculeDocsContent>
 
     <!-- mixed -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="mixed">
       <template #title>
         Mixed
       </template>
@@ -87,7 +87,7 @@
     </MoleculeDocsContent>
 
     <!-- buttons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="buttons">
       <template #title>
         Buttons
       </template>
@@ -102,7 +102,7 @@
     </MoleculeDocsContent>
 
     <!-- disabled -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="disabled">
       <template #title>
         Disabled
       </template>

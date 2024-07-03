@@ -11,7 +11,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -31,7 +31,7 @@
     </MoleculeDocsContent>
 
     <!-- mixed -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="mixed">
       <template #title>
         Mixed
       </template>
@@ -44,7 +44,7 @@
     </MoleculeDocsContent>
 
     <!-- buttons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="buttons">
       <template #title>
         Buttons
       </template>

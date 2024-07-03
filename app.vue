@@ -2,7 +2,7 @@
   <div class="bg-gradient"></div>
   <div class="bg-guideline"></div>
   <MoleculeCodeWorker />
-  <NuxtPage class="z-10 relative" />
+  <NuxtPage class="relative z-1" />
 </template>
 
 <script setup lang="ts">
@@ -36,6 +36,10 @@ body,
 html {
   max-width: 100vw;
   scroll-behavior: smooth;
+}
+
+html:has(.nav.opened) ,html:has(.sections.opened) {
+  overflow: hidden !important;
 }
 
 .dark .logo {
@@ -95,9 +99,8 @@ input[type="color"]::-webkit-color-swatch {
   mask-image: linear-gradient(0deg, transparent, black, black, transparent);
 }
 
-.bg-guideline-download{
+.bg-guideline-download {
   mask-image: linear-gradient(35deg, transparent, black, black, transparent);
-
 }
 
 .input {
@@ -117,5 +120,18 @@ code * {
 
 .firacode {
   font-family: "Fira Code";
+}
+
+.modal {
+  z-index: 4;
+}
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 2;
+}
+.z-3 {
+  z-index: 3;
 }
 </style>

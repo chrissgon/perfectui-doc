@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Buttons
@@ -12,7 +12,7 @@
     </MoleculeDocsHeader>
 
     <!-- types -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="types">
       <template #title>
         Types
       </template>
@@ -27,7 +27,7 @@
     </MoleculeDocsContent>
 
     <!-- rounded -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="rounded">
       <template #title>
         Rounded buttons
       </template>
@@ -40,7 +40,7 @@
     </MoleculeDocsContent>
 
     <!-- solid -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="solid">
       <template #title>
         Solid buttons
       </template>
@@ -53,7 +53,7 @@
     </MoleculeDocsContent>
 
     <!-- outline -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="outline">
       <template #title>
         Outline buttons
       </template>
@@ -66,7 +66,7 @@
     </MoleculeDocsContent>
 
     <!-- link -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="link">
       <template #title>
         Link buttons
       </template>
@@ -79,7 +79,7 @@
     </MoleculeDocsContent>
 
     <!-- white / black -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="white-black">
       <template #title>
         White/Black buttons
       </template>
@@ -93,7 +93,7 @@
     </MoleculeDocsContent>
 
     <!-- icons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="icons">
       <template #title>
         Icons
       </template>
@@ -111,7 +111,7 @@
     </MoleculeDocsContent>
 
     <!-- group -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="group">
       <template #title>
         Button group
       </template>
@@ -129,7 +129,7 @@
     </MoleculeDocsContent>
 
     <!-- disabled -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="disabled">
       <template #title>
         Disabled
       </template>

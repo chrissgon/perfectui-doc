@@ -11,7 +11,7 @@
       An easy way to deal with grouping elements.
     </MoleculeDocsHeader>
 
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="how-works">
       <template #title>
         How it works
       </template>
@@ -50,7 +50,7 @@
       </AtomNoteWarn>
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="group-responsive">
       <template #title>
         Group responsive
       </template>

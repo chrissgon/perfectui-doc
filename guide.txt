@@ -3,3 +3,4 @@ Disabled
 pagination
 carousel
 improve dropdown directions
+modal

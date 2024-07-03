@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -27,7 +27,8 @@
       <OrganismComponentExample :code="CODE_VIEW_SELECT_BASIC" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- label message -->
+    <MoleculeDocsContent id="label-message">
       <template #title>
         Label/Message
       </template>

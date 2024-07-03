@@ -12,7 +12,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -26,7 +26,8 @@
       <OrganismComponentExample :code="CODE_VIEW_SWTICH_BASIC" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- group -->
+    <MoleculeDocsContent id="group">
       <template #title>
         Switch group
       </template>
@@ -36,7 +37,8 @@
       <OrganismComponentExample :code="CODE_VIEW_SWITCH_GROUP" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- field-group -->
+    <MoleculeDocsContent id="field-group">
       <template #title>
         Switch with Field Group
       </template>
@@ -54,7 +56,8 @@
       <OrganismComponentExample :code="CODE_VIEW_SWITCH_FIELD_GROUP" />
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <!-- lists -->
+    <MoleculeDocsContent id="lists">
       <template #title>
         Switch with Lists
       </template>

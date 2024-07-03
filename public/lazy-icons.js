@@ -4,3 +4,4 @@ bootstrapIcons.href =
 bootstrapIcons.rel = "stylesheet";
 bootstrapIcons.type = "text/css";
 document.getElementsByTagName("head")[0].appendChild(bootstrapIcons);
+

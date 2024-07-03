@@ -1,7 +1,5 @@
 <template>
-  <span class="token -mr-1">
-    `<slot />`
-  </span>
+  <span class="token">`<slot />`</span>
 </template>
 
 <script setup lang="ts"></script>

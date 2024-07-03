@@ -19,7 +19,8 @@
       utilities for a light, fast and customizable solution.
     </MoleculeDocsHeader>
 
-    <MoleculeDocsContent>
+    <!-- talwindcss -->
+    <MoleculeDocsContent id="tailwindcss">
       <template #title>
         Perfect UI + Tailwind CSS = ❤️
       </template>

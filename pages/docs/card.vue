@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Card
@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -33,7 +33,7 @@
     </MoleculeDocsContent>
 
     <!-- simple body -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="simple-body">
       <template #title>
         Simple body
       </template>
@@ -46,7 +46,7 @@
     </MoleculeDocsContent>
 
     <!-- simple card -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="simple-card">
       <template #title>
         Simple card
       </template>
@@ -59,7 +59,7 @@
     </MoleculeDocsContent>
 
     <!-- header / footer -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="header-footer">
       <template #title>
         Header / Footer
       </template>
@@ -74,7 +74,7 @@
     </MoleculeDocsContent>
 
     <!-- horizontal -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="horizontal">
       <template #title>
         Horizontal
       </template>
@@ -92,7 +92,7 @@
     </MoleculeDocsContent>
 
     <!-- card group -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="card-group">
       <template #title>
         Card group
       </template>

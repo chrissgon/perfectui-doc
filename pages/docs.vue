@@ -2,7 +2,7 @@
   <section class="flex flex-col items-center overflow-x-hidden lg:px-10">
     <!-- header -->
     <header
-      class="bg-nav fixed w-full flex justify-center items-center border-b border-secondary border-solid py-3 px-5 lg:px-10 z-20"
+      class="bg-nav fixed w-full flex justify-center items-center border-b border-secondary border-solid py-3 px-5 lg:px-10 z-3"
     >
       <div class="w-full max-w-7xl flex justify-between">
         <AtomLogoVersion />
@@ -17,7 +17,7 @@
     </header>
 
     <header
-      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] z-10"
+      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] whitespace-nowrap z-2"
     >
       <i
         class="bi-list text-2xl leading-3 cursor-pointer"
@@ -27,28 +27,36 @@
         OrganismDocsNavRef?.getCurrentSection.sectionName
       }}</span>
       >
-      {{
-        OrganismDocsNavRef?.getLinkTreated(
-          OrganismDocsNavRef?.docs[
-            OrganismDocsNavRef?.getCurrentSection.sectionName
-          ][OrganismDocsNavRef?.getCurrentSection.articleIndex]
-        )
-      }}
+      <p class="w-full">
+        {{
+          OrganismDocsNavRef?.getLinkTreated(
+            OrganismDocsNavRef?.docs[
+              OrganismDocsNavRef?.getCurrentSection.sectionName
+            ][OrganismDocsNavRef?.getCurrentSection.articleIndex]
+          )
+        }}
+      </p>
+
+      <i
+        class="bi-view-list text-xl leading-3 cursor-pointer"
+        @click="toggleSection"
+      />
     </header>
 
-    <div class="w-full max-w-7xl mt-[101px] lg:mt-[52px]">
+    <div class="w-full max-w-7xl flex justify-between mt-[101px] lg:mt-[52px]">
       <OrganismDocsNav
         ref="OrganismDocsNavRef"
-        :class="{ translateNav: navIsOpen }"
-        class="height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-auto scrollbar lg:-ml-5 p-5 max-lg:pb-24 border-r border-solid border-secondary z-10"
-        @assistant="showAssistant"
-        @search="showSearch"
+        :class="{ opened: navIsOpen }"
+        class="nav height-nav w-[250px] max-lg:-translate-x-[250px] fixed overflow-auto scrollbar lg:-ml-5 p-5 max-lg:pb-24 border-r border-solid border-secondary"
       />
 
       <article
-        :class="{ translateArticle: navIsOpen }"
-        class="flex flex-col gap-6 lg:ml-[230px] min-h-screen pt-5 lg:pt-10 pl-10 max-lg:px-5"
-        @click="closeNav"
+        :class="{
+          translateArticle: navIsOpen,
+          'max-lg:-translate-x-[250px]': sectionIsOpen,
+        }"
+        class="flex flex-col gap-6 lg:ml-[230px] lg:max-w-[calc(100%-230px)] xl:max-w-[800px] min-h-screen p-10 max-xl:pr-0 max-lg:p-5 w-full"
+        @click="closeAll"
       >
         <NuxtPage />
 
@@ -75,26 +83,61 @@
 
         <OrganismFooter />
       </article>
+
+      <aside
+        :class="{ 'translate-x-[0px] opened': sectionIsOpen }"
+        class="sections w-[250px] xl:pr-5 max-xl:fixed max-xl:right-0 max-xl:translate-x-[250px] max-xl:pl-5 max-xl:border-l border-solid border-secondary"
+      >
+        <div class="xl:fixed overflow-y-auto lg:pt-10 pt-5 pb-32 h-screen">
+          <b class="font-bold">On this page</b>
+
+          <ClientOnly>
+            <ul class="list unmarker mt-4">
+              <a
+                v-for="{ id, label } in links"
+                :key="id"
+                :href="`#${id}`"
+                :class="{ active: currentLinkID === id }"
+                class="list-item"
+              >
+                {{ label }}
+              </a>
+            </ul>
+
+            <!-- <div class="p-px bg-gradient-to-tr from-blue-200 via-transparent rounded-2xl dark:from-blue-900 dark:via-transparent scale-90 max-w-[300px]">
+              <div class="p-3 bg-white rounded-2xl !bg-gray-900">
+                <img class="dark:hidden rounded-lg" src="https://preline.co/assets/img/others/pro.jpg" alt="Preline Pro">
+                <img class="dark:block hidden rounded-lg" src="https://preline.co/assets/img/others/pro-dark.jpg" alt="Preline Pro">
+                <p class="mt-3 text-sm text-gray-800 dark:text-white">Looking for more beautiful and advanced Tailwind examples?</p>
+                <p class="mt-2">
+                  <span class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 font-medium dark:text-blue-500">
+                    Visit Preline Pro
+                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path class="lg:opacity-0 lg:-translate-x-1 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:transition" d="M5 12h14"></path>
+                      <path class="lg:-translate-x-1.5 lg:group-hover:translate-x-0 lg:transition" d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
+                </p>
+              </div>
+            </div> -->
+          </ClientOnly>
+        </div>
+      </aside>
     </div>
 
-    <OrganismAssistantChatGPT
+    <!-- <OrganismAssistantChatGPT
       v-show="assistantIsVisible"
       @close="hideAll"
       @click.self="hideAll"
-    />
-    <!-- TODO -->
-    <!-- implements algolia search -->
-    <OrganismAlgoliaSearch
-      v-show="searchIsVisible"
-      @close="hideAll"
-      @click.self="hideAll"
-    />
+    /> -->
+
+    <OrganismModalAlgolia />
   </section>
 </template>
 
 <script setup lang="ts">
+import { getSectionLinks, type ISectionLinks } from "~/shared";
 import OrganismDocsNav from "../components/Organism.DocsNav.vue";
-import hotkeys from "hotkeys-js";
 
 // computed
 const getLinkPrevPage = computed<string>(() => {
@@ -111,67 +154,55 @@ const getLinkNextPage = computed<string>(() => {
 });
 
 // data
-const route = useRoute()
+const route = useRoute();
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
+const sectionIsOpen = ref<boolean>(false);
 const router = useRoute();
+const links = reactive<ISectionLinks>([]);
+const currentLinkID = ref<string>("");
 // const assistantIsVisible = ref<boolean>(!!route.query.assistant);
-const assistantIsVisible = ref<boolean>(false);
-const searchIsVisible = ref<boolean>(false);
 
 // methods
 function init(): void {
   if (!process.client) return;
-  hotkeys("ctrl+k", () => {
-    showSearch();
-  });
+  Object.assign(links, getSectionLinks());
 }
 function toggleNav(): void {
+  closeSection();
   navIsOpen.value = !navIsOpen.value;
-  document.body.style.overflow = navIsOpen.value ? "hidden" : "auto";
+}
+function toggleSection(): void {
+  closeNav();
+  sectionIsOpen.value = !sectionIsOpen.value;
 }
 function closeNav(): void {
-  document.body.style.overflow = "auto";
   navIsOpen.value = false;
 }
-function showAssistant(): void {
-  assistantIsVisible.value = true;
-  document.documentElement.style.overflow = "hidden";
-
-  focusInput(".OrganismAssistantChatGPT .OrganismSearchCardInput");
+function closeSection(): void {
+  sectionIsOpen.value = false;
 }
-function hideAssistant(): void {
-  assistantIsVisible.value = false;
-  document.documentElement.style.overflow = "auto";
-}
-function showSearch(): void {
-  searchIsVisible.value = true;
-  document.documentElement.style.overflow = "hidden";
-
-  focusInput(".OrganismAlgoliaSearch .OrganismSearchCardInput");
-}
-function hideSearch(): void {
-  searchIsVisible.value = false;
-  document.documentElement.style.overflow = "auto";
-}
-function focusInput(selector: string): void {
-  const input = document.querySelector(selector) as HTMLInputElement;
-
-  if (!input || !input.focus) {
-    setTimeout(() => {
-      focusInput(selector);
-    }, 1000);
-    return;
-  }
-
-  setTimeout(() => {
-    input?.focus();
-  }, 100);
-}
-function hideAll(): void {
+function closeAll(): void {
   closeNav();
-  hideAssistant();
-  hideSearch();
+  closeSection();
+}
+function updateLinks(): void {
+  links.length = 0;
+  Object.assign(links, getSectionLinks());
+}
+function setCurrentLink(): void {
+  const sections = document.querySelectorAll(
+    ".docs-content"
+  ) as NodeListOf<HTMLElement>;
+
+  window.onscroll = () => {
+    for (const section of sections) {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop) {
+        currentLinkID.value = section.getAttribute("id") ?? "";
+      }
+    }
+  };
 }
 
 // setup
@@ -179,7 +210,13 @@ init();
 if (router.name === "docs") {
   navigateTo("/docs/installation");
 }
-onBeforeRouteUpdate(hideAll);
+onBeforeRouteUpdate(() => {
+  closeAll();
+});
+onUpdated(() => {
+  updateLinks();
+  setCurrentLink();
+});
 </script>
 
 <style scoped>
@@ -196,10 +233,18 @@ onBeforeRouteUpdate(hideAll);
   backdrop-filter: blur(5px);
 }
 
-.translateNav {
+.nav.opened {
   transform: translateX(0px) !important;
 }
 .translateArticle {
   transform: translateX(250px) !important;
+}
+
+.sections .active {
+  background-color: transparent;
+  color: rgb(var(--theme500));
+}
+.sections.opened {
+  transform: translateX(0px) !important;
 }
 </style>

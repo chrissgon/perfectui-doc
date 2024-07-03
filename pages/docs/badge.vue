@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Badge
@@ -11,7 +11,7 @@
     </MoleculeDocsHeader>
 
     <!-- types -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="types">
       <template #title>
         Types
       </template>
@@ -25,7 +25,7 @@
     </MoleculeDocsContent>
 
     <!-- rounded -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="rounded">
       <template #title>
         Rounded badges
       </template>
@@ -38,7 +38,7 @@
     </MoleculeDocsContent>
 
     <!-- solid -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="solid">
       <template #title>
         Solid badges
       </template>
@@ -51,7 +51,7 @@
     </MoleculeDocsContent>
 
     <!-- outline -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="outline">
       <template #title>
         Outline badges
       </template>
@@ -64,7 +64,7 @@
     </MoleculeDocsContent>
 
     <!-- white / black -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="white-black">
       <template #title>
         White/Black badges
       </template>
@@ -78,7 +78,7 @@
     </MoleculeDocsContent>
 
     <!-- icons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="icons">
       <template #title>
         Icons
       </template>

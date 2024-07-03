@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         List
@@ -13,7 +13,7 @@
       experience.
     </MoleculeDocsHeader>
 
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="list-type">
       <template #title>
         Setting the list type
       </template>
@@ -41,7 +41,7 @@
     </MoleculeDocsContent>
 
     <!-- custom marker -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="custom-marker">
       <template #title>
         Custom marker
       </template>
@@ -54,7 +54,7 @@
     </MoleculeDocsContent>
 
     <!-- list bordered -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="list-bordered">
       <template #title>
         List bordered
       </template>
@@ -74,7 +74,7 @@
     </MoleculeDocsContent>
 
     <!-- list hoverable -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="list-hoverable">
       <template #title>
         List hoverable
       </template>
@@ -88,7 +88,7 @@
     </MoleculeDocsContent>
 
     <!-- list striped -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="list-striped">
       <template #title>
         List striped
       </template>
@@ -102,7 +102,7 @@
     </MoleculeDocsContent>
 
     <!-- icons -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="icons">
       <template #title>
         Icons
       </template>
@@ -121,7 +121,7 @@
     </MoleculeDocsContent>
 
     <!-- active/disabled -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="active-disabled">
       <template #title>
         Active / Disabled
       </template>
@@ -143,7 +143,7 @@
     </MoleculeDocsContent>
 
     <!-- horizontal -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="horizontal">
       <template #title>
         Horizontal
       </template>
@@ -162,7 +162,7 @@
     </MoleculeDocsContent>
 
     <!-- badge -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="badge">
       <template #title>
         Badges
       </template>
@@ -176,7 +176,7 @@
     </MoleculeDocsContent>
 
     <!-- invoice -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="invoice">
       <template #title>
         Invoice
       </template>
@@ -189,7 +189,8 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_LIST_UL = `<ul class="list">
+const CODE_VIEW_LIST_UL = `
+<ul class="list">
   <li class="list-item">
     Now this is a story all about how, my life got flipped turned upside
     down

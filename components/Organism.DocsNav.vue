@@ -1,20 +1,18 @@
 <template>
   <nav>
-    <label
-      class="field-group mb-6"
-      @click="emit('search')"
+    <div
+      class="cursor-pointer !min-w-full field-group input-group input mb-6 !rounded-md"
+      data-modal="modalAlgolia"
     >
-      <div class="input-group input">
-        <i class="bi-search"></i>
-        <input
-          type="text"
-          class="input"
-          placeholder="Quick search"
-          readonly
-        />
-        <span class="text- text-secondary font-medium">Ctrl K</span>
-      </div>
-    </label>
+      <i class="bi-search"></i>
+      <input
+        type="text"
+        class="input pointer-events-none"
+        placeholder="Quick search"
+        readonly
+      />
+      <span class="text-secondary font-medium">/</span>
+    </div>
 
     <!-- resources -->
     <ul
@@ -122,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { type SectionMap, type Sections, NAV_SECTIONS } from "@/shared";
+import { type ISectionMap, type ISections, NAV_SECTIONS } from "@/shared";
 
 // computed
 const getLinkTreated = computed<Function>(() => (link: string) => {
@@ -136,7 +134,7 @@ const isPageActive = computed<Function>(() => (link: string) => {
   const expected = getDocPath(normalizeLink(link));
   return have === expected;
 });
-const getCurrentSection = computed<SectionMap>(() => {
+const getCurrentSection = computed<ISectionMap>(() => {
   const parts = route.path.split("/docs/");
 
   if (parts.length < 2) {
@@ -207,7 +205,7 @@ const getPrevPage = computed<string | undefined>(() => {
 });
 
 // data
-const docs = ref<Sections>(NAV_SECTIONS);
+const docs = ref<ISections>(NAV_SECTIONS);
 const route = useRoute();
 
 // methods
@@ -229,13 +227,6 @@ function normalizeArticleName(link: string): string {
 function getDocPath(link: string): string {
   return `/docs/${link}`;
 }
-
-// emit
-interface IEmits {
-  (e: "assistant"): void;
-  (e: "search"): void;
-}
-const emit = defineEmits<IEmits>();
 
 // expose
 defineExpose({

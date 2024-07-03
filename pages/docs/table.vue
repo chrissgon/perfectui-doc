@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Table
@@ -12,7 +12,7 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -35,7 +35,7 @@
     </MoleculeDocsContent>
 
     <!-- bordered -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="bordered">
       <template #title>
         Bordered
       </template>
@@ -51,7 +51,7 @@
     </MoleculeDocsContent>
 
     <!-- striped -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="striped">
       <template #title>
         Striped
       </template>
@@ -67,7 +67,7 @@
     </MoleculeDocsContent>
 
     <!-- hoverable -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="hoverable">
       <template #title>
         Hoverable
       </template>
@@ -85,7 +85,7 @@
     </MoleculeDocsContent>
 
     <!-- borderless -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="borderless">
       <template #title>
         Borderless
       </template>
@@ -100,8 +100,8 @@
       <OrganismComponentExample :code="CODE_VIEW_TABLE_BORDERLESS" />
     </MoleculeDocsContent>
 
-    <!-- Headless -->
-    <MoleculeDocsContent>
+    <!-- headless -->
+    <MoleculeDocsContent id="headless">
       <template #title>
         Headless
       </template>
@@ -115,7 +115,7 @@
     </MoleculeDocsContent>
 
     <!-- selection -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="selection">
       <template #title>
         Selection
       </template>
@@ -130,7 +130,7 @@
     </MoleculeDocsContent>
 
     <!-- search -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="search">
       <template #title>
         Search input
       </template>
@@ -141,7 +141,7 @@
     </MoleculeDocsContent>
 
     <!-- pagination -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="pagination">
       <template #title>
         Pagination
       </template>

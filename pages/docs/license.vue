@@ -15,7 +15,7 @@
     </MoleculeDocsHeader>
 
     <!-- mit license -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="mit">
       <template #title>
         MIT License
       </template>

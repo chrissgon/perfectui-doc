@@ -1,5 +1,6 @@
 <template>
   <dialog
+    ref="dialogRef"
     class="fixed top-0 left-0 w-full h-screen z-30 bg-search flex justify-center items-ceter p-4"
     @click.self="reset"
   >
@@ -14,6 +15,7 @@
           @click="close"
         ></i>
         <input
+          ref="inputRef"
           v-model="doubt"
           :disabled="loading"
           type="text"
@@ -57,6 +59,8 @@ const props = defineProps<IProps>();
 
 // data
 const doubt = ref<string>("");
+const dialogRef = ref<InstanceType<typeof HTMLDialogElement> | null>(null);
+const inputRef = ref<InstanceType<typeof HTMLInputElement> | null>(null);
 
 // methods
 function message(): void {

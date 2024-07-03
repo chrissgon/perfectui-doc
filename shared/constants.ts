@@ -7,13 +7,14 @@ export const NAV_SECTIONS = {
     "Layout Group",
     // "Disable Elements"
   ],
-  "Base Components": [
+  Components: [
     "Accordion",
     "Badge",
     "Button",
     "Card",
     "Dropdown $N",
     "List",
+    "Modal $N",
     "Table",
     "Timeline $N",
     "Tooltip",

@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Timeline
@@ -14,13 +14,13 @@
     </MoleculeDocsHeader>
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
 
       <p>
-        The timeline component has three main classes,
+        The timeline component has three main classes
         <AtomToken>.timeline</AtomToken>, <AtomToken>.checkpoint</AtomToken> and
         <AtomToken>.checkpoint-icon</AtomToken>.
       </p>
@@ -50,7 +50,7 @@
     </MoleculeDocsContent>
 
     <!-- types -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="types">
       <template #title>
         Types
       </template>
@@ -71,7 +71,7 @@
     </MoleculeDocsContent>
 
     <!-- solid -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="solid">
       <template #title>
         Solid checkpoints
       </template>
@@ -85,7 +85,7 @@
     </MoleculeDocsContent>
 
     <!-- outline -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="outline">
       <template #title>
         Outline checkpoints
       </template>
@@ -99,7 +99,7 @@
     </MoleculeDocsContent>
 
     <!-- link -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="link">
       <template #title>
         Link checkpoints
       </template>
@@ -113,7 +113,7 @@
     </MoleculeDocsContent>
 
     <!-- white / black -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="white-black">
       <template #title>
         White/Black checkpoints
       </template>
@@ -127,7 +127,7 @@
     </MoleculeDocsContent>
 
     <!-- horizontal -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="horizontal">
       <template #title>
         Horizontal
       </template>
@@ -142,7 +142,7 @@
     </MoleculeDocsContent>
 
     <!-- responsive -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="responsive">
       <template #title>
         Responsive
       </template>

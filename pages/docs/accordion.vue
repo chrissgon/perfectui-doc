@@ -2,7 +2,7 @@
   <MoleculeDocsSection>
     <MoleculeDocsHeader>
       <template #subtitle>
-        Base Components
+        Components
       </template>
       <template #title>
         Accordion
@@ -10,11 +10,11 @@
 
       Build vertically collapsing accordions.
     </MoleculeDocsHeader>
-    
+
     <AtomNoteWarnJS />
 
     <!-- basic -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="basic">
       <template #title>
         Basic
       </template>
@@ -28,7 +28,7 @@
     </MoleculeDocsContent>
 
     <!-- bordered -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="bordered">
       <template #title>
         Bordered
       </template>
@@ -41,7 +41,7 @@
     </MoleculeDocsContent>
 
     <!-- accented -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="accented">
       <template #title>
         Accented
       </template>
@@ -54,7 +54,7 @@
     </MoleculeDocsContent>
 
     <!-- nested -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="nested">
       <template #title>
         Nested
       </template>
@@ -80,7 +80,7 @@
     </MoleculeDocsContent>
 
     <!-- icon -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="icon">
       <template #title>
         Custom Arrow
       </template>

@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!-- how it works -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="how-works">
       <template #title>
         How it works
       </template>

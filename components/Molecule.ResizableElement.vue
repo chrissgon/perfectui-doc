@@ -70,9 +70,7 @@ function init(): void {
 }
 function setMouseMove(container: HTMLElement): void {
   if (!bar.value || !slot.value) return;
-  const offsetX =
-    window.innerWidth - bar.value.getBoundingClientRect().right - 10;
-
+  
   container.addEventListener("mousemove", function (e: MouseEvent) {
     if (!bar.value || !slot.value) return;
     if (!drag.value) return;
@@ -82,13 +80,13 @@ function setMouseMove(container: HTMLElement): void {
 
     if (props.horizontal) {
       slot.value.style.height =
-        moveY.value - 180 - bar.value.getBoundingClientRect().height / 2 + "px";
+        moveY.value - slot.value.offsetTop - bar.value.getBoundingClientRect().height / 2 + "px";
       return;
     }
 
     slot.value.style.width =
       moveX.value -
-      offsetX -
+      slot.value.offsetLeft -
       bar.value.getBoundingClientRect().width / 2 +
       "px";
   });

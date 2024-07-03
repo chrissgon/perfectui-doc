@@ -13,7 +13,7 @@
     </MoleculeDocsHeader>
 
     <!--  play cdn -->
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="cdn">
       <template #title>
         Play CDN
       </template>
@@ -70,7 +70,7 @@
       </OrganismTabs>
     </MoleculeDocsContent>
 
-    <MoleculeDocsContent>
+    <MoleculeDocsContent id="package">
       <template #title>
         Install by package manager
       </template>

@@ -6,7 +6,7 @@
     <button
       aria-label="Copy"
       class="absolute right-0 p-3 m-1"
-      @click="copy(input)"
+      @click="copy(getInput)"
     >
       <i
         v-if="copied"
@@ -41,22 +41,20 @@ const props = withDefaults(defineProps<IProps>(), {
   lang: "html",
 });
 
+// computed
+const getInput = computed<string>(() =>
+  props.input.replace(/^\n/, "").replace(/\n$/, "")
+);
+
 // data
 const channelID = getChannelID();
 const copied = ref<boolean>(false);
 const template = ref<string>();
+const channel = new BroadcastChannel("highlight");
 
 // methods
 function setup(): void {
-  const cache = sessionStorage.getItem(channelID);
-
-  if (cache) {
-    template.value = cache;
-    return;
-  }
-
-  const channel = new BroadcastChannel("highlight");
-  channel.postMessage({ channelID, input: props.input, lang: props.lang });
+  channel.postMessage({ channelID, input: getInput.value, lang: props.lang });
   channel.onmessage = (e) => {
     if (e.data.channelID === channelID) {
       template.value = e.data.highlight;
@@ -72,9 +70,9 @@ function unsetCopy(): void {
   copied.value = false;
 }
 function getChannelID(): string {
-  const length = props.input.length;
-  const start = props.input.substring(0, 30).trim();
-  const end = props.input.substring(length - 20, length).trim();
+  const length = getInput.value.length;
+  const start = getInput.value.substring(0, 30).trim();
+  const end = getInput.value.substring(length - 20, length).trim();
   const lang = props.lang ?? "html";
   return md5(`${start}${length}${end}${lang}`);
 }
