@@ -19,4 +19,5 @@ export interface IAlgoliaItem {
   title: string;
   description: string;
   tags: string[];
+  requireJavascript?: boolean,
 }

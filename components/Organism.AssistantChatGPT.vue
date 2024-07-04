@@ -1,93 +1,120 @@
 <template>
-  <OrganismSearchCard
-    :loading="loading || error !== null"
-    class="OrganismAssistantChatGPT"
-    chat
-    @close="reset"
+  <dialog
+    id="modalAssistant"
+    ref="modalRef"
+    class="modal"
     @click.self="reset"
-    @message="search"
   >
-    <article class="flex flex-col gap-4 p-4 text">
-      <!-- error -->
-      <aside
-        v-if="error"
-        class="flex max-sm:flex-col gap-4 items-center"
+    <div class="card w-full bg-tertiary [html:not(.dark)_&]:!bg-white">
+      <!-- header -->
+      <header
+        class="card-header sticky top-0 border-b z-1 border-secondary border-solid bg-secondary [html:not(.dark)_&]:!bg-white flex items-center"
       >
         <i
-          class="bi-exclamation-triangle-fill text-warn text-lg leading-none px-2"
+          class="bi-chevron-left btn"
+          @click="close"
         ></i>
-
-        <div
-          class="text-base relative overflow-x-auto w-full max-sm:text-center"
-        >
-          <span class="text-warn">
-            {{ error }}
-          </span>
-        </div>
-
+        <!-- input -->
+        <input
+          v-model="doubt"
+          type="text"
+          class="outline-none bg-transparent w-full mx-2 mousetrap"
+          placeholder="What's your question?"
+          @keydown.enter="search"
+        />
         <button
-          class="btn btn-white bg-tertiary"
-          @click="init"
+          :disabled="loading"
+          class="btn btn-white bg-tertiary !px-3"
+          @click="search"
         >
-          <i class="bi-arrow-clockwise"></i> Reconnect
+          <i class="bi-send"></i>
         </button>
-      </aside>
+      </header>
 
-      <!-- bot -->
-      <div
-        v-if="!error"
-        class="flex flex-col gap-4"
-      >
-        <!-- room -->
-        <template v-for="({ bot, text }, i) in room">
-          <!-- bot -->
+      <article class="px-2">
+        <article class="flex flex-col gap-4 p-4 text">
+          <!-- error -->
           <aside
-            v-if="bot"
-            :key="i"
-            class="flex float-left max-sm:flex-col"
+            v-if="error"
+            class="flex max-sm:flex-col gap-4 items-center"
+          >
+            <i
+              class="bi-exclamation-triangle-fill text-warn text-lg leading-none px-2"
+            ></i>
+
+            <div
+              class="text-base relative overflow-x-auto w-full max-sm:text-center"
+            >
+              <span class="text-warn">
+                {{ error }}
+              </span>
+            </div>
+
+            <button
+              class="btn btn-white bg-tertiary"
+              @click="init"
+            >
+              <i class="bi-arrow-clockwise"></i> Reconnect
+            </button>
+          </aside>
+
+          <!-- bot -->
+          <div
+            v-if="!error"
+            class="flex flex-col gap-4"
+          >
+            <!-- room -->
+            <template v-for="({ bot, text }, i) in room">
+              <!-- bot -->
+              <aside
+                v-if="bot"
+                :key="i"
+                class="flex float-left max-sm:flex-col"
+              >
+                <AtomIconChatGPT
+                  class="inline badge badge-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
+                />
+
+                <div
+                  class="mt-2 text-base relative overflow-x-auto flex flex-col gap-2 w-full"
+                  v-html="text"
+                ></div>
+              </aside>
+
+              <!-- user -->
+              <article
+                v-if="!bot"
+                :key="i"
+              >
+                <div
+                  class="p-2 px-4 text-right bg-secondary rounded-md block float-right"
+                  v-html="text"
+                ></div>
+              </article>
+            </template>
+          </div>
+
+          <!-- loading -->
+          <div
+            v-if="loading"
+            class="flex"
           >
             <AtomIconChatGPT
               class="inline badge badge-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
             />
 
-            <div
-              class="mt-2 text-base relative overflow-x-auto flex flex-col gap-2"
-              v-html="text"
-            ></div>
-          </aside>
-
-          <!-- user -->
-          <article
-            v-if="!bot"
-            :key="i"
-          >
-            <div
-              class="p-2 px-4 text-right bg-secondary rounded-md block float-right"
-              v-html="text"
-            ></div>
-          </article>
-        </template>
-      </div>
-
-      <!-- loading -->
-      <div
-        v-if="loading"
-        class="flex"
-      >
-        <AtomIconChatGPT
-          class="inline badge badge-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
-        />
-
-        <div class="mt-3 w-4 h-4 block rounded-full animate-scale"></div>
-      </div>
-    </article>
-  </OrganismSearchCard>
+            <div class="mt-3 w-4 h-4 block rounded-full animate-scale"></div>
+          </div>
+        </article>
+      </article>
+    </div>
+  </dialog>
 </template>
 
 <script setup lang="ts">
 import { Marked, Renderer } from "@ts-stack/markdown";
-import { scrollToBottom } from "~/shared";
 import hljs from "highlight.js";
+import { scrollToBottom } from "~/shared";
 
 // interfaces
 interface IMessage {
@@ -124,41 +151,58 @@ Marked.setOptions({
   smartypants: false,
   highlight: (code, lang) => hljs.highlight(lang ?? "html", code).value,
 });
+const modalRef = ref<InstanceType<typeof HTMLDialogElement> | null>(null);
+const doubt = ref<string>("");
 
 // methods
 function init(): void {
-  if(!process.client) return
+  if (!process.client) return;
   if (!runtime.public.SEARCH_ENDPOINT) return;
 
   reset();
 
-  let threadID = localStorage.getItem("assistant:thread")
+  let threadID = localStorage.getItem("assistant:thread");
 
-  if(!threadID){
-    threadID = crypto.randomUUID()
-    localStorage.setItem("assistant:thread", threadID)
+  if (!threadID) {
+    threadID = crypto.randomUUID();
+    localStorage.setItem("assistant:thread", threadID);
   }
 
-  const params = new URLSearchParams()
-  params.append("id", threadID)
+  const params = new URLSearchParams();
+  params.append("id", threadID);
 
-  conn.value = new WebSocket(`${runtime.public.SEARCH_ENDPOINT}?${params.toString()}`);
+  conn.value = new WebSocket(
+    `${runtime.public.SEARCH_ENDPOINT}?${params.toString()}`
+  );
 
   conn.value.onmessage = processResponse;
   conn.value.onerror = setError;
   conn.value.onclose = setError;
 }
-function search(doubt: string): void {
+function close(): void {
+  modalRef.value?.close();
+  reset();
+}
+function reset(): void {
+  error.value = null;
+  loading.value = false;
+  room.length = 0;
+  room.push(DEFAULT_BOT_MESSAGE);
+  doubt.value = "";
+}
+function search(): void {
   if (loading.value) return;
   if (!conn.value) return;
 
   loading.value = true;
 
-  room.push({ text: doubt });
+  room.push({ text: doubt.value });
 
   scroll();
 
-  conn.value.send(doubt);
+  conn.value.send(doubt.value);
+
+  doubt.value = "";
 }
 function processResponse({ data }: MessageEvent<any>): void {
   if (connIsClosed.value) return;
@@ -183,7 +227,7 @@ function processResponse({ data }: MessageEvent<any>): void {
 }
 function addCopyAction(): void {
   const codes = document.querySelectorAll(
-    ".OrganismAssistantChatGPT pre code"
+    "#modalAssistant pre code"
   ) as NodeListOf<HTMLElement>;
 
   for (const code of codes) {
@@ -202,20 +246,10 @@ function setError(): void {
 }
 function scroll(): void {
   setTimeout(() => {
-    const els = document.querySelectorAll(
-      "OrganismSearchCard"
-    ) as NodeListOf<HTMLElement>;
-
-    for (const el of els) {
-      scrollToBottom(el);
-    }
+    const el = document.querySelector("#modalAssistant .card") as HTMLElement;
+    if (!el) return;
+    scrollToBottom(el);
   }, 0);
-}
-function reset(): void {
-  error.value = null;
-  loading.value = false;
-  room.length = 0;
-  room.push(DEFAULT_BOT_MESSAGE);
 }
 
 // methods

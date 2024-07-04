@@ -11,6 +11,7 @@ export function AlgoliaListDTO(primitives: any[]): IAlgoliaList {
       title: primitive.title,
       description: primitive.description,
       tags: primitive.tags,
+      requireJavascript: primitive.requireJavascript
     });
   }
 

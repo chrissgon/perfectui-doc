@@ -99,7 +99,7 @@
                 :href="`#${id}`"
                 :class="{ active: currentLinkID === id }"
                 class="list-item section-link"
-                @click="closeAll"
+                @click.prevent="goToSection"
               >
                 {{ label }}
               </a>
@@ -163,12 +163,13 @@
       @click.self="hideAll"
     /> -->
 
-    <OrganismModalAlgolia />
+    <OrganismAlgoliaSearch />
+    <OrganismAssistantChatGPT />
   </section>
 </template>
 
 <script setup lang="ts">
-import { addSmoothScrollSectionLinks, getSectionLinks, type ISectionLinks } from "~/shared";
+import { type ISectionLinks } from "~/shared";
 import OrganismDocsNav from "../components/Organism.DocsNav.vue";
 
 // computed
@@ -198,7 +199,7 @@ const currentLinkID = ref<string>("");
 // methods
 function init(): void {
   if (!process.client) return;
-  Object.assign(links, getSectionLinks());
+  updateLinks();
 }
 function toggleNav(): void {
   closeSection();
@@ -238,6 +239,38 @@ function setCurrentLink(): void {
     }
   };
 }
+function goToSection(e: MouseEvent): void {
+  const href = (e.target as HTMLElement).getAttribute("href");
+
+  if (!href) return;
+
+  const targetElement = document.querySelector(href) as HTMLElement;
+
+  if (!targetElement) return;
+  const offsetTop = window.innerHeight > 1024 ? 75 : 125;
+  window.scrollTo({
+    top: targetElement.offsetTop - offsetTop,
+    behavior: "smooth",
+  });
+
+  closeAll();
+}
+function getSectionLinks(): ISectionLinks {
+  const sections: ISectionLinks = [];
+
+  const contents = document.querySelectorAll(
+    ".docs-content"
+  ) as NodeListOf<HTMLElement>;
+
+  for (const content of contents) {
+    sections.push({
+      id: content.id,
+      label: content.querySelector(".docs-title")?.textContent?.trim() ?? "",
+    });
+  }
+
+  return sections;
+}
 
 // setup
 init();
@@ -249,10 +282,8 @@ onBeforeRouteUpdate(() => {
 });
 onUpdated(() => {
   updateLinks();
+  currentLinkID.value = links[0].id;
   setCurrentLink();
-
-  const offsetTop = window.innerHeight > 1024 ? 75 : 125;
-  addSmoothScrollSectionLinks(offsetTop);
 });
 </script>
 

@@ -141,4 +141,21 @@ code * {
 .z-3 {
   z-index: 3;
 }
+
+.bg-tertiary{
+  background-color: rgb(var(--backgroundTertiary))!important;
+}
+
+.kdb {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 5px;
+  background: rgba(var(--contentPrimary), 0.06);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 25px;
+  min-height: 25px;
+}
 </style>

@@ -137,10 +137,10 @@ const CODE_VIEW_MODAL_BASIC = `
 </dialog>
 `;
 const CODE_VIEW_MODAL_STATIC = `
-<button class="btn btn-solid-primary" data-modal="static">
+<button class="btn btn-solid-primary" data-modal="modal-static">
   Open modal
 </button>
-<dialog class="modal static-backdrop" id="static">
+<dialog class="modal static-backdrop" id="modal-static">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal title</span>
@@ -159,10 +159,10 @@ const CODE_VIEW_MODAL_STATIC = `
 </dialog>
 `;
 const CODE_VIEW_MODAL_SCROLL = `
-<button class="btn btn-solid-primary" data-modal="scroll">
+<button class="btn btn-solid-primary" data-modal="modal-scroll">
   Open modal
 </button>
-<dialog class="modal" id="scroll">
+<dialog class="modal" id="modal-scroll">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal title</span>

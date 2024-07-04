@@ -11,7 +11,9 @@
         placeholder="Quick search"
         readonly
       />
-      <span class="text-secondary font-medium">/</span>
+      <div class="text-secondary font-medium !pr-2">
+        <span class="badge badge-white kdb leading-none"> / </span>
+      </div>
     </div>
 
     <!-- resources -->
@@ -19,10 +21,7 @@
       class="unmarker list flex flex-col gap-2 [&>.list-item]:cursor-pointer [&>.list-item]:!bg-transparent font-medium mb-10 [&>.list-item]:!px-0 [&>.list-item_i]:p-[5px] [&>.list-item_i]:px-2 [&>.list-item_i]:opacity-50 [&>.list-item.active_i]:!opacity-100 [&>.list-item:hover_i]:!opacity-100 [&>.list-item_i]:rounded-md [&>.list-item_i]:mr-2 [&>.list-item]:opacity-75 [&>.list-item.active]:!opacity-100 [&>.list-item:hover]:!opacity-100"
     >
       <!-- assistant -->
-      <!-- <li
-        class="list-item active"
-        @click="emit('assistant')"
-      >
+      <!-- <li class="list-item active" data-modal="modalAssistant">
         <i class="btn btn-white !bg-[#10A37F] !border-[#10A37F] !px-[7px]">
           <AtomIconChatGPT class="inline w-4 scale-110 -translate-y-[1px]" />
         </i>
