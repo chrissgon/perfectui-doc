@@ -7,8 +7,8 @@ export function scrollToBottom(el: HTMLElement): void {
   });
 }
 
-export function getSectionLinks(): ISectionLinks{
-  const sections:ISectionLinks= [];
+export function getSectionLinks(): ISectionLinks {
+  const sections: ISectionLinks = [];
 
   const contents = document.querySelectorAll(
     ".docs-content"
@@ -22,4 +22,27 @@ export function getSectionLinks(): ISectionLinks{
   }
 
   return sections;
+}
+
+export function addSmoothScrollSectionLinks(offsetTop: number = 0): void {
+  const anchors = document.querySelectorAll(
+    "a.section-link"
+  ) as NodeListOf<HTMLAnchorElement>;
+
+  for (const anchor of anchors) {
+    anchor.addEventListener("click", function (e: MouseEvent) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+
+      if (!href) return;
+
+      const targetElement = document.querySelector(href) as HTMLElement;
+
+      if (!targetElement) return;
+      window.scrollTo({
+        top: targetElement.offsetTop - offsetTop,
+        behavior: "smooth",
+      });
+    });
+  }
 }

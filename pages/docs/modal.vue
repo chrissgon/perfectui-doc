@@ -255,7 +255,7 @@ const CODE_VIEW_MODAL_TOGGLE = `
     <hr />
     <footer class="card-header flex gap-2 justify-end">
       <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary" data-modal="toggle">Back to first</button>
+      <button class="btn btn-solid-primary" data-modal="modal-toggle">Back to first</button>
     </footer>
   </div>
 </dialog>

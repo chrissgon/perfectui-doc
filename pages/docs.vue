@@ -17,10 +17,10 @@
     </header>
 
     <header
-      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid px-5 py-3 mt-[51px] whitespace-nowrap z-2"
+      class="bg-nav fixed lg:hidden w-full flex items-center gap-2 border-b border-secondary border-solid mt-[51px] whitespace-nowrap z-2"
     >
       <i
-        class="bi-list text-2xl leading-3 cursor-pointer"
+        class="bi-list text-2xl leading-3 cursor-pointer p-3"
         @click="toggleNav"
       />
       <span class="text-secondary">{{
@@ -38,7 +38,7 @@
       </p>
 
       <i
-        class="bi-view-list text-xl leading-3 cursor-pointer"
+        class="bi-view-list text-xl leading-3 cursor-pointer p-3"
         @click="toggleSection"
       />
     </header>
@@ -98,13 +98,14 @@
                 :key="id"
                 :href="`#${id}`"
                 :class="{ active: currentLinkID === id }"
-                class="list-item"
+                class="list-item section-link"
+                @click="closeAll"
               >
                 {{ label }}
               </a>
             </ul>
 
-            <div
+            <!-- <div
               class="p-px bg-gradient-to-tr from-blue-200 via-transparent rounded-2xl dark:from-blue-900 dark:via-transparent scale-90 max-w-[300px]"
             >
               <div class="p-3 bg-white rounded-2xl [.dark_&]:!bg-gray-900">
@@ -150,7 +151,7 @@
                   </span>
                 </p>
               </div>
-            </div>
+            </div> -->
           </ClientOnly>
         </div>
       </aside>
@@ -167,7 +168,7 @@
 </template>
 
 <script setup lang="ts">
-import { getSectionLinks, type ISectionLinks } from "~/shared";
+import { addSmoothScrollSectionLinks, getSectionLinks, type ISectionLinks } from "~/shared";
 import OrganismDocsNav from "../components/Organism.DocsNav.vue";
 
 // computed
@@ -226,9 +227,11 @@ function setCurrentLink(): void {
     ".docs-content"
   ) as NodeListOf<HTMLElement>;
 
+  const offsetTop = window.innerHeight > 1024 ? 100 : 125;
+
   window.onscroll = () => {
     for (const section of sections) {
-      const sectionTop = section.offsetTop;
+      const sectionTop = section.offsetTop - offsetTop;
       if (scrollY >= sectionTop) {
         currentLinkID.value = section.getAttribute("id") ?? "";
       }
@@ -247,6 +250,9 @@ onBeforeRouteUpdate(() => {
 onUpdated(() => {
   updateLinks();
   setCurrentLink();
+
+  const offsetTop = window.innerHeight > 1024 ? 75 : 125;
+  addSmoothScrollSectionLinks(offsetTop);
 });
 </script>
 

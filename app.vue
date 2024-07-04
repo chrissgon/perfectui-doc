@@ -9,8 +9,10 @@
 import pkg from "./package.json";
 import "@chrissgon/perfectui/dist/perfectui.css";
 
-// setup
-if (process.client) {
+// methods
+function init(): void {
+  if (!process.client) return;
+
   sessionStorage.removeItem("themeColor");
 
   useSeoMeta({
@@ -25,6 +27,10 @@ if (process.client) {
     twitterCard: "summary_large_image",
   });
 }
+
+
+// setup
+init();
 </script>
 
 <style>
