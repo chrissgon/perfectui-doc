@@ -39,7 +39,6 @@
             class="list-item !p-0 [.dark_&]:hover:!bg-gray-800 [.dark_&.active]:!bg-gray-700 [.dark_&]:hover:!bg-gray-700"
             :class="{ active: currentItemIndex === i }"
           >
-            <!-- :class="{'[.dark_&]!bg-gray-700'}" -->
             <article class="card-content !flex gap-2 items-center !py-2">
               <i
                 class="bi-book btn btn-white !bg-transparent [.dark_&]:!border-transparent [.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
@@ -134,7 +133,6 @@ const modalRef = ref<InstanceType<typeof HTMLDialogElement> | null>(null);
 const { result, search: algolia } = useAlgoliaSearch("perfectui");
 const list = reactive<IAlgoliaList>([]);
 const doubt = ref<string>("");
-const lastDoubt = ref<string>("");
 const currentItemIndex = ref<number>(-1);
 
 // methods
@@ -163,11 +161,12 @@ function init(): void {
     close();
   });
 }
-async function search(): Promise<void> {
-  if (!doubt.value.trim()) return;
-  if (lastDoubt.value === doubt.value) return;
-
-  lastDoubt.value = doubt.value;
+async function search(e: KeyboardEvent): Promise<void> {
+  if (e.key.includes("Arrow")) return;
+  if (!doubt.value.trim()) {
+    resetList();
+    return;
+  }
 
   await algolia({
     query: doubt.value,
@@ -189,7 +188,6 @@ function resetList(): void {
 }
 function reset(): void {
   doubt.value = "";
-  lastDoubt.value = "";
   list.length = 0;
   currentItemIndex.value = -1;
 }
@@ -209,6 +207,4 @@ function getRedirectURL(item: IAlgoliaItem): string {
 init();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
