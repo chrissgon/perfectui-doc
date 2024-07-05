@@ -164,7 +164,7 @@
     /> -->
 
     <OrganismAlgoliaSearch />
-    <OrganismAssistantChatGPT />
+    <!-- <OrganismAssistantChatGPT :open="!!route.query.assistant" /> -->
   </section>
 </template>
 
@@ -187,14 +187,12 @@ const getLinkNextPage = computed<string>(() => {
 });
 
 // data
-// const route = useRoute();
 const OrganismDocsNavRef = ref<InstanceType<typeof OrganismDocsNav>>();
 const navIsOpen = ref<boolean>(false);
 const sectionIsOpen = ref<boolean>(false);
 const router = useRoute();
 const links = reactive<ISectionLinks>([]);
 const currentLinkID = ref<string>("");
-// const assistantIsVisible = ref<boolean>(!!route.query.assistant);
 
 // methods
 function init(): void {

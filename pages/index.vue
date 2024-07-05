@@ -20,7 +20,7 @@
       <main
         class="text-center flex flex-col justify-center items-center gap-10"
       >
-        <!-- <NuxtLink
+        <NuxtLink
           to="/docs/installation?assistant=true"
           class="badge badge-black !text-white !bg-[#10A37F] !py-1 !px-2 -mb-5 font-semibold relative"
         >
@@ -34,7 +34,7 @@
           <div
             class="bg-[#0d785e] [.dark_&]:bg-[#2fedbe] w-3 h-3 block rounded-full absolute -right-1 -top-1"
           ></div>
-        </NuxtLink> -->
+        </NuxtLink>
         <h1 class="text-5xl max-sm:!text-4xl font-bold max-w-2xl">
           An modern framework for crafting elegant interfaces
         </h1>
@@ -50,7 +50,7 @@
           >
             Get Started
           </NuxtLink>
-          <button
+          <!-- <button
             class="btn btn-white firacode flex items-center gap-3"
             @click="copyInstallCode"
           >
@@ -64,8 +64,8 @@
               v-if="copied"
               class="bi-check-circle-fill text-success"
             ></i>
-          </button>
-          <!-- <NuxtLink
+          </button> -->
+          <NuxtLink
             to="/docs/installation?assistant=true"
             class="btn btn-white !text-[#10A37F] !border-[#10A37F]"
           >
@@ -73,7 +73,7 @@
               class="inline w-4 scale-110 [&_path]:!fill-[#10A37F] -translate-y-[1px] mr-1"
             />
             Learn with Assistant
-          </NuxtLink> -->
+          </NuxtLink>
         </div>
       </main>
     </section>

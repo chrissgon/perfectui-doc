@@ -1,6 +1,0 @@
-hr and dividers
-Disabled
-pagination
-carousel
-improve dropdown directions
-modal
