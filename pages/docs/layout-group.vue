@@ -82,9 +82,9 @@ const CODE_VIEW_ACCORDION_GROUP = `<div class="accordion accordion-bordered grou
 </div>
 `;
 const CODE_VIEW_BUTTON_GROUP = `<div class="group group-row">
-  <button class="group-item btn btn-white">Left</button>
-  <button class="group-item btn btn-white">Middle</button>
-  <button class="group-item btn btn-white">Right</button>
+  <button class="group-item btn style-white">Left</button>
+  <button class="group-item btn style-white">Middle</button>
+  <button class="group-item btn style-white">Right</button>
 </div>
 `;
 const CODE_VIEW_CARD_GROUP_RESPONSIVE = `<section class="group-responsive">

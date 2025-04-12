@@ -1,14 +1,16 @@
-import type { Sections } from ".";
+import type { ISections } from ".";
 
 export const NAV_SECTIONS = {
   "Getting Started": ["Installation", "Typescript", "Tailwind CSS", "License"],
   Customization: ["Dark Mode", "Theme Color"],
   General: [
     "Layout Group",
+    "Styles",
     // "Disable Elements"
   ],
   Components: [
     "Accordion",
+    "Alert $N",
     "Badge",
     "Button",
     "Card",
@@ -30,4 +32,4 @@ export const NAV_SECTIONS = {
     "Radio",
     "Switch",
   ],
-} as Sections;
+} as ISections;

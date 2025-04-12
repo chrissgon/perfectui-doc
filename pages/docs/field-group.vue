@@ -153,7 +153,7 @@ const CODE_VIEW_FIELD_GROUP_COMPLEX = `<form class="flex flex-col gap-3">
       <option>outlook.com</option>
       <option>hotmail.com</option>
     </select>
-    <button class="group-item btn btn-solid-primary">Send Code</button>
+    <button class="group-item btn style-solid-primary">Send Code</button>
   </label>
 </form>
 `;
@@ -245,7 +245,7 @@ const CODE_VIEW_FIELD_GROUP_BUTTON = `<div class="card">
         class="input"
         placeholder="Your email"
       >
-      <button class="btn btn-solid-primary group-item">Subscribe</button>
+      <button class="btn style-solid-primary group-item">Subscribe</button>
     </label>
   </article>
 </div>

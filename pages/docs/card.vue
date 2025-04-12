@@ -99,7 +99,7 @@
       <p>
         Use
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/layout-group"
         >
           Layout Group
@@ -124,7 +124,7 @@ const CODE_VIEW_CARD_BASIC = `<div class="card">
   <article class="card-content flex flex-col gap-2">
     <h1 class="font-semibold text-xl">Card Title</h1>
     <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <button class="btn btn-solid-primary w-fit">Some action</button>
+    <button class="btn style-solid-primary w-fit">Some action</button>
   </article>
 </div>
 `;
@@ -140,7 +140,7 @@ const CODE_VIEW_CARD = `<div class="card">
     <h4 class="text-secondary">Card Subtitle</h4>
     <p>This is some text within a card body.</p>
     <p>
-      <button class="btn-link-primary">
+      <button class="style-link-primary">
         Card link
         <i class="bi-chevron-right"></i>
       </button>
@@ -155,7 +155,7 @@ const CODE_VIEW_CARD_HEADER = `<div class="card">
     <h1 class="font-semibold text-xl">Card Title</h1>
     <p>With supporting text below as a natural lead-in to additional content.</p>
     <p>
-      <button class="btn-link-primary">
+      <button class="style-link-primary">
         Card link
         <i class="bi-chevron-right"></i>
       </button>
@@ -168,7 +168,7 @@ const CODE_VIEW_CARD_FOOTER = `<div class="card">
     <h1 class="font-semibold text-xl">Card Title</h1>
     <p>With supporting text below as a natural lead-in to additional content.</p>
     <p>
-      <button class="btn-link-primary">
+      <button class="style-link-primary">
         Card link
         <i class="bi-chevron-right"></i>
       </button>

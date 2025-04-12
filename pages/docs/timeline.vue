@@ -150,7 +150,7 @@
       <p>
         Use
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/layout-group"
         >
           Layout Group
@@ -179,7 +179,7 @@ const CODE_VIEW_TIMELINE_BASIC = `<!-- timeline -->
       <h4 class="font-bold">🐞 Release v5.2.0 quick bug fix</h4>
       <p class="text-secondary">
         Find more detailed insctructions
-        <a href="#" class="btn-link-primary">here</a>.
+        <a href="#" class="style-link-primary">here</a>.
       </p>
     </article>
   </figcaption>
@@ -194,9 +194,9 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
       <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
-        <a href="#" class="btn-link-primary">here</a>.
+        <a href="#" class="style-link-primary">here</a>.
       </p>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
   <!-- checkpoint outline -->
@@ -204,7 +204,7 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
     <i class="checkpoint-icon bi-exclamation-lg"></i>
     <article>
       <h4 class="font-bold">🐞 Release v5.2.0 quick bug fix</h4>
-      <p class="badge badge-white mt-2">Kamilly Aldrey</p>
+      <p class="badge style-white mt-2">Kamilly Aldrey</p>
     </article>
   </figcaption>
   <!-- checkpoint link -->
@@ -220,7 +220,7 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
       <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
   <!-- checkpoint black -->
@@ -228,7 +228,7 @@ const CODE_VIEW_TIMELINE_TYPES = `<!-- timeline -->
     <i class="checkpoint-icon bi-bookmark-fill"></i>
     <article>
       <h4 class="font-bold">Feature fixed as a priority</h4>
-      <p class="badge badge-white mt-2">Kamilly Aldrey</p>
+      <p class="badge style-white mt-2">Kamilly Aldrey</p>
     </article>
   </figcaption>
 </figure>
@@ -311,9 +311,9 @@ const CODE_VIEW_TIMELINE_HORIZONTAL = `<!-- timeline -->
       <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
-        <a href="#" class="btn-link-primary">here</a>.
+        <a href="#" class="style-link-primary">here</a>.
       </p>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
   <!-- checkpoint outline -->
@@ -321,7 +321,7 @@ const CODE_VIEW_TIMELINE_HORIZONTAL = `<!-- timeline -->
     <i class="checkpoint-icon bi-exclamation-lg"></i>
     <article>
       <h4 class="font-bold">🐞 Release v5.2.0 quick bug fix</h4>
-      <p class="badge badge-white mt-2">Kamilly Aldrey</p>
+      <p class="badge style-white mt-2">Kamilly Aldrey</p>
     </article>
   </figcaption>
   <!-- checkpoint white -->
@@ -329,7 +329,7 @@ const CODE_VIEW_TIMELINE_HORIZONTAL = `<!-- timeline -->
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
       <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
 </figure>
@@ -343,9 +343,9 @@ const CODE_VIEW_TIMELINE_RESPONSIVE = `<!-- timeline -->
       <h4 class="font-bold">Created "Perfect UI in Vue" task</h4>
       <p class="text-secondary">
         Find more detailed insctructions
-        <a href="#" class="btn-link-primary">here</a>.
+        <a href="#" class="style-link-primary">here</a>.
       </p>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
   <!-- checkpoint outline -->
@@ -353,7 +353,7 @@ const CODE_VIEW_TIMELINE_RESPONSIVE = `<!-- timeline -->
     <i class="checkpoint-icon bi-exclamation-lg"></i>
     <article>
       <h4 class="font-bold">🐞 Release v5.2.0 quick bug fix</h4>
-      <p class="badge badge-white mt-2">Kamilly Aldrey</p>
+      <p class="badge style-white mt-2">Kamilly Aldrey</p>
     </article>
   </figcaption>
   <!-- checkpoint white -->
@@ -361,7 +361,7 @@ const CODE_VIEW_TIMELINE_RESPONSIVE = `<!-- timeline -->
     <i class="checkpoint-icon bi-cup-hot"></i>
     <article>
       <h4 class="font-bold">📦 Update "Perfect UI" packages</h4>
-      <p class="badge badge-white mt-2">Amanda Ketellyn</p>
+      <p class="badge style-white mt-2">Amanda Ketellyn</p>
     </article>
   </figcaption>
 </figure>

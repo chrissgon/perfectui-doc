@@ -28,7 +28,6 @@ function init(): void {
   });
 }
 
-
 // setup
 init();
 </script>
@@ -142,8 +141,8 @@ code * {
   z-index: 3;
 }
 
-.bg-tertiary{
-  background-color: rgb(var(--backgroundTertiary))!important;
+.bg-tertiary {
+  background-color: rgb(var(--backgroundTertiary)) !important;
 }
 
 .kdb {

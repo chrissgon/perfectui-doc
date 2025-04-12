@@ -21,7 +21,7 @@
             "explanation": [
               "Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle before the closing `</body>`"
             ],
-            "code": "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.css'></head><body><button class='btn btn-solid-primary'>My button</button><script src='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js'></script></body></html>"
+            "code": "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.css'></head><body><button class='btn style-solid-primary'>My button</button><script src='https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js'></script></body></html>"
           },
           {
             "tags": ["cdn", "window", "document"],
@@ -231,7 +231,7 @@
               "Other elements are optional, such as the `<button>`.",
               "The buttons need the `.group-item` class to work, because they have no class  `.item`."
             ],
-            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Left</button><button class='group-item btn btn-white'>Middle</button><button class='group-item btn btn-white'>Right</button></div>"
+            "code": "<div class='group group-row'><button class='group-item btn style-white'>Left</button><button class='group-item btn style-white'>Middle</button><button class='group-item btn style-white'>Right</button></div>"
           },
           {
             "tags": ["layout group", "group responsive", "group item", "card"],
@@ -323,14 +323,14 @@
             "explanation": [
               "The most commonly used badge styles, we provide `solid` , `outline` , `white` and `black`."
             ],
-            "code": "<span class='badge badge-solid-primary'>Solid</span><span class='badge badge-outline-primary'>Outline</span><span class='badge badge-white'>White</span><span class='badge badge-black'>Black</span>"
+            "code": "<span class='badge style-solid-primary'>Solid</span><span class='badge style-outline-primary'>Outline</span><span class='badge style-white'>White</span><span class='badge style-black'>Black</span>"
           },
           {
             "tags": ["badge", "rounded"],
             "explanation": [
               "Use the `.rounded-full` class to create rounded badges."
             ],
-            "code": "<span class='badge badge-solid-primary rounded-full'>Solid</span><span class='badge badge-outline-primary rounded-full'>Outline</span><span class='badge badge-white rounded-full'>White</span><span class='badge badge-black rounded-full'>Black</span>"
+            "code": "<span class='badge style-solid-primary rounded-full'>Solid</span><span class='badge style-outline-primary rounded-full'>Outline</span><span class='badge style-white rounded-full'>White</span><span class='badge style-black rounded-full'>Black</span>"
           },
           {
             "tags": [
@@ -343,9 +343,9 @@
               "error"
             ],
             "explanation": [
-              "To create solid badges, simply use the `.badge-solid-[variant]` class."
+              "To create solid badges, simply use the `.style-solid-[variant]` class."
             ],
-            "code": "<span class='badge badge-solid-primary'>Primary</span><span class='badge badge-solid-secondary'>Secondary</span><span class='badge badge-solid-success'>Success</span><span class='badge badge-solid-warn'>Warn</span><span class='badge badge-solid-error'>Error</span>"
+            "code": "<span class='badge style-solid-primary'>Primary</span><span class='badge style-solid-secondary'>Secondary</span><span class='badge style-solid-success'>Success</span><span class='badge style-solid-warn'>Warn</span><span class='badge style-solid-error'>Error</span>"
           },
           {
             "tags": [
@@ -358,23 +358,23 @@
               "error"
             ],
             "explanation": [
-              "To create outline badges, simply use the `.badge-outline-[variant]` class."
+              "To create outline badges, simply use the `.style-outline-[variant]` class."
             ],
-            "code": "<span class='badge badge-outline-primary'>Primary</span><span class='badge badge-outline-secondary'>Secondary</span><span class='badge badge-outline-success'>Success</span><span class='badge badge-outline-warn'>Warn</span><span class='badge badge-outline-error'>Error</span>"
+            "code": "<span class='badge style-outline-primary'>Primary</span><span class='badge style-outline-secondary'>Secondary</span><span class='badge style-outline-success'>Success</span><span class='badge style-outline-warn'>Warn</span><span class='badge style-outline-error'>Error</span>"
           },
           {
             "tags": ["badge", "white", "black"],
             "explanation": [
-              "To create white or black badge, simply use the `.badge-white` or `.badge-black` class."
+              "To create white or black badge, simply use the `.style-white` or `.style-black` class."
             ],
-            "code": "<span class='badge badge-white'>White</span><span class='badge badge-black'>Black</span>"
+            "code": "<span class='badge style-white'>White</span><span class='badge style-black'>Black</span>"
           },
           {
             "tags": ["badge", "icons"],
             "explanation": [
               "You can add icons from any library. In the example below we used Bootstrap Icons."
             ],
-            "code": "<span class='badge badge-solid-error'><i class='bi-heart-fill'></i> Favorite</span><span class='badge badge-outline-warn'>Best ranking <i class='bi-star-fill'></i></span><span class='badge badge-white'>Recent viewed <i class='bi-eye-fill'></i></span>"
+            "code": "<span class='badge style-solid-error'><i class='bi-heart-fill'></i> Favorite</span><span class='badge style-outline-warn'>Best ranking <i class='bi-star-fill'></i></span><span class='badge style-white'>Recent viewed <i class='bi-eye-fill'></i></span>"
           }
         ]
       },
@@ -397,14 +397,14 @@
             "explanation": [
               "The most commonly used button styles, we provide `solid` , `outline` , `link` , `white` and `black`."
             ],
-            "code": "<button class='btn btn-solid-primary'>Solid</button><button class='btn btn-outline-primary'>Outline</button><button class='btn btn-link-primary'>Link</button><button class='btn btn-white'>White</button><button class='btn btn-black'>Black</button>"
+            "code": "<button class='btn style-solid-primary'>Solid</button><button class='btn style-outline-primary'>Outline</button><button class='btn style-link-primary'>Link</button><button class='btn style-white'>White</button><button class='btn style-black'>Black</button>"
           },
           {
             "tags": ["button", "rounded"],
             "explanation": [
               "Use the `.rounded-full` class to create rounded buttons."
             ],
-            "code": "<button class='btn btn-solid-primary rounded-full'>Solid</button><button class='btn btn-outline-primary rounded-full'>Outline</button><button class='btn btn-link-primary rounded-full'>Link</button><button class='btn btn-white rounded-full'>White</button><button class='btn btn-black rounded-full'>Black</button>"
+            "code": "<button class='btn style-solid-primary rounded-full'>Solid</button><button class='btn style-outline-primary rounded-full'>Outline</button><button class='btn style-link-primary rounded-full'>Link</button><button class='btn style-white rounded-full'>White</button><button class='btn style-black rounded-full'>Black</button>"
           },
           {
             "tags": [
@@ -417,9 +417,9 @@
               "error"
             ],
             "explanation": [
-              "To create solid buttons, simply use the `.btn-solid-[variant]` class."
+              "To create solid buttons, simply use the `.style-solid-[variant]` class."
             ],
-            "code": "<button class='btn btn-solid-primary'>Primary</button><button class='btn btn-solid-secondary'>Secondary</button><button class='btn btn-solid-success'>Success</button><button class='btn btn-solid-warn'>Warn</button><button class='btn btn-solid-error'>Error</button>"
+            "code": "<button class='btn style-solid-primary'>Primary</button><button class='btn style-solid-secondary'>Secondary</button><button class='btn style-solid-success'>Success</button><button class='btn style-solid-warn'>Warn</button><button class='btn style-solid-error'>Error</button>"
           },
           {
             "tags": [
@@ -432,9 +432,9 @@
               "error"
             ],
             "explanation": [
-              "To create outline buttons, simply use the `.btn-outline-[variant]` class."
+              "To create outline buttons, simply use the `.style-outline-[variant]` class."
             ],
-            "code": "<button class='btn btn-outline-primary'>Primary</button><button class='btn btn-outline-secondary'>Secondary</button><button class='btn btn-outline-success'>Success</button><button class='btn btn-outline-warn'>Warn</button><button class='btn btn-outline-error'>Error</button>"
+            "code": "<button class='btn style-outline-primary'>Primary</button><button class='btn style-outline-secondary'>Secondary</button><button class='btn style-outline-success'>Success</button><button class='btn style-outline-warn'>Warn</button><button class='btn style-outline-error'>Error</button>"
           },
           {
             "tags": [
@@ -447,35 +447,35 @@
               "error"
             ],
             "explanation": [
-              "To create link buttons, simply use the `.btn-link-[variant]` class."
+              "To create link buttons, simply use the `.style-link-[variant]` class."
             ],
-            "code": "<button class='btn btn-link-primary'>Primary</button><button class='btn btn-link-secondary'>Secondary</button><button class='btn btn-link-success'>Success</button><button class='btn btn-link-warn'>Warn</button><button class='btn btn-link-error'>Error</button>"
+            "code": "<button class='btn style-link-primary'>Primary</button><button class='btn style-link-secondary'>Secondary</button><button class='btn style-link-success'>Success</button><button class='btn style-link-warn'>Warn</button><button class='btn style-link-error'>Error</button>"
           },
           {
             "tags": ["button", "white", "black"],
             "explanation": [
-              "To create white or black button, simply use the `.btn-white` or `.btn-black` class."
+              "To create white or black button, simply use the `.style-white` or `.style-black` class."
             ],
-            "code": "<button class='btn btn-white'>White</button><button class='btn btn-black'>Black</button>"
+            "code": "<button class='btn style-white'>White</button><button class='btn style-black'>Black</button>"
           },
           {
             "tags": ["button", "icons"],
             "explanation": [
               "You can add icons from any library. In the example below we used Bootstrap Icons."
             ],
-            "code": "<button class='btn btn-solid-primary'>Add to cart <i class='bi-basket2-fill'></i></button><button class='btn btn-white'>Signup free <i class='bi-chevron-right'></i></button><button class='btn btn-solid-error'><i class='bi-heart-fill'></i></button>"
+            "code": "<button class='btn style-solid-primary'>Add to cart <i class='bi-basket2-fill'></i></button><button class='btn style-white'>Signup free <i class='bi-chevron-right'></i></button><button class='btn style-solid-error'><i class='bi-heart-fill'></i></button>"
           },
           {
             "tags": ["button", "layout group"],
             "explanation": ["You can group buttons using Layout Group."],
-            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Left</button><button class='group-item btn btn-white'>Middle</button><button class='group-item btn btn-white'>Right</button></div>"
+            "code": "<div class='group group-row'><button class='group-item btn style-white'>Left</button><button class='group-item btn style-white'>Middle</button><button class='group-item btn style-white'>Right</button></div>"
           },
           {
             "tags": ["button", "disabled"],
             "explanation": [
               "Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element."
             ],
-            "code": "<button class='btn btn-solid-primary' disabled>Solid</button><button class='btn btn-outline-primary' disabled>Outline</button><button class='btn btn-link-primary' disabled>Link</button><button class='btn btn-white' disabled>White</button><button class='btn btn-black' disabled>Black</button>"
+            "code": "<button class='btn style-solid-primary' disabled>Solid</button><button class='btn style-outline-primary' disabled>Outline</button><button class='btn style-link-primary' disabled>Link</button><button class='btn style-white' disabled>White</button><button class='btn style-black' disabled>Black</button>"
           }
         ]
       },
@@ -493,7 +493,7 @@
               "To create cards, simply add the .card class.",
               "You can use .card-content class for the content, .card-header class for the header and the <hr> tag for the dividers."
             ],
-            "code": "<div class='card'><header class='card-header flex justify-between gap-2'>Header<i class='bi-three-dots-vertical'></i></header><hr><img alt='Accordion Image' src='https://images.unsplash.comphoto-1680868543815-b8666dba60f7?ixlib=rb-4.0.3ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000h=300&q=80'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk ofthe card's content.</p><button class='btn btn-solid-primary w-fit'>Some action</button></article></div>"
+            "code": "<div class='card'><header class='card-header flex justify-between gap-2'>Header<i class='bi-three-dots-vertical'></i></header><hr><img alt='Accordion Image' src='https://images.unsplash.comphoto-1680868543815-b8666dba60f7?ixlib=rb-4.0.3ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000h=300&q=80'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>Some quick example text to build on the card title and make up the bulk ofthe card's content.</p><button class='btn style-solid-primary w-fit'>Some action</button></article></div>"
           },
           {
             "tags": ["card", "simple body"],
@@ -507,7 +507,7 @@
             "explanation": [
               "You can add others elements in the `.card-content` parent."
             ],
-            "code": "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><h4 class='text-secondary'>Card Subtitle</h4><p>This is some text within a card body.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>"
+            "code": "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><h4 class='text-secondary'>Card Subtitle</h4><p>This is some text within a card body.</p><p><button class='style-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>"
           },
           {
             "tags": ["card", "header", "footer"],
@@ -515,8 +515,8 @@
               "You can use `.card-header` and `<hr>` tag to create a header or footer."
             ],
             "code": [
-              "<div class='card'><header class='card-header bg-secondary text-secondary'>Featured</header><hr><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>",
-              "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='btn-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article><hr><header class='card-header bg-secondary text-secondary text-xs'>Last updated 5 mins ago</header></div>"
+              "<div class='card'><header class='card-header bg-secondary text-secondary'>Featured</header><hr><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='style-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article></div>",
+              "<div class='card'><article class='card-content flex flex-col gap-2'><h1 class='font-semibold text-xl'>Card Title</h1><p>With supporting text below as a natural lead-in to additional content.</p><p><button class='style-link-primary'>Card link<i class='bi-chevron-right'></i></button></p></article><hr><header class='card-header bg-secondary text-secondary text-xs'>Last updated 5 mins ago</header></div>"
             ]
           },
           {
@@ -553,31 +553,31 @@
               "- `.ignore` : Ignore the click event on element, so the dropdown will not be closed.",
               "Attention needed:  The  `.dropdown`  should be placed inside of  `.dropdown-trigger` , since it has parent-child relation."
             ],
-            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><!-- ignore --><label class='field-group ignore'><input class='input' type='text' placeholder='Search'></label><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button>"
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn style-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><!-- ignore --><label class='field-group ignore'><input class='input' type='text' placeholder='Search'></label><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button>"
           },
           {
             "tags": ["dropdown", "dividers"],
             "explanation": ["The default dropdown menu with dividers."],
-            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Newsletter</li><li class='list-item'>Purchases</li><hr class='my-2'><li class='list-item'>Upgrade License</li><hr class='my-2'><li class='list-item'>Sign Out</li></ul></div></button>"
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn style-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'>Newsletter</li><li class='list-item'>Purchases</li><hr class='my-2'><li class='list-item'>Upgrade License</li><hr class='my-2'><li class='list-item'>Sign Out</li></ul></div></button>"
           },
           {
             "tags": ["dropdown", "icons", "badges"],
             "explanation": [
               "You can add icons or badges. In the example below was used Bootstrap Icons."
             ],
-            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn style-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge style-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge style-solid-primary rounded-full float-right'>2</span></li><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
           },
           {
             "tags": ["dropdown", "title"],
             "explanation": ["The default dropdown menu with title."],
-            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn btn-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><span class='list-item' disabled>Settings</span><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
+            "code": "<!-- dropdown trigger --><button class='dropdown-trigger btn style-white'>Dropdown<i class='bi-chevron-down'></i><!-- dropdown --><div class='dropdown'><ul class='unmarker w-64 list list-hoverable'><span class='list-item' disabled>Settings</span><li class='list-item'><i class='bi-bell'></i>Newsletter<span class='badge style-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge style-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li></ul></div></button>"
           },
           {
             "tags": ["dropdown", "directions"],
             "explanation": [
               "The `.dropdown` element has the bottom direction by default, but you can also use `.dropdown-right` , `.dropdown-left` and `.dropdown-top` directions."
             ],
-            "code": "<div class='flex flex-wrap gap-2'><!-- dropdown bottom --><button class='dropdown-trigger btn btn-white'>Bottom<i class='bi-chevron-down'></i><div class='dropdown'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown top --><button class='dropdown-trigger btn btn-white'>Top<i class='bi-chevron-up'></i><div class='dropdown dropdown-top'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown left --><button class='dropdown-trigger btn btn-white'><i class='bi-chevron-left'></i>Left<div class='dropdown dropdown-left'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown right --><button class='dropdown-trigger btn btn-white'>Right<i class='bi-chevron-right'></i><div class='dropdown dropdown-right'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button></div>"
+            "code": "<div class='flex flex-wrap gap-2'><!-- dropdown bottom --><button class='dropdown-trigger btn style-white'>Bottom<i class='bi-chevron-down'></i><div class='dropdown'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown top --><button class='dropdown-trigger btn style-white'>Top<i class='bi-chevron-up'></i><div class='dropdown dropdown-top'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown left --><button class='dropdown-trigger btn style-white'><i class='bi-chevron-left'></i>Left<div class='dropdown dropdown-left'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button><!-- dropdown right --><button class='dropdown-trigger btn style-white'>Right<i class='bi-chevron-right'></i><div class='dropdown dropdown-right'><ul class='unmarker list list-hoverable'><li class='list-item'>Profile</li><li class='list-item'>Settings</li><li class='list-item'>Newsletter</li></ul></div></button></div>"
           },
           {
             "tags": [
@@ -593,7 +593,7 @@
             "explanation": [
               "You can combine the dropdown element with many other. Be creative!"
             ],
-            "code": "<div class='group group-row'><button class='group-item btn btn-white'>Dropdown</button><!-- dropdown trigger --><button class='dropdown-trigger group-item btn btn-white'><i class='bi-chevron-up'></i><!-- dropdown --><div class='dropdown dropdown-top'><label class='field-group ignore mb-2'><i class='addon bi-search'></i><input class='input' type='text' placeholder='Search' /></label><ul class='list list-hoverable unmarker'><span class='list-item' disabled>Settings</span><li class='list-item active'><i class='bi-bell'></i>Newsletter<span class='badge badge-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li><hr class='my-2' /><li class='list-item' disabled>Preferences</li><label class='list-item !flex gap-2'><input type='checkbox' class='switch !h-fit' /><div><p class='font-bold'>Darkmode</p><p class='text-secondary'>Define dark mode as default.</p></div></label></ul></div></button></div>"
+            "code": "<div class='group group-row'><button class='group-item btn style-white'>Dropdown</button><!-- dropdown trigger --><button class='dropdown-trigger group-item btn style-white'><i class='bi-chevron-up'></i><!-- dropdown --><div class='dropdown dropdown-top'><label class='field-group ignore mb-2'><i class='addon bi-search'></i><input class='input' type='text' placeholder='Search' /></label><ul class='list list-hoverable unmarker'><span class='list-item' disabled>Settings</span><li class='list-item active'><i class='bi-bell'></i>Newsletter<span class='badge style-solid-primary float-right'>New</span></li><li class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge style-solid-primary rounded-full float-right'>2</span></li><hr class='my-2' /><span class='list-item' disabled>Account</span><li class='list-item'><i class='bi-people'></i>Team Account</li><hr class='my-2' /><li class='list-item' disabled>Preferences</li><label class='list-item !flex gap-2'><input type='checkbox' class='switch !h-fit' /><div><p class='font-bold'>Darkmode</p><p class='text-secondary'>Define dark mode as default.</p></div></label></ul></div></button></div>"
           }
         ]
       },
@@ -678,7 +678,7 @@
             "explanation": [
               "Add badges to any list group item to show unread counts, activity, and more."
             ],
-            "code": "<ul class='unmarker sm:w-64 list list-bordered list-hoverable group-col'><a class='list-item'><span><i class='bi-bell'></i>Profile</span><span class='badge badge-solid-primary float-right'>New</span></a><a class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge badge-solid-primary rounded-full float-right'>2</span></a><a class='list-item'><i class='bi-people'></i>Team Account<span class='badge badge-solid-primary rounded-full float-right'>99+</span></a></ul>"
+            "code": "<ul class='unmarker sm:w-64 list list-bordered list-hoverable group-col'><a class='list-item'><span><i class='bi-bell'></i>Profile</span><span class='badge style-solid-primary float-right'>New</span></a><a class='list-item'><i class='bi-cloud-download'></i>Downloads<span class='badge style-solid-primary rounded-full float-right'>2</span></a><a class='list-item'><i class='bi-people'></i>Team Account<span class='badge style-solid-primary rounded-full float-right'>99+</span></a></ul>"
           },
           {
             "tags": ["list", "invoice"],
@@ -707,7 +707,7 @@
               "To open a modal with Perfect UI, use the `data-modal` attribute, providing a modal ID.",
               "To close a modal with Perfect UI, use the `data-autoclose` attribute."
             ],
-            "code": "<button class='btn btn-solid-primary' data-modal='modal-basic'>Open modal</button><dialog class='modal' id='modal-basic'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><a class='bi bi-x-lg float-right btn-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Modal content</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn btn-link-error' data-autoclose>Close</button><button class='btn btn-solid-primary'>Save changes</button></footer></div></dialog>"
+            "code": "<button class='btn style-solid-primary' data-modal='modal-basic'>Open modal</button><dialog class='modal' id='modal-basic'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><a class='bi bi-x-lg float-right style-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Modal content</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn style-link-error' data-autoclose>Close</button><button class='btn style-solid-primary'>Save changes</button></footer></div></dialog>"
           },
           {
             "tags": ["static backdrop", "modal", "dialog"],
@@ -715,21 +715,19 @@
               "When backdrop is set to static, the modal will not close when clicking outside it.",
               "To create a static backdrop modal, simply add the `.static-backdrop` in the `.modal` element."
             ],
-            "code": "<button class='btn btn-solid-primary' data-modal='modal-static'>Open modal</button><dialog class='modal static-backdrop' id='modal-static'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><a class='bi bi-x-lg float-right btn-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Modal content</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn btn-link-error' data-autoclose>Close</button><button class='btn btn-solid-primary'>Save changes</button></footer></div></dialog>"
+            "code": "<button class='btn style-solid-primary' data-modal='modal-static'>Open modal</button><dialog class='modal static-backdrop' id='modal-static'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><a class='bi bi-x-lg float-right style-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Modal content</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn style-link-error' data-autoclose>Close</button><button class='btn style-solid-primary'>Save changes</button></footer></div></dialog>"
           },
           {
             "tags": ["scrolling behavior", "modal", "dialog"],
             "explanation": [
               "Modal dialogs differ in width, whereas height is determined by the content. Once it reaches a certain threshold, the body content will scroll while the header and footer remain fixed until the bottom of the modal dialog is reached."
             ],
-            "code": "<button class='btn btn-solid-primary' data-modal='modal-scroll'>Open modal</button><dialog class='modal' id='modal-scroll'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><aclass='bi bi-x-lg float-right btn-link-secondary'data-autoclose></a></header><hr /><article class='card-content'><h2 class='text-lg font-bold'>Be bold</h2><p>Motivate teams to do their best work. Offer best practices to getusers going in the right direction. Be bold and offer just enoughhelp to get the work started, and then get out of the way. Giveaccurate information so users can make educated decisions. Know youruser's struggles and desired outcomes and give just enoughinformation to let them get where they need to go.</p><h2 class='text-lg font-bold'>Be optimistic</h2><p>Focusing on the details gives people confidence in our products.Weave a consistent story across our fabric and be diligent aboutvocabulary across all messaging by being brand conscious acrossproducts to create a seamless flow across all the things. Let peopleknow that they can jump in and start working expecting to find adependable experience across all the things. Keep teams in the loopabout what is happening by informing them of relevant features,products and opportunities for success. Be on the journey with themand highlight the key points that will help them the most - rightnow. Be in the moment by focusing attention on the important bitsfirst.</p><h2 class='text-lg font-bold'>Be practical, with a wink</h2><p>Keep our own story short and give teams just enough to get moving.Get to the point and be direct. Be concise - we tell the story ofhow we can help, but we do it directly and with purpose. Be on thelookout for opportunities and be quick to offer a helping hand. Atthe same time realize that nobody likes a nosy neighbor. Give theuser just enough to know that something awesome is around the cornerand then get out of the way. Write clear, accurate, and concise textthat makes interfaces more usable and consistent - and builds trust.We strive to write text that is understandable by anyone, anywhere,regardless of their culture or language so that everyone feels theyare part of the team.</p></article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn btn-link-error' data-autoclose>Close</button><button class='btn btn-solid-primary'>Save changes</button></footer></div></dialog>"
+            "code": "<button class='btn style-solid-primary' data-modal='modal-scroll'>Open modal</button><dialog class='modal' id='modal-scroll'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal title</span><aclass='bi bi-x-lg float-right style-link-secondary'data-autoclose></a></header><hr /><article class='card-content'><h2 class='text-lg font-bold'>Be bold</h2><p>Motivate teams to do their best work. Offer best practices to getusers going in the right direction. Be bold and offer just enoughhelp to get the work started, and then get out of the way. Giveaccurate information so users can make educated decisions. Know youruser's struggles and desired outcomes and give just enoughinformation to let them get where they need to go.</p><h2 class='text-lg font-bold'>Be optimistic</h2><p>Focusing on the details gives people confidence in our products.Weave a consistent story across our fabric and be diligent aboutvocabulary across all messaging by being brand conscious acrossproducts to create a seamless flow across all the things. Let peopleknow that they can jump in and start working expecting to find adependable experience across all the things. Keep teams in the loopabout what is happening by informing them of relevant features,products and opportunities for success. Be on the journey with themand highlight the key points that will help them the most - rightnow. Be in the moment by focusing attention on the important bitsfirst.</p><h2 class='text-lg font-bold'>Be practical, with a wink</h2><p>Keep our own story short and give teams just enough to get moving.Get to the point and be direct. Be concise - we tell the story ofhow we can help, but we do it directly and with purpose. Be on thelookout for opportunities and be quick to offer a helping hand. Atthe same time realize that nobody likes a nosy neighbor. Give theuser just enough to know that something awesome is around the cornerand then get out of the way. Write clear, accurate, and concise textthat makes interfaces more usable and consistent - and builds trust.We strive to write text that is understandable by anyone, anywhere,regardless of their culture or language so that everyone feels theyare part of the team.</p></article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn style-link-error' data-autoclose>Close</button><button class='btn style-solid-primary'>Save changes</button></footer></div></dialog>"
           },
           {
             "tags": ["toggle modals", "modal", "dialog"],
-            "explanation": [
-              "Toggle between two separate modals."
-            ],
-            "code": "<button class='btn btn-solid-primary' data-modal='modal-toggle'>Open first modal</button><dialog class='modal' id='modal-toggle'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal 1</span><a class='bi bi-x-lg float-right btn-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Show a second modal and hide this one with the button below.</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn btn-link-error' data-autoclose>Close</button><button class='btn btn-solid-primary' data-modal='modal-toggle2'>Open second modal</button></footer></div></dialog><dialog class='modal' id='modal-toggle2'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal 2</span><a class='bi bi-x-lg float-right btn-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Hide this modal and show the first with the button below.</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn btn-link-error' data-autoclose>Close</button><button class='btn btn-solid-primary' data-modal='modal-toggle'>Back to first</button></footer></div></dialog>"
+            "explanation": ["Toggle between two separate modals."],
+            "code": "<button class='btn style-solid-primary' data-modal='modal-toggle'>Open first modal</button><dialog class='modal' id='modal-toggle'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal 1</span><a class='bi bi-x-lg float-right style-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Show a second modal and hide this one with the button below.</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn style-link-error' data-autoclose>Close</button><button class='btn style-solid-primary' data-modal='modal-toggle2'>Open second modal</button></footer></div></dialog><dialog class='modal' id='modal-toggle2'><div class='card w-96'><header class='card-header bg-secondary text-secondary'><span>Modal 2</span><a class='bi bi-x-lg float-right style-link-secondary' data-autoclose></a></header><hr /><article class='card-content flex flex-col gap-2'>Hide this modal and show the first with the button below.</article><hr /><footer class='card-header flex gap-2 justify-end'><button class='btn style-link-error' data-autoclose>Close</button><button class='btn style-solid-primary' data-modal='modal-toggle'>Back to first</button></footer></div></dialog>"
           }
         ]
       },
@@ -756,7 +754,7 @@
               "To create a table, simply add the `.table` class.",
               "To make your table responsive, simply add `.table-responsive` to its parent."
             ],
-            "code": "<table class='table'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "bordered"],
@@ -764,7 +762,7 @@
               "Add border on all sides of the table and cells.",
               "To create a bordered table, simply add the `.table-bordered` class."
             ],
-            "code": "<table class='table table-bordered'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-bordered'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "striped"],
@@ -772,21 +770,21 @@
               "Add zebra-striping to any table row.",
               "To create a striped table, simply add the `.table-striped` class."
             ],
-            "code": "<table class='table table-striped'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-striped'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "hoverable"],
             "explanation": [
               "To create a hoverable table, simply add the `.table-hoverable` class."
             ],
-            "code": "<table class='table table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "striped", "hoverable"],
             "explanation": [
               "These hoverable rows can also be combined with the striped variant."
             ],
-            "code": "<table class='table table-striped table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-striped table-hoverable'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "borderless"],
@@ -794,14 +792,14 @@
               "A table without borders.",
               "To create a borderless table, simply add the `.table-borderless` class."
             ],
-            "code": "<table class='table table-borderless'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-borderless'><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "headless"],
             "explanation": [
               "A table can render without a table header if no `<thead>` is supplied."
             ],
-            "code": "<table class='table'><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table'><tbody><tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th>3</th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "selection", "checkbox"],
@@ -809,14 +807,14 @@
               "Rows can be selectable by making first column as a selectable column.",
               "Simply add a `checkbox` in the first column."
             ],
-            "code": "<table class='table'><thead><tr><th><input type='checkbox' class='checkbox align-middle'></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table'><thead><tr><th><input type='checkbox' class='checkbox align-middle'></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle'></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": ["table", "search", "input", "selection", "checkbox"],
             "explanation": [
               "Search is used for making dropdown items searchable."
             ],
-            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><inputtype='text'class='input'placeholder='Seach for items'/></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody></table>"
+            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><inputtype='text'class='input'placeholder='Seach for items'/></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody></table>"
           },
           {
             "tags": [
@@ -829,7 +827,7 @@
               "checkbox"
             ],
             "explanation": ["Example with pagination using Lists."],
-            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><input type='text' class='input' placeholder='Seach for items' /></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='btn-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='btn-link-error'>Delete</button></td></tr></tbody><tfoot><tr><td colspan='5'><ul class='list list-hoverable unmarker group-row'><a class='list-item'><i class='bi-chevron-left'></i></a><a class='list-item active'>1</a><a class='list-item'>2</a><a class='list-item'>3</a><a class='list-item'><i class='bi-chevron-right'></i></a></ul></td></tr></tfoot></table>"
+            "code": "<table class='table table-bordered'><thead><tr><td colspan='5'><label class='input-group input !w-96'><i class='bi-search'></i><input type='text' class='input' placeholder='Seach for items' /></label></td></tr><tr class='bg-secondary'><th><input type='checkbox' class='checkbox align-middle' /></th><th>First</th><th>Last</th><th>Handle</th><th>Action</th></tr></thead><tbody><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Mark</td><td>Otto</td><td>@mdo</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td>Jacob</td><td>Thornton</td><td>@fat</td><td><button class='style-link-error'>Delete</button></td></tr><tr><th><input type='checkbox' class='checkbox align-middle' /></th><td colspan='2'>Larry the Bird</td><td>@twitter</td><td><button class='style-link-error'>Delete</button></td></tr></tbody><tfoot><tr><td colspan='5'><ul class='list list-hoverable unmarker group-row'><a class='list-item'><i class='bi-chevron-left'></i></a><a class='list-item active'>1</a><a class='list-item'>2</a><a class='list-item'>3</a><a class='list-item'><i class='bi-chevron-right'></i></a></ul></td></tr></tfoot></table>"
           }
         ]
       },
@@ -858,7 +856,7 @@
               "- `.checkpoint-icon` : Define the checkpoint icon.",
               "Attention needed: Everything inside the  `.checkpoint`  element that do not have the  `.checkpoint-icon`  class will be consider a  `content`."
             ],
-            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint --><figcaption class='checkpoint checkpoint-link-error'><!-- checkpoint-icon --><i class='checkpoint-icon bi-exclamation-circle-fill'></i><!-- checkpoint content --><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p></article></figcaption></figure>"
+            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint --><figcaption class='checkpoint checkpoint-link-error'><!-- checkpoint-icon --><i class='checkpoint-icon bi-exclamation-circle-fill'></i><!-- checkpoint content --><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='style-link-primary'>here</a>.</p></article></figcaption></figure>"
           },
           {
             "tags": [
@@ -875,7 +873,7 @@
               "We provide differents checkpoints styles, such as `solid` , `outline` , `link` , `white` and `black`.",
               "You can change the checkpoint style using differents classes in the `.checkpoint` element."
             ],
-            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint link --><figcaption class='checkpoint checkpoint-link-secondary'><i class='checkpoint-icon bi-dot !text-4xl'></i><article><h4 class='font-bold'>Take a break ⛳️</h4><p class='text-secondary'>Just chill for now... 😉</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint black --><figcaption class='checkpoint checkpoint-black'><i class='checkpoint-icon bi-bookmark-fill'></i><article><h4 class='font-bold'>Feature fixed as a priority</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption></figure>"
+            "code": "<!-- timeline --><figure class='timeline'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='style-link-primary'>here</a>.</p><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge style-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint link --><figcaption class='checkpoint checkpoint-link-secondary'><i class='checkpoint-icon bi-dot !text-4xl'></i><article><h4 class='font-bold'>Take a break ⛳️</h4><p class='text-secondary'>Just chill for now... 😉</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint black --><figcaption class='checkpoint checkpoint-black'><i class='checkpoint-icon bi-bookmark-fill'></i><article><h4 class='font-bold'>Feature fixed as a priority</h4><p class='badge style-white mt-2'>Kamilly Aldrey</p></article></figcaption></figure>"
           },
           {
             "tags": ["timeline", "checkpoint", "solid"],
@@ -916,7 +914,7 @@
             "explanation": [
               "To create horizontal timelines, simply add the `.group-row` class in the `.timeline` parent."
             ],
-            "code": "<!-- timeline --><figure class='timeline group-row min-w-[700px]'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
+            "code": "<!-- timeline --><figure class='timeline group-row min-w-[700px]'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='style-link-primary'>here</a>.</p><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge style-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
           },
           {
             "tags": [
@@ -930,7 +928,7 @@
               "Use Layout Group to create responsible timelines.",
               "Simply add the `.group-responsive` class in the `.timeline` parent."
             ],
-            "code": "<!-- timeline --><figure class='timeline group-responsive'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='btn-link-primary'>here</a>.</p><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge badge-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge badge-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
+            "code": "<!-- timeline --><figure class='timeline group-responsive'><!-- checkpoint solid --><figcaption class='checkpoint checkpoint-solid-success'><i class='checkpoint-icon bi-check-lg'></i><article><h4 class='font-bold'>Created 'Perfect UI in Vue' task</h4><p class='text-secondary'>Find more detailed insctructions<a href='#' class='style-link-primary'>here</a>.</p><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption><!-- checkpoint outline --><figcaption class='checkpoint checkpoint-outline-error'><i class='checkpoint-icon bi-exclamation-lg'></i><article><h4 class='font-bold'>🐞 Release v5.2.0 quick bug fix</h4><p class='badge style-white mt-2'>Kamilly Aldrey</p></article></figcaption><!-- checkpoint white --><figcaption class='checkpoint checkpoint-white'><i class='checkpoint-icon bi-cup-hot'></i><article><h4 class='font-bold'>📦 Update 'Perfect UI' packages</h4><p class='badge style-white mt-2'>Amanda Ketellyn</p></article></figcaption></figure>"
           }
         ]
       },
@@ -949,21 +947,21 @@
               "Provide the tooltip text through the `tooltip` attribute.",
               "Attention needed: The  `.tooltip`  class uses pseudo elements  `::before`  and  `::after`  to works. Make sure you use it with an element that does not use pseudo classes as well."
             ],
-            "code": "<button class='btn btn-white tooltip' data-tooltip='More details here'> Tooltip <i class='bi-question-circle'></i></button>"
+            "code": "<button class='btn style-white tooltip' data-tooltip='More details here'> Tooltip <i class='bi-question-circle'></i></button>"
           },
           {
             "tags": ["tooltip", "hint", "directions"],
             "explanation": [
               "The tooltip has the top direction by default, but you can also use `.tooltip-right` , `.tooltip-left` and `.tooltip-bottom` directions."
             ],
-            "code": "<div class='grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit'> <button class='tooltip btn btn-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on top' > <i class='bi-chevron-up'></i> </button> <button class='tooltip tooltip-left btn btn-white rounded-full col-start-1 w-10 !px-2' data-tooltip='Tooltip on left' > <i class='bi-chevron-left'></i> </button> <button class='tooltip tooltip-right btn btn-white rounded-full col-start-3 w-10 !px-2' data-tooltip='Tooltip on right' > <i class='bi-chevron-right'></i> </button> <button class='tooltip tooltip-bottom btn btn-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on bottom' > <i class='bi-chevron-down'></i> </button> </div>"
+            "code": "<div class='grid grid-cols-3 gap-y-2 gap-x-2 max-w-60 mx-auto w-fit'> <button class='tooltip btn style-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on top' > <i class='bi-chevron-up'></i> </button> <button class='tooltip tooltip-left btn style-white rounded-full col-start-1 w-10 !px-2' data-tooltip='Tooltip on left' > <i class='bi-chevron-left'></i> </button> <button class='tooltip tooltip-right btn style-white rounded-full col-start-3 w-10 !px-2' data-tooltip='Tooltip on right' > <i class='bi-chevron-right'></i> </button> <button class='tooltip tooltip-bottom btn style-white rounded-full col-start-2 w-10 !px-2' data-tooltip='Tooltip on bottom' > <i class='bi-chevron-down'></i> </button> </div>"
           },
           {
             "tags": ["tooltip", "hint", "white", "black"],
             "explanation": [
-              "The tooltip has `.tooltip-white` class by default, but if you want use the black style, simply use the `.btn-black` class."
+              "The tooltip has `.tooltip-white` class by default, but if you want use the black style, simply use the `.style-black` class."
             ],
-            "code": "<div class='flex flex-col gap-2 w-fit'> <button class='btn btn-white tooltip tooltip-right' data-tooltip='More details here' > White Tooltip </button> <button class='btn btn-white tooltip tooltip-black tooltip-right' data-tooltip='More details here' > Black Tooltip </button> </div>"
+            "code": "<div class='flex flex-col gap-2 w-fit'> <button class='btn style-white tooltip tooltip-right' data-tooltip='More details here' > White Tooltip </button> <button class='btn style-white tooltip tooltip-black tooltip-right' data-tooltip='More details here' > Black Tooltip </button> </div>"
           },
           {
             "tags": ["tooltip", "hint", "simple usage"],
@@ -996,7 +994,7 @@
             "explanation": [
               "You can use the `.field-group` class to create complex forms with states, buttons, icons and others."
             ],
-            "code": "<form class='flex flex-col gap-3'> <!-- name --> <label class='field-group field-group-error' data-label='Full Name' data-message='Field required' > <select class='input !max-w-fit'> <option>Mr.</option> <option>Ms.</option> <option>Miss.</option> </select> <input class='input' placeholder='First Name' /> <input class='input' placeholder='Surname Name' /> </label> <!-- birth --> <label class='field-group' data-label='Birth' data-message='Optional'> <i class='addon bi-calendar-week'></i> <input class='input' type='date' /> </label> <!-- email --> <label class='field-group group-row field-group-success' data-label='Email' data-message='Code sended' > <i class='addon bi-check-circle-fill text-success'></i> <input type='text' class='input' value='email.example' /> <span class='addon'>@</span> <select class='input'> <option>gmail.com</option> <option>outlook.com</option> <option>hotmail.com</option> </select> <button class='group-item btn btn-solid-primary'>Send Code</button> </label></form>"
+            "code": "<form class='flex flex-col gap-3'> <!-- name --> <label class='field-group field-group-error' data-label='Full Name' data-message='Field required' > <select class='input !max-w-fit'> <option>Mr.</option> <option>Ms.</option> <option>Miss.</option> </select> <input class='input' placeholder='First Name' /> <input class='input' placeholder='Surname Name' /> </label> <!-- birth --> <label class='field-group' data-label='Birth' data-message='Optional'> <i class='addon bi-calendar-week'></i> <input class='input' type='date' /> </label> <!-- email --> <label class='field-group group-row field-group-success' data-label='Email' data-message='Code sended' > <i class='addon bi-check-circle-fill text-success'></i> <input type='text' class='input' value='email.example' /> <span class='addon'>@</span> <select class='input'> <option>gmail.com</option> <option>outlook.com</option> <option>hotmail.com</option> </select> <button class='group-item btn style-solid-primary'>Send Code</button> </label></form>"
           },
           {
             "tags": ["field group", "label", "message"],
@@ -1041,7 +1039,7 @@
               "To create a field with action buttons, simply add `.group-row` class in the `.field-group` element.",
               "After, add a button with `.group-item` class."
             ],
-            "code": "<div class='card'> <article class='card-content'> <h4 class='text-lg text-center mb-4'> You want to subscribe in our newsletter? </h4> <label class='field-group group-row'> <input type='email' class='input' placeholder='Your email' > <button class='btn btn-solid-primary group-item'>Subscribe</button> </label> </article></div>"
+            "code": "<div class='card'> <article class='card-content'> <h4 class='text-lg text-center mb-4'> You want to subscribe in our newsletter? </h4> <label class='field-group group-row'> <input type='email' class='input' placeholder='Your email' > <button class='btn style-solid-primary group-item'>Subscribe</button> </label> </article></div>"
           },
           {
             "tags": ["field group", "disabled"],
@@ -1105,7 +1103,7 @@
             "explanation": [
               "You can also add buttons inside a `.input-group`."
             ],
-            "code": "<label class='field-group'><div class='input input-group'><button class='btn btn-link-primary'>New<i class='bi-plus-lg'></i></button><input type='text' class='input' placeholder='Write a task' /><button class='btn btn-link-error'>Delete<i class='bi-trash'></i></button><button class='btn btn-solid-success'>Done<i class='bi-check-lg'></i></button></div></label>"
+            "code": "<label class='field-group'><div class='input input-group'><button class='btn style-link-primary'>New<i class='bi-plus-lg'></i></button><input type='text' class='input' placeholder='Write a task' /><button class='btn style-link-error'>Delete<i class='bi-trash'></i></button><button class='btn style-solid-success'>Done<i class='bi-check-lg'></i></button></div></label>"
           }
         ]
       },
@@ -1299,7 +1297,7 @@
             "explanation": [
               "To create switches, simply add the `.switch` class to the `input` element."
             ],
-            "code": "<div><label class='field-group gap-2'><input type='checkbox' class='switch' />Default switch</label><label class='field-group gap-2'><input type='checkbox' class='switch' checked />Checked switch</label><label class='field-group gap-2' disabled><input type='checkbox' class='switch' />Disabled switch</label></div>"
+            "code": "<ul class='list unmarker'><label class='list-item'><input type='checkbox' class='switch' />Default switch</label><label class='list-item'><input type='checkbox' class='switch' checked />Checked switch</label><label class='list-item' disabled><input type='checkbox' class='switch' />Disabled switch</label></ul>"
           },
           {
             "tags": [

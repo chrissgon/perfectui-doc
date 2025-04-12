@@ -24,7 +24,7 @@
         />
         <button
           :disabled="loading"
-          class="btn btn-white bg-tertiary !px-3"
+          class="btn style-white bg-tertiary !px-3"
           @click="search"
         >
           <i class="bi-send"></i>
@@ -51,7 +51,7 @@
             </div>
 
             <button
-              class="btn btn-white bg-tertiary"
+              class="btn style-white bg-tertiary"
               @click="init"
             >
               <i class="bi-arrow-clockwise"></i> Reconnect
@@ -72,7 +72,7 @@
                 class="flex float-left max-sm:flex-col"
               >
                 <AtomIconChatGPT
-                  class="inline badge badge-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
+                  class="inline badge style-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
                 />
 
                 <div
@@ -100,7 +100,7 @@
             class="flex"
           >
             <AtomIconChatGPT
-              class="inline badge badge-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
+              class="inline badge style-white !py-2 !px-2 rounded-full !bg-transparent mr-4 min-w-9 max-w-9 [html:not(.dark)_&>path]:!invert"
             />
 
             <div class="mt-3 w-4 h-4 block rounded-full animate-scale"></div>

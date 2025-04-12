@@ -87,16 +87,16 @@ const CODE_VIEW_INPUT_GROUP_MIXED = `<label class="field-group field-group-succe
 `;
 const CODE_VIEW_INPUT_GROUP_BUTTON = `<label class="field-group">
   <div class="input input-group">
-    <button class="btn btn-link-primary">
+    <button class="btn style-link-primary">
       New
       <i class="bi-plus-lg"></i>
     </button>
     <input type="text" class="input" placeholder="Write a task" />
-    <button class="btn btn-link-error">
+    <button class="btn style-link-error">
       Delete
       <i class="bi-trash"></i>
     </button>
-    <button class="btn btn-solid-success">
+    <button class="btn style-solid-success">
       Done
       <i class="bi-check-lg"></i>
     </button>

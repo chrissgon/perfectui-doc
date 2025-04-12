@@ -36,7 +36,7 @@
       <p>
         You can use
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/field-group"
         >
           Field Group

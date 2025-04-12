@@ -22,7 +22,7 @@
       >
         <NuxtLink
           to="/docs/installation?assistant=true"
-          class="badge badge-black !text-white !bg-[#10A37F] !py-1 !px-2 -mb-5 font-semibold relative"
+          class="badge style-black !text-white !bg-[#10A37F] !py-1 !px-2 -mb-5 font-semibold relative"
         >
           <AtomIconChatGPT
             class="inline w-4 scale-110 -translate-y-[1px] mr-1"
@@ -46,12 +46,12 @@
         <div class="flex flex-wrap justify-center gap-5">
           <NuxtLink
             to="/docs/installation"
-            class="btn btn-solid-primary flex-1"
+            class="btn style-solid-primary flex-1"
           >
             Get Started
           </NuxtLink>
           <!-- <button
-            class="btn btn-white firacode flex items-center gap-3"
+            class="btn style-white firacode flex items-center gap-3"
             @click="copyInstallCode"
           >
             npm i @chrissgon/perfectui
@@ -67,7 +67,7 @@
           </button> -->
           <NuxtLink
             to="/docs/installation?assistant=true"
-            class="btn btn-white !text-[#10A37F] !border-[#10A37F]"
+            class="btn style-white !text-[#10A37F] !border-[#10A37F]"
           >
             <AtomIconChatGPT
               class="inline w-4 scale-110 [&_path]:!fill-[#10A37F] -translate-y-[1px] mr-1"
@@ -163,7 +163,7 @@
 
         <NuxtLink
           to="/docs/dark-mode"
-          class="btn btn-white w-fit mt-2"
+          class="btn style-white w-fit mt-2"
         >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
@@ -195,7 +195,7 @@
 
         <NuxtLink
           to="/docs/theme-color"
-          class="btn btn-white w-fit mt-2"
+          class="btn style-white w-fit mt-2"
         >
           Learn more <i class="bi-chevron-right"></i>
         </NuxtLink>
@@ -277,12 +277,12 @@
       <div class="flex flex-wrap justify-center gap-5 mt-6">
         <NuxtLink
           to="/docs/installation"
-          class="btn btn-solid-primary flex-1 text-center"
+          class="btn style-solid-primary flex-1 text-center"
         >
           Get Started
         </NuxtLink>
         <button
-          class="btn btn-white firacode flex items-center gap-3"
+          class="btn style-white firacode flex items-center gap-3"
           @click="copyInstallCode"
         >
           npm i @chrissgon/perfectui
@@ -301,7 +301,7 @@
 
     <!-- TODO -->
     <!-- Create a bot to hire us using lowbot -->
-    <!-- <button class="btn btn-solid-primary fixed bottom-10 right-10 !px-4 !py-3.5 rounded-full">
+    <!-- <button class="btn style-solid-primary fixed bottom-10 right-10 !px-4 !py-3.5 rounded-full">
       <i class="bi-chat-fill text-3xl"></i>
     </button> -->
 

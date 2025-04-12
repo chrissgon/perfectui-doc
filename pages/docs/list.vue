@@ -63,7 +63,7 @@
         To create bordered lists, simply use the
         <AtomToken>.list-bordered</AtomToken> class with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/layout-group"
         >
           Layout Group
@@ -112,7 +112,7 @@
         <a
           href="https://icons.getbootstrap.com/"
           target="_blank"
-          class="btn-link-primary"
+          class="style-link-primary"
         >
           Bootstrap Icons </a>.
       </p>
@@ -151,7 +151,7 @@
       <p>
         To create horizontal lists, simply use the list classes with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/layout-group"
         >
           Layout Group
@@ -373,17 +373,17 @@ const CODE_VIEW_LIST_BADGE = `<ul class="unmarker sm:w-64 list list-bordered lis
       <i class="bi-bell"></i>
       Profile
     </span>
-    <span class="badge badge-solid-primary float-right">New</span>
+    <span class="badge style-solid-primary float-right">New</span>
   </a>
   <a class="list-item">
     <i class="bi-cloud-download"></i>
     Downloads
-    <span class="badge badge-solid-primary rounded-full float-right">2</span>
+    <span class="badge style-solid-primary rounded-full float-right">2</span>
   </a>
   <a class="list-item">
     <i class="bi-people"></i>
     Team Account
-    <span class="badge badge-solid-primary rounded-full float-right">99+</span>
+    <span class="badge style-solid-primary rounded-full float-right">99+</span>
   </a>
 </ul>
 `;

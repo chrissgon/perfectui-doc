@@ -23,7 +23,7 @@
       <p>
         Modal component uses the
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/card"
         >
           Card
@@ -39,7 +39,7 @@
       <p>
         Uses the
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/card"
         >
           Card
@@ -94,7 +94,10 @@
       </template>
 
       <p>
-        Modal dialogs differ in width, whereas height is determined by the content. Once it reaches a certain threshold, the body content will scroll while the header and footer remain fixed until the bottom of the modal dialog is reached.
+        Modal dialogs differ in width, whereas height is determined by the
+        content. Once it reaches a certain threshold, the body content will
+        scroll while the header and footer remain fixed until the bottom of the
+        modal dialog is reached.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_MODAL_SCROLL" />
@@ -115,14 +118,14 @@
 
 <script setup lang="ts">
 const CODE_VIEW_MODAL_BASIC = `
-<button class="btn btn-solid-primary" data-modal="modal-basic">
+<button class="btn style-solid-primary" data-modal="modal-basic">
   Open modal
 </button>
 <dialog class="modal" id="modal-basic">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal title</span>
-      <a class="bi bi-x-lg float-right btn-link-secondary" data-autoclose></a>
+      <a class="bi bi-x-lg float-right style-link-secondary" data-autoclose></a>
     </header>
     <hr />
     <article class="card-content flex flex-col gap-2">
@@ -130,21 +133,21 @@ const CODE_VIEW_MODAL_BASIC = `
     </article>
     <hr />
     <footer class="card-header flex gap-2 justify-end">
-      <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary">Save changes</button>
+      <button class="btn style-link-error" data-autoclose>Close</button>
+      <button class="btn style-solid-primary">Save changes</button>
     </footer>
   </div>
 </dialog>
 `;
 const CODE_VIEW_MODAL_STATIC = `
-<button class="btn btn-solid-primary" data-modal="modal-static">
+<button class="btn style-solid-primary" data-modal="modal-static">
   Open modal
 </button>
 <dialog class="modal static-backdrop" id="modal-static">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal title</span>
-      <a class="bi bi-x-lg float-right btn-link-secondary" data-autoclose></a>
+      <a class="bi bi-x-lg float-right style-link-secondary" data-autoclose></a>
     </header>
     <hr />
     <article class="card-content flex flex-col gap-2">
@@ -152,14 +155,14 @@ const CODE_VIEW_MODAL_STATIC = `
     </article>
     <hr />
     <footer class="card-header flex gap-2 justify-end">
-      <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary">Save changes</button>
+      <button class="btn style-link-error" data-autoclose>Close</button>
+      <button class="btn style-solid-primary">Save changes</button>
     </footer>
   </div>
 </dialog>
 `;
 const CODE_VIEW_MODAL_SCROLL = `
-<button class="btn btn-solid-primary" data-modal="modal-scroll">
+<button class="btn style-solid-primary" data-modal="modal-scroll">
   Open modal
 </button>
 <dialog class="modal" id="modal-scroll">
@@ -167,7 +170,7 @@ const CODE_VIEW_MODAL_SCROLL = `
     <header class="card-header bg-secondary text-secondary">
       <span>Modal title</span>
       <a
-        class="bi bi-x-lg float-right btn-link-secondary"
+        class="bi bi-x-lg float-right style-link-secondary"
         data-autoclose
       ></a>
     </header>
@@ -215,21 +218,21 @@ const CODE_VIEW_MODAL_SCROLL = `
     </article>
     <hr />
     <footer class="card-header flex gap-2 justify-end">
-      <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary">Save changes</button>
+      <button class="btn style-link-error" data-autoclose>Close</button>
+      <button class="btn style-solid-primary">Save changes</button>
     </footer>
   </div>
 </dialog>
-`
+`;
 const CODE_VIEW_MODAL_TOGGLE = `
-<button class="btn btn-solid-primary" data-modal="modal-toggle">
+<button class="btn style-solid-primary" data-modal="modal-toggle">
   Open first modal
 </button>
 <dialog class="modal" id="modal-toggle">
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal 1</span>
-      <a class="bi bi-x-lg float-right btn-link-secondary" data-autoclose></a>
+      <a class="bi bi-x-lg float-right style-link-secondary" data-autoclose></a>
     </header>
     <hr />
     <article class="card-content flex flex-col gap-2">
@@ -237,8 +240,8 @@ const CODE_VIEW_MODAL_TOGGLE = `
     </article>
     <hr />
     <footer class="card-header flex gap-2 justify-end">
-      <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary" data-modal="modal-toggle2">Open second modal</button>
+      <button class="btn style-link-error" data-autoclose>Close</button>
+      <button class="btn style-solid-primary" data-modal="modal-toggle2">Open second modal</button>
     </footer>
   </div>
 </dialog>
@@ -246,7 +249,7 @@ const CODE_VIEW_MODAL_TOGGLE = `
   <div class="card w-96">
     <header class="card-header bg-secondary text-secondary">
       <span>Modal 2</span>
-      <a class="bi bi-x-lg float-right btn-link-secondary" data-autoclose></a>
+      <a class="bi bi-x-lg float-right style-link-secondary" data-autoclose></a>
     </header>
     <hr />
     <article class="card-content flex flex-col gap-2">
@@ -254,13 +257,12 @@ const CODE_VIEW_MODAL_TOGGLE = `
     </article>
     <hr />
     <footer class="card-header flex gap-2 justify-end">
-      <button class="btn btn-link-error" data-autoclose>Close</button>
-      <button class="btn btn-solid-primary" data-modal="modal-toggle">Back to first</button>
+      <button class="btn style-link-error" data-autoclose>Close</button>
+      <button class="btn style-solid-primary" data-modal="modal-toggle">Back to first</button>
     </footer>
   </div>
 </dialog>
 `;
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

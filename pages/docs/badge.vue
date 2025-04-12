@@ -18,7 +18,8 @@
       <p>
         The most commonly used badge styles, we provide
         <AtomToken>solid</AtomToken>, <AtomToken>outline</AtomToken>,
-        <AtomToken>white</AtomToken> and <AtomToken>black</AtomToken>.
+        <AtomToken>soft</AtomToken>, <AtomToken>white</AtomToken> and
+        <AtomToken>black</AtomToken>.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BADGE_TYPES" />
@@ -44,7 +45,7 @@
       </template>
       <p>
         To create solid badges, simply use the
-        <AtomToken>.badge-solid-[variant]</AtomToken> class.
+        <AtomToken>.style-solid-[variant]</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BADGE_SOLID_COLORS" />
@@ -57,10 +58,23 @@
       </template>
       <p>
         To create outline badges, simply use the
-        <AtomToken>.badge-outline-[variant]</AtomToken> class.
+        <AtomToken>.style-outline-[variant]</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BADGE_OUTLINE_COLORS" />
+    </MoleculeDocsContent>
+
+    <!-- soft -->
+    <MoleculeDocsContent id="soft">
+      <template #title>
+        Soft badges
+      </template>
+      <p>
+        To create soft badges, simply use the
+        <AtomToken>.style-soft-[variant]</AtomToken> class.
+      </p>
+
+      <OrganismComponentExample :code="CODE_VIEW_BADGE_SOFT_COLORS" />
     </MoleculeDocsContent>
 
     <!-- white / black -->
@@ -70,8 +84,8 @@
       </template>
       <p>
         To create white or black badge, simply use the
-        <AtomToken>.badge-white</AtomToken> or
-        <AtomToken>.badge-black</AtomToken> class.
+        <AtomToken>.style-white</AtomToken> or
+        <AtomToken>.style-black</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BADGE_WHITE_BLACK" />
@@ -87,9 +101,11 @@
         <a
           href="https://icons.getbootstrap.com/"
           target="_blank"
-          class="btn-link-primary"
+          class="style-link-primary"
         >
-          Bootstrap Icons </a>.
+          Bootstrap Icons
+        </a>
+        .
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BADGE_ICON" />
@@ -98,34 +114,49 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_BADGE_TYPES = `<span class="badge badge-solid-primary">Solid</span>
-<span class="badge badge-outline-primary">Outline</span>
-<span class="badge badge-white">White</span>
-<span class="badge badge-black">Black</span>
+const CODE_VIEW_BADGE_TYPES = `
+<span class="badge style-solid-primary">Solid</span>
+<span class="badge style-outline-primary">Outline</span>
+<span class="badge style-soft-primary">Soft</span>
+<span class="badge style-white">White</span>
+<span class="badge style-black">Black</span>
 `;
-const CODE_VIEW_BADGE_TYPES_ROUNDED = `<span class="badge badge-solid-primary rounded-full">Solid</span>
-<span class="badge badge-outline-primary rounded-full">Outline</span>
-<span class="badge badge-white rounded-full">White</span>
-<span class="badge badge-black rounded-full">Black</span>
+const CODE_VIEW_BADGE_TYPES_ROUNDED = `
+<span class="badge style-solid-primary rounded-full">Solid</span>
+<span class="badge style-outline-primary rounded-full">Outline</span>
+<span class="badge style-soft-primary rounded-full">Soft</span>
+<span class="badge style-white rounded-full">White</span>
+<span class="badge style-black rounded-full">Black</span>
 `;
-const CODE_VIEW_BADGE_SOLID_COLORS = `<span class="badge badge-solid-primary">Primary</span>
-<span class="badge badge-solid-secondary">Secondary</span>
-<span class="badge badge-solid-success">Success</span>
-<span class="badge badge-solid-warn">Warn</span>
-<span class="badge badge-solid-error">Error</span>
+const CODE_VIEW_BADGE_SOLID_COLORS = `
+<span class="badge style-solid-primary">Primary</span>
+<span class="badge style-solid-secondary">Secondary</span>
+<span class="badge style-solid-success">Success</span>
+<span class="badge style-solid-warn">Warn</span>
+<span class="badge style-solid-error">Error</span>
 `;
-const CODE_VIEW_BADGE_OUTLINE_COLORS = `<span class="badge badge-outline-primary">Primary</span>
-<span class="badge badge-outline-secondary">Secondary</span>
-<span class="badge badge-outline-success">Success</span>
-<span class="badge badge-outline-warn">Warn</span>
-<span class="badge badge-outline-error">Error</span>
+const CODE_VIEW_BADGE_OUTLINE_COLORS = `
+<span class="badge style-outline-primary">Primary</span>
+<span class="badge style-outline-secondary">Secondary</span>
+<span class="badge style-outline-success">Success</span>
+<span class="badge style-outline-warn">Warn</span>
+<span class="badge style-outline-error">Error</span>
 `;
-const CODE_VIEW_BADGE_WHITE_BLACK = `<span class="badge badge-white">White</span>
-<span class="badge badge-black">Black</span>
+const CODE_VIEW_BADGE_SOFT_COLORS = `
+<span class="badge style-soft-primary">Primary</span>
+<span class="badge style-soft-secondary">Secondary</span>
+<span class="badge style-soft-success">Success</span>
+<span class="badge style-soft-warn">Warn</span>
+<span class="badge style-soft-error">Error</span>
 `;
-const CODE_VIEW_BADGE_ICON = `<span class="badge badge-solid-error"><i class="bi-heart-fill"></i> Favorite</span>
-<span class="badge badge-outline-warn">Best ranking <i class="bi-star-fill"></i></span>
-<span class="badge badge-white">Recent viewed <i class="bi-eye-fill"></i></span>
+const CODE_VIEW_BADGE_WHITE_BLACK = `
+<span class="badge style-white">White</span>
+<span class="badge style-black">Black</span>
+`;
+const CODE_VIEW_BADGE_ICON = `
+<span class="badge style-solid-error"><i class="bi-heart-fill"></i> Favorite</span>
+<span class="badge style-outline-warn">Best ranking <i class="bi-star-fill"></i></span>
+<span class="badge style-white">Recent viewed <i class="bi-eye-fill"></i></span>
 `;
 </script>
 

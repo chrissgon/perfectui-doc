@@ -12,7 +12,7 @@
         readonly
       />
       <div class="text-secondary font-medium !pr-2">
-        <span class="badge badge-white kdb leading-none"> / </span>
+        <span class="badge style-white kdb leading-none"> / </span>
       </div>
     </div>
 
@@ -26,12 +26,12 @@
         data-modal="modalAssistant"
         disabled
       >
-        <i class="btn btn-white !bg-[#10A37F] !border-[#10A37F] !px-[7px]">
+        <i class="btn style-white !bg-[#10A37F] !border-[#10A37F] !px-[7px]">
           <AtomIconChatGPT class="inline w-4 scale-110 -translate-y-[1px]" />
         </i>
         Assistant
 
-        <span class="badge badge-white">In Progress</span>
+        <span class="badge style-white">Soon</span>
       </li>
       <!-- TODO -->
       <!-- develop the pages below -->
@@ -42,11 +42,11 @@
         class="list-item"
       >
         <i
-          class="bi-grid-1x2-fill btn btn-white [.active_&]:!border-sky-500 [.active_&]:!bg-sky-500 [.active_&]:!text-white"
+          class="bi-grid-1x2-fill btn style-white [.active_&]:!border-sky-500 [.active_&]:!bg-sky-500 [.active_&]:!text-white"
         ></i>
         Examples
 
-        <span class="badge badge-white">In Progress</span>
+        <span class="badge style-white">Soon</span>
       </NuxtLink>
 
       <!-- templates -->
@@ -57,11 +57,11 @@
         class="list-item"
       >
         <i
-          class="bi-box-fill btn btn-white [.active_&]:!border-pink-500 [.active_&]:!bg-pink-500 [.active_&]:!text-white"
+          class="bi-box-fill btn style-white [.active_&]:!border-pink-500 [.active_&]:!bg-pink-500 [.active_&]:!text-white"
         ></i>
         Templates
 
-        <span class="badge badge-white">In Progress</span>
+        <span class="badge style-white">Soon</span>
       </NuxtLink>
 
       <!-- resources -->
@@ -72,11 +72,11 @@
         class="list-item"
       >
         <i
-          class="bi-stack btn btn-white [.active_&]:!border-violet-500 [.active_&]:!bg-violet-500 [.active_&]:!text-white"
+          class="bi-stack btn style-white [.active_&]:!border-violet-500 [.active_&]:!bg-violet-500 [.active_&]:!text-white"
         ></i>
         Resources
 
-        <span class="badge badge-white">In Progress</span>
+        <span class="badge style-white">Soon</span>
       </NuxtLink>
 
       <!-- figma -->
@@ -86,7 +86,7 @@
           target="_blank"
         >
           <i
-            class="btn btn-white [.active_&]:!border-white [.active_&]:!bg-white [.active_&]:!text-white !px-[7px]"
+            class="btn style-white [.active_&]:!border-white [.active_&]:!bg-white [.active_&]:!text-white !px-[7px]"
           >
             <AtomIconFigma class="inline" />
           </i>
@@ -114,7 +114,7 @@
           {{ getLinkTreated(link) }}
           <span
             v-if="isNewPage(link)"
-            class="badge badge-solid-primary"
+            class="badge style-solid-primary"
           >
             New
           </span>

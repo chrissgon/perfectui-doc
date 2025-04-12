@@ -3,7 +3,7 @@
     <header class="card-header flex justify-between items-center !px-6 !pt-6">
       <span class="text-base">July / 2024</span>
       <div class="flex items-center gap-2">
-        <span class="badge badge-white">Pick Color</span>
+        <span class="badge style-white">Pick Color</span>
         <AtomThemeColorPicker />
       </div>
     </header>
@@ -42,10 +42,10 @@
         <span class="btn-calendar-item">2</span>
       </div>
       <div class="flex">
-        <span class="btn-calendar-item btn-white">3</span>
-        <span class="btn-calendar-item btn-white">4</span>
+        <span class="btn-calendar-item style-white">3</span>
+        <span class="btn-calendar-item style-white">4</span>
         <span
-          class="btn-calendar-item btn-solid-primary before:rounded-tl-full before:rounded-bl-full"
+          class="btn-calendar-item style-solid-primary before:rounded-tl-full before:rounded-bl-full"
         >5</span>
         <span class="btn-calendar-item btn-range">6</span>
         <span class="btn-calendar-item btn-range">7</span>
@@ -66,23 +66,23 @@
         <span class="btn-calendar-item btn-range">18</span>
         <span class="btn-calendar-item btn-range">19</span>
         <span
-          class="btn-calendar-item btn-solid-primary before:rounded-tr-full before:rounded-br-full"
+          class="btn-calendar-item style-solid-primary before:rounded-tr-full before:rounded-br-full"
         >20</span>
-        <span class="btn-calendar-item btn-white">21</span>
-        <span class="btn-calendar-item btn-white">22</span>
-        <span class="btn-calendar-item btn-white">23</span>
+        <span class="btn-calendar-item style-white">21</span>
+        <span class="btn-calendar-item style-white">22</span>
+        <span class="btn-calendar-item style-white">23</span>
       </div>
       <div class="flex">
-        <span class="btn-calendar-item btn-white">24</span>
-        <span class="btn-calendar-item btn-white">25</span>
-        <span class="btn-calendar-item btn-white">26</span>
-        <span class="btn-calendar-item btn-white">27</span>
-        <span class="btn-calendar-item btn-white">28</span>
-        <span class="btn-calendar-item btn-white">29</span>
-        <span class="btn-calendar-item btn-white">30</span>
+        <span class="btn-calendar-item style-white">24</span>
+        <span class="btn-calendar-item style-white">25</span>
+        <span class="btn-calendar-item style-white">26</span>
+        <span class="btn-calendar-item style-white">27</span>
+        <span class="btn-calendar-item style-white">28</span>
+        <span class="btn-calendar-item style-white">29</span>
+        <span class="btn-calendar-item style-white">30</span>
       </div>
       <div class="flex">
-        <span class="btn-calendar-item btn-white">31</span>
+        <span class="btn-calendar-item style-white">31</span>
         <span
           class="btn-calendar-item text-secondary"
           disabled
@@ -125,11 +125,11 @@
   cursor: pointer;
   padding: 0px !important;
 }
-.btn-solid-primary {
+.style-solid-primary {
   position: relative;
   z-index: 1;
 }
-.btn-solid-primary::before {
+.style-solid-primary::before {
   content: "";
   width: 100%;
   height: 100%;

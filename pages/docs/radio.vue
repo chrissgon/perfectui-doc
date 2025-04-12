@@ -8,7 +8,8 @@
         Radio
       </template>
 
-      A radio input allows people to select only one option from a number of choices. Radio is generally displayed in a radio group.
+      A radio input allows people to select only one option from a number of
+      choices. Radio is generally displayed in a radio group.
     </MoleculeDocsHeader>
 
     <!-- basic -->
@@ -46,7 +47,7 @@
       <p>
         You can use radios with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/field-group"
         >
           Field Group
@@ -65,7 +66,7 @@
       <p>
         You can use radios with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/list"
         >
           Lists
@@ -78,9 +79,7 @@
 
       <OrganismComponentExample :code="CODE_VIEW_RADIO_LIST_VERTICAL" />
 
-      <p>
-        You can also make a horizontal list group item appear with radio.
-      </p>
+      <p>You can also make a horizontal list group item appear with radio.</p>
 
       <OrganismComponentExample :code="CODE_VIEW_RADIO_LIST_HORIZONTAL" />
     </MoleculeDocsContent>

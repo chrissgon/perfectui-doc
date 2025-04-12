@@ -139,6 +139,8 @@
 </template>
 
 <script setup lang="ts">
+import { version } from "@chrissgon/perfectui/package.json";
+
 // data
 const CODE_VIEW_IMPORT_CDN = `<!DOCTYPE html> 
 <html>
@@ -147,26 +149,26 @@ const CODE_VIEW_IMPORT_CDN = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- import css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@${version}/dist/perfectui.css">
 
   </head>
   <body>
-    <button class="btn btn-solid-primary">
+    <button class="btn style-solid-primary">
       My button
     </button>
     
     <!-- import javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js"><\/script>
+    <script src="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@${version}/dist/perfectui.js"><\/script>
   </body>
 </html>`;
 
-const CODE_PREVIEW_IMPORT_CDN = `<button class="btn btn-solid-primary">My button</button>`;
+const CODE_PREVIEW_IMPORT_CDN = `<button class="btn style-solid-primary">My button</button>`;
 
 const CODE_VIEW_IMPORT_CDN_SCRIPT = `console.log(window.perfectui) // { setMode: ƒ ...}
 console.log(document.perfectui) // { setMode: ƒ ...}`;
 
 const CODE_VIEW_IMPORT_CDN_MODULE = `<script type="module">
-  import * as perfectUI from "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@latest/dist/perfectui.js"
+  import * as perfectUI from "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@${version}/dist/perfectui.js"
   console.log(perfectUI) // { setMode: ƒ ...}
 <\/script>`;
 

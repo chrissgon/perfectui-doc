@@ -46,7 +46,7 @@
       <p>
         You can use switches with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/field-group"
         >
           Field Group
@@ -65,7 +65,7 @@
       <p>
         You can use switches with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/list"
         >
           Lists
@@ -78,9 +78,7 @@
 
       <OrganismComponentExample :code="CODE_VIEW_SWITCH_LIST_VERTICAL" />
 
-      <p>
-        You can also make a horizontal list group item appear with switch.
-      </p>
+      <p>You can also make a horizontal list group item appear with switch.</p>
 
       <OrganismComponentExample :code="CODE_VIEW_SWITCH_LIST_HORIZONTAL" />
     </MoleculeDocsContent>
@@ -88,20 +86,20 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_SWTICH_BASIC = `<div>
-  <label class="field-group gap-2">
+const CODE_VIEW_SWTICH_BASIC = `<ul class="list unmarker">
+  <label class="list-item">
     <input type="checkbox" class="switch" />
     Default switch
   </label>
-  <label class="field-group gap-2">
+  <label class="list-item">
     <input type="checkbox" class="switch" checked />
     Checked switch
   </label>
-  <label class="field-group gap-2" disabled>
+  <label class="list-item" disabled>
     <input type="checkbox" class="switch" />
     Disabled switch
   </label>
-</div>
+</ul>
 `;
 const CODE_VIEW_SWITCH_GROUP = `<div class="flex flex-wrap">
   <ul class="list unmarker">

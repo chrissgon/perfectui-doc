@@ -47,7 +47,7 @@
       <p>
         You can use checkboxes with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/field-group"
         >
           Field Group
@@ -66,7 +66,7 @@
       <p>
         You can use checkboxes with
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/list"
         >
           Lists

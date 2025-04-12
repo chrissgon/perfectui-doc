@@ -149,7 +149,7 @@
       <p>
         Example with pagination using
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/list"
         >
           Lists
@@ -177,20 +177,20 @@ const TABLE_CONTENT = `<thead>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th>2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th>3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
   </tbody>`;
 
@@ -225,20 +225,20 @@ const CODE_VIEW_TABLE_HEADLESS = `<table class="table">
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th>2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th>3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
   </tbody>
 </table>
@@ -260,20 +260,20 @@ const CODE_VIEW_TABLE_SELECTION = `<table class="table">
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle"></th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle"></th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
   </tbody>
 </table>
@@ -306,20 +306,20 @@ const CODE_VIEW_TABLE_SEARCH = `<table class="table table-bordered">
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle" /></th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle" /></th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
   </tbody>
 </table>
@@ -348,20 +348,20 @@ const CODE_VIEW_TABLE_PAGINATION = `<table class="table table-bordered">
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle" /></th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
     <tr>
       <th><input type="checkbox" class="checkbox align-middle" /></th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-      <td><button class="btn-link-error">Delete</button></td>
+      <td><button class="style-link-error">Delete</button></td>
     </tr>
   </tbody>
   <tfoot>

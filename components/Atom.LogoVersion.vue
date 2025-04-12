@@ -9,8 +9,8 @@
       width="90"
       height="16"
       class="logo"
-    >
-    <span class="badge badge-white rounded-full">{{ version }}</span>
+    />
+    <span class="badge style-white rounded-full">{{ version }}</span>
   </NuxtLink>
 </template>
 

@@ -7,7 +7,7 @@
       <span
         v-for="tab in tabs"
         :key="tab"
-        class="btn btn-white !border-none !px-3 !py-2"
+        class="btn style-white !border-none !px-3 !py-2"
         :class="{ 'bg-secondary': tab === activeTab }"
         @click="changeTab(tab)"
       >
@@ -17,7 +17,7 @@
       <!-- default -->
       <span
         v-if="!tabs"
-        class="btn btn-white !bg-transparent !cursor-default !border-none !px-3 !py-2"
+        class="btn style-white !bg-transparent !cursor-default !border-none !px-3 !py-2"
       >
         <slot name="header" />
       </span>

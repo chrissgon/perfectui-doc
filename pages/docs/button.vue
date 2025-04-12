@@ -19,8 +19,8 @@
       <p>
         The most commonly used button styles, we provide
         <AtomToken>solid</AtomToken>, <AtomToken>outline</AtomToken>,
-        <AtomToken>link</AtomToken>, <AtomToken>white</AtomToken> and
-        <AtomToken>black</AtomToken>.
+        <AtomToken>soft</AtomToken>, <AtomToken>link</AtomToken>,
+        <AtomToken>white</AtomToken> and <AtomToken>black</AtomToken>.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_TYPES" />
@@ -46,7 +46,7 @@
       </template>
       <p>
         To create solid buttons, simply use the
-        <AtomToken>.btn-solid-[variant]</AtomToken> class.
+        <AtomToken>.style-solid-[variant]</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_SOLID_COLORS" />
@@ -59,10 +59,23 @@
       </template>
       <p>
         To create outline buttons, simply use the
-        <AtomToken>.btn-outline-[variant]</AtomToken> class.
+        <AtomToken>.style-outline-[variant]</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_OUTLINE_COLORS" />
+    </MoleculeDocsContent>
+
+    <!-- soft -->
+    <MoleculeDocsContent id="soft">
+      <template #title>
+        Soft buttons
+      </template>
+      <p>
+        To create soft buttons, simply use the
+        <AtomToken>.style-soft-[variant]</AtomToken> class.
+      </p>
+
+      <OrganismComponentExample :code="CODE_VIEW_BUTTON_SOFT_COLORS" />
     </MoleculeDocsContent>
 
     <!-- link -->
@@ -72,7 +85,7 @@
       </template>
       <p>
         To create link buttons, simply use the
-        <AtomToken>.btn-link-[variant]</AtomToken> class.
+        <AtomToken>.style-link-[variant]</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_LINK_COLORS" />
@@ -85,8 +98,8 @@
       </template>
       <p>
         To create white or black button, simply use the
-        <AtomToken>.btn-white</AtomToken> or
-        <AtomToken>.btn-black</AtomToken> class.
+        <AtomToken>.style-white</AtomToken> or
+        <AtomToken>.style-black</AtomToken> class.
       </p>
 
       <OrganismComponentExample :code="CODE_VIEW_BUTTON_WHITE_BLACK" />
@@ -102,7 +115,7 @@
         <a
           href="https://icons.getbootstrap.com/"
           target="_blank"
-          class="btn-link-primary"
+          class="style-link-primary"
         >
           Bootstrap Icons </a>.
       </p>
@@ -118,7 +131,7 @@
       <p>
         You can group buttons using
         <NuxtLink
-          class="btn-link-primary"
+          class="style-link-primary"
           to="/docs/layout-group"
         >
           Layout Group
@@ -145,59 +158,77 @@
 </template>
 
 <script setup lang="ts">
-const CODE_VIEW_BUTTON_TYPES = `<button class="btn btn-solid-primary">Solid</button>
-<button class="btn btn-outline-primary">Outline</button>
-<button class="btn btn-link-primary">Link</button>
-<button class="btn btn-white">White</button>
-<button class="btn btn-black">Black</button>
+const CODE_VIEW_BUTTON_TYPES = `
+<button class="btn style-solid-primary">Solid</button>
+<button class="btn style-outline-primary">Outline</button>
+<button class="btn style-soft-primary">Soft</button>
+<button class="btn style-link-primary">Link</button>
+<button class="btn style-white">White</button>
+<button class="btn style-black">Black</button>
 `;
-const CODE_VIEW_BUTTON_TYPES_ROUNDED = `<button class="btn btn-solid-primary rounded-full">Solid</button>
-<button class="btn btn-outline-primary rounded-full">Outline</button>
-<button class="btn btn-link-primary rounded-full">Link</button>
-<button class="btn btn-white rounded-full">White</button>
-<button class="btn btn-black rounded-full">Black</button>
+const CODE_VIEW_BUTTON_TYPES_ROUNDED = `
+<button class="btn style-solid-primary rounded-full">Solid</button>
+<button class="btn style-outline-primary rounded-full">Outline</button>
+<button class="btn style-soft-primary rounded-full">Soft</button>
+<button class="btn style-link-primary rounded-full">Link</button>
+<button class="btn style-white rounded-full">White</button>
+<button class="btn style-black rounded-full">Black</button>
 `;
-const CODE_VIEW_BUTTON_SOLID_COLORS = `<button class="btn btn-solid-primary">Primary</button>
-<button class="btn btn-solid-secondary">Secondary</button>
-<button class="btn btn-solid-success">Success</button>
-<button class="btn btn-solid-warn">Warn</button>
-<button class="btn btn-solid-error">Error</button>
+const CODE_VIEW_BUTTON_SOLID_COLORS = `
+<button class="btn style-solid-primary">Primary</button>
+<button class="btn style-solid-secondary">Secondary</button>
+<button class="btn style-solid-success">Success</button>
+<button class="btn style-solid-warn">Warn</button>
+<button class="btn style-solid-error">Error</button>
 `;
-const CODE_VIEW_BUTTON_OUTLINE_COLORS = `<button class="btn btn-outline-primary">Primary</button>
-<button class="btn btn-outline-secondary">Secondary</button>
-<button class="btn btn-outline-success">Success</button>
-<button class="btn btn-outline-warn">Warn</button>
-<button class="btn btn-outline-error">Error</button>
+const CODE_VIEW_BUTTON_OUTLINE_COLORS = `
+<button class="btn style-outline-primary">Primary</button>
+<button class="btn style-outline-secondary">Secondary</button>
+<button class="btn style-outline-success">Success</button>
+<button class="btn style-outline-warn">Warn</button>
+<button class="btn style-outline-error">Error</button>
 `;
-
-const CODE_VIEW_BUTTON_LINK_COLORS = `<button class="btn btn-link-primary">Primary</button>
-<button class="btn btn-link-secondary">Secondary</button>
-<button class="btn btn-link-success">Success</button>
-<button class="btn btn-link-warn">Warn</button>
-<button class="btn btn-link-error">Error</button>
-`;
-
-const CODE_VIEW_BUTTON_WHITE_BLACK = `<button class="btn btn-white">White</button>
-<button class="btn btn-black">Black</button>
-`;
-
-const CODE_VIEW_BUTTON_ICON = `<button class="btn btn-solid-primary">Add to cart <i class="bi-basket2-fill"></i></button>
-<button class="btn btn-white">Signup free <i class="bi-chevron-right"></i></button>
-<button class="btn btn-solid-error"><i class="bi-heart-fill"></i></button>
+const CODE_VIEW_BUTTON_SOFT_COLORS = `
+<button class="btn style-soft-primary">Primary</button>
+<button class="btn style-soft-secondary">Secondary</button>
+<button class="btn style-soft-success">Success</button>
+<button class="btn style-soft-warn">Warn</button>
+<button class="btn style-soft-error">Error</button>
 `;
 
-const CODE_VIEW_BUTTON_GROUP = `<div class="group group-row">
-  <button class="group-item btn btn-white">Left</button>
-  <button class="group-item btn btn-white">Middle</button>
-  <button class="group-item btn btn-white">Right</button>
+const CODE_VIEW_BUTTON_LINK_COLORS = `
+<button class="btn style-link-primary">Primary</button>
+<button class="btn style-link-secondary">Secondary</button>
+<button class="btn style-link-success">Success</button>
+<button class="btn style-link-warn">Warn</button>
+<button class="btn style-link-error">Error</button>
+`;
+
+const CODE_VIEW_BUTTON_WHITE_BLACK = `
+<button class="btn style-white">White</button>
+<button class="btn style-black">Black</button>
+`;
+
+const CODE_VIEW_BUTTON_ICON = `
+<button class="btn style-solid-primary">Add to cart <i class="bi-basket2-fill"></i></button>
+<button class="btn style-white">Signup free <i class="bi-chevron-right"></i></button>
+<button class="btn style-solid-error"><i class="bi-heart-fill"></i></button>
+`;
+
+const CODE_VIEW_BUTTON_GROUP = `
+<div class="group group-row">
+  <button class="group-item btn style-white">Left</button>
+  <button class="group-item btn style-white">Middle</button>
+  <button class="group-item btn style-white">Right</button>
 </div>
 `;
 
-const CODE_VIEW_BUTTON_DISABLED = `<button class="btn btn-solid-primary" disabled>Solid</button>
-<button class="btn btn-outline-primary" disabled>Outline</button>
-<button class="btn btn-link-primary" disabled>Link</button>
-<button class="btn btn-white" disabled>White</button>
-<button class="btn btn-black" disabled>Black</button>
+const CODE_VIEW_BUTTON_DISABLED = `
+<button class="btn style-solid-primary" disabled>Solid</button>
+<button class="btn style-outline-primary" disabled>Outline</button>
+<button class="btn style-link-primary" disabled>Link</button>
+<button class="btn style-white" disabled>White</button>
+<button class="btn style-black" disabled>Black</button>
 `;
 </script>
 

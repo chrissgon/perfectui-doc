@@ -41,7 +41,7 @@
           >
             <article class="card-content !flex gap-2 items-center !py-2">
               <i
-                class="bi-book btn btn-white !bg-transparent [.dark_&]:!border-transparent [.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
+                class="bi-book btn style-white !bg-transparent [.dark_&]:!border-transparent [.dark_&]:!bg-gray-700 !p-[5px] !px-2 rounded-md mr-2"
               ></i>
 
               <div class="w-full">
@@ -50,7 +50,7 @@
 
                   <span
                     v-if="item.requireJavascript"
-                    class="badge badge-outline-warn ml-2"
+                    class="badge style-outline-warn ml-2"
                   >
                     <i class="bi-exclamation-triangle-fill text-xs"></i>
                     Require Javascript
@@ -85,7 +85,7 @@
         <div
           class="max-sm:hidden text-xs text-secondary flex items-center gap-2"
         >
-          <span class="badge badge-white kdb leading-none">
+          <span class="badge style-white kdb leading-none">
             <i class="bi-arrow-return-left text-xs px-0.5"></i>
           </span>
           to select
@@ -93,10 +93,10 @@
         <div
           class="max-sm:hidden text-xs text-secondary flex items-center gap-2"
         >
-          <span class="badge badge-white kdb leading-none">
+          <span class="badge style-white kdb leading-none">
             <i class="bi-arrow-down text-xs px-0.5"></i>
           </span>
-          <span class="badge badge-white kdb leading-none">
+          <span class="badge style-white kdb leading-none">
             <i class="bi-arrow-up text-xs px-0.5"></i>
           </span>
 
@@ -105,7 +105,7 @@
         <div
           class="max-sm:hidden sm:w-full text-xs text-secondary flex items-center gap-2"
         >
-          <span class="badge badge-white kdb !px-1.5">ESC</span> to close
+          <span class="badge style-white kdb !px-1.5">ESC</span> to close
         </div>
 
         <!-- algolia link -->

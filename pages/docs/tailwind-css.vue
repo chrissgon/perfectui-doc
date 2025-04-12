@@ -12,7 +12,7 @@
       <a
         href="https://tailwindcss.com/"
         target="_blank"
-        class="btn-link-primary text-base"
+        class="style-link-primary text-base"
       >
         Tailwind CSS
       </a>

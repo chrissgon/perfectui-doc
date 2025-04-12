@@ -65,7 +65,7 @@
           <NuxtLink
             v-if="OrganismDocsNavRef?.getPrevPage"
             :to="getLinkPrevPage"
-            class="btn btn-white float-left"
+            class="btn style-white float-left"
           >
             <i class="bi-chevron-left" />
             {{ OrganismDocsNavRef.getPrevPage }}
@@ -74,7 +74,7 @@
           <NuxtLink
             v-if="OrganismDocsNavRef?.getNextPage"
             :to="getLinkNextPage"
-            class="btn btn-white float-right"
+            class="btn style-white float-right"
           >
             {{ OrganismDocsNavRef.getNextPage }}
             <i class="bi-chevron-right" />

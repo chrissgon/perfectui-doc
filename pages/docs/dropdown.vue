@@ -11,7 +11,7 @@
       Toggle contextual overlays for displaying lists of links and more. Combine
       with
       <NuxtLink
-        class="btn-link-primary text-base"
+        class="style-link-primary text-base"
         to="/docs/list"
       >
         Lists
@@ -86,7 +86,7 @@
         <a
           href="https://icons.getbootstrap.com/"
           target="_blank"
-          class="btn-link-primary"
+          class="style-link-primary"
         >
           Bootstrap Icons </a>.
       </p>
@@ -145,10 +145,10 @@
         :code="CODE_VIEW_DROPDOWN_CENTER"
         overflow
       />
-      
+
       <p>
-        Add <AtomToken>.dropdown-end</AtomToken> class to align the dropdown
-        to the end.
+        Add <AtomToken>.dropdown-end</AtomToken> class to align the dropdown to
+        the end.
       </p>
 
       <OrganismComponentExample
@@ -176,7 +176,7 @@
 <script setup lang="ts">
 // data
 const CODE_VIEW_DROPDOWN_BASIC = `<!-- dropdown trigger -->
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   Dropdown
   <i class="bi-chevron-down"></i>
   <!-- dropdown -->
@@ -195,7 +195,7 @@ const CODE_VIEW_DROPDOWN_BASIC = `<!-- dropdown trigger -->
 `;
 
 const CODE_VIEW_DROPDOWN_DIVIDERS = `<!-- dropdown trigger -->
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   Dropdown
   <i class="bi-chevron-down"></i>
   <!-- dropdown -->
@@ -212,7 +212,7 @@ const CODE_VIEW_DROPDOWN_DIVIDERS = `<!-- dropdown trigger -->
 </button>
 `;
 const CODE_VIEW_DROPDOWN_ICONS = `<!-- dropdown trigger -->
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   Dropdown
   <i class="bi-chevron-down"></i>
   <!-- dropdown -->
@@ -221,12 +221,12 @@ const CODE_VIEW_DROPDOWN_ICONS = `<!-- dropdown trigger -->
       <li class="list-item">
         <i class="bi-bell"></i>
         Newsletter
-        <span class="badge badge-solid-primary float-right">New</span>
+        <span class="badge style-solid-primary float-right">New</span>
       </li>
       <li class="list-item">
         <i class="bi-cloud-download"></i>
         Downloads
-        <span class="badge badge-solid-primary rounded-full float-right">
+        <span class="badge style-solid-primary rounded-full float-right">
           2
         </span>
       </li>
@@ -239,7 +239,7 @@ const CODE_VIEW_DROPDOWN_ICONS = `<!-- dropdown trigger -->
 </button>
 `;
 const CODE_VIEW_DROPDOWN_TITLE = `<!-- dropdown trigger -->
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   Dropdown
   <i class="bi-chevron-down"></i>
   <!-- dropdown -->
@@ -249,12 +249,12 @@ const CODE_VIEW_DROPDOWN_TITLE = `<!-- dropdown trigger -->
       <li class="list-item">
         <i class="bi-bell"></i>
         Newsletter
-        <span class="badge badge-solid-primary float-right">New</span>
+        <span class="badge style-solid-primary float-right">New</span>
       </li>
       <li class="list-item">
         <i class="bi-cloud-download"></i>
         Downloads
-        <span class="badge badge-solid-primary rounded-full float-right">
+        <span class="badge style-solid-primary rounded-full float-right">
           2
         </span>
       </li>
@@ -271,7 +271,7 @@ const CODE_VIEW_DROPDOWN_TITLE = `<!-- dropdown trigger -->
 const CODE_VIEW_DROPDOWN_DIRECTIONS = `
 <div class="flex flex-wrap gap-2">
   <!-- dropdown bottom -->
-  <button class="dropdown-trigger btn btn-white">
+  <button class="dropdown-trigger btn style-white">
     Bottom
     <i class="bi-chevron-down"></i>
     <div class="dropdown">
@@ -283,7 +283,7 @@ const CODE_VIEW_DROPDOWN_DIRECTIONS = `
     </div>
   </button>
   <!-- dropdown top -->
-  <button class="dropdown-trigger btn btn-white">
+  <button class="dropdown-trigger btn style-white">
     Top
     <i class="bi-chevron-up"></i>
     <div class="dropdown dropdown-top">
@@ -295,7 +295,7 @@ const CODE_VIEW_DROPDOWN_DIRECTIONS = `
     </div>
   </button>
   <!-- dropdown left -->
-  <button class="dropdown-trigger btn btn-white">
+  <button class="dropdown-trigger btn style-white">
     <i class="bi-chevron-left"></i>
     Left
     <div class="dropdown dropdown-left">
@@ -307,7 +307,7 @@ const CODE_VIEW_DROPDOWN_DIRECTIONS = `
     </div>
   </button>
   <!-- dropdown right -->
-  <button class="dropdown-trigger btn btn-white">
+  <button class="dropdown-trigger btn style-white">
     Right
     <i class="bi-chevron-right"></i>
     <div class="dropdown dropdown-right">
@@ -321,7 +321,7 @@ const CODE_VIEW_DROPDOWN_DIRECTIONS = `
 </div>
 `;
 const CODE_VIEW_DROPDOWN_CENTER = `
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   Center align
   <i class="bi-chevron-down"></i>
   <div class="dropdown dropdown-right dropdown-center">
@@ -334,7 +334,7 @@ const CODE_VIEW_DROPDOWN_CENTER = `
 </button>
 `;
 const CODE_VIEW_DROPDOWN_END = `
-<button class="dropdown-trigger btn btn-white">
+<button class="dropdown-trigger btn style-white">
   End align
   <i class="bi-chevron-down"></i>
   <div class="dropdown dropdown-right dropdown-end">
@@ -347,9 +347,9 @@ const CODE_VIEW_DROPDOWN_END = `
 </button>
 `;
 const CODE_VIEW_DROPDOWN_COMPLEX = `<div class="group group-row">
-  <button class="group-item btn btn-white">Dropdown</button>
+  <button class="group-item btn style-white">Dropdown</button>
   <!-- dropdown trigger -->
-  <button class="dropdown-trigger group-item btn btn-white">
+  <button class="dropdown-trigger group-item btn style-white">
     <i class="bi-chevron-up"></i>
     <!-- dropdown -->
     <div class="dropdown dropdown-top dropdown-center">
@@ -362,13 +362,13 @@ const CODE_VIEW_DROPDOWN_COMPLEX = `<div class="group group-row">
         <li class="list-item active">
           <i class="bi-bell"></i>
           Newsletter
-          <span class="badge badge-solid-primary float-right">New</span>
+          <span class="badge style-solid-primary float-right">New</span>
         </li>
         <li class="list-item">
           <i class="bi-cloud-download"></i>
           Downloads
           <span
-            class="badge badge-solid-primary rounded-full float-right"
+            class="badge style-solid-primary rounded-full float-right"
           >
             2
           </span>
