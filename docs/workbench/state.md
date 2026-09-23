@@ -22,6 +22,7 @@
 | docs/product/roadmap.md | product-roadmap | draft | 2026-09-23 |
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
+| docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -101,6 +102,8 @@
 
 - [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
 - [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
+
+- [ ] Name the compared libraries in the landing's size bars? Hero headline choice? A "used by" section? (messaging OPEN-1 to OPEN-3)
 
 ## Approvals
 
