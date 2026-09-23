@@ -84,7 +84,7 @@ Nineteen nodes, six screens and seven flows. At the 1.0 launch an evaluator land
 ## Open questions
 
 - OPEN-1: Does the documentation index (IA-9, `/docs`) exist as its own page, or does `/docs` redirect to the first page (installation)? Blocks: SCREEN-5's index state. Recommended: its own page listing sections and pages, because the failed version switch needs a landing target that names the version and the notice, and an index doubles as that target.
-- OPEN-2: Where does the search entry point live on a narrow screen: in the header as an icon, or as a full-width field at the top of the sidebar panel? Blocks: nothing (SCREEN-3's narrow state is decided in design-ui). Recommended: header icon, because `/` and the icon must be reachable without opening the sidebar panel.
+- OPEN-2 (resolved 2026-09-23): the search entry point is an icon in the header on narrow screens (user). Blocks: nothing. Recommended: as decided.
 
 ## Readiness
 

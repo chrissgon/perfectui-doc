@@ -88,8 +88,8 @@
 
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
-- [ ] Is `/docs` its own index page or a redirect to the first page? (flows OPEN-1)
-- [ ] Search entry point on narrow screens: header icon or field in the sidebar panel? (flows OPEN-2)
+- [ ] `/docs` is its own index page (user, 2026-09-23); the user also asked for a version-qualified URL such as `/docs/v1/button`, which contradicts the recorded URL scheme (latest version without a version segment, spec AC-1); to resolve (flows OPEN-1)
+- [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 ## Approvals
 
