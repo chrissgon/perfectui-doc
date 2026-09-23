@@ -16,14 +16,16 @@ The library's own token specification governs every colour, size and component t
 - `MIGRATION.md` of the perfectui repository, "Known trade-offs" (solid theme, success and warn labels between 3.2:1 and 3.5:1 in light mode)
 - `docs/design/flows.md`: SCREEN-1 to SCREEN-6 and their regions and states
 - `docs/product/prd.md`: M-4 quality targets; `docs/product/specs/landing-and-site-shell.md`: REQ-7 to REQ-9
-- `docs/workbench/state.md` decisions of 2026-09-23: no brand phase, logo and default theme colour kept; typography Inter and Fira Code (user); design in the design-tool draft "PerfectUI-Doc"
+- `docs/workbench/state.md` decisions of 2026-09-23: no brand phase, logo and default theme colour kept; typography Inter and Fira Code (user); design in the perfectui project file, website screens only; the site follows the visual language of the UI kit's v1 documentation frames (user)
+- The perfectui project file (key szD991W25tQxPuqhfRektk), read 2026-09-23: the component pages' "Documentation (Light)" and "(Dark)" frames (for example Button 377:309 and 352:92): 1040 px wide, fill `page/bg`, stroke `page/border`, radius 20; Header padding 40/48, gap 16, two blurred ellipses with paint styles `PerfectUI/doc/glow-purple` (#7340D9 at 12%) and `glow-blue` (#1A8CBF at 10%), a tag in `success/ink` 12 Medium on `tag-success`, title Inter Semi Bold 42, description Inter Regular 16/24 in `page/text-muted`; sections padding 40/48/48/48, gap 32, section title Inter Semi Bold 24, table labels Inter Regular 12 muted, 1 px dividers; Footer padding 48/40, gap 12, wordmark frame "Logo" 116 × 20, copyright 14 and tagline 12 in muted; the page "Site" holds the 0.23 site design (Desktop - 1 1440 × 2615, Desktop - 2, iPhone 8 - 1, in Poppins) and the logo groups 87:2 (wordmark 124 × 21) and 87:15 (mark 50 × 50)
 - Contrast ratios computed with `scripts/contrast.py` of the design-system skill (WCAG 2.x relative luminance), 2026-09-23
 - Tailwind CSS default breakpoints (the site's utility layer): sm 640, md 768, lg 1024, xl 1280 (tailwindcss.com, known defaults of v4; the site's utility layer per brief decision 3)
 
 ## Ownership
 
 - Colour roles, styles, spacing, radii, border, component anatomy and states: the perfectui library (`DESIGN-SYSTEM.md`), mirrored verbatim; the site never edits a mirrored value. When the library changes, the mirror is regenerated, not patched.
-- Type roles, layout, site-only components and the rules for using library tokens on the site: this document.
+- Visual language of the site (header band with glows, tag, title and description block, sections with dividers, footer with wordmark, framed containers with radius 20): the UI kit's v1 documentation frames in the design file, mirrored; the site reuses their measurements and paint styles rather than inventing a second language (user, 2026-09-23).
+- Type roles beyond the kit's, layout, site-only components and the rules for using library tokens on the site: this document.
 
 ## Colour
 
@@ -70,6 +72,9 @@ The library's own token specification governs every colour, size and component t
 | inverse/fill-hover | #060606 | #D7D7D7 | hover | DESIGN-SYSTEM §6.1 |
 | inverse/edge | #000000 | #FFFFFF | border | DESIGN-SYSTEM §6.1 |
 | inverse/ink | #000000 | #FFFFFF | text | DESIGN-SYSTEM §6.1 |
+| `PerfectUI/doc/glow-purple` (paint style) | #7340D9 at 12% | same | blurred glow behind header bands | kit documentation frames (Header ellipse 500 × 320, layer blur) |
+| `PerfectUI/doc/glow-blue` (paint style) | #1A8CBF at 10% | same | second glow behind header bands | kit documentation frames (Header ellipse 400 × 250, layer blur) |
+| `PerfectUI/doc/tag-success` (paint style) | #15803D at 20% | same | fill of the section tag ("Component", "Guide"), text in `success/ink` | kit documentation frames (Header tag) |
 
 Soft tints are opacities of the role fill (15%, 22% on hover) and outline hover is the fill at 10%, never separate tokens (DESIGN-SYSTEM §6.2). The stylesheet's `--pui-shade` is the internal hover shift (a solid fill moved 12% toward `--pui-text`, DESIGN-SYSTEM §3) and `--pui-color`, `--pui-on-color`, `--pui-edge`, `--pui-ink` are the per-element colour contract set by the colour classes; none of them is a token to set.
 
@@ -100,19 +105,20 @@ Site rules for using these tokens (this document): body prose uses `page/text` o
 ## Type
 
 - Typeface: Inter for text and interface, Fira Code for code; fallback `system-ui, sans-serif` and `ui-monospace, monospace`; both self-hosted with `font-display: swap`. Source: user answer 2026-09-23.
-- Reading width: 72ch of `site/body` (about 720 px at 16 px), content column; the page frame is 1280 px wide at the `xl` breakpoint. Source: this document (recommended; OPEN-2).
+- Reading width: 72ch of `site/body` (about 720 px at 16 px), content column; the page frame is 1280 px wide at the `xl` breakpoint. Source: this document (recommended; OPEN-2). The kit's documentation frames are 1040 px wide with 48 px side padding (942 px of content), the reference for a framed content container.
 
 | Role | Size | Line height | Weight | Source |
 |------|------|-------------|--------|--------|
 | text/body (component text) | 14 px | 17.5 px | inherited (Regular) | DESIGN-SYSTEM §1.4 |
 | text/small (badges, tooltips, field labels) | 12 px | 15 px | inherited (Regular) | DESIGN-SYSTEM §1.4 |
 | text/strong (table header) | 14 px | normal | 600 (Semi Bold) | DESIGN-SYSTEM §1.4 |
-| site/display (landing value proposition) | 44 px | 52 px | 700 | this document: base 14 px × 1.25 per step, rounded to the 4 px grid (OPEN-2) |
-| site/h1 (page title) | 36 px | 44 px | 600 | this document (OPEN-2) |
-| site/h2 (section) | 28 px | 36 px | 600 | this document (OPEN-2) |
-| site/h3 (subsection) | 22 px | 28 px | 600 | this document (OPEN-2) |
-| site/lead (landing paragraph) | 18 px | 28 px | 400 | this document (OPEN-2) |
-| site/body (prose) | 16 px | 24 px | 400 | this document (OPEN-2) |
+| site/display (landing value proposition) | 56 px | 64 px | 600 | this document: one step above the kit's page title on the same 4 px grid (OPEN-2) |
+| site/h1 (page title) | 42 px | normal | 600 | kit documentation frames (Header title, Inter Semi Bold 42) |
+| site/h2 (section) | 24 px | normal | 600 | kit documentation frames (section title, Inter Semi Bold 24) |
+| site/h3 (subsection) | 18 px | 24 px | 600 | this document: between the kit's 24 and 16 (OPEN-2) |
+| site/lead (page description, landing paragraph) | 16 px | 24 px | 400 | kit documentation frames (Header description, Inter Regular 16/24, `page/text-muted`) |
+| site/body (prose) | 16 px | 24 px | 400 | this document: same size as the kit's description, in `page/text` (OPEN-2) |
+| site/label (table headers, captions) | 12 px | 15 px | 400 or 500 | kit documentation frames (table labels Inter Regular 12, tag Inter Medium 12/15) |
 | site/code (code blocks and inline code) | 14 px | 20 px | 400, Fira Code | this document; 0.23 site used Fira Code at 14 px (codebase map) |
 
 ## Space, radii, borders, elevation
@@ -152,6 +158,10 @@ Site rules for using these tokens (this document): body prose uses `page/text` o
 | layout/toc-width | 208 px | on-page headings column | this document (OPEN-2) |
 | layout/gutter | 16 px narrow, 32 px from md | page horizontal padding | this document (OPEN-2) |
 | layout/content-width | 72ch of site/body | reading column | Type section |
+| layout/container-radius | 20 px | framed containers (header band, cards of the landing, the docs content frame), with `page/border` stroke | kit documentation frames (outer frame radius 20) |
+| layout/band-padding | 40 px vertical, 48 px horizontal | header band and sections of a framed container | kit documentation frames (Header 40/48, sections 40/48/48/48) |
+| layout/section-gap | 32 px | gap between blocks inside a section | kit documentation frames (Documentation section gap 32) |
+| layout/footer-padding | 48 px vertical, 40 px horizontal | footer | kit documentation frames (Footer 48/40, gap 12) |
 | target/min | 24 × 24 px | minimum interactive target; 40 × 40 for header controls | WCAG 2.2 AA 2.5.8; skill reference |
 | focus/ring | 2 px, `theme/fill`, 2 px outside, follows the radius | keyboard focus | DESIGN-SYSTEM §5 |
 | motion | 150 ms on colour, border and text; none under reduced motion | transitions | DESIGN-SYSTEM §5 |
@@ -194,7 +204,8 @@ Site-only controls that need a visible boundary (input in the search dialog, cop
 
 - File: the perfectui project file (key szD991W25tQxPuqhfRektk), page "Site" for the website screens. An earlier build in the draft 0aZSp3JcotPUKeduf8BCzi (collection, text styles, foundations page) is superseded and not reused.
 - Collections: `pui` already exists in the file with modes `light` and `dark` and 66 variables: the 59 of DESIGN-SYSTEM §6 plus one `<role>/soft-fill` per role (the 15% tint flattened, DESIGN-SYSTEM §3.1 and §3.2); values verified against the document on 2026-09-23.
-- Styles: the library's `text/body`, `text/small`, `text/strong` exist; the seven `site/*` text styles (Inter and Fira Code) are added to the file for the screens; the ten legacy `PerfectUI/doc/*` paint styles (glows, glass, tags) belong to the UI kit's own documentation and are not used by the site.
+- Styles: the library's `text/body`, `text/small`, `text/strong` exist; the `site/*` text styles (Type table) are added to the file for the screens; of the ten `PerfectUI/doc/*` paint styles, `glow-purple`, `glow-blue` and `tag-success` are used by the kit's v1 documentation frames and by the site (Colour table); `glass-*`, `text*`, `divider` and `border` are a dark-only legacy palette superseded by the `pui` variables and are not used.
+- Logo: the wordmark "Perfect UI" is a vector frame ("Logo", 116 × 20, in the kit documentation footers; group 87:2 on the Site page) and the mark "P" a vector (PREVIEW 1:69; group 87:15 on the Site page); both are reused as-is (state decision: logo kept).
 - Components: the file already holds the library's Button (28 variants, style × colour, Label), Badge (28), Card (6, Type), Accordion Item (12) and Dropdown (8); screens use them as instances. Library components the file lacks (chip, list, table, modal, input, checkbox and switch, tooltip, timeline, group, float) are drawn as frames bound to the variables when a screen needs them, because documenting the library in the design tool is out of scope (user, 2026-09-23). Site-only components (Components table, owner `site`) are built as components on the "Site" page as the screens need them.
 - Validation: per screen, structural evidence returned by the writes and one screenshot; recorded by design-ui.
 
