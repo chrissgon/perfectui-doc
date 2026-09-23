@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: product (PRD, four specs and roadmap drafted; design phase next)
+- Current phase: design (product artifacts drafted 2026-09-23; design-ux-flows next)
 - Updated: 2026-09-23
 
 ## Autonomy
@@ -60,6 +60,12 @@
 - 2026-09-23: The library package will not ship MIGRATION.md; the site keeps its own copy of the guide, updated by hand at each release, because few projects use perfectui and a migrating user can read the new classes directly (user, migration-guide spec OPEN-1)
 - 2026-09-23: The header keeps the Figma link, since the file exists today (user, landing spec OPEN-2)
 - 2026-09-23: Search provider: a client-side index generated at build time over the document set, on the condition that the reader's experience matches what Algolia DocSearch gave (results as you type, ranking, highlighting, typo tolerance); what is not replicated is Algolia's hosted analytics dashboard (user, state OPEN-3)
+
+- 2026-09-23: The 1.0 documentation content starts from the library repository's docs/*.md (27 files, sections per its docs/README.md), copied into content/v1 with the html blocks turned into example blocks and kept in sync by hand per release; the site adds sections and examples of its own (for example a page recommending Tailwind) and is not limited to the library's files (user)
+- 2026-09-23: The library's DESIGN-SYSTEM.md is the input for building the perfectui components in the design tool only; it does not define the site's design or the landing (user)
+- 2026-09-23: The design is produced in the existing design-tool draft "PerfectUI-Doc" (file key 0aZSp3JcotPUKeduf8BCzi), not in a new file (user)
+- 2026-09-23: No brand phase: the site keeps the current logo and the library's default theme colour (#0092CD light, #07B6F0 dark); typography is decided in design-system with a question to the user (user)
+- 2026-09-23: The landing's messaging (sections and texts) is produced with AI assistance right before the landing screen is designed, inside the design phase (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature

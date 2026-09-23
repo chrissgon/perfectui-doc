@@ -88,7 +88,7 @@ perfectui-doc is the documentation site of the perfectui CSS/JS library, publish
 ## Assumptions
 
 - ASSUMPTION-1: The site stays English-only. Safe because: the current site is English (`lang="en"` in the codebase map) and the research scope was global; a second language would be a new feature, not a change to these.
-- ASSUMPTION-2: The 1.0 pages to write are the 14 shipped component stylesheets plus the guides the current site has (installation, dark mode, theme colour, Tailwind, TypeScript, styles, license, examples, resources, icons) reframed for 1.0. Safe because: the package is the source of truth for components and the current pages are the source of truth for guides; the exact page list is decided in the feature spec.
+- ASSUMPTION-2 (replaced 2026-09-23 by a decision): the 1.0 pages start from the library repository's `docs/*.md` (27 files: installation, typescript, tailwindcss, license, darkmode, theme-color, layout-group, float and one file per component), copied into the site and extended with sections and examples of the site's own; the exact page list is decided in the content work. Source: user answer 2026-09-23.
 - ASSUMPTION-3: Outbound links (GitHub, Figma) keep pointing at the perfectui library repository. Safe because: they do today and nothing in the brief changes them.
 
 ## Open questions
