@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: product
+- Current phase: product (PRD, four specs and roadmap drafted; design phase next)
 - Updated: 2026-09-23
 
 ## Autonomy
@@ -19,6 +19,7 @@
 | docs/product/specs/landing-and-site-shell.md | product-feature-spec | draft | 2026-09-23 |
 | docs/product/specs/migration-guide.md | product-feature-spec | draft | 2026-09-23 |
 | docs/product/specs/search.md | product-feature-spec | draft | 2026-09-23 |
+| docs/product/roadmap.md | product-roadmap | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -77,6 +78,8 @@
 
 - [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
 - [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
+
+- [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 ## Approvals
 
