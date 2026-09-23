@@ -73,6 +73,9 @@
 
 - 2026-09-23: Site typography: Inter for text and interface, Fira Code for code, both self-hosted with font-display swap; Poppins, forced by 0.23, is not used (user)
 
+- 2026-09-23: The site's type scale is the UI kit documentation's (42, 24, 16/24, 12) plus a 56 px display for the landing hero; the `site/*` text styles are written into the design file; the website screens are built on a new page "Site v1", leaving the "Site" page with the 0.23 design untouched (user)
+- 2026-09-23: The landing page comes first and gets the most care: a creative design with animations, faithful to perfectui, with tailwindcss.com's landing as inspiration; the documentation page follows the same pattern afterwards; the messaging step (sections and texts) precedes the landing design as decided earlier (user)
+
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
 - [x] Versioning model: versions as content folders in one site, or one deployment per version with a switcher across them? (core-clarify round 2)
@@ -97,7 +100,7 @@
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 - [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
-- [ ] Site-owned layout and type values (type scale 14 × 1.25, 72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) as proposed? (design-system OPEN-2)
+- [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
 
 ## Approvals
 
