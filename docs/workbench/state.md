@@ -21,6 +21,7 @@
 | docs/product/specs/search.md | product-feature-spec | draft | 2026-09-23 |
 | docs/product/roadmap.md | product-roadmap | draft | 2026-09-23 |
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
+| docs/design/design-system.md | design-system | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -93,6 +94,9 @@
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
+
+- [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
+- [ ] Site-owned layout and type values (type scale 14 × 1.25, 72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) as proposed? (design-system OPEN-2)
 
 ## Approvals
 
