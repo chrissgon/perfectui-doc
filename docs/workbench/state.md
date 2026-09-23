@@ -77,6 +77,8 @@
 - 2026-09-23: The site's type scale is the UI kit documentation's (42, 24, 16/24, 12) plus a 56 px display for the landing hero; the `site/*` text styles are written into the design file; the website screens are built on a new page "Site v1", leaving the "Site" page with the 0.23 design untouched (user)
 - 2026-09-23: The landing page comes first and gets the most care: a creative design with animations, faithful to perfectui, with tailwindcss.com's landing as inspiration; the documentation page follows the same pattern afterwards; the messaging step (sections and texts) precedes the landing design as decided earlier (user)
 
+- 2026-09-23: The WEB code syntax of the 66 `pui` variables in the design file is filled with the custom properties of perfectui.css so the design tool's developer mode shows `var(--pui-…)` (user)
+
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
 - [x] Versioning model: versions as content folders in one site, or one deployment per version with a switcher across them? (core-clarify round 2)
@@ -103,7 +105,7 @@
 - [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
 - [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
 
-- [ ] Name the compared libraries in the landing's size bars? Hero headline choice? A "used by" section? (messaging OPEN-1 to OPEN-3)
+- [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
 
