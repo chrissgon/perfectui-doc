@@ -197,7 +197,7 @@ Site-only controls that need a visible boundary (input in the search dialog, cop
 - Styles: 10 text styles (`text/body`, `text/small`, `text/strong`, `site/display`, `site/h1`, `site/h2`, `site/h3`, `site/lead`, `site/body`, `site/code`); no effect styles (no elevation)
 - Pages: Cover, Foundations, one page per library component (17), separators for components and site components
 - Components: built in phase 3 of the design-tool build (pending)
-- Validation: variable and style counts read back after creation (59 and 10, 0 missing scopes, 0 missing code syntax); screenshots of the foundations page and of each component group pending
+- Validation: variable and style counts read back after creation (59 and 10, 0 missing scopes, 0 missing code syntax); Foundations page (node 12:2, 1440 × 4141) reviewed by screenshot after one sizing fix (swatch frames set to hug); component pages pending
 
 ## Assumptions
 
