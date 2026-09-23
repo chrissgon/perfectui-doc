@@ -15,7 +15,10 @@
 |----------|-------------|--------|---------|
 | docs/engineering/architecture.md (codebase map of the 0.23 site, which now lives on branch main) | eng-codebase-map | approved | 2026-09-23 |
 | docs/workbench/briefs/perfectui-doc-redesign.md | core-clarify | approved | 2026-09-23 |
-| docs/product/specs/markdown-content-model.md (to revise for the restart: drop REQ-9 and the migration constraints) | product-feature-spec | draft | 2026-09-23 |
+| docs/product/specs/markdown-content-model.md (revised 2026-09-23 for the rebuild) | product-feature-spec | draft | 2026-09-23 |
+| docs/product/specs/landing-and-site-shell.md | product-feature-spec | draft | 2026-09-23 |
+| docs/product/specs/migration-guide.md | product-feature-spec | draft | 2026-09-23 |
+| docs/product/specs/search.md | product-feature-spec | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -53,6 +56,10 @@
 - 2026-09-23: Search ships in phase 1; quality targets: Lighthouse performance at or above 90 and accessibility at or above 95 on mobile for the landing and one documentation page, WCAG 2.2 AA (PRD M-4); no adoption target at launch, the npm weekly downloads baseline of 213 is recorded and revisited three months after launch (user, PRD OPEN-1 to OPEN-3)
 - 2026-09-23: The landing page's sections and texts are defined later, with AI assistance in a marketing messaging step, before the landing is designed; the landing spec states what the page must let the evaluator do, not its copy (user, PRD OPEN-5)
 
+- 2026-09-23: The library package will not ship MIGRATION.md; the site keeps its own copy of the guide, updated by hand at each release, because few projects use perfectui and a migrating user can read the new classes directly (user, migration-guide spec OPEN-1)
+- 2026-09-23: The header keeps the Figma link, since the file exists today (user, landing spec OPEN-2)
+- 2026-09-23: Search provider: a client-side index generated at build time over the document set, on the condition that the reader's experience matches what Algolia DocSearch gave (results as you type, ranking, highlighting, typo tolerance); what is not replicated is Algolia's hosted analytics dashboard (user, state OPEN-3)
+
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
 - [x] Versioning model: versions as content folders in one site, or one deployment per version with a switcher across them? (core-clarify round 2)
@@ -61,12 +68,18 @@
 - [x] Confirm versioning mechanics: one folder per major, since/changed frontmatter badges for minor additions, navigation derived per version, same-path mapping on switch with fallback to the version index (brief decision 7)
 - [x] Confirm decommissioning the current WebSocket assistant and removing the landing badge until the new assistant ships (brief decision 8)
 - [x] Confirm phase order: 1 content model + 1.0 docs + design; 2 version switcher + 0.23 archive; 3 assistant experiment (brief)
-- [ ] Search provider for launch: client-side search over the generated document set (recommended) or a recreated Algolia index? (spec OPEN-3)
-- [ ] Which parts of the content-model spec, design and backlog survive the restart? Recommended in PRD OPEN-6 (restart decision)
+- [x] Search provider for launch: client-side search over the generated document set (user, 2026-09-23)
+- [x] Which parts of the content-model spec, design and backlog survive the restart? Spec revised 2026-09-23 (REQ-9 withdrawn); design and backlog follow in their phases (PRD OPEN-6)
+- [x] Should the library package ship MIGRATION.md so the site can verify its copy at build time? No (user, 2026-09-23)
+- [x] Does the header keep a Figma link? Yes (user, 2026-09-23)
 - [x] Search in phase 1 or phase 2? Quality targets (performance, accessibility)? Adoption target? (PRD OPEN-1 to OPEN-3, answered 2026-09-23)
 - [x] Amend REQ-2 and REQ-4 of the content-model spec to folder-based sections and numeric-prefix ordering, as ADR-0004 proposes? (design open question 1)
+
+- [ ] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? (search spec OPEN-1, OPEN-2)
+- [ ] Keep the migration guide as a must for launch, or downgrade it, given that few projects use perfectui? (PRD F-4)
 
 ## Approvals
 
 | Scope | What | Approved | Expires | Status |
 |-------|------|----------|---------|--------|
+| standing | commit approved artifacts and reviewed code on branch `redesign` without asking again (pushes and pull requests excluded) | 2026-09-23 | until revoked | active |
