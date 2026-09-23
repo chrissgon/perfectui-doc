@@ -72,6 +72,13 @@ The library's own token specification governs every colour, size and component t
 | inverse/fill-hover | #060606 | #D7D7D7 | hover | DESIGN-SYSTEM §6.1 |
 | inverse/edge | #000000 | #FFFFFF | border | DESIGN-SYSTEM §6.1 |
 | inverse/ink | #000000 | #FFFFFF | text | DESIGN-SYSTEM §6.1 |
+| theme/soft-fill | theme/fill at 15% | same | soft tint of the theme fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| success/soft-fill | success/fill at 15% | same | soft tint of the success fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| error/soft-fill | error/fill at 15% | same | soft tint of the error fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| warn/soft-fill | warn/fill at 15% | same | soft tint of the warn fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| muted/soft-fill | muted/fill at 15% | same | soft tint of the muted fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| surface/soft-fill | surface/fill at 15% | same | soft tint of the surface fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
+| inverse/soft-fill | inverse/fill at 15% | same | soft tint of the inverse fill (a variable aliasing the fill with 15% opacity in the design file) | DESIGN-SYSTEM §3, §6.2; design file `pui` collection |
 | `PerfectUI/doc/glow-purple` (paint style) | #7340D9 at 12% | same | blurred glow behind header bands | kit documentation frames (Header ellipse 500 × 320, layer blur) |
 | `PerfectUI/doc/glow-blue` (paint style) | #1A8CBF at 10% | same | second glow behind header bands | kit documentation frames (Header ellipse 400 × 250, layer blur) |
 | `PerfectUI/doc/tag-success` (paint style) | #15803D at 20% | same | fill of the section tag ("Component", "Guide"), text in `success/ink` | kit documentation frames (Header tag) |

@@ -23,6 +23,7 @@
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
 | docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-23 |
+| docs/design/screens/landing.md | design-ui | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
