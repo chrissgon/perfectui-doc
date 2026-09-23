@@ -43,8 +43,8 @@ A search box in the site shell that answers as the reader types, over an index g
 
 ## Non-functional requirements
 
-- NFR-1: Once the index is loaded, results for a query render within 100 ms on a mid-range mobile device as measured by the build tests in a browser with 4x CPU throttling, so typing never waits for results. Source: OPEN-1 (recommended value, to confirm).
-- NFR-2: The static files loaded on first open of the dialog total at most 300 KB compressed for a version with up to 60 pages. Source: OPEN-2 (recommended value, to confirm).
+- NFR-1: Once the index is loaded, results for a query render within 100 ms on a mid-range mobile device as measured by the build tests in a browser with 4x CPU throttling, so typing never waits for results. Source: user answer 2026-09-23 (search spec OPEN-1 approved).
+- NFR-2: The static files loaded on first open of the dialog total at most 300 KB compressed for a version with up to 60 pages. Source: user answer 2026-09-23 (search spec OPEN-2 approved).
 - NFR-3: The search dialog scores 0 WCAG 2.2 AA violations and does not lower the page's Lighthouse accessibility score below 95 on mobile. Source: PRD M-4.
 
 ## Constraints
@@ -124,9 +124,9 @@ A search box in the site shell that answers as the reader types, over an index g
 
 ## Open questions
 
-- OPEN-1: Latency target for results (NFR-1). Blocks: NFR-1's number. Recommended: 100 ms under 4x CPU throttling, because at that value typing never visibly waits and client-side indexes of this size answer well under it.
-- OPEN-2: Size budget for the files loaded on first open (NFR-2). Blocks: NFR-2's number. Recommended: 300 KB compressed for up to 60 pages, so the first search costs less than one page's images on a slow connection.
+- OPEN-1 (resolved 2026-09-23): 100 ms under 4x CPU throttling (user). Blocks: nothing. Recommended: as decided.
+- OPEN-2 (resolved 2026-09-23): 300 KB compressed for up to 60 pages (user). Blocks: nothing. Recommended: as decided.
 
 ## Readiness
 
-- Ready for architecture: yes. OPEN-1 and OPEN-2 hold numbers that the user can confirm or change; every REQ is sourced and covered.
+- Ready for architecture: yes. Every REQ and NFR is sourced and covered; no open question remains.

@@ -75,8 +75,8 @@
 - [x] Search in phase 1 or phase 2? Quality targets (performance, accessibility)? Adoption target? (PRD OPEN-1 to OPEN-3, answered 2026-09-23)
 - [x] Amend REQ-2 and REQ-4 of the content-model spec to folder-based sections and numeric-prefix ordering, as ADR-0004 proposes? (design open question 1)
 
-- [ ] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? (search spec OPEN-1, OPEN-2)
-- [ ] Keep the migration guide as a must for launch, or downgrade it, given that few projects use perfectui? (PRD F-4)
+- [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
+- [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
 
 ## Approvals
 
