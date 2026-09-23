@@ -69,6 +69,8 @@
 - 2026-09-23: No brand phase: the site keeps the current logo and the library's default theme colour (#0092CD light, #07B6F0 dark); typography is decided in design-system with a question to the user (user)
 - 2026-09-23: The landing's messaging (sections and texts) is produced with AI assistance right before the landing screen is designed, inside the design phase (user)
 
+- 2026-09-23: Site typography: Inter for text and interface, Fira Code for code, both self-hosted with font-display swap; Poppins, forced by 0.23, is not used (user)
+
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
 - [x] Versioning model: versions as content folders in one site, or one deployment per version with a switcher across them? (core-clarify round 2)
