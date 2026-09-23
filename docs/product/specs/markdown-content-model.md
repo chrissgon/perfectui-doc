@@ -32,7 +32,7 @@ Documentation becomes Markdown files in versioned folders, rendered by Nuxt Cont
 
 ## Functional requirements
 
-- REQ-1: Each documentation page is one Markdown file under `content/<major>/` (`content/v1/` for 1.x, `content/v0/` for 0.23) and is rendered at `/docs/<path>` for the latest version and `/docs/<major>/<path>` for every other version. Source: brief decisions 5, 6, 7; user answer 2026-09-23 (URL scheme).
+- REQ-1: Each documentation page is one Markdown file under `content/<major>/` (`content/v1/` for 1.x, `content/v0/` for 0.23) and is rendered at `/docs/<major>/<section>/<slug>` for every version, the latest included; `/docs/<major>` is the version's index; `/docs`, `/docs/<section>/<slug>` and any `/docs/...` path without a version segment redirect to the same path under the current major. Source: brief decisions 5, 6, 7; user answer 2026-09-23 (final URL scheme).
 - REQ-2: Each page declares frontmatter `title`, `description`, `tags`, and optionally `since` and `changed` (version strings); the schema is declared in `content.config.ts` so every field is queryable. Sections and order are not frontmatter: they come from the folder structure with numeric prefixes and a `.navigation.yml` per section folder (amended 2026-09-23, ADR-0004, user approval). Source: brief decision 7; Nuxt Content (custom fields must be in the schema; ordering by numeric prefixes).
 - REQ-3: An example block is written in Markdown as an MDC component that receives the HTML snippet once and renders a preview tab and a code tab from that single source; no example is stored as a string constant in code. Source: brief decision 6; codebase map (the 0.23 site's example tabs fed by `CODE_VIEW_*` constants are the baseline to avoid).
 - REQ-4: Navigation sections and page order are computed from the selected version's folder tree (section folders with `.navigation.yml` titles, numeric prefixes for order, prefixes stripped from URLs); no file in code lists sections or pages (amended 2026-09-23, ADR-0004). Source: brief decision 7; codebase map (`NAV_SECTIONS` constant as the baseline to avoid); Nuxt Content navigation tree.
@@ -76,7 +76,7 @@ Documentation becomes Markdown files in versioned folders, rendered by Nuxt Cont
 - AC-1:
   Given the folders `content/v0/` and `content/v1/` each contain a `components/button.md` with valid frontmatter
   When the site is built
-  Then `/docs/components/button` renders the v1 file and `/docs/v0/components/button` renders the v0 file, and `/docs/v1/components/button` is not a published route
+  Then `/docs/v1/components/button` renders the v1 file, `/docs/v0/components/button` renders the v0 file, and `/docs/components/button` and `/docs` redirect to `/docs/v1/components/button` and `/docs/v1`
   Covers: REQ-1, REQ-11
 - AC-2:
   Given `content/v1/components/chip.md` has frontmatter `since: "1.0"` and `content/v1/components/modal.md` has `changed: "1.0"`
@@ -99,9 +99,9 @@ Documentation becomes Markdown files in versioned folders, rendered by Nuxt Cont
   Then each reads the same configuration file and no other file lists versions
   Covers: REQ-5
 - AC-6:
-  Given the reader is on `/docs/components/chip` and `content/v0/` has no `components/chip.md`
+  Given the reader is on `/docs/v1/components/chip` and `content/v0/` has no `components/chip.md`
   When the reader switches to v0
-  Then `/docs/v0/` opens with a notice naming "chip" and "0.23"; and given `components/button` exists in both, switching from `/docs/components/button` opens `/docs/v0/components/button`, and switching back opens `/docs/components/button`
+  Then `/docs/v0` opens with a notice naming "chip" and "0.23"; and given `components/button` exists in both, switching from `/docs/v1/components/button` opens `/docs/v0/components/button`, and switching back opens `/docs/v1/components/button`
   Covers: REQ-6
 - AC-7:
   Given the site is built
@@ -136,7 +136,7 @@ Documentation becomes Markdown files in versioned folders, rendered by Nuxt Cont
 
 ## Open questions
 
-- OPEN-1 (resolved 2026-09-23): latest version at `/docs/<path>`, older versions at `/docs/<major>/<path>` (user).
+- OPEN-1 (resolved 2026-09-23, revised the same day): every version at `/docs/<major>/<section>/<slug>`, the latest included; unversioned `/docs/...` paths redirect to the current major (user).
 - OPEN-2 (resolved 2026-09-23): fully static generation (user).
 - OPEN-3 (reframed): the Algolia account that held the index was deactivated, so the site has no live search provider. Blocks: nothing in this spec (REQ-8 produces the document set either way); blocks the search feature. Recommended: client-side search over the generated document set (a small in-browser index built at generate time), because it needs no account, no keys and no external request, works on static hosting, and the assistant corpus comes from the same build; recreate Algolia only if hosted search analytics are wanted.
 - OPEN-4 (resolved 2026-09-23): WCAG 2.2 AA and Lighthouse accessibility at or above 95 on mobile (user, PRD M-4); now NFR-3.

@@ -31,7 +31,7 @@ A documentation page that carries the library's migration guide (`MIGRATION.md` 
 
 ## Functional requirements
 
-- REQ-1: The guide is one Markdown page in the 1.0 content folder, inside the getting-started section, rendered at `/docs/<section>/<slug>` by the content model and listed in the 1.0 navigation. Source: PRD F-4; content-model spec REQ-1, REQ-4.
+- REQ-1: The guide is one Markdown page in the 1.0 content folder, inside the getting-started section, rendered at `/docs/v1/<section>/<slug>` by the content model and listed in the 1.0 navigation. Source: PRD F-4; content-model spec REQ-1, REQ-4.
 - REQ-2: The page contains the "Why" section, the eight numbered sections and "Known trade-offs" of the library's `MIGRATION.md`, with the same headings in the same order, each heading with an anchor. Source: library `MIGRATION.md`.
 - REQ-3: The three mapping tables (style split, components, removed items) are rendered as tables with the 0.23 name in the first column and the 1.0 replacement in the second; a 0.23 component name links to that component's v0 page when the v0 content exists in the build, and is plain text otherwise. Source: `MIGRATION.md` sections 3, 4, 7; PRD F-7 (v0 in phase P-2); content-model spec REQ-11.
 - REQ-4: Every ```diff block of the guide is highlighted at build time with removed lines and added lines visually distinct (colour and a `-` or `+` marker), using the content model's highlighter. Source: `MIGRATION.md` (nine ```diff blocks); content-model spec REQ-10.
@@ -62,7 +62,7 @@ A documentation page that carries the library's migration guide (`MIGRATION.md` 
 - AC-1:
   Given the 1.0 content folder contains the guide page with valid frontmatter
   When the site is generated
-  Then the page renders at its `/docs/<section>/<slug>` URL and appears in the 1.0 navigation inside the getting-started section
+  Then the page renders at its `/docs/v1/<section>/<slug>` URL and appears in the 1.0 navigation inside the getting-started section
   Covers: REQ-1, REQ-6
 - AC-2:
   Given the generated guide page and the library's `MIGRATION.md`

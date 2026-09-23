@@ -85,7 +85,7 @@ A search box in the site shell that answers as the reader types, over an index g
 - AC-4:
   Given v1 and v0 content both contain a button page
   When the reader searches `button` from a v0 page and then from a v1 page
-  Then the results from the v0 page point only at `/docs/v0/` URLs and the results from the v1 page only at `/docs/` URLs
+  Then the results from the v0 page point only at `/docs/v0/` URLs and the results from the v1 page only at `/docs/v1/` URLs
   Covers: REQ-4
 - AC-5:
   Given the index for v1

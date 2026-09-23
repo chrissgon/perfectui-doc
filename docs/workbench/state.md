@@ -42,7 +42,8 @@
 - 2026-09-23: Versioning mechanics confirmed: one content folder per major (content/v1, content/v0), since/changed frontmatter badges for additions in minors, navigation derived per version, same-path mapping on version switch with fallback to the version index and a notice; a future v2 is a new folder and v1 freezes (user)
 - 2026-09-23: Decommission the current assistant: it was an old implementation on the ChatGPT Assistants API over a WebSocket; remove the integration and the 'Now with Chat GPT' badge until the new in-browser assistant ships (user)
 - 2026-09-23: Phase order approved: 1 content model + 1.0 documentation + new design; 2 version switcher + 0.23 archive; 3 assistant experiment behind a flag (user)
-- 2026-09-23: URL scheme: the latest version is served at /docs/<path>; every other version at /docs/<major>/<path> (spec OPEN-1) (user)
+- 2026-09-23: URL scheme (first decision, superseded the same day): the latest version at /docs/<path>; every other version at /docs/<major>/<path> (spec OPEN-1) (user)
+- 2026-09-23: URL scheme (final): every version, including the latest, is served at /docs/<major>/<section>/<slug> (for example /docs/v1/components/button) and /docs/<major> is that version's index; /docs and /docs/<section>/<slug> redirect to the same path under the current major; the section segment stays in the URL because navigation derives from folders (user, replacing the first decision; consequence accepted: links to the current documentation change at the next major)
 - 2026-09-23: Hosting: fully static generation with nuxt generate on Netlify; generators for the search document set and the assistant corpus run inside the build (spec OPEN-2) (user)
 - 2026-09-23: The Algolia account that held the perfectui index was deactivated; the site currently has no live search provider. The search provider is an open decision for the search feature (spec OPEN-3) (user)
 - 2026-09-23: Spec amended: sections and order come from folder structure with numeric prefixes and .navigation.yml, not from frontmatter (ADR-0004 accepted) (user)
@@ -88,7 +89,7 @@
 
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
-- [ ] `/docs` is its own index page (user, 2026-09-23); the user also asked for a version-qualified URL such as `/docs/v1/button`, which contradicts the recorded URL scheme (latest version without a version segment, spec AC-1); to resolve (flows OPEN-1)
+- [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 ## Approvals

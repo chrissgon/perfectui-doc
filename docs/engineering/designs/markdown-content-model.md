@@ -22,7 +22,7 @@ Documentation becomes two Nuxt Content collections, one per major version, each 
 
 | # | Decision | Chosen | Class | ADR or source |
 |---|----------|--------|-------|---------------|
-| 1 | URL scheme | latest at `/docs/<path>`, others at `/docs/<major>/<path>` | decided | user answer 2026-09-23 |
+| 1 | URL scheme | every version at `/docs/<major>/<section>/<slug>`, unversioned `/docs/...` redirects to the current major (revised 2026-09-23; this design predates the revision and is revised in the engineering phase) | decided | user answer 2026-09-23 |
 | 2 | Hosting mode | fully static, `nuxt generate` | decided | user answer 2026-09-23 |
 | 3 | Content engine | Nuxt Content v3 with MDC | decided | brief decision 6 |
 | 4 | Collections | one collection per major version | engineering | ADR-0001 |
