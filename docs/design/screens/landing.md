@@ -22,9 +22,9 @@ The landing lets an evaluator understand perfectui, trust its measured size, ins
 
 ## Variants
 
-- breakpoint/xl × light × default: page "Site v1", frame `Landing / 1280 / light` (id recorded after the build)
-- breakpoint/xl × dark × default: `Landing / 1280 / dark`
-- breakpoint/sm and below (360 wide) × light × default: `Landing / 360 / light`
+- breakpoint/xl × light × default: page "Site v1", frame `Landing / 1280 / light` (node 462:2; sections 462:3 header, 462:31 hero, 463:6 size, 464:6 three classes, 464:58 overlays, 464:126 mode and theme, 465:53 tailwind, 465:70 nothing to undo, 465:95 migration, 465:104 install, 465:123 footer)
+- breakpoint/xl × dark × default: `Landing / 1280 / dark` (pending the review of the light variant)
+- breakpoint/sm and below (360 wide) × light × default: `Landing / 360 / light` (pending)
 - copied, no JavaScript and reduced motion: documented as diffs under States, not separate frames (they change one control or remove motion)
 
 ## Layout
@@ -78,8 +78,9 @@ The landing lets an evaluator understand perfectui, trust its measured size, ins
 ## Design tool
 
 - Page: "Site v1" (id 454:10) in the perfectui file
-- Frames: recorded after the build (`Landing / 1280 / light`, `Landing / 1280 / dark`, `Landing / 360 / light`)
-- Screenshots reviewed: recorded after the build
+- Frames: `Landing / 1280 / light` 462:2 built on 2026-09-23 in four sequential writes plus three targeted fixes; dark and narrow variants pending
+- Screenshots reviewed: hero after write 1 (space nodes in the class line collapsed → single text node with range colours); full page after write 4 (text columns fixed at 10 px high → hug; size-chart tracks narrowed from 440 to 340 so the byte counts fit; long code lines set to fill and wrap); post-fix full page reviewed with no clipped text
+- Components used from the file: Button (Solid/Theme, Outline/Surface, Soft/Theme, Link/Theme), Badge (Soft/Theme, Solid/Theme, Outline/Surface, Soft/Success, Link/Surface), Card (Modal), Accordion Item (First/Open, Last/Closed), Dropdown (Bottom/Start/Menu); wordmark 87:2 and mark 87:15 cloned into the header and footer
 
 ## Findings for design-system
 
