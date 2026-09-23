@@ -192,12 +192,11 @@ Site-only controls that need a visible boundary (input in the search dialog, cop
 
 ## Design tool
 
-- File: "PerfectUI-Doc" (key 0aZSp3JcotPUKeduf8BCzi), the user's draft
-- Collections: `pui` with modes `light` and `dark`, 59 variables (6 page, 35 role slots, 12 space, 5 radius, 1 border), every one with scopes and WEB code syntax from the library's custom properties (VariableCollectionId:5:2, VariableID:5:3 to 5:61)
-- Styles: 10 text styles (`text/body`, `text/small`, `text/strong`, `site/display`, `site/h1`, `site/h2`, `site/h3`, `site/lead`, `site/body`, `site/code`); no effect styles (no elevation)
-- Pages: Cover, Foundations, one page per library component (17), separators for components and site components
-- Components: built in phase 3 of the design-tool build (pending)
-- Validation: variable and style counts read back after creation (59 and 10, 0 missing scopes, 0 missing code syntax); Foundations page (node 12:2, 1440 × 4141) reviewed by screenshot after one sizing fix (swatch frames set to hug); component pages pending
+- File: the perfectui project file (key szD991W25tQxPuqhfRektk), page "Site" for the website screens. An earlier build in the draft 0aZSp3JcotPUKeduf8BCzi (collection, text styles, foundations page) is superseded and not reused.
+- Collections: `pui` already exists in the file with modes `light` and `dark` and 66 variables: the 59 of DESIGN-SYSTEM §6 plus one `<role>/soft-fill` per role (the 15% tint flattened, DESIGN-SYSTEM §3.1 and §3.2); values verified against the document on 2026-09-23.
+- Styles: the library's `text/body`, `text/small`, `text/strong` exist; the seven `site/*` text styles (Inter and Fira Code) are added to the file for the screens; the ten legacy `PerfectUI/doc/*` paint styles (glows, glass, tags) belong to the UI kit's own documentation and are not used by the site.
+- Components: the file already holds the library's Button (28 variants, style × colour, Label), Badge (28), Card (6, Type), Accordion Item (12) and Dropdown (8); screens use them as instances. Library components the file lacks (chip, list, table, modal, input, checkbox and switch, tooltip, timeline, group, float) are drawn as frames bound to the variables when a screen needs them, because documenting the library in the design tool is out of scope (user, 2026-09-23). Site-only components (Components table, owner `site`) are built as components on the "Site" page as the screens need them.
+- Validation: per screen, structural evidence returned by the writes and one screenshot; recorded by design-ui.
 
 ## Assumptions
 
