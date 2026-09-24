@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: design (product artifacts drafted 2026-09-23; design-ux-flows next)
+- Current phase: design (landing: visual exploration in an external AI design tool from docs/design/briefs/landing.md, then critique, then implementation in code)
 - Updated: 2026-09-23
 
 ## Autonomy
@@ -24,6 +24,7 @@
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
 | docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-23 |
 | docs/design/screens/landing.md | design-ui | draft | 2026-09-23 |
+| docs/design/briefs/landing.md (self-contained brief for an external AI design tool; Figma Make first) | design-ui | draft | 2026-09-23 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -79,6 +80,7 @@
 - 2026-09-23: The landing page comes first and gets the most care: a creative design with animations, faithful to perfectui, with tailwindcss.com's landing as inspiration; the documentation page follows the same pattern afterwards; the messaging step (sections and texts) precedes the landing design as decided earlier (user)
 
 - 2026-09-23: The WEB code syntax of the 66 `pui` variables in the design file is filled with the custom properties of perfectui.css so the design tool's developer mode shows `var(--pui-…)` (user)
+- 2026-09-23: The landing's visual direction is explored in an external AI design tool from a self-contained brief written by design-ui (Figma Make for the first round; Claude Design and Gamma are the alternatives the user has), because the frame composed through the integration (`Landing / 1280 / light`) was reviewed as structurally right but too basic next to tailwindcss.com and laravel.com. The workbench keeps the guidelines, the brief and the review (core-critique against the brief's criteria); the final page is implemented in code and validated against the brief and the screen document; the composed frame stays the structural reference, and its dark and narrow variants wait for the chosen direction (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature

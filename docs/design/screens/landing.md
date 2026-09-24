@@ -23,8 +23,8 @@ The landing lets an evaluator understand perfectui, trust its measured size, ins
 ## Variants
 
 - breakpoint/xl × light × default: page "Site v1", frame `Landing / 1280 / light` (node 462:2; sections 462:3 header, 462:31 hero, 463:6 size, 464:6 three classes, 464:58 overlays, 464:126 mode and theme, 465:53 tailwind, 465:70 nothing to undo, 465:95 migration, 465:104 install, 465:123 footer)
-- breakpoint/xl × dark × default: `Landing / 1280 / dark` (pending the review of the light variant)
-- breakpoint/sm and below (360 wide) × light × default: `Landing / 360 / light` (pending)
+- breakpoint/xl × dark × default: `Landing / 1280 / dark` (pending the direction chosen in the exploration)
+- breakpoint/sm and below (360 wide) × light × default: `Landing / 360 / light` (pending the direction chosen in the exploration)
 - copied, no JavaScript and reduced motion: documented as diffs under States, not separate frames (they change one control or remove motion)
 
 ## Layout
@@ -81,6 +81,7 @@ The landing lets an evaluator understand perfectui, trust its measured size, ins
 - Frames: `Landing / 1280 / light` 462:2 built on 2026-09-23 in four sequential writes plus three targeted fixes; dark and narrow variants pending
 - Screenshots reviewed: hero after write 1 (space nodes in the class line collapsed → single text node with range colours); full page after write 4 (text columns had a fixed height from an early resize → set to hug; size-chart tracks narrowed so the byte counts fit; long code lines set to fill and wrap); post-fix full page reviewed with no clipped text
 - Components used from the file: Button (Solid/Theme, Outline/Surface, Soft/Theme, Link/Theme), Badge (Soft/Theme, Solid/Theme, Outline/Surface, Soft/Success, Link/Surface), Card (Modal), Accordion Item (First/Open, Last/Closed), Dropdown (Bottom/Start/Menu); wordmark 87:2 and mark 87:15 cloned into the header and footer
+- Exploration: the user reviewed the light frame as structurally right but too basic next to tailwindcss.com and laravel.com (2026-09-23); the visual direction is explored in an external AI design tool from docs/design/briefs/landing.md (three directions in round 1, the chosen one in four variants in round 2, each round critiqued against the brief's criteria); the chosen direction is recorded here and implemented in code; the dark and narrow frames in the design file wait for it
 
 ## Findings for design-system
 
