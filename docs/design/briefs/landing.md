@@ -4,7 +4,7 @@
 - Status: draft
 - Date: 2026-09-23
 - Screen: docs/design/screens/landing.md (SCREEN-1)
-- Tool: Figma Make for the first round; the brief is written for any AI design tool
+- Tool: Figma Make for the first round (a separate Make file with the design as pasted context or a Make kit); the brief is written for any AI design tool
 - Self-contained: the tool reads nothing but this document and, when it can, the perfectui design file
 
 ## Summary
@@ -213,7 +213,7 @@ Nine sections in this order; headline, body, demo and call to action are final c
 
 ## How to run
 
-1. Open the perfectui design file (key szD991W25tQxPuqhfRektk) and start Figma Make from it, so the tool can read the `pui` variables, the Button, Badge and Card components and the frame `Landing / 1280 / light` on page "Site v1" as the structural reference. In another tool, paste this document whole and attach a screenshot of that frame.
+1. Figma Make is its own file type, not a mode of the design file: in the file browser open Drafts (or the team, on a Full seat) and click "Make". Give it the design as context: select the frame `Landing / 1280 / light` (462:2, page "Site v1") in the perfectui file, copy it and paste it into the Make chat, or click "+" then "Add context" and paste the frame's URL. On a paid plan with a Full seat, also give it the library: publish the perfectui file's variables and styles as a library and add them as style context, or build a Make kit ("Settings" then "Create a kit") with the npm package `@chrissgon/perfectui`, the published library and this brief as its guidelines, then pick it with "Select a Make kit" in the prompter. On a Starter plan the library step is unavailable; this brief carries every value for that reason. In another tool, paste this document whole and attach a screenshot of the frame.
 2. Paste the Prompt below, then the sections Product to Constraints as context; ask for round 1 (three directions).
 3. Bring the three screens back to the workbench for a critique against CRIT-1 to CRIT-10; choose one direction, or ask for a second round with the critique's findings.
 4. Ask for round 2 on the chosen direction; critique again; record the chosen direction, its frame or file and the review in the screen document; implement in code from the brief and the screen document, and validate the implementation against both.
