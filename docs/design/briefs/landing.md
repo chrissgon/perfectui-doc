@@ -195,7 +195,7 @@ Nine sections in this order; headline, body, demo and call to action are final c
 
 ## Deliverables
 
-- Round 1: three directions (A, B, C above, or a fourth the tool proposes with its idea in one sentence), each as one screen at 1280 px in light mode covering the hero, the size block and the three-classes block, with motion described or prototyped.
+- Round 1: three directions (A, B, C above, or a fourth the tool proposes with its idea in one sentence), one run of the tool per direction, each as one screen at 1280 px in light mode covering the hero, the size block and the three-classes block, with the motion working. The tool is told it is exploring, not implementing: the composed frame is not attached in this round, because a design attachment makes an AI design tool reproduce it as code.
 - Round 2, after the review chooses one direction: the full page at 1280 and 360 px, in light and dark mode, with every animation of Page structure prototyped and the reduced-motion final states; the generated code is a reference for the implementation, not the implementation.
 
 ## Evaluation criteria
@@ -213,29 +213,36 @@ Nine sections in this order; headline, body, demo and call to action are final c
 
 ## How to run
 
-1. Figma Make is its own file type, not a mode of the design file: in the file browser open Drafts (or the team, on a Full seat) and click "Make". Give it the design as context: select the frame `Landing / 1280 / light` (462:2, page "Site v1") in the perfectui file, copy it and paste it into the Make chat, or click "+" then "Add context" and paste the frame's URL. On a paid plan with a Full seat, also give it the library: publish the perfectui file's variables and styles as a library and add them as style context, or build a Make kit ("Settings" then "Create a kit") with the npm package `@chrissgon/perfectui`, the published library and this brief as its guidelines, then pick it with "Select a Make kit" in the prompter. On a Starter plan the library step is unavailable; this brief carries every value for that reason. In another tool, paste this document whole and attach a screenshot of the frame.
-2. Paste the Prompt below, then the sections Product to Constraints as context; ask for round 1 (three directions).
-3. Bring the three screens back to the workbench for a critique against CRIT-1 to CRIT-10; choose one direction, or ask for a second round with the critique's findings.
-4. Ask for round 2 on the chosen direction; critique again; record the chosen direction, its frame or file and the review in the screen document; implement in code from the brief and the screen document, and validate the implementation against both.
+1. Figma Make is its own file type, not a mode of the design file: in the file browser open Drafts (or the team, on a Full seat) and click "Make". Create one Make file per direction (three for round 1), so each chat builds one page instead of a compromise between three.
+2. In each file, attach this document (drag it into the chat or "+" then "Upload files"). Do not attach the frame `Landing / 1280 / light` (462:2) in round 1: an attached design makes the tool reproduce it as code, which is what the first run did. The frame is attached only in round 2, as the record of section order and copy, with the instruction to keep the chosen direction.
+3. Add the library skill (in the prompt box, "Skills" then "Add skill", upload `skills/build-with-perfectui/SKILL.md` from the perfectui repository) and start the prompt with `/build-with-perfectui`; skills are invoked by that slash command, not by their description. The skill makes the tool link the real stylesheet, which carries the `pui` tokens at runtime; importing the design file's variables into the tool is unnecessary for that reason (it is also a paid-plan feature that needs the file published as a library and flattens the variables into raw CSS values).
+4. Paste the Prompt below with the direction paragraph filled in from Creative direction; run; bring the three results back to the workbench for a critique against CRIT-1 to CRIT-10; choose one direction, or ask for a second round with the critique's findings.
+5. Ask for round 2 on the chosen direction; critique again; record the chosen direction, its file and the review in the screen document; implement in code from the brief and the screen document, and validate the implementation against both.
 
 ## Prompt
 
 ```text
-Design the landing page of perfectui 1.0, a CSS and JavaScript component library whose
-whole stylesheet is 3.2 kB gzip. Audience: developers evaluating a component library
-without a framework, and users of the previous version looking for the migration guide.
+/build-with-perfectui
+Build a landing page for perfectui 1.0 that a reader remembers. This is an exploration,
+not an implementation: do not reproduce any existing design, and if you were given one,
+use it only for the order of the sections. Read design-brief-landing.md for the copy
+(verbatim), the tokens, the section order and the constraints, then take this direction:
 
-Give me three visual directions, one screen each, 1280 px wide, light mode, covering the
-hero, the "3.2 kB, measured" block and the "a shape, a style, a colour" block:
-A "three layers" (the three classes as the visual system), B "editor and canvas" (live
-code panel and rendering), C "weight" (the size number leads). Name a fourth if you have
-a better idea.
+Direction: <paste one of A, B or C from "Creative direction" in the brief>
 
-Rules: use only the colours, type scale, radii and spacing in the brief; Inter and Fira
-Code; the library's real components and real markup for every demo; the copy verbatim;
-motion that demonstrates a claim and has a final state; no shadows, no stock
-illustration, no logos or "used by" section; one element in the hero at a scale nothing
-else reaches. The brief follows.
+Non-negotiable: link https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/perfectui.css
+in index.html and import its dist/js/index.js as a module; every demo is real perfectui
+markup that works (dialog, popover, details); load Inter and Fira Code; colours only from
+the brief's tables; no shadows; no restyling of pui- components.
+
+Make it dramatic: the hero fills the first viewport; its headline is Inter Semi Bold at
+96 px; the hero may be an inverted band (black in light mode) with the two blurred glows
+behind it; the live demo animates on load (the three classes type themselves in Fira Code
+while the button assembles) and loops; every section animates on scroll and has a final
+state under prefers-reduced-motion. Build the hero, the "3.2 kB. Measured, not promised."
+block and the "A shape, a style, a colour." block at 1280 px, light mode, with a working
+dark-mode toggle that sets data-pui-mode on <html>. Before you finish, list what this
+page does that a plain three-column layout would not.
 ```
 
 ## Open questions
