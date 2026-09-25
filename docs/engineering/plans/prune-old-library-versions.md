@@ -1,6 +1,6 @@
 # Plan: prune the library's versions up to 0.20.0
 
-- Status: approved 2026-09-25 (user): unpublish on npm; the `delete` and `vv0.4.7` tags go with the rest; the user deletes the 5 releases in the web UI first, then I delete the 40 tags
+- Status: done 2026-09-25; approved 2026-09-25 (user): unpublish on npm; the `delete` and `vv0.4.7` tags go with the rest; the user deletes the 5 releases in the web UI first, then I delete the 40 tags
 - Date: 2026-09-25
 - Request, quoted: "O perfectui no npm e github tem muitas tags desnecessárias … Gostaria de deletar a maioria, tudo da versão 0.20.0 para baixo."
 - Repository: `chrissgon/perfectui`; package `@chrissgon/perfectui`
@@ -63,7 +63,8 @@ npm view @chrissgon/perfectui versions --json   # expect the 5 kept versions
 
 - 2026-09-25: the user deleted the 5 GitHub releases (the API returns an empty list).
 - 2026-09-25: the 40 tags deleted on GitHub and locally; `git ls-remote --tags origin` lists `v0.20.1`, `v0.21.1`, `v0.23.0`, `v1.0.0-beta.0`, `v1.0.0-beta.1`.
-- npm: waiting for the user to run step 3.
+- 2026-09-25: the user unpublished the 57 npm versions up to 0.20.0, confirming each with a passkey (npm refused tokens that bypass two-factor authentication, and its authenticator-app codes are no longer offered); `npm view` lists `0.20.1`, `0.21.1`, `0.23.0`, `1.0.0-beta.0`, `1.0.0-beta.1`, dist-tags unchanged. `0.20.1` stays: its downloads match `0.21.1`, which a former employer's project uses, so its use cannot be ruled out (user).
+- Done.
 
 ## Checks after each step
 
