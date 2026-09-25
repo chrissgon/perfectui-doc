@@ -26,4 +26,4 @@ Option A. The footnote reads "`gzip -9 -n` of the published builds; perfectui me
 ## Consequences
 
 - The generator fails the build when a file or `gzip` is missing, naming it (EDGE-7).
-- Messaging PROOF-1 is corrected to 3,221 B and 493 B for 1.0.0-beta.1 (design Q2); the page never prints a typed number for perfectui.
+- Messaging PROOF-1 was corrected to 3,221 B and 493 B for 1.0.0-beta.1 (user, 2026-09-24); the page never prints a typed number for perfectui.

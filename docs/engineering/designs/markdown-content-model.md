@@ -210,5 +210,5 @@ export const versions = [
 
 ## Open questions
 
-- Q1 (engineering, flagged for the user): the 0.23 site's flat URLs (`https://perfectui.netlify.app/docs/tooltip`, linked from the library's README and search engines) get one redirect each to the 1.0 page of the same topic, so inbound links keep working. Blocks: nothing. Recommended: keep, as designed.
+- Q1 (resolved 2026-09-24): the 0.23 site's flat URLs get one redirect each to the 1.0 page of the same topic (user).
 - Other items: the specification's open items that touch this feature are resolved; OPEN-6 (browser matrix) and OPEN-7 (older-version banner) do not block it and are handled in release R-2.

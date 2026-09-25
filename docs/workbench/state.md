@@ -22,7 +22,7 @@
 | docs/product/roadmap.md | product-roadmap | draft | 2026-09-23 |
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
-| docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-23 |
+| docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-24 |
 | docs/design/screens/landing.md (written by the retired design-ui; kept as the structural record of the composed Figma frame) | design-ui (retired) | draft | 2026-09-23 |
 | docs/design/briefs/landing.md | design-brief | draft | 2026-09-24 |
 | docs/design/briefs/documentation-page.md | design-brief | draft | 2026-09-24 |
@@ -106,6 +106,7 @@
 - 2026-09-24: No separate designs for 360 px: narrow layouts are built in code from the flows' rules; dark mode is the exports' own toggle, rendered as references in docs/design/handoff/<screen>/reference/, to be replaced by the user's dark PNGs when added (user)
 - 2026-09-24: The share image (`og:image`) is the user's own perfectui thumbnail, used on every page; the three generated directions are not used; a 1200 × 630 PNG or JPG version is requested (user)
 - 2026-09-24: The user updated the documentation page export to be responsive; its 1024 px breakpoint for the sidebar replaces the flows' 768 px, and both exports now serve as the narrow and dark references (user)
+- 2026-09-24: Architecture decisions confirmed: 0.23 flat URLs redirect to the 1.0 page of the same topic; the mode toggle cycles light → dark → system; every size on the landing is measured with `gzip -9 -n`, the competitors' method (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -125,9 +126,9 @@
 - [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
 - [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
 
-- [ ] Mode toggle: cycle light → dark → system, or light ↔ dark only? Recommended: the three-step cycle (landing-and-site-shell design Q1)
-- [ ] Correct messaging PROOF-1 to the competitors' method (`gzip -9 -n`: 3,221 B and 493 B for 1.0.0-beta.1)? Recommended: yes (landing-and-site-shell design Q2, ADR-0007)
-- [ ] Keep one redirect per 0.23 flat URL (`/docs/tooltip` → `/docs/v1/components/tooltip`) so inbound links keep working? Recommended: yes (content-model design Q1, ADR-0005)
+- [x] Mode toggle cycles light → dark → system (user, 2026-09-24)
+- [x] Messaging PROOF-1 corrected to `gzip -9 -n`: 3,221 B and 493 B (user, 2026-09-24)
+- [x] One redirect per 0.23 flat URL to the 1.0 page of the same topic (user, 2026-09-24)
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)

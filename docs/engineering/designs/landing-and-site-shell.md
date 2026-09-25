@@ -40,7 +40,7 @@ The shell (header, footer, mode toggle, theme picker) is one layout shared by th
 | No-flash head script | set `data-pui-mode` from the cookie and `--pui-theme` from session storage before the stylesheet applies | `app/app.vue` via `useHead` (inline script, first in `<head>`) | cookie, session storage | attributes on `<html>` | REQ-8, REQ-9, EDGE-4, EDGE-5 |
 | Default layout | header, page slot, footer | `app/layouts/default.vue` | route | page frame | REQ-7 |
 | Site header | logo and version label, docs link, search entry point, mode toggle, theme picker, GitHub and Figma links; menu control below 1024 px | `app/components/SiteHeader.vue` | versions configuration, site configuration, features | header markup | REQ-6, REQ-7 |
-| Mode toggle | cycle the mode and call `setMode` | `app/components/ModeToggle.vue` | current mode | `setMode('light' | 'dark' | 'system')` | REQ-8, EDGE-4 |
+| Mode toggle | cycle light → dark → system (sun, moon, monitor icons; the label names the next mode) and call `setMode` | `app/components/ModeToggle.vue` | current mode | `setMode('light' | 'dark' | 'system')` | REQ-8, EDGE-4 |
 | Theme picker | presets and a colour input; set `--pui-theme`; persist for the session | `app/components/ThemePicker.vue` | presets | style on `<html>`, session storage | REQ-9, EDGE-6 |
 | Site footer | tagline, links, license, display wordmark | `app/components/SiteFooter.vue` | site configuration, messaging tagline | footer markup | REQ-7 |
 | SEO composable | title, description, Open Graph and Twitter meta at setup | `app/composables/usePageMeta.ts` | page title, description, path | head tags | REQ-10 |
@@ -169,5 +169,5 @@ Competitors' list (`app/data/competitors.ts`, static, from messaging PROOF-2 and
 
 ## Open questions
 
-- Q1 (user): Does the mode toggle cycle light → dark → system (a third icon, a monitor) or switch light ↔ dark only, with "system" reachable by clearing the choice elsewhere? Blocks: nothing (the default is the cycle). Recommended: the three-step cycle, because REQ-8 names `system` as a choice and the header has no other place for it.
-- Q2 (user): Messaging PROOF-1 states 3,155 B and 502 B measured with the file name in the gzip header, a different method from the competitors'. Blocks: nothing (the page prints the build's number). Recommended: correct PROOF-1 to the competitors' method (`gzip -9 -n`: 3,221 B and 493 B for 1.0.0-beta.1) so every number on the page is measured the same way.
+- Q1 (resolved 2026-09-24): the mode toggle cycles light → dark → system, with sun, moon and monitor icons, and its label names the next mode (user).
+- Q2 (resolved 2026-09-24): messaging PROOF-1 corrected to the competitors' method: 3,221 B and 493 B for 1.0.0-beta.1 (user).
