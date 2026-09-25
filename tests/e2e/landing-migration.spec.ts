@@ -1,4 +1,5 @@
 import { existsSync } from "node:fs";
+import { landingHydrated } from "../helpers/hydrated";
 import { expect, test } from "@playwright/test";
 import { installCommand, site } from "../../app/site.config";
 
@@ -35,6 +36,7 @@ test.describe("migration callout", () => {
 test.describe("install tabs", () => {
   test("arrow keys move between package managers and the command follows", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     const install = page.locator("#install");
     const npm = install.getByRole("button", { name: "npm", exact: true });
     await expect(npm).toHaveAttribute("aria-pressed", "true");
@@ -56,6 +58,7 @@ test.describe("install tabs", () => {
   test("the CDN snippet is pinned to the installed version", async ({ page, request }) => {
     const { version } = await (await request.get("/api/library-size.json")).json();
     await page.goto("/");
+    await landingHydrated(page);
     const cdn = page.locator("#install [data-cdn]");
     await expect(cdn).toContainText(`https://cdn.jsdelivr.net/npm/${site.packageName}@${version}/dist/perfectui.css`);
     await expect(cdn).toContainText(`https://cdn.jsdelivr.net/npm/${site.packageName}@${version}/dist/js/index.js`);
@@ -64,6 +67,7 @@ test.describe("install tabs", () => {
   test("the CDN copy control copies the snippet", async ({ page, context }) => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.goto("/");
+    await landingHydrated(page);
     await page.locator("#install").getByRole("button", { name: "Copy CDN tags" }).click();
     const text = await page.evaluate(() => navigator.clipboard.readText());
     expect(text).toContain('<script type="module">');

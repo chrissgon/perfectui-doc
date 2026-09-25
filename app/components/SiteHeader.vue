@@ -1,6 +1,6 @@
 <template>
   <header class="sticky top-0 z-20 border-b" style="background: var(--pui-bg); border-color: var(--pui-border)">
-    <div :class="['mx-auto flex h-16 items-center justify-between gap-3 px-3 sm:px-6', wide ? 'max-w-[1440px]' : 'max-w-[1200px]']">
+    <div :class="['mx-auto flex h-16 items-center justify-between gap-1 px-2 sm:gap-3 sm:px-6', wide ? 'max-w-[1440px]' : 'max-w-[1200px]']">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="pui-btn pui-link pui-surface px-1" aria-label="Perfect UI home">
           <span class="flex items-center gap-2.5">

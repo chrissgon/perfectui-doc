@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { landingHydrated } from "../helpers/hydrated";
 import { expect, test, type Page } from "@playwright/test";
 
 const shapes = [["button", "btn"], ["chip", "chip"], ["badge", "badge"]] as const;
@@ -83,6 +84,7 @@ test.describe("overlays showcase", () => {
 
   test("renders the four named examples from their documentation pages", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     await expect(overlays(page).locator("[data-example]")).toHaveCount(4);
     for (const label of ["Modal", "Dropdown", "Tooltip", "Accordion"]) {
       await expect(overlays(page).getByText(label, { exact: true })).toBeVisible();
@@ -92,6 +94,7 @@ test.describe("overlays showcase", () => {
 
   test("the modal opens and closes natively", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     await overlays(page).getByRole("button", { name: "Delete project" }).click();
     const dialog = page.locator("#overlays dialog[open]");
     await expect(dialog).toBeVisible();
@@ -101,6 +104,7 @@ test.describe("overlays showcase", () => {
 
   test("the dropdown opens and closes natively", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     await overlays(page).getByRole("button", { name: "Menu" }).click();
     const panel = overlays(page).locator(".pui-dropdown:popover-open");
     await expect(panel).toBeVisible();
@@ -110,6 +114,7 @@ test.describe("overlays showcase", () => {
 
   test("the tooltip opens on focus and closes on blur", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     await overlays(page).getByRole("button", { name: "?" }).focus();
     const tip = overlays(page).locator(".pui-tooltip:popover-open");
     await expect(tip).toBeVisible();
@@ -119,6 +124,7 @@ test.describe("overlays showcase", () => {
 
   test("the accordion opens and closes natively", async ({ page }) => {
     await page.goto("/");
+    await landingHydrated(page);
     const item = overlays(page).locator("details").first();
     const open = () => item.evaluate((el) => (el as HTMLDetailsElement).open);
     const before = await open();

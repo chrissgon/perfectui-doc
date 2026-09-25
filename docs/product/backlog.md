@@ -386,6 +386,7 @@
   Check: with JavaScript off every text, link and the command are visible and calls to action navigate; no horizontal scroll at 320 px; no "assistant", "ChatGPT" or "soon" in the output
   Size: S, because tests over a finished page
   Milestone: SH3
+  Status: done (2026-09-25) tests/e2e/no-js.spec.ts 3 passed and tests/build/no-unshipped.spec.ts 4 passed (320 px failed before: header 1 px over); bun run test 67 unit + 116 browser
 - T-sh-16: Landing quality
   Does: Lighthouse mobile and axe on `index.html`.
   Delivers: NFR-1, AC-11
