@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: released. R-1 and R-2 are live on https://perfectui.netlify.app from branch `main` (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks, or the first library release after 1.0.0-beta.1, which lets `app/versions.ts` drop `libraryRef`
+- Current phase: released. R-1 and R-2 are live on https://perfectui.netlify.app from branch `main` (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
 ## Autonomy
@@ -54,6 +54,8 @@
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
+
+- 2026-09-25: No library release for now: the user keeps working on perfectui first. The site stays pinned to library commit 652748d (`libraryRef` in `app/versions.ts`), so documentation changes in the library reach the site only when `libraryRef` moves to a newer commit of branch `v1`, or when a release lets the site follow the installed version's tag (user)
 
 - 2026-09-25: Released: https://perfectui.netlify.app serves the new site from `main`. The first production build failed in `nuxt prepare` (`No "exports" main defined in estree-walker`) because Netlify restored the 0.23 site's dependency cache (Nuxt 3, `bun.lockb`); "Clear cache and deploy site" fixed it. Checked on the host: `/docs` and `/docs/v1` answer 301 to Installation, pages 200, unknown paths 404, the version menu lists 1.x and 0.23 on GitHub, example utilities are generated, library size 3,221 and 493 B. Lighthouse mobile, median of 3: landing 100, migration guide 99, Button 98; accessibility 98 to 100; CLS 0.021 on the landing, 0 on documentation pages
 
@@ -181,6 +183,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-25: `git push origin main` with the release record (0fcf4a5, cherry-picked onto the merge of pull request #1) and this entry; work continues on `main` (user: "Sim")
 
 - 2026-09-25: `git push origin redesign` with e8f315a (the pruning plan marked done) and this record, before the user opens the pull request `redesign` → `main` (user: "Sim")
 
