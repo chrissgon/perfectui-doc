@@ -108,6 +108,7 @@
 - 2026-09-24: The user updated the documentation page export to be responsive; its 1024 px breakpoint for the sidebar replaces the flows' 768 px, and both exports now serve as the narrow and dark references (user)
 - 2026-09-24: Architecture decisions confirmed: 0.23 flat URLs redirect to the 1.0 page of the same topic; the mode toggle cycles light → dark → system; every size on the landing is measured with `gzip -9 -n`, the competitors' method (user)
 - 2026-09-24: The library's Tailwind guide was wrong for Tailwind v4 (layered utilities) and for Preflight in both versions; rewritten in the library repository with measured cases, and the site declares `@layer theme, base, pui, components, utilities;` (user asked for the fix)
+- 2026-09-24: The library's light-mode solid labels (theme, success, warn) stay below WCAG AA as an accepted trade-off for 1.0, because the darker fills that pass read too dark; accessibility checks exclude only that rule on those elements; revisiting it is a later library change (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -130,8 +131,9 @@
 - [x] Mode toggle cycles light → dark → system (user, 2026-09-24)
 - [x] Messaging PROOF-1 corrected to `gzip -9 -n`: 3,221 B and 493 B (user, 2026-09-24)
 - [x] One redirect per 0.23 flat URL to the 1.0 page of the same topic (user, 2026-09-24)
-- [ ] Landing SECTION-6 body says "No reset, so nothing overlaps Preflight", which measurement disproved (Preflight removes button fills unless the layer order is declared). Recommended replacement: "Every perfectui rule lives in a cascade layer. Declare the layer order once, and a Tailwind utility or a line of your CSS beats it with no `!important`." (messaging PROOF-7, 2026-09-24)
-- [ ] The library's solid labels fail WCAG AA in light mode (white on theme #0092CD 3.50:1, success #16A34A 3.30:1, warn #D97706 3.19:1; AA needs 4.5:1), so every page with a primary button fails PRD M-4 (0 violations). Options: darken the three light fills in the library (#007EB1, #12883E, #B36205, white labels kept), black labels on those fills in light mode, a site-only theme override, or an exception in the accessibility target. Recommended: darken the fills in the library before 1.0 (T-cm-2 review)
+- [x] Landing SECTION-6 body corrected to the measured behaviour, kept short: "One `@layer` line keeps Tailwind's reset below perfectui and every utility above it." (user, 2026-09-24)
+- [x] Solid labels below AA in light mode (theme 3.50, success 3.30, warn 3.19): trade-off accepted for 1.0; PRD M-4 amended with the exception (user, 2026-09-24)
+- [ ] Later (library): revisit the light-mode solid fills or labels of theme, success and warn to reach AA without a palette that reads too dark (user, 2026-09-24: not now)
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)

@@ -176,7 +176,7 @@
   Delivers: NFR-3, AC-12
   Touches: `tests/quality/lighthouse.spec.ts`, `tests/quality/axe.spec.ts`
   Depends on: T-cm-18
-  Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations
+  Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations except the accepted library trade-off: `color-contrast` on the labels of `pui-solid` with `pui-theme`, `pui-success` or `pui-warn` in light mode
   Size: S, because the harness exists; fixes, if any, get their own task
   Milestone: CM3
 
@@ -342,7 +342,7 @@
   Delivers: NFR-1, AC-11
   Touches: `tests/quality/lighthouse.spec.ts`, `tests/quality/axe.spec.ts`
   Depends on: T-sh-15
-  Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations
+  Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations except the accepted library trade-off: `color-contrast` on the labels of `pui-solid` with `pui-theme`, `pui-success` or `pui-warn` in light mode
   Size: S, because the harness exists
   Milestone: SH3
 
@@ -410,7 +410,7 @@
   Delivers: NFR-1, EDGE-4, AC-6
   Touches: `tests/e2e/migration-guide.spec.ts`
   Depends on: T-mg-4, T-cm-15
-  Check: performance ≥ 90, accessibility ≥ 95, 0 violations, page scroll width equals the viewport
+  Check: performance ≥ 90, accessibility ≥ 95, 0 violations except the accepted library trade-off (solid theme, success and warn labels in light mode), page scroll width equals the viewport
   Size: S, because checks over one page
   Milestone: MG1
 
@@ -475,7 +475,7 @@
   Delivers: NFR-1, NFR-2, NFR-3, AC-8, AC-9, AC-10
   Touches: `tests/quality/search-latency.spec.ts`, `tests/quality/search-size.spec.ts`, `tests/quality/axe.spec.ts`
   Depends on: T-sr-4, T-cm-18
-  Check: 95th percentile under 100 ms over 20 queries; first-open files at most 300 KB with `gzip -9 -n`; 0 violations
+  Check: 95th percentile under 100 ms over 20 queries; first-open files at most 300 KB with `gzip -9 -n`; 0 violations except the accepted library trade-off (solid theme, success and warn labels in light mode)
   Size: M, because measurements on the full content
   Milestone: SR1
 
