@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="ac6f732a-7a90-4e56-b257-cfcaadb45358"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+</style>
+<style>/* Semantic tokens, base tokens and color mode (§4, §7). */
+@layer pui.tokens {
+  :root {
+    /* Default: follow the system. No attribute needed, no JS, no flash (§7.1). */
+    color-scheme: light dark;
+
+    /* Backgrounds: page, then two levels of emphasis. */
+    --pui-bg: light-dark(#fff, #000);
+    --pui-bg-muted: light-dark(#f3f4f6, #111827);
+    --pui-bg-emphasis: light-dark(#e5e7eb, #1f2937);
+
+    /* Text. Muted is a shade darker than v0's #6b7280 in light mode so that it
+       keeps 4.5:1 on --pui-bg-muted too, where the card header and the addon
+       put it; #6b7280 reached 4.39:1 there. */
+    --pui-text: light-dark(#000, #fff);
+    --pui-text-muted: light-dark(#676d7b, #9ca3af);
+
+    /* Border */
+    --pui-border: light-dark(#d1d5db, #374151);
+
+    /* States: v0 tone 600 in light, 500 in dark (muted keeps 500/400).
+
+       The label on a solid fill is always the page background, which is what
+       gives the palette its v0 look. In light mode that leaves theme, success
+       and warn between 3.19:1 and 3.50:1 on pui-solid — above the 3:1 floor
+       for interface elements, below the 4.5:1 of WCAG AA. Deliberate call by
+       the maintainer: appearance first, and the tokens are one override away
+       for anyone who needs AA. Everything else, including every text use and
+       the whole dark mode, stays at or above 4.5:1. */
+    --pui-theme: light-dark(#0092cd, #07b6f0);
+    --pui-success: light-dark(#16a34a, #22c55e);
+    --pui-warn: light-dark(#d97706, #f59e0b);
+    --pui-error: light-dark(#dc2626, #ef4444);
+    --pui-muted: light-dark(#6b7280, #9ca3af);
+
+    /* Non-color: one base per concept. Components scale these with calc()
+       multipliers (§4.1). Changing a base rescales the whole library. */
+    --pui-radius: 0.375rem;
+    --pui-space: 0.25rem;
+    --pui-font-size: 0.875rem;
+    --pui-border-width: 1px;
+  }
+
+  /* data-pui-mode on <html> is the switch; color-scheme does the work (§7.1). */
+  [data-pui-mode="light"] {
+    color-scheme: light;
+  }
+
+  [data-pui-mode="dark"] {
+    color-scheme: dark;
+  }
+}
+</style>
+<style>/* Semantic aliases for design tools — the five Figma slots per role
+   (DESIGN-SYSTEM.md §6.1), derived from the library's base tokens exactly the
+   way css/styles.css derives them, so they follow light/dark and any
+   --pui-theme override. Plus the resolved size scale. Not in the npm package. */
+@layer pui.tokens {
+  :root {
+    --pui-theme-fill: var(--pui-theme);
+    --pui-theme-on-fill: var(--pui-bg);
+    --pui-theme-fill-hover: color-mix(in oklab, var(--pui-theme), var(--pui-text) 12%);
+    --pui-theme-edge: var(--pui-theme);
+    --pui-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 25%);
+    --pui-success-fill: var(--pui-success);
+    --pui-success-on-fill: var(--pui-bg);
+    --pui-success-fill-hover: color-mix(in oklab, var(--pui-success), var(--pui-text) 12%);
+    --pui-success-edge: var(--pui-success);
+    --pui-success-ink: color-mix(in oklab, var(--pui-success), var(--pui-text) 25%);
+    --pui-error-fill: var(--pui-error);
+    --pui-error-on-fill: var(--pui-bg);
+    --pui-error-fill-hover: color-mix(in oklab, var(--pui-error), var(--pui-text) 12%);
+    --pui-error-edge: var(--pui-error);
+    --pui-error-ink: color-mix(in oklab, var(--pui-error), var(--pui-text) 25%);
+    --pui-warn-fill: var(--pui-warn);
+    --pui-warn-on-fill: var(--pui-bg);
+    --pui-warn-fill-hover: color-mix(in oklab, var(--pui-warn), var(--pui-text) 12%);
+    --pui-warn-edge: var(--pui-warn);
+    --pui-warn-ink: color-mix(in oklab, var(--pui-warn), var(--pui-text) 25%);
+    --pui-muted-fill: var(--pui-muted);
+    --pui-muted-on-fill: var(--pui-bg);
+    --pui-muted-fill-hover: color-mix(in oklab, var(--pui-muted), var(--pui-text) 12%);
+    --pui-muted-edge: var(--pui-muted);
+    --pui-muted-ink: color-mix(in oklab, var(--pui-muted), var(--pui-text) 25%);
+    --pui-surface-fill: var(--pui-bg);
+    --pui-surface-on-fill: var(--pui-text);
+    --pui-surface-fill-hover: color-mix(in oklab, var(--pui-bg), var(--pui-text) 12%);
+    --pui-surface-edge: var(--pui-border);
+    --pui-surface-ink: var(--pui-text);
+    --pui-inverse-fill: var(--pui-text);
+    --pui-inverse-on-fill: var(--pui-bg);
+    --pui-inverse-fill-hover: color-mix(in oklab, var(--pui-text), var(--pui-bg) 12%);
+    --pui-inverse-edge: var(--pui-text);
+    --pui-inverse-ink: var(--pui-text);
+
+    /* Spacing: multiples of --pui-space (4px). Nothing uses a value outside this. */
+    --pui-space-0-5: calc(var(--pui-space) * 0.5);
+    --pui-space-1: var(--pui-space);
+    --pui-space-1-25: calc(var(--pui-space) * 1.25);
+    --pui-space-1-5: calc(var(--pui-space) * 1.5);
+    --pui-space-1-75: calc(var(--pui-space) * 1.75);
+    --pui-space-2: calc(var(--pui-space) * 2);
+    --pui-space-2-5: calc(var(--pui-space) * 2.5);
+    --pui-space-3: calc(var(--pui-space) * 3);
+    --pui-space-4: calc(var(--pui-space) * 4);
+    --pui-space-6: calc(var(--pui-space) * 6);
+    --pui-space-7: calc(var(--pui-space) * 7);
+    --pui-space-8: calc(var(--pui-space) * 8);
+
+    /* Radii */
+    --pui-radius-sm: calc(var(--pui-radius) * 0.5);
+    --pui-radius-inner: calc(var(--pui-radius) - var(--pui-border-width));
+    --pui-radius-lg: calc(var(--pui-radius) * 1.5);
+    --pui-radius-full: 9999px;
+
+    /* Type. The library sets no family and no body weight; these are the
+       page conventions of the repo's own preview (tests/manual/preview.html). */
+    --pui-font-sans: system-ui, sans-serif;
+    --pui-font-mono: ui-monospace, monospace;
+    --pui-font-size-small: calc(var(--pui-font-size) * 0.857);
+    --pui-line-height: 1.25;
+    --pui-font-weight-strong: 600;
+
+    /* Motion */
+    --pui-duration: 0.15s; /* @kind other */
+    --pui-easing: ease; /* @kind other */
+
+    /* Semantic surface aliases */
+    --pui-surface-page: var(--pui-bg);
+    --pui-surface-card: var(--pui-bg);
+    --pui-surface-card-header: var(--pui-bg-muted);
+    --pui-text-body: var(--pui-text);
+    --pui-text-secondary: var(--pui-text-muted);
+    --pui-backdrop: rgb(0 0 0 / 50%);
+  }
+}
+</style>
+<style>/* Style classes. They only read the contract variables (§3.1); no sizes.
+
+   The mixes interpolate in oklab, not oklch. Both describe the same space, but
+   oklch carries a hue component, and mixing a near-neutral color with white or
+   black makes Chrome serialize that hue as `none` — which then paints as hue 0.
+   The muted grey came out pink. oklab has no hue to lose, and for a saturated
+   color the two are identical.
+
+   Every value below is derived, so a new color never needs a new rule here.
+   Contrast was measured for all 7 colors x 4 styles x hover in both modes:
+   nothing drops below 4.5:1. Two derivations carry that:
+   - hover shades the color toward --pui-shade, which by default is the page
+     text, so the fill moves away from its label;
+   - the non-filled styles move the color 25% toward the page text before using
+     it as text, which is the minimum that keeps every color readable on the
+     page and on the tint of .pui-soft. */
+@layer pui.styles {
+  :where(.pui-solid, .pui-soft, .pui-outline, .pui-link) {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    /* Links, buttons and svg do not inherit color on their own. */
+    > * {
+      color: inherit;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.pui-solid, .pui-soft, .pui-outline, .pui-link) {
+      transition: none;
+    }
+  }
+
+  /* Text of the three non-filled styles. Moving toward the page text is what
+     makes the fill color readable as text: the solid fill trades contrast for
+     appearance, text does not. */
+  :where(.pui-soft, .pui-outline, .pui-link) {
+    color: var(
+      --pui-ink,
+      color-mix(in oklab, var(--pui-color), var(--pui-text) 25%)
+    );
+  }
+
+  .pui-solid {
+    background-color: var(--pui-color);
+    border-color: var(--pui-edge, var(--pui-color));
+    color: var(--pui-on-color);
+
+    &:hover {
+      background-color: color-mix(
+        in oklab,
+        var(--pui-color),
+        var(--pui-shade, var(--pui-text)) 12%
+      );
+    }
+  }
+
+  .pui-soft {
+    background-color: color-mix(in oklab, var(--pui-color) 15%, transparent);
+    border-color: transparent;
+
+    &:hover {
+      background-color: color-mix(in oklab, var(--pui-color) 22%, transparent);
+    }
+  }
+
+  .pui-outline {
+    background-color: transparent;
+    border-color: var(--pui-edge, var(--pui-color));
+
+    &:hover {
+      background-color: color-mix(in oklab, var(--pui-color) 10%, transparent);
+    }
+  }
+
+  .pui-link {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.3rem;
+    }
+  }
+}
+</style>
+<style>/* Color classes. They only set the contract variables (§3.1); no painting. */
+@layer pui.colors {
+  .pui-theme {
+    --pui-color: var(--pui-theme);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-success {
+    --pui-color: var(--pui-success);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-error {
+    --pui-color: var(--pui-error);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-warn {
+    --pui-color: var(--pui-warn);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-muted {
+    --pui-color: var(--pui-muted);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  /* Aligned with the page background. Its color *is* --pui-bg, so it also has
+     to say which ink to use when the color is not the fill. */
+  .pui-surface {
+    --pui-color: var(--pui-bg);
+    --pui-on-color: var(--pui-text);
+    --pui-edge: var(--pui-border);
+    --pui-ink: var(--pui-text);
+  }
+
+  /* Opposite of the page background. Its color *is* --pui-text, so shading
+     toward the text would be a no-op: it shades toward the background. */
+  .pui-inverse {
+    --pui-color: var(--pui-text);
+    --pui-on-color: var(--pui-bg);
+    --pui-shade: var(--pui-bg);
+  }
+}
+</style>
+<style>/* States. Last layer, so these win over shape, style and color rules without
+   any specificity tricks. Scoped to elements that carry a pui- class, never to
+   bare elements (hard rule 5). */
+@layer pui.states {
+  :where([class^="pui-"], [class*=" pui-"]) {
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    /* Keyboard focus only. The ring takes the element's own color when it has
+       one, so an error control focuses red. */
+    &:focus-visible {
+      outline: 2px solid var(--pui-color, var(--pui-theme));
+      outline-offset: 2px;
+    }
+
+    /* Invalid re-points the contract to the error color, so whatever style is
+       applied turns red without a dedicated class (§6.1). */
+    &[aria-invalid="true"] {
+      --pui-color: var(--pui-error);
+      --pui-edge: var(--pui-error);
+      --pui-ink: var(--pui-error);
+    }
+  }
+}
+</style>
+<style>/* The only helper classes the library ships. Allowed because they are used
+   together with components (§6): a pill-shaped chip or badge, or squaring a
+   corner back off.
+
+   They need their own layer: a helper and a component class have the same
+   specificity, so inside pui.components the component would win or lose by
+   source order alone, which changes with the import order of the user. */
+@layer pui.utilities {
+  .pui-rounded {
+    border-radius: var(--pui-radius);
+  }
+
+  .pui-rounded-full {
+    border-radius: 9999px;
+  }
+}
+</style>
+<style>/* Button shape. Colors come from a style class plus a color class (§3).
+   Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+
+    /* Normalize the two elements this class is used on: <button> brings UA
+       chrome, <a> brings an underline. Style classes paint over both. */
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+</style>
+<style>/* Badge shape: the smallest of the three (§6). Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 0.5) calc(var(--pui-space) * 1.75);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: calc(var(--pui-font-size) * 0.857);
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}
+</style>
+<style>/* Card shape. A card is a *surface*: it uses the page tokens directly instead
+   of the color contract, so it is usable with no extra classes. A style class
+   still wins over it, because pui.styles comes after pui.components.
+   Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-card {
+    overflow: hidden;
+    /* Without this a card is transparent, which only looks right while it sits
+       directly on the page. Over a modal backdrop, or on a tinted section, the
+       page shows through it. */
+    background-color: var(--pui-bg);
+    border: var(--pui-border-width) solid var(--pui-border);
+    border-radius: calc(var(--pui-radius) * 1.5);
+    font-size: var(--pui-font-size);
+  }
+
+  .pui-card-header {
+    padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+    background-color: var(--pui-bg-muted);
+    color: var(--pui-text-muted);
+  }
+
+  .pui-card-content {
+    display: grid;
+    gap: calc(var(--pui-space) * 3);
+    padding: calc(var(--pui-space) * 4);
+  }
+}
+</style>
+<style>/* Table shape. Cells are matched by element: a class on every <td> is not a
+   realistic API, and the selectors stay scoped under .pui-table.
+   Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--pui-font-size);
+
+    & :is(th, td) {
+      padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+      border-bottom: var(--pui-border-width) solid var(--pui-border);
+      text-align: start;
+    }
+
+    /* The very last row sits on the container's edge, so it needs no rule of
+       its own: keeping it makes a table inside a card look doubled. Matching
+       the table's last row group rather than tbody keeps the separation
+       between the body and a tfoot. */
+    & > :last-child > tr:last-child > :is(th, td) {
+      border-bottom: none;
+    }
+
+    & thead :is(th, td) {
+      color: var(--pui-text-muted);
+      font-weight: 600;
+    }
+
+    /* A footer is a summary band. Without it the last row loses its bottom
+       rule to the one above and reads as if it had fallen off the table. The
+       border-top collapses with the body's last border, so this adds a tone,
+       not a second line. */
+    & tfoot {
+      background-color: var(--pui-bg-muted);
+    }
+
+    & tfoot :is(th, td) {
+      border-top: var(--pui-border-width) solid var(--pui-border);
+    }
+  }
+
+  /* Same two modifiers as the list, on body rows only. */
+  .pui-table.pui-striped tbody tr:nth-child(even),
+  .pui-table.pui-hoverable tbody tr:hover {
+    background-color: var(--pui-bg-muted);
+  }
+}
+</style>
+<style>/* Form controls. Requires core.css.
+
+   Two things are worth knowing before changing this file:
+
+   - Borders read `var(--pui-edge, var(--pui-border))`. That is what makes
+     aria-invalid work with no extra class: pui.states points --pui-edge at the
+     error color, and every control here picks it up.
+   - The select arrow, the radio dot and the switch knob are drawn with
+     gradients rather than data URIs, because a color baked into a data URI
+     cannot follow the color mode. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  /* --- field group (§6.1) ------------------------------------------------
+     Label and message are real elements, matched by tag so the user writes no
+     extra classes: <span> is the label, <small> is the message. */
+  .pui-field-group {
+    display: grid;
+    gap: var(--pui-space);
+    font-size: var(--pui-font-size);
+
+    & > span {
+      font-size: calc(var(--pui-font-size) * 0.857);
+    }
+
+    & > small {
+      font-size: calc(var(--pui-font-size) * 0.857);
+      color: var(--pui-text-muted);
+    }
+  }
+
+  /* --- text controls ----------------------------------------------------- */
+  .pui-input {
+    appearance: none;
+    min-width: 0;
+    padding: calc(var(--pui-space) * 1.5) calc(var(--pui-space) * 3);
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    border-radius: var(--pui-radius);
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+
+    &::placeholder {
+      color: var(--pui-text-muted);
+    }
+  }
+
+  textarea.pui-input {
+    resize: vertical;
+  }
+
+  /* The arrow is drawn in currentColor, so it follows the text color in both
+     modes without shipping an image. One conic gradient rather than two linear
+     ones: two halves have to meet on a diagonal, and at this size they miss by
+     a subpixel and the tip comes out clipped. Its size matches the accordion
+     chevron, which is built from borders. */
+  select.pui-input {
+    padding-inline-end: calc(var(--pui-space) * 7);
+    background-repeat: no-repeat;
+    background-image: conic-gradient(
+      from 315deg at 50% 100%,
+      currentColor 0 90deg,
+      transparent 0
+    );
+    background-size: calc(var(--pui-font-size) * 0.6)
+      calc(var(--pui-font-size) * 0.3);
+    background-position: right calc(var(--pui-space) * 3) center;
+  }
+
+  /* --- input group + addon ----------------------------------------------
+     The group owns the border and the radius; the controls inside drop theirs
+     so the whole thing reads as one field. */
+  /* The corners are handed to the children rather than clipped with
+     overflow: hidden. Clipping would also cut the focus ring of a control
+     inside the group, and a ring drawn within the control instead disappears
+     against a solid fill. */
+  .pui-input-group {
+    display: flex;
+    align-items: stretch;
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    border-radius: var(--pui-radius);
+    font-size: var(--pui-font-size);
+
+    & > .pui-input {
+      flex: 1;
+    }
+
+    /* Anything dropped into the group gives up its own frame: the group is one
+       field with one border and one radius. */
+    & > * {
+      border: none;
+      border-radius: 0;
+    }
+
+    & > :first-child {
+      border-start-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-end-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+    }
+
+    & > :last-child {
+      border-start-end-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-end-end-radius: calc(var(--pui-radius) - var(--pui-border-width));
+    }
+  }
+
+  .pui-addon {
+    display: flex;
+    align-items: center;
+    padding-inline: calc(var(--pui-space) * 3);
+    background-color: var(--pui-bg-muted);
+    color: var(--pui-text-muted);
+    white-space: nowrap;
+  }
+
+  .pui-input-group > .pui-addon:first-child {
+    border-inline-end: var(--pui-border-width) solid var(--pui-border);
+  }
+
+  .pui-input-group > .pui-addon:last-child {
+    border-inline-start: var(--pui-border-width) solid var(--pui-border);
+  }
+
+  /* --- checkbox, radio, switch ------------------------------------------- */
+  .pui-checkbox,
+  .pui-radio,
+  .pui-switch {
+    appearance: none;
+    /* These are the only controls with a fixed size, so they cannot rely on
+       the page's box-sizing. */
+    box-sizing: border-box;
+    flex: none;
+    margin: 0;
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .pui-checkbox,
+  .pui-radio {
+    width: calc(var(--pui-font-size) * 1.143);
+    height: calc(var(--pui-font-size) * 1.143);
+    background-position: center;
+  }
+
+  .pui-checkbox {
+    border-radius: calc(var(--pui-radius) * 0.5);
+  }
+
+  .pui-radio {
+    border-radius: 9999px;
+  }
+
+  /* One rule for every checked control: the fill is the element's own color,
+     so <input class="pui-checkbox pui-success"> is green with no extra work. */
+  :is(.pui-checkbox, .pui-radio, .pui-switch):is(:checked, :indeterminate) {
+    background-color: var(--pui-color, var(--pui-theme));
+    border-color: var(--pui-color, var(--pui-theme));
+  }
+
+  .pui-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    background-size: 100%;
+  }
+
+  .pui-checkbox:indeterminate {
+    background-image: linear-gradient(#fff, #fff);
+    background-size: 55% calc(var(--pui-border-width) * 2);
+    background-position: center;
+  }
+
+  .pui-radio:checked {
+    background-image: radial-gradient(circle, #fff 0 34%, transparent 35%);
+    background-size: 100%;
+  }
+
+  .pui-switch {
+    width: calc(var(--pui-font-size) * 2.286);
+    height: calc(var(--pui-font-size) * 1.143);
+    border-radius: 9999px;
+    background-image: radial-gradient(
+      circle,
+      var(--pui-border) 0 42%,
+      transparent 43%
+    );
+    background-size: calc(var(--pui-font-size) * 1.143) 100%;
+    background-position: left center;
+    transition:
+      background-color 0.15s ease,
+      background-position 0.15s ease,
+      border-color 0.15s ease;
+
+    &:checked {
+      background-image: radial-gradient(circle, #fff 0 42%, transparent 43%);
+      background-position: right center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pui-switch {
+      transition: none;
+    }
+  }
+}
+
+@layer pui.states {
+  /* An input group is one field, so the group draws the ring and the control
+     inside does not. */
+  .pui-input-group > .pui-input:focus-visible {
+    outline: none;
+  }
+
+  /* Scoped to the field itself: a button inside the group keeps its own ring
+     instead of lighting up the whole field. */
+  .pui-input-group:has(> .pui-input:focus-visible) {
+    outline: 2px solid var(--pui-color, var(--pui-theme));
+    outline-offset: 2px;
+  }
+
+  /* The invalid control colors its own border through --pui-edge; the group's
+     message follows it (§6.1). */
+  .pui-field-group:has([aria-invalid="true"]) > small {
+    color: var(--pui-error);
+  }
+}
+</style>
+<style>/* Group: joins children into one control, removing the inner corners and the
+   doubled border between them. Requires core.css.
+
+   Children need no class of their own: v0's `group-item` (and its
+   `[class*="item"]` escape hatch) is gone. Borders are overlapped with a
+   negative margin rather than removed, so pui-outline still has a border to
+   paint on every child. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-group-row,
+  .pui-group-col,
+  .pui-group-responsive {
+    display: flex;
+  }
+
+  .pui-group-col {
+    flex-direction: column;
+  }
+
+  /* --- row ---------------------------------------------------------------- */
+  :is(.pui-group-row, .pui-group-responsive) > * {
+    border-radius: 0;
+
+    &:first-child {
+      border-start-start-radius: var(--pui-radius);
+      border-end-start-radius: var(--pui-radius);
+    }
+
+    &:last-child {
+      border-start-end-radius: var(--pui-radius);
+      border-end-end-radius: var(--pui-radius);
+    }
+
+    & + * {
+      margin-inline-start: calc(var(--pui-border-width) * -1);
+    }
+  }
+
+  /* --- column ------------------------------------------------------------- */
+  .pui-group-col > * {
+    border-radius: 0;
+
+    &:first-child {
+      border-start-start-radius: var(--pui-radius);
+      border-start-end-radius: var(--pui-radius);
+    }
+
+    &:last-child {
+      border-end-start-radius: var(--pui-radius);
+      border-end-end-radius: var(--pui-radius);
+    }
+
+    & + * {
+      margin-block-start: calc(var(--pui-border-width) * -1);
+    }
+  }
+
+  /* --- responsive ---------------------------------------------------------
+     The one hardcoded breakpoint in the library: a media query cannot read a
+     custom property. Same value as v0. */
+  @media (width < 1024px) {
+    .pui-group-responsive {
+      flex-direction: column;
+    }
+
+    .pui-group-responsive > * {
+      &:first-child {
+        border-radius: var(--pui-radius) var(--pui-radius) 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 var(--pui-radius) var(--pui-radius);
+      }
+
+      & + * {
+        margin-inline-start: 0;
+        margin-block-start: calc(var(--pui-border-width) * -1);
+      }
+    }
+  }
+
+  /* A focused child is raised so its ring is not clipped by the neighbour that
+     overlaps it. Hover is deliberately not in this list: raising on hover flips
+     which element owns the shared one-pixel edge, and the border appears to
+     move as the pointer crosses the group. */
+  :is(.pui-group-row, .pui-group-col, .pui-group-responsive)
+    > *:is(:focus-visible, :focus-within) {
+    position: relative;
+    z-index: 1;
+  }
+}
+</style>
+<style>/* Modal. The behavior is the native <dialog>: `commandfor` opens it and
+   `closedby="any"` gives it light dismiss, both without JS. Requires core.css.
+
+   The dialog itself is only a frame — put a pui-card inside it for the
+   surface, so a modal is composed from pieces that already exist. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-modal {
+    max-width: min(32rem, calc(100vw - var(--pui-space) * 8));
+    max-height: calc(100dvh - var(--pui-space) * 8);
+    /* Without this the content spills past the max height and cannot be
+       reached: a <dialog> does not scroll on its own. */
+    overflow: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: var(--pui-font-size);
+
+    &::backdrop {
+      background-color: rgb(0 0 0 / 50%);
+    }
+  }
+}
+</style>
+<style>/* Dropdown. The behavior is the native popover API: `popovertarget` on the
+   trigger, `popover` on the panel. Requires core.css.
+
+   Placement uses CSS anchor positioning, which a popover invoked by
+   `popovertarget` gets for free through its implicit anchor. It is guarded by
+   @supports so that browsers without it keep the centered UA position until
+   the Phase 5 fallback positions the panel itself. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-dropdown {
+    /* min-width below matches the anchor's width, which only lands exactly
+       with border-box: otherwise the padding and border are added on top. */
+    box-sizing: border-box;
+    width: max-content;
+    margin: 0;
+    padding: var(--pui-space);
+    border: var(--pui-border-width) solid var(--pui-border);
+    border-radius: var(--pui-radius);
+    background-color: var(--pui-bg);
+    color: inherit;
+    font-size: var(--pui-font-size);
+  }
+
+  @supports (position-area: block-end) {
+    .pui-dropdown {
+      position: absolute;
+      inset: auto;
+      margin: 0;
+      position-area: block-end span-inline-end;
+      position-try-fallbacks: flip-block, flip-inline;
+      margin-block-start: var(--pui-space);
+      min-width: anchor-size(inline);
+    }
+
+    /* Directions. The gap always sits on the side facing the trigger, and the
+       flip goes back to where the panel came from. */
+    .pui-dropdown.pui-top {
+      position-area: block-start span-inline-end;
+      position-try-fallbacks: flip-block;
+      margin: 0 0 var(--pui-space);
+    }
+
+    .pui-dropdown.pui-start {
+      position-area: inline-start span-block-end;
+      position-try-fallbacks: flip-inline;
+      margin: 0 var(--pui-space) 0 0;
+      min-width: 0;
+    }
+
+    .pui-dropdown.pui-end {
+      position-area: inline-end span-block-end;
+      position-try-fallbacks: flip-inline;
+      margin: 0 0 0 var(--pui-space);
+      min-width: 0;
+    }
+
+    /* Alignment along the other axis, for the panel that opens above or below.
+       The default lines the panel up with the trigger's starting edge, which
+       is what a menu under a button wants; a menu at the end of a header wants
+       the opposite. */
+    .pui-dropdown.pui-align-center {
+      position-area: block-end;
+    }
+
+    .pui-dropdown.pui-align-end {
+      position-area: block-end span-inline-start;
+    }
+
+    .pui-dropdown.pui-top.pui-align-center {
+      position-area: block-start;
+    }
+
+    .pui-dropdown.pui-top.pui-align-end {
+      position-area: block-start span-inline-start;
+    }
+  }
+}
+</style>
+<style>/* Icons. Not part of the Perfect UI library (it ships none) — this is the
+   author stylesheet recipe from DESIGN-SYSTEM.md §1.6: one Lucide SVG per icon,
+   used as a CSS mask and painted with currentColor. */
+.icon{display:inline-block;flex:none;width:16px;height:16px;vertical-align:-0.125em;background-color:currentColor;mask-position:center;mask-size:contain;mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat}
+.icon-bell-ring{mask-image:url("e27ec56e-5a3e-4953-b792-e3d129599d53");-webkit-mask-image:url("e27ec56e-5a3e-4953-b792-e3d129599d53")}
+.icon-bell{mask-image:url("d6444676-b84c-4140-9065-50e50bad8f9d");-webkit-mask-image:url("d6444676-b84c-4140-9065-50e50bad8f9d")}
+.icon-bold{mask-image:url("55aafd40-8da2-434c-8bb4-7cb81a7157ff");-webkit-mask-image:url("55aafd40-8da2-434c-8bb4-7cb81a7157ff")}
+.icon-calendar{mask-image:url("639022b1-5374-4943-b20f-251c366f30b8");-webkit-mask-image:url("639022b1-5374-4943-b20f-251c366f30b8")}
+.icon-check{mask-image:url("8eb261b5-c5bd-404f-ab01-ab984a672167");-webkit-mask-image:url("8eb261b5-c5bd-404f-ab01-ab984a672167")}
+.icon-chevron-down{mask-image:url("91e541a7-91ca-45db-baeb-cd363a7ccf27");-webkit-mask-image:url("91e541a7-91ca-45db-baeb-cd363a7ccf27")}
+.icon-circle-alert{mask-image:url("9e8cd715-0be1-43e1-89e6-ffaaf37d61b8");-webkit-mask-image:url("9e8cd715-0be1-43e1-89e6-ffaaf37d61b8")}
+.icon-circle-check{mask-image:url("3f339c47-ec70-4a03-ad18-0102738d3059");-webkit-mask-image:url("3f339c47-ec70-4a03-ad18-0102738d3059")}
+.icon-circle-user{mask-image:url("40641c87-c397-4608-93ae-a79b9d0653cb");-webkit-mask-image:url("40641c87-c397-4608-93ae-a79b9d0653cb")}
+.icon-circle-x{mask-image:url("6ad913cc-6fe4-4ecb-9ce4-52b75cbd91e8");-webkit-mask-image:url("6ad913cc-6fe4-4ecb-9ce4-52b75cbd91e8")}
+.icon-credit-card{mask-image:url("e4b90c3d-1da1-481a-aa80-85eeb6b891fd");-webkit-mask-image:url("e4b90c3d-1da1-481a-aa80-85eeb6b891fd")}
+.icon-download{mask-image:url("2995f8b1-c166-4dcd-be8f-90c856bae500");-webkit-mask-image:url("2995f8b1-c166-4dcd-be8f-90c856bae500")}
+.icon-file-text{mask-image:url("6d695464-3209-4f4b-a704-141ec45d9f55");-webkit-mask-image:url("6d695464-3209-4f4b-a704-141ec45d9f55")}
+.icon-folder{mask-image:url("a27db176-70ad-4e40-81bd-32e7e707852e");-webkit-mask-image:url("a27db176-70ad-4e40-81bd-32e7e707852e")}
+.icon-globe{mask-image:url("1797e27f-4499-4f3c-8bd8-ef582ad20242");-webkit-mask-image:url("1797e27f-4499-4f3c-8bd8-ef582ad20242")}
+.icon-house{mask-image:url("9cacc390-2479-431a-a51a-b6247fef7d32");-webkit-mask-image:url("9cacc390-2479-431a-a51a-b6247fef7d32")}
+.icon-image{mask-image:url("f7ed221b-9015-4908-9902-1f9f97f6a2cf");-webkit-mask-image:url("f7ed221b-9015-4908-9902-1f9f97f6a2cf")}
+.icon-italic{mask-image:url("f0f3f087-7e6c-4dc2-9625-23373b5fc237");-webkit-mask-image:url("f0f3f087-7e6c-4dc2-9625-23373b5fc237")}
+.icon-life-buoy{mask-image:url("32afb1d2-d79d-4128-829e-1c2d1f344767");-webkit-mask-image:url("32afb1d2-d79d-4128-829e-1c2d1f344767")}
+.icon-link{mask-image:url("70322e70-b103-432b-ad4a-a9ba72580d5b");-webkit-mask-image:url("70322e70-b103-432b-ad4a-a9ba72580d5b")}
+.icon-log-out{mask-image:url("92f2c83e-8d51-44bf-a66b-90e8bd5ff87e");-webkit-mask-image:url("92f2c83e-8d51-44bf-a66b-90e8bd5ff87e")}
+.icon-mail{mask-image:url("43711895-1920-4a83-8c63-5cb54df08a3b");-webkit-mask-image:url("43711895-1920-4a83-8c63-5cb54df08a3b")}
+.icon-map-pin{mask-image:url("b91f50c8-dc92-4aa5-a5e7-b84a75d049a3");-webkit-mask-image:url("b91f50c8-dc92-4aa5-a5e7-b84a75d049a3")}
+.icon-moon{mask-image:url("cb167edf-7a6a-4ae3-abd4-2fac159514de");-webkit-mask-image:url("cb167edf-7a6a-4ae3-abd4-2fac159514de")}
+.icon-pencil{mask-image:url("2961652d-2dec-415d-9779-5d00776817ed");-webkit-mask-image:url("2961652d-2dec-415d-9779-5d00776817ed")}
+.icon-phone{mask-image:url("00aff35e-0368-44cc-966b-701c8f2e7c8f");-webkit-mask-image:url("00aff35e-0368-44cc-966b-701c8f2e7c8f")}
+.icon-plus{mask-image:url("f88c8a27-eba6-4d2c-8491-62ff19b3ad77");-webkit-mask-image:url("f88c8a27-eba6-4d2c-8491-62ff19b3ad77")}
+.icon-search{mask-image:url("12fab340-c880-401c-b0d9-ac825ef9fc52");-webkit-mask-image:url("12fab340-c880-401c-b0d9-ac825ef9fc52")}
+.icon-send{mask-image:url("ea29984c-cfe1-4ea3-9ab1-bb5810a150ab");-webkit-mask-image:url("ea29984c-cfe1-4ea3-9ab1-bb5810a150ab")}
+.icon-settings{mask-image:url("3e2acc5a-7548-40e7-8695-5b08602de97a");-webkit-mask-image:url("3e2acc5a-7548-40e7-8695-5b08602de97a")}
+.icon-share-2{mask-image:url("ef3fa71a-7bf5-4d2c-b410-c9a9d03d8279");-webkit-mask-image:url("ef3fa71a-7bf5-4d2c-b410-c9a9d03d8279")}
+.icon-sheet{mask-image:url("15619f68-62b7-4d45-b154-83b84b142aab");-webkit-mask-image:url("15619f68-62b7-4d45-b154-83b84b142aab")}
+.icon-shield{mask-image:url("fc52b7b5-6483-4fb2-af5a-869a094ae224");-webkit-mask-image:url("fc52b7b5-6483-4fb2-af5a-869a094ae224")}
+.icon-smartphone{mask-image:url("95a04a33-1f29-4f36-89a2-3c686b217fe4");-webkit-mask-image:url("95a04a33-1f29-4f36-89a2-3c686b217fe4")}
+.icon-sun{mask-image:url("fc77e3e6-f43c-41cb-8fc5-a98202cac6c3");-webkit-mask-image:url("fc77e3e6-f43c-41cb-8fc5-a98202cac6c3")}
+.icon-trash-2{mask-image:url("ec994b10-ffd8-4c28-b557-7d06055d71ff");-webkit-mask-image:url("ec994b10-ffd8-4c28-b557-7d06055d71ff")}
+.icon-triangle-alert{mask-image:url("0cbcb8ca-9987-4a29-90c4-1c271be18fbf");-webkit-mask-image:url("0cbcb8ca-9987-4a29-90c4-1c271be18fbf")}
+.icon-truck{mask-image:url("2cb5bdb6-7636-4f36-b10b-5d3f88c95e4d");-webkit-mask-image:url("2cb5bdb6-7636-4f36-b10b-5d3f88c95e4d")}
+.icon-underline{mask-image:url("d0d6704a-319a-4795-a40c-cdd040301d38");-webkit-mask-image:url("d0d6704a-319a-4795-a40c-cdd040301d38")}
+.icon-user-plus{mask-image:url("de87bb18-2db2-4623-aac8-9aa6e957c79f");-webkit-mask-image:url("de87bb18-2db2-4623-aac8-9aa6e957c79f")}
+.icon-user{mask-image:url("31c6335c-58a6-4cb0-83ab-44b10a67cc25");-webkit-mask-image:url("31c6335c-58a6-4cb0-83ab-44b10a67cc25")}
+.icon-users{mask-image:url("ee679377-f621-40c2-b71d-3ca1d4dcf68a");-webkit-mask-image:url("ee679377-f621-40c2-b71d-3ca1d4dcf68a")}
+.icon-x{mask-image:url("7896f4b3-73d4-44e9-8fe7-751260803cb6");-webkit-mask-image:url("7896f4b3-73d4-44e9-8fe7-751260803cb6")}
+.icon-ellipsis-vertical{mask-image:url("882fe0fc-5b02-4065-ba6d-f80328a4d233");-webkit-mask-image:url("882fe0fc-5b02-4065-ba6d-f80328a4d233")}
+</style>
+<style>/* Page base. The library ships no reset and no body rule; this opt-in
+   class reproduces the page chrome of the repo's preview page. Put it on
+   <body> (or any root) of a design. */
+.pui-page{margin:0;background:var(--pui-bg);color:var(--pui-text);font:16px/1.5 var(--pui-font-sans)}
+/* Logos ship black; invert them in dark mode. */
+:root{--logo-filter:none; /* @kind other */}
+@media (prefers-color-scheme: dark){:root{--logo-filter:invert(1); /* @kind other */}}
+[data-pui-mode="light"]{--logo-filter:none; /* @kind other */}
+[data-pui-mode="dark"]{--logo-filter:invert(1); /* @kind other */}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("187546c4-45f9-4d34-bd78-387ea3cc4658") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("367a8c29-2654-4e6e-8a5e-0e422ac738c8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ad8c4671-b1b5-44fd-9c8f-c8dc575eb5cc") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8b0e10e5-fa98-4368-9f78-64530228a536") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0d032951-d663-4676-9f41-e1242a6ff486") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4c0b2ae9-2f55-4c84-a843-2e535726a569") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("38004564-d172-47e1-a554-2cbf71929822") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("187546c4-45f9-4d34-bd78-387ea3cc4658") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("367a8c29-2654-4e6e-8a5e-0e422ac738c8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ad8c4671-b1b5-44fd-9c8f-c8dc575eb5cc") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8b0e10e5-fa98-4368-9f78-64530228a536") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0d032951-d663-4676-9f41-e1242a6ff486") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4c0b2ae9-2f55-4c84-a843-2e535726a569") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("38004564-d172-47e1-a554-2cbf71929822") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<script src="bfcc10a4-36f3-481b-873e-6a65cad466e8"></script>
+<style>
+body{margin:0;background:var(--pui-bg)}
+html{scroll-padding-top:88px}
+a:not([class]){color:var(--pui-theme-ink)}
+a:not([class]):hover{text-decoration:underline;text-underline-offset:.3rem}
+summary::-webkit-details-marker{display:none}
+dialog[data-drawer]::backdrop{background:rgb(0 0 0 / 50%)}
+input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+input[type=color]::-webkit-color-swatch{border:0;border-radius:9999px}
+input[type=color]::-moz-color-swatch{border:0;border-radius:9999px}
+</style>
+</helmet>
+
+<div id="pui-export-root" style="background:var(--pui-bg);color:var(--pui-text);font:16px/1.5 var(--pui-font-sans);min-height:100vh;overflow-x:clip;position:relative">
+
+<div aria-hidden="true" style="position:absolute;inset:0 0 auto 0;height:720px;pointer-events:none;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(to right,color-mix(in oklab,var(--pui-border) 50%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in oklab,var(--pui-border) 50%,transparent) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 50% 60% at 55% 0%,#000 10%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 50% 60% at 55% 0%,#000 10%,transparent 75%)"></div>
+  <div style="position:absolute;width:820px;height:820px;right:-160px;top:-460px;background:radial-gradient(closest-side,color-mix(in oklab,var(--pui-theme) 22%,transparent),transparent)"></div>
+  <div style="position:absolute;width:640px;height:640px;left:30%;top:-380px;background:radial-gradient(closest-side,color-mix(in oklab,color-mix(in oklab,var(--pui-theme),#3c32aa 60%) 14%,transparent),transparent)"></div>
+</div>
+
+<header style="position:sticky;top:0;z-index:10;background:var(--pui-bg);border-bottom:1px solid var(--pui-border)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(12px,3vw,24px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="Perfect UI Landing.dc.html" class="pui-btn pui-link pui-surface" style="padding-inline:4px" aria-label="Perfect UI home">
+        <span style="display:flex;align-items:center;gap:10px">
+          <img src="3aee4310-cc74-41a6-b512-9fbe00b27b64" alt="" style="height:22px;filter:var(--logo-filter)">
+          <img src="b134aedf-3170-4d0c-b8be-c2c0d55490bd" alt="Perfect UI" style="height:16px;filter:var(--logo-filter)">
+        </span>
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <button class="pui-btn pui-outline pui-surface" data-pt="pui-ver-menu" aria-haspopup="menu" style="padding:4px 10px;gap:6px;font-family:var(--pui-font-mono);font-size:12px">{{ verLabel }}<span class="icon icon-chevron-down" style="width:14px;height:14px"></span></button>
+      <div id="pui-ver-menu" data-popover="auto" class="pui-dropdown" role="menu" style="position-area:block-end span-inline-end;position-try-fallbacks:none">
+        <div style="display:grid;gap:2px;min-width:170px">
+          <sc-for list="{{ versions }}" as="v" hint-placeholder-count="2">
+            <button class="pui-btn pui-link pui-surface" role="menuitemradio" aria-checked="{{ v.checked }}" sc-camel-on-click="{{ v.pick }}" style="justify-content:space-between;gap:16px">{{ v.label }}<span class="icon icon-check" style="opacity:{{ v.checkOpacity }}"></span></button>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+    </div>
+    <nav style="display:flex;align-items:center;gap:4px">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="#" aria-current="page" class="pui-btn pui-link pui-theme">Docs</a>
+      </sc-if>
+      <button class="pui-btn pui-outline pui-surface" sc-camel-on-click="{{ openSearch }}" aria-label="Search (Ctrl K)" style="gap:24px;padding-inline:10px 6px">
+        <span style="display:flex;align-items:center;gap:8px"><span class="icon icon-search"></span><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span>Search</span></sc-if></span>
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><kbd style="font:12px/1 var(--pui-font-mono);padding:3px 6px;border:1px solid var(--pui-border);border-radius:4px">{{ kbdK }}</kbd></sc-if>
+      </button>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <span style="width:1px;height:20px;background:var(--pui-border);margin-inline:6px"></span>
+      </sc-if>
+      <button class="pui-btn pui-link pui-surface" aria-label="{{ modeLabel }}" sc-camel-on-click="{{ toggleMode }}" style="padding-inline:10px">
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}"><span class="icon icon-moon"></span></sc-if>
+        <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}"><span class="icon icon-sun"></span></sc-if>
+      </button>
+      <sc-if value="{{ L.sideCollapsed }}" hint-placeholder-val="{{ false }}">
+        <button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ openDrawer }}" aria-label="Menu" aria-haspopup="dialog" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;50157fcd-d9fe-4f72-bac5-79399f7b82f4&quot;);-webkit-mask-image:url(&quot;50157fcd-d9fe-4f72-bac5-79399f7b82f4&quot;)"></span></button>
+      </sc-if>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <span style="display:inline-flex;padding-inline:10px">
+          <input type="color" aria-label="Theme colour" title="Theme colour" value="{{ themeHex }}" sc-camel-on-input="{{ pickTheme }}" style="appearance:none;-webkit-appearance:none;width:18px;height:18px;padding:0;margin:0;border:1px solid var(--pui-border);border-radius:9999px;background:var(--pui-theme);cursor:pointer;overflow:hidden" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px">
+        </span>
+        <a href="https://github.com/chrissgon/perfectui" class="pui-btn pui-link pui-surface" aria-label="GitHub" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;2bb2bac9-ce06-41ff-b9bb-d1751f2c8fdc&quot;);-webkit-mask-image:url(&quot;2bb2bac9-ce06-41ff-b9bb-d1751f2c8fdc&quot;)"></span></a>
+        <a href="https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI" class="pui-btn pui-link pui-surface" aria-label="Figma" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;1ff59e89-1168-4b57-8689-18ae7eb22a1a&quot;);-webkit-mask-image:url(&quot;1ff59e89-1168-4b57-8689-18ae7eb22a1a&quot;)"></span></a>
+      </sc-if>
+    </nav>
+  </div>
+</header>
+
+<div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,24px);box-sizing:border-box;display:grid;grid-template-columns:{{ L.cols }};gap:{{ L.gap }};align-items:start">
+
+  <sc-if value="{{ L.sideOpen }}" hint-placeholder-val="{{ true }}">
+  <aside aria-label="Documentation" sc-camel-on-click="{{ navClick }}" style="position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto;box-sizing:border-box;padding:28px 16px 40px 0;border-right:1px solid var(--pui-border)">
+    <nav style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ nav }}" as="grp" hint-placeholder-count="5">
+        <div>
+          <button type="button" aria-expanded="{{ grp.expanded }}" sc-camel-on-click="{{ grp.toggle }}" style="appearance:none;background:none;border:0;width:100%;font:inherit;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-text-muted)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:0">
+            <span>{{ grp.title }}</span>
+            <span class="icon icon-chevron-down" style="width:14px;height:14px;transition:transform .15s ease;transform:{{ grp.rot }}"></span>
+          </button>
+          <ul hidden="{{ grp.hidden }}" style="list-style:none;margin:4px 0 0;padding:0;flex-direction:column;gap:1px;display:{{ grp.display }}">
+            <sc-for list="{{ grp.pages }}" as="pg" hint-placeholder-count="5">
+              <li><a href="{{ pg.href }}" data-route="{{ pg.slug }}" aria-current="{{ pg.current }}" class="{{ pg.cls }}" style="display:block;padding:6px 12px;border-radius:6px;font-size:14px;text-decoration:none;color:{{ pg.color }};transition:color .15s ease,background-color .15s ease" style-hover="color:var(--pui-text)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:0">{{ pg.title }}</a></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </nav>
+  </aside>
+  </sc-if>
+
+  <main style="min-width:0;padding:{{ L.mainTop }} 0 0">
+    <article style="max-width:72ch">
+      <header style="display:flex;flex-direction:column;gap:14px;padding-bottom:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-theme-ink)">Components</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
+          <h1 style="margin:0;font-size:42px;line-height:1.1;font-weight:600;letter-spacing:-0.03em">Button</h1>
+          <span class="pui-badge pui-soft pui-theme">Changed in 1.0</span>
+        </div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--pui-text-muted);text-wrap:pretty">The <code style="font:500 0.85em/1 'Fira Code',var(--pui-font-mono);padding:2px 6px;border:1px solid var(--pui-border);border-radius:5px;color:var(--pui-text)">pui-btn</code> class turns a &lt;button&gt; or an &lt;a&gt; into a button. It brings the shape only: pair it with a style and a color.</p>
+      </header>
+      <sc-if value="{{ L.tocCollapsed }}" hint-placeholder-val="{{ false }}">
+        <details class="pui-card" style="margin-top:24px">
+          <summary style="list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;cursor:pointer;font-size:14px;font-weight:600" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:-2px;border-radius:9px"><span>On this page</span><span class="icon icon-chevron-down" style="width:14px;height:14px"></span></summary>
+          <ul style="list-style:none;margin:0;padding:4px 8px 8px;border-top:1px solid var(--pui-border)">
+            <sc-for list="{{ toc }}" as="t" hint-placeholder-count="6">
+              <li><a href="{{ t.hash }}" aria-current="{{ t.current }}" style="display:flex;align-items:center;min-height:40px;padding:0 8px;font-size:14px;text-decoration:none;color:{{ t.color }};font-weight:{{ t.weight }};border-radius:6px" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:-2px">{{ t.title }}</a></li>
+            </sc-for>
+          </ul>
+        </details>
+      </sc-if>
+
+      <sc-for list="{{ sections }}" as="sct" hint-placeholder-count="6">
+        <section id="{{ sct.id }}" data-screen-label="{{ sct.title }}" style="padding-top:48px">
+          <h2 style="margin:0 0 16px;font-size:26px;line-height:1.2;font-weight:600;letter-spacing:-0.02em"><a href="{{ sct.hash }}" style="color:inherit;text-decoration:none" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px;border-radius:4px">{{ sct.title }}</a></h2>
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <sc-for list="{{ sct.blocks }}" as="b" hint-placeholder-count="2">
+              <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0;line-height:1.7;text-wrap:pretty"><sc-for list="{{ b.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.code }}" hint-placeholder-val="{{ false }}"><code style="font:0.85em/1 'Fira Code',var(--pui-font-mono);padding:2px 6px;border:1px solid var(--pui-border);border-radius:5px;background:var(--pui-bg-muted)">{{ g.t }}</code></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></p>
+              </sc-if>
+
+              <sc-if value="{{ b.isEx }}" hint-placeholder-val="{{ false }}">
+                <div class="pui-card">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 8px 0 4px;border-bottom:1px solid var(--pui-border)">
+                    <div role="tablist" aria-label="Example" style="display:flex;flex:none">
+                      <sc-for list="{{ b.tabs }}" as="tb" hint-placeholder-count="2">
+                        <button role="tab" id="{{ tb.id }}" aria-selected="{{ tb.sel }}" aria-controls="{{ tb.panel }}" sc-camel-tab-index="{{ tb.tabIndex }}" sc-camel-on-click="{{ tb.pick }}" sc-camel-on-key-down="{{ tb.key }}" style="appearance:none;background:none;border:0;border-bottom:2px solid {{ tb.bar }};margin-bottom:-1px;padding:10px 12px;font:inherit;font-size:14px;cursor:pointer;color:{{ tb.color }};transition:color .15s ease,border-color .15s ease" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:-4px;border-radius:6px">{{ tb.label }}</button>
+                      </sc-for>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <button class="{{ b.copyCls }}" sc-camel-on-click="{{ b.copy }}" aria-live="polite" style="padding:4px 8px;min-width:86px;gap:6px"><sc-if value="{{ b.copied }}" hint-placeholder-val="{{ false }}"><span class="icon icon-check"></span></sc-if><sc-if value="{{ b.notCopied }}" hint-placeholder-val="{{ true }}"><span class="icon" style="mask-image:url(&quot;6b98fbdd-bd91-408a-b5a7-6cbb4ca89657&quot;);-webkit-mask-image:url(&quot;6b98fbdd-bd91-408a-b5a7-6cbb4ca89657&quot;)"></span></sc-if>{{ b.copyLabel }}</button>
+                    </div>
+                  </div>
+                  <sc-if value="{{ b.showPreview }}" hint-placeholder-val="{{ true }}">
+                    <div role="tabpanel" id="{{ b.pPanel }}" aria-labelledby="{{ b.pTab }}" style="padding:40px 24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px;background-position:8px 8px">
+                      <sc-if value="{{ b.isGroup }}" hint-placeholder-val="{{ false }}">
+                        <div class="pui-group-row">
+                          <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3"><button class="{{ it.cls }}">{{ it.label }}</button></sc-for>
+                        </div>
+                      </sc-if>
+                      <sc-if value="{{ b.notGroup }}" hint-placeholder-val="{{ true }}">
+                        <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+                          <button class="{{ it.cls }}" disabled="{{ it.disabled }}" aria-label="{{ it.aria }}"><sc-if value="{{ it.hasIcon }}" hint-placeholder-val="{{ false }}"><span class="{{ it.iconCls }}"></span></sc-if>{{ it.shown }}</button>
+                        </sc-for>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ b.showCode }}" hint-placeholder-val="{{ false }}">
+                    <div style="padding:12px 24px 0;font:12px/1 'Fira Code',var(--pui-font-mono);color:var(--pui-text-muted)">html</div>
+                    <pre role="tabpanel" id="{{ b.cPanel }}" aria-labelledby="{{ b.cTab }}" sc-camel-tab-index="0" style="margin:0;padding:12px 24px 20px;overflow-x:auto;font:13.5px/1.75 'Fira Code',var(--pui-font-mono);tab-size:2" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:-2px"><code><sc-for list="{{ b.hl }}" as="h" hint-placeholder-count="4"><span style="color:{{ h.c }}">{{ h.t }}</span></sc-for></code></pre>
+                  </sc-if>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}">
+                <div class="pui-card pui-soft pui-theme" role="note">
+                  <div class="pui-card-content" style="grid-template-columns:auto minmax(0,1fr);align-items:start;gap:12px">
+                    <span class="icon icon-circle-alert" style="margin-top:3px"></span>
+                    <div style="display:flex;flex-direction:column;gap:4px;line-height:1.6"><strong style="font-weight:600">Note</strong><span><sc-for list="{{ b.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.code }}" hint-placeholder-val="{{ false }}"><code style="font:0.9em/1 'Fira Code',var(--pui-font-mono)">{{ g.t }}</code></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></span></div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isWarn }}" hint-placeholder-val="{{ false }}">
+                <div class="pui-card pui-soft pui-warn" role="note">
+                  <div class="pui-card-content" style="grid-template-columns:auto minmax(0,1fr);align-items:start;gap:12px">
+                    <span class="icon icon-triangle-alert" style="margin-top:3px"></span>
+                    <div style="display:flex;flex-direction:column;gap:4px;line-height:1.6"><strong style="font-weight:600">Warning</strong><span><sc-for list="{{ b.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.code }}" hint-placeholder-val="{{ false }}"><code style="font:0.9em/1 'Fira Code',var(--pui-font-mono)">{{ g.t }}</code></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></span></div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}">
+                <div class="pui-card" style="overflow-x:auto">
+                  <sc-raw-table class="pui-table">
+                    <sc-raw-thead><sc-raw-tr><sc-raw-th scope="col">Class</sc-raw-th><sc-raw-th scope="col">What it does</sc-raw-th></sc-raw-tr></sc-raw-thead>
+                    <sc-raw-tbody>
+                      <sc-for list="{{ b.rows }}" as="row" hint-placeholder-count="6">
+                        <sc-raw-tr><sc-raw-td style="white-space:nowrap"><code style="font:13px/1 'Fira Code',var(--pui-font-mono)">{{ row.cls }}</code></sc-raw-td><sc-raw-td>{{ row.does }}</sc-raw-td></sc-raw-tr>
+                      </sc-for>
+                    </sc-raw-tbody>
+                  </sc-raw-table>
+                </div>
+              </sc-if>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+
+      <nav aria-label="Pagination" style="margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <a href="/docs/v1/components/badge" data-route="badge" sc-camel-on-click="{{ stopNav }}" class="pui-card" style="display:flex;flex-direction:column;gap:2px;padding:16px 20px;text-decoration:none;color:inherit;transition:border-color .15s ease" style-hover="border-color:var(--pui-theme)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px">
+          <span style="font-size:12px;color:var(--pui-text-muted)">Previous</span>
+          <span style="display:flex;align-items:center;gap:6px;font-weight:600;color:var(--pui-theme-ink)"><span class="icon icon-chevron-down" style="transform:rotate(90deg)"></span>Badge</span>
+        </a>
+        <a href="/docs/v1/components/card" data-route="card" sc-camel-on-click="{{ stopNav }}" class="pui-card" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding:16px 20px;text-decoration:none;color:inherit;transition:border-color .15s ease" style-hover="border-color:var(--pui-theme)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px">
+          <span style="font-size:12px;color:var(--pui-text-muted)">Next</span>
+          <span style="display:flex;align-items:center;gap:6px;font-weight:600;color:var(--pui-theme-ink)">Card<span class="icon icon-chevron-down" style="transform:rotate(-90deg)"></span></span>
+        </a>
+      </nav>
+      <div style="margin:24px 0 96px;padding-top:20px;border-top:1px solid var(--pui-border)">
+        <a href="https://github.com/chrissgon/perfectui/edit/main/docs/button.md" class="pui-btn pui-link pui-surface" style="padding-inline:0;gap:8px"><span class="icon icon-pencil"></span>Edit this page on GitHub</a>
+      </div>
+    </article>
+  </main>
+
+  <sc-if value="{{ L.tocOpen }}" hint-placeholder-val="{{ true }}">
+  <aside aria-label="On this page" style="position:sticky;top:65px;padding:52px 0 40px">
+    <p style="margin:0 0 12px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-text-muted)">On this page</p>
+    <div style="position:relative;border-left:1px solid var(--pui-border)">
+      <span aria-hidden="true" style="position:absolute;left:-1px;top:0;width:2px;height:32px;background:var(--pui-theme);border-radius:2px;transform:{{ tocY }};transition:transform .15s ease"></span>
+      <ul style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="6">
+          <li><a href="{{ t.hash }}" aria-current="{{ t.current }}" style="display:flex;align-items:center;height:32px;padding:0 14px;font-size:14px;text-decoration:none;color:{{ t.color }};font-weight:{{ t.weight }};transition:color .15s ease" style-hover="color:var(--pui-text)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:-2px;border-radius:4px">{{ t.title }}</a></li>
+        </sc-for>
+      </ul>
+    </div>
+  </aside>
+  </sc-if>
+</div>
+
+<footer style="position:relative;border-top:1px solid var(--pui-border)">
+  <div style="max-width:1440px;margin:0 auto;padding:64px 24px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <p style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.01em;max-width:28ch">Components the browser already knows how to run.</p>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px;margin-inline:-16px">
+        <a href="#" class="pui-btn pui-link pui-surface">Docs</a>
+        <a href="https://github.com/chrissgon/perfectui" class="pui-btn pui-link pui-surface">GitHub</a>
+        <a href="https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI" class="pui-btn pui-link pui-surface">Figma</a>
+        <a href="#" class="pui-btn pui-link pui-surface">MIT license</a>
+      </nav>
+    </div>
+    <img src="b134aedf-3170-4d0c-b8be-c2c0d55490bd" alt="Perfect UI" style="width:100%;height:auto;filter:var(--logo-filter)">
+  </div>
+</footer>
+
+<dialog ref="{{ drawerRef }}" data-drawer="" aria-label="Documentation menu" sc-camel-on-click="{{ onDrawerClick }}" style="margin:0;padding:0;border:0;border-right:1px solid var(--pui-border);width:min(320px,88vw);max-width:none;height:100dvh;max-height:none;background:var(--pui-bg);color:var(--pui-text)">
+  <div style="display:flex;flex-direction:column;height:100%">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 12px 12px 16px;border-bottom:1px solid var(--pui-border)">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-text-muted)">Documentation</span>
+      <button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ closeDrawer }}" aria-label="Close menu" style="padding-inline:10px"><span class="icon icon-x"></span></button>
+    </div>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px;padding:16px;border-bottom:1px solid var(--pui-border)">
+        <div class="pui-group-row" role="radiogroup" aria-label="Version">
+          <sc-for list="{{ versions }}" as="v" hint-placeholder-count="2"><button class="{{ v.segCls }}" role="radio" aria-checked="{{ v.checked }}" sc-camel-on-click="{{ v.pick }}" style="flex:1;font-family:var(--pui-font-mono);font-size:12px">{{ v.label }}</button></sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="display:inline-flex;padding-inline:10px">
+            <input type="color" aria-label="Theme colour" title="Theme colour" value="{{ themeHex }}" sc-camel-on-input="{{ pickTheme }}" style="appearance:none;-webkit-appearance:none;width:18px;height:18px;padding:0;margin:0;border:1px solid var(--pui-border);border-radius:9999px;background:var(--pui-theme);cursor:pointer;overflow:hidden" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px">
+          </span>
+          <a href="https://github.com/chrissgon/perfectui" class="pui-btn pui-link pui-surface" aria-label="GitHub" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;2bb2bac9-ce06-41ff-b9bb-d1751f2c8fdc&quot;);-webkit-mask-image:url(&quot;2bb2bac9-ce06-41ff-b9bb-d1751f2c8fdc&quot;)"></span></a>
+          <a href="https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI" class="pui-btn pui-link pui-surface" aria-label="Figma" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;1ff59e89-1168-4b57-8689-18ae7eb22a1a&quot;);-webkit-mask-image:url(&quot;1ff59e89-1168-4b57-8689-18ae7eb22a1a&quot;)"></span></a>
+        </div>
+      </div>
+    </sc-if>
+    <div sc-camel-on-click="{{ navClick }}" style="flex:1;overflow-y:auto;padding:16px 12px 32px">
+      <nav style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ nav }}" as="grp" hint-placeholder-count="5">
+        <div>
+          <button type="button" aria-expanded="{{ grp.expanded }}" sc-camel-on-click="{{ grp.toggle }}" style="appearance:none;background:none;border:0;width:100%;font:inherit;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-text-muted)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:0">
+            <span>{{ grp.title }}</span>
+            <span class="icon icon-chevron-down" style="width:14px;height:14px;transition:transform .15s ease;transform:{{ grp.rot }}"></span>
+          </button>
+          <ul hidden="{{ grp.hidden }}" style="list-style:none;margin:4px 0 0;padding:0;flex-direction:column;gap:1px;display:{{ grp.display }}">
+            <sc-for list="{{ grp.pages }}" as="pg" hint-placeholder-count="5">
+              <li><a href="{{ pg.href }}" data-route="{{ pg.slug }}" aria-current="{{ pg.current }}" class="{{ pg.cls }}" style="display:block;padding:6px 12px;border-radius:6px;font-size:14px;text-decoration:none;color:{{ pg.color }};transition:color .15s ease,background-color .15s ease" style-hover="color:var(--pui-text)" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:0">{{ pg.title }}</a></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </nav>
+    </div>
+  </div>
+</dialog>
+
+<dialog ref="{{ dlgRef }}" class="pui-modal" aria-label="Search the documentation" sc-camel-on-close="{{ onDlgClose }}" sc-camel-on-click="{{ onDlgClick }}" style="width:{{ D.w }};max-width:{{ D.w }};height:{{ D.h }};max-height:{{ D.h }};margin:{{ D.m }}">
+  <div class="pui-card" style="display:flex;flex-direction:column;height:{{ D.cardH }};box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px;border-bottom:1px solid var(--pui-border)">
+      <div class="pui-input-group" style="flex:1;min-width:0">
+        <span class="pui-addon"><span class="icon icon-search"></span></span>
+        <input ref="{{ qRef }}" class="pui-input" type="search" placeholder="Search v1 docs" aria-label="Search v1 docs" aria-controls="pui-search-results" aria-activedescendant="{{ activeDesc }}" value="{{ q }}" sc-camel-on-input="{{ onQ }}" sc-camel-on-key-down="{{ onQKey }}" sc-camel-auto-complete="off" sc-camel-spell-check="false">
+      </div>
+      <button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ closeSearch }}" aria-label="Close search" style="padding-inline:10px"><span class="icon icon-x"></span></button>
+    </div>
+    <div id="pui-search-results" role="listbox" aria-label="Results" style="flex:{{ D.flex }};max-height:{{ D.resMax }};overflow-y:auto;padding:8px">
+      <sc-if value="{{ sr.loading }}" hint-placeholder-val="{{ false }}">
+        <div aria-busy="true" style="display:flex;flex-direction:column;gap:12px;padding:12px 8px">
+          <span style="font-size:14px;color:var(--pui-text-muted)">Loading the search index</span>
+          <sc-for list="{{ skeleton }}" as="k" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="height:12px;width:{{ k.a }};border-radius:4px;background:var(--pui-bg-muted)"></span><span style="height:10px;width:{{ k.b }};border-radius:4px;background:var(--pui-bg-muted)"></span></div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ sr.empty }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;padding:28px 8px;text-align:center;font-size:14px;color:var(--pui-text-muted)">Type to search the v1 docs.</p>
+      </sc-if>
+      <sc-if value="{{ sr.none }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;padding:28px 8px;text-align:center;font-size:14px;color:var(--pui-text-muted)">{{ sr.noneText }}</p>
+      </sc-if>
+      <sc-if value="{{ sr.has }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ sr.groups }}" as="gr" hint-placeholder-count="2">
+          <div role="group" aria-label="{{ gr.page }}" style="padding:4px 0 8px">
+            <div style="padding:6px 10px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--pui-text-muted)">{{ gr.page }}</div>
+            <sc-for list="{{ gr.items }}" as="r" hint-placeholder-count="2">
+              <a id="{{ r.id }}" role="option" aria-selected="{{ r.sel }}" href="{{ r.href }}" sc-camel-on-click="{{ r.open }}" sc-camel-on-mouse-move="{{ r.hover }}" sc-camel-tab-index="-1" class="{{ r.cls }}" style="display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--pui-text);border:1px solid {{ r.edge }}">
+                <span style="font-size:14px;font-weight:600">{{ r.section }}</span>
+                <span style="font-size:13px;line-height:1.5;color:{{ r.snipColor }}"><sc-for list="{{ r.snip }}" as="s" hint-placeholder-count="1"><sc-if value="{{ s.m }}" hint-placeholder-val="{{ false }}"><mark class="pui-soft pui-theme pui-rounded" style="padding:0 2px;font-weight:600">{{ s.t }}</mark></sc-if><sc-if value="{{ s.plain }}" hint-placeholder-val="{{ true }}">{{ s.t }}</sc-if></sc-for></span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-for>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 20px;padding:10px 16px;border-top:1px solid var(--pui-border);font-size:12px;color:var(--pui-text-muted)">
+      <span style="display:flex;align-items:center;gap:6px"><kbd style="font:12px/1 var(--pui-font-mono);padding:3px 6px;border:1px solid var(--pui-border);border-radius:4px;color:var(--pui-text)">↑</kbd><kbd style="font:12px/1 var(--pui-font-mono);padding:3px 6px;border:1px solid var(--pui-border);border-radius:4px;color:var(--pui-text)">↓</kbd>to move</span>
+      <span style="display:flex;align-items:center;gap:6px"><kbd style="font:12px/1 var(--pui-font-mono);padding:3px 6px;border:1px solid var(--pui-border);border-radius:4px;color:var(--pui-text)">Enter</kbd>to open</span>
+      <span style="display:flex;align-items:center;gap:6px"><kbd style="font:12px/1 var(--pui-font-mono);padding:3px 6px;border:1px solid var(--pui-border);border-radius:4px;color:var(--pui-text)">Esc</kbd>to close</span>
+    </div>
+  </div>
+</dialog>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const NAV=[['Getting Started',['Installation','TypeScript','Tailwind CSS','Migrating from 0.x','License']],['Customization',['Dark Mode','Theme Color']],['General',['Layout Group','Float']],['Components',['Accordion','Badge','Button','Card','Chip','Dropdown','List','Modal','Table','Timeline','Tooltip']],['Forms',['Field Group','Input','Input Group','Textarea','Select','Checkbox','Radio','Switch']]];
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const C=t=>({t,code:true}),T=t=>({t,text:true});
+const segs=a=>(Array.isArray(a)?a:[a]).map(x=>typeof x==='string'?T(x):x);
+const P=a=>({kind:'p',segs:segs(a)}),NOTE=a=>({kind:'note',segs:segs(a)}),WARN=a=>({kind:'warn',segs:segs(a)});
+const B=(cls,label,o={})=>({cls,label,...o});
+const EX=(id,items,o={})=>({kind:'ex',id,items,...o});
+const ROWS=[['pui-btn','Button shape: 8 × 16 px padding, 6 px radius, 14 px text.'],['pui-solid','Fills with the colour; the label takes the page background.'],['pui-soft','Tints the background with the colour at 15%.'],['pui-outline','Draws a 1 px border and the label in the colour.'],['pui-link','No fill or border; the label underlines on hover.'],['pui-rounded-full','Pill corners. A utility, so it works on any shape.']];
+const SECTIONS=[
+ {id:'styles',title:'Styles',blocks:[
+  P('Pick one of four style classes. Each reads the colour class beside it and applies it as a fill, a tint, a border or text.'),
+  EX('styles',[B('pui-btn pui-solid pui-theme','Solid'),B('pui-btn pui-soft pui-theme','Soft'),B('pui-btn pui-outline pui-theme','Outline'),B('pui-btn pui-link pui-theme','Link')]),
+  {kind:'table',rows:ROWS}]},
+ {id:'colors',title:'Colors',blocks:[
+  P(['Add one colour class. Five follow the palette, and ',C('pui-theme'),' follows ',C('--pui-theme'),'.']),
+  EX('colors',[B('pui-btn pui-solid pui-theme','Theme'),B('pui-btn pui-solid pui-success','Success'),B('pui-btn pui-solid pui-error','Error'),B('pui-btn pui-solid pui-warn','Warn'),B('pui-btn pui-solid pui-muted','Muted')]),
+  EX('page-colors',[B('pui-btn pui-outline pui-surface','Cancel'),B('pui-btn pui-solid pui-inverse','Continue')]),
+  NOTE(['Two colors are defined against the page rather than against a palette. ',C('pui-surface'),' uses the text and border colours; ',C('pui-inverse'),' fills with the text colour.'])]},
+ {id:'rounded',title:'Rounded',blocks:[
+  P(['Add the ',C('pui-rounded-full'),' utility for pill corners.']),
+  EX('rounded',[B('pui-btn pui-solid pui-theme pui-rounded-full','Rounded')])]},
+ {id:'disabled',title:'Disabled',blocks:[
+  P(['Add the ',C('disabled'),' attribute. The button drops to 50% opacity and shows a not-allowed cursor.']),
+  EX('disabled',[B('pui-btn pui-solid pui-theme','Disabled',{disabled:true}),B('pui-btn pui-outline pui-surface','Disabled',{disabled:true})]),
+  WARN(['An ',C('<a>'),' has no ',C('disabled'),' attribute. Use ',C('aria-disabled="true"'),' and remove the ',C('href'),' so the link cannot be followed.'])]},
+ {id:'with-an-icon',title:'With an icon',blocks:[
+  P(['Place the icon before the label; the button spaces them with its own gap. An icon-only button needs an ',C('aria-label'),'.']),
+  EX('icon',[B('pui-btn pui-solid pui-theme','Send message',{icon:'mail'}),B('pui-btn pui-outline pui-error','Delete',{icon:'trash-2',iconOnly:true})])]},
+ {id:'grouping',title:'Grouping',blocks:[
+  P(['Wrap buttons in ',C('pui-group-row'),' and their borders join into one line; only the ends keep their radius.']),
+  EX('group',[B('pui-btn pui-outline pui-surface','Day'),B('pui-btn pui-outline pui-surface','Week'),B('pui-btn pui-outline pui-surface','Month')],{group:true})]}
+];
+const btnCode=b=>`<button class="${b.cls}"${b.disabled?' disabled':''}${b.iconOnly?` aria-label="${b.label}"`:''}>${b.icon?`<span class="icon icon-${b.icon}"></span>`:''}${b.iconOnly?'':b.label}</button>`;
+const exCode=e=>e.group?`<div class="pui-group-row">\n${e.items.map(b=>'  '+btnCode(b)).join('\n')}\n</div>`:e.items.map(btnCode).join('\n');
+const COL={p:'var(--pui-text-muted)',tag:'var(--pui-theme-ink)',attr:'var(--pui-warn-ink)',val:'var(--pui-success-ink)',txt:'var(--pui-text)'};
+function hl(src){const out=[],re=/(<\/?)([\w-]+)((?:\s+[\w-]+(?:="[^"]*")?)*)\s*(>)|([^<]+)/g;let m;
+ while((m=re.exec(src))){if(m[5]!==undefined){out.push({t:m[5],c:COL.txt});continue;}
+  out.push({t:m[1],c:COL.p},{t:m[2],c:COL.tag});const ar=/(\s+)([\w-]+)(?:(=)("[^"]*"))?/g;let a;
+  while((a=ar.exec(m[3]))){out.push({t:a[1],c:COL.txt},{t:a[2],c:COL.attr});if(a[3])out.push({t:'=',c:COL.p},{t:a[4],c:COL.val});}
+  out.push({t:m[4],c:COL.p});}
+ return out;}
+const plain=sg=>sg.map(x=>x.t).join('');
+const INDEX=[{page:'Button',section:'Button',text:'The pui-btn class turns a <button> or an <a> into a button. It brings the shape only: pair it with a style and a color.',href:'#top'}];
+SECTIONS.forEach(s=>s.blocks.forEach(b=>{if(b.segs)INDEX.push({page:'Button',section:s.title,text:plain(b.segs),href:'#'+s.id});if(b.rows)b.rows.forEach(r=>INDEX.push({page:'Button',section:s.title,text:r[0]+': '+r[1],href:'#'+s.id}));if(b.items)INDEX.push({page:'Button',section:s.title,text:exCode(b),href:'#'+s.id});}));
+INDEX.push(
+ {page:'Chip',section:'Styles',text:'pui-chip takes the same four styles as a button: solid, soft, outline and link.',href:'#'},
+ {page:'Badge',section:'Styles',text:'A badge is one word of status: pui-badge pui-outline pui-muted.',href:'#'},
+ {page:'Migrating from 0.x',section:'Classes',text:'style-outline-primary becomes pui-outline pui-theme; every class now has the pui- prefix.',href:'#'},
+ {page:'Input',section:'Invalid',text:'aria-invalid="true" turns the border, text and message to the error colour.',href:'#'},
+ {page:'Dark Mode',section:'Choosing a mode',text:'Set data-pui-mode="dark" on <html> to stop following the operating system.',href:'#'},
+ {page:'Theme Color',section:'Your colour',text:'Set --pui-theme on :root and every component follows it.',href:'#'});
+NAV.forEach(([,ps])=>ps.forEach(p=>INDEX.push({page:p,section:p,text:'',href:'#',title:true})));
+function lev(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+function wordHit(w,tok){if(tok.startsWith(w))return 0;if(w.length<4)return -1;const e=Math.min(lev(w,tok.slice(0,w.length)),lev(w,tok.slice(0,w.length+1)),lev(w,tok.slice(0,Math.max(1,w.length-1))));return e<=1?1:-1;}
+function findHits(text,words){const re=/[a-z0-9]+/gi;let m;const hits=[];let score=0;
+ for(const w of words){let best=null;re.lastIndex=0;while((m=re.exec(text))){const h=wordHit(w,m[0].toLowerCase());if(h>=0&&(!best||h<best.h)){best={h,i:m.index,len:m[0].length};if(h===0)break;}}if(!best)return null;hits.push(best);score+=best.h;}
+ return{hits,score};}
+function snippet(text,hits){const first=Math.min(...hits.map(h=>h.i));let s=Math.max(0,first-40),e=Math.min(text.length,s+120);const ranges=hits.map(h=>[h.i,h.i+h.len]).sort((a,b)=>a[0]-b[0]);const out=[];let p=s;if(s>0)out.push({t:'…',plain:true});
+ for(const[a,b]of ranges){if(a<p||a>=e)continue;out.push({t:text.slice(p,a),plain:true},{t:text.slice(a,b),m:true});p=b;}out.push({t:text.slice(p,e)+(e<text.length?'…':''),plain:true});return out.filter(x=>x.t);}
+function search(q){const words=q.toLowerCase().split(/\s+/).filter(Boolean);if(!words.length)return[];const res=[];
+ for(const e of INDEX){const inT=findHits(e.page+' '+e.section,words),inX=e.text?findHits(e.text,words):null;if(!inT&&!inX)continue;
+  const src=inX?e.text:e.section,hh=inX||inT;res.push({...e,score:(inT?0:10)+hh.score+(e.page==='Button'?0:1),snip:inX?snippet(e.text,inX.hits):[{t:e.title?'Page':e.section,plain:true}]});}
+ res.sort((a,b)=>a.score-b.score);const seen=new Set();return res.filter(r=>{const k=r.page+'|'+r.section;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,12);}
+
+class Component extends DCLogic {
+  state={mode:'light',w:typeof window!=='undefined'?window.innerWidth:1280,ver:'v1',open:NAV.map(()=>true),tabs:{},copied:null,active:'styles',q:'',sel:0,loading:false,themeHex:null};
+  dlgRef=React.createRef(); qRef=React.createRef(); drawerRef=React.createRef(); loaded=false;
+  openDrawer=()=>{const d=this.drawerRef.current;d&&!d.open&&d.showModal();};
+  closeDrawer=()=>{const d=this.drawerRef.current;d&&d.open&&d.close();};
+  componentDidMount(){
+    document.documentElement.setAttribute('data-pui-mode',this.state.mode);
+    this.applyAttrs();
+    this.onResize=()=>this.setState({w:window.innerWidth});window.addEventListener('resize',this.onResize);
+    this.onKey=e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();this.openSearch();}};window.addEventListener('keydown',this.onKey);
+    const vis={};this.io=new IntersectionObserver(es=>{es.forEach(e=>vis[e.target.id]=e.isIntersecting);const f=SECTIONS.find(s=>vis[s.id]);if(f&&f.id!==this.state.active)this.setState({active:f.id});},{rootMargin:'-80px 0px -60% 0px'});
+    SECTIONS.forEach(s=>{const el=document.getElementById(s.id);el&&this.io.observe(el);});
+    const m=location.hash.match(/^#search(?:=(.*))?$/);if(m)setTimeout(()=>this.openSearch(m[1]?decodeURIComponent(m[1]):''),300);
+  }
+  componentDidUpdate(pp,ps){if(!ps||ps.mode!==this.state.mode)document.documentElement.setAttribute('data-pui-mode',this.state.mode);this.applyAttrs();}
+  componentWillUnmount(){window.removeEventListener('resize',this.onResize);window.removeEventListener('keydown',this.onKey);this.io&&this.io.disconnect();clearTimeout(this.ct);clearTimeout(this.lt);}
+  applyAttrs(){document.querySelectorAll('[data-popover]').forEach(el=>{if(!el.hasAttribute('popover'))el.setAttribute('popover',el.dataset.popover);});document.querySelectorAll('[data-pt]').forEach(el=>el.setAttribute('popovertarget',el.dataset.pt));}
+  openSearch=(q)=>{const d=this.dlgRef.current;if(!d)return;const first=!this.loaded;this.setState({q:typeof q==='string'?q:this.state.q,sel:0,loading:first});if(!d.open)d.showModal();requestAnimationFrame(()=>this.qRef.current&&this.qRef.current.focus());if(first){this.lt=setTimeout(()=>{this.loaded=true;this.setState({loading:false});},900);}};
+  closeSearch=()=>{const d=this.dlgRef.current;d&&d.open&&d.close();};
+  go=(r)=>{this.closeSearch();if(r&&r.href&&r.href.startsWith('#')&&r.href.length>1){const el=document.getElementById(r.href.slice(1));if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80});else if(r.href==='#top')window.scrollTo({top:0});}};
+  copy=(id,text)=>{try{navigator.clipboard.writeText(text);}catch(e){}this.setState({copied:id});clearTimeout(this.ct);this.ct=setTimeout(()=>this.setState({copied:null}),1500);};
+  renderVals(){
+    const s=this.state,narrow=s.w<768;
+    if(s.w>=900&&this.drawerRef.current&&this.drawerRef.current.open)setTimeout(this.closeDrawer,0);
+    const results=s.loading?[]:search(s.q),sel=Math.min(s.sel,Math.max(0,results.length-1));
+    const groups=[];results.forEach((r,i)=>{let g=groups.find(x=>x.page===r.page);if(!g){g={page:r.page,items:[]};groups.push(g);}const on=i===sel;
+      g.items.push({id:'pui-sr-'+i,sel:String(on),href:r.href,section:r.section,snip:r.snip,cls:on?'pui-soft pui-theme':'',edge:on?'color-mix(in oklab,var(--pui-theme) 45%,transparent)':'transparent',snipColor:on?'var(--pui-text)':'var(--pui-text-muted)',
+        open:e=>{e.preventDefault();this.go(r);},hover:()=>{if(this.state.sel!==i)this.setState({sel:i});}});});
+    const activeIdx=Math.max(0,SECTIONS.findIndex(x=>x.id===s.active));
+    return {
+      wide:!narrow,narrow,
+      L:(()=>{const sc=s.w<900,tc=s.w<1100;return{sideCollapsed:sc,sideOpen:!sc,tocCollapsed:tc,tocOpen:!tc,
+        cols:sc?'minmax(0,1fr)':tc?'240px minmax(0,1fr)':'272px minmax(0,1fr) 208px',gap:sc?'0':tc?'40px':'48px',mainTop:s.w<640?'28px':'48px'};})(),
+      D:s.w<640?{w:'100vw',h:'100dvh',m:'0',cardH:'100%',flex:'1',resMax:'none'}:{w:'min(36rem, calc(100vw - 32px))',h:'auto',m:'10vh auto auto',cardH:'auto',flex:'none',resMax:'min(420px, 60vh)'},
+      drawerRef:this.drawerRef,openDrawer:this.openDrawer,closeDrawer:this.closeDrawer,
+      onDrawerClick:e=>{if(e.target===this.drawerRef.current)this.closeDrawer();},kbdK:(typeof navigator!=='undefined'&&/Mac/.test(navigator.platform))?'⌘K':'Ctrl K',
+      isLight:s.mode==='light',isDark:s.mode==='dark',modeLabel:s.mode==='light'?'Switch to dark mode':'Switch to light mode',
+      toggleMode:()=>this.setState({mode:s.mode==='light'?'dark':'light'}),
+      themeHex:s.themeHex||'#0092cd',pickTheme:e=>{const v=e.target.value;document.documentElement.style.setProperty('--pui-theme',v);this.setState({themeHex:v});},
+      verLabel:s.ver==='v1'?'v1 (latest)':'v0 (0.23)',
+      versions:[['v1','v1 (latest)'],['v0','v0 (0.23)']].map(([k,l])=>({label:l,checked:String(s.ver===k),checkOpacity:s.ver===k?1:0,segCls:s.ver===k?'pui-btn pui-solid pui-inverse':'pui-btn pui-outline pui-surface',pick:()=>{this.setState({ver:k});const m=document.getElementById('pui-ver-menu');m&&m.hidePopover&&m.hidePopover();}})),
+      openSearch:()=>this.openSearch(),closeSearch:this.closeSearch,
+      nav:NAV.map(([t,ps],i)=>({title:t,open:s.open[i],rot:s.open[i]?'rotate(180deg)':'rotate(0deg)',
+        expanded:String(s.open[i]),hidden:!s.open[i],display:s.open[i]?'flex':'none',
+        toggle:()=>this.setState(st=>{const a=st.open.slice();a[i]=!a[i];return{open:a};}),
+        pages:ps.map(p=>{const cur=p==='Button';return{title:p,slug:slug(p),href:`/docs/v1/${slug(t)}/${slug(p)}`,current:cur?'page':undefined,cls:cur?'pui-soft pui-theme':'',color:cur?'var(--pui-theme-ink)':'var(--pui-text-muted)'};})})),
+      navClick:e=>{const a=e.target.closest&&e.target.closest('a[data-route]');if(a){e.preventDefault();this.closeDrawer();}},
+      stopNav:e=>e.preventDefault(),
+      sections:SECTIONS.map(sec=>({id:sec.id,title:sec.title,hash:'#'+sec.id,blocks:sec.blocks.map(b=>{
+        const base={isP:b.kind==='p',isEx:b.kind==='ex',isNote:b.kind==='note',isWarn:b.kind==='warn',isTable:b.kind==='table',segs:b.segs||[],rows:(b.rows||[]).map(r=>({cls:r[0],does:r[1]}))};
+        if(b.kind!=='ex')return base;
+        const tab=s.tabs[b.id]||'preview',code=exCode(b),cp=s.copied===b.id,ids={p:'ex-'+b.id+'-preview',c:'ex-'+b.id+'-code'};
+        const pick=k=>()=>this.setState(st=>({tabs:{...st.tabs,[b.id]:k}}));
+        const key=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'||e.key==='Home'||e.key==='End'){e.preventDefault();const k=(e.key==='Home')?'preview':(e.key==='End')?'code':(tab==='preview'?'code':'preview');this.setState(st=>({tabs:{...st.tabs,[b.id]:k}}));requestAnimationFrame(()=>{const el=document.getElementById((k==='preview'?ids.p:ids.c)+'-tab');el&&el.focus();});}};
+        return {...base,
+          tabs:[['preview','Preview',ids.p],['code','Code',ids.c]].map(([k,l,id])=>({label:l,id:id+'-tab',panel:id,sel:String(tab===k),tabIndex:tab===k?0:-1,pick:pick(k),key,bar:tab===k?'var(--pui-theme)':'transparent',color:tab===k?'var(--pui-text)':'var(--pui-text-muted)'})),
+          showPreview:tab==='preview',showCode:tab==='code',pPanel:ids.p,pTab:ids.p+'-tab',cPanel:ids.c,cTab:ids.c+'-tab',
+          isGroup:!!b.group,notGroup:!b.group,
+          items:b.items.map(it=>({cls:it.cls,label:it.label,shown:it.iconOnly?'':it.label,disabled:!!it.disabled,aria:it.label,hasIcon:!!it.icon,iconCls:'icon icon-'+it.icon})),
+          hl:hl(code),copy:()=>this.copy(b.id,code),copyLabel:cp?'Copied':'Copy',copied:cp,notCopied:!cp,
+          copyCls:cp?'pui-btn pui-link pui-success':'pui-btn pui-link pui-surface'};
+      })})),
+      toc:SECTIONS.map((x,i)=>({title:x.title,hash:'#'+x.id,current:i===activeIdx?'location':undefined,color:i===activeIdx?'var(--pui-theme-ink)':'var(--pui-text-muted)',weight:i===activeIdx?600:400})),
+      tocY:'translateY('+activeIdx*32+'px)',
+      dlgRef:this.dlgRef,qRef:this.qRef,q:s.q,
+      onQ:e=>this.setState({q:e.target.value,sel:0}),
+      onQKey:e=>{if(e.key==='ArrowDown'){e.preventDefault();this.setState({sel:Math.min(sel+1,results.length-1)});}else if(e.key==='ArrowUp'){e.preventDefault();this.setState({sel:Math.max(sel-1,0)});}else if(e.key==='Enter'&&results[sel]){e.preventDefault();this.go(results[sel]);}},
+      onDlgClose:()=>{},onDlgClick:e=>{if(e.target===this.dlgRef.current)this.closeSearch();},
+      activeDesc:results.length?'pui-sr-'+sel:undefined,
+      skeleton:[{a:'38%',b:'82%'},{a:'30%',b:'70%'},{a:'44%',b:'76%'}],
+      sr:{loading:s.loading,empty:!s.loading&&!s.q.trim(),none:!s.loading&&!!s.q.trim()&&!results.length,noneText:`No results for '${s.q.trim()}'`,has:!s.loading&&results.length>0,groups}
+    };
+  }
+}
+</script>
+
+
+</body></html>

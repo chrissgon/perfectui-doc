@@ -1,0 +1,589 @@
+{
+  "resources": [
+    {
+      "id": "b134aedf-3170-4d0c-b8be-c2c0d55490bd",
+      "mime": "image/svg+xml",
+      "bytes": 15517
+    },
+    {
+      "id": "3aee4310-cc74-41a6-b512-9fbe00b27b64",
+      "mime": "image/svg+xml",
+      "bytes": 11080
+    },
+    {
+      "id": "bfcc10a4-36f3-481b-873e-6a65cad466e8",
+      "mime": "application/javascript",
+      "bytes": 127934
+    },
+    {
+      "id": "ac6f732a-7a90-4e56-b257-cfcaadb45358",
+      "mime": "text/javascript",
+      "bytes": 69150
+    },
+    {
+      "id": "da26a136-a9a7-44ad-9dd2-44a7b1d2eb1a",
+      "mime": "text/javascript",
+      "bytes": 10751
+    },
+    {
+      "id": "d086256a-1407-49c5-852b-38cf31e3f3a1",
+      "mime": "text/javascript",
+      "bytes": 131835
+    },
+    {
+      "id": "e27ec56e-5a3e-4953-b792-e3d129599d53",
+      "mime": "image/svg+xml",
+      "bytes": 8275
+    },
+    {
+      "id": "d6444676-b84c-4140-9065-50e50bad8f9d",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "55aafd40-8da2-434c-8bb4-7cb81a7157ff",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "639022b1-5374-4943-b20f-251c366f30b8",
+      "mime": "image/svg+xml",
+      "bytes": 8134
+    },
+    {
+      "id": "8eb261b5-c5bd-404f-ab01-ab984a672167",
+      "mime": "image/svg+xml",
+      "bytes": 8026
+    },
+    {
+      "id": "91e541a7-91ca-45db-baeb-cd363a7ccf27",
+      "mime": "image/svg+xml",
+      "bytes": 8030
+    },
+    {
+      "id": "9e8cd715-0be1-43e1-89e6-ffaaf37d61b8",
+      "mime": "image/svg+xml",
+      "bytes": 8138
+    },
+    {
+      "id": "3f339c47-ec70-4a03-ad18-0102738d3059",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "40641c87-c397-4608-93ae-a79b9d0653cb",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "6ad913cc-6fe4-4ecb-9ce4-52b75cbd91e8",
+      "mime": "image/svg+xml",
+      "bytes": 8095
+    },
+    {
+      "id": "e4b90c3d-1da1-481a-aa80-85eeb6b891fd",
+      "mime": "image/svg+xml",
+      "bytes": 8129
+    },
+    {
+      "id": "2995f8b1-c166-4dcd-be8f-90c856bae500",
+      "mime": "image/svg+xml",
+      "bytes": 8118
+    },
+    {
+      "id": "6d695464-3209-4f4b-a704-141ec45d9f55",
+      "mime": "image/svg+xml",
+      "bytes": 8255
+    },
+    {
+      "id": "a27db176-70ad-4e40-81bd-32e7e707852e",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "1797e27f-4499-4f3c-8bd8-ef582ad20242",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "9cacc390-2479-431a-a51a-b6247fef7d32",
+      "mime": "image/svg+xml",
+      "bytes": 8175
+    },
+    {
+      "id": "f7ed221b-9015-4908-9902-1f9f97f6a2cf",
+      "mime": "image/svg+xml",
+      "bytes": 8157
+    },
+    {
+      "id": "f0f3f087-7e6c-4dc2-9625-23373b5fc237",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "32afb1d2-d79d-4128-829e-1c2d1f344767",
+      "mime": "image/svg+xml",
+      "bytes": 8247
+    },
+    {
+      "id": "70322e70-b103-432b-ad4a-a9ba72580d5b",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "92f2c83e-8d51-44bf-a66b-90e8bd5ff87e",
+      "mime": "image/svg+xml",
+      "bytes": 8116
+    },
+    {
+      "id": "43711895-1920-4a83-8c63-5cb54df08a3b",
+      "mime": "image/svg+xml",
+      "bytes": 8107
+    },
+    {
+      "id": "b91f50c8-dc92-4aa5-a5e7-b84a75d049a3",
+      "mime": "image/svg+xml",
+      "bytes": 8155
+    },
+    {
+      "id": "cb167edf-7a6a-4ae3-abd4-2fac159514de",
+      "mime": "image/svg+xml",
+      "bytes": 8120
+    },
+    {
+      "id": "2961652d-2dec-415d-9779-5d00776817ed",
+      "mime": "image/svg+xml",
+      "bytes": 8170
+    },
+    {
+      "id": "00aff35e-0368-44cc-966b-701c8f2e7c8f",
+      "mime": "image/svg+xml",
+      "bytes": 8224
+    },
+    {
+      "id": "f88c8a27-eba6-4d2c-8491-62ff19b3ad77",
+      "mime": "image/svg+xml",
+      "bytes": 8047
+    },
+    {
+      "id": "12fab340-c880-401c-b0d9-ac825ef9fc52",
+      "mime": "image/svg+xml",
+      "bytes": 8070
+    },
+    {
+      "id": "ea29984c-cfe1-4ea3-9ab1-bb5810a150ab",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "3e2acc5a-7548-40e7-8695-5b08602de97a",
+      "mime": "image/svg+xml",
+      "bytes": 8383
+    },
+    {
+      "id": "ef3fa71a-7bf5-4d2c-b410-c9a9d03d8279",
+      "mime": "image/svg+xml",
+      "bytes": 8233
+    },
+    {
+      "id": "15619f68-62b7-4d45-b154-83b84b142aab",
+      "mime": "image/svg+xml",
+      "bytes": 8239
+    },
+    {
+      "id": "fc52b7b5-6483-4fb2-af5a-869a094ae224",
+      "mime": "image/svg+xml",
+      "bytes": 8174
+    },
+    {
+      "id": "95a04a33-1f29-4f36-89a2-3c686b217fe4",
+      "mime": "image/svg+xml",
+      "bytes": 8091
+    },
+    {
+      "id": "fc77e3e6-f43c-41cb-8fc5-a98202cac6c3",
+      "mime": "image/svg+xml",
+      "bytes": 8312
+    },
+    {
+      "id": "ec994b10-ffd8-4c28-b557-7d06055d71ff",
+      "mime": "image/svg+xml",
+      "bytes": 8198
+    },
+    {
+      "id": "0cbcb8ca-9987-4a29-90c4-1c271be18fbf",
+      "mime": "image/svg+xml",
+      "bytes": 8151
+    },
+    {
+      "id": "2cb5bdb6-7636-4f36-b10b-5d3f88c95e4d",
+      "mime": "image/svg+xml",
+      "bytes": 8280
+    },
+    {
+      "id": "d0d6704a-319a-4795-a40c-cdd040301d38",
+      "mime": "image/svg+xml",
+      "bytes": 8085
+    },
+    {
+      "id": "de87bb18-2db2-4623-aac8-9aa6e957c79f",
+      "mime": "image/svg+xml",
+      "bytes": 8191
+    },
+    {
+      "id": "31c6335c-58a6-4cb0-83ab-44b10a67cc25",
+      "mime": "image/svg+xml",
+      "bytes": 8092
+    },
+    {
+      "id": "ee679377-f621-40c2-b71d-3ca1d4dcf68a",
+      "mime": "image/svg+xml",
+      "bytes": 8187
+    },
+    {
+      "id": "7896f4b3-73d4-44e9-8fe7-751260803cb6",
+      "mime": "image/svg+xml",
+      "bytes": 8048
+    },
+    {
+      "id": "882fe0fc-5b02-4065-ba6d-f80328a4d233",
+      "mime": "image/svg+xml",
+      "bytes": 8077
+    },
+    {
+      "id": "187546c4-45f9-4d34-bd78-387ea3cc4658",
+      "mime": "font/woff2",
+      "bytes": 22056
+    },
+    {
+      "id": "367a8c29-2654-4e6e-8a5e-0e422ac738c8",
+      "mime": "font/woff2",
+      "bytes": 11924
+    },
+    {
+      "id": "ad8c4671-b1b5-44fd-9c8f-c8dc575eb5cc",
+      "mime": "font/woff2",
+      "bytes": 8580
+    },
+    {
+      "id": "8b0e10e5-fa98-4368-9f78-64530228a536",
+      "mime": "font/woff2",
+      "bytes": 13780
+    },
+    {
+      "id": "0d032951-d663-4676-9f41-e1242a6ff486",
+      "mime": "font/woff2",
+      "bytes": 4208
+    },
+    {
+      "id": "4c0b2ae9-2f55-4c84-a843-2e535726a569",
+      "mime": "font/woff2",
+      "bytes": 13232
+    },
+    {
+      "id": "38004564-d172-47e1-a554-2cbf71929822",
+      "mime": "font/woff2",
+      "bytes": 36340
+    },
+    {
+      "id": "50157fcd-d9fe-4f72-bac5-79399f7b82f4",
+      "mime": "image/svg+xml",
+      "bytes": 8030
+    },
+    {
+      "id": "2bb2bac9-ce06-41ff-b9bb-d1751f2c8fdc",
+      "mime": "image/svg+xml",
+      "bytes": 8258
+    },
+    {
+      "id": "1ff59e89-1168-4b57-8689-18ae7eb22a1a",
+      "mime": "image/svg+xml",
+      "bytes": 8289
+    },
+    {
+      "id": "6b98fbdd-bd91-408a-b5a7-6cbb4ca89657",
+      "mime": "image/svg+xml",
+      "bytes": 8088
+    }
+  ],
+  "external": [
+    "http://www.w3.org/2000/svg",
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+    "https://github.com/chrissgon/perfectui",
+    "https://github.com/chrissgon/perfectui/edit/main/docs/button.md",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+    "https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI"
+  ],
+  "pui_classes": [
+    "pui-addon",
+    "pui-align-center",
+    "pui-align-end",
+    "pui-backdrop",
+    "pui-badge",
+    "pui-bg",
+    "pui-bg-emphasis",
+    "pui-bg-muted",
+    "pui-border",
+    "pui-border-width",
+    "pui-btn",
+    "pui-card",
+    "pui-card-content",
+    "pui-card-header",
+    "pui-checkbox",
+    "pui-chip",
+    "pui-color",
+    "pui-dropdown",
+    "pui-duration",
+    "pui-easing",
+    "pui-edge",
+    "pui-end",
+    "pui-error",
+    "pui-error-edge",
+    "pui-error-fill",
+    "pui-error-fill-hover",
+    "pui-error-ink",
+    "pui-error-on-fill",
+    "pui-export-root",
+    "pui-field-group",
+    "pui-font-mono",
+    "pui-font-sans",
+    "pui-font-size",
+    "pui-font-size-small",
+    "pui-font-weight-strong",
+    "pui-group-col",
+    "pui-group-responsive",
+    "pui-group-row",
+    "pui-hoverable",
+    "pui-ink",
+    "pui-input",
+    "pui-input-group",
+    "pui-inverse",
+    "pui-inverse-edge",
+    "pui-inverse-fill",
+    "pui-inverse-fill-hover",
+    "pui-inverse-ink",
+    "pui-inverse-on-fill",
+    "pui-line-height",
+    "pui-link",
+    "pui-modal",
+    "pui-mode",
+    "pui-muted",
+    "pui-muted-edge",
+    "pui-muted-fill",
+    "pui-muted-fill-hover",
+    "pui-muted-ink",
+    "pui-muted-on-fill",
+    "pui-on-color",
+    "pui-outline",
+    "pui-page",
+    "pui-radio",
+    "pui-radius",
+    "pui-radius-full",
+    "pui-radius-inner",
+    "pui-radius-lg",
+    "pui-radius-sm",
+    "pui-rounded",
+    "pui-rounded-full",
+    "pui-search-results",
+    "pui-shade",
+    "pui-soft",
+    "pui-solid",
+    "pui-space",
+    "pui-space-0-5",
+    "pui-space-1",
+    "pui-space-1-25",
+    "pui-space-1-5",
+    "pui-space-1-75",
+    "pui-space-2",
+    "pui-space-2-5",
+    "pui-space-3",
+    "pui-space-4",
+    "pui-space-6",
+    "pui-space-7",
+    "pui-space-8",
+    "pui-sr-",
+    "pui-start",
+    "pui-striped",
+    "pui-success",
+    "pui-success-edge",
+    "pui-success-fill",
+    "pui-success-fill-hover",
+    "pui-success-ink",
+    "pui-success-on-fill",
+    "pui-surface",
+    "pui-surface-card",
+    "pui-surface-card-header",
+    "pui-surface-edge",
+    "pui-surface-fill",
+    "pui-surface-fill-hover",
+    "pui-surface-ink",
+    "pui-surface-on-fill",
+    "pui-surface-page",
+    "pui-switch",
+    "pui-table",
+    "pui-text",
+    "pui-text-body",
+    "pui-text-muted",
+    "pui-text-secondary",
+    "pui-theme",
+    "pui-theme-edge",
+    "pui-theme-fill",
+    "pui-theme-fill-hover",
+    "pui-theme-ink",
+    "pui-theme-on-fill",
+    "pui-top",
+    "pui-ver-menu",
+    "pui-warn",
+    "pui-warn-edge",
+    "pui-warn-fill",
+    "pui-warn-fill-hover",
+    "pui-warn-ink",
+    "pui-warn-on-fill"
+  ],
+  "custom_properties_defined": [
+    "--logo-filter",
+    "--pui-backdrop",
+    "--pui-bg",
+    "--pui-bg-emphasis",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-duration",
+    "--pui-easing",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-error-edge",
+    "--pui-error-fill",
+    "--pui-error-fill-hover",
+    "--pui-error-ink",
+    "--pui-error-on-fill",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-font-size-small",
+    "--pui-font-weight-strong",
+    "--pui-ink",
+    "--pui-inverse-edge",
+    "--pui-inverse-fill",
+    "--pui-inverse-fill-hover",
+    "--pui-inverse-ink",
+    "--pui-inverse-on-fill",
+    "--pui-line-height",
+    "--pui-muted",
+    "--pui-muted-edge",
+    "--pui-muted-fill",
+    "--pui-muted-fill-hover",
+    "--pui-muted-ink",
+    "--pui-muted-on-fill",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-radius-full",
+    "--pui-radius-inner",
+    "--pui-radius-lg",
+    "--pui-radius-sm",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-space-0-5",
+    "--pui-space-1",
+    "--pui-space-1-25",
+    "--pui-space-1-5",
+    "--pui-space-1-75",
+    "--pui-space-2",
+    "--pui-space-2-5",
+    "--pui-space-3",
+    "--pui-space-4",
+    "--pui-space-6",
+    "--pui-space-7",
+    "--pui-space-8",
+    "--pui-success",
+    "--pui-success-edge",
+    "--pui-success-fill",
+    "--pui-success-fill-hover",
+    "--pui-success-ink",
+    "--pui-success-on-fill",
+    "--pui-surface-card",
+    "--pui-surface-card-header",
+    "--pui-surface-edge",
+    "--pui-surface-fill",
+    "--pui-surface-fill-hover",
+    "--pui-surface-ink",
+    "--pui-surface-on-fill",
+    "--pui-surface-page",
+    "--pui-text",
+    "--pui-text-body",
+    "--pui-text-muted",
+    "--pui-text-secondary",
+    "--pui-theme",
+    "--pui-theme-edge",
+    "--pui-theme-fill",
+    "--pui-theme-fill-hover",
+    "--pui-theme-ink",
+    "--pui-theme-on-fill",
+    "--pui-warn",
+    "--pui-warn-edge",
+    "--pui-warn-fill",
+    "--pui-warn-fill-hover",
+    "--pui-warn-ink",
+    "--pui-warn-on-fill"
+  ],
+  "custom_properties_used": [
+    "--logo-filter",
+    "--pui-bg",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-muted",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-success",
+    "--pui-success-ink",
+    "--pui-text",
+    "--pui-text-muted",
+    "--pui-theme",
+    "--pui-theme-ink",
+    "--pui-warn",
+    "--pui-warn-ink"
+  ],
+  "font_families": [
+    "'Fira Code'",
+    "var(--pui-font-mono)"
+  ],
+  "fixed_colours": [
+    "#000",
+    "#0092cd",
+    "#07b6f0",
+    "#111827",
+    "#16a34a",
+    "#1f2937",
+    "#22c55e",
+    "#374151",
+    "#3c32aa",
+    "#676d7b",
+    "#6b7280",
+    "#9ca3af",
+    "#d1d5db",
+    "#d97706",
+    "#dc2626",
+    "#e5e7eb",
+    "#ef4444",
+    "#f3f4f6",
+    "#f59e0b",
+    "#fff"
+  ],
+  "counts": {
+    "styles": 19,
+    "scripts": 1,
+    "bytes": 90371
+  }
+}

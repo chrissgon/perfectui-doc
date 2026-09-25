@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="83724475-79aa-4473-876a-860cd7de75e3"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+</style>
+<style>/* Semantic tokens, base tokens and color mode (§4, §7). */
+@layer pui.tokens {
+  :root {
+    /* Default: follow the system. No attribute needed, no JS, no flash (§7.1). */
+    color-scheme: light dark;
+
+    /* Backgrounds: page, then two levels of emphasis. */
+    --pui-bg: light-dark(#fff, #000);
+    --pui-bg-muted: light-dark(#f3f4f6, #111827);
+    --pui-bg-emphasis: light-dark(#e5e7eb, #1f2937);
+
+    /* Text. Muted is a shade darker than v0's #6b7280 in light mode so that it
+       keeps 4.5:1 on --pui-bg-muted too, where the card header and the addon
+       put it; #6b7280 reached 4.39:1 there. */
+    --pui-text: light-dark(#000, #fff);
+    --pui-text-muted: light-dark(#676d7b, #9ca3af);
+
+    /* Border */
+    --pui-border: light-dark(#d1d5db, #374151);
+
+    /* States: v0 tone 600 in light, 500 in dark (muted keeps 500/400).
+
+       The label on a solid fill is always the page background, which is what
+       gives the palette its v0 look. In light mode that leaves theme, success
+       and warn between 3.19:1 and 3.50:1 on pui-solid — above the 3:1 floor
+       for interface elements, below the 4.5:1 of WCAG AA. Deliberate call by
+       the maintainer: appearance first, and the tokens are one override away
+       for anyone who needs AA. Everything else, including every text use and
+       the whole dark mode, stays at or above 4.5:1. */
+    --pui-theme: light-dark(#0092cd, #07b6f0);
+    --pui-success: light-dark(#16a34a, #22c55e);
+    --pui-warn: light-dark(#d97706, #f59e0b);
+    --pui-error: light-dark(#dc2626, #ef4444);
+    --pui-muted: light-dark(#6b7280, #9ca3af);
+
+    /* Non-color: one base per concept. Components scale these with calc()
+       multipliers (§4.1). Changing a base rescales the whole library. */
+    --pui-radius: 0.375rem;
+    --pui-space: 0.25rem;
+    --pui-font-size: 0.875rem;
+    --pui-border-width: 1px;
+  }
+
+  /* data-pui-mode on <html> is the switch; color-scheme does the work (§7.1). */
+  [data-pui-mode="light"] {
+    color-scheme: light;
+  }
+
+  [data-pui-mode="dark"] {
+    color-scheme: dark;
+  }
+}
+</style>
+<style>/* Semantic aliases for design tools — the five Figma slots per role
+   (DESIGN-SYSTEM.md §6.1), derived from the library's base tokens exactly the
+   way css/styles.css derives them, so they follow light/dark and any
+   --pui-theme override. Plus the resolved size scale. Not in the npm package. */
+@layer pui.tokens {
+  :root {
+    --pui-theme-fill: var(--pui-theme);
+    --pui-theme-on-fill: var(--pui-bg);
+    --pui-theme-fill-hover: color-mix(in oklab, var(--pui-theme), var(--pui-text) 12%);
+    --pui-theme-edge: var(--pui-theme);
+    --pui-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 25%);
+    --pui-success-fill: var(--pui-success);
+    --pui-success-on-fill: var(--pui-bg);
+    --pui-success-fill-hover: color-mix(in oklab, var(--pui-success), var(--pui-text) 12%);
+    --pui-success-edge: var(--pui-success);
+    --pui-success-ink: color-mix(in oklab, var(--pui-success), var(--pui-text) 25%);
+    --pui-error-fill: var(--pui-error);
+    --pui-error-on-fill: var(--pui-bg);
+    --pui-error-fill-hover: color-mix(in oklab, var(--pui-error), var(--pui-text) 12%);
+    --pui-error-edge: var(--pui-error);
+    --pui-error-ink: color-mix(in oklab, var(--pui-error), var(--pui-text) 25%);
+    --pui-warn-fill: var(--pui-warn);
+    --pui-warn-on-fill: var(--pui-bg);
+    --pui-warn-fill-hover: color-mix(in oklab, var(--pui-warn), var(--pui-text) 12%);
+    --pui-warn-edge: var(--pui-warn);
+    --pui-warn-ink: color-mix(in oklab, var(--pui-warn), var(--pui-text) 25%);
+    --pui-muted-fill: var(--pui-muted);
+    --pui-muted-on-fill: var(--pui-bg);
+    --pui-muted-fill-hover: color-mix(in oklab, var(--pui-muted), var(--pui-text) 12%);
+    --pui-muted-edge: var(--pui-muted);
+    --pui-muted-ink: color-mix(in oklab, var(--pui-muted), var(--pui-text) 25%);
+    --pui-surface-fill: var(--pui-bg);
+    --pui-surface-on-fill: var(--pui-text);
+    --pui-surface-fill-hover: color-mix(in oklab, var(--pui-bg), var(--pui-text) 12%);
+    --pui-surface-edge: var(--pui-border);
+    --pui-surface-ink: var(--pui-text);
+    --pui-inverse-fill: var(--pui-text);
+    --pui-inverse-on-fill: var(--pui-bg);
+    --pui-inverse-fill-hover: color-mix(in oklab, var(--pui-text), var(--pui-bg) 12%);
+    --pui-inverse-edge: var(--pui-text);
+    --pui-inverse-ink: var(--pui-text);
+
+    /* Spacing: multiples of --pui-space (4px). Nothing uses a value outside this. */
+    --pui-space-0-5: calc(var(--pui-space) * 0.5);
+    --pui-space-1: var(--pui-space);
+    --pui-space-1-25: calc(var(--pui-space) * 1.25);
+    --pui-space-1-5: calc(var(--pui-space) * 1.5);
+    --pui-space-1-75: calc(var(--pui-space) * 1.75);
+    --pui-space-2: calc(var(--pui-space) * 2);
+    --pui-space-2-5: calc(var(--pui-space) * 2.5);
+    --pui-space-3: calc(var(--pui-space) * 3);
+    --pui-space-4: calc(var(--pui-space) * 4);
+    --pui-space-6: calc(var(--pui-space) * 6);
+    --pui-space-7: calc(var(--pui-space) * 7);
+    --pui-space-8: calc(var(--pui-space) * 8);
+
+    /* Radii */
+    --pui-radius-sm: calc(var(--pui-radius) * 0.5);
+    --pui-radius-inner: calc(var(--pui-radius) - var(--pui-border-width));
+    --pui-radius-lg: calc(var(--pui-radius) * 1.5);
+    --pui-radius-full: 9999px;
+
+    /* Type. The library sets no family and no body weight; these are the
+       page conventions of the repo's own preview (tests/manual/preview.html). */
+    --pui-font-sans: system-ui, sans-serif;
+    --pui-font-mono: ui-monospace, monospace;
+    --pui-font-size-small: calc(var(--pui-font-size) * 0.857);
+    --pui-line-height: 1.25;
+    --pui-font-weight-strong: 600;
+
+    /* Motion */
+    --pui-duration: 0.15s; /* @kind other */
+    --pui-easing: ease; /* @kind other */
+
+    /* Semantic surface aliases */
+    --pui-surface-page: var(--pui-bg);
+    --pui-surface-card: var(--pui-bg);
+    --pui-surface-card-header: var(--pui-bg-muted);
+    --pui-text-body: var(--pui-text);
+    --pui-text-secondary: var(--pui-text-muted);
+    --pui-backdrop: rgb(0 0 0 / 50%);
+  }
+}
+</style>
+<style>/* Style classes. They only read the contract variables (§3.1); no sizes.
+
+   The mixes interpolate in oklab, not oklch. Both describe the same space, but
+   oklch carries a hue component, and mixing a near-neutral color with white or
+   black makes Chrome serialize that hue as `none` — which then paints as hue 0.
+   The muted grey came out pink. oklab has no hue to lose, and for a saturated
+   color the two are identical.
+
+   Every value below is derived, so a new color never needs a new rule here.
+   Contrast was measured for all 7 colors x 4 styles x hover in both modes:
+   nothing drops below 4.5:1. Two derivations carry that:
+   - hover shades the color toward --pui-shade, which by default is the page
+     text, so the fill moves away from its label;
+   - the non-filled styles move the color 25% toward the page text before using
+     it as text, which is the minimum that keeps every color readable on the
+     page and on the tint of .pui-soft. */
+@layer pui.styles {
+  :where(.pui-solid, .pui-soft, .pui-outline, .pui-link) {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    /* Links, buttons and svg do not inherit color on their own. */
+    > * {
+      color: inherit;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.pui-solid, .pui-soft, .pui-outline, .pui-link) {
+      transition: none;
+    }
+  }
+
+  /* Text of the three non-filled styles. Moving toward the page text is what
+     makes the fill color readable as text: the solid fill trades contrast for
+     appearance, text does not. */
+  :where(.pui-soft, .pui-outline, .pui-link) {
+    color: var(
+      --pui-ink,
+      color-mix(in oklab, var(--pui-color), var(--pui-text) 25%)
+    );
+  }
+
+  .pui-solid {
+    background-color: var(--pui-color);
+    border-color: var(--pui-edge, var(--pui-color));
+    color: var(--pui-on-color);
+
+    &:hover {
+      background-color: color-mix(
+        in oklab,
+        var(--pui-color),
+        var(--pui-shade, var(--pui-text)) 12%
+      );
+    }
+  }
+
+  .pui-soft {
+    background-color: color-mix(in oklab, var(--pui-color) 15%, transparent);
+    border-color: transparent;
+
+    &:hover {
+      background-color: color-mix(in oklab, var(--pui-color) 22%, transparent);
+    }
+  }
+
+  .pui-outline {
+    background-color: transparent;
+    border-color: var(--pui-edge, var(--pui-color));
+
+    &:hover {
+      background-color: color-mix(in oklab, var(--pui-color) 10%, transparent);
+    }
+  }
+
+  .pui-link {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.3rem;
+    }
+  }
+}
+</style>
+<style>/* Color classes. They only set the contract variables (§3.1); no painting. */
+@layer pui.colors {
+  .pui-theme {
+    --pui-color: var(--pui-theme);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-success {
+    --pui-color: var(--pui-success);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-error {
+    --pui-color: var(--pui-error);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-warn {
+    --pui-color: var(--pui-warn);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  .pui-muted {
+    --pui-color: var(--pui-muted);
+    --pui-on-color: var(--pui-bg);
+  }
+
+  /* Aligned with the page background. Its color *is* --pui-bg, so it also has
+     to say which ink to use when the color is not the fill. */
+  .pui-surface {
+    --pui-color: var(--pui-bg);
+    --pui-on-color: var(--pui-text);
+    --pui-edge: var(--pui-border);
+    --pui-ink: var(--pui-text);
+  }
+
+  /* Opposite of the page background. Its color *is* --pui-text, so shading
+     toward the text would be a no-op: it shades toward the background. */
+  .pui-inverse {
+    --pui-color: var(--pui-text);
+    --pui-on-color: var(--pui-bg);
+    --pui-shade: var(--pui-bg);
+  }
+}
+</style>
+<style>/* States. Last layer, so these win over shape, style and color rules without
+   any specificity tricks. Scoped to elements that carry a pui- class, never to
+   bare elements (hard rule 5). */
+@layer pui.states {
+  :where([class^="pui-"], [class*=" pui-"]) {
+    &:disabled,
+    &[disabled],
+    &[aria-disabled="true"] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    /* Keyboard focus only. The ring takes the element's own color when it has
+       one, so an error control focuses red. */
+    &:focus-visible {
+      outline: 2px solid var(--pui-color, var(--pui-theme));
+      outline-offset: 2px;
+    }
+
+    /* Invalid re-points the contract to the error color, so whatever style is
+       applied turns red without a dedicated class (§6.1). */
+    &[aria-invalid="true"] {
+      --pui-color: var(--pui-error);
+      --pui-edge: var(--pui-error);
+      --pui-ink: var(--pui-error);
+    }
+  }
+}
+</style>
+<style>/* The only helper classes the library ships. Allowed because they are used
+   together with components (§6): a pill-shaped chip or badge, or squaring a
+   corner back off.
+
+   They need their own layer: a helper and a component class have the same
+   specificity, so inside pui.components the component would win or lose by
+   source order alone, which changes with the import order of the user. */
+@layer pui.utilities {
+  .pui-rounded {
+    border-radius: var(--pui-radius);
+  }
+
+  .pui-rounded-full {
+    border-radius: 9999px;
+  }
+}
+</style>
+<style>/* Button shape. Colors come from a style class plus a color class (§3).
+   Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+
+    /* Normalize the two elements this class is used on: <button> brings UA
+       chrome, <a> brings an underline. Style classes paint over both. */
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+</style>
+<style>/* Chip shape: one step smaller than pui-btn, one step larger than pui-badge
+   (§6). Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 1) calc(var(--pui-space) * 3);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}
+</style>
+<style>/* Badge shape: the smallest of the three (§6). Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 0.5) calc(var(--pui-space) * 1.75);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: calc(var(--pui-font-size) * 0.857);
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}
+</style>
+<style>/* Card shape. A card is a *surface*: it uses the page tokens directly instead
+   of the color contract, so it is usable with no extra classes. A style class
+   still wins over it, because pui.styles comes after pui.components.
+   Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-card {
+    overflow: hidden;
+    /* Without this a card is transparent, which only looks right while it sits
+       directly on the page. Over a modal backdrop, or on a tinted section, the
+       page shows through it. */
+    background-color: var(--pui-bg);
+    border: var(--pui-border-width) solid var(--pui-border);
+    border-radius: calc(var(--pui-radius) * 1.5);
+    font-size: var(--pui-font-size);
+  }
+
+  .pui-card-header {
+    padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+    background-color: var(--pui-bg-muted);
+    color: var(--pui-text-muted);
+  }
+
+  .pui-card-content {
+    display: grid;
+    gap: calc(var(--pui-space) * 3);
+    padding: calc(var(--pui-space) * 4);
+  }
+}
+</style>
+<style>/* Form controls. Requires core.css.
+
+   Two things are worth knowing before changing this file:
+
+   - Borders read `var(--pui-edge, var(--pui-border))`. That is what makes
+     aria-invalid work with no extra class: pui.states points --pui-edge at the
+     error color, and every control here picks it up.
+   - The select arrow, the radio dot and the switch knob are drawn with
+     gradients rather than data URIs, because a color baked into a data URI
+     cannot follow the color mode. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  /* --- field group (§6.1) ------------------------------------------------
+     Label and message are real elements, matched by tag so the user writes no
+     extra classes: <span> is the label, <small> is the message. */
+  .pui-field-group {
+    display: grid;
+    gap: var(--pui-space);
+    font-size: var(--pui-font-size);
+
+    & > span {
+      font-size: calc(var(--pui-font-size) * 0.857);
+    }
+
+    & > small {
+      font-size: calc(var(--pui-font-size) * 0.857);
+      color: var(--pui-text-muted);
+    }
+  }
+
+  /* --- text controls ----------------------------------------------------- */
+  .pui-input {
+    appearance: none;
+    min-width: 0;
+    padding: calc(var(--pui-space) * 1.5) calc(var(--pui-space) * 3);
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    border-radius: var(--pui-radius);
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+
+    &::placeholder {
+      color: var(--pui-text-muted);
+    }
+  }
+
+  textarea.pui-input {
+    resize: vertical;
+  }
+
+  /* The arrow is drawn in currentColor, so it follows the text color in both
+     modes without shipping an image. One conic gradient rather than two linear
+     ones: two halves have to meet on a diagonal, and at this size they miss by
+     a subpixel and the tip comes out clipped. Its size matches the accordion
+     chevron, which is built from borders. */
+  select.pui-input {
+    padding-inline-end: calc(var(--pui-space) * 7);
+    background-repeat: no-repeat;
+    background-image: conic-gradient(
+      from 315deg at 50% 100%,
+      currentColor 0 90deg,
+      transparent 0
+    );
+    background-size: calc(var(--pui-font-size) * 0.6)
+      calc(var(--pui-font-size) * 0.3);
+    background-position: right calc(var(--pui-space) * 3) center;
+  }
+
+  /* --- input group + addon ----------------------------------------------
+     The group owns the border and the radius; the controls inside drop theirs
+     so the whole thing reads as one field. */
+  /* The corners are handed to the children rather than clipped with
+     overflow: hidden. Clipping would also cut the focus ring of a control
+     inside the group, and a ring drawn within the control instead disappears
+     against a solid fill. */
+  .pui-input-group {
+    display: flex;
+    align-items: stretch;
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    border-radius: var(--pui-radius);
+    font-size: var(--pui-font-size);
+
+    & > .pui-input {
+      flex: 1;
+    }
+
+    /* Anything dropped into the group gives up its own frame: the group is one
+       field with one border and one radius. */
+    & > * {
+      border: none;
+      border-radius: 0;
+    }
+
+    & > :first-child {
+      border-start-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-end-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+    }
+
+    & > :last-child {
+      border-start-end-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-end-end-radius: calc(var(--pui-radius) - var(--pui-border-width));
+    }
+  }
+
+  .pui-addon {
+    display: flex;
+    align-items: center;
+    padding-inline: calc(var(--pui-space) * 3);
+    background-color: var(--pui-bg-muted);
+    color: var(--pui-text-muted);
+    white-space: nowrap;
+  }
+
+  .pui-input-group > .pui-addon:first-child {
+    border-inline-end: var(--pui-border-width) solid var(--pui-border);
+  }
+
+  .pui-input-group > .pui-addon:last-child {
+    border-inline-start: var(--pui-border-width) solid var(--pui-border);
+  }
+
+  /* --- checkbox, radio, switch ------------------------------------------- */
+  .pui-checkbox,
+  .pui-radio,
+  .pui-switch {
+    appearance: none;
+    /* These are the only controls with a fixed size, so they cannot rely on
+       the page's box-sizing. */
+    box-sizing: border-box;
+    flex: none;
+    margin: 0;
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .pui-checkbox,
+  .pui-radio {
+    width: calc(var(--pui-font-size) * 1.143);
+    height: calc(var(--pui-font-size) * 1.143);
+    background-position: center;
+  }
+
+  .pui-checkbox {
+    border-radius: calc(var(--pui-radius) * 0.5);
+  }
+
+  .pui-radio {
+    border-radius: 9999px;
+  }
+
+  /* One rule for every checked control: the fill is the element's own color,
+     so <input class="pui-checkbox pui-success"> is green with no extra work. */
+  :is(.pui-checkbox, .pui-radio, .pui-switch):is(:checked, :indeterminate) {
+    background-color: var(--pui-color, var(--pui-theme));
+    border-color: var(--pui-color, var(--pui-theme));
+  }
+
+  .pui-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    background-size: 100%;
+  }
+
+  .pui-checkbox:indeterminate {
+    background-image: linear-gradient(#fff, #fff);
+    background-size: 55% calc(var(--pui-border-width) * 2);
+    background-position: center;
+  }
+
+  .pui-radio:checked {
+    background-image: radial-gradient(circle, #fff 0 34%, transparent 35%);
+    background-size: 100%;
+  }
+
+  .pui-switch {
+    width: calc(var(--pui-font-size) * 2.286);
+    height: calc(var(--pui-font-size) * 1.143);
+    border-radius: 9999px;
+    background-image: radial-gradient(
+      circle,
+      var(--pui-border) 0 42%,
+      transparent 43%
+    );
+    background-size: calc(var(--pui-font-size) * 1.143) 100%;
+    background-position: left center;
+    transition:
+      background-color 0.15s ease,
+      background-position 0.15s ease,
+      border-color 0.15s ease;
+
+    &:checked {
+      background-image: radial-gradient(circle, #fff 0 42%, transparent 43%);
+      background-position: right center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pui-switch {
+      transition: none;
+    }
+  }
+}
+
+@layer pui.states {
+  /* An input group is one field, so the group draws the ring and the control
+     inside does not. */
+  .pui-input-group > .pui-input:focus-visible {
+    outline: none;
+  }
+
+  /* Scoped to the field itself: a button inside the group keeps its own ring
+     instead of lighting up the whole field. */
+  .pui-input-group:has(> .pui-input:focus-visible) {
+    outline: 2px solid var(--pui-color, var(--pui-theme));
+    outline-offset: 2px;
+  }
+
+  /* The invalid control colors its own border through --pui-edge; the group's
+     message follows it (§6.1). */
+  .pui-field-group:has([aria-invalid="true"]) > small {
+    color: var(--pui-error);
+  }
+}
+</style>
+<style>/* Group: joins children into one control, removing the inner corners and the
+   doubled border between them. Requires core.css.
+
+   Children need no class of their own: v0's `group-item` (and its
+   `[class*="item"]` escape hatch) is gone. Borders are overlapped with a
+   negative margin rather than removed, so pui-outline still has a border to
+   paint on every child. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-group-row,
+  .pui-group-col,
+  .pui-group-responsive {
+    display: flex;
+  }
+
+  .pui-group-col {
+    flex-direction: column;
+  }
+
+  /* --- row ---------------------------------------------------------------- */
+  :is(.pui-group-row, .pui-group-responsive) > * {
+    border-radius: 0;
+
+    &:first-child {
+      border-start-start-radius: var(--pui-radius);
+      border-end-start-radius: var(--pui-radius);
+    }
+
+    &:last-child {
+      border-start-end-radius: var(--pui-radius);
+      border-end-end-radius: var(--pui-radius);
+    }
+
+    & + * {
+      margin-inline-start: calc(var(--pui-border-width) * -1);
+    }
+  }
+
+  /* --- column ------------------------------------------------------------- */
+  .pui-group-col > * {
+    border-radius: 0;
+
+    &:first-child {
+      border-start-start-radius: var(--pui-radius);
+      border-start-end-radius: var(--pui-radius);
+    }
+
+    &:last-child {
+      border-end-start-radius: var(--pui-radius);
+      border-end-end-radius: var(--pui-radius);
+    }
+
+    & + * {
+      margin-block-start: calc(var(--pui-border-width) * -1);
+    }
+  }
+
+  /* --- responsive ---------------------------------------------------------
+     The one hardcoded breakpoint in the library: a media query cannot read a
+     custom property. Same value as v0. */
+  @media (width < 1024px) {
+    .pui-group-responsive {
+      flex-direction: column;
+    }
+
+    .pui-group-responsive > * {
+      &:first-child {
+        border-radius: var(--pui-radius) var(--pui-radius) 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 var(--pui-radius) var(--pui-radius);
+      }
+
+      & + * {
+        margin-inline-start: 0;
+        margin-block-start: calc(var(--pui-border-width) * -1);
+      }
+    }
+  }
+
+  /* A focused child is raised so its ring is not clipped by the neighbour that
+     overlaps it. Hover is deliberately not in this list: raising on hover flips
+     which element owns the shared one-pixel edge, and the border appears to
+     move as the pointer crosses the group. */
+  :is(.pui-group-row, .pui-group-col, .pui-group-responsive)
+    > *:is(:focus-visible, :focus-within) {
+    position: relative;
+    z-index: 1;
+  }
+}
+</style>
+<style>/* Accordion. Exclusive opening is native: give the items the same `name` on
+   <details> and the browser closes the others. Zero JS. Requires core.css.
+
+   Consecutive items read as one block: they share the 1px line between them,
+   and only the outer corners stay round. Spacing them apart instead is two
+   declarations of author CSS, documented in docs/accordion.md. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-accordion {
+    display: grid;
+    font-size: var(--pui-font-size);
+  }
+
+  /* No overflow clipping: it would cut the summary's focus ring in half. */
+  .pui-accordion-item {
+    border: var(--pui-border-width) solid var(--pui-edge, var(--pui-border));
+    /* Squared by default, rounded again at the two ends below, so a lone item
+       still gets all four corners: it is both the first child and the last. */
+    border-radius: 0;
+
+    /* Same joining as pui-group-col, on the accordion's own children so that
+       importing this file alone is enough. The borders overlap rather than one
+       of them being removed, which keeps a recolored item's own border whole. */
+    & + .pui-accordion-item {
+      margin-block-start: calc(var(--pui-border-width) * -1);
+    }
+
+    &:first-child {
+      border-start-start-radius: var(--pui-radius);
+      border-start-end-radius: var(--pui-radius);
+    }
+
+    &:last-child {
+      border-end-start-radius: var(--pui-radius);
+      border-end-end-radius: var(--pui-radius);
+    }
+
+    & > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(var(--pui-space) * 2);
+      padding: calc(var(--pui-space) * 2) calc(var(--pui-space) * 4);
+      /* Nothing is painted with this: it is what shapes the focus ring, which
+         follows the radius of the element it surrounds. One border width is
+         taken off so the ring's corner ends up concentric with the item's, and
+         the corners it takes are the ones its item kept. `inherit` cannot be
+         used — a <summary> is slotted into the shadow root of <details>, so it
+         inherits from that slot, not from the item. */
+      border-radius: 0;
+      cursor: pointer;
+      user-select: none;
+      /* Hide the default marker: `list-style` covers Chrome and Firefox, the
+         pseudo-element covers Safari. */
+      list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      /* Chevron drawn with borders, so it follows the text color. The bottom
+         border is zero on purpose: that makes the element's box exactly the
+         triangle, so rotating it 180deg spins it in place instead of swinging
+         it around a box that is twice as tall. */
+      &::after {
+        content: "";
+        flex: none;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: calc(var(--pui-font-size) * 0.3)
+          calc(var(--pui-font-size) * 0.3) 0;
+        border-color: currentColor transparent transparent;
+        transition: rotate 0.15s ease;
+      }
+    }
+
+    &:first-child > summary {
+      border-start-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-start-end-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+    }
+
+    /* Only while closed: once the item is open the panel owns the bottom of it
+       and the summary's lower corners are in the middle of the block. */
+    &:last-child:not([open]) > summary {
+      border-end-start-radius: calc(
+        var(--pui-radius) - var(--pui-border-width)
+      );
+      border-end-end-radius: calc(var(--pui-radius) - var(--pui-border-width));
+    }
+
+    &[open] > summary::after {
+      rotate: 180deg;
+    }
+
+    /* Bring your own icon: put pui-accordion-icon inside the summary and the
+       drawn chevron steps aside. Rotation and placement stay ours. */
+    & > summary:has(.pui-accordion-icon)::after {
+      content: none;
+    }
+
+    & > summary > .pui-accordion-icon {
+      flex: none;
+      margin-inline-start: auto;
+      transition: rotate 0.15s ease;
+    }
+
+    &[open] > summary > .pui-accordion-icon {
+      rotate: 180deg;
+    }
+
+    & > :not(summary) {
+      padding: 0 calc(var(--pui-space) * 4) calc(var(--pui-space) * 4);
+    }
+  }
+
+  /* The third modifier in the library, and it earns its place the same way the
+     other two do: `[open]` is a structural selector, so no combination of
+     classes on the item can say "only while this one is expanded" (§6).
+     It is v0's `accordion-accented`, down to the tone — a card header's, not
+     --pui-bg-emphasis, which stays free for whoever needs a third level. */
+  .pui-accordion.pui-highlighted > .pui-accordion-item[open] {
+    background-color: var(--pui-bg-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pui-accordion-item > summary::after,
+    .pui-accordion-item > summary > .pui-accordion-icon {
+      transition: none;
+    }
+  }
+}
+
+@layer pui.states {
+  /* The item that owns the focus is raised, or the ring is painted under the
+     neighbour that overlaps it by a border width. Same reason as in a group,
+     and hover is left out of it there for a reason too. */
+  .pui-accordion-item:has(> summary:focus-visible) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* The class is on the <details>, not on the <summary>, so the library's own
+     focus rule never reaches the element the user actually focuses, and the
+     browser's default ring shows through instead. */
+  .pui-accordion-item > summary:focus-visible {
+    outline: 2px solid var(--pui-color, var(--pui-theme));
+    /* The summary sits inside the item's border, so the offset carries that
+       border width as well. Without it the ring hugs this component one pixel
+       tighter than every other one. */
+    outline-offset: calc(2px + var(--pui-border-width));
+  }
+}
+</style>
+<style>/* Modal. The behavior is the native <dialog>: `commandfor` opens it and
+   `closedby="any"` gives it light dismiss, both without JS. Requires core.css.
+
+   The dialog itself is only a frame — put a pui-card inside it for the
+   surface, so a modal is composed from pieces that already exist. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-modal {
+    max-width: min(32rem, calc(100vw - var(--pui-space) * 8));
+    max-height: calc(100dvh - var(--pui-space) * 8);
+    /* Without this the content spills past the max height and cannot be
+       reached: a <dialog> does not scroll on its own. */
+    overflow: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: var(--pui-font-size);
+
+    &::backdrop {
+      background-color: rgb(0 0 0 / 50%);
+    }
+  }
+}
+</style>
+<style>/* Dropdown. The behavior is the native popover API: `popovertarget` on the
+   trigger, `popover` on the panel. Requires core.css.
+
+   Placement uses CSS anchor positioning, which a popover invoked by
+   `popovertarget` gets for free through its implicit anchor. It is guarded by
+   @supports so that browsers without it keep the centered UA position until
+   the Phase 5 fallback positions the panel itself. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-dropdown {
+    /* min-width below matches the anchor's width, which only lands exactly
+       with border-box: otherwise the padding and border are added on top. */
+    box-sizing: border-box;
+    width: max-content;
+    margin: 0;
+    padding: var(--pui-space);
+    border: var(--pui-border-width) solid var(--pui-border);
+    border-radius: var(--pui-radius);
+    background-color: var(--pui-bg);
+    color: inherit;
+    font-size: var(--pui-font-size);
+  }
+
+  @supports (position-area: block-end) {
+    .pui-dropdown {
+      position: absolute;
+      inset: auto;
+      margin: 0;
+      position-area: block-end span-inline-end;
+      position-try-fallbacks: flip-block, flip-inline;
+      margin-block-start: var(--pui-space);
+      min-width: anchor-size(inline);
+    }
+
+    /* Directions. The gap always sits on the side facing the trigger, and the
+       flip goes back to where the panel came from. */
+    .pui-dropdown.pui-top {
+      position-area: block-start span-inline-end;
+      position-try-fallbacks: flip-block;
+      margin: 0 0 var(--pui-space);
+    }
+
+    .pui-dropdown.pui-start {
+      position-area: inline-start span-block-end;
+      position-try-fallbacks: flip-inline;
+      margin: 0 var(--pui-space) 0 0;
+      min-width: 0;
+    }
+
+    .pui-dropdown.pui-end {
+      position-area: inline-end span-block-end;
+      position-try-fallbacks: flip-inline;
+      margin: 0 0 0 var(--pui-space);
+      min-width: 0;
+    }
+
+    /* Alignment along the other axis, for the panel that opens above or below.
+       The default lines the panel up with the trigger's starting edge, which
+       is what a menu under a button wants; a menu at the end of a header wants
+       the opposite. */
+    .pui-dropdown.pui-align-center {
+      position-area: block-end;
+    }
+
+    .pui-dropdown.pui-align-end {
+      position-area: block-end span-inline-start;
+    }
+
+    .pui-dropdown.pui-top.pui-align-center {
+      position-area: block-start;
+    }
+
+    .pui-dropdown.pui-top.pui-align-end {
+      position-area: block-start span-inline-start;
+    }
+  }
+}
+</style>
+<style>/* Tooltip. The behavior is native: `interestfor` on the trigger shows it on
+   hover, focus and long press, and `popover="hint"` lets it appear without
+   closing an open menu. Requires core.css.
+
+   Both are Chromium-only today, so the Phase 5 fallbacks matter here more than
+   anywhere else. Where `popover="hint"` is unknown the attribute falls back to
+   `auto`, which still works. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-tooltip {
+    width: max-content;
+    max-width: 20rem;
+    margin: 0;
+    padding: calc(var(--pui-space) * 1.25) calc(var(--pui-space) * 2.5);
+    border: var(--pui-border-width) solid var(--pui-border);
+    border-radius: var(--pui-radius);
+    background-color: var(--pui-bg);
+    color: inherit;
+    font-size: calc(var(--pui-font-size) * 0.857);
+    /* A tooltip is never a pointer target. */
+    pointer-events: none;
+  }
+
+  @supports (position-area: block-start) {
+    .pui-tooltip {
+      position: absolute;
+      inset: auto;
+      margin: 0;
+      position-area: block-start;
+      position-try-fallbacks: flip-block;
+      margin-block-end: var(--pui-space);
+    }
+
+    /* Directions, centered on the trigger on the other axis. */
+    .pui-tooltip.pui-bottom {
+      position-area: block-end;
+      margin: var(--pui-space) 0 0;
+    }
+
+    .pui-tooltip.pui-start {
+      position-area: inline-start;
+      position-try-fallbacks: flip-inline;
+      margin: 0 var(--pui-space) 0 0;
+    }
+
+    .pui-tooltip.pui-end {
+      position-area: inline-end;
+      position-try-fallbacks: flip-inline;
+      margin: 0 0 0 var(--pui-space);
+    }
+  }
+}
+</style>
+<style>/* Icons. Not part of the Perfect UI library (it ships none) — this is the
+   author stylesheet recipe from DESIGN-SYSTEM.md §1.6: one Lucide SVG per icon,
+   used as a CSS mask and painted with currentColor. */
+.icon{display:inline-block;flex:none;width:16px;height:16px;vertical-align:-0.125em;background-color:currentColor;mask-position:center;mask-size:contain;mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat}
+.icon-bell-ring{mask-image:url("4006153d-4dd7-4dad-9706-1c90fd030294");-webkit-mask-image:url("4006153d-4dd7-4dad-9706-1c90fd030294")}
+.icon-bell{mask-image:url("3bf55344-da40-42c4-96a7-6c8c75bee592");-webkit-mask-image:url("3bf55344-da40-42c4-96a7-6c8c75bee592")}
+.icon-bold{mask-image:url("a9134604-32c2-4fcd-847f-d5fe9da9f753");-webkit-mask-image:url("a9134604-32c2-4fcd-847f-d5fe9da9f753")}
+.icon-calendar{mask-image:url("17c56a9a-9c89-402f-93f2-600d1c7cc091");-webkit-mask-image:url("17c56a9a-9c89-402f-93f2-600d1c7cc091")}
+.icon-check{mask-image:url("03a15fb0-2c5b-4ef0-be79-43c745621926");-webkit-mask-image:url("03a15fb0-2c5b-4ef0-be79-43c745621926")}
+.icon-chevron-down{mask-image:url("b2ee17d1-f21d-43cc-b313-5dc0ef06ce12");-webkit-mask-image:url("b2ee17d1-f21d-43cc-b313-5dc0ef06ce12")}
+.icon-circle-alert{mask-image:url("b9908162-f7d3-4193-b8df-d85a31a086ac");-webkit-mask-image:url("b9908162-f7d3-4193-b8df-d85a31a086ac")}
+.icon-circle-check{mask-image:url("f1fcaa7f-2428-4878-9f94-e180df7012a2");-webkit-mask-image:url("f1fcaa7f-2428-4878-9f94-e180df7012a2")}
+.icon-circle-user{mask-image:url("206b4f6a-725e-4d31-9e7a-dc3778737f09");-webkit-mask-image:url("206b4f6a-725e-4d31-9e7a-dc3778737f09")}
+.icon-circle-x{mask-image:url("168a4540-e79a-4bb6-b2b6-e3a5d86924e2");-webkit-mask-image:url("168a4540-e79a-4bb6-b2b6-e3a5d86924e2")}
+.icon-credit-card{mask-image:url("78178fdb-b331-4279-8ca6-68323340e432");-webkit-mask-image:url("78178fdb-b331-4279-8ca6-68323340e432")}
+.icon-download{mask-image:url("d5fb0183-0f4e-40fe-8f36-da5640935553");-webkit-mask-image:url("d5fb0183-0f4e-40fe-8f36-da5640935553")}
+.icon-file-text{mask-image:url("c335073c-f08a-4d24-8a1e-fe0aed929b83");-webkit-mask-image:url("c335073c-f08a-4d24-8a1e-fe0aed929b83")}
+.icon-folder{mask-image:url("c4040c94-a2ca-4207-aded-3b89dbc5bf1a");-webkit-mask-image:url("c4040c94-a2ca-4207-aded-3b89dbc5bf1a")}
+.icon-globe{mask-image:url("ef4a5446-2a38-4f9a-b0cf-a82b8de07c84");-webkit-mask-image:url("ef4a5446-2a38-4f9a-b0cf-a82b8de07c84")}
+.icon-house{mask-image:url("f942b412-902e-4e34-ba1d-73edccf0588d");-webkit-mask-image:url("f942b412-902e-4e34-ba1d-73edccf0588d")}
+.icon-image{mask-image:url("0317ac07-2714-4535-b8d8-fbc18fd0eb2f");-webkit-mask-image:url("0317ac07-2714-4535-b8d8-fbc18fd0eb2f")}
+.icon-italic{mask-image:url("edc96e7a-93cc-4fc6-b8e1-846fc44eb06d");-webkit-mask-image:url("edc96e7a-93cc-4fc6-b8e1-846fc44eb06d")}
+.icon-life-buoy{mask-image:url("4e7a4dee-f90c-425f-bca4-27f6e0aecb83");-webkit-mask-image:url("4e7a4dee-f90c-425f-bca4-27f6e0aecb83")}
+.icon-link{mask-image:url("07a2473a-af01-4c5f-9fbd-10e3acb60ed0");-webkit-mask-image:url("07a2473a-af01-4c5f-9fbd-10e3acb60ed0")}
+.icon-log-out{mask-image:url("76e54c82-2b4e-4580-99fd-cc64ef5de33b");-webkit-mask-image:url("76e54c82-2b4e-4580-99fd-cc64ef5de33b")}
+.icon-mail{mask-image:url("90e41ec8-4025-4f8c-9b86-913fb13ca0c0");-webkit-mask-image:url("90e41ec8-4025-4f8c-9b86-913fb13ca0c0")}
+.icon-map-pin{mask-image:url("73b69dee-d647-4bff-932f-b4557e5c2290");-webkit-mask-image:url("73b69dee-d647-4bff-932f-b4557e5c2290")}
+.icon-moon{mask-image:url("07dbdaba-6ba7-4f99-95d4-83f0f26a6349");-webkit-mask-image:url("07dbdaba-6ba7-4f99-95d4-83f0f26a6349")}
+.icon-pencil{mask-image:url("a0a927b7-73ef-4b3e-9fb7-4062e5aee873");-webkit-mask-image:url("a0a927b7-73ef-4b3e-9fb7-4062e5aee873")}
+.icon-phone{mask-image:url("8a3866d6-71e7-4e72-8a34-0701a0388827");-webkit-mask-image:url("8a3866d6-71e7-4e72-8a34-0701a0388827")}
+.icon-plus{mask-image:url("5ba6ee4a-8fe2-40ba-9276-bc3e9c55a9a4");-webkit-mask-image:url("5ba6ee4a-8fe2-40ba-9276-bc3e9c55a9a4")}
+.icon-search{mask-image:url("3bb99a2d-d2f9-4929-8eac-40aa5fea0768");-webkit-mask-image:url("3bb99a2d-d2f9-4929-8eac-40aa5fea0768")}
+.icon-send{mask-image:url("8a2c4b70-18da-4dfd-a806-d81176c1bfb7");-webkit-mask-image:url("8a2c4b70-18da-4dfd-a806-d81176c1bfb7")}
+.icon-settings{mask-image:url("7be3affe-2458-48f9-8142-577cdb2bfbcd");-webkit-mask-image:url("7be3affe-2458-48f9-8142-577cdb2bfbcd")}
+.icon-share-2{mask-image:url("fc617fb8-58fa-4b69-83e5-99dafc720ee8");-webkit-mask-image:url("fc617fb8-58fa-4b69-83e5-99dafc720ee8")}
+.icon-sheet{mask-image:url("c016573b-70a3-4ba2-b0d6-4afc91636145");-webkit-mask-image:url("c016573b-70a3-4ba2-b0d6-4afc91636145")}
+.icon-shield{mask-image:url("38f0131b-c8b4-408a-a2df-69cc0ccb4f03");-webkit-mask-image:url("38f0131b-c8b4-408a-a2df-69cc0ccb4f03")}
+.icon-smartphone{mask-image:url("1e6bda0d-86a2-4eff-a620-d20096a0b6e6");-webkit-mask-image:url("1e6bda0d-86a2-4eff-a620-d20096a0b6e6")}
+.icon-sun{mask-image:url("5063d6c8-7efc-4527-ac3a-d1809c40d431");-webkit-mask-image:url("5063d6c8-7efc-4527-ac3a-d1809c40d431")}
+.icon-trash-2{mask-image:url("6968a9b2-2633-4b7a-9954-8926a8743a5a");-webkit-mask-image:url("6968a9b2-2633-4b7a-9954-8926a8743a5a")}
+.icon-triangle-alert{mask-image:url("7f4423b6-6ce9-4b90-8ca2-9ec8b0b417b2");-webkit-mask-image:url("7f4423b6-6ce9-4b90-8ca2-9ec8b0b417b2")}
+.icon-truck{mask-image:url("34f93926-f521-4ac0-ba27-6fd6253ce66e");-webkit-mask-image:url("34f93926-f521-4ac0-ba27-6fd6253ce66e")}
+.icon-underline{mask-image:url("6e6120ee-cfa4-443b-b072-e0a22612869b");-webkit-mask-image:url("6e6120ee-cfa4-443b-b072-e0a22612869b")}
+.icon-user-plus{mask-image:url("a70f2a44-3bcc-4471-ba36-d298b83586d3");-webkit-mask-image:url("a70f2a44-3bcc-4471-ba36-d298b83586d3")}
+.icon-user{mask-image:url("6b97d74a-b9bb-4afa-a5d7-12e62348bb64");-webkit-mask-image:url("6b97d74a-b9bb-4afa-a5d7-12e62348bb64")}
+.icon-users{mask-image:url("62235ac2-3962-4810-8395-6274cbe0f590");-webkit-mask-image:url("62235ac2-3962-4810-8395-6274cbe0f590")}
+.icon-x{mask-image:url("6269e190-8ccd-4f13-91aa-83c4b0575e7d");-webkit-mask-image:url("6269e190-8ccd-4f13-91aa-83c4b0575e7d")}
+.icon-ellipsis-vertical{mask-image:url("76545a3c-dfc8-49f6-b7dc-df3a7a642212");-webkit-mask-image:url("76545a3c-dfc8-49f6-b7dc-df3a7a642212")}
+</style>
+<style>/* Page base. The library ships no reset and no body rule; this opt-in
+   class reproduces the page chrome of the repo's preview page. Put it on
+   <body> (or any root) of a design. */
+.pui-page{margin:0;background:var(--pui-bg);color:var(--pui-text);font:16px/1.5 var(--pui-font-sans)}
+/* Logos ship black; invert them in dark mode. */
+:root{--logo-filter:none; /* @kind other */}
+@media (prefers-color-scheme: dark){:root{--logo-filter:invert(1); /* @kind other */}}
+[data-pui-mode="light"]{--logo-filter:none; /* @kind other */}
+[data-pui-mode="dark"]{--logo-filter:invert(1); /* @kind other */}
+</style>
+<script src="108e1946-6b11-4185-aaf6-a32b2f5c9397"></script>
+<style>
+body{margin:0;background:var(--pui-bg)}
+a:not([class]){color:var(--pui-theme-ink)}
+a:not([class]):hover{text-decoration:underline;text-underline-offset:.3rem}
+.w-full{width:100%}
+input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+input[type=color]::-webkit-color-swatch{border:0;border-radius:9999px}
+input[type=color]::-moz-color-swatch{border:0;border-radius:9999px}
+@keyframes pui-caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+</style>
+</helmet>
+
+<div id="pui-export-root" style="background:var(--pui-bg);color:var(--pui-text);font:16px/1.5 var(--pui-font-sans);min-height:100vh;overflow-x:clip">
+
+<header style="position:sticky;top:0;z-index:10;background:var(--pui-bg);border-bottom:1px solid var(--pui-border)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(12px,4vw,40px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#" class="pui-btn pui-link pui-surface" style="padding-inline:4px" aria-label="Perfect UI home">
+      <span style="display:flex;align-items:center;gap:10px">
+        <img src="c7baee74-55c6-44c4-9538-7c9cb83f5461" alt="" style="height:22px;filter:var(--logo-filter)">
+        <img src="b92e1127-5d29-44a7-a587-6c2ebf15a48f" alt="Perfect UI" style="height:16px;filter:var(--logo-filter)">
+      </span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:4px">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="#" class="pui-btn pui-link pui-surface">Docs</a>
+        <button class="pui-btn pui-link pui-surface" aria-label="Search" style="padding-inline:10px"><span class="icon icon-search"></span></button>
+        <span class="pui-badge pui-soft pui-theme" style="margin-inline:6px">1.0</span>
+        <span style="width:1px;height:20px;background:var(--pui-border);margin-inline:6px"></span>
+      </sc-if>
+      <button class="pui-btn pui-link pui-surface" aria-label="{{ modeLabel }}" sc-camel-on-click="{{ toggleMode }}" style="padding-inline:10px">
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}"><span class="icon icon-moon"></span></sc-if>
+        <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}"><span class="icon icon-sun"></span></sc-if>
+      </button>
+      <span style="display:inline-flex;padding-inline:10px">
+        <input type="color" aria-label="Theme colour" title="Theme colour" value="{{ themeHex }}" sc-camel-on-input="{{ pickTheme }}" style="appearance:none;-webkit-appearance:none;width:18px;height:18px;padding:0;margin:0;border:1px solid var(--pui-border);border-radius:9999px;background:var(--pui-theme);cursor:pointer;overflow:hidden" style-focus-visible="outline:2px solid var(--pui-theme);outline-offset:2px">
+      </span>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="#" class="pui-btn pui-link pui-surface" aria-label="GitHub" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;60584c11-c93f-4c8b-8936-826a0fe3d2c1&quot;);-webkit-mask-image:url(&quot;60584c11-c93f-4c8b-8936-826a0fe3d2c1&quot;)"></span></a>
+        <a href="#" class="pui-btn pui-link pui-surface" aria-label="Figma" style="padding-inline:10px"><span class="icon" style="mask-image:url(&quot;5a74948f-b1b8-417d-9604-b2f4ad039982&quot;);-webkit-mask-image:url(&quot;5a74948f-b1b8-417d-9604-b2f4ad039982&quot;)"></span></a>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button class="pui-btn pui-link pui-surface" data-pt="pui-nav-menu" aria-label="Menu" style="padding-inline:10px"><span class="icon icon-ellipsis-vertical"></span></button>
+        <div id="pui-nav-menu" data-popover="auto" class="pui-dropdown pui-align-end">
+          <div style="display:grid;gap:2px;min-width:180px">
+            <a href="#" class="pui-btn pui-link pui-surface" style="justify-content:space-between">Docs<span class="pui-badge pui-soft pui-theme">1.0</span></a>
+            <button class="pui-btn pui-link pui-surface" style="justify-content:flex-start;gap:10px"><span class="icon icon-search"></span>Search</button>
+            <a href="#" class="pui-btn pui-link pui-surface" style="justify-content:flex-start;gap:10px"><span class="icon" style="mask-image:url(&quot;60584c11-c93f-4c8b-8936-826a0fe3d2c1&quot;);-webkit-mask-image:url(&quot;60584c11-c93f-4c8b-8936-826a0fe3d2c1&quot;)"></span>GitHub</a>
+            <a href="#" class="pui-btn pui-link pui-surface" style="justify-content:flex-start;gap:10px"><span class="icon" style="mask-image:url(&quot;5a74948f-b1b8-417d-9604-b2f4ad039982&quot;);-webkit-mask-image:url(&quot;5a74948f-b1b8-417d-9604-b2f4ad039982&quot;)"></span>Figma</a>
+          </div>
+        </div>
+      </sc-if>
+    </nav>
+  </div>
+</header>
+
+<section ref="{{ heroRef }}" data-screen-label="01 Hero" style="position:relative;overflow:hidden;min-height:calc(100svh - 65px);display:flex;flex-direction:column">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(to right,color-mix(in oklab,var(--pui-border) 55%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in oklab,var(--pui-border) 55%,transparent) 1px,transparent 1px);background-size:64px 64px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 70% at 70% 35%,#000 10%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 35%,#000 10%,transparent 75%)"></div>
+    <div style="position:absolute;width:900px;height:900px;right:-220px;top:-340px;background:radial-gradient(closest-side,color-mix(in oklab,var(--pui-theme) 26%,transparent),transparent)"></div>
+    <div style="position:absolute;width:760px;height:760px;right:180px;top:120px;background:radial-gradient(closest-side,color-mix(in oklab,color-mix(in oklab,var(--pui-theme),#3c32aa 60%) 16%,transparent),transparent)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:86%;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,40px);box-sizing:border-box;display:flex;align-items:flex-end;gap:clamp(6px,1.5vw,16px)">
+      <div style="flex:1;height:{{ heroBars.p.h }}%;background:var(--pui-theme);border-radius:6px 6px 0 0;transform-origin:bottom;transform:scaleY({{ heroScale }});opacity:{{ heroOpacity }}"></div>
+      <sc-for list="{{ heroBars.rest }}" as="b" hint-placeholder-count="5">
+        <div style="flex:1;height:{{ b.h }}%;border:1px solid color-mix(in oklab,var(--pui-border) 80%,transparent);border-bottom:0;background:color-mix(in oklab,var(--pui-text) 2.5%,transparent);border-radius:6px 6px 0 0;transform-origin:bottom;transform:scaleY({{ heroScale }});opacity:{{ heroOpacity }}"></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;max-width:1200px;width:100%;margin:0 auto;padding:clamp(32px,6vw,72px) clamp(20px,5vw,40px) 0;box-sizing:border-box">
+    <sc-if value="{{ leadHeadline }}" hint-placeholder-val="{{ false }}">
+      <h1 style="margin:0 0 40px;font-size:clamp(44px,7.5vw,96px);line-height:1;font-weight:600;letter-spacing:-0.045em;max-width:12ch;text-wrap:balance">The bare minimum for elegant interfaces</h1>
+    </sc-if>
+    <div style="display:flex;flex-wrap:wrap;gap:48px 64px;align-items:flex-start">
+      <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:clamp(20px,3vw,28px);padding-top:8px">
+        <sc-if value="{{ leadWeight }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0;font-size:clamp(36px,5vw,60px);line-height:1.02;font-weight:600;letter-spacing:-0.035em;text-wrap:balance">The bare minimum for elegant interfaces</h1>
+        </sc-if>
+        <sc-if value="{{ giantInline }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:18px;font-weight:600;letter-spacing:-0.01em;padding-left:4px">Three classes, no framework,</span>
+            <span style="font-size:88px;line-height:0.82;font-weight:600;letter-spacing:-0.065em;white-space:nowrap">3.2 <span style="color:var(--pui-theme)">kB</span>.</span>
+          </p>
+        </sc-if>
+        <sc-if value="{{ leadHeadline }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.02em">Three classes, no framework, <span style="color:var(--pui-theme-ink)">3.2 kB</span>.</p>
+        </sc-if>
+        <p style="margin:0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:46ch;text-wrap:pretty">A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a pui- class; the browser does the work.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <div class="pui-input-group" style="font-family:var(--pui-font-mono);width:380px;max-width:100%;box-sizing:border-box;background:var(--pui-bg)">
+            <span class="pui-addon">$</span>
+            <input class="pui-input" sc-camel-read-only="{{ true }}" value="npm i @chrissgon/perfectui" aria-label="Install command">
+            <sc-if value="{{ cp.heroOff }}" hint-placeholder-val="{{ true }}">
+              <button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ copyHero }}" aria-label="Copy install command" style="padding-inline:12px"><span class="icon" style="mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;);-webkit-mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;)"></span></button>
+            </sc-if>
+            <sc-if value="{{ cp.heroOn }}" hint-placeholder-val="{{ false }}">
+              <button class="pui-btn pui-link pui-success" sc-camel-on-click="{{ copyHero }}" aria-label="Copied" style="padding-inline:12px"><span class="icon icon-check"></span></button>
+            </sc-if>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#" class="pui-btn pui-solid pui-theme">Get started</a>
+            <a href="#" class="pui-btn pui-outline pui-surface">Migrating from 0.x</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pui-card" style="position:relative;flex:1 1 400px;min-width:0">
+        <div class="pui-card-header" style="display:flex;justify-content:space-between;font-family:var(--pui-font-mono);font-size:12px"><span>index.html</span><span>{{ demoStep }}</span></div>
+        <div style="height:clamp(180px,22vw,250px);display:grid;place-items:center;border-bottom:1px solid var(--pui-border);background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 16%,transparent) 1px,transparent 1.5px);background-size:16px 16px;background-position:8px 8px">
+          <div style="transform:scale(2.25)">
+            <sc-if value="{{ demo.isBtn }}" hint-placeholder-val="{{ true }}"><button class="{{ demo.cls }}" tabindex="-1">{{ demo.label }}</button></sc-if>
+            <sc-if value="{{ demo.isSpan }}" hint-placeholder-val="{{ false }}"><span class="{{ demo.cls }}">{{ demo.label }}</span></sc-if>
+          </div>
+        </div>
+        <div class="pui-card-content" style="gap:16px">
+          <code style="font-family:var(--pui-font-mono);font-size:14px;line-height:1.5;min-height:42px;display:block;overflow-wrap:anywhere"><span style="color:var(--pui-text-muted)">&lt;{{ demo.tag }} class="</span><span>{{ demo.typed }}</span><sc-if value="{{ caretOn }}" hint-placeholder-val="{{ true }}"><span style="display:inline-block;width:2px;height:1.1em;vertical-align:-0.2em;background:var(--pui-theme);animation:pui-caret 1s steps(1) infinite"></span></sc-if><span style="color:var(--pui-text-muted)">"&gt;{{ demo.label }}&lt;/{{ demo.tag }}&gt;</span></code>
+          <div style="display:flex;gap:8px;align-items:center">
+            <sc-for list="{{ demo.slots }}" as="s" hint-placeholder-count="3">
+              <span class="{{ s.cls }}" style="font-family:var(--pui-font-mono)">{{ s.label }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ giantBottom }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:auto;padding:48px 0 44px">
+        <p style="margin:0;display:flex;flex-direction:column;gap:24px">
+          <span style="font-size:22px;font-weight:600;letter-spacing:-0.01em;padding-left:10px">Three classes, no framework,</span>
+          <span style="font-size:clamp(120px,17vw,216px);line-height:0.82;font-weight:600;letter-spacing:-0.065em;white-space:nowrap">3.2 <span style="color:var(--pui-theme)">kB</span>.</span>
+        </p>
+      </div>
+    </sc-if>
+    <div style="height:64px;flex:none"></div>
+  </div>
+</section>
+
+<section ref="{{ chartRef }}" data-screen-label="02 Measured" data-pui-mode="{{ inverseMode }}" style="position:relative;overflow:hidden;background:var(--pui-bg);color:var(--pui-text)">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+    <div style="position:absolute;width:1000px;height:800px;left:-280px;top:-260px;background:radial-gradient(closest-side,color-mix(in oklab,var(--pui-theme) 30%,transparent),transparent)"></div>
+    <div style="position:absolute;width:900px;height:900px;right:-300px;bottom:-420px;background:radial-gradient(closest-side,color-mix(in oklab,color-mix(in oklab,var(--pui-theme),#3c32aa 60%) 28%,transparent),transparent)"></div>
+  </div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px) clamp(88px,11vw,140px);box-sizing:border-box">
+    <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em;max-width:16ch">3.2 kB. Measured, not promised.</h2>
+    <p style="margin:28px 0 0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:60ch;text-wrap:pretty">perfectui.css is 3,155 bytes gzip; the optional JavaScript loader is 502. The bars below are the same measurement run on the published builds of the alternatives.</p>
+
+    <div style="margin-top:clamp(48px,7vw,88px)">
+      <div style="display:flex;justify-content:flex-end;gap:20px;padding-bottom:16px;font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:2px;background:var(--pui-text)"></span>CSS</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:2px;background:color-mix(in oklab,var(--pui-text) 35%,transparent)"></span>JavaScript</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;border-top:1px solid var(--pui-border);padding:22px 0">
+        <div style="flex:{{ L.nameFlex }};display:flex;flex-direction:column"><span style="font-weight:600;color:var(--pui-theme-ink)">perfectui</span><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">1.0.0-beta.0</span></div>
+        <div style="flex:{{ L.barFlex }};order:{{ L.barOrder }};min-width:0;display:flex;height:28px;gap:2px">
+          <div style="width:{{ rowP.css }}%;background:var(--pui-theme);border-radius:3px 0 0 3px"></div>
+          <div style="width:{{ rowP.js }}%;background:color-mix(in oklab,var(--pui-theme) 45%,transparent);border-radius:0 3px 3px 0"></div>
+        </div>
+        <div style="flex:0 0 auto;min-width:150px;text-align:right;font-family:var(--pui-font-mono);font-variant-numeric:tabular-nums"><span style="font-size:20px;font-weight:600">{{ rowP.total }}</span><span style="display:block;font-size:12px;color:var(--pui-text-muted)">{{ rowP.split }}</span></div>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;border-top:1px solid var(--pui-border);padding:22px 0">
+          <div style="flex:{{ L.nameFlex }};display:flex;flex-direction:column"><span style="font-weight:600">{{ r.name }}</span><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">{{ r.version }}</span></div>
+          <div style="flex:{{ L.barFlex }};order:{{ L.barOrder }};min-width:0;display:flex;height:28px;gap:2px">
+            <div style="width:{{ r.css }}%;background:color-mix(in oklab,var(--pui-muted) 70%,transparent);border-radius:3px 0 0 3px"></div>
+            <div style="width:{{ r.js }}%;background:color-mix(in oklab,var(--pui-muted) 32%,transparent);border-radius:0 3px 3px 0"></div>
+          </div>
+          <div style="flex:0 0 auto;min-width:150px;text-align:right;font-family:var(--pui-font-mono);font-variant-numeric:tabular-nums"><span style="font-size:20px;font-weight:600">{{ r.total }}</span><span style="display:block;font-size:12px;color:var(--pui-text-muted)">{{ r.split }}</span></div>
+        </div>
+      </sc-for>
+      <p style="margin:0;border-top:1px solid var(--pui-border);padding-top:16px;font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">gzip -9 of the published builds, measured 2026-09-23</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Classes" style="position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:24px 24px;mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent)"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-end">
+      <h2 style="flex:1 1 420px;margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">A shape, a style, a colour.</h2>
+      <p style="flex:1 1 420px;margin:0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);text-wrap:pretty;background:var(--pui-bg)">Every element is up to three classes you can combine freely: what it is, how the colour is applied, which colour. Seven colours and four styles give 28 looks per shape, and adding a colour never multiplies your classes.</p>
+    </div>
+
+    <div class="pui-card" style="margin-top:clamp(40px,6vw,72px)">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 40px;padding:16px;border-bottom:1px solid var(--pui-border)">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted);width:48px">shape</span>
+          <sc-for list="{{ shapeChips }}" as="c" hint-placeholder-count="3"><button class="{{ c.cls }}" aria-pressed="{{ c.pressed }}" sc-camel-on-click="{{ c.pick }}">{{ c.label }}</button></sc-for></div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted);width:48px">style</span>
+          <sc-for list="{{ styleChips }}" as="c" hint-placeholder-count="4"><button class="{{ c.cls }}" aria-pressed="{{ c.pressed }}" sc-camel-on-click="{{ c.pick }}">{{ c.label }}</button></sc-for></div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted);width:48px">colour</span>
+          <sc-for list="{{ colourChips }}" as="c" hint-placeholder-count="7"><button class="{{ c.cls }}" aria-pressed="{{ c.pressed }}" sc-camel-on-click="{{ c.pick }}">{{ c.label }}</button></sc-for></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap">
+        <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;border-right:1px solid var(--pui-border)">
+          <div style="flex:1;min-height:clamp(220px,26vw,300px);display:grid;place-items:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 16%,transparent) 1px,transparent 1.5px);background-size:16px 16px;background-position:8px 8px">
+            <div style="transform:scale(3)"><button class="{{ live.cls }}" tabindex="-1">{{ live.label }}</button></div>
+          </div>
+          <code style="display:block;padding:16px;border-top:1px solid var(--pui-border);font-family:var(--pui-font-mono);font-size:14px;line-height:1.5"><span style="color:var(--pui-text-muted)">&lt;{{ live.tag }} class="</span><sc-for list="{{ live.tokens }}" as="k" hint-placeholder-count="3"><span class="{{ k.cls }}" style="padding:1px 3px">{{ k.t }}</span></sc-for><span style="color:var(--pui-text-muted)">"&gt;</span></code>
+        </div>
+        <div style="flex:1 1 auto;min-width:0;overflow-x:auto;padding:24px 28px;display:grid;justify-content:center;grid-template-columns:52px repeat(7,auto);gap:10px 8px;align-items:center;justify-items:center">
+          <span></span>
+          <sc-for list="{{ colourNames }}" as="n" hint-placeholder-count="7"><span style="font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">{{ n }}</span></sc-for>
+          <sc-for list="{{ matrix }}" as="row" hint-placeholder-count="4">
+            <span style="justify-self:start;font-family:var(--pui-font-mono);font-size:12px;color:var(--pui-text-muted)">{{ row.name }}</span>
+            <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="7">
+              <div style="padding:4px;border:1px dashed {{ cell.ring }};border-radius:9px"><button class="{{ cell.cls }}" aria-label="{{ cell.aria }}" sc-camel-on-click="{{ cell.pick }}">{{ live.label }}</button></div>
+            </sc-for>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:24px"><a href="#" class="pui-btn pui-link pui-theme" style="padding-inline:0">See the components</a></div>
+  </div>
+</section>
+
+<section data-screen-label="04 Overlays" style="position:relative;border-top:1px solid var(--pui-border)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box">
+    <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">Overlays without a plugin.</h2>
+    <p style="margin:28px 0 0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:62ch;text-wrap:pretty">Modals are &lt;dialog&gt;, menus are popover, tooltips are interestfor, accordions are &lt;details&gt;. The optional loader downloads a fallback only when a browser is missing one of them.</p>
+
+    <div class="pui-card" style="margin-top:clamp(40px,6vw,72px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:1px;background:var(--pui-border)">
+
+        <div style="background:var(--pui-bg);display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--pui-border)"><span style="font-weight:600">Modal <span style="font-family:var(--pui-font-mono);font-weight:400;color:var(--pui-text-muted)">&lt;dialog&gt;</span></span><span class="pui-badge pui-soft pui-success">no JavaScript of yours</span></div>
+          <div style="height:176px;display:grid;place-items:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+            <button class="pui-btn pui-solid pui-theme" data-cf="pui-demo-modal" data-cmd="show-modal">Delete project</button>
+          </div>
+          <pre style="margin:0;padding:16px;border-top:1px solid var(--pui-border);font:13px/1.6 var(--pui-font-mono);overflow-x:auto">&lt;button <span style="color:var(--pui-theme-ink)">commandfor</span>="confirm" <span style="color:var(--pui-theme-ink)">command</span>="show-modal"&gt;
+&lt;dialog class="pui-modal" id="confirm" closedby="any"&gt;</pre>
+          <dialog class="pui-modal" id="pui-demo-modal" data-closedby="any">
+            <div class="pui-card">
+              <div class="pui-card-header">Delete project</div>
+              <div class="pui-card-content">
+                <span>This cannot be undone.</span>
+                <div class="pui-group-row">
+                  <button class="pui-btn pui-outline pui-surface" data-cf="pui-demo-modal" data-cmd="close">Cancel</button>
+                  <button class="pui-btn pui-solid pui-error" data-cf="pui-demo-modal" data-cmd="close">Delete</button>
+                </div>
+              </div>
+            </div>
+          </dialog>
+        </div>
+
+        <div style="background:var(--pui-bg);display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--pui-border)"><span style="font-weight:600">Dropdown <span style="font-family:var(--pui-font-mono);font-weight:400;color:var(--pui-text-muted)">popover</span></span><span class="pui-badge pui-soft pui-success">no JavaScript of yours</span></div>
+          <div style="height:176px;display:grid;place-items:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+            <button class="pui-btn pui-outline pui-surface" data-pt="pui-demo-menu">Options<span class="icon icon-chevron-down"></span></button>
+            <div id="pui-demo-menu" data-popover="auto" class="pui-dropdown">
+              <div style="display:grid;gap:2px">
+                <button class="pui-btn pui-link pui-surface" style="justify-content:flex-start;gap:10px"><span class="icon icon-pencil"></span>Edit</button>
+                <button class="pui-btn pui-link pui-surface" style="justify-content:flex-start;gap:10px"><span class="icon icon-share-2"></span>Share</button>
+                <button class="pui-btn pui-link pui-error" style="justify-content:flex-start;gap:10px"><span class="icon icon-trash-2"></span>Delete</button>
+              </div>
+            </div>
+          </div>
+          <pre style="margin:0;padding:16px;border-top:1px solid var(--pui-border);font:13px/1.6 var(--pui-font-mono);overflow-x:auto">&lt;button <span style="color:var(--pui-theme-ink)">popovertarget</span>="menu"&gt;Options&lt;/button&gt;
+&lt;div class="pui-dropdown" id="menu" <span style="color:var(--pui-theme-ink)">popover</span>&gt;</pre>
+        </div>
+
+        <div style="background:var(--pui-bg);display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--pui-border)"><span style="font-weight:600">Tooltip <span style="font-family:var(--pui-font-mono);font-weight:400;color:var(--pui-text-muted)">interestfor</span></span><span class="pui-badge pui-soft pui-success">no JavaScript of yours</span></div>
+          <div style="height:176px;display:grid;place-items:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <input class="pui-input" placeholder="ana@perfectui.dev" aria-label="Email" style="width:200px;background:var(--pui-bg)">
+              <button class="pui-btn pui-outline pui-surface" data-if="pui-demo-tip" aria-label="Why we ask">?</button>
+            </div>
+            <div class="pui-tooltip" id="pui-demo-tip" data-popover="hint">We never share your email.</div>
+          </div>
+          <pre style="margin:0;padding:16px;border-top:1px solid var(--pui-border);font:13px/1.6 var(--pui-font-mono);overflow-x:auto">&lt;button <span style="color:var(--pui-theme-ink)">interestfor</span>="help"&gt;?&lt;/button&gt;
+&lt;div class="pui-tooltip" id="help" <span style="color:var(--pui-theme-ink)">popover</span>="hint"&gt;</pre>
+        </div>
+
+        <div style="background:var(--pui-bg);display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--pui-border)"><span style="font-weight:600">Accordion <span style="font-family:var(--pui-font-mono);font-weight:400;color:var(--pui-text-muted)">&lt;details&gt;</span></span><span class="pui-badge pui-soft pui-success">no JavaScript of yours</span></div>
+          <div style="min-height:176px;box-sizing:border-box;padding:24px clamp(16px,4vw,48px);display:grid;align-content:center;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+            <div class="pui-accordion" style="background:var(--pui-bg)">
+              <details class="pui-accordion-item" name="pui-demo-acc" open="{{ true }}"><summary>Billing address</summary><div>Rua Augusta 1200, São Paulo</div></details>
+              <details class="pui-accordion-item" name="pui-demo-acc"><summary>Payment method</summary><div>Visa ending in 4242</div></details>
+            </div>
+          </div>
+          <pre style="margin:0;padding:16px;border-top:1px solid var(--pui-border);font:13px/1.6 var(--pui-font-mono);overflow-x:auto">&lt;<span style="color:var(--pui-theme-ink)">details</span> class="pui-accordion-item"&gt;
+  &lt;summary&gt;Billing address&lt;/summary&gt;</pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 Dark mode" data-pui-mode="{{ s5.mode }}" style="--pui-theme:{{ s5.theme }};position:relative;overflow:hidden;background:var(--pui-bg);color:var(--pui-text);border-top:1px solid var(--pui-border);transition:background-color .15s ease,color .15s ease">
+  <div aria-hidden="true" style="position:absolute;width:1100px;height:900px;right:-360px;top:-300px;pointer-events:none;background:radial-gradient(closest-side,color-mix(in oklab,var(--pui-theme) 18%,transparent),transparent)"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box">
+    <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em;max-width:20ch;text-wrap:balance">One attribute for dark mode. One variable for your colour.</h2>
+    <p style="margin:28px 0 0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:56ch;text-wrap:pretty">With no attribute, perfectui follows the operating system. Set data-pui-mode to choose, and --pui-theme to make every component yours.</p>
+
+    <div class="pui-card" style="margin-top:clamp(40px,6vw,72px);display:flex;flex-wrap:wrap">
+      <div style="flex:0 1 340px;min-width:0;display:flex;flex-direction:column;gap:24px;padding:24px;border-right:1px solid var(--pui-border);box-sizing:border-box">
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer"><input type="checkbox" class="pui-switch" checked="{{ s5.dark }}" sc-camel-on-change="{{ s5.toggle }}"><span>Dark</span></label>
+        <div style="display:flex;gap:12px;align-items:center" role="radiogroup" aria-label="Theme colour">
+          <sc-for list="{{ s5.swatches }}" as="w" hint-placeholder-count="5">
+            <input type="radio" name="pui-s5-theme" class="pui-radio" aria-label="{{ w.label }}" checked="{{ w.checked }}" sc-camel-on-change="{{ w.pick }}" style="--pui-color:{{ w.v }};width:22px;height:22px">
+          </sc-for>
+        </div>
+        <pre style="margin:0;font:13px/1.8 var(--pui-font-mono);overflow-x:auto;padding-top:20px;border-top:1px solid var(--pui-border)">&lt;html <span class="pui-soft pui-theme pui-rounded" style="padding:1px 3px">data-pui-mode="{{ s5.mode }}"</span>&gt;
+<span class="pui-soft pui-theme pui-rounded" style="padding:1px 3px">--pui-theme: {{ s5.hex }};</span></pre>
+        <a href="#" class="pui-btn pui-link pui-theme" style="padding-inline:0;align-self:flex-start;margin-top:auto">Dark mode docs</a>
+      </div>
+      <div style="flex:1 1 480px;min-width:0;padding:clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+        <div class="pui-card" style="flex:1 1 260px;min-width:0">
+          <div class="pui-card-header">New project</div>
+          <div class="pui-card-content">
+            <label class="pui-field-group"><span>Name</span><input class="pui-input" sc-camel-default-value="Perfect dashboard"></label>
+            <label class="pui-field-group"><span>Owner</span><input class="pui-input" sc-camel-default-value="ana@perfectui.dev"><small>You can change this later in Settings.</small></label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:14px"><input type="checkbox" class="pui-switch" sc-camel-default-checked="{{ true }}">Notifications</label>
+            <div style="display:flex;gap:8px;justify-content:flex-end"><button class="pui-btn pui-outline pui-surface">Cancel</button><button class="pui-btn pui-solid pui-theme">Create</button></div>
+          </div>
+        </div>
+        <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:16px">
+          <div class="pui-card pui-soft pui-theme"><div class="pui-card-content" style="gap:4px"><strong style="font-weight:600">Your trial ends in 3 days</strong><span>Add a payment method to keep your projects.</span></div></div>
+          <div class="pui-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;font-size:14px"><span>Ana Souza</span><span style="display:flex;gap:10px;align-items:center">$120.00<span class="pui-badge pui-soft pui-success">Paid</span></span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;font-size:14px;border-top:1px solid var(--pui-border)"><span>Bruno Lima</span><span style="display:flex;gap:10px;align-items:center">$80.00<span class="pui-badge pui-soft pui-warn">Pending</span></span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;font-size:14px;border-top:1px solid var(--pui-border)"><span>Carla Dias</span><span style="display:flex;gap:10px;align-items:center">$45.00<span class="pui-badge pui-soft pui-error">Failed</span></span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span class="pui-chip pui-solid pui-theme">Operational</span><span class="pui-chip pui-outline pui-surface">Degraded</span><span class="pui-badge pui-solid pui-inverse">Verified</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section ref="{{ s6Ref }}" data-screen-label="06 Utilities" style="position:relative;border-top:1px solid var(--pui-border)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-end">
+      <h2 style="flex:1 1 420px;margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">Your utilities always win.</h2>
+      <p style="flex:1 1 420px;margin:0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);text-wrap:pretty">Every perfectui rule lives in a cascade layer, so a Tailwind utility or a line of your CSS beats it with no !important. No reset, so nothing overlaps Preflight.</p>
+    </div>
+    <div class="pui-card" style="margin-top:clamp(40px,6vw,72px);display:flex;flex-wrap:wrap">
+      <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;border-right:1px solid var(--pui-border)">
+        <div style="flex:1;min-height:240px;display:grid;place-items:center;padding:32px clamp(16px,4vw,48px);background-image:radial-gradient(color-mix(in oklab,var(--pui-text) 14%,transparent) 1px,transparent 1.5px);background-size:16px 16px">
+          <div style="width:100%;max-width:440px;box-sizing:border-box;padding:16px;border:1px dashed var(--pui-border);border-radius:9px;background:var(--pui-bg);display:flex;justify-content:center">
+            <button class="{{ s6.cls }}">Send message</button>
+          </div>
+        </div>
+        <code style="display:block;padding:16px;border-top:1px solid var(--pui-border);font-family:var(--pui-font-mono);font-size:14px;line-height:1.5;overflow-wrap:anywhere"><span style="color:var(--pui-text-muted)">class="</span>pui-btn pui-solid pui-theme<span style="color:var(--pui-theme-ink);font-weight:600">{{ s6.typed }}</span><sc-if value="{{ caretOn }}" hint-placeholder-val="{{ true }}"><span style="display:inline-block;width:2px;height:1.1em;vertical-align:-0.2em;background:var(--pui-theme);animation:pui-caret 1s steps(1) infinite"></span></sc-if><span style="color:var(--pui-text-muted)">"</span></code>
+      </div>
+      <div style="flex:1 1 340px;min-width:0;padding:24px;display:flex;flex-direction:column;gap:6px;font-family:var(--pui-font-mono);font-size:13px">
+        <div class="pui-soft pui-theme pui-rounded" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px"><span>.w-full { width: 100% }</span><span class="pui-badge pui-solid pui-theme">unlayered</span></div>
+        <sc-for list="{{ layers }}" as="ly" hint-placeholder-count="6">
+          <div style="display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--pui-border);border-radius:6px"><span>@layer {{ ly.n }}</span><span style="color:var(--pui-text-muted)">{{ ly.i }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top:24px"><a href="#" class="pui-btn pui-link pui-theme" style="padding-inline:0">Tailwind guide</a></div>
+  </div>
+</section>
+
+<section data-screen-label="07 Nothing to undo" data-pui-mode="{{ inverseMode }}" style="position:relative;overflow:hidden;background:var(--pui-bg);color:var(--pui-text)">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to bottom,color-mix(in oklab,var(--pui-border) 50%,transparent) 1px,transparent 1px);background-size:100% 96px;mask-image:linear-gradient(to right,transparent,#000 40%,#000 60%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 40%,#000 60%,transparent)"></div>
+  <div aria-hidden="true" style="position:absolute;width:900px;height:900px;left:-360px;bottom:-460px;pointer-events:none;background:radial-gradient(closest-side,color-mix(in oklab,var(--pui-theme) 26%,transparent),transparent)"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box">
+    <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">Nothing you have to undo.</h2>
+    <p style="margin:clamp(40px,6vw,72px) 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(8px,1.2vw,14px);font-size:clamp(26px,4.2vw,52px);line-height:1.1;font-weight:600;letter-spacing:-0.03em">
+      <sc-for list="{{ strikes }}" as="it" hint-placeholder-count="5">
+        <span ref="{{ it.ref }}" style="position:relative;color:{{ it.color }};transition:color .4s ease">{{ it.text }}<span aria-hidden="true" style="position:absolute;left:-4px;top:54%;height:0.08em;width:{{ it.w }};background:var(--pui-theme);border-radius:9999px;transition:width .5s ease"></span></span>
+      </sc-for>
+      <span style="margin-top:clamp(16px,2vw,28px);color:var(--pui-theme-ink)">ESM only, nothing on window.</span>
+    </p>
+  </div>
+</section>
+
+<section data-screen-label="08 Migration" style="position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,color-mix(in oklab,var(--pui-border) 55%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in oklab,var(--pui-border) 55%,transparent) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 10%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 10%,transparent 75%)"></div>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">Coming from 0.x?</h2>
+    <p style="margin:28px 0 0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:56ch;text-wrap:pretty;background:var(--pui-bg)">1.0 is a rewrite: every class is prefixed, styles and colours are separate classes, and the browser replaced the JavaScript. The guide lists every change.</p>
+    <div class="pui-card" style="margin-top:clamp(40px,6vw,64px);width:100%;text-align:left">
+      <div class="pui-card-header" style="font-family:var(--pui-font-mono);font-size:12px">button.html</div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:16px">
+        <code class="pui-soft pui-error pui-rounded" style="flex:1 1 300px;min-width:0;display:block;padding:12px 16px;font:clamp(14px,1.8vw,18px)/1.4 var(--pui-font-mono);overflow-wrap:anywhere">- btn style-solid-primary</code>
+        <div style="flex:0 0 150px;display:flex;justify-content:center"><button class="btn style-solid-primary" tabindex="-1">Button</button></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:0 16px 16px">
+        <code class="pui-soft pui-success pui-rounded" style="flex:1 1 300px;min-width:0;display:block;padding:12px 16px;font:clamp(14px,1.8vw,18px)/1.4 var(--pui-font-mono);overflow-wrap:anywhere">+ pui-btn pui-solid pui-theme</code>
+        <div style="flex:0 0 150px;display:flex;justify-content:center"><button class="pui-btn pui-solid pui-theme" tabindex="-1">Button</button></div>
+      </div>
+    </div>
+    <a href="#" class="pui-btn pui-soft pui-theme" style="margin-top:32px">Read the migration guide</a>
+  </div>
+</section>
+
+<section data-screen-label="09 Install" style="position:relative;border-top:1px solid var(--pui-border)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,160px) clamp(20px,5vw,40px);box-sizing:border-box;display:flex;flex-wrap:wrap;gap:48px 64px;align-items:flex-start">
+    <div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:28px;align-items:flex-start">
+      <h2 style="margin:0;font-size:clamp(36px,5vw,64px);line-height:1.02;font-weight:600;letter-spacing:-0.035em">Install it your way.</h2>
+      <p style="margin:0;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--pui-text-muted);max-width:44ch;text-wrap:pretty">A package for npm, yarn, pnpm or bun, or two tags from a CDN. Import everything or only the components you use.</p>
+      <a href="#" class="pui-btn pui-solid pui-theme">Get started</a>
+    </div>
+    <div class="pui-card" style="flex:1.4 1 520px;min-width:0">
+      <div class="pui-card-content" style="gap:16px">
+        <div class="pui-group-row">
+          <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4"><button class="{{ tb.cls }}" aria-pressed="{{ tb.pressed }}" sc-camel-on-click="{{ tb.pick }}">{{ tb.label }}</button></sc-for>
+        </div>
+        <div class="pui-input-group" style="font-family:var(--pui-font-mono)">
+          <span class="pui-addon">$</span>
+          <input class="pui-input" sc-camel-read-only="{{ true }}" value="{{ tabCmd }}" aria-label="Install command">
+          <sc-if value="{{ cp.pkgOff }}" hint-placeholder-val="{{ true }}">
+            <button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ copyPkg }}" aria-label="Copy install command" style="padding-inline:12px"><span class="icon" style="mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;);-webkit-mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;)"></span></button>
+          </sc-if>
+          <sc-if value="{{ cp.pkgOn }}" hint-placeholder-val="{{ false }}">
+            <button class="pui-btn pui-link pui-success" sc-camel-on-click="{{ copyPkg }}" aria-label="Copied" style="padding-inline:12px"><span class="icon icon-check"></span></button>
+          </sc-if>
+        </div>
+        <pre style="margin:0;font:13px/1.7 var(--pui-font-mono);overflow-x:auto">import "@chrissgon/perfectui/perfectui.css";
+
+import "@chrissgon/perfectui/core.css";
+import "@chrissgon/perfectui/components/button.css";</pre>
+      </div>
+      <div style="border-top:1px solid var(--pui-border);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;background:var(--pui-bg-muted);color:var(--pui-text-muted);font:12px/1.5 var(--pui-font-mono)"><span>CDN</span>
+        <sc-if value="{{ cp.cdnOff }}" hint-placeholder-val="{{ true }}"><button class="pui-btn pui-link pui-surface" sc-camel-on-click="{{ copyCdn }}" aria-label="Copy CDN tags" style="padding:4px 8px"><span class="icon" style="mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;);-webkit-mask-image:url(&quot;a6e596fd-10b0-46dd-a85c-b2bbf2590866&quot;)"></span></button></sc-if>
+        <sc-if value="{{ cp.cdnOn }}" hint-placeholder-val="{{ false }}"><button class="pui-btn pui-link pui-success" sc-camel-on-click="{{ copyCdn }}" aria-label="Copied" style="padding:4px 8px"><span class="icon icon-check"></span></button></sc-if>
+      </div>
+      <pre style="margin:0;padding:16px;border-top:1px solid var(--pui-border);font:13px/1.7 var(--pui-font-mono);overflow-x:auto">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/perfectui.css"&gt;
+&lt;script type="module"&gt;
+  import "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/js/index.js";
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="10 Footer" style="border-top:1px solid var(--pui-border)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,40px) 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <p style="margin:0;font-size:clamp(18px,2vw,22px);font-weight:600;letter-spacing:-0.01em;max-width:28ch">Components the browser already knows how to run.</p>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px;margin-inline:-16px">
+        <a href="#" class="pui-btn pui-link pui-surface">Docs</a>
+        <a href="#" class="pui-btn pui-link pui-surface">GitHub</a>
+        <a href="#" class="pui-btn pui-link pui-surface">Figma</a>
+        <a href="#" class="pui-btn pui-link pui-surface">MIT license</a>
+      </nav>
+    </div>
+    <img src="b92e1127-5d29-44a7-a587-6c2ebf15a48f" alt="Perfect UI" style="width:100%;height:auto;filter:var(--logo-filter)">
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;heroLead&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weight&quot;,&quot;headline&quot;],&quot;default&quot;:&quot;weight&quot;,&quot;tsType&quot;:&quot;'weight'|'headline'&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const CYC=[
+ {tag:'button',cls:['pui-btn','pui-solid','pui-theme'],label:'Button'},
+ {tag:'span',cls:['pui-chip','pui-soft','pui-success'],label:'Chip'},
+ {tag:'button',cls:['pui-btn','pui-outline','pui-inverse'],label:'Button'},
+ {tag:'span',cls:['pui-badge','pui-solid','pui-warn'],label:'Badge'},
+ {tag:'button',cls:['pui-btn','pui-soft','pui-error'],label:'Button'},
+ {tag:'span',cls:['pui-chip','pui-outline','pui-muted'],label:'Chip'}
+].map(c=>({...c,full:c.cls.join(' ')}));
+const LIBS=[
+ {name:'perfectui',version:'1.0.0-beta.0',css:3155,js:502},
+ {name:'Pico',version:'2.1.1',css:11640,js:0},
+ {name:'Beer CSS',version:'5.0.3',css:17035,js:5864},
+ {name:'Bootstrap',version:'5.3.8',css:30869,js:23743},
+ {name:'UIkit',version:'3.25.24',css:30944,js:53317},
+ {name:'Bulma',version:'1.0.4',css:64842,js:0}
+];
+const MAX=84261;
+const SHAPES=[['btn','button','Button'],['chip','chip','Chip'],['badge','badge','Badge']];
+const STYLES=['solid','soft','outline','link'];
+const COLOURS=['theme','success','error','warn','muted','surface','inverse'];
+const DEF='light-dark(#0092cd,#07b6f0)';
+const THEMES=[{label:'default',v:null,swatch:DEF},{label:'#7c3aed',v:'#7c3aed',swatch:'#7c3aed'},{label:'#16a34a',v:'#16a34a',swatch:'#16a34a'},{label:'#dc2626',v:'#dc2626',swatch:'#dc2626'},{label:'#d97706',v:'#d97706',swatch:'#d97706'}];
+const S5=[{label:'#0092cd',v:DEF},{label:'#7c3aed',v:'#7c3aed'},{label:'#16a34a',v:'#16a34a'},{label:'#dc2626',v:'#dc2626'},{label:'#d97706',v:'#d97706'}];
+const STRIKES=['No reset to override,','no font to remove,','no !important to beat,','no initialiser to call after rendering,','no guard for server rendering.'];
+const LAYERS=['pui.states','pui.colors','pui.styles','pui.utilities','pui.components','pui.tokens'];
+const PKG={npm:'npm i @chrissgon/perfectui',yarn:'yarn add @chrissgon/perfectui',pnpm:'pnpm add @chrissgon/perfectui',bun:'bun add @chrissgon/perfectui'};
+const LT='\x3c';
+const CDN=LT+'link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/perfectui.css">\n'+LT+'scr'+'ipt type="module">\n  import "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/js/index.js";\n'+LT+'/scr'+'ipt>';
+const W6=' w-full';
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const ease=t=>1-Math.pow(1-Math.min(1,Math.max(0,t)),3);
+
+class Component extends DCLogic {
+  state={mode:'light',w:typeof window!=='undefined'?window.innerWidth:1280,copied:null,cyc:0,n:0,heroP:1,el:0,shape:'btn',style:'solid',colour:'theme',changed:'colour',
+    s5dark:false,s5i:1,s6n:0,struck:STRIKES.map(()=>false),tab:'npm'};
+  heroRef=React.createRef(); chartRef=React.createRef(); s6Ref=React.createRef(); strikeRefs=STRIKES.map(()=>React.createRef());
+  phase='type'; p6='type'; lastStrike=0;
+  componentDidMount(){
+    document.documentElement.setAttribute('data-pui-mode',this.state.mode);
+    this.applyAttrs();
+    this.onResize=()=>this.setState({w:window.innerWidth});window.addEventListener('resize',this.onResize);
+    this.reduced=true;
+    if(this.reduced){this.setState({n:CYC[0].full.length,el:99999,s6n:W6.length,struck:STRIKES.map(()=>true)});return;}
+    this.t=setTimeout(this.tick,600);
+    this.io1=new IntersectionObserver(es=>this.setState({heroP:es[0].intersectionRatio}),{threshold:Array.from({length:21},(_,i)=>i/20)});
+    this.heroRef.current&&this.io1.observe(this.heroRef.current);
+    this.io2=new IntersectionObserver(es=>{if(es[0].isIntersecting){this.io2.disconnect();const t0=performance.now();const f=now=>{const el=now-t0;if(el<2200){this.setState({el});this.raf=requestAnimationFrame(f);}else this.setState({el:99999});};this.raf=requestAnimationFrame(f);}},{threshold:0.3});
+    this.chartRef.current&&this.io2.observe(this.chartRef.current);
+    this.io3=new IntersectionObserver(es=>{if(es[0].isIntersecting){this.io3.disconnect();this.t6=setTimeout(this.tick6,500);}},{threshold:0.4});
+    this.s6Ref.current&&this.io3.observe(this.s6Ref.current);
+    this.io4=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const i=this.strikeRefs.findIndex(r=>r.current===e.target);if(i<0)return;this.io4.unobserve(e.target);const now=performance.now(),at=Math.max(now+250,this.lastStrike+260);this.lastStrike=at;setTimeout(()=>this.setState(s=>{const a=s.struck.slice();a[i]=true;return{struck:a};}),at-now);});},{threshold:1,rootMargin:'0px 0px -12% 0px'});
+    this.strikeRefs.forEach(r=>r.current&&this.io4.observe(r.current));
+  }
+  componentDidUpdate(pp,ps){
+    if(!ps||ps.mode!==this.state.mode)document.documentElement.setAttribute('data-pui-mode',this.state.mode);
+    this.applyAttrs();
+  }
+  componentWillUnmount(){clearTimeout(this.t);clearTimeout(this.t6);clearTimeout(this.ct);cancelAnimationFrame(this.raf);window.removeEventListener('resize',this.onResize);[this.io1,this.io2,this.io3,this.io4].forEach(o=>o&&o.disconnect());}
+  applyAttrs(){
+    const q=s=>document.querySelectorAll(s);
+    q('[data-popover]').forEach(el=>{if(!el.hasAttribute('popover'))el.setAttribute('popover',el.dataset.popover);});
+    q('[data-pt]').forEach(el=>el.setAttribute('popovertarget',el.dataset.pt));
+    q('[data-closedby]').forEach(el=>el.setAttribute('closedby',el.dataset.closedby));
+    const hasCmd='command' in HTMLButtonElement.prototype, hasInterest='interestForElement' in HTMLButtonElement.prototype, hasClosedBy='closedBy' in HTMLDialogElement.prototype;
+    q('[data-cf]').forEach(el=>{el.setAttribute('commandfor',el.dataset.cf);el.setAttribute('command',el.dataset.cmd);
+      if(!hasCmd&&!el._fb){el._fb=1;el.addEventListener('click',()=>{const d=document.getElementById(el.dataset.cf);if(!d)return;el.dataset.cmd==='show-modal'?d.showModal():d.close();});}});
+    if(!hasClosedBy)q('dialog[data-closedby="any"]').forEach(d=>{if(d._fb)return;d._fb=1;d.addEventListener('click',e=>{if(e.target===d)d.close();});});
+    q('[data-if]').forEach(el=>{el.setAttribute('interestfor',el.dataset.if);
+      if(!hasInterest&&!el._fb){el._fb=1;const tip=()=>document.getElementById(el.dataset.if);
+        const show=()=>{const t=tip();if(!t||t.matches(':popover-open'))return;try{t.showPopover({source:el});}catch(e){try{t.showPopover();}catch(_){}}};
+        const hide=()=>{const t=tip();try{t&&t.hidePopover();}catch(_){}};
+        el.addEventListener('mouseenter',show);el.addEventListener('focus',show);el.addEventListener('mouseleave',hide);el.addEventListener('blur',hide);}});
+  }
+  tick=()=>{
+    const c=CYC[this.state.cyc],L=c.full.length,n=this.state.n;let d;
+    if(this.phase==='type'){
+      if(n<L){const nn=n+1;this.setState({n:nn});d=(c.full[nn]===' '||nn===L)?700:45+Math.random()*55;}
+      else{this.phase='erase';d=1500;}
+    }else{
+      if(n>0){this.setState({n:Math.max(0,n-2)});d=18;}
+      else{this.phase='type';this.setState({cyc:(this.state.cyc+1)%CYC.length});d=500;}
+    }
+    this.t=setTimeout(this.tick,d);
+  };
+  tick6=()=>{
+    const n=this.state.s6n;let d;
+    if(this.p6==='type'){if(n<W6.length){this.setState({s6n:n+1});d=n+1===W6.length?2600:90;}else{this.p6='erase';d=40;}}
+    else{if(n>0){this.setState({s6n:n-1});d=40;}else{this.p6='type';d=1200;}}
+    this.t6=setTimeout(this.tick6,d);
+  };
+  copy=(key,text)=>{try{navigator.clipboard.writeText(text);}catch(e){}this.setState({copied:key});clearTimeout(this.ct);this.ct=setTimeout(()=>this.setState({copied:null}),1800);};
+  renderVals(){
+    const s=this.state,lead=this.props.heroLead??'weight',narrow=s.w<720;
+    const c=CYC[s.cyc],typed=c.full.slice(0,s.n),toks=typed.split(' ');
+    const applied=(s.n>=c.full.length?toks:toks.slice(0,-1)).filter(Boolean);
+    const demo={tag:c.tag,isBtn:c.tag==='button',isSpan:c.tag!=='button',label:c.label,typed,cls:applied.join(' '),
+      slots:['shape','style','colour'].map((l,i)=>({label:l,cls:i<applied.length?'pui-badge pui-soft pui-theme':'pui-badge pui-outline pui-surface'}))};
+    const row=(lib,i)=>{const p=ease((s.el-250-i*110)/1300);return{name:lib.name,version:lib.version,css:(lib.css/MAX*100*p).toFixed(3),js:(lib.js/MAX*100*p).toFixed(3),total:fmt((lib.css+lib.js)*p),split:lib.js?fmt(lib.css*p)+' + '+fmt(lib.js*p):''};};
+    const rows=LIBS.map(row);
+    const hp=Math.min(1,s.heroP/0.85);
+    const sh=SHAPES.find(x=>x[0]===s.shape);
+    const set=(k,v)=>()=>this.setState({[k]:v,changed:k});
+    const chip=on=>on?'pui-chip pui-solid pui-inverse':'pui-chip pui-outline pui-surface';
+    const hl=k=>s.changed===k?'pui-soft pui-theme pui-rounded':'';
+    const s5mode=s.s5dark?'dark':'light';
+    const w6=s.s6n>=W6.length;
+    return {
+      wide:!narrow,narrow,
+      L:{nameFlex:narrow?'1 1 auto':'0 0 216px',barFlex:narrow?'1 1 100%':'1 1 0%',barOrder:narrow?3:0},
+      isLight:s.mode==='light',isDark:s.mode==='dark',modeLabel:s.mode==='light'?'Switch to dark mode':'Switch to light mode',
+      toggleMode:()=>this.setState({mode:s.mode==='light'?'dark':'light',s5dark:s.mode==='light'}),
+      inverseMode:s.mode==='light'?'dark':'light',
+      themeHex:s.themeHex||'#0092cd',
+      pickTheme:e=>{const v=e.target.value;document.documentElement.style.setProperty('--pui-theme',v);this.setState({themeHex:v});},
+      themes:THEMES.map(t=>({...t,pick:()=>{const r=document.documentElement.style;t.v?r.setProperty('--pui-theme',t.v):r.removeProperty('--pui-theme');const m=document.getElementById('pui-theme-menu');m&&m.hidePopover&&m.hidePopover();}})),
+      heroRef:this.heroRef,chartRef:this.chartRef,s6Ref:this.s6Ref,
+      leadWeight:lead==='weight',leadHeadline:lead==='headline',giantInline:lead==='weight'&&narrow,giantBottom:lead==='weight'&&!narrow,
+      cp:{heroOn:s.copied==='hero',heroOff:s.copied!=='hero',pkgOn:s.copied==='pkg',pkgOff:s.copied!=='pkg',cdnOn:s.copied==='cdn',cdnOff:s.copied!=='cdn'},
+      copyHero:()=>this.copy('hero',PKG.npm),copyPkg:()=>this.copy('pkg',PKG[s.tab]),copyCdn:()=>this.copy('cdn',CDN),
+      demo,caretOn:!this.reduced,demoStep:applied.length+' / 3',
+      heroBars:{p:{h:(LIBS[0].css+LIBS[0].js)/MAX*100},rest:LIBS.slice(1).map(l=>({h:((l.css+l.js)/MAX*100).toFixed(2)}))},
+      heroScale:(0.35+0.65*hp).toFixed(3),heroOpacity:(0.25+0.75*hp).toFixed(3),
+      rowP:rows[0],rows:rows.slice(1),
+      shapeChips:SHAPES.map(x=>({label:x[1],cls:chip(s.shape===x[0]),pressed:String(s.shape===x[0]),pick:set('shape',x[0])})),
+      styleChips:STYLES.map(x=>({label:x,cls:chip(s.style===x),pressed:String(s.style===x),pick:set('style',x)})),
+      colourChips:COLOURS.map(x=>({label:x,cls:chip(s.colour===x),pressed:String(s.colour===x),pick:set('colour',x)})),
+      live:{tag:s.shape==='btn'?'button':'span',label:sh[2],cls:`pui-${s.shape} pui-${s.style} pui-${s.colour}`,
+        tokens:[{t:'pui-'+s.shape,cls:hl('shape')},{t:' ',cls:''},{t:'pui-'+s.style,cls:hl('style')},{t:' ',cls:''},{t:'pui-'+s.colour,cls:hl('colour')}]},
+      colourNames:COLOURS,
+      matrix:STYLES.map(st=>({name:st,cells:COLOURS.map(co=>{const sel=st===s.style&&co===s.colour;return{cls:`pui-${s.shape} pui-${st} pui-${co}`,aria:`${st} ${co}`,ring:sel?'var(--pui-theme)':'transparent',pick:()=>this.setState({style:st,colour:co,changed:st!==s.style?'style':'colour'})};})})),
+      s5:{mode:s5mode,dark:s.s5dark,theme:S5[s.s5i].v,hex:S5[s.s5i].label,toggle:e=>this.setState({s5dark:e.target.checked}),
+        swatches:S5.map((x,i)=>({label:x.label,v:x.v,checked:i===s.s5i,pick:()=>this.setState({s5i:i})}))},
+      s6:{typed:W6.slice(0,s.s6n),cls:'pui-btn pui-solid pui-theme'+(w6?' w-full':'')},
+      layers:LAYERS.map((n,i)=>({n,i:String(i+1)})),
+      strikes:STRIKES.map((t,i)=>({text:t,ref:this.strikeRefs[i],w:s.struck[i]?'calc(100% + 8px)':'0%',color:s.struck[i]?'var(--pui-text-muted)':'var(--pui-text)'})),
+      tabs:Object.keys(PKG).map(k=>({label:k,cls:s.tab===k?'pui-btn pui-solid pui-inverse':'pui-btn pui-outline pui-surface',pressed:String(s.tab===k),pick:()=>this.setState({tab:k})})),
+      tabCmd:PKG[s.tab]
+    };
+  }
+}
+</script>
+
+
+</body></html>

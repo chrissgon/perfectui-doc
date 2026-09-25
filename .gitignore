@@ -22,3 +22,13 @@ logs
 .env
 .env.*
 !.env.example
+
+# Test output
+test-results
+playwright-report
+
+# Test fixture site (tests/helpers/fixture-site.mjs)
+.fixture-site
+
+# Documentation pages, generated from the library by scripts/sync-docs.ts (ADR-0010)
+/content/v1/

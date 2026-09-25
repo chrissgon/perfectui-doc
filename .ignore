@@ -1,0 +1,2 @@
+# Tailwind scans the generated pages (app/assets/css/main.css, @source), though git ignores them.
+!/content/v1/

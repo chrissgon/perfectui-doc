@@ -1,0 +1,102 @@
+/*
+ * Cascade layer order. perfectui's rules live in `pui.*`; Tailwind v4 puts Preflight in `base`
+ * and utilities in `utilities`. Declaring the order first keeps Preflight below the library
+ * (a reset never removes a component's fill) and utilities above it (`w-full` beats `pui-btn`).
+ */
+@layer theme, base, pui, components, utilities;
+
+@import "tailwindcss";
+/* Utilities used inside documentation examples (content/) are generated too. */
+@source "../../../content";
+@import "@chrissgon/perfectui/perfectui.css";
+@import "@fontsource-variable/inter/opsz.css";
+@import "@fontsource/fira-code/400.css";
+@import "@fontsource/fira-code/500.css";
+
+/*
+ * Examples show what the library renders on a plain page, without Tailwind's Preflight: inside a
+ * live preview every base-layer declaration rolls back to the browser's. The library (layer pui)
+ * and utilities (layer utilities) sit above base and still apply.
+ */
+@layer base {
+  [data-example-preview] :where(*) {
+    all: revert-layer;
+  }
+}
+
+/* Tailwind's dark variant follows the library's mode attribute. */
+@custom-variant dark (&:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));
+
+/*
+ * Fallbacks sized like the web fonts, so text keeps its box when Inter and Fira Code arrive
+ * (Lighthouse counted the hero moving on "Web font loaded"). Metrics as Next.js computes them
+ * for Inter over Arial, and for Fira Code over Courier New.
+ */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+  size-adjust: 107.4%;
+}
+@font-face {
+  font-family: "Fira Code Fallback";
+  src: local("Courier New");
+  ascent-override: 97.5%;
+  descent-override: 28.75%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+@theme {
+  --font-sans: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Fira Code Fallback", ui-monospace, monospace;
+}
+
+/*
+ * Tailwind's Preflight sets margin: 0 on every element, <dialog> included, which undoes the
+ * browser's centring of a modal; the library relies on that default and sets no margin, so the
+ * layer order alone does not protect it. Restored above the library, below the utilities.
+ */
+@layer components {
+  .pui-modal {
+    margin: auto;
+  }
+}
+
+/*
+ * Site tokens for text in a role colour (design system inks; handoff token table). The theme ink
+ * follows the picked --pui-theme (user review 2026-09-25), the library's own ink recipe with more
+ * of the text colour: at 30% every preset reads at least 4.78:1 in both modes, on the page, on a
+ * soft theme fill and on the code background.
+ */
+:root {
+  --site-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 30%);
+  --site-success-ink: light-dark(#0b6e2f, #71d588);
+  --site-warn-ink: light-dark(#934f03, #f9b867);
+  --site-error-ink: light-dark(#951616, #fa7b73);
+  --site-muted-ink: light-dark(#464b55, #b4b9c3);
+}
+
+body {
+  background: var(--pui-bg);
+  color: var(--pui-text);
+  font-family: var(--font-sans);
+}
+
+/*
+ * Inverse band (landing sections 2 and 7): the opposite of the page's mode, also when the page
+ * follows the system. The library's tokens resolve with light-dark() against color-scheme.
+ */
+.site-inverse {
+  color-scheme: dark;
+}
+[data-pui-mode="dark"] .site-inverse {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pui-mode]) .site-inverse {
+    color-scheme: light;
+  }
+}

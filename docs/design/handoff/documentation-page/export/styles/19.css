@@ -1,0 +1,10 @@
+
+body{margin:0;background:var(--pui-bg)}
+html{scroll-padding-top:88px}
+a:not([class]){color:var(--pui-theme-ink)}
+a:not([class]):hover{text-decoration:underline;text-underline-offset:.3rem}
+summary::-webkit-details-marker{display:none}
+dialog[data-drawer]::backdrop{background:rgb(0 0 0 / 50%)}
+input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+input[type=color]::-webkit-color-swatch{border:0;border-radius:9999px}
+input[type=color]::-moz-color-swatch{border:0;border-radius:9999px}
