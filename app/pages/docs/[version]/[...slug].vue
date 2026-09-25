@@ -12,7 +12,7 @@
         :changed="page.changed"
       />
       <DocToc :links="tocLinks" mode="disclosure" />
-      <ContentRenderer :value="page" />
+      <ContentRenderer :value="page" class="doc-prose" />
       <DocPager :prev="prev" :next="next" :edit-url="editUrl" />
     </article>
     <template #toc>

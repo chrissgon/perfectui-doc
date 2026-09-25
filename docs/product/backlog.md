@@ -168,6 +168,7 @@
   Check: every page builds, the validator passes, each page's h2 count equals its library source's `###` count
   Size: M, because six pages of content
   Milestone: CM3
+  Status: done (2026-09-25) six pages built and validated; tests/repo/content-sources.spec.ts h2 = source ### for each (7 passed); tests/e2e/prose.spec.ts 3 passed; bun run test 42 unit + 91 browser
 - T-cm-18: General and components pages
   Does: write `03.general/` (layout group, float) and `04.components/` (11 pages) the same way; name the examples the landing uses (`modal/basic`, `dropdown/basic`, `tooltip/basic`, `accordion/basic`).
   Delivers: REQ-1, REQ-3

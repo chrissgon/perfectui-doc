@@ -6,6 +6,8 @@
 @layer theme, base, pui, components, utilities;
 
 @import "tailwindcss";
+/* Utilities used inside documentation examples (content/) are generated too. */
+@source "../../../content";
 @import "@chrissgon/perfectui/perfectui.css";
 @import "@fontsource-variable/inter/opsz.css";
 @import "@fontsource/fira-code/400.css";

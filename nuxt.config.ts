@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/content", "@nuxt/eslint"],
 
-  css: ["~/assets/css/main.css", "~/assets/css/code.css"],
+  css: ["~/assets/css/main.css", "~/assets/css/code.css", "~/assets/css/prose.css"],
 
   content: {
     build: {
