@@ -55,6 +55,8 @@
 
 ## Decisions
 
+- 2026-09-25: The Algolia variables were removed from Netlify by the user; the 5 GitHub releases were deleted by the user and the 40 old tags by me (plan prune-old-library-versions)
+
 - 2026-09-25: The 0.23 site is removed entirely; its documentation is read in the library repository at tag `v0.23.0` (`docs/`); PRD F-7 retired (user)
 - 2026-09-25: One source for the documentation: the library's `docs/` and `MIGRATION.md` are the pages, converted by the site before each build from the installed version's tag (option A, ADR-0010) (user)
 - 2026-09-25: Production: branch `main` is replaced by the new site through a merge commit whose tree is `redesign`'s (option b), at the end of R-2, with its own approval (user)

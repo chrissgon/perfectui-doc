@@ -59,6 +59,12 @@ for v in "$@"; do npm unpublish "@chrissgon/perfectui@$v" || break; sleep 2; don
 npm view @chrissgon/perfectui versions --json   # expect the 5 kept versions
 ```
 
+## Progress
+
+- 2026-09-25: the user deleted the 5 GitHub releases (the API returns an empty list).
+- 2026-09-25: the 40 tags deleted on GitHub and locally; `git ls-remote --tags origin` lists `v0.20.1`, `v0.21.1`, `v0.23.0`, `v1.0.0-beta.0`, `v1.0.0-beta.1`.
+- npm: waiting for the user to run step 3.
+
 ## Checks after each step
 
 - Releases: `https://api.github.com/repos/chrissgon/perfectui/releases` returns an empty list.
