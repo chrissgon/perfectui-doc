@@ -41,7 +41,10 @@ describe("versions configuration (REQ-5, AC-5)", () => {
   });
 
   it("fails naming the file when two versions are latest", () => {
-    const two = versions.map((v) => ({ ...v, latest: true }));
+    const two = [
+      { id: "v1", label: "1.x", collection: "docs_v1", latest: true },
+      { id: "v0", label: "0.23", collection: "docs_v0", latest: true },
+    ];
     expect(() => pickLatest(two)).toThrow(/app\/versions\.ts/);
   });
 });

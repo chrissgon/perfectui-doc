@@ -1,12 +1,13 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
+import { OUT } from "./paths";
 
 const SNIPPET = '<button class="pui-btn pui-solid pui-theme">Solid</button>';
 const PAGE = "/docs/v1/components/button";
 
 test.describe("example block (REQ-3, REQ-10, EDGE-7, AC-3)", () => {
   test("the static HTML holds the rendered preview and the highlighted code", () => {
-    const html = readFileSync(".output/public/docs/v1/components/button/index.html", "utf8");
+    const html = readFileSync(`${OUT}/docs/v1/components/button/index.html`, "utf8");
     const example = html.slice(html.indexOf("data-example"));
     expect(example).toContain(SNIPPET.replace("</button>", ""));
     expect(example).toMatch(/<pre[^>]*class="[^"]*shiki/);

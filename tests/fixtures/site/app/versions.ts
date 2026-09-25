@@ -18,8 +18,8 @@ export interface DocVersion {
 
 export const versions: readonly DocVersion[] = [
   { id: "v1", label: "1.x", collection: "docs_v1", latest: true },
-  // v0 (0.23) is listed again when its converted pages ship in release R-2; a listed version with
-  // no page fails the build (EDGE-8). The test fixture site lists it (tests/fixtures/site).
+  // Listed now so routing and the switch are designed for it; its content ships in release R-2.
+  { id: "v0", label: "0.23", collection: "docs_v0", latest: false, deprecated: true },
 ];
 
 /** The latest version; fails naming this file unless exactly one version is latest (EDGE-8). */

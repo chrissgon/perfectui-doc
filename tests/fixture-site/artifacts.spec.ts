@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { versions } from "../../app/versions";
+import { OUT, versions } from "./paths";
 
-const read = (name: string) => JSON.parse(readFileSync(`.output/public/api/${name}`, "utf8"));
+const read = (name: string) => JSON.parse(readFileSync(`${OUT}/api/${name}`, "utf8"));
 
 test.describe("generated sets in the output (REQ-8, AC-7)", () => {
   test("both files exist and every entry carries version and url", () => {

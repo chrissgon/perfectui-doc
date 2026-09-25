@@ -1,8 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { latestVersion, versions } from "../../app/versions";
+import { OUT, latestVersion, versions } from "./paths";
 
-const OUT = ".output/public";
 
 test.describe("documentation routes (REQ-1, REQ-11, AC-1)", () => {
   test("every version serves the page under its own segment", () => {

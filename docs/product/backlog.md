@@ -210,6 +210,7 @@
   Check: a production build has no `docs/v0/` folder unless the v0 pages exist; the build tests still cover both versions
   Size: M, because the tests that rely on the fixture change with it
   Milestone: CM3
+  Status: done (2026-09-25) production output has docs/v1 only (tests/build/static.spec.ts); content-model tests run on the fixture site (project fixtures); bun run test 35 unit + 88 browser; test:slow 3 passed; lint and typecheck exit 0
 ### Order
 
 - Critical path: T-cm-1 → T-cm-3 → T-cm-4 → T-cm-5 → T-cm-12 → T-cm-17 → T-cm-18 → T-cm-20

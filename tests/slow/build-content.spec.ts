@@ -34,7 +34,8 @@ test("invalid content fails the build naming each file and cause (AC-10)", () =>
 });
 
 test("a version with no page fails the build instead of publishing an empty index (EDGE-8)", () => {
-  const root = projectCopy({}, ["content/v0/04.components/03.button.md"]);
+  // The fixture configuration lists v0; the production content has no v0 page.
+  const root = projectCopy({ "app/versions.ts": readFileSync("tests/fixtures/site/app/versions.ts", "utf8") });
   const run = generate(root);
   expect(run.status).not.toBe(0);
   expect(run.output).toContain("search document set is empty for v0");
