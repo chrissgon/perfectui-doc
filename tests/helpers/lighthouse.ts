@@ -21,7 +21,11 @@ async function once(url: string) {
     const lost = (id: "performance" | "accessibility") =>
       (categories?.[id]?.auditRefs ?? [])
         .filter((ref) => ref.weight > 0 && (lhr?.audits[ref.id]?.score ?? 1) < 1)
-        .map((ref) => ref.id);
+        .map((ref) => {
+          const items = (lhr?.audits[ref.id]?.details as { items?: { node?: { selector?: string; explanation?: string } }[] } | undefined)?.items ?? [];
+          const nodes = items.slice(0, 3).map((item) => `${item.node?.selector} (${item.node?.explanation?.split("\n")[1]?.trim() ?? ""})`);
+          return nodes.length ? `${ref.id} [${nodes.join("; ")}]` : ref.id;
+        });
     return {
       performance: Math.round((categories?.performance?.score ?? 0) * 100),
       accessibility: Math.round((categories?.accessibility?.score ?? 0) * 100),
