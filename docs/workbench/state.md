@@ -2,8 +2,8 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (R-1 designed and cut into the backlog; implementation starts with T-cm-1 through eng-implement and eng-code-review)
-- Updated: 2026-09-24
+- Current phase: engineering (R-1: milestones CM1, CM2, CM3, SH1, SH2, SH3 implemented and reviewed; next MG1, then SR1; the first Netlify deploy preview awaits approval)
+- Updated: 2026-09-25
 
 ## Autonomy
 
@@ -50,6 +50,8 @@
 | docs/product/prd.md | product-prd | draft | 2026-09-23 |
 
 ## Decisions
+
+- 2026-09-25: The production site lists only v1 in `app/versions.ts` until the converted 0.23 pages ship in R-2 (a listed version with no page fails the build, EDGE-8); content-model tests run on a fixture site built from `tests/fixtures/site`, which lists v0 (eng-implement T-cm-22; to confirm with the user)
 
 - 2026-09-25: Below 1024 px a documentation page's header shows only the sidebar menu (approved export); GitHub and Figma links live inside that sidebar panel and in the footer, satisfying REQ-7 at narrow widths (user, T-sh-4 review finding 1)
 
