@@ -1,13 +1,13 @@
 import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import Database from "better-sqlite3";
+import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 import { versions } from "../../app/versions";
 
 // NFR-2, AC-11 on the production site: every documentation route is a static file, the
 // generated files are present, and only configured versions are published (T-cm-22).
 test("every collection route exists as a static HTML file", () => {
-  const db = new Database(".data/content/contents.sqlite", { readonly: true });
+  const db = new DatabaseSync(".data/content/contents.sqlite", { readOnly: true });
   for (const v of versions) {
     const rows = db.prepare(`select path from _content_${v.collection} where path not like '%/.navigation'`).all() as { path: string }[];
     expect(rows.length, v.id).toBeGreaterThan(0);

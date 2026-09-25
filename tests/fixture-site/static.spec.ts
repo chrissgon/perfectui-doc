@@ -1,12 +1,12 @@
 import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import Database from "better-sqlite3";
+import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 import { DB, OUT, versions } from "./paths";
 
 // NFR-2, AC-11: every documentation route is a static file; the generated files are present.
 test("every collection route exists as a static HTML file", () => {
-  const db = new Database(DB, { readonly: true });
+  const db = new DatabaseSync(DB, { readOnly: true });
   for (const v of versions) {
     const rows = db.prepare(`select path from _content_${v.collection} where path not like '%/.navigation'`).all() as { path: string }[];
     for (const { path } of rows) expect(existsSync(join(OUT, path, "index.html")), path).toBe(true);

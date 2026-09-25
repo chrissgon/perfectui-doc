@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import Database from "better-sqlite3";
+import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 import { DB, versions } from "./paths";
 
@@ -12,7 +12,7 @@ test.describe("documentation collections (REQ-1, REQ-2, REQ-11, EDGE-5)", () => 
 
   test.beforeAll(() => {
     if (!existsSync(DB)) throw new Error(`${DB} is missing: the fixture site is built by its web server`);
-    const db = new Database(DB, { readonly: true });
+    const db = new DatabaseSync(DB, { readOnly: true });
     pages = Object.fromEntries(
       versions.map((v) => [
         v.id,

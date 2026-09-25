@@ -14,6 +14,9 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css", "~/assets/css/code.css", "~/assets/css/prose.css"],
 
   content: {
+    // Node's built-in SQLite (Node >= 22.5): no native module to compile on install. The build
+    // image failed compiling better-sqlite3 (node-gyp) on 2026-09-25.
+    experimental: { sqliteConnector: "native" },
     build: {
       markdown: {
         // The default languages plus `diff`, for the migration guide (T-mg-3).
