@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (architecture of release R-1 designed: content model, landing and shell, migration guide, search; product-backlog next)
+- Current phase: engineering (R-1 designed and cut into the backlog; implementation starts with T-cm-1 through eng-implement and eng-code-review)
 - Updated: 2026-09-24
 
 ## Autonomy
@@ -46,7 +46,7 @@
 | docs/engineering/adr/0007-library-size-measured-at-build-with-gzip-n.md | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0008-showcase-renders-named-example-blocks-from-the-docs.md | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0009-client-side-search-with-minisearch.md | eng-architecture | draft | 2026-09-24 |
-| docs/product/backlog.md (superseded by the restart; to re-cut after the PRD) | product-backlog | draft | 2026-09-23 |
+| docs/product/backlog.md (release R-1: 46 tasks in four features, 8 milestones) | product-backlog | draft | 2026-09-24 |
 | docs/product/prd.md | product-prd | draft | 2026-09-23 |
 
 ## Decisions
