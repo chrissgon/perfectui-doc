@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering, release R-2 implemented locally (T-ld-1 to T-ld-5 done and reviewed; milestones LD1 and LD2 met on branch `redesign` and on the library's branch `v1`); next: the user approves pushing the library's branch `v1` (a6a86c6, 652748d), then the site's branch, then the release on `main`
+- Current phase: released. R-1 and R-2 are live on https://perfectui.netlify.app from branch `main` (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks, or the first library release after 1.0.0-beta.1, which lets `app/versions.ts` drop `libraryRef`
 - Updated: 2026-09-25
 
 ## Autonomy
@@ -54,6 +54,8 @@
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
+
+- 2026-09-25: Released: https://perfectui.netlify.app serves the new site from `main`. The first production build failed in `nuxt prepare` (`No "exports" main defined in estree-walker`) because Netlify restored the 0.23 site's dependency cache (Nuxt 3, `bun.lockb`); "Clear cache and deploy site" fixed it. Checked on the host: `/docs` and `/docs/v1` answer 301 to Installation, pages 200, unknown paths 404, the version menu lists 1.x and 0.23 on GitHub, example utilities are generated, library size 3,221 and 493 B. Lighthouse mobile, median of 3: landing 100, migration guide 99, Button 98; accessibility 98 to 100; CLS 0.021 on the landing, 0 on documentation pages
 
 - 2026-09-25: The Algolia variables were removed from Netlify by the user; the 5 GitHub releases were deleted by the user and the 40 old tags by me (plan prune-old-library-versions)
 
