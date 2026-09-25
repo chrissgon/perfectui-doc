@@ -42,6 +42,7 @@
   Check: `tests/repo/versions.spec.ts`: version ids appear only in `app/versions.ts`; a fixture without a latest version fails with a message naming the file
   Size: S, because one file with a fixed shape
   Milestone: CM1
+  Status: done (2026-09-24) tests/repo/versions.spec.ts 4 passed (a planted "v1" in app/probe.ts made it fail, then removed); bun run test exit 0 (6 unit, 3 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-3.md: approve
 - T-cm-4: Collections, schema and fixtures
   Does: `content.config.ts` with `docs_v1` (prefix `/docs/v1`) and `docs_v0` (prefix `/docs/v0`) sharing the schema; section folders with `.navigation.yml`; fixtures `components/button.md` in both versions and `components/chip.md` (`since: "1.0"`) in v1 only, plus an empty section folder.
   Delivers: REQ-1, REQ-2, REQ-11, EDGE-5
