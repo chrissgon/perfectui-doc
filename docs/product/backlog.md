@@ -177,6 +177,7 @@
   Check: every page builds with every example rendering a `pui-` element; h2 counts equal the sources'; the four named examples exist; the headings column highlights the heading scrolled into view (T-cm-11 review)
   Size: L, because thirteen pages
   Milestone: CM3
+  Status: done (2026-09-25) 13 pages build and validate; h2 = source ### (tests/repo/content-sources.spec.ts 20 passed); tests/e2e/components-content.spec.ts 6 passed (examples render pui- elements, four named examples, unique ids, headings highlight, modal centred, plain-page examples); bun run test 59 unit + 97 browser
 - T-cm-19: Forms pages
   Does: write `05.forms/` (field group, input, input group, textarea, select, checkbox, radio, switch).
   Delivers: REQ-1, REQ-3

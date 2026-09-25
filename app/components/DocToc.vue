@@ -5,6 +5,7 @@
       <li v-for="link in links" :key="link.id">
         <a
           :href="`#${link.id}`"
+          :aria-current="current === link.id ? 'location' : undefined"
           class="-ml-px block border-l-2 pl-3"
           :style="{
             borderColor: current === link.id ? 'var(--pui-theme)' : 'transparent',

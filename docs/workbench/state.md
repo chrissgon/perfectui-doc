@@ -136,6 +136,7 @@
 - [x] Landing SECTION-6 body corrected to the measured behaviour, kept short: "One `@layer` line keeps Tailwind's reset below perfectui and every utility above it." (user, 2026-09-24)
 - [x] Solid labels below AA in light mode (theme 3.50, success 3.30, warn 3.19): trade-off accepted for 1.0; PRD M-4 amended with the exception (user, 2026-09-24)
 - [ ] Later (library): revisit the light-mode solid fills or labels of theme, success and warn to reach AA without a palette that reads too dark (user, 2026-09-24: not now)
+- [ ] Later (library): `pui-modal` sets no `margin` and relies on the browser's `margin: auto` to centre the dialog; Tailwind v4's Preflight sets `margin: 0` on every element, so under Tailwind a modal opens in the top-left corner even with the layer order the Tailwind guide recommends. Found on the documentation site (T-cm-18), which restores the margin itself; the library should set it, and its Tailwind guide should mention it (eng-code-review, 2026-09-25)
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)

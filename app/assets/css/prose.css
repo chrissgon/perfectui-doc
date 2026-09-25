@@ -1,11 +1,12 @@
 /*
  * Rendered Markdown on documentation pages (approved export, Button page): Tailwind's Preflight
- * resets headings, lists and spacing, so the prose gets its own rules, scoped to .doc-prose.
+ * resets headings, lists and spacing, so the prose gets its own rules, scoped to .doc-prose and
+ * stopping at example blocks, whose content is the library's alone.
  */
 .doc-prose {
   line-height: 1.7;
 }
-.doc-prose h2 {
+.doc-prose h2:not([data-example] *) {
   margin: 48px 0 16px;
   font-size: 26px;
   line-height: 1.2;
@@ -13,7 +14,7 @@
   letter-spacing: -0.02em;
   scroll-margin-top: 88px;
 }
-.doc-prose h3 {
+.doc-prose h3:not([data-example] *) {
   margin: 32px 0 12px;
   font-size: 20px;
   line-height: 1.3;
@@ -21,33 +22,33 @@
   letter-spacing: -0.01em;
   scroll-margin-top: 88px;
 }
-.doc-prose p {
+.doc-prose p:not([data-example] *) {
   margin: 0 0 16px;
   text-wrap: pretty;
 }
-.doc-prose ul,
-.doc-prose ol {
+.doc-prose ul:not([data-example] *),
+.doc-prose ol:not([data-example] *) {
   margin: 0 0 16px;
   padding-left: 1.5em;
 }
-.doc-prose ul {
+.doc-prose ul:not([data-example] *) {
   list-style: disc;
 }
-.doc-prose ol {
+.doc-prose ol:not([data-example] *) {
   list-style: decimal;
 }
-.doc-prose li + li {
+.doc-prose li + li:not([data-example] *) {
   margin-top: 4px;
 }
-.doc-prose strong {
+.doc-prose strong:not([data-example] *) {
   font-weight: 600;
 }
-.doc-prose a:not(.pui-btn) {
+.doc-prose a:not(.pui-btn):not([data-example] *) {
   color: var(--site-theme-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.doc-prose :not(pre) > code {
+.doc-prose :not(pre) > code:not([data-example] *) {
   padding: 2px 6px;
   border: 1px solid var(--pui-border);
   border-radius: 5px;
@@ -55,8 +56,8 @@
   font: 0.85em/1 var(--font-mono);
 }
 /* A fenced block outside an example: the code tab's look, scrolling inside its own box. */
-.doc-prose > pre,
-.doc-prose > div > pre {
+.doc-prose > pre:not([data-example] *),
+.doc-prose > div > pre:not([data-example] *) {
   margin: 0 0 20px;
   padding: 16px 20px;
   overflow-x: auto;
@@ -65,12 +66,18 @@
   font: 13.5px/1.75 var(--font-mono);
   tab-size: 2;
 }
-.doc-prose .prose-table {
+/* Code shows the characters typed: Fira Code would join <!-- and --> into arrows. */
+.doc-prose code:not([data-example] *),
+.doc-prose pre:not([data-example] *),
+[data-example] pre {
+  font-variant-ligatures: none;
+}
+.doc-prose .prose-table:not([data-example] *) {
   margin: 0 0 20px;
   overflow-x: auto;
 }
 /* Headings link to themselves (anchor links from the content module); they read as headings. */
-.doc-prose :is(h2, h3) a:not(.pui-btn) {
+.doc-prose :is(h2, h3) a:not(.pui-btn):not([data-example] *) {
   color: inherit;
   text-decoration: none;
 }

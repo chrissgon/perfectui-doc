@@ -34,7 +34,7 @@
     >
       <!-- The snippet is the page author's own Markdown, rendered at build time (ADR-0002). -->
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="flex flex-wrap items-center justify-center gap-3" v-html="snippet" />
+      <div class="flex flex-wrap items-center justify-center gap-3" v-html="preview" />
     </div>
     <div
       :id="`${uid}-code`"
@@ -53,6 +53,7 @@
 
 <script setup lang="ts">
 import type { VNode } from "vue";
+import { scopeExample } from "#shared/example-scope";
 
 // ADR-0002: one fenced block in the default slot gives the live preview (the raw text kept in
 // the rendered <pre>'s `code` prop) and the code tab (the slot, highlighted at build time).
@@ -77,6 +78,9 @@ function findCode(nodes: VNode[]): string | undefined {
   return undefined;
 }
 const snippet = computed(() => findCode(slots.default?.() ?? [])?.trim() ?? "");
+// The live preview gets its own ids and group names, so two examples on a page never open each
+// other's overlays; the code tab and the copy keep the author's HTML.
+const preview = computed(() => scopeExample(snippet.value, uid.replace(/[^\w-]/g, "")));
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;

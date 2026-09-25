@@ -13,12 +13,34 @@
 @import "@fontsource/fira-code/400.css";
 @import "@fontsource/fira-code/500.css";
 
+/*
+ * Examples show what the library renders on a plain page, without Tailwind's Preflight: inside a
+ * live preview every base-layer declaration rolls back to the browser's. The library (layer pui)
+ * and utilities (layer utilities) sit above base and still apply.
+ */
+@layer base {
+  [data-example-preview] :where(*) {
+    all: revert-layer;
+  }
+}
+
 /* Tailwind's dark variant follows the library's mode attribute. */
 @custom-variant dark (&:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));
 
 @theme {
   --font-sans: "Inter Variable", system-ui, sans-serif;
   --font-mono: "Fira Code", ui-monospace, monospace;
+}
+
+/*
+ * Tailwind's Preflight sets margin: 0 on every element, <dialog> included, which undoes the
+ * browser's centring of a modal; the library relies on that default and sets no margin, so the
+ * layer order alone does not protect it. Restored above the library, below the utilities.
+ */
+@layer components {
+  .pui-modal {
+    margin: auto;
+  }
 }
 
 /* Site tokens for text in a role colour (design system inks; handoff token table). */

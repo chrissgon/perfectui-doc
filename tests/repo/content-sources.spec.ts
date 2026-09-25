@@ -14,6 +14,19 @@ export const sources: Record<string, string> = {
   "01.getting-started/05.license.md": "license.md",
   "02.customization/01.dark-mode.md": "darkmode.md",
   "02.customization/02.theme-color.md": "theme-color.md",
+  "03.general/01.layout-group.md": "layout-group.md",
+  "03.general/02.float.md": "float.md",
+  "04.components/01.accordion.md": "accordion.md",
+  "04.components/02.badge.md": "badge.md",
+  "04.components/03.button.md": "button.md",
+  "04.components/04.card.md": "card.md",
+  "04.components/05.chip.md": "chip.md",
+  "04.components/06.dropdown.md": "dropdown.md",
+  "04.components/07.list.md": "list.md",
+  "04.components/08.modal.md": "modal.md",
+  "04.components/09.table.md": "table.md",
+  "04.components/10.timeline.md": "timeline.md",
+  "04.components/11.tooltip.md": "tooltip.md",
 };
 
 const count = (text: string, marker: RegExp) => {
@@ -40,7 +53,7 @@ describe.skipIf(!existsSync(LIBRARY_DOCS))(`content written from the library doc
       .filter((f) => f.endsWith(".md"))
       .filter((f) => !f.includes("migrating-from-0-23"));
     const unmapped = pages.filter((p) => !(p in sources));
-    // Pages still to be written in T-cm-18 and T-cm-19 are the fixtures they replace.
-    expect(unmapped.filter((p) => !/^0[345]\./.test(p))).toEqual([]);
+    // The forms pages still to be written in T-cm-19 are the fixtures they replace.
+    expect(unmapped.filter((p) => !/^05\./.test(p))).toEqual([]);
   });
 });
