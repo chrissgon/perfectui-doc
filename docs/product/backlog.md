@@ -538,6 +538,7 @@
   Check: 95th percentile under 100 ms over 20 queries; first-open files at most 300 KB with `gzip -9 -n`; 0 violations except the accepted library trade-off (solid theme, success and warn labels in light mode)
   Size: M, because measurements on the full content
   Milestone: SR1
+  Status: done (2026-09-25) latency p95 17 ms at 4x throttling (20 queries); first open 45 KB gzip -9 -n (index 36 KB, two chunks, CSS); axe with the dialog open 0 violations light and dark after two fixes; bun run test 79 unit + 157 browser; test:slow 5 passed
 
 ### Order
 

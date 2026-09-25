@@ -23,7 +23,8 @@
         </button>
       </div>
 
-      <div :id="listId" role="listbox" aria-label="Results" class="min-h-0 flex-1 overflow-y-auto p-2">
+      <!-- Focusable because it scrolls; the keys usually stay in the input (aria-activedescendant). -->
+      <div :id="listId" role="listbox" aria-label="Results" tabindex="0" class="min-h-0 flex-1 overflow-y-auto p-2">
         <div v-if="state === 'loading'" aria-busy="true" class="flex flex-col gap-3 px-2 py-3">
           <span class="text-sm" style="color: var(--pui-text-muted)">Loading the search index</span>
           <span v-for="w in ['62%', '80%', '48%']" :key="w" class="h-3 rounded" :style="{ width: w, background: 'var(--pui-bg-muted)' }" />
@@ -52,9 +53,10 @@
               @mousemove="selected = item.index"
             >
               <span class="text-sm font-semibold">{{ item.result.heading || item.result.title }}</span>
-              <!-- The snippet is escaped page text with <mark> added (shared/search-query.ts). -->
+              <!-- The snippet is escaped page text with <mark> added (shared/search-query.ts); its colour
+                   is the AA muted ink, and the text colour on the selected item's tint. -->
               <!-- eslint-disable-next-line vue/no-v-html -->
-              <span class="search-snippet text-[13px] leading-normal" style="color: var(--pui-text-muted)" v-html="item.result.snippet" />
+              <span class="search-snippet text-[13px] leading-normal" :style="{ color: item.index === selected ? 'var(--pui-text)' : 'var(--site-muted-ink)' }" v-html="item.result.snippet" />
             </NuxtLink>
           </div>
         </template>
