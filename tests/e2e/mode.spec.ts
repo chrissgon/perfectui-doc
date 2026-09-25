@@ -11,7 +11,8 @@ test.describe("mode before first paint (REQ-8, EDGE-4, EDGE-5, AC-8)", () => {
     test(`the mode script precedes every stylesheet on ${path}`, async ({ request }) => {
       const html = await (await request.get(path)).text();
       const script = html.indexOf("pui-mode=(light|dark)");
-      const stylesheet = html.search(/<link[^>]+rel="stylesheet"/);
+      // The first CSS of the page, linked or inlined (the stylesheet is inlined since T-cm-20).
+      const stylesheet = html.search(/<link[^>]+rel="stylesheet"|<style[\s>]/);
       expect(script).toBeGreaterThan(-1);
       expect(stylesheet).toBeGreaterThan(-1);
       expect(script).toBeLessThan(stylesheet);

@@ -195,6 +195,7 @@
   Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations except the accepted library trade-off: `color-contrast` on the labels of `pui-solid` with `pui-theme`, `pui-success` or `pui-warn` in light mode
   Size: S, because the harness exists; fixes, if any, get their own task
   Milestone: CM3
+  Status: done (2026-09-25) Button page: Lighthouse mobile performance 92, accessibility >= 95 (3 runs), axe 0 violations light and dark with the accepted trade-off only; bun run test 67 unit + 103 browser
 
 - T-cm-21: Type-check the tests
   Does: `tests/tsconfig.json` extending the Nuxt config with `tests/**` included, `@types/better-sqlite3` pinned, and the `typecheck` script covering it.

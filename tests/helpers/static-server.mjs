@@ -1,8 +1,11 @@
 // Serves a generated site the way a static host does: `/path` → `/path/index.html`,
-// unknown paths → `404.html` with status 404. Usage: node static-server.mjs <dir> <port>
+// unknown paths → `404.html` with status 404, text compressed with gzip when the client accepts
+// it (Netlify compresses too, so Lighthouse measures real transfer sizes).
+// Usage: node static-server.mjs <dir> <port>
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve } from "node:path";
+import { gzipSync } from "node:zlib";
 
 const [, , dirArg = ".output/public", portArg = "4173"] = process.argv;
 const root = resolve(dirArg);
@@ -33,14 +36,25 @@ try {
   process.exit(1);
 }
 
+const compressible = new Set([".html", ".js", ".mjs", ".css", ".json", ".svg", ".txt", ""]);
+
+function send(req, res, status, type, body, ext) {
+  const headers = { "content-type": type };
+  if (compressible.has(ext) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "")) {
+    body = gzipSync(body);
+    headers["content-encoding"] = "gzip";
+    headers.vary = "accept-encoding";
+  }
+  res.writeHead(status, headers);
+  res.end(body);
+}
+
 createServer(async (req, res) => {
   const file = await resolveFile(req.url ?? "/");
   if (file) {
-    res.writeHead(200, { "content-type": types[extname(file)] ?? "application/octet-stream" });
-    res.end(await readFile(file));
+    send(req, res, 200, types[extname(file)] ?? "application/octet-stream", await readFile(file), extname(file));
     return;
   }
-  const notFound = join(root, "404.html");
-  res.writeHead(404, { "content-type": types[".html"] });
-  res.end(await readFile(notFound).catch(() => "Not found"));
+  const notFound = await readFile(join(root, "404.html")).catch(() => Buffer.from("Not found"));
+  send(req, res, 404, types[".html"], notFound, ".html");
 }).listen(Number(portArg), () => console.log(`static server on http://localhost:${portArg}`));

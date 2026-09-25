@@ -7,6 +7,10 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/content", "@nuxt/eslint"],
 
+  // The stylesheet is inlined into each prerendered page, removing the render-blocking request
+  // on a first visit (Lighthouse mobile, T-cm-20).
+  features: { inlineStyles: true },
+
   css: ["~/assets/css/main.css", "~/assets/css/code.css", "~/assets/css/prose.css"],
 
   content: {
@@ -39,6 +43,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     },
   },
 });
