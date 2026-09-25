@@ -42,4 +42,4 @@ Findings outside the criteria:
 
 ## Next
 
-- The site uses the 1200 × 630 version as `og:image` on every page once the user provides it (landing spec REQ-10).
+- The user provided the 1200 × 630 version (2026-09-24), kept as `final/og-1200x630.jpg` (JPG quality 85, 198 KB; the PNG was 551 KB, over the brief's 300 KB); the site serves it as `/og.jpg` (backlog T-sh-5).

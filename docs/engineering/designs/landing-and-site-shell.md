@@ -83,7 +83,7 @@ export const site = { url: 'https://perfectui.netlify.app', packageName: '@chris
 |---------------|-------|--------|
 | `/` | the landing, prerendered | REQ-1 to REQ-5 |
 | `/api/library-size.json` | `{ "version": "1.0.0-beta.1", "css": 3221, "js": 493, "method": "gzip -9 -n", "measuredAt": "<build date>" }`, prerendered | REQ-2, NFR-2 |
-| `/og.png` | 1200 × 630 PNG from the user's thumbnail, in `public/` | REQ-10 |
+| `/og.jpg` | 1200 × 630 JPG (quality 85, 198 KB) from the user's thumbnail `docs/design/results/og-image/final/og-1200x630.jpg`, in `public/` | REQ-10 |
 | head of every page | `<title>`, `meta description`, `og:title`, `og:description`, `og:image` (absolute, from the site URL), `og:url`, `twitter:card=summary_large_image` | REQ-10 |
 | `<html>` | `data-pui-mode` when a choice exists (cookie `pui-mode`), `style="--pui-theme: …"` when a colour was picked this session; never a `dark` class | REQ-8, REQ-9 |
 
@@ -156,7 +156,7 @@ Competitors' list (`app/data/competitors.ts`, static, from messaging PROOF-2 and
 | REQ-6 | features configuration, site header, AC-6 |
 | REQ-7 | default layout, header, footer, AC-7 |
 | REQ-8, REQ-9 | head script, mode toggle, theme picker, AC-8, AC-9 |
-| REQ-10 | SEO composable, `/og.png`, AC-10 |
+| REQ-10 | SEO composable, `/og.jpg`, AC-10 |
 | NFR-1, NFR-3 | motion composable, fonts, inline icons, AC-11, AC-12 |
 | EDGE-1 to EDGE-9 | failure paths |
 | AC-1 to AC-12 | verification plan |

@@ -247,12 +247,12 @@
   Size: M, because three shared components
   Milestone: SH1
 - T-sh-5: Page metadata and share image
-  Does: `usePageMeta` (title, description, Open Graph, Twitter card, absolute `og:image` from the site URL) used by the landing and the docs page; `public/og.png` from the user's 1200 × 630 export.
+  Does: `usePageMeta` (title, description, Open Graph, Twitter card, absolute `og:image` from the site URL) used by the landing and the docs page; `public/og.jpg` copied from `docs/design/results/og-image/final/og-1200x630.jpg`.
   Delivers: REQ-10, AC-10
-  Touches: `app/composables/usePageMeta.ts`, `public/og.png`
+  Touches: `app/composables/usePageMeta.ts`, `public/og.jpg`
   Depends on: T-sh-1, T-cm-7
   Check: `tests/build/meta.spec.ts`: the seven tags in `index.html` and in the button page, the latter with its frontmatter values
-  Size: S, because one composable; blocked only by the image file from the user
+  Size: S, because one composable and a provided image
   Milestone: SH1
 - T-sh-6: Spike: library size at build
   Does: `server/routes/api/library-size.json.get.ts` running `gzip -9 -n` on the installed files; confirm `gzip` exists on the Netlify build image with a deploy preview.
@@ -501,4 +501,4 @@
 
 ## Open questions
 
-- none: the 1200 × 630 share image from the user is an input to T-sh-5, not a decision.
+- none.

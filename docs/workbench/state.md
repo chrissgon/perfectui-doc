@@ -135,7 +135,7 @@
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 - [x] Open Graph image: the user's own thumbnail (2026-09-24)
-- [ ] 1200 × 630 PNG or JPG version of the thumbnail for og:image (user to provide)
+- [x] 1200 × 630 version of the thumbnail provided (user, 2026-09-24)
 - [x] Which perfectui version does the site pin? 1.0.0-beta.1 (user, 2026-09-24)
 - [x] Close design-system OPEN-1 with the export's syntax colours? Yes (user, 2026-09-24)
 - [x] Adopt the design tool's explanatory sentences into the v1 content? Yes, after checking each (user, 2026-09-24)
