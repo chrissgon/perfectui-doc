@@ -45,7 +45,7 @@ describe("site configuration", () => {
 
 // REQ-6: unshipped features are off.
 describe("features configuration", () => {
-  it("ships without search until T-sr-3 and without the assistant", () => {
-    expect(features).toEqual({ search: false, assistant: false });
+  it("ships search (since T-sr-3) and not the assistant", () => {
+    expect(features).toEqual({ search: true, assistant: false });
   });
 });

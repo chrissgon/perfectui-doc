@@ -11,7 +11,7 @@
         <span class="pui-badge pui-soft pui-theme">{{ latestVersion.label }}</span>
       </div>
 
-      <nav aria-label="Site" class="flex items-center gap-1">
+      <nav aria-label="Site" class="flex items-center gap-0.5 sm:gap-1">
         <NuxtLink
           :to="docsPath"
           :class="['pui-btn pui-link max-lg:hidden', onDocs ? 'pui-theme' : 'pui-surface']"
@@ -19,9 +19,7 @@
         >
           Docs
         </NuxtLink>
-        <template v-if="features.search">
-          <slot name="search" />
-        </template>
+        <SearchButton v-if="features.search" />
         <span aria-hidden="true" class="mx-1.5 h-5 w-px max-lg:hidden" style="background: var(--pui-border)" />
         <ThemePicker />
         <ModeToggle />
@@ -37,14 +35,14 @@
         <button
           v-if="onDocPage"
           type="button"
-          class="pui-btn pui-link pui-surface px-2.5 lg:hidden"
+          class="pui-btn pui-link pui-surface px-2.5 max-sm:px-1.5 lg:hidden"
           aria-label="Documentation menu"
           popovertarget="docs-nav"
         >
           <SiteIcon name="menu" />
         </button>
         <template v-else>
-          <button type="button" class="pui-btn pui-link pui-surface px-2.5 lg:hidden" aria-label="Menu" :popovertarget="menuId">
+          <button type="button" class="pui-btn pui-link pui-surface px-2.5 max-sm:px-1.5 lg:hidden" aria-label="Menu" :popovertarget="menuId">
             <SiteIcon name="ellipsis" />
           </button>
           <div :id="menuId" class="pui-dropdown pui-align-end" popover>

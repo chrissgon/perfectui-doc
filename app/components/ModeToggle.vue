@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="pui-btn pui-link pui-surface px-2.5"
+    class="pui-btn pui-link pui-surface px-2.5 max-sm:px-1.5"
     :data-mode="mode"
     :aria-label="label"
     :title="label"

@@ -2,7 +2,7 @@
   <div class="inline-flex">
     <button
       type="button"
-      class="pui-btn pui-link pui-surface px-2.5"
+      class="pui-btn pui-link pui-surface px-2.5 max-sm:px-1.5"
       aria-label="Theme colour"
       title="Theme colour"
       :popovertarget="panelId"

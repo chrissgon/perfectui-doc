@@ -520,6 +520,7 @@
   Check: `tests/e2e/search-open.spec.ts`: each trigger opens the dialog with the input focused; `/` in a field types a slash
   Size: S, because one component and its keys
   Milestone: SR1
+  Status: done (2026-09-25) tests/e2e/search-open.spec.ts 8 passed (8 failed before); features.search on; 320 px still fits; bun run test 78 unit + 143 browser
 - T-sr-4: Search dialog
   Does: `SearchDialog` on `pui-modal`: states (empty, loading, results, no results, unavailable with Retry), result items, keyboard, live region, full screen below 640 px, re-filter on version change.
   Delivers: REQ-2, REQ-3, REQ-4, REQ-7, REQ-8, EDGE-2, EDGE-5, EDGE-6, AC-2, AC-3, AC-4, AC-6, AC-7
