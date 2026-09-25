@@ -53,7 +53,7 @@ Method: dependency first (a feature never ships before what it needs), then prio
 ## Risks by release
 
 - R-1: PRD R-1 (library beta may rename classes) mitigated by pinning the exact version and validating every example block in the build from F-1 on; PRD R-2 (search provider) retired by placing F-5 inside R-1 after the client-side decision of 2026-09-23; PRD R-5 (AI-generated design drifts from the 14 shipped components) mitigated by validating the design against the component list before F-3 and F-8 are implemented.
-- R-2: PRD R-4 (v0 conversion loses content) mitigated by converting F-7 page by page with section and example counts compared against branch `main`.
+- R-2: the switch control's check clicks the control on a shared page and on a v1-only page, exercising `useVersionSwitch` end to end (T-cm-15 review). PRD R-4 (v0 conversion loses content) mitigated by converting F-7 page by page with section and example counts compared against branch `main`.
 - R-3: PRD R-3 (WebGPU coverage and model size) mitigated by the flag, detection and opt-in download of brief decision 4; the quality target is PRD OPEN-4.
 
 ## Not planned

@@ -150,6 +150,7 @@
   Check: `tests/e2e/version-switch.spec.ts` with the fixtures: chip (v1 only) lands on `/docs/v0?missing=components/chip` with the notice naming chip and 0.23; button maps to the same path and back
   Size: M, because routing plus a notice state
   Milestone: CM2
+  Status: done (2026-09-24) tests/unit/version-switch.spec.ts 3 passed (failed before the module existed); tests/e2e/version-switch.spec.ts 2 passed (the notice existed since T-cm-7); bun run test exit 0 (27 unit, 32 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-15.md: approve with changes; the R-2 control task must exercise the composable end to end
 - T-cm-16: Build assertions for the authoring promise
   Does: tests for AC-9 (a page added as one Markdown file appears in the route list, navigation and search set, and the diff is that file), AC-11 (every collection route is a static file, the generated files present, no server bundle needed) and AC-10 at build level (a copy of the project with invalid fixtures, and one with a version that has no page, makes `nuxt generate` exit non-zero naming each file and cause; T-cm-13 and T-cm-14 reviews).
   Delivers: NFR-1, NFR-2, AC-9, AC-10, AC-11

@@ -2,7 +2,7 @@
   <main class="mx-auto max-w-3xl p-8">
     <h1 class="text-4xl font-semibold">Documentation {{ version.label }}</h1>
     <p v-if="missing" role="status" class="pui-card mt-4 p-4">
-      {{ missing }} has no page in {{ version.label }}. You are on the {{ version.label }} index.
+      {{ missingName }} has no page in {{ version.label }}. You are on the {{ version.label }} index.
     </p>
     <section v-for="section in sections" :key="section.path" class="mt-6">
       <h2 class="text-2xl font-semibold">{{ section.title }}</h2>
@@ -25,6 +25,7 @@ if (!found) throw createError({ statusCode: 404, statusMessage: "Version not fou
 const version = found;
 
 const missing = computed(() => (typeof route.query.missing === "string" ? route.query.missing : ""));
+const missingName = computed(() => missing.value.split("/").pop() ?? "");
 
 const sections = await useDocsNav(version);
 
