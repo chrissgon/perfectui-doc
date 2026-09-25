@@ -23,7 +23,8 @@ test.describe("without JavaScript", () => {
   test("the calls to action navigate", async ({ page }) => {
     await page.goto("/");
     await page.locator("#hero").getByRole("link", { name: "Get started" }).click();
-    await expect(page).toHaveURL(/\/docs\/v1$/);
+    // The version index is a redirect to the first page (user review 2026-09-25).
+    await expect(page).toHaveURL(/\/docs\/v1\/getting-started\/installation$/);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await page.goto("/");
     await page.locator("#classes").getByRole("link", { name: "See the components" }).click();

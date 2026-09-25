@@ -55,12 +55,14 @@
   background: var(--pui-bg-muted);
   font: 0.85em/1 var(--font-mono);
 }
-/* A fenced block outside an example: the code tab's look, scrolling inside its own box. */
+/* A fenced block outside an example: the code tab's look. Long lines wrap, so a block never
+   scrolls (user review, 2026-09-25). */
 .doc-prose > pre:not([data-example] *),
 .doc-prose > div > pre:not([data-example] *) {
   margin: 0 0 20px;
   padding: 16px 20px;
-  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   border: 1px solid var(--pui-border);
   border-radius: 9px;
   font: 13.5px/1.75 var(--font-mono);

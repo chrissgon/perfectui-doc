@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import { versions } from "./app/versions";
 import { codeTheme } from "./shared/code-theme";
+import { firstPageRoute } from "./shared/first-page";
 
 export default defineNuxtConfig({
   compatibilityDate: "2026-09-24",
@@ -38,6 +39,16 @@ export default defineNuxtConfig({
     build: { cssTarget: ["chrome123", "edge123", "firefox120", "safari17.5"] },
   },
 
+  // A version's index is its first page (user review 2026-09-25): a redirect rule, not a page, so
+  // the server, the client router and the prerendered fallback all send it there. The host
+  // answers first with the forced 301 in _redirects.
+  routeRules: Object.fromEntries(
+    versions.flatMap((v) => {
+      const home = firstPageRoute("content", v.id);
+      return home ? [[`/docs/${v.id}`, { redirect: { to: home, statusCode: 301 } }]] : [];
+    }),
+  ),
+
   nitro: {
     prerender: {
       failOnError: true,
@@ -45,8 +56,9 @@ export default defineNuxtConfig({
       // as is, instead of redirecting it to a trailing slash.
       autoSubfolderIndex: false,
       crawlLinks: true,
-      // Each version's index; the crawler follows its links to every page.
-      routes: ["/", ...versions.map((v) => `/docs/${v.id}`), "/_redirects", "/api/search-index.json", "/api/assistant-corpus.json", "/api/library-size.json", ...versions.map((v) => `/api/search/${v.id}.json`)],
+      // Each version's index (a redirect) and first page; the crawler follows the first page's
+      // sidebar to every other page.
+      routes: ["/", ...versions.map((v) => `/docs/${v.id}`), ...versions.flatMap((v) => firstPageRoute("content", v.id) ?? []), "/_redirects", "/api/search-index.json", "/api/assistant-corpus.json", "/api/library-size.json", ...versions.map((v) => `/api/search/${v.id}.json`)],
     },
   },
 

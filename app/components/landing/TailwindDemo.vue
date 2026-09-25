@@ -14,8 +14,11 @@
               <button type="button" tabindex="-1" :class="['pui-btn pui-solid pui-theme', { 'w-full': applied }]">Send message</button>
             </div>
           </div>
-          <code class="block border-t p-4 font-mono text-sm leading-normal [overflow-wrap:anywhere]" style="border-color: var(--pui-border)">
-            <span style="color: var(--pui-text-muted)">class="</span>pui-btn pui-solid pui-theme<span class="font-semibold" style="color: var(--site-theme-ink)">{{ typed }}</span><span v-if="allowed" class="caret" /><span style="color: var(--pui-text-muted)">"</span>
+          <!-- The complete line, invisible, shares the typed line's cell, so the box keeps its
+               wrapped height and the content below never moves (user review 2026-09-25). -->
+          <code class="grid border-t p-4 font-mono text-sm leading-normal [overflow-wrap:anywhere] *:[grid-area:1/1]" style="border-color: var(--pui-border)">
+            <span aria-hidden="true" class="invisible">class="pui-btn pui-solid pui-theme{{ word }}"</span>
+            <span data-typed><span style="color: var(--pui-text-muted)">class="</span>pui-btn pui-solid pui-theme<span class="font-semibold" style="color: var(--site-theme-ink)">{{ typed }}</span><span v-if="allowed" class="caret" /><span style="color: var(--pui-text-muted)">"</span></span>
           </code>
         </div>
         <!-- The cascade as the Tailwind guide measures it: one layer order, utilities on top. The
@@ -31,7 +34,7 @@
             <span v-if="layer.wins" class="pui-badge pui-solid pui-theme">{{ layer.holds }}</span>
             <span v-else style="color: var(--pui-text-muted)">{{ layer.holds }}</span>
           </div>
-          <pre class="m-0 mt-3 overflow-x-auto border-t pt-4 leading-[1.7]" style="border-color: var(--pui-border)" tabindex="0" aria-label="Layer order and dark variant"><span style="color: var(--site-theme-ink)">@layer</span> theme, base, pui, components, utilities;
+          <pre class="m-0 mt-3 border-t pt-4 leading-[1.7] whitespace-pre-wrap [overflow-wrap:anywhere]" style="border-color: var(--pui-border)" aria-label="Layer order and dark variant"><span style="color: var(--site-theme-ink)">@layer</span> theme, base, pui, components, utilities;
 <span style="color: var(--site-theme-ink)">@custom-variant</span> dark (&amp;:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));</pre>
         </div>
       </div>

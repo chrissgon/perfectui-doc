@@ -71,7 +71,7 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 |-------------|-------------|------|
 | Copy install command | landing REQ-3, EDGE-9 | clipboard write; "Copied" with a check icon in the success ink for 1800 ms; without clipboard access the command is selected; without JavaScript the control is not rendered |
 | Mode toggle | landing REQ-8, EDGE-4, EDGE-5 | call `setMode` from `@chrissgon/perfectui/mode` (sets `data-pui-mode` and the `pui-mode` cookie); the export only set the attribute; the prerendered HTML is patched from the cookie before first paint |
-| Theme picker | landing REQ-9 | presets (default, #7c3aed, success, error, warn) plus a colour input; sets `--pui-theme` on `<html>` and keeps it in session storage; the export did not persist it |
+| Theme picker | landing REQ-9 | presets (default, #7c3aed, success, error, warn); the colour input was removed in the user review of 2026-09-25; sets `--pui-theme` on `<html>` and keeps it in session storage; the export did not persist it |
 | Class picker | brief SECTION-3 | chips as toggle buttons with `aria-pressed`; the element and the class line update, the changed token highlighted with `pui-soft pui-theme` |
 | Overlays | brief SECTION-4 | real `<dialog>` with `commandfor`, `popover`, `interestfor`, `<details name>`; fallbacks come from the library's loader |
 | Section 5 demo | brief SECTION-5 | switch and swatches scope `data-pui-mode` and `--pui-theme` to the section only |

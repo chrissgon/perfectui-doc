@@ -23,10 +23,10 @@
           {{ tab === "preview" ? "Preview" : "Code" }}
         </button>
       </div>
-      <span class="ml-auto font-mono text-xs" style="color: var(--pui-text-muted)">{{ lang }}</span>
-      <button type="button" class="pui-btn pui-link pui-surface ml-3" @click="copy">
+      <button type="button" :class="['pui-btn pui-link ml-auto', copied ? 'pui-success' : 'pui-surface']" @click="onCopy">
         {{ copied ? "Copied" : "Copy" }}
       </button>
+      <span role="status" class="sr-only">{{ copied ? "Copied" : "" }}</span>
     </div>
     <div
       :id="`${uid}-preview`"
@@ -47,9 +47,7 @@
       :role="stacked ? undefined : 'tabpanel'"
       :aria-labelledby="stacked ? undefined : `${uid}-code-tab`"
       :hidden="!stacked && active !== 'code'"
-      :class="['overflow-x-auto p-4 font-mono', stacked ? 'max-h-40 overflow-y-auto border-t text-[13px]' : 'text-sm']"
-      tabindex="0"
-      :aria-label="stacked ? 'Example code' : undefined"
+      :class="['p-4 font-mono', stacked ? 'border-t text-[13px]' : 'text-sm']"
       style="background: var(--pui-bg-emphasis)"
     >
       <slot />
@@ -64,10 +62,8 @@ import { scopeExample } from "#shared/example-scope";
 // ADR-0002: one fenced block in the default slot gives the live preview (the raw text kept in
 // the rendered <pre>'s `code` prop) and the code tab (the slot, highlighted at build time).
 // `stacked` (the landing's showcase, ExampleRef): preview above code, no tabs and no copy.
-const props = withDefaults(defineProps<{ lang?: string; layout?: "tabs" | "stacked" }>(), { lang: "html", layout: "tabs" });
+const props = withDefaults(defineProps<{ layout?: "tabs" | "stacked" }>(), { layout: "tabs" });
 const stacked = computed(() => props.layout === "stacked");
-// The code panel is the focusable region; the block's own <pre> need not be (ProsePre).
-provide("in-example", true);
 const slots = useSlots();
 const uid = useId();
 
@@ -111,24 +107,16 @@ function onKeydown(event: KeyboardEvent) {
   buttons[next]?.focus();
 }
 
-// "Copied" for 1500 ms (approved design); without clipboard access the code is selected.
-const copied = ref(false);
+// "Copied" in green for 1500 ms (approved design); when no copy works the code is selected.
+const { copied, copy } = useCopy(1500);
 const codePanel = ref<HTMLElement | null>(null);
-let timer: ReturnType<typeof setTimeout> | undefined;
-async function copy() {
-  try {
-    await navigator.clipboard.writeText(snippet.value);
-    copied.value = true;
-    clearTimeout(timer);
-    timer = setTimeout(() => (copied.value = false), 1500);
-  } catch {
-    active.value = "code";
-    await nextTick();
-    const pre = codePanel.value?.querySelector("pre");
-    if (pre) window.getSelection()?.selectAllChildren(pre);
-  }
+async function onCopy() {
+  if (await copy(snippet.value)) return;
+  active.value = "code";
+  await nextTick();
+  const pre = codePanel.value?.querySelector("pre");
+  if (pre) window.getSelection()?.selectAllChildren(pre);
 }
-onBeforeUnmount(() => clearTimeout(timer));
 </script>
 
 <style scoped>
@@ -136,8 +124,10 @@ onBeforeUnmount(() => clearTimeout(timer));
   background-image: radial-gradient(var(--pui-border) 1px, transparent 1px);
   background-size: 16px 16px;
 }
+/* Long lines wrap, so the code panel never scrolls (user review, 2026-09-25). */
 .example :deep(pre) {
   margin: 0;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 </style>

@@ -1,11 +1,6 @@
 <template>
-  <!-- A code block scrolls sideways when a line is long, so outside an example block (which has
-       its own focusable panel) it is focusable and named, as WCAG asks of a scroll region. -->
-  <pre
-    :class="$props.class"
-    :tabindex="inExample ? undefined : 0"
-    :aria-label="inExample ? undefined : `${language ?? 'Code'} example`"
-  ><slot /></pre>
+  <!-- Long lines wrap (prose.css), so a code block is never a scroll region to focus. -->
+  <pre :class="$props.class"><slot /></pre>
 </template>
 
 <script setup lang="ts">
@@ -18,7 +13,6 @@ defineProps<{
   meta?: string | null;
   class?: string | null;
 }>();
-const inExample = inject("in-example", false);
 </script>
 
 <style>

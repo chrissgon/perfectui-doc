@@ -31,7 +31,7 @@
               :style="{ '--pui-color': s.value }"
             >
           </div>
-          <pre class="m-0 overflow-x-auto border-t pt-5 font-mono text-[13px] leading-[1.8]" style="border-color: var(--pui-border)">&lt;html <span class="pui-soft pui-theme pui-rounded px-[3px] py-px">data-pui-mode="{{ mode }}"</span>&gt;
+          <pre class="m-0 border-t pt-5 whitespace-pre-wrap [overflow-wrap:anywhere] font-mono text-[13px] leading-[1.8]" style="border-color: var(--pui-border)">&lt;html <span class="pui-soft pui-theme pui-rounded px-[3px] py-px">data-pui-mode="{{ mode }}"</span>&gt;
 <span class="pui-soft pui-theme pui-rounded px-[3px] py-px">--pui-theme: {{ swatch.label }};</span></pre>
           <NuxtLink v-if="cta" :to="cta" class="pui-btn pui-link pui-theme mt-auto self-start px-0">{{ section.cta!.label }}</NuxtLink>
         </div>

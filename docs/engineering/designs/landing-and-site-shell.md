@@ -41,7 +41,7 @@ The shell (header, footer, mode toggle, theme picker) is one layout shared by th
 | Default layout | header, page slot, footer | `app/layouts/default.vue` | route | page frame | REQ-7 |
 | Site header | logo and version label, docs link, search entry point, mode toggle, theme picker, GitHub and Figma links; menu control below 1024 px | `app/components/SiteHeader.vue` | versions configuration, site configuration, features | header markup | REQ-6, REQ-7 |
 | Mode toggle | cycle light → dark → system (sun, moon, monitor icons; the label names the next mode) and call `setMode` | `app/components/ModeToggle.vue` | current mode | `setMode('light' | 'dark' | 'system')` | REQ-8, EDGE-4 |
-| Theme picker | presets and a colour input; set `--pui-theme`; persist for the session | `app/components/ThemePicker.vue` | presets | style on `<html>`, session storage | REQ-9, EDGE-6 |
+| Theme picker | presets only (colour input removed, user review 2026-09-25); set `--pui-theme`; persist for the session | `app/components/ThemePicker.vue` | presets | style on `<html>`, session storage | REQ-9, EDGE-6 |
 | Site footer | tagline, links, license, display wordmark | `app/components/SiteFooter.vue` | site configuration, messaging tagline | footer markup | REQ-7 |
 | SEO composable | title, description, Open Graph and Twitter meta at setup | `app/composables/usePageMeta.ts` | page title, description, path | head tags | REQ-10 |
 | Library size generator | measure the installed files and expose the numbers | `server/routes/api/library-size.json.get.ts` | `node_modules/@chrissgon/perfectui/dist/…`, `package.json` version | `{ version, css, js, method, measuredAt }` | REQ-2, NFR-2, EDGE-7 |

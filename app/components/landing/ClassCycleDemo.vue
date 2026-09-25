@@ -10,8 +10,12 @@
       </div>
     </div>
     <div class="pui-card-content gap-4">
-      <code class="block min-h-[42px] font-mono text-sm leading-normal [overflow-wrap:anywhere]">
-        <span style="color: var(--pui-text-muted)">&lt;{{ current.tag }} class="</span><span>{{ typed }}</span><span v-if="animating" class="caret" /><span style="color: var(--pui-text-muted)">"&gt;{{ current.label }}&lt;/{{ current.tag }}&gt;</span>
+      <!-- The longest combination, complete and invisible, shares the typed line's cell, so the box
+           keeps its height and the content below never moves when a line wraps (user review
+           2026-09-25). -->
+      <code class="grid font-mono text-sm leading-normal [overflow-wrap:anywhere] *:[grid-area:1/1]">
+        <span aria-hidden="true" class="invisible">{{ longest }}</span>
+        <span data-typed><span style="color: var(--pui-text-muted)">&lt;{{ current.tag }} class="</span><span>{{ typed }}</span><span v-if="animating" class="caret" /><span style="color: var(--pui-text-muted)">"&gt;{{ current.label }}&lt;/{{ current.tag }}&gt;</span></span>
       </code>
       <div class="flex items-center gap-2">
         <span
@@ -35,6 +39,11 @@ const cycle = [
   { tag: "button", classes: "pui-btn pui-soft pui-error", label: "Button" },
   { tag: "span", classes: "pui-chip pui-outline pui-muted", label: "Chip" },
 ] as const;
+
+// In a monospace font the most characters wrap onto the most lines.
+const longest = cycle
+  .map((item) => `<${item.tag} class="${item.classes}">${item.label}</${item.tag}>`)
+  .reduce((a, b) => (b.length > a.length ? b : a));
 
 const root = ref<HTMLElement | null>(null);
 const { allowed, after } = useMotion(root);

@@ -25,7 +25,7 @@
             </button>
           </div>
           <CopyCommand :text="installCommand(manager)" />
-          <pre class="m-0 overflow-x-auto font-mono text-[13px] leading-[1.7]">import "{{ site.packageName }}/perfectui.css";
+          <pre class="m-0 font-mono text-[13px] leading-[1.7] whitespace-pre-wrap [overflow-wrap:anywhere]">import "{{ site.packageName }}/perfectui.css";
 <span style="color: var(--pui-text-muted)">// or only what you use:</span>
 import "{{ site.packageName }}/core.css";
 import "{{ site.packageName }}/components/button.css";</pre>
@@ -48,7 +48,7 @@ import "{{ site.packageName }}/components/button.css";</pre>
             </svg>
           </button>
         </div>
-        <pre ref="cdnEl" data-cdn tabindex="0" aria-label="CDN tags" class="m-0 overflow-x-auto border-t p-4 font-mono text-[13px] leading-[1.7]" style="border-color: var(--pui-border)">{{ cdn }}</pre>
+        <pre ref="cdnEl" data-cdn aria-label="CDN tags" class="m-0 border-t p-4 font-mono text-[13px] leading-[1.7] whitespace-pre-wrap [overflow-wrap:anywhere]" style="border-color: var(--pui-border)">{{ cdn }}</pre>
       </div>
     </div>
   </section>
@@ -80,21 +80,13 @@ const cdn = computed(
   () => `<link rel="stylesheet" href="${base.value}/perfectui.css">\n<script type="module">\n  import "${base.value}/js/index.js";\n</scr` + `ipt>`,
 );
 
-// Same behaviour as CopyCommand: "Copied" for 1800 ms, the snippet selected without clipboard.
+// Same behaviour as CopyCommand: "Copied" for 1800 ms, the snippet selected when no copy works.
 const mounted = ref(false);
-const copied = ref(false);
+const { copied, copy } = useCopy(1800);
 const cdnEl = ref<HTMLElement | null>(null);
-let timer: ReturnType<typeof setTimeout> | undefined;
 onMounted(() => (mounted.value = true));
-onBeforeUnmount(() => clearTimeout(timer));
 async function copyCdn() {
-  try {
-    await navigator.clipboard.writeText(cdn.value);
-    copied.value = true;
-    clearTimeout(timer);
-    timer = setTimeout(() => (copied.value = false), 1800);
-  } catch {
-    if (cdnEl.value) window.getSelection()?.selectAllChildren(cdnEl.value);
-  }
+  if (await copy(cdn.value)) return;
+  if (cdnEl.value) window.getSelection()?.selectAllChildren(cdnEl.value);
 }
 </script>

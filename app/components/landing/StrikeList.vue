@@ -11,13 +11,9 @@
           ref="itemEls"
           data-strike
           :data-struck="struck[i]"
-          class="relative transition-colors duration-[400ms]"
+          class="transition-colors duration-[400ms]"
           :style="{ color: struck[i] ? 'var(--pui-text-muted)' : 'var(--pui-text)' }"
-        ><InlineCopy :text="item" /><span
-          aria-hidden="true"
-          class="absolute top-[54%] -left-1 h-[0.08em] rounded-full transition-[width] duration-500"
-          :style="{ width: struck[i] ? 'calc(100% + 8px)' : '0%', background: 'var(--pui-theme)' }"
-        /></span>
+        ><span class="strike" :style="{ backgroundSize: struck[i] ? '100% 0.08em' : '0% 0.08em' }"><InlineCopy :text="item" /></span></span>
         <span class="mt-[clamp(16px,2vw,28px)]" style="color: var(--site-theme-ink)"><InlineCopy :text="closing" /></span>
       </p>
     </div>
@@ -68,6 +64,19 @@ onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <style scoped>
+/* The line is the inline box's background, so it follows the text onto every line it wraps to
+   and draws line after line as it grows (user review 2026-09-25). */
+.strike {
+  background-image: linear-gradient(var(--pui-theme), var(--pui-theme));
+  background-position: 0 54%;
+  background-repeat: no-repeat;
+  transition: background-size 500ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .strike {
+    transition: none;
+  }
+}
 .rules {
   background-image: linear-gradient(to bottom, color-mix(in oklab, var(--pui-border) 50%, transparent) 1px, transparent 1px);
   background-size: 100% 96px;

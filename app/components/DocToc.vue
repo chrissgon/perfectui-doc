@@ -17,19 +17,20 @@
       </li>
     </ul>
   </nav>
-  <details
-    v-else-if="links.length"
-    data-toc-disclosure
-    class="mb-6 rounded-[9px] border px-4 py-3 xl:hidden"
-    style="border-color: var(--pui-border)"
-  >
-    <summary class="cursor-pointer text-sm font-semibold">On this page</summary>
-    <ul class="mt-3 space-y-2 text-sm">
-      <li v-for="link in links" :key="link.id">
-        <a :href="`#${link.id}`">{{ link.text }}</a>
-      </li>
-    </ul>
-  </details>
+  <!-- Below 1280 px: a Perfect UI accordion item (user review 2026-09-25). -->
+  <div v-else-if="links.length" class="pui-accordion mb-6 xl:hidden">
+    <details data-toc-disclosure class="pui-accordion-item">
+      <summary class="text-sm font-semibold">
+        On this page
+        <SiteIcon name="chevron-down" class="pui-accordion-icon size-3.5" />
+      </summary>
+      <ul class="grid border-t px-2 pt-1 pb-2" style="border-color: var(--pui-border)">
+        <li v-for="link in links" :key="link.id">
+          <a :href="`#${link.id}`" class="flex min-h-10 items-center rounded-md px-2 text-sm">{{ link.text }}</a>
+        </li>
+      </ul>
+    </details>
+  </div>
 </template>
 
 <script setup lang="ts">

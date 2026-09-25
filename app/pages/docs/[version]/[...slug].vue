@@ -13,6 +13,9 @@
         :from="page.from"
         :to="page.to"
       />
+      <p v-if="missing" role="status" class="pui-card mb-6 p-4">
+        {{ missing }} has no page in {{ label }}. You are on the first page of {{ label }}.
+      </p>
       <DocToc :links="tocLinks" mode="disclosure" />
       <ContentRenderer :value="page" class="doc-prose" />
       <DocPager :prev="prev" :next="next" :edit-url="editUrl" />
@@ -31,6 +34,7 @@ import { versions, type DocsCollection } from "~/versions";
 const route = useRoute();
 const version = versions.find((v) => v.id === route.params.version);
 if (!version) throw createError({ statusCode: 404, statusMessage: "Version not found", fatal: true });
+const label = version.label;
 
 // Empty segments are dropped: a trailing slash (a host redirect, a typed URL) is the same page.
 const slug = ([] as string[]).concat(route.params.slug ?? []).filter(Boolean).join("/");
@@ -58,6 +62,14 @@ const tocLinks = computed(() => page.value?.body?.toc?.links ?? []);
 const editUrl = computed(
   () => `${site.docsRepository}/edit/${site.docsBranch}/content/${page.value?.stem.replace(/^docs\//, "")}.md`,
 );
+
+// A failed version switch lands on the target's first page with the page it could not find
+// (REQ-6, EDGE-1). The prerendered HTML has no query, so the notice is added after hydration.
+const missing = ref("");
+onMounted(() => {
+  const query = route.query.missing;
+  if (typeof query === "string") missing.value = query.split("/").pop() ?? "";
+});
 
 // At setup, so the prerendered HTML carries the meta (lesson from the incremental attempt).
 usePageMeta({ title: page.value.title, description: page.value.description });

@@ -23,27 +23,19 @@
 </template>
 
 <script setup lang="ts">
-// REQ-3: copies the command; "Copied" for 1800 ms (landing handoff). Without clipboard access
-// the command is selected for a manual copy, with no dialog (EDGE-9).
+// REQ-3: copies the command; "Copied" for 1800 ms (landing handoff). When no copy works the
+// command is selected for a manual copy, with no dialog (EDGE-9).
 const { text, label = "Install command" } = defineProps<{ text: string; label?: string }>();
 
 const input = ref<HTMLInputElement | null>(null);
 const mounted = ref(false);
-const copied = ref(false);
-let timer: ReturnType<typeof setTimeout> | undefined;
+const { copied, copy: copyText } = useCopy(1800);
 
 onMounted(() => (mounted.value = true));
-onBeforeUnmount(() => clearTimeout(timer));
 
 async function copy() {
-  try {
-    await navigator.clipboard.writeText(text);
-    copied.value = true;
-    clearTimeout(timer);
-    timer = setTimeout(() => (copied.value = false), 1800);
-  } catch {
-    input.value?.focus();
-    input.value?.select();
-  }
+  if (await copyText(text)) return;
+  input.value?.focus();
+  input.value?.select();
 }
 </script>

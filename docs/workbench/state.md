@@ -51,6 +51,8 @@
 
 ## Decisions
 
+- 2026-09-25: User review of the branch deploy, twelve adjustments (eng-implement, reviewed in docs/engineering/reviews/user-review-2026-09-25.md): code wraps and never scrolls; the theme picker keeps its five presets and loses the colour input; `/docs/<major>` redirects to the version's first page and the index page is removed; the sidebar and the "On this page" disclosure are `pui-accordion` items drawn as the documentation-page export; content fills its column below 1280 px (72ch only beside the headings column); the example block drops its language label and copy falls back to the legacy copy command before selecting (user)
+
 - 2026-09-25: Lighthouse mobile on the Netlify branch deploy after the trailing-slash fix, median of 3: landing 94, Button page 100, migration guide 99; accessibility 98-100; T-mg-5 closed on the host measurement (user's option 1)
 
 - 2026-09-25: Verified on the Netlify branch deploy https://redesign--perfectui.netlify.app: library size 3,221 and 493 B (ADR-0007 accepted); the 0.23 redirects answer 301 to the versioned pages and unknown paths 404 (ADR-0005's shadowing assumption holds); documentation pages lost their content after hydration behind Netlify's trailing-slash redirect, fixed in 1e1ba8c (eng-root-cause)

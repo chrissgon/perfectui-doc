@@ -9,9 +9,9 @@ const bg = (page: Page, selector: string) =>
 const getStarted = "#hero a.pui-btn.pui-solid.pui-theme";
 const picker = (page: Page) => page.getByRole("button", { name: "Theme colour" });
 
-async function pick(page: Page, colour: string) {
+async function pick(page: Page, preset: string) {
   await picker(page).click();
-  await page.getByLabel("Custom colour").fill(colour);
+  await page.getByRole("button", { name: preset, exact: true }).click();
 }
 
 test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
@@ -19,16 +19,16 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     await page.goto("/docs/v1/components/button");
     const example = ".example-canvas .pui-solid.pui-theme";
     const before = await bg(page, example);
-    await pick(page, "#ff0000");
-    expect(await rootTheme(page)).toBe("#ff0000");
-    await expect.poll(() => bg(page, example)).toBe("rgb(255, 0, 0)");
-    expect(before).not.toBe("rgb(255, 0, 0)");
+    await pick(page, "Violet");
+    expect(await rootTheme(page)).toBe("#7c3aed");
+    await expect.poll(() => bg(page, example)).toBe("rgb(124, 58, 237)");
+    expect(before).not.toBe("rgb(124, 58, 237)");
 
     await page.goto("/");
-    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 0, 0)");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(124, 58, 237)");
     await page.reload();
-    expect(await rootTheme(page)).toBe("#ff0000");
-    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 0, 0)");
+    expect(await rootTheme(page)).toBe("#7c3aed");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(124, 58, 237)");
   });
 
   test("presets set the colour and Default restores the library's", async ({ page }) => {
@@ -48,14 +48,12 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     await expect.poll(() => bg(page, getStarted)).toBe(initial);
   });
 
-  test("#ffffff applies with no error", async ({ page }) => {
-    const errors: string[] = [];
-    page.on("pageerror", (e) => errors.push(e.message));
-    page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  test("the picker offers the five presets and no free colour input (user review 2026-09-25)", async ({ page }) => {
     await page.goto("/");
-    await pick(page, "#ffffff");
-    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 255, 255)");
-    await expect(page.getByRole("alert")).toHaveCount(0);
-    expect(errors).toEqual([]);
+    await picker(page).click();
+    const panel = page.locator(".pui-dropdown:popover-open");
+    const names = await panel.getByRole("button").evaluateAll((els) => els.map((el) => el.getAttribute("aria-label")));
+    expect(names).toEqual(["Default", "Violet", "Success", "Error", "Warn"]);
+    await expect(panel.locator("input")).toHaveCount(0);
   });
 });

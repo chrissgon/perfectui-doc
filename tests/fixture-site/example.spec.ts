@@ -14,7 +14,7 @@ test.describe("example block (REQ-3, REQ-10, EDGE-7, AC-3)", () => {
     expect(example).toMatch(/<pre[^>]*class="[^"]*shiki/);
   });
 
-  test("Preview shows by default; the Code tab shows the same snippet with its language", async ({ page }) => {
+  test("Preview shows by default; the Code tab shows the same snippet, with no language label", async ({ page }) => {
     await page.goto(PAGE);
     const block = page.locator("[data-example]").first();
     const button = block.locator("[data-example-preview] .pui-btn");
@@ -23,7 +23,8 @@ test.describe("example block (REQ-3, REQ-10, EDGE-7, AC-3)", () => {
     await expect(block.locator("[data-example-code]")).toBeHidden();
     await block.getByRole("tab", { name: "Code" }).click();
     await expect(block.locator("[data-example-code] pre")).toHaveText(SNIPPET);
-    await expect(block.getByText("html", { exact: true })).toBeVisible();
+    // The "html" label beside Copy was removed in the user review of 2026-09-25.
+    await expect(block.getByText("html", { exact: true })).toHaveCount(0);
   });
 
   test("arrow keys move between the tabs", async ({ page }) => {
@@ -47,13 +48,15 @@ test.describe("example block (REQ-3, REQ-10, EDGE-7, AC-3)", () => {
     await expect(block.getByRole("button", { name: "Copy" })).toBeVisible({ timeout: 3000 });
   });
 
-  test("a long snippet scrolls inside its box and never widens the page", async ({ page }) => {
+  test("a long snippet wraps inside its box and never widens the page", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 800 });
     await page.goto(PAGE);
     const block = page.locator("[data-example]").nth(1);
     await block.getByRole("tab", { name: "Code" }).click();
     const widths = await page.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]);
     expect(widths[0]).toBe(widths[1]);
+    const panel = block.locator("[data-example-code]");
+    expect(await panel.evaluate((el) => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(0);
   });
 
   test("notes and warnings render as callouts", async ({ page }) => {

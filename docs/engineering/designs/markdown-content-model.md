@@ -31,7 +31,7 @@ Documentation is Markdown under `content/v1/` and `content/v0/`, two Nuxt Conten
 | 7 | Navigation and ordering | folders, numeric prefixes, `.navigation.yml` | engineering | ADR-0004 (accepted) |
 | 8 | Unversioned redirects | a generated `_redirects` file with two non-forced rules | engineering | ADR-0005 |
 | 9 | Code highlighting colours | Shiki with a CSS-variables theme bound to the role inks | engineering | ADR-0006 |
-| 10 | Version switch | same path if it exists, else the version index with a notice | decided | brief decision 7 |
+| 10 | Version switch | same path if it exists, else the version's first page with a notice | decided | brief decision 7; user review 2026-09-25 |
 | 11 | Documentation layout | the approved export (direction A), content from Markdown, sidebar breakpoint 1024 px | decided | user, 2026-09-24; handoff |
 | 12 | Tests | Vitest for pure functions, Playwright over the generated output, axe and Lighthouse in the build tests | engineering | library repository convention; no viable alternative worth an ADR |
 | 13 | Source layout | Nuxt 4 default: `app/` for the application, `content/`, `server/`, `public/` at the root | engineering | Nuxt 4 default (learned in T-cm-1); no alternative worth an ADR |
@@ -43,7 +43,8 @@ Documentation is Markdown under `content/v1/` and `content/v0/`, two Nuxt Conten
 | Content collections | hold every page per major with a validated schema | `content/v1/**`, `content/v0/**`, `content.config.ts` | Markdown files | pages with `path`, `title`, `description`, `tags`, `since`, `changed`, `navigation`, `body` | REQ-1, REQ-2, REQ-11, NFR-1 |
 | Versions configuration | the single list of versions | `app/versions.ts` | none | `versions[]`, `latestVersion` | REQ-5 |
 | Documentation page | validate the version segment, load the page, set SEO meta at setup, render it | `app/pages/docs/[version]/[...slug].vue` | route params, versions configuration | rendered page, 404 for an unknown version or path | REQ-1, REQ-6 |
-| Version index page | list a version's sections and pages; show the switch notice | `app/pages/docs/[version]/index.vue` | version, `missing` query | index markup | REQ-1, REQ-6, EDGE-1 |
+| Version index redirect | send `/docs/<major>` to the version's first page (the page was removed in the user review of 2026-09-25) | `routeRules` in `nuxt.config.ts` from `shared/first-page.ts`; forced 301 in `_redirects` | content folder | redirect | REQ-1 |
+| Missing-page notice | name the page the switch could not find | `app/pages/docs/[version]/[...slug].vue` | `missing` query, read after hydration | notice | REQ-6, EDGE-1 |
 | Documentation layout | three columns at 1280 px, sidebar panel below 1024 px, header and footer of the shell | `app/layouts/docs.vue` | page, navigation | page frame | REQ-4, NFR-3 |
 | Navigation composable | the navigation tree of one version | `app/composables/useDocsNav.ts` | version | `ContentNavigationItem[]` | REQ-4, EDGE-5 |
 | Sidebar | collapsible sections, current page marked | `app/components/DocSidebar.vue` | navigation tree, current path | sidebar markup | REQ-4 |
@@ -52,7 +53,7 @@ Documentation is Markdown under `content/v1/` and `content/v0/`, two Nuxt Conten
 | Callouts | note and warning boxes in prose | `app/components/content/Note.vue`, `Warning.vue` (MDC `::note`, `::warning`) | default slot | callout markup | REQ-3 |
 | On-page headings | h2 list with the current heading highlighted; a disclosure below 1024 px | `app/components/DocToc.vue` | page `body.toc` | headings markup | REQ-4 |
 | Pager and edit link | previous and next page in navigation order; link to the source file | `app/components/DocPager.vue` | navigation tree, current path, file path | links | REQ-4 |
-| Version switch composable | the target route when switching version | `app/composables/useVersionSwitch.ts` | current path, target version | route to the same path, or the index with `missing` | REQ-6, EDGE-1 |
+| Version switch composable | the target route when switching version | `app/composables/useVersionSwitch.ts` | current path, target version | route to the same path, or the target's first page with `missing` | REQ-6, EDGE-1 |
 | Code theme | Shiki colours bound to the site's code tokens in both modes | `content.config.ts` highlight option, `app/assets/css/code.css` | design-system code colours | highlighted markup with CSS variables | REQ-10 |
 | Content validator | checks the collections for the edge cases the engine does not enforce | `server/utils/validateDocs.ts` | all collections, versions configuration | ok, or an error naming file and cause | EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9 |
 | Search document generator | the search document set | `server/routes/api/search-index.json.get.ts` | collections, versions | `api/search-index.json` | REQ-8, EDGE-8 |
@@ -111,7 +112,7 @@ export const versions = [
 ### Routes
 | Route | Resolves to | Serves |
 |-------|-------------|--------|
-| `/docs/<major>` | version index page; notice when `?missing=<path>` | REQ-1, REQ-6, EDGE-1 |
+| `/docs/<major>` | 301 to the version's first page; a first page shows the notice when `?missing=<path>` | REQ-1, REQ-6, EDGE-1 |
 | `/docs/<major>/<section>/<slug>` | the page with that `path` in the version's collection; 404 otherwise | REQ-1, REQ-11 |
 | `/docs` and `/docs/<anything without a version>` | 301 to `/docs/<latest>` and `/docs/<latest>/<same path>` through `_redirects` | REQ-1 |
 | `/api/search-index.json`, `/api/assistant-corpus.json`, `/_redirects` | prerendered static files | REQ-8, REQ-1 |
@@ -149,12 +150,12 @@ export const versions = [
 
 ### Switch version (release R-2; the shell reserves the control)
 1. `useVersionSwitch(currentPath, target)` strips `/docs/<current>`, queries the target collection for `/docs/<target>/<relative>`.
-2. Found: navigate there; not found: `/docs/<target>?missing=<relative>`, whose index shows "<page> does not exist in <label>".
+2. Found: navigate there; not found: `<target first page>?missing=<relative>`, which shows "<page> does not exist in <label>".
 
 ### Failure paths
 | EDGE | Caught by | What happens | Message names |
 |------|-----------|--------------|---------------|
-| EDGE-1 | `useVersionSwitch`, version index | index of the target with the notice | page, version label |
+| EDGE-1 | `useVersionSwitch`, documentation page | first page of the target with the notice | page, version label |
 | EDGE-2 | schema, `validateDocs` | build stops | file, field |
 | EDGE-3 | `validateDocs`, prerender | build stops | file, component |
 | EDGE-4 | `validateDocs` | build stops | both files, slug |

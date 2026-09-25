@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="pui-btn pui-outline pui-surface gap-6 px-2.5 max-sm:px-1.5"
+    class="pui-btn pui-outline pui-surface gap-6 px-2.5 max-lg:size-9 max-lg:justify-center max-lg:p-0"
     :aria-label="`Search (${shortcut})`"
     @click="open()"
   >

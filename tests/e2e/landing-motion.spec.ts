@@ -5,7 +5,7 @@ const widths = (page: Page) =>
   tailwindButton(page).evaluate((el) => [el.getBoundingClientRect().width, el.parentElement!.clientWidth - 32]);
 
 async function tailwindFinal(page: Page) {
-  await expect(page.locator("#tailwind [data-demo] code")).toContainText('class="pui-btn pui-solid pui-theme w-full"');
+  await expect(page.locator("#tailwind [data-demo] code [data-typed]")).toContainText('class="pui-btn pui-solid pui-theme w-full"');
   await expect(tailwindButton(page)).toHaveClass(/\bw-full\b/);
   const [button, box] = await widths(page);
   expect(Math.round(button!)).toBe(Math.round(box!));

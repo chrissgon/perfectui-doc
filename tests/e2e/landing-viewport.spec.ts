@@ -39,7 +39,7 @@ test("the class cycle renders its first combination complete without JavaScript"
   const page = await context.newPage();
   await page.goto("/");
   const demo = page.locator("#hero [data-demo]");
-  await expect(demo.locator("code")).toContainText('class="pui-btn pui-solid pui-theme"');
+  await expect(demo.locator("code [data-typed]")).toContainText('class="pui-btn pui-solid pui-theme"');
   await expect(demo.locator("button.pui-btn.pui-solid.pui-theme")).toBeVisible();
   await context.close();
 });
@@ -47,13 +47,13 @@ test("the class cycle renders its first combination complete without JavaScript"
 test("with reduced motion the cycle stays on its final state", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  const code = page.locator("#hero [data-demo] code");
+  const code = page.locator("#hero [data-demo] code [data-typed]");
   await page.waitForTimeout(1500);
   await expect(code).toContainText('class="pui-btn pui-solid pui-theme"');
 });
 
 test("with motion the cycle types the classes", async ({ page }) => {
   await page.goto("/");
-  const code = page.locator("#hero [data-demo] code");
+  const code = page.locator("#hero [data-demo] code [data-typed]");
   await expect(code).not.toContainText('class="pui-btn pui-solid pui-theme"', { timeout: 3000 });
 });
