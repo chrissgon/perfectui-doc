@@ -255,6 +255,7 @@
   Check: `tests/unit/site-config.spec.ts`: the install command is built from `packageName`; no other file under `app/` holds the package name or the repository URL
   Size: S, because two constant files
   Milestone: SH1
+  Status: done (2026-09-25) tests/unit/site-config.spec.ts 4 passed (failed before: missing app/features); vitest 31 passed; lint and typecheck exit 0
 - T-sh-2: Mode before first paint and the mode toggle
   Does: inline head script (cookie `pui-mode`, session colour) placed before the stylesheet; `ModeToggle` cycling light → dark → system with sun, moon and monitor icons, calling `setMode`.
   Delivers: REQ-8, EDGE-4, EDGE-5, AC-8
