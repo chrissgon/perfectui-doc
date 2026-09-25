@@ -49,7 +49,7 @@
 | docs/product/specs/library-docs-and-versions.md | product-feature-spec | draft | 2026-09-25 |
 | docs/engineering/designs/library-docs-and-versions.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
-| docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0; waiting for the user's decisions) | none (ordinary work) | draft | 2026-09-25 |
+| docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0) | none (ordinary work) | approved | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
@@ -177,6 +177,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-25: Delete the 40 git tags of `chrissgon/perfectui` other than `v0.20.1`, `v0.21.1`, `v0.23.0`, `v1.0.0-beta.0`, `v1.0.0-beta.1` (list and command in `docs/engineering/plans/prune-old-library-versions.md`), after the user has deleted the 5 GitHub releases in the web UI; the npm unpublish of the 57 versions up to 0.20.0 is run by the user (user: "Unpublish", "Sim, remova")
 
 - 2026-09-25: `git push origin redesign` with 1e1ba8c (trailing-slash fix, pages as `<route>.html`) and 5325535 (host confirmations) (user)
 

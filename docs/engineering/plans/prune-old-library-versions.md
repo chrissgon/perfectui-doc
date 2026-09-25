@@ -1,6 +1,6 @@
 # Plan: prune the library's versions up to 0.20.0
 
-- Status: draft, waiting for the user's decisions (below)
+- Status: approved 2026-09-25 (user): unpublish on npm; the `delete` and `vv0.4.7` tags go with the rest; the user deletes the 5 releases in the web UI first, then I delete the 40 tags
 - Date: 2026-09-25
 - Request, quoted: "O perfectui no npm e github tem muitas tags desnecessárias … Gostaria de deletar a maioria, tudo da versão 0.20.0 para baixo."
 - Repository: `chrissgon/perfectui`; package `@chrissgon/perfectui`
