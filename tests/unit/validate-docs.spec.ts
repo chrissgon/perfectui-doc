@@ -61,7 +61,9 @@ describe("content validator (EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10)", ()
     ]);
   });
 
-  it("warns on a link to a missing page and on a slug repeated across sections", () => {
+  // A slug repeated across sections is fine since the 0.23 flat URLs are gone (spec
+  // library-docs-and-versions REQ-11).
+  it("warns on a link to a missing page, and not on a slug repeated across sections", () => {
     const root = tree({
       "v1/04.components/03.button.md": page("title: B\ndescription: B.", "See [chip](/docs/v1/components/chip).\n"),
       "v1/05.forms/03.button.md": ok,
@@ -70,7 +72,6 @@ describe("content validator (EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10)", ()
     expect(result.errors).toEqual([]);
     expect(result.warnings).toEqual([
       "v1/04.components/03.button.md: link to /docs/v1/components/chip has no page",
-      'v1/05.forms/03.button.md: slug "button" is also used by v1/04.components/03.button.md, so the 0.23 flat URL /docs/button redirects to the first one',
     ]);
   });
 });

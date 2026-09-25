@@ -603,6 +603,7 @@
   Check: `tests/fixture-site/routes.spec.ts` asserts no `/docs/<slug>` page rule and the kept rules
   Size: S, because one generator
   Milestone: LD2
+  Status: done (2026-09-25) _redirects has 3 rules (/docs/v1 forced, /docs, splat); routes and validate-docs tests updated; bun run test 178/179 then the landing Lighthouse case passed on rerun (known 89/90 boundary)
 
 - T-ld-5: Version menu on the header badge
   Does: `VersionMenu` (`pui-dropdown` popover opened by the badge) listing `versions` with the current one marked and `archivedVersions` (0.23 on GitHub); a documented major switches through `useVersionSwitch`; the fixture site with two majors exercises the switch.

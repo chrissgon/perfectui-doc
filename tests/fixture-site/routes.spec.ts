@@ -34,13 +34,14 @@ test.describe("documentation routes (REQ-1, REQ-11, AC-1)", () => {
 });
 
 test.describe("redirects for unversioned paths (REQ-1, REQ-5, AC-1, ADR-0005)", () => {
-  test("_redirects sends each version index to its first page, 0.23 flat URLs to the same topic, then /docs to the latest major", () => {
+  test("_redirects sends each version index and /docs to a first page, with no rule for a 0.23 flat URL (AC-7)", () => {
     const file = `${OUT}/_redirects`;
     expect(existsSync(file)).toBe(true);
     const lines = readFileSync(file, "utf8").trim().split("\n");
     const latest = `/docs/${latestVersion.id}`;
-    expect(lines).toContain(`/docs/button ${latest}/components/button 301`);
-    expect(lines).toContain(`/docs/chip ${latest}/components/chip 301`);
+    // One rule per 0.23 page is gone (spec library-docs-and-versions REQ-11): only the three kinds remain.
+    expect(lines.filter((l) => /^\/docs\/[a-z-]+ /.test(l) && !/^\/docs\/v\d+ /.test(l))).toEqual([]);
+    expect(lines).toHaveLength(versions.length + 2);
     // The index is forced: the build writes it as a redirect page, which would be served first.
     expect(lines).toContain(`${latest} ${latest}/getting-started/installation 301!`);
     expect(lines).toContain("/docs/v0 /docs/v0/components/button 301!");

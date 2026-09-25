@@ -2,6 +2,7 @@
 
 - Status: proposed
 - Date: 2026-09-24
+- Amended: 2026-09-25: the one-rule-per-page redirects for the 0.23 site's flat URLs were removed with the 0.23 site (spec library-docs-and-versions REQ-11); `/docs`, `/docs/<major>` and the unversioned splat remain
 - Serves: REQ-1, REQ-5, NFR-2
 
 ## Context

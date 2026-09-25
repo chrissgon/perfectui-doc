@@ -56,7 +56,6 @@ export function validateDocs(
   for (const version of versions) {
     const files = markdownFiles(join(contentDir, version.id));
     const paths = new Map<string, string>();
-    const slugs = new Map<string, string>();
     const pages = new Set(files.map((f) => pagePath(relative(contentDir, f))));
 
     for (const abs of files) {
@@ -122,13 +121,6 @@ export function validateDocs(
       if (twin) errors.push(`${file}: path ${path} is also ${twin}`);
       else paths.set(path, file);
 
-      const slug = path.split("/").pop()!;
-      const other = slugs.get(slug);
-      if (version.latest && other && !twin) {
-        warnings.push(
-          `${file}: slug "${slug}" is also used by ${other}, so the 0.23 flat URL /docs/${slug} redirects to the first one`,
-        );
-      } else if (!other) slugs.set(slug, file);
     }
   }
   return { errors, warnings };
