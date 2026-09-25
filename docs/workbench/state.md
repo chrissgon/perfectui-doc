@@ -50,12 +50,14 @@
 | docs/engineering/designs/library-docs-and-versions.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0) | none (ordinary work) | done | 2026-09-25 |
+| docs/engineering/plans/delivery-pipeline.md (the pipeline, its runs and the settings the user applied) | ops-ci-pipeline | done | 2026-09-25 |
 | docs/product/ideas.md (IDEA-1 delivery pipeline for the site; IDEA-2 pointer to the library's release pipeline) | none (ordinary work) | draft | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
 
+- 2026-09-25: Delivery runs through GitHub Actions (`.github/workflows/ci.yml`): a pull request gets a Netlify preview after its checks pass; `main` is protected and deploys production on merge; Netlify no longer builds. Every change, records included, now reaches `main` through a pull request the user merges (plan `delivery-pipeline.md`)
 - 2026-09-25: The light-mode contrast of `pui-solid` labels on theme, success and warn stays as accepted on 2026-09-24; the shades that would pass are recorded as IDEA-3 in `docs/product/ideas.md` for a future library adjustment (user: "deixe registrado para futuro ajuste"). Lighthouse now measures light and dark explicitly with the same exception as axe
 - 2026-09-25: The library fixed, on its branch `v1` (commits 057ff1c, 0e6a520, a7cc6d0), three defects the site works around; when `libraryRef` moves to a release carrying them, remove the site's `.pui-modal { margin: auto }` in `app/assets/css/main.css` and `applyIndeterminate` in `app/components/content/Example.vue` (library plans `modal-margin-under-resets.md`, `indeterminate-late-markup.md`). The radio fix also corrects the "Free / Pro / Team" example on the live Radio page
 
@@ -158,7 +160,7 @@
 - [x] Does the header keep a Figma link? Yes (user, 2026-09-23)
 - [x] Search in phase 1 or phase 2? Quality targets (performance, accessibility)? Adoption target? (PRD OPEN-1 to OPEN-3, answered 2026-09-23)
 - [x] Amend REQ-2 and REQ-4 of the content-model spec to folder-based sections and numeric-prefix ordering, as ADR-0004 proposes? (design open question 1)
-- [ ] Skill gap: a delivery pipeline for the site (IDEA-1) → ops-ci-pipeline (planned, not installed); recommended: build it with core-skill-creator on this task
+- [x] Skill gap: a delivery pipeline for the site (IDEA-1) → ops-ci-pipeline (built with core-skill-creator on this task, 2026-09-25)
 
 - [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
 - [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
