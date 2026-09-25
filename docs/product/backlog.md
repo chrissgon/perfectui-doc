@@ -511,6 +511,7 @@
   Check: `tests/unit/search-ranking.spec.ts` over the built index: "moda" finds Modal, "tooltpi" finds Tooltip, "mdl" does not fuzz, title outranks body; punctuation-only is empty; 250 characters are cut to 200
   Size: M, because ranking rules under test
   Milestone: SR1
+  Status: done (2026-09-25) tests/unit/search-ranking.spec.ts 8 passed over the built index (2 failed first: transposition typo, title ranking); bun run test 78 unit + 137 browser
 - T-sr-3: Search button and shortcuts
   Does: `SearchButton` in the header slot, `/` outside text fields, ⌘K or Ctrl+K, `#search=`; turn `features.search` on.
   Delivers: REQ-1, EDGE-1, EDGE-8, AC-1
