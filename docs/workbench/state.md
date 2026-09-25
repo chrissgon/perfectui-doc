@@ -56,6 +56,8 @@
 
 ## Decisions
 
+- 2026-09-25: The library fixed, on its branch `v1` (commits 057ff1c, 0e6a520, a7cc6d0), three defects the site works around; when `libraryRef` moves to a release carrying them, remove the site's `.pui-modal { margin: auto }` in `app/assets/css/main.css` and `applyIndeterminate` in `app/components/content/Example.vue` (library plans `modal-margin-under-resets.md`, `indeterminate-late-markup.md`). The radio fix also corrects the "Free / Pro / Team" example on the live Radio page
+
 - 2026-09-25: No library release for now: the user keeps working on perfectui first. The site stays pinned to library commit 652748d (`libraryRef` in `app/versions.ts`), so documentation changes in the library reach the site only when `libraryRef` moves to a newer commit of branch `v1`, or when a release lets the site follow the installed version's tag (user)
 
 - 2026-09-25: Released: https://perfectui.netlify.app serves the new site from `main`. The first production build failed in `nuxt prepare` (`No "exports" main defined in estree-walker`) because Netlify restored the 0.23 site's dependency cache (Nuxt 3, `bun.lockb`); "Clear cache and deploy site" fixed it. Checked on the host: `/docs` and `/docs/v1` answer 301 to Installation, pages 200, unknown paths 404, the version menu lists 1.x and 0.23 on GitHub, example utilities are generated, library size 3,221 and 493 B. Lighthouse mobile, median of 3: landing 100, migration guide 99, Button 98; accessibility 98 to 100; CLS 0.021 on the landing, 0 on documentation pages
