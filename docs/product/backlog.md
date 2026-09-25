@@ -502,6 +502,7 @@
   Check: `.output/public/api/search/v1.json` exists and loads with `MiniSearch.loadJSON`; an empty version fails the build
   Size: M, because a generator and shared options
   Milestone: SR1
+  Status: done (2026-09-25) api/search/v1.json 150 KB raw, 36 KB gzip -9 -n; tests/build/search-index.spec.ts passed (loadJSON, results under /docs/v1); empty version fails (slow suite 5 passed); bun run test 70 unit + 137 browser
 - T-sr-2: Search composable
   Does: `useSearch` (load once per version, query preparation, top 10, snippets with `<mark>`).
   Delivers: REQ-2, REQ-3, REQ-5, EDGE-3, EDGE-4, AC-5

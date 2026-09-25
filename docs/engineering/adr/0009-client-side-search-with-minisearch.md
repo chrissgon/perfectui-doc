@@ -1,6 +1,6 @@
 # ADR-0009: Client-side search with a MiniSearch index serialized at build
 
-- Status: proposed
+- Status: accepted (T-sr-1, 2026-09-25)
 - Date: 2026-09-24
 - Serves: REQ-2, REQ-5, REQ-6, NFR-1, NFR-2
 
