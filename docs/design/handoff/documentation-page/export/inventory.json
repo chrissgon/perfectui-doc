@@ -1,0 +1,584 @@
+{
+  "resources": [
+    {
+      "id": "f274c5d9-e440-4c3f-a7c9-0a072099d3de",
+      "mime": "image/svg+xml",
+      "bytes": 11080
+    },
+    {
+      "id": "d813a6ac-7387-41d4-9d5a-4d1d746f736e",
+      "mime": "image/svg+xml",
+      "bytes": 15517
+    },
+    {
+      "id": "f1e3041e-3bb7-492d-b86f-34bc0b9d2833",
+      "mime": "application/javascript",
+      "bytes": 127934
+    },
+    {
+      "id": "9da94a9e-50de-451a-9cdc-4668e82c7f66",
+      "mime": "text/javascript",
+      "bytes": 69150
+    },
+    {
+      "id": "789a6964-5f3f-4dca-ba64-46b008841327",
+      "mime": "text/javascript",
+      "bytes": 10751
+    },
+    {
+      "id": "e76ad4f9-784d-427c-9907-782ffac28364",
+      "mime": "text/javascript",
+      "bytes": 131835
+    },
+    {
+      "id": "1367ef46-8f73-4eb1-8e2b-c3287484f5db",
+      "mime": "image/svg+xml",
+      "bytes": 8275
+    },
+    {
+      "id": "23583f46-86df-4a64-aa25-2c93ea5d9dba",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "8203c42b-8dfe-4f3e-b880-547f00a7a26c",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "f2d8f1a7-c726-43e2-8043-d42c3038eaf3",
+      "mime": "image/svg+xml",
+      "bytes": 8134
+    },
+    {
+      "id": "671c9e9d-5be5-40fd-a0bb-10a5198591a7",
+      "mime": "image/svg+xml",
+      "bytes": 8026
+    },
+    {
+      "id": "e3c1fe19-9c12-49e8-a310-81527f7638e0",
+      "mime": "image/svg+xml",
+      "bytes": 8030
+    },
+    {
+      "id": "7d4ce196-896a-4c7a-ac07-6825ddc1170a",
+      "mime": "image/svg+xml",
+      "bytes": 8138
+    },
+    {
+      "id": "b4dc5f91-488a-4e2d-bca7-43353eb73869",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "d5c81ed9-0e23-404c-a3ee-6bf4eb017fe4",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "881ec2fc-908b-4cfd-9212-dabe22904540",
+      "mime": "image/svg+xml",
+      "bytes": 8095
+    },
+    {
+      "id": "bffced05-d1ea-432e-b58f-78cc9c755d20",
+      "mime": "image/svg+xml",
+      "bytes": 8129
+    },
+    {
+      "id": "65dd854b-2380-425a-9e6b-9869432de39c",
+      "mime": "image/svg+xml",
+      "bytes": 8118
+    },
+    {
+      "id": "d77f76f1-1302-4de6-968e-be803b47670f",
+      "mime": "image/svg+xml",
+      "bytes": 8255
+    },
+    {
+      "id": "f73de344-9477-443c-ae15-bcbdd0d30bfe",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "56c1390c-39e8-4303-ad4d-fef17277d276",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "5a98fc42-33a6-4537-b5c0-dbd8ff60b958",
+      "mime": "image/svg+xml",
+      "bytes": 8175
+    },
+    {
+      "id": "90e61eb8-8084-49c0-a445-99dc72dd3731",
+      "mime": "image/svg+xml",
+      "bytes": 8157
+    },
+    {
+      "id": "a45d5d60-0d6c-402d-8579-941c2ed8e0f9",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "5f0041a2-e773-4c37-8196-e0c977ee51ed",
+      "mime": "image/svg+xml",
+      "bytes": 8247
+    },
+    {
+      "id": "f1b0599f-9aad-4130-9499-33a38599e3a9",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "d2b1393d-7a2e-4eb6-9b70-7d212df50f11",
+      "mime": "image/svg+xml",
+      "bytes": 8116
+    },
+    {
+      "id": "81fb3e3e-aeab-46e4-aa48-bba847e3ec16",
+      "mime": "image/svg+xml",
+      "bytes": 8107
+    },
+    {
+      "id": "2b559762-70f3-4227-9cf3-63b6322c8d8d",
+      "mime": "image/svg+xml",
+      "bytes": 8155
+    },
+    {
+      "id": "35805b08-ad2c-4c34-a26d-01004ba9e2d4",
+      "mime": "image/svg+xml",
+      "bytes": 8120
+    },
+    {
+      "id": "ad46b47b-e5f9-4427-a717-8d4ff15fbc16",
+      "mime": "image/svg+xml",
+      "bytes": 8170
+    },
+    {
+      "id": "43a41d7c-9179-40ed-b46f-d13dd856c6f7",
+      "mime": "image/svg+xml",
+      "bytes": 8224
+    },
+    {
+      "id": "abaa0267-ff73-4123-9ef9-7b463f2ac5ec",
+      "mime": "image/svg+xml",
+      "bytes": 8047
+    },
+    {
+      "id": "1665e92e-83bb-460e-9c55-e34f2f944e57",
+      "mime": "image/svg+xml",
+      "bytes": 8070
+    },
+    {
+      "id": "199e5a99-71cb-4780-ac53-4d66867e5052",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "65fe20a4-b904-4e6c-8ded-d8f76f6bc1a0",
+      "mime": "image/svg+xml",
+      "bytes": 8383
+    },
+    {
+      "id": "1d685f18-d6df-4693-a880-f135e6f210c1",
+      "mime": "image/svg+xml",
+      "bytes": 8233
+    },
+    {
+      "id": "9c90f533-3f93-4138-a929-5aa43a7ad357",
+      "mime": "image/svg+xml",
+      "bytes": 8239
+    },
+    {
+      "id": "d384c752-4fee-412d-b2c7-6258c9ecfcbb",
+      "mime": "image/svg+xml",
+      "bytes": 8174
+    },
+    {
+      "id": "c4620b75-f047-4492-a572-1e4045778037",
+      "mime": "image/svg+xml",
+      "bytes": 8091
+    },
+    {
+      "id": "84090968-72bf-44ce-868f-10bf08d414b2",
+      "mime": "image/svg+xml",
+      "bytes": 8312
+    },
+    {
+      "id": "64175ad8-537a-4030-8916-d688cdc5e4b0",
+      "mime": "image/svg+xml",
+      "bytes": 8198
+    },
+    {
+      "id": "4e95fe84-98b5-448e-9c31-4031b3f81f62",
+      "mime": "image/svg+xml",
+      "bytes": 8151
+    },
+    {
+      "id": "a00e6289-f1ac-4c55-8b3b-e3b62b8da334",
+      "mime": "image/svg+xml",
+      "bytes": 8280
+    },
+    {
+      "id": "427c6d73-4096-421e-97f9-cc8344edec28",
+      "mime": "image/svg+xml",
+      "bytes": 8085
+    },
+    {
+      "id": "6ce3d476-1892-4e6b-8f3f-9e0dbc63e615",
+      "mime": "image/svg+xml",
+      "bytes": 8191
+    },
+    {
+      "id": "44456bb3-b93e-484e-9cc9-db2e4c6a9eac",
+      "mime": "image/svg+xml",
+      "bytes": 8092
+    },
+    {
+      "id": "5ffb606b-14c3-4472-bd33-e6404580192e",
+      "mime": "image/svg+xml",
+      "bytes": 8187
+    },
+    {
+      "id": "33fcd510-e7af-40a0-8d6f-6f3b88d6175a",
+      "mime": "image/svg+xml",
+      "bytes": 8048
+    },
+    {
+      "id": "daeca8c1-b248-47a4-ac2f-fdc317e2dc73",
+      "mime": "image/svg+xml",
+      "bytes": 8077
+    },
+    {
+      "id": "75a2c6de-b4df-4c7a-b8b9-0e401425831e",
+      "mime": "font/woff2",
+      "bytes": 22056
+    },
+    {
+      "id": "8f4aaab5-8e99-449f-bd47-3ce9892ab2f0",
+      "mime": "font/woff2",
+      "bytes": 11924
+    },
+    {
+      "id": "053b8405-ed8a-4cfb-94bd-99d744476f9a",
+      "mime": "font/woff2",
+      "bytes": 8580
+    },
+    {
+      "id": "eb100f40-85b5-4bed-a503-4e6fd8471fb8",
+      "mime": "font/woff2",
+      "bytes": 13780
+    },
+    {
+      "id": "61678984-515d-4469-a72d-2566cbb68b20",
+      "mime": "font/woff2",
+      "bytes": 4208
+    },
+    {
+      "id": "d0d68053-df00-4178-ac98-9aaa279842c1",
+      "mime": "font/woff2",
+      "bytes": 13232
+    },
+    {
+      "id": "bbfc5ca8-3e53-4e09-b8ef-16496077f5b4",
+      "mime": "font/woff2",
+      "bytes": 36340
+    },
+    {
+      "id": "b38ca24d-78cd-48f2-b7d4-e829c97e5145",
+      "mime": "image/svg+xml",
+      "bytes": 8258
+    },
+    {
+      "id": "423edcf7-7905-4b38-91b3-44326d9bfd4b",
+      "mime": "image/svg+xml",
+      "bytes": 8289
+    },
+    {
+      "id": "e187a4e6-5f6f-419e-a1f9-8b6d46a139eb",
+      "mime": "image/svg+xml",
+      "bytes": 8088
+    }
+  ],
+  "external": [
+    "http://www.w3.org/2000/svg",
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+    "https://github.com/chrissgon/perfectui",
+    "https://github.com/chrissgon/perfectui/edit/main/docs/button.md",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+    "https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI"
+  ],
+  "pui_classes": [
+    "pui-addon",
+    "pui-align-center",
+    "pui-align-end",
+    "pui-backdrop",
+    "pui-badge",
+    "pui-bg",
+    "pui-bg-emphasis",
+    "pui-bg-muted",
+    "pui-border",
+    "pui-border-width",
+    "pui-btn",
+    "pui-card",
+    "pui-card-content",
+    "pui-card-header",
+    "pui-checkbox",
+    "pui-chip",
+    "pui-color",
+    "pui-dropdown",
+    "pui-duration",
+    "pui-easing",
+    "pui-edge",
+    "pui-end",
+    "pui-error",
+    "pui-error-edge",
+    "pui-error-fill",
+    "pui-error-fill-hover",
+    "pui-error-ink",
+    "pui-error-on-fill",
+    "pui-export-root",
+    "pui-field-group",
+    "pui-font-mono",
+    "pui-font-sans",
+    "pui-font-size",
+    "pui-font-size-small",
+    "pui-font-weight-strong",
+    "pui-group-col",
+    "pui-group-responsive",
+    "pui-group-row",
+    "pui-hoverable",
+    "pui-ink",
+    "pui-input",
+    "pui-input-group",
+    "pui-inverse",
+    "pui-inverse-edge",
+    "pui-inverse-fill",
+    "pui-inverse-fill-hover",
+    "pui-inverse-ink",
+    "pui-inverse-on-fill",
+    "pui-line-height",
+    "pui-link",
+    "pui-modal",
+    "pui-mode",
+    "pui-muted",
+    "pui-muted-edge",
+    "pui-muted-fill",
+    "pui-muted-fill-hover",
+    "pui-muted-ink",
+    "pui-muted-on-fill",
+    "pui-on-color",
+    "pui-outline",
+    "pui-page",
+    "pui-radio",
+    "pui-radius",
+    "pui-radius-full",
+    "pui-radius-inner",
+    "pui-radius-lg",
+    "pui-radius-sm",
+    "pui-rounded",
+    "pui-rounded-full",
+    "pui-search-results",
+    "pui-shade",
+    "pui-soft",
+    "pui-solid",
+    "pui-space",
+    "pui-space-0-5",
+    "pui-space-1",
+    "pui-space-1-25",
+    "pui-space-1-5",
+    "pui-space-1-75",
+    "pui-space-2",
+    "pui-space-2-5",
+    "pui-space-3",
+    "pui-space-4",
+    "pui-space-6",
+    "pui-space-7",
+    "pui-space-8",
+    "pui-sr-",
+    "pui-start",
+    "pui-striped",
+    "pui-success",
+    "pui-success-edge",
+    "pui-success-fill",
+    "pui-success-fill-hover",
+    "pui-success-ink",
+    "pui-success-on-fill",
+    "pui-surface",
+    "pui-surface-card",
+    "pui-surface-card-header",
+    "pui-surface-edge",
+    "pui-surface-fill",
+    "pui-surface-fill-hover",
+    "pui-surface-ink",
+    "pui-surface-on-fill",
+    "pui-surface-page",
+    "pui-switch",
+    "pui-table",
+    "pui-text",
+    "pui-text-body",
+    "pui-text-muted",
+    "pui-text-secondary",
+    "pui-theme",
+    "pui-theme-edge",
+    "pui-theme-fill",
+    "pui-theme-fill-hover",
+    "pui-theme-ink",
+    "pui-theme-on-fill",
+    "pui-top",
+    "pui-ver-menu",
+    "pui-warn",
+    "pui-warn-edge",
+    "pui-warn-fill",
+    "pui-warn-fill-hover",
+    "pui-warn-ink",
+    "pui-warn-on-fill"
+  ],
+  "custom_properties_defined": [
+    "--logo-filter",
+    "--pui-backdrop",
+    "--pui-bg",
+    "--pui-bg-emphasis",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-duration",
+    "--pui-easing",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-error-edge",
+    "--pui-error-fill",
+    "--pui-error-fill-hover",
+    "--pui-error-ink",
+    "--pui-error-on-fill",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-font-size-small",
+    "--pui-font-weight-strong",
+    "--pui-ink",
+    "--pui-inverse-edge",
+    "--pui-inverse-fill",
+    "--pui-inverse-fill-hover",
+    "--pui-inverse-ink",
+    "--pui-inverse-on-fill",
+    "--pui-line-height",
+    "--pui-muted",
+    "--pui-muted-edge",
+    "--pui-muted-fill",
+    "--pui-muted-fill-hover",
+    "--pui-muted-ink",
+    "--pui-muted-on-fill",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-radius-full",
+    "--pui-radius-inner",
+    "--pui-radius-lg",
+    "--pui-radius-sm",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-space-0-5",
+    "--pui-space-1",
+    "--pui-space-1-25",
+    "--pui-space-1-5",
+    "--pui-space-1-75",
+    "--pui-space-2",
+    "--pui-space-2-5",
+    "--pui-space-3",
+    "--pui-space-4",
+    "--pui-space-6",
+    "--pui-space-7",
+    "--pui-space-8",
+    "--pui-success",
+    "--pui-success-edge",
+    "--pui-success-fill",
+    "--pui-success-fill-hover",
+    "--pui-success-ink",
+    "--pui-success-on-fill",
+    "--pui-surface-card",
+    "--pui-surface-card-header",
+    "--pui-surface-edge",
+    "--pui-surface-fill",
+    "--pui-surface-fill-hover",
+    "--pui-surface-ink",
+    "--pui-surface-on-fill",
+    "--pui-surface-page",
+    "--pui-text",
+    "--pui-text-body",
+    "--pui-text-muted",
+    "--pui-text-secondary",
+    "--pui-theme",
+    "--pui-theme-edge",
+    "--pui-theme-fill",
+    "--pui-theme-fill-hover",
+    "--pui-theme-ink",
+    "--pui-theme-on-fill",
+    "--pui-warn",
+    "--pui-warn-edge",
+    "--pui-warn-fill",
+    "--pui-warn-fill-hover",
+    "--pui-warn-ink",
+    "--pui-warn-on-fill"
+  ],
+  "custom_properties_used": [
+    "--logo-filter",
+    "--pui-bg",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-muted",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-success",
+    "--pui-success-ink",
+    "--pui-text",
+    "--pui-text-muted",
+    "--pui-theme",
+    "--pui-theme-ink",
+    "--pui-warn",
+    "--pui-warn-ink"
+  ],
+  "font_families": [
+    "'Fira Code'",
+    "var(--pui-font-mono)"
+  ],
+  "fixed_colours": [
+    "#000",
+    "#0092cd",
+    "#07b6f0",
+    "#111827",
+    "#16a34a",
+    "#1f2937",
+    "#22c55e",
+    "#374151",
+    "#3c32aa",
+    "#676d7b",
+    "#6b7280",
+    "#9ca3af",
+    "#d1d5db",
+    "#d97706",
+    "#dc2626",
+    "#e5e7eb",
+    "#ef4444",
+    "#f3f4f6",
+    "#f59e0b",
+    "#fff"
+  ],
+  "counts": {
+    "styles": 19,
+    "scripts": 1,
+    "bytes": 82995
+  }
+}

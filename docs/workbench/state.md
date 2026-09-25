@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: design (landing approved in Claude Design, round 2 pending; documentation page runs waiting on the user in Claude Design; Open Graph direction waiting on the user's choice)
+- Current phase: design to engineering (landing and documentation page approved and handed off; round 2 for 360 px and dark mode pending; Open Graph direction waiting on the user's choice; eng-architecture next)
 - Updated: 2026-09-24
 
 ## Autonomy
@@ -28,8 +28,11 @@
 | docs/design/briefs/documentation-page.md | design-brief | draft | 2026-09-24 |
 | docs/design/briefs/og-image.md | design-brief | draft | 2026-09-24 |
 | docs/design/results/landing.md | design-execute | approved | 2026-09-24 |
-| docs/design/results/documentation-page.md | design-execute | draft | 2026-09-24 |
+| docs/design/results/documentation-page.md | design-execute | approved | 2026-09-24 |
 | docs/design/results/og-image.md | design-execute | draft | 2026-09-24 |
+| docs/design/screens/landing-page/ and docs/design/screens/docs-button/ (approved exports from Claude Design, HTML and full-page PNG) | design-execute | approved | 2026-09-24 |
+| docs/design/handoff/landing.md | design-handoff | draft | 2026-09-24 |
+| docs/design/handoff/documentation-page.md | design-handoff | draft | 2026-09-24 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -88,6 +91,7 @@
 - 2026-09-23: The landing's visual direction is explored in an external AI design tool from a self-contained brief written by design-ui (Figma Make for the first round; Claude Design and Gamma are the alternatives the user has), because the frame composed through the integration (`Landing / 1280 / light`) was reviewed as structurally right but too basic next to tailwindcss.com and laravel.com. The workbench keeps the guidelines, the brief and the review (core-critique against the brief's criteria); the final page is implemented in code and validated against the brief and the screen document; the composed frame stays the structural reference, and its dark and narrow variants wait for the chosen direction (user)
 - 2026-09-24: The perfectui design system was built in Claude Design from the library repository with an onboarding prompt, and the landing produced there (Claude Design result, direction "editor and canvas" with the display number) is approved; round 2 completes 360 px, dark mode and the remaining sections, with the theme blue as default accent and the supporting line kept as one sentence (user)
 - 2026-09-24: Design skills produce the inputs and a specialized AI design tool or a code prototype produces the design: design-brief writes the brief, design-execute runs it and records the results; design-ui is retired (user)
+- 2026-09-24: The documentation page design is direction A, "Canvas first", exported from Claude Design and placed in docs/design/screens/docs-button; directions B and C were not run (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -112,9 +116,11 @@
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
-- [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
 - [ ] Open Graph images: which direction goes to round 2? Recommended: B, "Number" (results/og-image.md)
-- [ ] Documentation page: run the three packs in Claude Design and bring back the screenshots and links (results/documentation-page.md)
+- [ ] Which perfectui version does the site pin? The design uses the unreleased muted-text fix (commit 169cec1). Recommended: publish 1.0.0-beta.1 and pin it (handoff/landing OPEN-1)
+- [ ] Close design-system OPEN-1 with the export's syntax colours (tags theme ink, attributes warn ink, values success ink)? Recommended: yes (handoff/documentation-page OPEN-1)
+- [ ] Adopt the design tool's explanatory sentences into the v1 content? Recommended: yes for sentences that state library facts, after checking them (handoff/documentation-page OPEN-2)
+- [ ] Round 2 in Claude Design for 360 px, dark mode and the remaining states of both screens (handoff DEV-8 and DEV-7)
 - [ ] Show the v0 version switch before the v0 archive exists? Recommended: design it now, hide it in the build until v0 ships (documentation-page brief OPEN-1)
 - [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
 

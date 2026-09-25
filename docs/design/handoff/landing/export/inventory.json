@@ -1,0 +1,554 @@
+{
+  "resources": [
+    {
+      "id": "b92e1127-5d29-44a7-a587-6c2ebf15a48f",
+      "mime": "image/svg+xml",
+      "bytes": 15517
+    },
+    {
+      "id": "c7baee74-55c6-44c4-9538-7c9cb83f5461",
+      "mime": "image/svg+xml",
+      "bytes": 11080
+    },
+    {
+      "id": "83724475-79aa-4473-876a-860cd7de75e3",
+      "mime": "text/javascript",
+      "bytes": 69150
+    },
+    {
+      "id": "108e1946-6b11-4185-aaf6-a32b2f5c9397",
+      "mime": "application/javascript",
+      "bytes": 127934
+    },
+    {
+      "id": "4a161f52-4a0f-404d-93c6-b10230473347",
+      "mime": "text/javascript",
+      "bytes": 10751
+    },
+    {
+      "id": "7860a1cb-fded-4808-9062-c80f965d25ef",
+      "mime": "text/javascript",
+      "bytes": 131835
+    },
+    {
+      "id": "4006153d-4dd7-4dad-9706-1c90fd030294",
+      "mime": "image/svg+xml",
+      "bytes": 8275
+    },
+    {
+      "id": "3bf55344-da40-42c4-96a7-6c8c75bee592",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "a9134604-32c2-4fcd-847f-d5fe9da9f753",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "17c56a9a-9c89-402f-93f2-600d1c7cc091",
+      "mime": "image/svg+xml",
+      "bytes": 8134
+    },
+    {
+      "id": "03a15fb0-2c5b-4ef0-be79-43c745621926",
+      "mime": "image/svg+xml",
+      "bytes": 8026
+    },
+    {
+      "id": "b2ee17d1-f21d-43cc-b313-5dc0ef06ce12",
+      "mime": "image/svg+xml",
+      "bytes": 8030
+    },
+    {
+      "id": "b9908162-f7d3-4193-b8df-d85a31a086ac",
+      "mime": "image/svg+xml",
+      "bytes": 8138
+    },
+    {
+      "id": "f1fcaa7f-2428-4878-9f94-e180df7012a2",
+      "mime": "image/svg+xml",
+      "bytes": 8079
+    },
+    {
+      "id": "206b4f6a-725e-4d31-9e7a-dc3778737f09",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "168a4540-e79a-4bb6-b2b6-e3a5d86924e2",
+      "mime": "image/svg+xml",
+      "bytes": 8095
+    },
+    {
+      "id": "78178fdb-b331-4279-8ca6-68323340e432",
+      "mime": "image/svg+xml",
+      "bytes": 8129
+    },
+    {
+      "id": "d5fb0183-0f4e-40fe-8f36-da5640935553",
+      "mime": "image/svg+xml",
+      "bytes": 8118
+    },
+    {
+      "id": "c335073c-f08a-4d24-8a1e-fe0aed929b83",
+      "mime": "image/svg+xml",
+      "bytes": 8255
+    },
+    {
+      "id": "c4040c94-a2ca-4207-aded-3b89dbc5bf1a",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "ef4a5446-2a38-4f9a-b0cf-a82b8de07c84",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "f942b412-902e-4e34-ba1d-73edccf0588d",
+      "mime": "image/svg+xml",
+      "bytes": 8175
+    },
+    {
+      "id": "0317ac07-2714-4535-b8d8-fbc18fd0eb2f",
+      "mime": "image/svg+xml",
+      "bytes": 8157
+    },
+    {
+      "id": "edc96e7a-93cc-4fc6-b8e1-846fc44eb06d",
+      "mime": "image/svg+xml",
+      "bytes": 8130
+    },
+    {
+      "id": "4e7a4dee-f90c-425f-bca4-27f6e0aecb83",
+      "mime": "image/svg+xml",
+      "bytes": 8247
+    },
+    {
+      "id": "07a2473a-af01-4c5f-9fbd-10e3acb60ed0",
+      "mime": "image/svg+xml",
+      "bytes": 8150
+    },
+    {
+      "id": "76e54c82-2b4e-4580-99fd-cc64ef5de33b",
+      "mime": "image/svg+xml",
+      "bytes": 8116
+    },
+    {
+      "id": "90e41ec8-4025-4f8c-9b86-913fb13ca0c0",
+      "mime": "image/svg+xml",
+      "bytes": 8107
+    },
+    {
+      "id": "73b69dee-d647-4bff-932f-b4557e5c2290",
+      "mime": "image/svg+xml",
+      "bytes": 8155
+    },
+    {
+      "id": "07dbdaba-6ba7-4f99-95d4-83f0f26a6349",
+      "mime": "image/svg+xml",
+      "bytes": 8120
+    },
+    {
+      "id": "a0a927b7-73ef-4b3e-9fb7-4062e5aee873",
+      "mime": "image/svg+xml",
+      "bytes": 8170
+    },
+    {
+      "id": "8a3866d6-71e7-4e72-8a34-0701a0388827",
+      "mime": "image/svg+xml",
+      "bytes": 8224
+    },
+    {
+      "id": "5ba6ee4a-8fe2-40ba-9276-bc3e9c55a9a4",
+      "mime": "image/svg+xml",
+      "bytes": 8047
+    },
+    {
+      "id": "3bb99a2d-d2f9-4929-8eac-40aa5fea0768",
+      "mime": "image/svg+xml",
+      "bytes": 8070
+    },
+    {
+      "id": "8a2c4b70-18da-4dfd-a806-d81176c1bfb7",
+      "mime": "image/svg+xml",
+      "bytes": 8184
+    },
+    {
+      "id": "7be3affe-2458-48f9-8142-577cdb2bfbcd",
+      "mime": "image/svg+xml",
+      "bytes": 8383
+    },
+    {
+      "id": "fc617fb8-58fa-4b69-83e5-99dafc720ee8",
+      "mime": "image/svg+xml",
+      "bytes": 8233
+    },
+    {
+      "id": "c016573b-70a3-4ba2-b0d6-4afc91636145",
+      "mime": "image/svg+xml",
+      "bytes": 8239
+    },
+    {
+      "id": "38f0131b-c8b4-408a-a2df-69cc0ccb4f03",
+      "mime": "image/svg+xml",
+      "bytes": 8174
+    },
+    {
+      "id": "1e6bda0d-86a2-4eff-a620-d20096a0b6e6",
+      "mime": "image/svg+xml",
+      "bytes": 8091
+    },
+    {
+      "id": "5063d6c8-7efc-4527-ac3a-d1809c40d431",
+      "mime": "image/svg+xml",
+      "bytes": 8312
+    },
+    {
+      "id": "6968a9b2-2633-4b7a-9954-8926a8743a5a",
+      "mime": "image/svg+xml",
+      "bytes": 8198
+    },
+    {
+      "id": "7f4423b6-6ce9-4b90-8ca2-9ec8b0b417b2",
+      "mime": "image/svg+xml",
+      "bytes": 8151
+    },
+    {
+      "id": "34f93926-f521-4ac0-ba27-6fd6253ce66e",
+      "mime": "image/svg+xml",
+      "bytes": 8280
+    },
+    {
+      "id": "6e6120ee-cfa4-443b-b072-e0a22612869b",
+      "mime": "image/svg+xml",
+      "bytes": 8085
+    },
+    {
+      "id": "a70f2a44-3bcc-4471-ba36-d298b83586d3",
+      "mime": "image/svg+xml",
+      "bytes": 8191
+    },
+    {
+      "id": "6b97d74a-b9bb-4afa-a5d7-12e62348bb64",
+      "mime": "image/svg+xml",
+      "bytes": 8092
+    },
+    {
+      "id": "62235ac2-3962-4810-8395-6274cbe0f590",
+      "mime": "image/svg+xml",
+      "bytes": 8187
+    },
+    {
+      "id": "6269e190-8ccd-4f13-91aa-83c4b0575e7d",
+      "mime": "image/svg+xml",
+      "bytes": 8048
+    },
+    {
+      "id": "76545a3c-dfc8-49f6-b7dc-df3a7a642212",
+      "mime": "image/svg+xml",
+      "bytes": 8077
+    },
+    {
+      "id": "60584c11-c93f-4c8b-8936-826a0fe3d2c1",
+      "mime": "image/svg+xml",
+      "bytes": 8258
+    },
+    {
+      "id": "5a74948f-b1b8-417d-9604-b2f4ad039982",
+      "mime": "image/svg+xml",
+      "bytes": 8289
+    },
+    {
+      "id": "a6e596fd-10b0-46dd-a85c-b2bbf2590866",
+      "mime": "image/svg+xml",
+      "bytes": 8088
+    }
+  ],
+  "external": [
+    "http://www.w3.org/2000/svg",
+    "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/js/index.js",
+    "https://cdn.jsdelivr.net/npm/@chrissgon/perfectui@1.0.0-beta.0/dist/perfectui.css",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js"
+  ],
+  "pui_classes": [
+    "pui-accordion",
+    "pui-accordion-icon",
+    "pui-accordion-item",
+    "pui-addon",
+    "pui-align-center",
+    "pui-align-end",
+    "pui-backdrop",
+    "pui-badge",
+    "pui-bg",
+    "pui-bg-emphasis",
+    "pui-bg-muted",
+    "pui-border",
+    "pui-border-width",
+    "pui-bottom",
+    "pui-btn",
+    "pui-card",
+    "pui-card-content",
+    "pui-card-header",
+    "pui-caret",
+    "pui-checkbox",
+    "pui-chip",
+    "pui-color",
+    "pui-demo-acc",
+    "pui-demo-menu",
+    "pui-demo-modal",
+    "pui-demo-tip",
+    "pui-dropdown",
+    "pui-duration",
+    "pui-easing",
+    "pui-edge",
+    "pui-end",
+    "pui-error",
+    "pui-error-edge",
+    "pui-error-fill",
+    "pui-error-fill-hover",
+    "pui-error-ink",
+    "pui-error-on-fill",
+    "pui-export-root",
+    "pui-field-group",
+    "pui-font-mono",
+    "pui-font-sans",
+    "pui-font-size",
+    "pui-font-size-small",
+    "pui-font-weight-strong",
+    "pui-group-col",
+    "pui-group-responsive",
+    "pui-group-row",
+    "pui-highlighted",
+    "pui-ink",
+    "pui-input",
+    "pui-input-group",
+    "pui-inverse",
+    "pui-inverse-edge",
+    "pui-inverse-fill",
+    "pui-inverse-fill-hover",
+    "pui-inverse-ink",
+    "pui-inverse-on-fill",
+    "pui-line-height",
+    "pui-link",
+    "pui-modal",
+    "pui-mode",
+    "pui-muted",
+    "pui-muted-edge",
+    "pui-muted-fill",
+    "pui-muted-fill-hover",
+    "pui-muted-ink",
+    "pui-muted-on-fill",
+    "pui-nav-menu",
+    "pui-on-color",
+    "pui-outline",
+    "pui-page",
+    "pui-radio",
+    "pui-radius",
+    "pui-radius-full",
+    "pui-radius-inner",
+    "pui-radius-lg",
+    "pui-radius-sm",
+    "pui-rounded",
+    "pui-rounded-full",
+    "pui-s5-theme",
+    "pui-shade",
+    "pui-soft",
+    "pui-solid",
+    "pui-space",
+    "pui-space-0-5",
+    "pui-space-1",
+    "pui-space-1-25",
+    "pui-space-1-5",
+    "pui-space-1-75",
+    "pui-space-2",
+    "pui-space-2-5",
+    "pui-space-3",
+    "pui-space-4",
+    "pui-space-6",
+    "pui-space-7",
+    "pui-space-8",
+    "pui-start",
+    "pui-success",
+    "pui-success-edge",
+    "pui-success-fill",
+    "pui-success-fill-hover",
+    "pui-success-ink",
+    "pui-success-on-fill",
+    "pui-surface",
+    "pui-surface-card",
+    "pui-surface-card-header",
+    "pui-surface-edge",
+    "pui-surface-fill",
+    "pui-surface-fill-hover",
+    "pui-surface-ink",
+    "pui-surface-on-fill",
+    "pui-surface-page",
+    "pui-switch",
+    "pui-text",
+    "pui-text-body",
+    "pui-text-muted",
+    "pui-text-secondary",
+    "pui-theme",
+    "pui-theme-edge",
+    "pui-theme-fill",
+    "pui-theme-fill-hover",
+    "pui-theme-ink",
+    "pui-theme-menu",
+    "pui-theme-on-fill",
+    "pui-tooltip",
+    "pui-top",
+    "pui-warn",
+    "pui-warn-edge",
+    "pui-warn-fill",
+    "pui-warn-fill-hover",
+    "pui-warn-ink",
+    "pui-warn-on-fill"
+  ],
+  "custom_properties_defined": [
+    "--logo-filter",
+    "--pui-backdrop",
+    "--pui-bg",
+    "--pui-bg-emphasis",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-duration",
+    "--pui-easing",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-error-edge",
+    "--pui-error-fill",
+    "--pui-error-fill-hover",
+    "--pui-error-ink",
+    "--pui-error-on-fill",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-font-size-small",
+    "--pui-font-weight-strong",
+    "--pui-ink",
+    "--pui-inverse-edge",
+    "--pui-inverse-fill",
+    "--pui-inverse-fill-hover",
+    "--pui-inverse-ink",
+    "--pui-inverse-on-fill",
+    "--pui-line-height",
+    "--pui-muted",
+    "--pui-muted-edge",
+    "--pui-muted-fill",
+    "--pui-muted-fill-hover",
+    "--pui-muted-ink",
+    "--pui-muted-on-fill",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-radius-full",
+    "--pui-radius-inner",
+    "--pui-radius-lg",
+    "--pui-radius-sm",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-space-0-5",
+    "--pui-space-1",
+    "--pui-space-1-25",
+    "--pui-space-1-5",
+    "--pui-space-1-75",
+    "--pui-space-2",
+    "--pui-space-2-5",
+    "--pui-space-3",
+    "--pui-space-4",
+    "--pui-space-6",
+    "--pui-space-7",
+    "--pui-space-8",
+    "--pui-success",
+    "--pui-success-edge",
+    "--pui-success-fill",
+    "--pui-success-fill-hover",
+    "--pui-success-ink",
+    "--pui-success-on-fill",
+    "--pui-surface-card",
+    "--pui-surface-card-header",
+    "--pui-surface-edge",
+    "--pui-surface-fill",
+    "--pui-surface-fill-hover",
+    "--pui-surface-ink",
+    "--pui-surface-on-fill",
+    "--pui-surface-page",
+    "--pui-text",
+    "--pui-text-body",
+    "--pui-text-muted",
+    "--pui-text-secondary",
+    "--pui-theme",
+    "--pui-theme-edge",
+    "--pui-theme-fill",
+    "--pui-theme-fill-hover",
+    "--pui-theme-ink",
+    "--pui-theme-on-fill",
+    "--pui-warn",
+    "--pui-warn-edge",
+    "--pui-warn-fill",
+    "--pui-warn-fill-hover",
+    "--pui-warn-ink",
+    "--pui-warn-on-fill"
+  ],
+  "custom_properties_used": [
+    "--logo-filter",
+    "--pui-bg",
+    "--pui-bg-muted",
+    "--pui-border",
+    "--pui-border-width",
+    "--pui-color",
+    "--pui-edge",
+    "--pui-error",
+    "--pui-font-mono",
+    "--pui-font-sans",
+    "--pui-font-size",
+    "--pui-muted",
+    "--pui-on-color",
+    "--pui-radius",
+    "--pui-shade",
+    "--pui-space",
+    "--pui-success",
+    "--pui-text",
+    "--pui-text-muted",
+    "--pui-theme",
+    "--pui-theme-ink",
+    "--pui-warn"
+  ],
+  "font_families": [
+    "var(--pui-font-mono)",
+    "var(--pui-font-mono)\">",
+    "var(--pui-font-mono)\">{{ s.label"
+  ],
+  "fixed_colours": [
+    "#000",
+    "#0092cd",
+    "#07b6f0",
+    "#111827",
+    "#16a34a",
+    "#1f2937",
+    "#22c55e",
+    "#374151",
+    "#3c32aa",
+    "#676d7b",
+    "#6b7280",
+    "#7c3aed",
+    "#9ca3af",
+    "#d1d5db",
+    "#d97706",
+    "#dc2626",
+    "#e5e7eb",
+    "#ef4444",
+    "#f3f4f6",
+    "#f59e0b",
+    "#fff"
+  ],
+  "counts": {
+    "styles": 20,
+    "scripts": 1,
+    "bytes": 103867
+  }
+}

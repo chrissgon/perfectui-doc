@@ -1,0 +1,9 @@
+/* Page base. The library ships no reset and no body rule; this opt-in
+   class reproduces the page chrome of the repo's preview page. Put it on
+   <body> (or any root) of a design. */
+.pui-page{margin:0;background:var(--pui-bg);color:var(--pui-text);font:16px/1.5 var(--pui-font-sans)}
+/* Logos ship black; invert them in dark mode. */
+:root{--logo-filter:none; /* @kind other */}
+@media (prefers-color-scheme: dark){:root{--logo-filter:invert(1); /* @kind other */}}
+[data-pui-mode="light"]{--logo-filter:none; /* @kind other */}
+[data-pui-mode="dark"]{--logo-filter:invert(1); /* @kind other */}

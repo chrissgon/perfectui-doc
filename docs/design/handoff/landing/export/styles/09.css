@@ -1,0 +1,21 @@
+/* Chip shape: one step smaller than pui-btn, one step larger than pui-badge
+   (§6). Requires core.css. */
+/* Cascade layer order. Must be the first rule of every entry file. See ARCHITECTURE.md §5. */
+@layer pui.tokens, pui.components, pui.utilities, pui.styles, pui.colors,
+  pui.states;
+
+
+@layer pui.components {
+  .pui-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pui-space);
+    padding: calc(var(--pui-space) * 1) calc(var(--pui-space) * 3);
+    border: var(--pui-border-width) solid transparent;
+    border-radius: var(--pui-radius);
+    font: inherit;
+    font-size: var(--pui-font-size);
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}

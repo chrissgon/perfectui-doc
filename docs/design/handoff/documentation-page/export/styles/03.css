@@ -1,0 +1,83 @@
+/* Semantic aliases for design tools — the five Figma slots per role
+   (DESIGN-SYSTEM.md §6.1), derived from the library's base tokens exactly the
+   way css/styles.css derives them, so they follow light/dark and any
+   --pui-theme override. Plus the resolved size scale. Not in the npm package. */
+@layer pui.tokens {
+  :root {
+    --pui-theme-fill: var(--pui-theme);
+    --pui-theme-on-fill: var(--pui-bg);
+    --pui-theme-fill-hover: color-mix(in oklab, var(--pui-theme), var(--pui-text) 12%);
+    --pui-theme-edge: var(--pui-theme);
+    --pui-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 25%);
+    --pui-success-fill: var(--pui-success);
+    --pui-success-on-fill: var(--pui-bg);
+    --pui-success-fill-hover: color-mix(in oklab, var(--pui-success), var(--pui-text) 12%);
+    --pui-success-edge: var(--pui-success);
+    --pui-success-ink: color-mix(in oklab, var(--pui-success), var(--pui-text) 25%);
+    --pui-error-fill: var(--pui-error);
+    --pui-error-on-fill: var(--pui-bg);
+    --pui-error-fill-hover: color-mix(in oklab, var(--pui-error), var(--pui-text) 12%);
+    --pui-error-edge: var(--pui-error);
+    --pui-error-ink: color-mix(in oklab, var(--pui-error), var(--pui-text) 25%);
+    --pui-warn-fill: var(--pui-warn);
+    --pui-warn-on-fill: var(--pui-bg);
+    --pui-warn-fill-hover: color-mix(in oklab, var(--pui-warn), var(--pui-text) 12%);
+    --pui-warn-edge: var(--pui-warn);
+    --pui-warn-ink: color-mix(in oklab, var(--pui-warn), var(--pui-text) 25%);
+    --pui-muted-fill: var(--pui-muted);
+    --pui-muted-on-fill: var(--pui-bg);
+    --pui-muted-fill-hover: color-mix(in oklab, var(--pui-muted), var(--pui-text) 12%);
+    --pui-muted-edge: var(--pui-muted);
+    --pui-muted-ink: color-mix(in oklab, var(--pui-muted), var(--pui-text) 25%);
+    --pui-surface-fill: var(--pui-bg);
+    --pui-surface-on-fill: var(--pui-text);
+    --pui-surface-fill-hover: color-mix(in oklab, var(--pui-bg), var(--pui-text) 12%);
+    --pui-surface-edge: var(--pui-border);
+    --pui-surface-ink: var(--pui-text);
+    --pui-inverse-fill: var(--pui-text);
+    --pui-inverse-on-fill: var(--pui-bg);
+    --pui-inverse-fill-hover: color-mix(in oklab, var(--pui-text), var(--pui-bg) 12%);
+    --pui-inverse-edge: var(--pui-text);
+    --pui-inverse-ink: var(--pui-text);
+
+    /* Spacing: multiples of --pui-space (4px). Nothing uses a value outside this. */
+    --pui-space-0-5: calc(var(--pui-space) * 0.5);
+    --pui-space-1: var(--pui-space);
+    --pui-space-1-25: calc(var(--pui-space) * 1.25);
+    --pui-space-1-5: calc(var(--pui-space) * 1.5);
+    --pui-space-1-75: calc(var(--pui-space) * 1.75);
+    --pui-space-2: calc(var(--pui-space) * 2);
+    --pui-space-2-5: calc(var(--pui-space) * 2.5);
+    --pui-space-3: calc(var(--pui-space) * 3);
+    --pui-space-4: calc(var(--pui-space) * 4);
+    --pui-space-6: calc(var(--pui-space) * 6);
+    --pui-space-7: calc(var(--pui-space) * 7);
+    --pui-space-8: calc(var(--pui-space) * 8);
+
+    /* Radii */
+    --pui-radius-sm: calc(var(--pui-radius) * 0.5);
+    --pui-radius-inner: calc(var(--pui-radius) - var(--pui-border-width));
+    --pui-radius-lg: calc(var(--pui-radius) * 1.5);
+    --pui-radius-full: 9999px;
+
+    /* Type. The library sets no family and no body weight; these are the
+       page conventions of the repo's own preview (tests/manual/preview.html). */
+    --pui-font-sans: system-ui, sans-serif;
+    --pui-font-mono: ui-monospace, monospace;
+    --pui-font-size-small: calc(var(--pui-font-size) * 0.857);
+    --pui-line-height: 1.25;
+    --pui-font-weight-strong: 600;
+
+    /* Motion */
+    --pui-duration: 0.15s; /* @kind other */
+    --pui-easing: ease; /* @kind other */
+
+    /* Semantic surface aliases */
+    --pui-surface-page: var(--pui-bg);
+    --pui-surface-card: var(--pui-bg);
+    --pui-surface-card-header: var(--pui-bg-muted);
+    --pui-text-body: var(--pui-text);
+    --pui-text-secondary: var(--pui-text-muted);
+    --pui-backdrop: rgb(0 0 0 / 50%);
+  }
+}
