@@ -1,0 +1,26 @@
+/*
+ * Cascade layer order. perfectui's rules live in `pui.*`; Tailwind v4 puts Preflight in `base`
+ * and utilities in `utilities`. Declaring the order first keeps Preflight below the library
+ * (a reset never removes a component's fill) and utilities above it (`w-full` beats `pui-btn`).
+ */
+@layer theme, base, pui, components, utilities;
+
+@import "tailwindcss";
+@import "@chrissgon/perfectui/perfectui.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/fira-code/400.css";
+@import "@fontsource/fira-code/500.css";
+
+/* Tailwind's dark variant follows the library's mode attribute. */
+@custom-variant dark (&:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));
+
+@theme {
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, monospace;
+}
+
+body {
+  background: var(--pui-bg);
+  color: var(--pui-text);
+  font-family: var(--font-sans);
+}

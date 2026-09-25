@@ -1,0 +1,7 @@
+[build]
+  command = "bun run generate"
+  publish = ".output/public"
+
+[build.environment]
+  # Nuxt 4.5.2 requires Node ^22.19.0 || ^24.11.0 || >=26.0.0
+  NODE_VERSION = "24"

@@ -24,6 +24,7 @@
   Check: `bun run generate` writes `.output/public/index.html`; `bun run typecheck` and `bun run lint` exit 0; every dependency pinned to the design's version
   Size: M, because a whole toolchain on an empty tree, with versions already verified
   Milestone: CM1
+  Status: done (2026-09-24) generate exit 0 (5 routes, .output/public/index.html); typecheck exit 0; lint exit 0 (docs/ ignored); versions pinned as the design; layer order proven: pui-btn keeps its fill in both modes and rounded-none wins only with the declared order; review docs/engineering/reviews/T-cm-1.md: approve with changes, Node pinned in netlify.toml; eslint.config.mjs and tsconfig.json added for the lint and typecheck scripts
 - T-cm-2: Test harness over the generated output
   Does: Vitest for unit and repository checks; Playwright configured to serve `.output/public` statically; helpers for axe (`@axe-core/playwright`) and Lighthouse; one passing smoke test per runner.
   Delivers: NFR-3
