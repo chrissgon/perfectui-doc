@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: released. R-1 and R-2 are live on https://perfectui.netlify.app from branch `main` (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
+- Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
 ## Autonomy
@@ -183,6 +183,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-25: `git push origin main` with e4e7e97 (site URL https://perfectui.dev) once the domain served HTTPS, as agreed; the user's notice that https://perfectui.dev works was the signal (user)
 
 - 2026-09-25: `git push origin main` with the release record (0fcf4a5, cherry-picked onto the merge of pull request #1) and this entry; work continues on `main` (user: "Sim")
 
