@@ -1,24 +1,40 @@
 <template>
-  <main class="mx-auto max-w-3xl p-8">
-    <!-- Placeholder until the landing (T-sh-9); it also proves the cascade layer order:
-         the button keeps its fill and w-full wins. -->
-    <h1 class="text-4xl font-semibold">Perfect UI</h1>
-    <p class="mt-4"><NuxtLink :to="`/docs/${latestVersion.id}`">Documentation</NuxtLink></p>
-    <CopyCommand class="mt-6" :text="installCommand('npm')" />
-    <button id="layer-check" class="pui-btn pui-solid pui-theme mt-6 w-full">
-      Get started
-    </button>
+  <main>
+    <LandingHero :section="section('hero')" :size="size" :bars="bars" :version="latestVersion.id" :pages="pages" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { installCommand } from "~/site.config";
-import { latestVersion } from "~/versions";
+import { assertSections, landingSectionIds, type LandingSection } from "#shared/landing-copy";
+import type { LibrarySize } from "#shared/library-size";
+import { competitors } from "~/data/competitors";
+import { latestVersion, type DocsCollection } from "~/versions";
 
-// The site's own title and description (messaging SECTION-1); T-sh-9 keeps this call.
+// The landing: messaging copy from content/landing.yml, the size measured at build (REQ-1, REQ-2).
+const { data: copy } = await useAsyncData("landing-copy", () => queryCollection("landing").first());
+const { data: measured } = await useFetch<LibrarySize>("/api/library-size.json");
+if (!copy.value || !measured.value) {
+  throw createError({ statusCode: 500, statusMessage: "Landing copy or library size missing", fatal: true });
+}
+// Pages of the latest version: a call to action renders only when its page exists, so a guide
+// written in a later task (the migration guide, T-mg-1) shows up without an edit here.
+const { data: docPaths } = await useAsyncData("landing-doc-paths", () =>
+  queryCollection(latestVersion.collection as DocsCollection).select("path").all(),
+);
+const pages = computed(() => new Set((docPaths.value ?? []).map((p) => p.path)));
+
+// Fails the prerender naming any section id the copy and the page disagree on.
+assertSections(copy.value, landingSectionIds);
+
+const size = measured.value;
+const section = (id: string) => copy.value!.sections.find((s) => s.id === id) as LandingSection;
+
+const totals = [size.css + size.js, ...competitors.map((c) => c.css + c.js)];
+const bars = totals.map((t) => (t / Math.max(...totals)) * 100);
+
+const hero = section("hero");
 usePageMeta({
-  title: "Perfect UI · The bare minimum for elegant interfaces",
-  description:
-    "A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a pui- class; the browser does the work.",
+  title: `Perfect UI · ${hero.headline.replace(/\.$/, "")}`,
+  description: hero.body.split(/(?<=\{css\.kB\}\.) /)[1] ?? "",
 });
 </script>

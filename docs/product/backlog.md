@@ -327,6 +327,7 @@
   Check: `tests/e2e/landing-viewport.spec.ts`: headline, supporting line, install command and "Get started" inside 360×640 and 1280×800
   Size: M, because the page's most visible motion
   Milestone: SH2
+  Status: done (2026-09-25) tests/e2e/landing-viewport.spec.ts 6 passed (6 failed before); bun run test 40 unit + 64 browser; lint and typecheck exit 0; screenshots at 1280 light, dark and 360 compared with the export
 - T-sh-10: Size chart
   Does: `SizeChart` from the library size JSON and the static competitors' list; bars and counters per the handoff; footnote with method and version.
   Delivers: REQ-2, AC-2

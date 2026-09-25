@@ -5,6 +5,8 @@ const rootTheme = (page: Page) =>
 const bg = (page: Page, selector: string) =>
   page.locator(selector).first().evaluate((el) => getComputedStyle(el).backgroundColor);
 // Components fade colour changes over the library's 150 ms transition, so colours are polled.
+// The landing's primary call to action, a solid theme button.
+const getStarted = "#hero a.pui-btn.pui-solid.pui-theme";
 const picker = (page: Page) => page.getByRole("button", { name: "Theme colour" });
 
 async function pick(page: Page, colour: string) {
@@ -23,19 +25,19 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     expect(before).not.toBe("rgb(255, 0, 0)");
 
     await page.goto("/");
-    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 0, 0)");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 0, 0)");
     await page.reload();
     expect(await rootTheme(page)).toBe("#ff0000");
-    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 0, 0)");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 0, 0)");
   });
 
   test("presets set the colour and Default restores the library's", async ({ page }) => {
     await page.goto("/");
-    const initial = await bg(page, "#layer-check");
+    const initial = await bg(page, getStarted);
     await picker(page).click();
     await page.getByRole("button", { name: "Violet" }).click();
     expect(await rootTheme(page)).toBe("#7c3aed");
-    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(124, 58, 237)");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(124, 58, 237)");
 
     await page.getByRole("button", { name: "Success" }).click();
     expect(await rootTheme(page)).toBe("var(--pui-success)");
@@ -43,7 +45,7 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     await page.getByRole("button", { name: "Default" }).click();
     expect(await rootTheme(page)).toBe("");
     expect(await page.evaluate(() => sessionStorage.getItem("pui-theme"))).toBeNull();
-    await expect.poll(() => bg(page, "#layer-check")).toBe(initial);
+    await expect.poll(() => bg(page, getStarted)).toBe(initial);
   });
 
   test("#ffffff applies with no error", async ({ page }) => {
@@ -52,7 +54,7 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
     await page.goto("/");
     await pick(page, "#ffffff");
-    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 255, 255)");
+    await expect.poll(() => bg(page, getStarted)).toBe("rgb(255, 255, 255)");
     await expect(page.getByRole("alert")).toHaveCount(0);
     expect(errors).toEqual([]);
   });

@@ -62,3 +62,11 @@ export function fillSize(text: string, size: { css: number; js: number }): strin
 export function docsLink(to: string, version: string): string {
   return to.replace(/^\/docs(?=\/|$)/, `/docs/${version}`);
 }
+
+/** Splits copy on inline-code backticks, for rendering `code` spans without Markdown. */
+export function inlineSegments(text: string): { code: boolean; text: string }[] {
+  return text
+    .split(/(`[^`]+`)/)
+    .filter(Boolean)
+    .map((part) => (part.startsWith("`") ? { code: true, text: part.slice(1, -1) } : { code: false, text: part }));
+}
