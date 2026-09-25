@@ -1,0 +1,59 @@
+import { expect, test, type Page } from "@playwright/test";
+
+const rootTheme = (page: Page) =>
+  page.evaluate(() => document.documentElement.style.getPropertyValue("--pui-theme"));
+const bg = (page: Page, selector: string) =>
+  page.locator(selector).first().evaluate((el) => getComputedStyle(el).backgroundColor);
+// Components fade colour changes over the library's 150 ms transition, so colours are polled.
+const picker = (page: Page) => page.getByRole("button", { name: "Theme colour" });
+
+async function pick(page: Page, colour: string) {
+  await picker(page).click();
+  await page.getByLabel("Custom colour").fill(colour);
+}
+
+test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
+  test("a colour applies to a component and an example block without reload, and survives a reload", async ({ page }) => {
+    await page.goto("/docs/v1/components/button");
+    const example = ".example-canvas .pui-solid.pui-theme";
+    const before = await bg(page, example);
+    await pick(page, "#ff0000");
+    expect(await rootTheme(page)).toBe("#ff0000");
+    await expect.poll(() => bg(page, example)).toBe("rgb(255, 0, 0)");
+    expect(before).not.toBe("rgb(255, 0, 0)");
+
+    await page.goto("/");
+    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 0, 0)");
+    await page.reload();
+    expect(await rootTheme(page)).toBe("#ff0000");
+    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 0, 0)");
+  });
+
+  test("presets set the colour and Default restores the library's", async ({ page }) => {
+    await page.goto("/");
+    const initial = await bg(page, "#layer-check");
+    await picker(page).click();
+    await page.getByRole("button", { name: "Violet" }).click();
+    expect(await rootTheme(page)).toBe("#7c3aed");
+    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(124, 58, 237)");
+
+    await page.getByRole("button", { name: "Success" }).click();
+    expect(await rootTheme(page)).toBe("var(--pui-success)");
+
+    await page.getByRole("button", { name: "Default" }).click();
+    expect(await rootTheme(page)).toBe("");
+    expect(await page.evaluate(() => sessionStorage.getItem("pui-theme"))).toBeNull();
+    await expect.poll(() => bg(page, "#layer-check")).toBe(initial);
+  });
+
+  test("#ffffff applies with no error", async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+    await page.goto("/");
+    await pick(page, "#ffffff");
+    await expect.poll(() => bg(page, "#layer-check")).toBe("rgb(255, 255, 255)");
+    await expect(page.getByRole("alert")).toHaveCount(0);
+    expect(errors).toEqual([]);
+  });
+});

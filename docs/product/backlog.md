@@ -273,6 +273,7 @@
   Check: `tests/e2e/theme.spec.ts`: the colour applies to a component and an example block without reload and survives a reload in the session; `#ffffff` applies with no error
   Size: S, because one component on the head script's storage
   Milestone: SH1
+  Status: done (2026-09-25) tests/e2e/theme.spec.ts 3 passed (3 failed before); bun run test 31 unit + 43 browser; lint and typecheck exit 0
 - T-sh-4: Header, footer and default layout
   Does: `SiteHeader` (logo, version label from the versions configuration, docs link, mode toggle, theme picker, GitHub, Figma, search slot behind `features.search`, menu control below 1024 px), `SiteFooter`, `app/layouts/default.vue` wrapping the docs layout; inline SVG icons from the handoff assets.
   Delivers: REQ-6, REQ-7, AC-7
