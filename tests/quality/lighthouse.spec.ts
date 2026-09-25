@@ -9,16 +9,16 @@ test.skip(!!process.env.CI && !process.env.SITE_URL, "CI measures the deployed p
 test("the Button page scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);
   const scores = await lighthouseScores(`${baseURL}/docs/v1/components/button`, 3);
-  expect(scores.performance).toBeGreaterThanOrEqual(90);
-  expect(scores.accessibility).toBeGreaterThanOrEqual(95);
+  expect(scores.performance, `performance audits below 1: ${scores.lost.performance}`).toBeGreaterThanOrEqual(90);
+  expect(scores.accessibility, `accessibility audits below 1: ${scores.lost.accessibility}`).toBeGreaterThanOrEqual(95);
 });
 
 // NFR-1, AC-11: the same bar on the landing.
 test("the landing scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);
   const scores = await lighthouseScores(`${baseURL}/`, 3);
-  expect(scores.performance).toBeGreaterThanOrEqual(90);
-  expect(scores.accessibility).toBeGreaterThanOrEqual(95);
+  expect(scores.performance, `performance audits below 1: ${scores.lost.performance}`).toBeGreaterThanOrEqual(90);
+  expect(scores.accessibility, `accessibility audits below 1: ${scores.lost.accessibility}`).toBeGreaterThanOrEqual(95);
 });
 
 // Migration guide NFR-1, AC-6. Verified on the host instead (user's decision, T-mg-5): on the
@@ -28,6 +28,6 @@ test("the landing scores performance ≥ 90 and accessibility ≥ 95 on mobile",
 test.fixme("the migration guide scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);
   const scores = await lighthouseScores(`${baseURL}/docs/v1/getting-started/migrating-from-0-x`, 3);
-  expect(scores.performance).toBeGreaterThanOrEqual(90);
-  expect(scores.accessibility).toBeGreaterThanOrEqual(95);
+  expect(scores.performance, `performance audits below 1: ${scores.lost.performance}`).toBeGreaterThanOrEqual(90);
+  expect(scores.accessibility, `accessibility audits below 1: ${scores.lost.accessibility}`).toBeGreaterThanOrEqual(95);
 });
