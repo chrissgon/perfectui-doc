@@ -38,7 +38,7 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 | #3c32aa | purple mixed into the hero glow (`color-mix` with `--pui-theme`) | `PerfectUI/doc/glow-purple` (#7340D9 at 12%) | fix in code: use the glow values of the design system |
 | #7c3aed | preset of the theme picker and the section 5 demo | the example colour of messaging SECTION-5 and the library's theme docs | use token: keep as a picker preset value |
 | #16a34a, #dc2626, #d97706 | theme picker presets | success, error and warn fills | use token: presets read the library's role colours |
-| #676d7b | `--pui-text-muted` in light mode in the inlined library | the library's source after commit 169cec1 (unreleased) | use token: arrives with the pinned release (OPEN-1) |
+| #676d7b | `--pui-text-muted` in light mode in the inlined library | the library from 1.0.0-beta.1 (commit 169cec1) | use token: comes with the pinned 1.0.0-beta.1 |
 | #000, #fff, #0092cd, #07b6f0, #111827, #1f2937, #22c55e, #374151, #6b7280, #9ca3af, #d1d5db, #e5e7eb, #ef4444, #f3f4f6, #f59e0b | the inlined library's token values | the library's own tokens | use token: they come with the stylesheet |
 
 ## Components
@@ -63,7 +63,7 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 | 1280 and up | content max width 1200 px centred, side padding `clamp(20px, 5vw, 40px)`; hero in two columns (text, demo window) with the display number under the text; sections separated by `clamp(96px, 12vw, 160px)` vertical padding; section 2 and section 7 on inverse (black) bands; overlays in a 2 × 2 grid (`repeat(auto-fit, minmax(min(100%, 440px), 1fr))`) | header | nothing |
 | 720 to 1279 | as above with fluid type: headline `clamp(44px, 7.5vw, 96px)`, section headings `clamp(36px, 5vw, 64px)`, display number `clamp(120px, 17vw, 216px)` | header | nothing |
 | below 720 | one column; the display number moves inline under the headline; size chart rows put the bar on its own line under the name | header | header links behind a menu control (SCREEN-3): not designed; follow the flows' rule |
-| 360 | not designed; REQ-1 requires headline, supporting line, install command and "Get started" in the first viewport | header | as below 720 |
+| 360 | the export's own responsive rules (render in `reference/360-light.png`): one column, display number inline, chart bars under the names; REQ-1 holds | header | as below 720 |
 
 ## Behaviour
 
@@ -103,18 +103,18 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 - DEV-5: The page depends on tokens the tool invented (Tokens table) and on an inlined copy of the library. Action: fix in code.
 - DEV-6: Fallbacks for `commandfor`, `closedby` and `interestfor` are written by hand. Action: fix in code (import the library's loader).
 - DEV-7: The hero glow mixes the theme with #3c32aa instead of the design system's purple glow. Action: fix in code.
-- DEV-8: No 360 px or dark-mode capture was delivered, so REQ-1 (first viewport at 360 × 640) is unverified. Action: back to design (round 2 in the same project: 360 and dark).
+- DEV-8: No 360 px or dark-mode capture was delivered. Action: accepted (user, 2026-09-24): no separate design for 360 px, the layout adapts in code; dark mode is the export's own toggle. Renders of the export on 2026-09-24 confirm both: at 360 px one column, no horizontal scroll, and headline, supporting line, install command and "Get started" inside the first 640 px (REQ-1); dark mode through the header toggle. Kept in `handoff/landing/reference/`.
 
 ## Acceptance
 
-- Reference: `docs/design/screens/landing-page/perfect-ui-landing.png` (full page, light, final states) and `docs/design/results/landing/round-1/claude-design/hero-1280.webp`.
-- Compare at: 1280 px light (against the reference), 1280 px dark and 360 px light and dark (against the round-2 captures once delivered); states: default final, reduced motion, no JavaScript, copied.
+- Reference: `docs/design/screens/landing-page/perfect-ui-landing.png` (full page, 1280 light, final states), `docs/design/results/landing/round-1/claude-design/hero-1280.webp`, and renders of the export in `handoff/landing/reference/` (1280 dark, 360 light, 360 dark); the user's own dark PNG replaces the 1280 dark render when added to `docs/design/screens/landing-page/`.
+- Compare at: 1280 px light and dark, 360 px light and dark, against the references above; states: default final, reduced motion, no JavaScript, copied.
 - Tolerances: layout within 4 px at 1280; colours exact library or site tokens; type sizes as the clamps above; every animation's final state equal to the reference.
 
 ## Open questions
 
-- OPEN-1: The site pins which perfectui version? The published 1.0.0-beta.0 lacks the muted-text contrast fix of commit 169cec1 that the design used. Blocks: the muted text colour only. Recommended: publish 1.0.0-beta.1 from the current main before implementation and pin it, so the site ships what it documents.
+- OPEN-1 (resolved 2026-09-24): the site pins `@chrissgon/perfectui` 1.0.0-beta.1, released for it with the muted-text fix (user). Blocks: nothing. Recommended: as decided; the size block reads the new measurement at build (3,235 B for `perfectui.css`).
 
 ## Readiness
 
-- Ready for eng-architecture: yes; DEV-8 needs round 2 before design-implementation-validation at 360 px and in dark mode.
+- Ready for eng-architecture: yes.

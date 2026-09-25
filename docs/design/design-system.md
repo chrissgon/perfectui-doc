@@ -85,7 +85,7 @@ The library's own token specification governs every colour, size and component t
 
 Soft tints are opacities of the role fill (15%, 22% on hover) and outline hover is the fill at 10%, never separate tokens (DESIGN-SYSTEM §6.2). The stylesheet's `--pui-shade` is the internal hover shift (a solid fill moved 12% toward `--pui-text`, DESIGN-SYSTEM §3) and `--pui-color`, `--pui-on-color`, `--pui-edge`, `--pui-ink` are the per-element colour contract set by the colour classes; none of them is a token to set.
 
-Site rules for using these tokens (this document): body prose uses `page/text` on `page/bg`; secondary prose uses `page/text-muted` on `page/bg` only, never on `page/bg-muted` (4.39:1, below AA); links and the focus ring use `theme/ink` for text and `theme/fill` for the ring; site-only components never use a solid `theme`, `success` or `warn` fill under text smaller than 19 px bold or 24 px regular, because those labels sit at 3.2 to 3.5:1 in light mode (library trade-off); the code block uses `page/bg-emphasis` as background with `page/text` as foreground; the token colours of highlighted code are OPEN-1.
+Site rules for using these tokens (this document): body prose uses `page/text` on `page/bg`; secondary prose uses `page/text-muted` on `page/bg` only, never on `page/bg-muted` (4.39:1, below AA); links and the focus ring use `theme/ink` for text and `theme/fill` for the ring; site-only components never use a solid `theme`, `success` or `warn` fill under text smaller than 19 px bold or 24 px regular, because those labels sit at 3.2 to 3.5:1 in light mode (library trade-off); the code block uses `page/bg-emphasis` as background with `page/text` as foreground; the token colours of highlighted code are the role inks (OPEN-1, resolved).
 
 ## Contrast
 
@@ -223,7 +223,7 @@ Site-only controls that need a visible boundary (input in the search dialog, cop
 
 ## Open questions
 
-- OPEN-1: Colour theme for highlighted code (the token colours inside code blocks) in light and dark modes. Blocks: the code block component's final look, not the layout. Recommended: derive from the role inks (`theme/ink` keywords, `success/ink` strings, `warn/ink` numbers, `muted/ink` comments, `page/text` plain) so code uses the same seven roles as everything else and both modes are covered without a third palette.
+- OPEN-1 (resolved 2026-09-24): highlighted code uses the role inks: tags in `theme/ink`, attribute names in `warn/ink`, attribute values and strings in `success/ink`, punctuation in `page/text-muted`, plain text in `page/text`, in both modes (user, from the approved documentation page export). Blocks: nothing. Recommended: as decided.
 - OPEN-2: The site-owned values marked "this document (OPEN-2)": type scale (base 14 × 1.25), reading width 72ch, page frame 1280, header 56, sidebar 272, headings column 208, gutters 16/32. Blocks: nothing; design-ui uses them as defaults. Recommended: approve as proposed; each derives from the library's 4 px unit and Tailwind's default breakpoints.
 
 ## Readiness

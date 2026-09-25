@@ -92,6 +92,10 @@
 - 2026-09-24: The perfectui design system was built in Claude Design from the library repository with an onboarding prompt, and the landing produced there (Claude Design result, direction "editor and canvas" with the display number) is approved; round 2 completes 360 px, dark mode and the remaining sections, with the theme blue as default accent and the supporting line kept as one sentence (user)
 - 2026-09-24: Design skills produce the inputs and a specialized AI design tool or a code prototype produces the design: design-brief writes the brief, design-execute runs it and records the results; design-ui is retired (user)
 - 2026-09-24: The documentation page design is direction A, "Canvas first", exported from Claude Design and placed in docs/design/screens/docs-button; directions B and C were not run (user)
+- 2026-09-24: The site pins `@chrissgon/perfectui` 1.0.0-beta.1, a new release of the library carrying the muted-text contrast fix the design uses; `perfectui.css` measures 3,235 B gzip, and the landing's size block reads it at build (user)
+- 2026-09-24: Highlighted code uses the role inks (tags theme ink, attributes warn ink, values success ink, punctuation muted); design-system OPEN-1 closed (user)
+- 2026-09-24: The explanatory sentences the design tool wrote for the documentation page are adopted into the v1 content, each checked against the library's documentation (user)
+- 2026-09-24: No separate designs for 360 px: narrow layouts are built in code from the flows' rules; dark mode is the exports' own toggle, rendered as references in docs/design/handoff/<screen>/reference/, to be replaced by the user's dark PNGs when added (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -117,10 +121,10 @@
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 - [ ] Open Graph images: which direction goes to round 2? Recommended: B, "Number" (results/og-image.md)
-- [ ] Which perfectui version does the site pin? The design uses the unreleased muted-text fix (commit 169cec1). Recommended: publish 1.0.0-beta.1 and pin it (handoff/landing OPEN-1)
-- [ ] Close design-system OPEN-1 with the export's syntax colours (tags theme ink, attributes warn ink, values success ink)? Recommended: yes (handoff/documentation-page OPEN-1)
-- [ ] Adopt the design tool's explanatory sentences into the v1 content? Recommended: yes for sentences that state library facts, after checking them (handoff/documentation-page OPEN-2)
-- [ ] Round 2 in Claude Design for 360 px, dark mode and the remaining states of both screens (handoff DEV-8 and DEV-7)
+- [x] Which perfectui version does the site pin? 1.0.0-beta.1 (user, 2026-09-24)
+- [x] Close design-system OPEN-1 with the export's syntax colours? Yes (user, 2026-09-24)
+- [x] Adopt the design tool's explanatory sentences into the v1 content? Yes, after checking each (user, 2026-09-24)
+- [x] Round 2 in Claude Design for 360 px and dark mode? Not needed: narrow in code, dark from the exports' toggle (user, 2026-09-24)
 - [ ] Show the v0 version switch before the v0 archive exists? Recommended: design it now, hide it in the build until v0 ships (documentation-page brief OPEN-1)
 - [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
 

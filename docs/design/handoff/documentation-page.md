@@ -34,9 +34,9 @@ The documentation page becomes one Nuxt layout that renders any Markdown page of
 | `--pui-surface-*`, `--pui-text-body`, `--pui-text-secondary`, `--pui-backdrop` | page, panels, secondary text, search backdrop | `--pui-bg`, `--pui-bg-muted`, `--pui-bg-emphasis`, `--pui-text`, `--pui-text-muted` | fix in code |
 | `--pui-duration`, `--pui-easing` | transitions | the library's 150 ms transitions | fix in code |
 | `--logo-filter` | wordmark in dark mode | none | fix in code: inline SVG with `currentColor` |
-| Syntax colours: tags `theme ink`, attributes `warn ink`, values `success ink`, punctuation `text-muted`, text `text` | code tabs, inline code | design-system OPEN-1 (highlighted code from the role inks) | add site token: close OPEN-1 with this mapping (OPEN-1 below) |
+| Syntax colours: tags `theme ink`, attributes `warn ink`, values `success ink`, punctuation `text-muted`, text `text` | code tabs, inline code | design-system Code highlighting (OPEN-1 closed) | add site token: `--site-code-tag`, `--site-code-attr`, `--site-code-value`, `--site-code-punct` |
 | #3c32aa | purple in the header band glow | `PerfectUI/doc/glow-purple` | fix in code |
-| #676d7b | light `--pui-text-muted` in the inlined library | the library after commit 169cec1 (unreleased) | use token: arrives with the pinned release |
+| #676d7b | light `--pui-text-muted` in the inlined library | the library from 1.0.0-beta.1 (commit 169cec1) | use token: comes with the pinned 1.0.0-beta.1 |
 | #000, #fff, #0092cd, #07b6f0, #111827, #16a34a, #1f2937, #22c55e, #374151, #6b7280, #9ca3af, #d1d5db, #d97706, #dc2626, #e5e7eb, #ef4444, #f3f4f6, #f59e0b | the inlined library's token values | the library's own tokens | use token |
 
 ## Components
@@ -60,7 +60,7 @@ The documentation page becomes one Nuxt layout that renders any Markdown page of
 | 1280 and up | `272px minmax(0, 1fr) 208px` inside a 1440 px max frame; content reading width 72ch; header 64 px | header at top 0; sidebar at 65 px with height `calc(100vh - 65px)`, scrolling inside; headings list at 72 px | nothing |
 | 1024 to 1279 | sidebar and content; headings list moves into the content as an "On this page" disclosure | header, sidebar | headings column: not designed, follow the flows |
 | 768 to 1023 | content only; sidebar becomes a panel behind a menu control | header | sidebar: not designed, follow the flows |
-| 360 | one column; code and tables scroll inside their box; search dialog full screen | header | not designed; follow the brief's narrow state |
+| 360 | one column; code and tables scroll inside their box; search dialog full screen | header | sidebar behind a menu control as a panel, headings as an "On this page" disclosure; do not follow the export here |
 
 ## Behaviour
 
@@ -95,19 +95,19 @@ The documentation page becomes one Nuxt layout that renders any Markdown page of
 - DEV-4: Mode and theme do not use `setMode` and do not persist. Action: fix in code.
 - DEV-5: Fira Code loads from a font CDN. Action: fix in code (self-host).
 - DEV-6: Invented tokens and an inlined library copy (Tokens table). Action: fix in code.
-- DEV-7: Only 1280 light was delivered: narrow, dark, no-headings, version-notice and search states are not designed. Action: back to design (round 2 in the same project).
+- DEV-7: Only 1280 light was delivered. Action: accepted (user, 2026-09-24): narrow widths are built in code from the flows' rules, and dark mode is the export's own toggle (render in `handoff/documentation-page/reference/1280-dark.png`). The export does not adapt at 360 px (the sidebar stays open and squeezes the content to a thin column, `reference/360-light.png`), so the narrow layout follows the Layout table, not the export; the no-headings, version-notice and search states follow the brief.
 
 ## Acceptance
 
 - Reference: `docs/design/screens/docs-button/perfect-ui-docs-button.png` (full page, 1280 light, rendered at 2×).
-- Compare at: 1280 px light against the reference; 1280 px dark, 1024, 768 and 360 px against round-2 captures; states: default, copied, search open with results, page without headings.
+- Compare at: 1280 px light against the reference and 1280 px dark against `reference/1280-dark.png` (or the user's dark PNG when added); 1024, 768 and 360 px against the Layout table (structure only); states: default, copied, search open with results, page without headings.
 - Tolerances: layout within 4 px at 1280; exact tokens; the text differs by design (DEV-1), so compare structure and style, not words.
 
 ## Open questions
 
-- OPEN-1: Close design-system OPEN-1 with the export's syntax colours (tags in the theme ink, attributes in the warn ink, values in the success ink, punctuation muted)? Blocks: the code block's final colours. Recommended: yes; it is the role-ink mapping the design system proposed, now seen working in both modes.
-- OPEN-2: Adopt the tool's explanatory sentences (one per section) into the site's own content for v1? Blocks: nothing (the layout does not depend on it). Recommended: yes for the sentences that state library facts, after checking each against the library's docs, because the library's pages have code but little prose and the user allowed the site to extend them.
+- OPEN-1 (resolved 2026-09-24): design-system OPEN-1 is closed with the export's syntax colours (user). Blocks: nothing. Recommended: as decided.
+- OPEN-2 (resolved 2026-09-24): the tool's explanatory sentences are adopted into the v1 content, each checked against the library's documentation first (user). Blocks: nothing. Recommended: as decided; a content task of the backlog.
 
 ## Readiness
 
-- Ready for eng-architecture: yes; DEV-7 needs round 2 before design-implementation-validation beyond 1280 light.
+- Ready for eng-architecture: yes.
