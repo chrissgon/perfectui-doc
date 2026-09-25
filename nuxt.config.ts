@@ -16,7 +16,11 @@ export default defineNuxtConfig({
   content: {
     build: {
       markdown: {
-        highlight: { theme: { default: codeTheme } },
+        // The default languages plus `diff`, for the migration guide (T-mg-3).
+        highlight: {
+          theme: { default: codeTheme },
+          langs: ["js", "jsx", "json", "ts", "tsx", "vue", "css", "html", "bash", "md", "mdc", "yaml", "diff"],
+        },
       },
     },
   },

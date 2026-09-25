@@ -24,7 +24,7 @@ export const codeTheme: ThemeRegistrationRaw = {
       scope: ["punctuation", "punctuation.definition.tag", "punctuation.separator", "comment"],
       settings: { foreground: "var(--site-code-punct)" },
     },
-    { scope: ["markup.inserted"], settings: { foreground: "var(--site-code-value)" } },
-    { scope: ["markup.deleted"], settings: { foreground: "var(--site-code-deleted)" } },
+    { scope: ["markup.inserted", "punctuation.definition.inserted"], settings: { foreground: "var(--site-code-value)" } },
+    { scope: ["markup.deleted", "punctuation.definition.deleted"], settings: { foreground: "var(--site-code-deleted)" } },
   ],
 };

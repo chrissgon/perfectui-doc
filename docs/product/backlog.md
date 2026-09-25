@@ -450,6 +450,7 @@
   Check: `tests/build/migration-diff.spec.ts`: removed and added lines carry distinct classes and their markers
   Size: S, because configuration and CSS
   Milestone: MG1
+  Status: done (2026-09-25) tests/fixture-site/migration-diff.spec.ts passed (failed before: no diff grammar, then markers in the punctuation colour); bun run test 70 unit + 129 browser
 - T-mg-4: The guide page
   Does: `content/v1/01.getting-started/04.migrating-from-0-23.md` from `MIGRATION.md`, tables with `:v0`, nine diff blocks, `changed: "1.0"`; the heading sync test.
   Delivers: REQ-1, REQ-2, REQ-6, EDGE-6, AC-1, AC-2
