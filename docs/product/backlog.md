@@ -141,6 +141,7 @@
   Check: `tests/build/artifacts.spec.ts`: both files exist, entries carry `version` and `url`, corpus entries `level` and `titles`; an empty-version fixture fails the build
   Size: M, because two generators on one query
   Milestone: CM2
+  Status: done (2026-09-24) tests/unit/search-set.spec.ts 3 passed (failed before the module existed); tests/build/artifacts.spec.ts 3 passed; both files have 10 entries; bun run test exit 0 (24 unit, 30 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-14.md: approve with changes; highlighting CSS excluded from the sets
 - T-cm-15: Version switch behaviour
   Does: `useVersionSwitch` (same path when it exists in the target, else the target index with `?missing=`) and the notice on the version index; the switch control itself ships with release R-2.
   Delivers: REQ-6, EDGE-1, AC-6
@@ -150,7 +151,7 @@
   Size: M, because routing plus a notice state
   Milestone: CM2
 - T-cm-16: Build assertions for the authoring promise
-  Does: tests for AC-9 (a page added as one Markdown file appears in the route list, navigation and search set, and the diff is that file), AC-11 (every collection route is a static file, the generated files present, no server bundle needed) and AC-10 at build level (a copy of the project with invalid fixtures makes `nuxt generate` exit non-zero naming each file and cause; T-cm-13 review).
+  Does: tests for AC-9 (a page added as one Markdown file appears in the route list, navigation and search set, and the diff is that file), AC-11 (every collection route is a static file, the generated files present, no server bundle needed) and AC-10 at build level (a copy of the project with invalid fixtures, and one with a version that has no page, makes `nuxt generate` exit non-zero naming each file and cause; T-cm-13 and T-cm-14 reviews).
   Delivers: NFR-1, NFR-2, AC-9, AC-10, AC-11
   Touches: `tests/build/add-page.spec.ts`, `tests/build/static.spec.ts`
   Depends on: T-cm-14, T-cm-11
