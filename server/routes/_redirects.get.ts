@@ -1,6 +1,7 @@
 import type { Collections } from "@nuxt/content";
 import { queryCollection } from "@nuxt/content/server";
 import { latestVersion } from "../../app/versions";
+import { assertValidDocs } from "../utils/assertValidDocs";
 
 /**
  * Netlify redirect rules, prerendered to `.output/public/_redirects` (ADR-0005).
@@ -10,6 +11,8 @@ import { latestVersion } from "../../app/versions";
  * The rules are not forced, so the versioned files the build writes are always served first.
  */
 export default defineEventHandler(async (event) => {
+  // The first generated artifact validates the content, so bad content fails the build.
+  assertValidDocs();
   const latest = `/docs/${latestVersion.id}`;
   const pages = await queryCollection(event, latestVersion.collection as keyof Collections)
     .select("path")

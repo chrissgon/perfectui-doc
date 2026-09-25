@@ -128,6 +128,7 @@
   Check: `tests/build/validation.spec.ts`: three invalid fixtures make `nuxt generate` exit non-zero with each file and cause named; a broken link only warns
   Size: M, because five rules with fixtures
   Milestone: CM2
+  Status: done (2026-09-24) tests/unit/validate-docs.spec.ts 7 passed (failed before the module existed); a file without title and with ::tabs made bun run generate exit 1 naming the file and both causes, then removed; bun run test exit 0 (18 unit, 12 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-13.md: approve with changes, the build-level test moves to T-cm-16
 - T-cm-14: Search document set and assistant corpus
   Does: the two prerendered routes of ADR-0003, calling the validator first, one entry per heading section with `version` and `url`, skipping `/.navigation` rows; empty sets throw.
   Delivers: REQ-8, EDGE-8, AC-7
@@ -145,8 +146,8 @@
   Size: M, because routing plus a notice state
   Milestone: CM2
 - T-cm-16: Build assertions for the authoring promise
-  Does: tests for AC-9 (a page added as one Markdown file appears in the route list, navigation and search set, and the diff is that file) and AC-11 (every collection route is a static file, the generated files present, no server bundle needed).
-  Delivers: NFR-1, NFR-2, AC-9, AC-11
+  Does: tests for AC-9 (a page added as one Markdown file appears in the route list, navigation and search set, and the diff is that file), AC-11 (every collection route is a static file, the generated files present, no server bundle needed) and AC-10 at build level (a copy of the project with invalid fixtures makes `nuxt generate` exit non-zero naming each file and cause; T-cm-13 review).
+  Delivers: NFR-1, NFR-2, AC-9, AC-10, AC-11
   Touches: `tests/build/add-page.spec.ts`, `tests/build/static.spec.ts`
   Depends on: T-cm-14, T-cm-11
   Check: both test files pass after `bun run generate`
