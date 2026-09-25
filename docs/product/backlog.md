@@ -96,6 +96,7 @@
   Check: `tests/e2e/navigation.spec.ts`: prefix order with `.navigation.yml` titles, URLs without prefixes, the empty section absent, panel behaviour at 768 px; no file under `app/` lists sections
   Size: M, because a composable and a responsive component
   Milestone: CM2
+  Status: done (2026-09-24) tests/e2e/navigation.spec.ts 3 passed and tests/repo/navigation-source.spec.ts 1 passed (navigation tests failed before the sidebar existed); bun run test exit 0 (19 unit, 15 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-9.md: approve with changes, the panel closes on page change
 - T-cm-10: Page header with badges
   Does: `DocHeader` with section label, title, description, "Added in" and "Changed in" badges (`pui-badge pui-soft pui-theme`).
   Delivers: REQ-7, AC-2

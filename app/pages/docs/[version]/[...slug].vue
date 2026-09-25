@@ -1,9 +1,13 @@
 <template>
-  <article v-if="page" class="mx-auto max-w-3xl p-8">
-    <h1 class="text-4xl font-semibold">{{ page.title }}</h1>
-    <p class="mt-2">{{ page.description }}</p>
-    <ContentRenderer :value="page" class="mt-8" />
-  </article>
+  <div class="mx-auto grid max-w-7xl gap-8 p-8 lg:grid-cols-[272px_minmax(0,1fr)]">
+    <!-- Two columns until the documentation layout (T-cm-11). -->
+    <DocSidebar :sections="sections" :current-path="path" />
+    <article v-if="page">
+      <h1 class="text-4xl font-semibold">{{ page.title }}</h1>
+      <p class="mt-2">{{ page.description }}</p>
+      <ContentRenderer :value="page" class="mt-8" />
+    </article>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -23,6 +27,8 @@ const { data: page } = await useAsyncData(path, () => queryCollection(collection
 if (!page.value || path.endsWith("/.navigation")) {
   throw createError({ statusCode: 404, statusMessage: "Page not found", fatal: true });
 }
+
+const sections = await useDocsNav(version);
 
 // At setup, so the prerendered HTML carries the meta (lesson from the incremental attempt).
 useSeoMeta({ title: page.value.title, description: page.value.description });

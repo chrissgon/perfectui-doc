@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import type { ContentNavigationItem, PageCollections } from "@nuxt/content";
 import { versions } from "~/versions";
 
 // The index of one version, and the landing point of a failed version switch (REQ-6, EDGE-1).
@@ -27,23 +26,7 @@ const version = found;
 
 const missing = computed(() => (typeof route.query.missing === "string" ? route.query.missing : ""));
 
-const { data: tree } = await useAsyncData(`nav:${version.id}`, () =>
-  queryCollectionNavigation(version.collection as keyof PageCollections),
-);
-// The collection prefix nests the tree as /docs → /docs/<version> → sections → pages.
-function findNode(items: ContentNavigationItem[], path: string): ContentNavigationItem | undefined {
-  for (const item of items) {
-    if (item.path === path) return item;
-    const found = findNode(item.children ?? [], path);
-    if (found) return found;
-  }
-  return undefined;
-}
-const sections = computed<ContentNavigationItem[]>(() =>
-  (findNode(tree.value ?? [], `/docs/${version.id}`)?.children ?? []).filter(
-    (s) => (s.children?.length ?? 0) > 0,
-  ),
-);
+const sections = await useDocsNav(version);
 
 useSeoMeta({
   title: `Documentation ${version.label}`,
