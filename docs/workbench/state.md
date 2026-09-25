@@ -160,6 +160,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin redesign` with commit 664cea3 (publish `dist/` on Netlify) to retry the branch deploy (user)
+
 - 2026-09-25: `git push origin redesign` with commit a86fde7 (Node's built-in SQLite, better-sqlite3 removed) to retry the Netlify branch deploy (user)
 
 - 2026-09-25: `git push origin redesign` with the SR1 commits (T-sr-1 to T-sr-5), the state update and the header wordmark change; it triggers the Netlify branch deploy of `redesign` for T-mg-5's measurement (user)
