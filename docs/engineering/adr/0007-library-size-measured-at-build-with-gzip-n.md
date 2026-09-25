@@ -1,6 +1,6 @@
 # ADR-0007: The library's size is measured at build with `gzip -9 -n`, the competitors' method
 
-- Status: proposed
+- Status: accepted (confirmed on the Netlify branch deploy, 2026-09-25)
 - Date: 2026-09-24
 - Serves: REQ-2, NFR-2, EDGE-7
 
@@ -32,4 +32,8 @@ Option A. The footnote reads "`gzip -9 -n` of the published builds; perfectui me
 
 - Local build (macOS, Apple gzip 479): `api/library-size.json` is `{ "version": "1.0.0-beta.1", "css": 3221, "js": 493, "method": "gzip -9 -n" }`, equal to the build test's own `gzip -9 -n` run.
 - Still to confirm on the first Netlify deploy preview: `gzip` exists on the build image and GNU gzip gives the same bytes. If it differs by a few bytes, NFR-2 still holds (build and test share the machine), but the test's pinned 3,221 and 493 for 1.0.0-beta.1 must be relaxed to the same-machine comparison.
+
+## Confirmation on the host (2026-09-25)
+
+- The Netlify branch deploy of `redesign` (build image noble, Node 24.21.0, GNU gzip) published `api/library-size.json` with `css: 3221` and `js: 493` for 1.0.0-beta.1: the same bytes as Apple gzip locally, so the build test's pinned pair holds on both machines and T-sh-6's open point is closed.
 

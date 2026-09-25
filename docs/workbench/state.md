@@ -51,6 +51,8 @@
 
 ## Decisions
 
+- 2026-09-25: Verified on the Netlify branch deploy https://redesign--perfectui.netlify.app: library size 3,221 and 493 B (ADR-0007 accepted); the 0.23 redirects answer 301 to the versioned pages and unknown paths 404 (ADR-0005's shadowing assumption holds); documentation pages lost their content after hydration behind Netlify's trailing-slash redirect, fixed in 1e1ba8c (eng-root-cause)
+
 - 2026-09-25: The header shows only the "Perfect UI" wordmark, without the "P" mark; the mark stays as the favicon (user)
 
 - 2026-09-25: The production site lists only v1 in `app/versions.ts` until the converted 0.23 pages ship in R-2 (a listed version with no page fails the build, EDGE-8); content-model tests run on a fixture site built from `tests/fixtures/site`, which lists v0 (eng-implement T-cm-22; to confirm with the user)
