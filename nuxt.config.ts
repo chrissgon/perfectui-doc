@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import { versions } from "./app/versions";
 
 export default defineNuxtConfig({
   compatibilityDate: "2026-09-24",
@@ -15,7 +16,8 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: true,
       crawlLinks: true,
-      routes: ["/"],
+      // Each version's index; the crawler follows its links to every page.
+      routes: ["/", ...versions.map((v) => `/docs/${v.id}`)],
     },
   },
 

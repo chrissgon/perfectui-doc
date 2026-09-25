@@ -56,7 +56,7 @@
   Does: prove ADR-0002 option A (recover the raw HTML from the highlighted slot during prerender) on the button fixture; if it fails, implement option C and record the outcome in the ADR.
   Delivers: REQ-3, REQ-10
   Touches: `app/components/content/Example.vue`, ADR-0002
-  Depends on: T-cm-4
+  Depends on: T-cm-4, T-cm-7
   Check: `tests/e2e/example.spec.ts` (first version): the static HTML of the button page holds a rendered `pui-btn` and Shiki markup for the same snippet; ADR-0002 status updated
   Size: L, because it is the design's riskiest assumption
   Milestone: CM1
@@ -76,6 +76,7 @@
   Check: `tests/build/routes.spec.ts`: `docs/v1/components/button/index.html` and `docs/v0/components/button/index.html` exist, no unversioned documentation file exists, the title and description meta come from the frontmatter
   Size: M, because two pages and the version resolution contract
   Milestone: CM1
+  Status: done (2026-09-24) tests/build/routes.spec.ts 4 passed (failed before the pages existed); 16 routes prerendered; bun run test exit 0 (11 unit, 7 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-7.md: approve with changes; app.vue, pages/index.vue and nuxt.config.ts changed for routing
 - T-cm-8: Redirects generator
   Does: `server/routes/_redirects.get.ts` writing one rule per v1 page for the 0.23 flat URL, then `/docs /docs/v1 301` and `/docs/* /docs/v1/:splat 301`, from the versions configuration and the latest collection; listed in `nitro.prerender.routes`; verify the file lands as `_redirects` (ADR-0005 assumption), else use the `prerender:done` hook.
   Delivers: REQ-1, REQ-5, AC-1
@@ -85,7 +86,7 @@
   Size: M, because a Nitro output behaviour to confirm
   Milestone: CM1
 - T-cm-9: Navigation and sidebar
-  Does: `useDocsNav(version)` from `queryCollectionNavigation`; `DocSidebar` with collapsible sections, current page marked, panel behind a menu control below 1024 px.
+  Does: `useDocsNav(version)` from `queryCollectionNavigation`, descending to the `/docs/<version>` node (the collection prefix nests the tree as `/docs` → `/docs/<version>` → sections → pages, found in T-cm-7); `DocSidebar` with collapsible sections, current page marked, panel behind a menu control below 1024 px.
   Delivers: REQ-4, EDGE-5, AC-4
   Touches: `app/composables/useDocsNav.ts`, `app/components/DocSidebar.vue`
   Depends on: T-cm-7
