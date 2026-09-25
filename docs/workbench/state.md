@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (R-1: milestones CM1, CM2, CM3, SH1, SH2, SH3 implemented and reviewed; next MG1, then SR1; the first Netlify deploy preview awaits approval)
+- Current phase: engineering (R-1: all 8 milestones implemented and reviewed, 47 of 48 tasks done; T-mg-5 blocked on the migration guide's Lighthouse performance (89 locally), to be measured on the Netlify branch deploy of `redesign`, which builds on the next approved push)
 - Updated: 2026-09-25
 
 ## Autonomy
