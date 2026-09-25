@@ -69,6 +69,7 @@
   Check: the button page's code spans use `var(--site-code-…)`; switching `data-pui-mode` changes their computed colour in a Playwright test; ADR-0006 status updated
   Size: M, because an option to confirm and a fallback ready
   Milestone: CM1
+  Status: done (2026-09-24) tests/e2e/code-colours.spec.ts 2 passed (failed before the theme existed, and again when an empty settings array hid the rules); ADR-0006 accepted; punctuation moved to muted/ink after a 4.19:1 contrast; bun run test exit 0 (11 unit, 11 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-6.md: approve with changes
 - T-cm-7: Documentation page route and version index
   Does: `app/pages/docs/[version]/[...slug].vue` (unknown version or path gives 404; `useSeoMeta` at setup from frontmatter) and `app/pages/docs/[version]/index.vue` (sections and pages of the version, notice when `?missing=`).
   Delivers: REQ-1, REQ-6, AC-1

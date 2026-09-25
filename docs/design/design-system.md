@@ -108,6 +108,12 @@ Site rules for using these tokens (this document): body prose uses `page/text` o
 | muted/ink | page/bg | 8.76:1 | 10.67:1 | pass |
 | page/border (interface, 3:1) | page/bg | 1.47:1 | 2.04:1 | fail (decorative borders; site-only controls that need a visible boundary add `page/text-muted` at the boundary or a fill, see Components) |
 | theme/fill as focus ring (interface, 3:1) | page/bg | 3.50:1 | 8.96:1 | pass |
+| code tag: theme/ink | page/bg-emphasis (code block) | 5.44:1 | 7.90:1 | pass |
+| code attribute: warn/ink | page/bg-emphasis | 5.05:1 | 8.44:1 | pass |
+| code value: success/ink | page/bg-emphasis | 5.16:1 | 8.09:1 | pass |
+| code punctuation: muted/ink | page/bg-emphasis | 7.07:1 | 7.46:1 | pass (page/text-muted gave 4.19:1 in light, so punctuation uses muted/ink) |
+| code text: page/text | page/bg-emphasis | 16.96:1 | 14.68:1 | pass |
+| code removed line: error/ink | page/bg-emphasis | 7.05:1 | 5.69:1 | pass |
 
 ## Type
 

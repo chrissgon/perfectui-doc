@@ -1,12 +1,21 @@
 import tailwindcss from "@tailwindcss/vite";
 import { versions } from "./app/versions";
+import { codeTheme } from "./shared/code-theme";
 
 export default defineNuxtConfig({
   compatibilityDate: "2026-09-24",
 
   modules: ["@nuxt/content", "@nuxt/eslint"],
 
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/css/main.css", "~/assets/css/code.css"],
+
+  content: {
+    build: {
+      markdown: {
+        highlight: { theme: { default: codeTheme } },
+      },
+    },
+  },
 
   vite: {
     plugins: [tailwindcss()],

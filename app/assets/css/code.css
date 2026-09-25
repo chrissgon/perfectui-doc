@@ -1,0 +1,13 @@
+/*
+ * Colours of highlighted code (design system, "code highlighting from the role inks",
+ * resolved 2026-09-24; ADR-0006). Light and dark follow `data-pui-mode` through the
+ * library's `color-scheme`.
+ */
+:root {
+  --site-code-text: var(--pui-text);
+  --site-code-tag: light-dark(#00628b, #6bc9f5); /* theme/ink */
+  --site-code-attr: light-dark(#934f03, #f9b867); /* warn/ink */
+  --site-code-value: light-dark(#0b6e2f, #71d588); /* success/ink */
+  --site-code-punct: light-dark(#464b55, #b4b9c3); /* muted/ink: text-muted fails AA on the code background */
+  --site-code-deleted: light-dark(#951616, #fa7b73); /* error/ink */
+}

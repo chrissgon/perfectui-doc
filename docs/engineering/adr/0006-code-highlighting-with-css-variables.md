@@ -1,6 +1,6 @@
 # ADR-0006: Code highlighting coloured through CSS variables bound to the role inks
 
-- Status: proposed
+- Status: accepted (spike T-cm-6, 2026-09-24)
 - Date: 2026-09-24
 - Serves: REQ-10, NFR-3
 
@@ -19,6 +19,8 @@ Code is highlighted at build time by Nuxt Content's Shiki (REQ-10). The design s
 ## Decision
 
 Option A, with B as the fallback if the theme object is rejected.
+
+Spike result (T-cm-6, 2026-09-24): Nuxt Content 3.16.1 accepts `highlight.theme: { default: <theme object> }`; a hand-written theme (`shared/code-theme.ts`, no new dependency) whose colours are `var(--site-code-*)` reaches the prerendered HTML, and the tag colour follows `data-pui-mode` in the browser (`tests/e2e/code-colours.spec.ts`). The contrast check moved punctuation from `page/text-muted` (4.19:1 on the code background in light mode) to `muted/ink`.
 
 ## Consequences
 
