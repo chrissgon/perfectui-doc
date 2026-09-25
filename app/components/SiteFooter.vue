@@ -19,6 +19,7 @@
 import { site } from "~/site.config";
 import { latestVersion, versionPrefix } from "~/versions";
 
-// REQ-7. The tagline is messaging's; T-sh-7 moves it into the landing copy collection.
-const tagline = "Components the browser already knows how to run.";
+// REQ-7. The tagline comes from the landing copy (content/landing.yml).
+const { data: copy } = await useAsyncData("landing-copy", () => queryCollection("landing").first());
+const tagline = computed(() => copy.value?.tagline);
 </script>

@@ -3,6 +3,11 @@
  * redirects and the generators read it; no other file names a version.
  * A version's URL prefix is always `/docs/<id>`; its folder is `content/<id>/`.
  */
+import type { Collections } from "@nuxt/content";
+
+/** The documentation collections (`docs_<id>`), excluding data collections such as the landing's. */
+export type DocsCollection = Extract<keyof Collections, `docs_${string}`>;
+
 export interface DocVersion {
   id: string;
   label: string;

@@ -1,6 +1,5 @@
-import type { Collections } from "@nuxt/content";
 import { queryCollection } from "@nuxt/content/server";
-import { latestVersion } from "../../app/versions";
+import { latestVersion, type DocsCollection } from "../../app/versions";
 import { assertValidDocs } from "../utils/assertValidDocs";
 
 /**
@@ -14,7 +13,7 @@ export default defineEventHandler(async (event) => {
   // The first generated artifact validates the content, so bad content fails the build.
   assertValidDocs();
   const latest = `/docs/${latestVersion.id}`;
-  const pages = await queryCollection(event, latestVersion.collection as keyof Collections)
+  const pages = await queryCollection(event, latestVersion.collection as DocsCollection)
     .select("path")
     .all();
 

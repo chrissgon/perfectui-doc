@@ -22,9 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Collections } from "@nuxt/content";
 import { site } from "~/site.config";
-import { versions } from "~/versions";
+import { versions, type DocsCollection } from "~/versions";
 
 // Resolves /docs/<version>/<section>/<slug> (content-model spec REQ-1); anything else is a 404.
 const route = useRoute();
@@ -33,7 +32,7 @@ if (!version) throw createError({ statusCode: 404, statusMessage: "Version not f
 
 const slug = ([] as string[]).concat(route.params.slug ?? []).join("/");
 const path = `/docs/${version.id}/${slug}`;
-const collection = version.collection as keyof Collections;
+const collection = version.collection as DocsCollection;
 
 const { data: page } = await useAsyncData(path, () => queryCollection(collection).path(path).first());
 if (!page.value || path.endsWith("/.navigation")) {

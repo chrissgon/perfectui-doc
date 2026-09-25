@@ -309,6 +309,7 @@
   Check: `tests/unit/landing-copy.spec.ts`: every headline of messaging SECTION-1 to SECTION-9 is in the collection verbatim
   Size: S, because data entry against a schema
   Milestone: SH2
+  Status: done (2026-09-25) tests/unit/landing-copy.spec.ts 6 passed (failed before: module missing); bun run test 39 unit + 53 browser; lint and typecheck exit 0
 - T-sh-8: Motion composable and copy command
   Does: `useMotion` (reduced motion, in-view trigger, timers only in `onMounted`) and `CopyCommand` (clipboard, "Copied" for 1800 ms, selection fallback, inert without JavaScript).
   Delivers: REQ-3, EDGE-3, EDGE-9, AC-3

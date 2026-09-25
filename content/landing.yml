@@ -1,0 +1,39 @@
+# The landing's copy, verbatim from docs/marketing/messaging.md (SECTION-1 to SECTION-9).
+# Sizes are placeholders filled from the build's measurement: {css.kB}, {css.bytes}, {js.bytes}.
+# Links are documentation paths without a version; the page resolves them to the latest one.
+tagline: Components the browser already knows how to run.
+sections:
+  - id: hero
+    headline: The bare minimum for elegant interfaces.
+    body: "Three classes, no framework, {css.kB}. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work."
+    cta: { label: Get started, to: /docs }
+    secondary: { label: Migrating from 0.x, to: /docs/getting-started/migrating-from-0-23 }
+  - id: size
+    headline: "{css.kB}. Measured, not promised."
+    body: "`perfectui.css` is {css.bytes} bytes gzip; the optional JavaScript loader is {js.bytes}. The bars below are the same measurement run on the published builds of the alternatives."
+  - id: classes
+    headline: A shape, a style, a colour.
+    body: "Every element is up to three classes you can combine freely: what it is, how the colour is applied, which colour. Seven colours and four styles give 28 looks per shape, and adding a colour never multiplies your classes."
+    cta: { label: See the components, to: /docs/components/button }
+  - id: overlays
+    headline: Overlays without a plugin.
+    body: "Modals are `<dialog>`, menus are `popover`, tooltips are `interestfor`, accordions are `<details>`. The optional loader downloads a fallback only when a browser is missing one of them."
+  - id: mode-theme
+    headline: One attribute for dark mode. One variable for your colour.
+    body: "With no attribute, perfectui follows the operating system. Set `data-pui-mode` to choose, and `--pui-theme` to make every component yours."
+    cta: { label: Dark mode docs, to: /docs/customization/dark-mode }
+  - id: tailwind
+    headline: Your utilities always win.
+    body: "One `@layer` line keeps Tailwind's reset below perfectui and every utility above it."
+    cta: { label: Tailwind guide, to: /docs/getting-started/tailwind-css }
+  - id: nothing-to-undo
+    headline: Nothing you have to undo.
+    body: "No reset to override, no font to remove, no `!important` to beat, no initialiser to call after rendering, no guard for server rendering. ESM only, nothing on `window`."
+  - id: migration
+    headline: Coming from 0.x?
+    body: "1.0 is a rewrite: every class is prefixed, styles and colours are separate classes, and the browser replaced the JavaScript. The guide lists every change."
+    cta: { label: Read the migration guide, to: /docs/getting-started/migrating-from-0-23 }
+  - id: install
+    headline: Install it your way.
+    body: "A package for npm, yarn, pnpm or bun, or two tags from a CDN. Import everything or only the components you use."
+    cta: { label: Get started, to: /docs }

@@ -10,6 +10,8 @@ const docsSchema = z.object({
   changed: z.string().optional(),
 });
 
+const link = z.object({ label: z.string(), to: z.string() });
+
 // One collection per major version (ADR-0001); the prefix carries the version, so paths are
 // `/docs/<major>/<section>/<slug>`. Collection names match `app/versions.ts`.
 export default defineContentConfig({
@@ -23,6 +25,21 @@ export default defineContentConfig({
       type: "page",
       source: { include: "v0/**", prefix: "/docs/v0" },
       schema: docsSchema,
+    }),
+    // The landing's copy (landing-and-site-shell design); a missing field fails the build.
+    landing: defineCollection({
+      type: "data",
+      source: "landing.yml",
+      schema: z.object({
+        tagline: z.string(),
+        sections: z.array(z.object({
+          id: z.string(),
+          headline: z.string(),
+          body: z.string(),
+          cta: link.optional(),
+          secondary: link.optional(),
+        })),
+      }),
     }),
   },
 });
