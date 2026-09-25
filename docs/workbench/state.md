@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: design to engineering (landing and documentation page approved and handed off; round 2 for 360 px and dark mode pending; Open Graph direction waiting on the user's choice; eng-architecture next)
+- Current phase: engineering (architecture: content model revised; landing and site shell, migration guide and search designs next; then the backlog)
 - Updated: 2026-09-24
 
 ## Autonomy
@@ -33,11 +33,13 @@
 | docs/design/screens/landing-page/ and docs/design/screens/docs-button/ (approved exports from Claude Design, HTML and full-page PNG) | design-execute | approved | 2026-09-24 |
 | docs/design/handoff/landing.md | design-handoff | draft | 2026-09-24 |
 | docs/design/handoff/documentation-page.md | design-handoff | draft | 2026-09-24 |
-| docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
-| docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
+| docs/engineering/designs/markdown-content-model.md (revised 2026-09-24: versioned URLs, generated redirects, documentation layout from the handoff) | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/adr/0001-one-collection-per-major-version.md (revised 2026-09-24) | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0003-generated-artifacts-as-prerendered-routes.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0004-navigation-from-folders-and-numeric-prefixes.md | eng-architecture | approved | 2026-09-23 |
+| docs/engineering/adr/0005-unversioned-redirects-as-generated-netlify-rules.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/adr/0006-code-highlighting-with-css-variables.md | eng-architecture | draft | 2026-09-24 |
 | docs/product/backlog.md (superseded by the restart; to re-cut after the PRD) | product-backlog | draft | 2026-09-23 |
 | docs/product/prd.md | product-prd | draft | 2026-09-23 |
 
