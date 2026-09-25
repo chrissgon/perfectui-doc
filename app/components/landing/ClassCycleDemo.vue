@@ -82,10 +82,12 @@ function tick() {
   after(delay, tick);
 }
 
+// The first combination is already on screen complete, so the cycle starts by erasing it rather
+// than by emptying the line at once, which Lighthouse counted as a layout shift.
 onMounted(() => {
   if (!allowed.value) return;
-  count.value = 0;
-  after(600, tick);
+  phase = "erase";
+  after(1500, tick);
 });
 </script>
 

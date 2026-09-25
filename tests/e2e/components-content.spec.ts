@@ -1,5 +1,6 @@
 import { readdirSync } from "node:fs";
 import { expect, test } from "@playwright/test";
+import { pageHydrated } from "../helpers/hydrated";
 
 // T-cm-18: the general and components pages as written from the library's documents.
 const pages = ["general", "components"].flatMap((section) =>
@@ -44,6 +45,8 @@ test.describe("general and components pages", () => {
   test("the headings column highlights the heading scrolled into view (T-cm-11 review)", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/docs/v1/components/button");
+    // The observer starts at mount, and hydration re-renders the previews above the heading.
+    await pageHydrated(page);
     const toc = page.getByRole("navigation", { name: "On this page" });
     // Put the heading 150 px below the top, inside the observer's band (80 px to 40% of the view).
     await page.evaluate(() => window.scrollTo(0, document.getElementById("disabled")!.getBoundingClientRect().top + scrollY - 150));

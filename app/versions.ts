@@ -4,6 +4,7 @@
  * A version's URL prefix is always `/docs/<id>`; its folder is `content/<id>/`.
  */
 import type { Collections } from "@nuxt/content";
+import { site } from "./site.config";
 
 /** The documentation collections (`docs_<id>`), excluding data collections such as the landing's. */
 export type DocsCollection = Extract<keyof Collections, `docs_${string}`>;
@@ -43,3 +44,16 @@ export function pickLatest(list: readonly DocVersion[]): DocVersion {
 export const latestVersion = pickLatest(versions);
 
 export const versionPrefix = (v: DocVersion) => `/docs/${v.id}`;
+
+export interface ArchivedVersion {
+  label: string;
+  href: string;
+}
+
+/**
+ * Versions documented outside the site: listed in the version menu and opened where they live
+ * (spec library-docs-and-versions REQ-9). 0.23's documents stay in the library at its tag.
+ */
+export const archivedVersions: readonly ArchivedVersion[] = [
+  { label: "0.23", href: `${site.repository}/tree/v0.23.0/docs` },
+];

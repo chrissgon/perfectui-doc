@@ -8,7 +8,7 @@
         <NuxtLink to="/" class="pui-btn pui-link pui-surface px-1" aria-label="Perfect UI home">
           <SiteLogo variant="wordmark" class="h-4" />
         </NuxtLink>
-        <span class="pui-badge pui-soft pui-theme">{{ latestVersion.label }}</span>
+        <VersionMenu />
       </div>
 
       <nav aria-label="Site" class="flex items-center gap-0.5 sm:gap-1">

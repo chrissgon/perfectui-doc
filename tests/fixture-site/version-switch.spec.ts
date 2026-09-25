@@ -24,4 +24,21 @@ test.describe("version notice (REQ-6, EDGE-1, AC-6)", () => {
     await page.evaluate(() => (document.querySelector("#__nuxt") as unknown as Root).__vue_app__!.config.globalProperties.$router.push("/docs/v0"));
     await expect(page).toHaveURL(/\/docs\/v0\/components\/button$/);
   });
+
+  // Spec library-docs-and-versions REQ-9, AC-5: the switch through the version menu.
+  test("the menu keeps the page when it exists in the other major", async ({ page }) => {
+    await page.goto("/docs/v1/components/button");
+    await page.getByRole("button", { name: /^Version 1\.x/ }).click();
+    await page.locator("[data-version-menu]:popover-open").getByRole("link", { name: /0\.23/ }).click();
+    await expect(page).toHaveURL(/\/docs\/v0\/components\/button$/);
+    await expect(page.getByRole("button", { name: /^Version 0\.23/ })).toBeVisible();
+  });
+
+  test("the menu opens the other major's first page with the notice when the page is missing", async ({ page }) => {
+    await page.goto("/docs/v1/components/chip");
+    await page.getByRole("button", { name: /^Version 1\.x/ }).click();
+    await page.locator("[data-version-menu]:popover-open").getByRole("link", { name: /0\.23/ }).click();
+    await expect(page).toHaveURL(/\/docs\/v0\/components\/button\?missing=components%2Fchip$/);
+    await expect(page.getByRole("status").filter({ hasText: "has no page" })).toContainText("chip");
+  });
 });

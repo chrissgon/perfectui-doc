@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering, release R-2 planned (one source and versions: T-ld-1 to T-ld-5 in the backlog); checkpoint: the user approves the R-2 plan before implementation. R-1 complete on branch `redesign`, verified on https://redesign--perfectui.netlify.app
+- Current phase: engineering, release R-2 implemented locally (T-ld-1 to T-ld-5 done and reviewed; milestones LD1 and LD2 met on branch `redesign` and on the library's branch `v1`); next: the user approves pushing the library's branch `v1` (a6a86c6, 652748d), then the site's branch, then the release on `main`
 - Updated: 2026-09-25
 
 ## Autonomy

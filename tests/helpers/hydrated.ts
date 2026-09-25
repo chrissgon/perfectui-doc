@@ -8,3 +8,15 @@ import { expect, type Page } from "@playwright/test";
 export async function landingHydrated(page: Page) {
   await expect(page.locator("#hero").getByRole("button", { name: "Copy install command" })).toBeVisible();
 }
+
+/**
+ * Waits until any page has finished hydrating: Nuxt clears `isHydrating` once the app is mounted.
+ * While it hydrates, example previews are re-rendered and the layout can still move, so a scroll
+ * made earlier may no longer hold the element it aimed at.
+ */
+export async function pageHydrated(page: Page) {
+  await page.waitForFunction(() => {
+    const root = document.querySelector("#__nuxt") as unknown as { __vue_app__?: { $nuxt?: { isHydrating?: boolean } } } | null;
+    return root?.__vue_app__?.$nuxt?.isHydrating === false;
+  });
+}

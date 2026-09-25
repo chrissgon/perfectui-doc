@@ -5,7 +5,10 @@
  * line, so a build stops on the library's own words.
  */
 
-export const REPOSITORY = "https://github.com/chrissgon/perfectui";
+import { site } from "../app/site.config";
+
+export const REPOSITORY = site.repository;
+const GITHUB_LINK = new RegExp(`^${REPOSITORY.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")}/(?:blob|tree)/([^/]+)/(.*)$`);
 
 export interface SummaryPage {
   title: string;
@@ -46,7 +49,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 /** A link target in the library, as a repository path (`docs/card.md`), or null when external. */
 function libraryPath(url: string, from: string): { path: string; ref?: string; anchor: string } | null {
   const [target = "", anchor = ""] = url.split("#");
-  const github = /^https:\/\/github\.com\/chrissgon\/perfectui\/(?:blob|tree)\/([^/]+)\/(.*)$/.exec(target);
+  const github = GITHUB_LINK.exec(target);
   if (github) return { ref: github[1], path: github[2]!, anchor };
   if (/^[a-z]+:|^\/|^$/i.test(target)) return null;
   const parts = from.split("/").slice(0, -1);

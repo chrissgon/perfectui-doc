@@ -613,6 +613,7 @@
   Check: the menu opens from the badge with the keyboard and the pointer, lists 1.x (current) and 0.23 (GitHub, `tree/v0.23.0/docs`); in the fixture site, switching on a shared page keeps the path and on a missing page lands on the first page with the notice; axe 0 violations with the menu open
   Size: M, because a menu, its states and the switch end to end
   Milestone: LD2
+  Status: done (2026-09-25) menu from the badge (pointer and keyboard), 1.x current and 0.23 on GitHub; fixture switch keeps the page or lands on the first page with the notice; axe 0 violations with the menu open in both modes; bun run test 77 unit + 185 browser
 
 ### Order
 

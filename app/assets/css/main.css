@@ -27,9 +27,31 @@
 /* Tailwind's dark variant follows the library's mode attribute. */
 @custom-variant dark (&:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));
 
+/*
+ * Fallbacks sized like the web fonts, so text keeps its box when Inter and Fira Code arrive
+ * (Lighthouse counted the hero moving on "Web font loaded"). Metrics as Next.js computes them
+ * for Inter over Arial, and for Fira Code over Courier New.
+ */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+  size-adjust: 107.4%;
+}
+@font-face {
+  font-family: "Fira Code Fallback";
+  src: local("Courier New");
+  ascent-override: 97.5%;
+  descent-override: 28.75%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
 @theme {
-  --font-sans: "Inter Variable", system-ui, sans-serif;
-  --font-mono: "Fira Code", ui-monospace, monospace;
+  --font-sans: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Fira Code Fallback", ui-monospace, monospace;
 }
 
 /*

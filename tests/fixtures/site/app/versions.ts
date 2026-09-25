@@ -36,3 +36,11 @@ export function pickLatest(list: readonly DocVersion[]): DocVersion {
 export const latestVersion = pickLatest(versions);
 
 export const versionPrefix = (v: DocVersion) => `/docs/${v.id}`;
+
+export interface ArchivedVersion {
+  label: string;
+  href: string;
+}
+
+/** None in the fixture site: its v0 is a documented major, so the menu switches to it. */
+export const archivedVersions: readonly ArchivedVersion[] = [];

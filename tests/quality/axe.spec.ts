@@ -29,3 +29,16 @@ for (const mode of ["light", "dark"] as const) {
     expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);
   });
 }
+
+// Spec library-docs-and-versions REQ-9, AC-5: the page with the version menu open.
+for (const mode of ["light", "dark"] as const) {
+  test(`the version menu has no WCAG 2.2 AA violation in ${mode} mode`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: mode, reducedMotion: "reduce" });
+    await page.goto("/docs/v1/components/button");
+    await page.waitForLoadState("networkidle");
+    await page.getByRole("button", { name: /^Version 1\.x/ }).click();
+    await expect(page.locator("[data-version-menu]:popover-open")).toBeVisible();
+    const violations = withoutAcceptedTradeOff(await axeViolations(page), mode);
+    expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);
+  });
+}

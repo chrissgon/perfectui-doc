@@ -38,7 +38,7 @@ A sync step (`scripts/sync-docs.ts`) runs before `nuxt generate` and `nuxt dev`.
 | Sync step | writes each major's pages, warns about unlisted documents | `scripts/sync-docs.ts` | `app/versions.ts`, `package.json` | `content/<major>/**` | REQ-1, EDGE-3 |
 | Reverse port (one-time) | writes the library's marked documents from the site's current pages | `scripts/port-pages-to-library.ts`, deleted after use | `content/v1/**`, library `docs/` | library `docs/*.md`, `MIGRATION.md` | NFR-1 |
 | Versions configuration | documented majors with their library ref, and archived entries | `app/versions.ts` | none | `versions`, `archivedVersions` | REQ-2, REQ-9 |
-| Version menu | the badge as a menu of majors and archived entries | `app/components/VersionMenu.vue` in `SiteHeader` | versions, current route | navigation through `useVersionSwitch`, GitHub link | REQ-9, EDGE-8 |
+| Version menu | the badge as a menu of majors and archived entries | `app/components/VersionMenu.vue` in `SiteHeader` | versions, current route | navigation through `switchVersion` (`app/utils/switch-version.ts`, loaded on demand), GitHub link | REQ-9, EDGE-8 |
 | Redirect rules | `/docs` and `/docs/<major>` to the first page, nothing for 0.23 | `server/routes/_redirects.get.ts` | versions, first pages | `_redirects` | REQ-11 |
 
 ## Data or content model
@@ -91,7 +91,7 @@ The generated pages keep the content model unchanged (content-model spec REQ-1 t
 
 ### Version switch
 1. The reader opens the badge; `VersionMenu` lists the majors (current marked) and "0.23" (external link).
-2. A major: `useVersionSwitch` navigates to the same page, or to the target's first page with `?missing=` (content-model REQ-6).
+2. A major: `switchVersion`, loaded when picked, navigates to the same page, or to the target's first page with `?missing=` (content-model REQ-6).
 
 ### Failure paths
 | EDGE | Where it is caught | What happens | Message names |
