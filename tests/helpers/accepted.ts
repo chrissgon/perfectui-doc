@@ -15,3 +15,8 @@ export function withoutAcceptedTradeOff(violations: Result[], mode: "light" | "d
     })
     .filter((v) => v.nodes.length > 0);
 }
+
+/** The same trade-off for a node that Lighthouse reports: its HTML snippet. */
+export function isAcceptedTradeOff(snippet: string, mode: "light" | "dark"): boolean {
+  return mode === "light" && /\bpui-solid\b/.test(snippet) && /\bpui-(theme|success|warn)\b/.test(snippet);
+}
