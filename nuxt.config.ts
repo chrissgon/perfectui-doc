@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       failOnError: true,
       crawlLinks: true,
       // Each version's index; the crawler follows its links to every page.
-      routes: ["/", ...versions.map((v) => `/docs/${v.id}`)],
+      routes: ["/", ...versions.map((v) => `/docs/${v.id}`), "/_redirects"],
     },
   },
 

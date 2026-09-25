@@ -87,6 +87,7 @@
   Check: `tests/build/routes.spec.ts`: `.output/public/_redirects` holds `/docs/button /docs/v1/components/button 301` and the two general rules, in that order
   Size: M, because a Nitro output behaviour to confirm
   Milestone: CM1
+  Status: done (2026-09-24) tests/build/routes.spec.ts 5 passed (the redirects test failed before the generator existed); .output/public/_redirects has 2 flat rules and the 2 general rules; ADR-0005 file output verified; bun run test exit 0 (11 unit, 12 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-8.md: approve with changes
 - T-cm-9: Navigation and sidebar
   Does: `useDocsNav(version)` from `queryCollectionNavigation`, descending to the `/docs/<version>` node (the collection prefix nests the tree as `/docs` → `/docs/<version>` → sections → pages, found in T-cm-7); `DocSidebar` with collapsible sections, current page marked, panel behind a menu control below 1024 px.
   Delivers: REQ-4, EDGE-5, AC-4
@@ -120,7 +121,7 @@
   Size: M, because interaction and states on top of the spike
   Milestone: CM2
 - T-cm-13: Content validator
-  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped; an `::example` holds exactly one fenced block (T-cm-5 review).
+  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped; an `::example` holds exactly one fenced block (T-cm-5 review); two latest-version pages with the same slug in different sections warn, because the flat 0.23 redirect can only point to one (T-cm-8 review).
   Delivers: REQ-2, EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10
   Touches: `server/utils/validateDocs.ts`, `tests/fixtures/invalid/**`
   Depends on: T-cm-4

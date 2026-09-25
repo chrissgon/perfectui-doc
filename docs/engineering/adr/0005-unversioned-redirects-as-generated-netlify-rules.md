@@ -23,6 +23,8 @@ Every documentation page lives under `/docs/<major>/...` and `/docs` plus any un
 
 Option A.
 
+Verified in T-cm-8 (2026-09-24): Nitro writes the prerendered `text/plain` route `/_redirects` as the file `.output/public/_redirects`, with one flat rule per v1 page followed by the two general rules (`tests/build/routes.spec.ts`). Still to confirm on the first deploy preview: Netlify serving the versioned files before the non-forced splat rule.
+
 ## Consequences
 
 - `nitro.prerender.routes` lists `/_redirects`; the build test AC-1 asserts the flat rules and the two general lines for the configured latest version.

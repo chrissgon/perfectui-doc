@@ -1,6 +1,6 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { versions } from "../../app/versions";
+import { latestVersion, versions } from "../../app/versions";
 
 const OUT = ".output/public";
 
@@ -29,5 +29,18 @@ test.describe("documentation routes (REQ-1, REQ-11, AC-1)", () => {
   test("an unknown version or page is not published", async ({ request }) => {
     expect((await request.get("/docs/v9/components/button")).status()).toBe(404);
     expect((await request.get("/docs/v1/components/nothing")).status()).toBe(404);
+  });
+});
+
+test.describe("redirects for unversioned paths (REQ-1, REQ-5, AC-1, ADR-0005)", () => {
+  test("_redirects sends 0.23 flat URLs to the same topic, then /docs to the latest major", () => {
+    const file = `${OUT}/_redirects`;
+    expect(existsSync(file)).toBe(true);
+    const lines = readFileSync(file, "utf8").trim().split("\n");
+    const latest = `/docs/${latestVersion.id}`;
+    expect(lines).toContain(`/docs/button ${latest}/components/button 301`);
+    expect(lines).toContain(`/docs/chip ${latest}/components/chip 301`);
+    expect(lines.slice(-2)).toEqual([`/docs ${latest} 301`, `/docs/* ${latest}/:splat 301`]);
+    expect(lines.filter((l) => l.includes("/.navigation"))).toEqual([]);
   });
 });
