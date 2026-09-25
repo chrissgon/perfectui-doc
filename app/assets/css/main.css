@@ -33,3 +33,19 @@ body {
   color: var(--pui-text);
   font-family: var(--font-sans);
 }
+
+/*
+ * Inverse band (landing sections 2 and 7): the opposite of the page's mode, also when the page
+ * follows the system. The library's tokens resolve with light-dark() against color-scheme.
+ */
+.site-inverse {
+  color-scheme: dark;
+}
+[data-pui-mode="dark"] .site-inverse {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pui-mode]) .site-inverse {
+    color-scheme: light;
+  }
+}

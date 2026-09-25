@@ -1,6 +1,7 @@
 <template>
   <main>
     <LandingHero :section="section('hero')" :size="size" :bars="bars" :version="latestVersion.id" :pages="pages" />
+    <LandingSizeChart :section="section('size')" :perfectui="size" />
   </main>
 </template>
 

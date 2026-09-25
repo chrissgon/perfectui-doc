@@ -336,6 +336,7 @@
   Check: `tests/build/library-size.spec.ts` (extended): the numbers in the HTML equal the JSON; "gzip" and the version in the same block
   Size: M, because data binding plus motion
   Milestone: SH2
+  Status: done (2026-09-25) tests/build/library-size.spec.ts 2 passed (chart case failed before); tests/e2e/size-chart.spec.ts 3 passed; bun run test 40 unit + 68 browser; lint and typecheck exit 0
 - T-sh-11: Spike and overlays showcase from named examples
   Does: prove ADR-0008 (`ExampleRef` renders one named example of a docs page), else shared example files; `OverlaysShowcase` with the four named examples.
   Delivers: REQ-5, AC-5

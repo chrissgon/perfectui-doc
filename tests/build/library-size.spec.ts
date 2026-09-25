@@ -13,3 +13,20 @@ test("api/library-size.json equals gzip -9 -n of the installed files", () => {
   expect(Number.isNaN(Date.parse(size.measuredAt))).toBe(false);
   if (version === "1.0.0-beta.1") expect([size.css, size.js]).toEqual([3221, 493]);
 });
+
+// REQ-2, AC-2: the landing prints the JSON's numbers, with the version and the method in the
+// same block; the prerendered HTML is the final state every reader gets first.
+test("the size chart in index.html prints the measured numbers, version and method", () => {
+  const size = JSON.parse(readFileSync(".output/public/api/library-size.json", "utf8"));
+  const html = readFileSync(".output/public/index.html", "utf8");
+  const block = html.match(/<section[^>]*id="size"[\s\S]*?<\/section>/)?.[0];
+  expect(block, "size section").toBeTruthy();
+  const text = block!.replace(/<[^>]+>/g, "").replace(/\s+/g, " ");
+  const fmt = (n: number) => n.toLocaleString("en-US");
+  expect(text).toContain(`${fmt(size.css)} bytes gzip`);
+  expect(text).toContain(`loader is ${fmt(size.js)}`);
+  expect(text).toContain(`${fmt(size.css)} + ${fmt(size.js)}`);
+  expect(text).toContain(fmt(size.css + size.js));
+  expect(text).toContain(size.version);
+  expect(text).toContain("gzip -9 -n");
+});

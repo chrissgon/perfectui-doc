@@ -18,7 +18,13 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    // LightningCSS (Tailwind's optimizer and Vite 8's CSS minifier) rewrites light-dark() for
+    // older targets into variables resolved once on :root, which breaks a mode scoped to one
+    // element (the landing's inverse bands, the section 5 demo, nested data-pui-mode). The
+    // library ships light-dark() unpolyfilled, so the CSS targets the browsers that support it;
+    // Vite does the minifying.
+    plugins: [tailwindcss({ optimize: false })],
+    build: { cssTarget: ["chrome123", "edge123", "firefox120", "safari17.5"] },
   },
 
   nitro: {
