@@ -34,7 +34,7 @@ Order: releases first (a release whose tag is deleted is left pointing at nothin
 
 ## Scripts (nothing runs before approval)
 
-Tags (step 2), run by me in `../perfectui`:
+Tags (step 2), run by me in `../perfectui` with `bash` (zsh does not split `$tags` into words):
 
 ```bash
 tags=$(git tag | python3 -c 'import sys,re
@@ -46,7 +46,7 @@ git push origin --delete $tags
 git tag -d $tags
 ```
 
-npm (step 3), run by the user after `npm login`:
+npm (step 3), run by the user after `npm login`, saved to a file and run with `bash <file>` (zsh does not split `$versions`):
 
 ```bash
 versions=$(npm view @chrissgon/perfectui versions --json | python3 -c 'import json,sys

@@ -573,6 +573,7 @@
   Check: `bunx vitest run tests/unit/library-docs.spec.ts` passes, one case per rule and per EDGE, each failure message naming the file and line
   Size: M, because eight rules and five failures
   Milestone: LD1
+  Status: done (2026-09-25) 17 unit tests pass (one per rule and per EDGE; failure messages name file and line); lint and typecheck clean
 
 - T-ld-2: The library's documents written from the site's pages
   Does: a one-time `scripts/port-pages-to-library.ts` writes the library's `docs/*.md` and `MIGRATION.md` from `content/v1/` with the markers (the site's wording wins where the two differ; the 0.23 links become `blob/v0.23.0/docs/` links); the forward conversion of the result equals `content/v1/` except the migration guide's slug and its 0.23 links; committed on the library's branch `v1`, not pushed; the script is deleted after use.
