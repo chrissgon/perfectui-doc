@@ -3,10 +3,7 @@
     <div :class="['mx-auto flex h-16 items-center justify-between gap-1 px-2 sm:gap-3 sm:px-6', wide ? 'max-w-[1440px]' : 'max-w-[1200px]']">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="pui-btn pui-link pui-surface px-1" aria-label="Perfect UI home">
-          <span class="flex items-center gap-2.5">
-            <SiteLogo variant="mark" class="h-[22px]" />
-            <SiteLogo variant="wordmark" class="h-4" />
-          </span>
+          <SiteLogo variant="wordmark" class="h-4" />
         </NuxtLink>
         <span class="pui-badge pui-soft pui-theme">{{ latestVersion.label }}</span>
       </div>

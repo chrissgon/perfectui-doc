@@ -51,6 +51,8 @@
 
 ## Decisions
 
+- 2026-09-25: The header shows only the "Perfect UI" wordmark, without the "P" mark; the mark stays as the favicon (user)
+
 - 2026-09-25: The production site lists only v1 in `app/versions.ts` until the converted 0.23 pages ship in R-2 (a listed version with no page fails the build, EDGE-8); content-model tests run on a fixture site built from `tests/fixtures/site`, which lists v0 (eng-implement T-cm-22; to confirm with the user)
 
 - 2026-09-25: Below 1024 px a documentation page's header shows only the sidebar menu (approved export); GitHub and Figma links live inside that sidebar panel and in the footer, satisfying REQ-7 at narrow widths (user, T-sh-4 review finding 1)
@@ -157,6 +159,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-25: `git push origin redesign` with the SR1 commits (T-sr-1 to T-sr-5), the state update and the header wordmark change; it triggers the Netlify branch deploy of `redesign` for T-mg-5's measurement (user)
 
 - 2026-09-25: Deploy preview for R-1 (user, option 1 of the T-mg-5 decision): `git push -u origin redesign` to github.com/chrissgon/perfectui-doc, then a draft pull request redesign → main only to trigger the Netlify Deploy Preview; no merge. Purpose: measure Lighthouse on the host, confirm `gzip` on the build image (T-sh-6) and the generated redirects (ADR-0005).
 
