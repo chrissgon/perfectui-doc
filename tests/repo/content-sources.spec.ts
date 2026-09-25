@@ -27,6 +27,14 @@ export const sources: Record<string, string> = {
   "04.components/09.table.md": "table.md",
   "04.components/10.timeline.md": "timeline.md",
   "04.components/11.tooltip.md": "tooltip.md",
+  "05.forms/01.field-group.md": "field-group.md",
+  "05.forms/02.input.md": "input.md",
+  "05.forms/03.input-group.md": "input-group.md",
+  "05.forms/04.textarea.md": "textarea.md",
+  "05.forms/05.select.md": "select.md",
+  "05.forms/06.checkbox.md": "checkbox.md",
+  "05.forms/07.radio.md": "radio.md",
+  "05.forms/08.switch.md": "switch.md",
 };
 
 const count = (text: string, marker: RegExp) => {
@@ -52,8 +60,6 @@ describe.skipIf(!existsSync(LIBRARY_DOCS))(`content written from the library doc
     const pages = readdirSync("content/v1", { recursive: true, encoding: "utf8" })
       .filter((f) => f.endsWith(".md"))
       .filter((f) => !f.includes("migrating-from-0-23"));
-    const unmapped = pages.filter((p) => !(p in sources));
-    // The forms pages still to be written in T-cm-19 are the fixtures they replace.
-    expect(unmapped.filter((p) => !/^05\./.test(p))).toEqual([]);
+    expect(pages.filter((p) => !(p in sources))).toEqual([]);
   });
 });

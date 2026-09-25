@@ -186,6 +186,7 @@
   Check: every page builds; h2 counts equal the sources'
   Size: M, because eight pages
   Milestone: CM3
+  Status: done (2026-09-25) 8 forms pages build and validate; h2 = source ### (content-sources 28 passed); tests/e2e/forms-content.spec.ts 3 passed x3; bun run test 67 unit + 100 browser; test:slow 3 passed
 - T-cm-20: Documentation page quality
   Does: Lighthouse mobile and axe on the Button page's static file.
   Delivers: NFR-3, AC-12
