@@ -51,6 +51,7 @@
   Check: `tests/unit/schema.spec.ts`: both collections return the fixtures with paths `/docs/v1/components/button` and `/docs/v0/components/button`, no numeric prefixes, `since` queryable
   Size: M, because two collections and a folder convention to prove
   Milestone: CM1
+  Status: done (2026-09-24) tests/unit/schema.spec.ts 5 passed over the generated database (a chip with since 2.0 made it fail, then restored); bun run test exit 0 (11 unit, 3 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-4.md: approve with changes, follow-ups T-cm-21 and T-cm-22
 - T-cm-5: Spike: example block from one fenced snippet
   Does: prove ADR-0002 option A (recover the raw HTML from the highlighted slot during prerender) on the button fixture; if it fails, implement option C and record the outcome in the ADR.
   Delivers: REQ-3, REQ-10
@@ -116,7 +117,7 @@
   Size: M, because interaction and states on top of the spike
   Milestone: CM2
 - T-cm-13: Content validator
-  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause.
+  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped.
   Delivers: REQ-2, EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10
   Touches: `server/utils/validateDocs.ts`, `tests/fixtures/invalid/**`
   Depends on: T-cm-4
@@ -124,7 +125,7 @@
   Size: M, because five rules with fixtures
   Milestone: CM2
 - T-cm-14: Search document set and assistant corpus
-  Does: the two prerendered routes of ADR-0003, calling the validator first, one entry per heading section with `version` and `url`; empty sets throw.
+  Does: the two prerendered routes of ADR-0003, calling the validator first, one entry per heading section with `version` and `url`, skipping `/.navigation` rows; empty sets throw.
   Delivers: REQ-8, EDGE-8, AC-7
   Touches: `server/routes/api/search-index.json.get.ts`, `server/routes/api/assistant-corpus.json.get.ts`
   Depends on: T-cm-13
@@ -180,6 +181,22 @@
   Size: S, because the harness exists; fixes, if any, get their own task
   Milestone: CM3
 
+- T-cm-21: Type-check the tests
+  Does: `tests/tsconfig.json` extending the Nuxt config with `tests/**` included, `@types/better-sqlite3` pinned, and the `typecheck` script covering it.
+  Delivers: NFR-1
+  Touches: `tests/tsconfig.json`, `package.json`
+  Depends on: T-cm-4
+  Check: a test with a deliberate type error makes `bun run typecheck` exit non-zero; the current tests type-check
+  Size: S, because configuration and one type package
+  Milestone: CM2
+- T-cm-22: Keep the v0 fixture out of the published site
+  Does: move the v0 button fixture to test-only content read by the build tests (or replace it with the converted v0 pages if roadmap OPEN-1 starts v0 in R-1), so no one-page 0.23 archive is published.
+  Delivers: REQ-1, REQ-11
+  Touches: `content/v0/**`, `tests/fixtures/**`
+  Depends on: T-cm-15
+  Check: a production build has no `docs/v0/` folder unless the v0 pages exist; the build tests still cover both versions
+  Size: M, because the tests that rely on the fixture change with it
+  Milestone: CM3
 ### Order
 
 - Critical path: T-cm-1 → T-cm-3 → T-cm-4 → T-cm-5 → T-cm-12 → T-cm-17 → T-cm-18 → T-cm-20
@@ -188,8 +205,8 @@
 ### Milestones
 
 - CM1 Pages render from Markdown: T-cm-1 to T-cm-8 → usable state: a fixture page renders at its versioned URL with a working example block and unversioned URLs redirect
-- CM2 The documentation experience works and bad content fails the build: T-cm-9 to T-cm-16 → usable state: navigation, header, layout, examples, validation, generated sets and the switch behaviour all pass their tests
-- CM3 The 1.0 documentation is written: T-cm-17 to T-cm-20 → usable state: 27 pages minus the guide render and the documentation page meets the quality bar
+- CM2 The documentation experience works and bad content fails the build: T-cm-9 to T-cm-16, T-cm-21 → usable state: navigation, header, layout, examples, validation, generated sets and the switch behaviour all pass their tests
+- CM3 The 1.0 documentation is written: T-cm-17 to T-cm-20, T-cm-22 → usable state: 27 pages minus the guide render and the documentation page meets the quality bar
 
 ### Coverage
 
