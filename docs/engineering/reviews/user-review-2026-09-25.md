@@ -36,3 +36,11 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 - Tests: `tests/e2e/theme.spec.ts` checks that the section label and the current sidebar and headings links change colour with a preset; `tests/fixture-site/code-colours.spec.ts` no longer pins the two fixed values and checks the tag colour follows mode and theme (a deliberate behaviour change, not a weakened test).
 - Checks: lint exit 0; typecheck exit 0; 79 unit passed; 170 Playwright passed including axe and Lighthouse.
 - Verdict: approve.
+
+## Follow-up: the overlays showcase caps its code (2026-09-25)
+
+- Intent, quoted: "Nessa parte pode definir um max-height para as partes de código. Tudo bem ter scroll vertical nesse caso."
+- Change: the stacked example layout (`app/components/content/Example.vue`, used only by the landing's overlays showcase) caps its code panel at 224 px (`max-h-56`) with vertical scroll; as a scroll region it is focusable and named "Example code" again. Lines still wrap; documentation pages are unchanged.
+- Tests: `tests/e2e/review-fixes.spec.ts` excludes the showcase from the no-scroll check and asserts its four panels are at most 224 px high, never wider than their box, focusable, and that the modal's panel scrolls.
+- Checks: lint exit 0; typecheck exit 0; 79 unit passed; 171 Playwright passed including axe and Lighthouse.
+- Verdict: approve.

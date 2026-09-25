@@ -3,11 +3,12 @@ import { expect, test, type Page } from "@playwright/test";
 // The user's review of the branch deploy on 2026-09-25: twelve adjustments, one check each where
 // the adjustment is observable.
 
-// Code never scrolls: long lines wrap, and no box caps the height (items 1 and 6).
+// Code never scrolls sideways: long lines wrap (items 1 and 6). Only the landing's overlays
+// showcase caps its height and scrolls vertically (the user's follow-up).
 async function scrollingCode(page: Page) {
   return page.evaluate(() =>
     [...document.querySelectorAll<HTMLElement>("pre, [data-example-code], [data-demo] code")]
-      .filter((el) => el.offsetParent !== null)
+      .filter((el) => el.offsetParent !== null && !el.closest("#overlays"))
       .filter((el) => el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1)
       .map((el) => el.textContent!.slice(0, 40)),
   );
@@ -84,4 +85,18 @@ test("below 1280 px the content fills its column (item 9)", async ({ page }) => 
     const column = await article.evaluate((el) => [el.getBoundingClientRect().width, el.parentElement!.clientWidth]);
     expect(Math.round(column[0]!), `${width}`).toBe(Math.round(column[1]!));
   }
+});
+
+test("the overlays showcase caps its code and scrolls it vertically, never sideways", async ({ page }) => {
+  await page.goto("/");
+  const panels = page.locator("#overlays [data-example-code]");
+  await expect(panels).toHaveCount(4);
+  for (const panel of await panels.all()) {
+    const [scrollW, clientW, clientH] = await panel.evaluate((el) => [el.scrollWidth, el.clientWidth, el.clientHeight]);
+    expect(scrollW).toBeLessThanOrEqual(clientW);
+    expect(clientH).toBeLessThanOrEqual(224);
+    await expect(panel).toHaveAttribute("tabindex", "0");
+  }
+  const modal = panels.first();
+  expect(await modal.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true);
 });

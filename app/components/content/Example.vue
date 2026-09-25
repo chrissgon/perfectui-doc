@@ -47,7 +47,9 @@
       :role="stacked ? undefined : 'tabpanel'"
       :aria-labelledby="stacked ? undefined : `${uid}-code-tab`"
       :hidden="!stacked && active !== 'code'"
-      :class="['p-4 font-mono', stacked ? 'border-t text-[13px]' : 'text-sm']"
+      :class="['p-4 font-mono', stacked ? 'max-h-56 overflow-y-auto border-t text-[13px]' : 'text-sm']"
+      :tabindex="stacked ? 0 : undefined"
+      :aria-label="stacked ? 'Example code' : undefined"
       style="background: var(--pui-bg-emphasis)"
     >
       <slot />
@@ -61,7 +63,9 @@ import { scopeExample } from "#shared/example-scope";
 
 // ADR-0002: one fenced block in the default slot gives the live preview (the raw text kept in
 // the rendered <pre>'s `code` prop) and the code tab (the slot, highlighted at build time).
-// `stacked` (the landing's showcase, ExampleRef): preview above code, no tabs and no copy.
+// `stacked` (the landing's showcase, ExampleRef): preview above code, no tabs and no copy; its
+// code has a maximum height and scrolls vertically, so the four cells stay the same height (user
+// review 2026-09-25), which makes it a focusable, named scroll region.
 const props = withDefaults(defineProps<{ layout?: "tabs" | "stacked" }>(), { layout: "tabs" });
 const stacked = computed(() => props.layout === "stacked");
 const slots = useSlots();
