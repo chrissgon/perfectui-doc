@@ -35,14 +35,14 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     await page.goto("/");
     const initial = await bg(page, getStarted);
     await picker(page).click();
-    await page.getByRole("button", { name: "Violet" }).click();
+    await page.getByRole("button", { name: "Violet", exact: true }).click();
     expect(await rootTheme(page)).toBe("#7c3aed");
     await expect.poll(() => bg(page, getStarted)).toBe("rgb(124, 58, 237)");
 
-    await page.getByRole("button", { name: "Success" }).click();
+    await page.getByRole("button", { name: "Success", exact: true }).click();
     expect(await rootTheme(page)).toBe("var(--pui-success)");
 
-    await page.getByRole("button", { name: "Default" }).click();
+    await page.getByRole("button", { name: "Default", exact: true }).click();
     expect(await rootTheme(page)).toBe("");
     expect(await page.evaluate(() => sessionStorage.getItem("pui-theme"))).toBeNull();
     await expect.poll(() => bg(page, getStarted)).toBe(initial);

@@ -2,6 +2,8 @@
   <main>
     <LandingHero :section="section('hero')" :size="size" :bars="bars" :version="latestVersion.id" :pages="pages" />
     <LandingSizeChart :section="section('size')" :perfectui="size" />
+    <LandingClassPicker :section="section('classes')" :version="latestVersion.id" :pages="pages" />
+    <LandingModeThemeDemo :section="section('mode-theme')" :version="latestVersion.id" :pages="pages" />
   </main>
 </template>
 

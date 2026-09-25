@@ -70,3 +70,12 @@ export function inlineSegments(text: string): { code: boolean; text: string }[] 
     .filter(Boolean)
     .map((part) => (part.startsWith("`") ? { code: true, text: part.slice(1, -1) } : { code: false, text: part }));
 }
+
+/**
+ * The resolved target of a call to action, or null when its page is not in the build (the
+ * version index always is). Lets a section link to a page written in a later task.
+ */
+export function ctaTarget(to: string, version: string, pages: ReadonlySet<string>): string | null {
+  const path = docsLink(to, version);
+  return to === "/docs" || pages.has(path) ? path : null;
+}

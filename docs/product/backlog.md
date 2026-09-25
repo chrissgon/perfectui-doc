@@ -353,6 +353,7 @@
   Check: `tests/e2e/showcase.spec.ts` (extended): every shape, style and colour combination renders the matching classes; the section demo changes only its section
   Size: M, because two interactive demos
   Milestone: SH3
+  Status: done (2026-09-25) tests/e2e/showcase.spec.ts 4 passed (4 failed before); bun run test 40 unit + 72 browser; lint and typecheck exit 0
 - T-sh-13: Tailwind and nothing-to-undo sections
   Does: `TailwindDemo` (typed ` w-full`) and `StrikeList` with the handoff's timings.
   Delivers: REQ-4

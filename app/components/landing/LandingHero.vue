@@ -31,8 +31,8 @@
           <div class="flex flex-col items-start gap-4">
             <CopyCommand :text="installCommand('npm')" />
             <div class="flex flex-wrap gap-3">
-              <NuxtLink v-if="section.cta && exists(section.cta.to)" :to="docsLink(section.cta.to, version)" class="pui-btn pui-solid pui-theme">{{ section.cta.label }}</NuxtLink>
-              <NuxtLink v-if="section.secondary && exists(section.secondary.to)" :to="docsLink(section.secondary.to, version)" class="pui-btn pui-outline pui-surface">{{ section.secondary.label }}</NuxtLink>
+              <NuxtLink v-if="primary" :to="primary" class="pui-btn pui-solid pui-theme">{{ section.cta!.label }}</NuxtLink>
+              <NuxtLink v-if="secondary" :to="secondary" class="pui-btn pui-outline pui-surface">{{ section.secondary!.label }}</NuxtLink>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { docsLink, fillSize, type LandingSection } from "#shared/landing-copy";
+import { ctaTarget, fillSize, type LandingSection } from "#shared/landing-copy";
 import { installCommand } from "~/site.config";
 
 // Messaging SECTION-1 from the landing copy; the size is the build's measurement (REQ-1, REQ-2).
@@ -65,8 +65,9 @@ const props = defineProps<{
   pages: Set<string>;
 }>();
 
-// The version index (`/docs`) always exists; any other target must be a built page.
-const exists = (to: string) => to === "/docs" || props.pages.has(docsLink(to, props.version));
+// A link to a page not in the build yet is not rendered (ctaTarget).
+const primary = computed(() => props.section.cta && ctaTarget(props.section.cta.to, props.version, props.pages));
+const secondary = computed(() => props.section.secondary && ctaTarget(props.section.secondary.to, props.version, props.pages));
 
 // The copy's body is "<lead> {css.kB}. <paragraph>": the lead and the number form the display line.
 const parts = computed(() => props.section.body.split(/(?<=\{css\.kB\}\.) /));
