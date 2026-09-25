@@ -77,3 +77,10 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 - Change: blur 14 px → 8 px; page colour 72% → 85% opacity (darker in dark mode, more solid in light mode). The test reads the new blur.
 - Checks: lint exit 0; typecheck exit 0; 79 unit passed; 175 of 176 Playwright passed. The landing's local Lighthouse case read 89 against its 90 floor, then 89 and 90 on two reruns.
 - Finding (outside the change, medium): the landing sits at the local floor. Three Lighthouse runs on this build and on f210ea1 (before the glass) give the same 89, 89, 90 with FCP 2.6-2.7 s and CLS 0.066, so the glass costs nothing measurable. The CLS comes from the hero: the class-cycle card moves when the web fonts load (0.035, cause "Web font loaded" on the size figure above it), and the typed line pushes its closing text (0.018 at start, then about 0.0002 per character). The host measured 94 on the landing. Recommended follow-up: size-adjusted fallback fonts for Inter and Fira Code, and a typed line whose closing text does not move.
+
+## Follow-up: a soft edge under the header (2026-09-25)
+
+- Intent, quoted: "Adicione um shadow na divisão entre o header e o conteúdo para ela não ficar tão visível."
+- Change: the header's `border-b` is replaced by a hairline at 45% of `--pui-border` and a 6/18 px shadow in the header's own page colour, so the edge fades into the content; screenshots over the inverse band in both modes and on a documentation page.
+- Checks: lint exit 0; typecheck exit 0; 79 unit passed; 176 Playwright passed including axe and Lighthouse (the landing read 90 or more this run).
+- Verdict: approve.

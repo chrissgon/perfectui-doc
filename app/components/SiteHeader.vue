@@ -2,7 +2,7 @@
   <!-- Glass (user review 2026-09-25): the page shows through, blurred, under a translucent
        page colour. Menus and dialogs open in the top layer, so the backdrop filter does not
        become their containing block. -->
-  <header class="site-glass sticky top-0 z-20 border-b" style="border-color: var(--pui-border)">
+  <header class="site-glass sticky top-0 z-20">
     <div :class="['mx-auto flex h-16 items-center justify-between gap-1 px-2 sm:gap-3 sm:px-6', wide ? 'max-w-[1440px]' : 'max-w-[1200px]']">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="pui-btn pui-link pui-surface px-1" aria-label="Perfect UI home">
@@ -80,6 +80,11 @@ const menuId = useId();
   background: color-mix(in oklab, var(--pui-bg) 85%, transparent);
   -webkit-backdrop-filter: blur(8px) saturate(160%);
   backdrop-filter: blur(8px) saturate(160%);
+  /* The edge fades into the content instead of a hard border (user review 2026-09-25): a faint
+     hairline, then a shadow in the header's own colour. */
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--pui-border) 45%, transparent),
+    0 6px 18px -2px color-mix(in oklab, var(--pui-bg) 65%, transparent);
 }
 /* Without backdrop filters the header stays opaque, so its text never sits on bare content. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
