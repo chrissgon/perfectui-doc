@@ -5,7 +5,7 @@
  */
 export const site = {
   name: "Perfect UI",
-  url: "https://perfectui.netlify.app",
+  url: "https://perfectui.dev",
   packageName: "@chrissgon/perfectui",
   repository: "https://github.com/chrissgon/perfectui",
   figma: "https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI",
