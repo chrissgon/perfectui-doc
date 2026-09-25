@@ -162,6 +162,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin redesign` with 1e1ba8c (trailing-slash fix, pages as `<route>.html`) and 5325535 (host confirmations) (user)
+
 - 2026-09-25: `git push origin redesign` with commit 664cea3 (publish `dist/` on Netlify) to retry the branch deploy (user)
 
 - 2026-09-25: `git push origin redesign` with commit a86fde7 (Node's built-in SQLite, better-sqlite3 removed) to retry the Netlify branch deploy (user)
