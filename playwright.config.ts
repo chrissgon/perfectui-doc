@@ -14,7 +14,8 @@ export default defineConfig({
   testDir: "tests",
   testMatch: ["e2e/**/*.spec.ts", "build/**/*.spec.ts", "quality/**/*.spec.ts", "fixture-site/**/*.spec.ts", "slow/**/*.spec.ts"],
   fullyParallel: true,
-  reporter: "list",
+  // On CI, failures also become annotations on the pull request, readable without the job log.
+  reporter: process.env.CI ? [["list"], ["github"]] : "list",
   projects: [
     {
       name: "chromium",
