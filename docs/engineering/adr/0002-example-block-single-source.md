@@ -1,6 +1,6 @@
 # ADR-0002: Example blocks written once, in a fenced block inside an MDC component
 
-- Status: proposed
+- Status: accepted (spike T-cm-5, 2026-09-24)
 - Date: 2026-09-23
 - Serves: REQ-3, REQ-10, NFR-1, EDGE-7
 
@@ -22,6 +22,8 @@ Every example must render a preview (the HTML executed) and a code tab (the same
 ## Decision
 
 Option A, with C as the fallback if the spike shows the raw text cannot be recovered reliably from the slot.
+
+Spike result (T-cm-5, 2026-09-24): Nuxt Content 3.16.1 renders the fenced block as a `<pre>` component whose `code` prop keeps the raw text, so the component reads the snippet from the slot's vnode props, not from the highlighted text nodes. The prerendered HTML of the button fixture holds the live `<button class="pui-btn pui-solid pui-theme">` and the Shiki markup of the same snippet, and the browser shows both after hydration (`tests/e2e/example.spec.ts`). Option C is not needed.
 
 ## Consequences
 

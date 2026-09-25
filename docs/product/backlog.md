@@ -60,6 +60,7 @@
   Check: `tests/e2e/example.spec.ts` (first version): the static HTML of the button page holds a rendered `pui-btn` and Shiki markup for the same snippet; ADR-0002 status updated
   Size: L, because it is the design's riskiest assumption
   Milestone: CM1
+  Status: done (2026-09-24) option A proven: tests/e2e/example.spec.ts 2 passed (failed before the component existed); prerendered HTML holds the live button and the Shiki markup; ADR-0002 accepted; bun run test exit 0 (11 unit, 9 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-5.md: approve with changes
 - T-cm-6: Spike: code colours through CSS variables
   Does: prove ADR-0006 (a Shiki CSS-variables theme passed through Nuxt Content's highlight option) with `app/assets/css/code.css` defining the five `--site-code-*` variables from the role inks in both modes; fall back to dual themes if rejected and record it.
   Delivers: REQ-10
@@ -118,7 +119,7 @@
   Size: M, because interaction and states on top of the spike
   Milestone: CM2
 - T-cm-13: Content validator
-  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped.
+  Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped; an `::example` holds exactly one fenced block (T-cm-5 review).
   Delivers: REQ-2, EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10
   Touches: `server/utils/validateDocs.ts`, `tests/fixtures/invalid/**`
   Depends on: T-cm-4
