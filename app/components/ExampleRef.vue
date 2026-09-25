@@ -11,19 +11,21 @@ const props = defineProps<{ page: string; name: string }>();
 const path = `${versionPrefix(latestVersion)}/${props.page}`;
 
 type Node = [string, Record<string, unknown>, ...unknown[]];
+type Body = { type: string; value: Node[] };
 
-const { data } = await useAsyncData(`example-ref:${path}#${props.name}`, () =>
-  queryCollection(latestVersion.collection as DocsCollection).path(path).first(),
-);
-const body = data.value?.body as { type: string; value: Node[] } | undefined;
-const node = body?.value.find((n) => n[0] === "example" && n[1]?.name === props.name);
-if (!data.value || !body || !node) {
+// The page is reduced to the one example (stacked) and its highlighting styles inside the
+// fetcher, so the landing's payload carries only that, not the whole page.
+const { data: example } = await useAsyncData(`example-ref:${path}#${props.name}`, async () => {
+  const page = await queryCollection(latestVersion.collection as DocsCollection).path(path).first();
+  const body = page?.body as Body | undefined;
+  const node = body?.value.find((n) => n[0] === "example" && n[1]?.name === props.name);
+  if (!page || !body || !node) return null;
+  return {
+    id: page.id,
+    body: { type: body.type, value: [["example", { ...node[1], layout: "stacked" }, ...node.slice(2)], ...body.value.filter((n) => n[0] === "style")] },
+  };
+});
+if (!example.value) {
   throw createError({ statusCode: 500, fatal: true, statusMessage: `ExampleRef: no example named "${props.name}" in ${path}` });
 }
-
-// The example alone, stacked, with the page's highlighting styles.
-const example = {
-  ...data.value,
-  body: { ...body, value: [["example", { ...node[1], layout: "stacked" }, ...node.slice(2)], ...body.value.filter((n) => n[0] === "style")], toc: undefined },
-};
 </script>

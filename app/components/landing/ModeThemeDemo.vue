@@ -74,8 +74,9 @@
 import { ctaTarget, type LandingSection } from "#shared/landing-copy";
 
 // Messaging SECTION-5: the switch and the swatches scope data-pui-mode and --pui-theme to this
-// section only (landing handoff behaviour). The server renders it dark in #7c3aed, the pair
-// messaging shows in code.
+// section only (landing handoff behaviour). It opens light in #7c3aed: in dark mode the library
+// labels solid fills in black, which fails AA on a dark violet (T-sh-16); the reader can still
+// switch, as with the theme picker, where any colour is allowed (EDGE-6).
 const props = defineProps<{ section: LandingSection; version: string; pages: Set<string> }>();
 const cta = computed(() => props.section.cta && ctaTarget(props.section.cta.to, props.version, props.pages));
 
@@ -87,7 +88,7 @@ const swatches = [
   { label: "#d97706", value: "#d97706" },
 ] as const;
 
-const dark = ref(true);
+const dark = ref(false);
 const selected = ref(1);
 const mode = computed(() => (dark.value ? "dark" : "light"));
 const swatch = computed(() => swatches[selected.value]!);

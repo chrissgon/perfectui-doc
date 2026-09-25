@@ -14,7 +14,17 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${PORT}` },
-      testIgnore: ["slow/**", "fixture-site/**"],
+      testIgnore: ["slow/**", "fixture-site/**", "quality/**"],
+    },
+    // Lighthouse and axe run after the other browser tests, one at a time, so no parallel test
+    // competes for the CPU during a measurement.
+    {
+      name: "quality",
+      use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${PORT}` },
+      testMatch: ["quality/**/*.spec.ts"],
+      dependencies: ["chromium", "fixtures"],
+      fullyParallel: false,
+      workers: 1,
     },
     // Content-model features (badges, pages without headings, long snippets, a second version)
     // run against fixture pages, not against the published documentation.

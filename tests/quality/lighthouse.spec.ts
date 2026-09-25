@@ -8,3 +8,11 @@ test("the Button page scores performance ≥ 90 and accessibility ≥ 95 on mobi
   expect(scores.performance).toBeGreaterThanOrEqual(90);
   expect(scores.accessibility).toBeGreaterThanOrEqual(95);
 });
+
+// NFR-1, AC-11: the same bar on the landing.
+test("the landing scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
+  test.setTimeout(180_000);
+  const scores = await lighthouseScores(`${baseURL}/`);
+  expect(scores.performance).toBeGreaterThanOrEqual(90);
+  expect(scores.accessibility).toBeGreaterThanOrEqual(95);
+});

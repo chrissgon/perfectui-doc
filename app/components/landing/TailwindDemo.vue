@@ -31,7 +31,7 @@
             <span v-if="layer.wins" class="pui-badge pui-solid pui-theme">{{ layer.holds }}</span>
             <span v-else style="color: var(--pui-text-muted)">{{ layer.holds }}</span>
           </div>
-          <pre class="m-0 mt-3 overflow-x-auto border-t pt-4 leading-[1.7]" style="border-color: var(--pui-border)"><span style="color: var(--site-theme-ink)">@layer</span> theme, base, pui, components, utilities;
+          <pre class="m-0 mt-3 overflow-x-auto border-t pt-4 leading-[1.7]" style="border-color: var(--pui-border)" tabindex="0" aria-label="Layer order and dark variant"><span style="color: var(--site-theme-ink)">@layer</span> theme, base, pui, components, utilities;
 <span style="color: var(--site-theme-ink)">@custom-variant</span> dark (&amp;:where([data-pui-mode="dark"], [data-pui-mode="dark"] *));</pre>
         </div>
       </div>

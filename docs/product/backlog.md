@@ -395,6 +395,7 @@
   Check: performance ≥ 90, accessibility ≥ 95, 0 WCAG 2.2 AA violations except the accepted library trade-off: `color-contrast` on the labels of `pui-solid` with `pui-theme`, `pui-success` or `pui-warn` in light mode
   Size: S, because the harness exists
   Milestone: SH3
+  Status: done (2026-09-25) landing and Button page: Lighthouse mobile performance 90-92 on a CDN-like local server (brotli, precompressed), accessibility >= 95, axe 0 violations light and dark with the accepted trade-off; hydration mismatch fixed; bun run test 67 unit + 124 browser twice; test:slow 4 passed
 
 ### Order
 

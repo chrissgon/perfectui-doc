@@ -48,7 +48,7 @@ import "{{ site.packageName }}/components/button.css";</pre>
             </svg>
           </button>
         </div>
-        <pre ref="cdnEl" data-cdn class="m-0 overflow-x-auto border-t p-4 font-mono text-[13px] leading-[1.7]" style="border-color: var(--pui-border)">{{ cdn }}</pre>
+        <pre ref="cdnEl" data-cdn tabindex="0" aria-label="CDN tags" class="m-0 overflow-x-auto border-t p-4 font-mono text-[13px] leading-[1.7]" style="border-color: var(--pui-border)">{{ cdn }}</pre>
       </div>
     </div>
   </section>

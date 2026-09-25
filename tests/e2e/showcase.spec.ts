@@ -59,12 +59,12 @@ test.describe("mode and theme demo", () => {
     const outsideBg = await outside.evaluate((el) => getComputedStyle(el).backgroundColor);
     const bodyBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
 
-    await expect(section).toHaveAttribute("data-pui-mode", "dark");
-    const dark = section.getByRole("checkbox", { name: "Dark" });
-    await expect(dark).toBeChecked();
-    await dark.uncheck();
     await expect(section).toHaveAttribute("data-pui-mode", "light");
-    await expect(section.locator("pre")).toContainText('data-pui-mode="light"');
+    const dark = section.getByRole("checkbox", { name: "Dark" });
+    await expect(dark).not.toBeChecked();
+    await dark.check();
+    await expect(section).toHaveAttribute("data-pui-mode", "dark");
+    await expect(section.locator("pre")).toContainText('data-pui-mode="dark"');
 
     await section.getByRole("radio", { name: "#16a34a" }).check();
     await expect(section.locator("pre")).toContainText("--pui-theme: #16a34a;");
