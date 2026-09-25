@@ -4,6 +4,8 @@
     <LandingSizeChart :section="section('size')" :perfectui="size" />
     <LandingClassPicker :section="section('classes')" :version="latestVersion.id" :pages="pages" />
     <LandingModeThemeDemo :section="section('mode-theme')" :version="latestVersion.id" :pages="pages" />
+    <LandingTailwindDemo :section="section('tailwind')" :version="latestVersion.id" :pages="pages" />
+    <LandingStrikeList :section="section('nothing-to-undo')" />
   </main>
 </template>
 

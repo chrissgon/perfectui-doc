@@ -104,6 +104,7 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 - DEV-6: Fallbacks for `commandfor`, `closedby` and `interestfor` are written by hand. Action: fix in code (import the library's loader).
 - DEV-7: The hero glow mixes the theme with #3c32aa instead of the design system's purple glow. Action: fix in code.
 - DEV-8: No 360 px or dark-mode capture was delivered. Action: accepted (user, 2026-09-24): no separate design for 360 px, the layout adapts in code; dark mode is the export's own toggle, captured by the user in `perfect-ui-landing-dark.png`. Renders of the export on 2026-09-24 confirm the narrow layout: at 360 px one column, no horizontal scroll, and headline, supporting line, install command and "Get started" inside the first 640 px (REQ-1); dark mode Kept in `handoff/landing/reference/`.
+- DEV-9: Section 6's side panel lists `.w-full` as "unlayered" above six `pui.*` layers, the claim disproved on 2026-09-24 (messaging SECTION-6 was corrected). Action: fix in code (T-sh-13): the panel shows the measured layer order, utilities on top, and the guide's two lines (layer order, dark variant).
 
 ## Acceptance
 

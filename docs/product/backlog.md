@@ -362,6 +362,7 @@
   Check: with reduced motion both render their final states; with motion, the final states match after the timings
   Size: S, because two small motion sections
   Milestone: SH3
+  Status: done (2026-09-25) tests/e2e/landing-motion.spec.ts 3 passed (3 failed before); bun run test 40 unit + 75 browser; lint and typecheck exit 0
 - T-sh-14: Migration callout and install tabs
   Does: `MigrationCallout` (diff line, link to the guide) and `InstallTabs` (npm, yarn, pnpm, bun; CDN snippet pinned from configuration; copy controls).
   Delivers: REQ-4, AC-4
