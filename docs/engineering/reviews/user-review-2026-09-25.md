@@ -53,3 +53,12 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 - Tests: `tests/e2e/review-fixes.spec.ts` asserts each panel is 224 px high and that the previews of each row have the same height.
 - Checks: lint exit 0; typecheck exit 0; 79 unit passed; 171 Playwright passed.
 - Verdict: approve.
+
+## Follow-up: showcase divider and a copy icon inside code (2026-09-25)
+
+- Intent, quoted: "Tem uma linha branca estranha dividindo os códigos. Adicione também um ícone de copy dentro do código para a pessoa poder copiar, parecido com o que tínhamos na doc antiga."
+- Cause of the line: the showcase's code panel used `border-t` with no colour; Tailwind 4 draws an uncoloured border in `currentColor`, the text colour. It was the only uncoloured border on the site (`grep` of `border-[tblr]` in `app/`).
+- Change: the divider takes `--pui-border`; `app/components/CodeCopyButton.vue` (copy icon, green check for 1500 ms through `useCopy`, selection when no copy works) sits in the top-right corner of every documentation code block (`ProsePre` outside an example) and of each showcase cell, outside the scrolling area; code blocks keep 48 px on the right for it. Example blocks with tabs keep their Copy button and get no icon (`provide("in-example")` restored). The landing's install snippet is unchanged.
+- Tests: `tests/e2e/review-fixes.spec.ts` copies from a documentation block and from a showcase cell, checks the tabbed example has no second control, and checks the divider's colour is `--pui-border`.
+- Checks: lint exit 0 (no warnings); typecheck exit 0; 79 unit passed; 175 Playwright passed before the lint-only edit to `ProsePre.vue`, then the 22 copy, prose and review tests again.
+- Verdict: approve.

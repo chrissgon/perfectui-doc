@@ -68,6 +68,10 @@
   font: 13.5px/1.75 var(--font-mono);
   tab-size: 2;
 }
+/* Room for the copy icon (CodeCopyButton), so the first line never runs under it. */
+.doc-prose > .code-block > pre:not([data-example] *) {
+  padding-right: 48px;
+}
 /* Code shows the characters typed: Fira Code would join <!-- and --> into arrows. */
 .doc-prose code:not([data-example] *),
 .doc-prose pre:not([data-example] *),

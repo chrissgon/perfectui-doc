@@ -106,3 +106,43 @@ test("the overlays showcase gives its code one height and scrolls it vertically,
   expect(heights[2]).toBe(heights[3]);
   expect(heights[0]).toBe(heights[1]);
 });
+
+test.describe("copy icon inside code (user review 2026-09-25)", () => {
+  test.beforeEach(async ({ context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  });
+
+  test("a documentation code block copies its code and shows a check", async ({ page }) => {
+    await page.goto("/docs/v1/getting-started/typescript");
+    const block = page.locator(".doc-prose > .code-block").first();
+    await block.getByRole("button", { name: "Copy code" }).click();
+    await expect(block.getByRole("button", { name: "Copied" })).toHaveClass(/\bpui-success\b/);
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('from "@chrissgon/perfectui/mode"');
+  });
+
+  test("each showcase cell copies its snippet", async ({ page }) => {
+    await page.goto("/");
+    const cells = page.locator("#overlays [data-example]");
+    await cells.nth(3).getByRole("button", { name: "Copy code" }).click();
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('class="pui-accordion"');
+  });
+
+  test("example blocks with tabs keep their Copy and get no second icon", async ({ page }) => {
+    await page.goto("/docs/v1/components/button");
+    await expect(page.locator("[data-example]").first().getByRole("button", { name: "Copy code" })).toHaveCount(0);
+  });
+});
+
+test("the showcase's code panel is divided by the border colour, not the text colour", async ({ page }) => {
+  await page.goto("/");
+  const divider = page.locator("#overlays [data-example-code]").first().locator("..");
+  const [border, expected] = await divider.evaluate((el) => {
+    const probe = document.createElement("div");
+    probe.style.color = "var(--pui-border)";
+    el.append(probe);
+    const colour = getComputedStyle(probe).color;
+    probe.remove();
+    return [getComputedStyle(el).borderTopColor, colour];
+  });
+  expect(border).toBe(expected);
+});

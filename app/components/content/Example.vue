@@ -40,16 +40,30 @@
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div ref="previewEl" class="flex flex-wrap items-center justify-center gap-3" v-html="preview" />
     </div>
+    <!-- The showcase's code scrolls under a copy icon that stays in its corner. -->
+    <div v-if="stacked" class="relative border-t" style="border-color: var(--pui-border)">
+      <div
+        :id="`${uid}-code`"
+        ref="codePanel"
+        data-example-code
+        class="h-56 overflow-y-auto p-4 pr-12 font-mono text-[13px]"
+        tabindex="0"
+        aria-label="Example code"
+        style="background: var(--pui-bg-emphasis)"
+      >
+        <slot />
+      </div>
+      <CodeCopyButton :text="snippet" :target="codePanel" class="right-4" />
+    </div>
     <div
+      v-else
       :id="`${uid}-code`"
       ref="codePanel"
       data-example-code
-      :role="stacked ? undefined : 'tabpanel'"
-      :aria-labelledby="stacked ? undefined : `${uid}-code-tab`"
-      :hidden="!stacked && active !== 'code'"
-      :class="['p-4 font-mono', stacked ? 'h-56 overflow-y-auto border-t text-[13px]' : 'text-sm']"
-      :tabindex="stacked ? 0 : undefined"
-      :aria-label="stacked ? 'Example code' : undefined"
+      role="tabpanel"
+      :aria-labelledby="`${uid}-code-tab`"
+      :hidden="active !== 'code'"
+      class="p-4 font-mono text-sm"
       style="background: var(--pui-bg-emphasis)"
     >
       <slot />
@@ -68,6 +82,8 @@ import { scopeExample } from "#shared/example-scope";
 // the snippet's length (user review 2026-09-25); a scroll region, so focusable and named.
 const props = withDefaults(defineProps<{ layout?: "tabs" | "stacked" }>(), { layout: "tabs" });
 const stacked = computed(() => props.layout === "stacked");
+// The block has its own copy control; its <pre> needs no copy icon (ProsePre).
+provide("in-example", true);
 const slots = useSlots();
 const uid = useId();
 
