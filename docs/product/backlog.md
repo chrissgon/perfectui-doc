@@ -114,6 +114,7 @@
   Check: `tests/e2e/doc-layout.spec.ts`: columns at 1280, disclosure at 1024, no horizontal scroll at 360, headings list absent on a page without h2, pager targets follow navigation order
   Size: M, because three components following one handoff
   Milestone: CM2
+  Status: done (2026-09-24) tests/e2e/doc-layout.spec.ts 5 passed (three failed before the implementation); bun run test exit 0 (21 unit, 27 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-11.md: approve with changes; DocLayout component instead of a Nuxt layout; site.config.ts created early
 - T-cm-12: Example block and callouts, final
   Does: `Example` with Preview and Code tabs (arrow keys), language label, copy control ("Copied" for 1500 ms, selected text without clipboard), dot-grid canvas, content scrolling in its box; `Note` and `Warning` MDC callouts.
   Delivers: REQ-3, EDGE-7, AC-3
@@ -169,7 +170,7 @@
   Delivers: REQ-1, REQ-3
   Touches: `content/v1/03.general/**`, `content/v1/04.components/**`
   Depends on: T-cm-17
-  Check: every page builds with every example rendering a `pui-` element; h2 counts equal the sources'; the four named examples exist
+  Check: every page builds with every example rendering a `pui-` element; h2 counts equal the sources'; the four named examples exist; the headings column highlights the heading scrolled into view (T-cm-11 review)
   Size: L, because thirteen pages
   Milestone: CM3
 - T-cm-19: Forms pages

@@ -1,8 +1,9 @@
 <template>
-  <div class="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)] gap-8 p-4 sm:p-8 lg:grid-cols-[272px_minmax(0,1fr)]">
-    <!-- Two columns until the documentation layout (T-cm-11). -->
-    <DocSidebar :sections="sections" :current-path="path" />
-    <article v-if="page">
+  <DocLayout v-if="page">
+    <template #sidebar>
+      <DocSidebar :sections="sections" :current-path="path" />
+    </template>
+    <article>
       <DocHeader
         :section="sectionTitle"
         :title="page.title"
@@ -10,13 +11,19 @@
         :since="page.since"
         :changed="page.changed"
       />
+      <DocToc :links="tocLinks" mode="disclosure" />
       <ContentRenderer :value="page" />
+      <DocPager :prev="prev" :next="next" :edit-url="editUrl" />
     </article>
-  </div>
+    <template #toc>
+      <DocToc :links="tocLinks" mode="column" />
+    </template>
+  </DocLayout>
 </template>
 
 <script setup lang="ts">
 import type { Collections } from "@nuxt/content";
+import { site } from "~/site.config";
 import { versions } from "~/versions";
 
 // Resolves /docs/<version>/<section>/<slug> (content-model spec REQ-1); anything else is a 404.
@@ -36,6 +43,18 @@ if (!page.value || path.endsWith("/.navigation")) {
 const sections = await useDocsNav(version);
 const sectionTitle = computed(
   () => sections.value.find((s) => s.children?.some((p) => p.path === path))?.title,
+);
+
+// Previous and next in navigation order.
+const order = computed(() => sections.value.flatMap((s) => s.children ?? []));
+const index = computed(() => order.value.findIndex((p) => p.path === path));
+const prev = computed(() => order.value[index.value - 1]);
+const next = computed(() => order.value[index.value + 1]);
+
+const tocLinks = computed(() => page.value?.body?.toc?.links ?? []);
+// The stem keeps the collection prefix ("docs/v1/04.components/03.button"); the file is under content/.
+const editUrl = computed(
+  () => `${site.docsRepository}/edit/${site.docsBranch}/content/${page.value?.stem.replace(/^docs\//, "")}.md`,
 );
 
 // At setup, so the prerendered HTML carries the meta (lesson from the incremental attempt).
