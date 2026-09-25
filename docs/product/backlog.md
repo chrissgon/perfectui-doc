@@ -282,6 +282,7 @@
   Check: `tests/e2e/shell.spec.ts`: the landing and one docs page have the same header and footer contents; no search entry point while `features.search` is off
   Size: M, because three shared components
   Milestone: SH1
+  Status: done (2026-09-25) tests/e2e/shell.spec.ts 6 passed (5 failed before); bun run test 31 unit + 49 browser; lint and typecheck exit 0; screenshots at 1280 light and dark and 360 checked
 - T-sh-5: Page metadata and share image
   Does: `usePageMeta` (title, description, Open Graph, Twitter card, absolute `og:image` from the site URL) used by the landing and the docs page; `public/og.jpg` copied from `docs/design/results/og-image/final/og-1200x630.jpg`.
   Delivers: REQ-10, AC-10

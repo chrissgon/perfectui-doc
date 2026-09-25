@@ -1,12 +1,5 @@
 <template>
   <div>
-    <button
-      type="button"
-      class="pui-btn pui-outline pui-surface lg:hidden"
-      popovertarget="docs-nav"
-    >
-      Documentation menu
-    </button>
     <nav id="docs-nav" ref="panel" aria-label="Documentation" popover class="docs-nav">
       <details v-for="section in sections" :key="section.path" open class="mb-4">
         <summary class="cursor-pointer text-xs font-semibold tracking-wide uppercase">
@@ -32,7 +25,7 @@
 import type { ContentNavigationItem } from "@nuxt/content";
 
 // Sections from the content folders (REQ-4); below 1024 px a popover panel opened by the
-// menu button, no script of ours (approved design, handoff documentation-page).
+// header's menu control (SiteHeader), no script of ours (approved design, handoff documentation-page).
 const props = defineProps<{ sections: ContentNavigationItem[]; currentPath: string }>();
 
 // Client-side navigation keeps the page, so close the panel when the page changes.

@@ -1,12 +1,7 @@
 <template>
-  <!-- The toggle and the picker move into SiteHeader with T-sh-4. -->
-  <div>
-    <div class="fixed top-3 right-3 z-10 flex">
-      <ThemePicker />
-      <ModeToggle />
-    </div>
+  <NuxtLayout>
     <NuxtPage />
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
