@@ -193,6 +193,7 @@
   Check: a test with a deliberate type error makes `bun run typecheck` exit non-zero; the current tests type-check
   Size: S, because configuration and one type package
   Milestone: CM2
+  Status: done (2026-09-24) a type error planted in tests/ made bun run typecheck exit 2 (it exited 0 before); clean typecheck, lint and tests (11 unit, 12 browser) exit 0; review docs/engineering/reviews/T-cm-21.md: approve
 - T-cm-22: Keep the v0 fixture out of the published site
   Does: move the v0 button fixture to test-only content read by the build tests (or replace it with the converted v0 pages if roadmap OPEN-1 starts v0 in R-1), so no one-page 0.23 archive is published.
   Delivers: REQ-1, REQ-11
