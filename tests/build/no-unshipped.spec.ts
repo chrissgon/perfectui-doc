@@ -5,8 +5,9 @@ import { docsLink, type LandingCopy } from "../../shared/landing-copy";
 import { features } from "../../app/features";
 import { latestVersion } from "../../app/versions";
 import { pageFile } from "../helpers/page-file";
+import { SITE_DIR } from "../helpers/site-dir";
 
-const html = (path: string) => readFileSync(pageFile(".output/public", path), "utf8");
+const html = (path: string) => readFileSync(pageFile(SITE_DIR, path), "utf8");
 const visibleText = (page: string) =>
   page.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ");
 const region = (page: string, tag: "header" | "footer") => page.match(new RegExp(`<${tag}[\\s\\S]*?</${tag}>`))?.[0] ?? "";
@@ -54,7 +55,7 @@ test("every call to action of the copy renders, except pages still to be written
     const rendered = page.includes(`href="${href}"`);
     if (link.to in pending) {
       expect(rendered, `${link.to} waits for ${pending[link.to]}`).toBe(false);
-      expect(() => readFileSync(pageFile(".output/public", href)), `${pending[link.to]} is done: remove it from pending`).toThrow();
+      expect(() => readFileSync(pageFile(SITE_DIR, href)), `${pending[link.to]} is done: remove it from pending`).toThrow();
     } else {
       expect(rendered, `${link.label} → ${href}`).toBe(true);
     }

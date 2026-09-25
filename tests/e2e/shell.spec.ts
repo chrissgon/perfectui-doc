@@ -40,6 +40,17 @@ test.describe("site shell (REQ-6, REQ-7, AC-7)", () => {
     expect(await contents(pages[1]!)).toEqual(await contents(pages[0]!));
   });
 
+  // Lighthouse landmark-one-main (2026-09-25): each page has exactly one main landmark, and on a
+  // docs page it holds the article, not the sidebar or the headings column.
+  test("the landing and a docs page each have one main landmark around their content", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByRole("main")).toHaveCount(1);
+    await page.goto(`/docs/${latestVersion.id}/components/button`);
+    await expect(page.getByRole("main")).toHaveCount(1);
+    await expect(page.getByRole("main").getByRole("heading", { level: 1 })).toHaveText("Button");
+    await expect(page.getByRole("main").getByRole("navigation", { name: "Documentation" })).toHaveCount(0);
+  });
+
   test("no search entry point while features.search is off", async ({ page }) => {
     test.skip(features.search, "search is on");
     for (const path of pages) {

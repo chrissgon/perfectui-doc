@@ -59,9 +59,12 @@ test("an opened modal is centred in the viewport, under Tailwind's Preflight", a
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/docs/v1/components/modal");
   await page.locator("[data-example-preview]").first().getByRole("button", { name: "Delete project" }).click();
-  const box = await page.locator("dialog[open]").boundingBox();
-  expect(Math.abs(box!.x + box!.width / 2 - 640)).toBeLessThan(2);
-  expect(Math.abs(box!.y + box!.height / 2 - 400)).toBeLessThan(2);
+  // Polled: the dialog opens with a transition, and a box read once mid-way is off-centre.
+  const offset = async () => {
+    const box = await page.locator("dialog[open]").boundingBox();
+    return box ? Math.max(Math.abs(box.x + box.width / 2 - 640), Math.abs(box.y + box.height / 2 - 400)) : Infinity;
+  };
+  await expect.poll(offset).toBeLessThan(2);
 });
 
 test("examples render as on a plain page: no prose styles, no Preflight", async ({ page }) => {

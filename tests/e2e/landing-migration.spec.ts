@@ -3,9 +3,10 @@ import { landingHydrated } from "../helpers/hydrated";
 import { expect, test } from "@playwright/test";
 import { installCommand, site } from "../../app/site.config";
 import { pageFile } from "../helpers/page-file";
+import { SITE_DIR } from "../helpers/site-dir";
 
 const guide = "/docs/v1/getting-started/migrating-from-0-x";
-const guideBuilt = existsSync(pageFile(".output/public", guide));
+const guideBuilt = existsSync(pageFile(SITE_DIR, guide));
 
 // REQ-4, AC-4: a 0.23 user reaches the guide from the landing.
 test.describe("migration callout", () => {
