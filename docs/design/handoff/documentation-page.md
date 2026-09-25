@@ -58,9 +58,9 @@ The documentation page becomes one Nuxt layout that renders any Markdown page of
 | Width | Columns and order | Sticky | Collapsed or hidden |
 |-------|-------------------|--------|---------------------|
 | 1280 and up | `272px minmax(0, 1fr) 208px` inside a 1440 px max frame; content reading width 72ch; header 64 px | header at top 0; sidebar at 65 px with height `calc(100vh - 65px)`, scrolling inside; headings list at 72 px | nothing |
-| 1024 to 1279 | sidebar and content; headings list moves into the content as an "On this page" disclosure | header, sidebar | headings column: not designed, follow the flows |
-| 768 to 1023 | content only; sidebar becomes a panel behind a menu control | header | sidebar: not designed, follow the flows |
-| 360 | one column; code and tables scroll inside their box; search dialog full screen | header | sidebar behind a menu control as a panel, headings as an "On this page" disclosure; do not follow the export here |
+| 1024 to 1279 | sidebar and content; the on-page headings move into the content as an "On this page" disclosure (export, `reference/1024-light.png`) | header, sidebar | headings column |
+| below 1024 | content only; the header keeps search, mode and a menu control that opens the sidebar as a panel; headings as the "On this page" disclosure (export, `reference/768-light.png`); the export's breakpoint is 1024, not the flows' 768, and the export wins | header | sidebar behind the menu control |
+| 360 | as below 1024; code and tables scroll inside their box; search dialog full screen (export, `reference/360-light.png`, `reference/360-dark.png`) | header | as below 1024 |
 
 ## Behaviour
 
@@ -95,12 +95,12 @@ The documentation page becomes one Nuxt layout that renders any Markdown page of
 - DEV-4: Mode and theme do not use `setMode` and do not persist. Action: fix in code.
 - DEV-5: Fira Code loads from a font CDN. Action: fix in code (self-host).
 - DEV-6: Invented tokens and an inlined library copy (Tokens table). Action: fix in code.
-- DEV-7: Only 1280 light was delivered. Action: accepted (user, 2026-09-24): narrow widths are built in code from the flows' rules, and dark mode is the export's own toggle (render in `handoff/documentation-page/reference/1280-dark.png`). The export does not adapt at 360 px (the sidebar stays open and squeezes the content to a thin column, `reference/360-light.png`), so the narrow layout follows the Layout table, not the export; the no-headings, version-notice and search states follow the brief.
+- DEV-7: The first export did not adapt below 1280. Action: accepted (user, 2026-09-24): the user updated the export, which now adapts at 1024 px (sidebar behind a menu control, headings as a disclosure) and renders without horizontal scroll at 360 px; dark mode is in `docs/design/screens/docs-button/perfect-ui-docs-button-dark.png`. The no-headings, version-notice and search states follow the brief.
 
 ## Acceptance
 
-- Reference: `docs/design/screens/docs-button/perfect-ui-docs-button.png` (full page, 1280 light, rendered at 2×).
-- Compare at: 1280 px light against the reference and 1280 px dark against `reference/1280-dark.png` (or the user's dark PNG when added); 1024, 768 and 360 px against the Layout table (structure only); states: default, copied, search open with results, page without headings.
+- Reference: `docs/design/screens/docs-button/perfect-ui-docs-button.png` (1280 light) and `perfect-ui-docs-button-dark.png` (1280 dark), both from the user; renders of the export in `handoff/documentation-page/reference/` (1024, 768, 360 light, 360 dark).
+- Compare at: 1280 light and dark, 1024, 768 and 360 light, 360 dark, against the references above; states: default, copied, search open with results, page without headings.
 - Tolerances: layout within 4 px at 1280; exact tokens; the text differs by design (DEV-1), so compare structure and style, not words.
 
 ## Open questions

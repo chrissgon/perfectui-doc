@@ -103,11 +103,11 @@ The landing is built as Nuxt components styled with the perfectui stylesheet and
 - DEV-5: The page depends on tokens the tool invented (Tokens table) and on an inlined copy of the library. Action: fix in code.
 - DEV-6: Fallbacks for `commandfor`, `closedby` and `interestfor` are written by hand. Action: fix in code (import the library's loader).
 - DEV-7: The hero glow mixes the theme with #3c32aa instead of the design system's purple glow. Action: fix in code.
-- DEV-8: No 360 px or dark-mode capture was delivered. Action: accepted (user, 2026-09-24): no separate design for 360 px, the layout adapts in code; dark mode is the export's own toggle. Renders of the export on 2026-09-24 confirm both: at 360 px one column, no horizontal scroll, and headline, supporting line, install command and "Get started" inside the first 640 px (REQ-1); dark mode through the header toggle. Kept in `handoff/landing/reference/`.
+- DEV-8: No 360 px or dark-mode capture was delivered. Action: accepted (user, 2026-09-24): no separate design for 360 px, the layout adapts in code; dark mode is the export's own toggle, captured by the user in `perfect-ui-landing-dark.png`. Renders of the export on 2026-09-24 confirm the narrow layout: at 360 px one column, no horizontal scroll, and headline, supporting line, install command and "Get started" inside the first 640 px (REQ-1); dark mode Kept in `handoff/landing/reference/`.
 
 ## Acceptance
 
-- Reference: `docs/design/screens/landing-page/perfect-ui-landing.png` (full page, 1280 light, final states), `docs/design/results/landing/round-1/claude-design/hero-1280.webp`, and renders of the export in `handoff/landing/reference/` (1280 dark, 360 light, 360 dark); the user's own dark PNG replaces the 1280 dark render when added to `docs/design/screens/landing-page/`.
+- Reference: `docs/design/screens/landing-page/perfect-ui-landing.png` (1280 light) and `perfect-ui-landing-dark.png` (1280 dark), both from the user; renders of the export in `handoff/landing/reference/` (360 light and dark); `docs/design/results/landing/round-1/claude-design/hero-1280.webp`.
 - Compare at: 1280 px light and dark, 360 px light and dark, against the references above; states: default final, reduced motion, no JavaScript, copied.
 - Tolerances: layout within 4 px at 1280; colours exact library or site tokens; type sizes as the clamps above; every animation's final state equal to the reference.
 

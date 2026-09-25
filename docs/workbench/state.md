@@ -96,6 +96,8 @@
 - 2026-09-24: Highlighted code uses the role inks (tags theme ink, attributes warn ink, values success ink, punctuation muted); design-system OPEN-1 closed (user)
 - 2026-09-24: The explanatory sentences the design tool wrote for the documentation page are adopted into the v1 content, each checked against the library's documentation (user)
 - 2026-09-24: No separate designs for 360 px: narrow layouts are built in code from the flows' rules; dark mode is the exports' own toggle, rendered as references in docs/design/handoff/<screen>/reference/, to be replaced by the user's dark PNGs when added (user)
+- 2026-09-24: The share image (`og:image`) is the user's own perfectui thumbnail, used on every page; the three generated directions are not used; a 1200 × 630 PNG or JPG version is requested (user)
+- 2026-09-24: The user updated the documentation page export to be responsive; its 1024 px breakpoint for the sidebar replaces the flows' 768 px, and both exports now serve as the narrow and dark references (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -120,7 +122,8 @@
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
-- [ ] Open Graph images: which direction goes to round 2? Recommended: B, "Number" (results/og-image.md)
+- [x] Open Graph image: the user's own thumbnail (2026-09-24)
+- [ ] 1200 × 630 PNG or JPG version of the thumbnail for og:image (user to provide)
 - [x] Which perfectui version does the site pin? 1.0.0-beta.1 (user, 2026-09-24)
 - [x] Close design-system OPEN-1 with the export's syntax colours? Yes (user, 2026-09-24)
 - [x] Adopt the design tool's explanatory sentences into the v1 content? Yes, after checking each (user, 2026-09-24)

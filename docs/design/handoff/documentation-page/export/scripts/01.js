@@ -65,7 +65,9 @@ function search(q){const words=q.toLowerCase().split(/\s+/).filter(Boolean);if(!
 
 class Component extends DCLogic {
   state={mode:'light',w:typeof window!=='undefined'?window.innerWidth:1280,ver:'v1',open:NAV.map(()=>true),tabs:{},copied:null,active:'styles',q:'',sel:0,loading:false,themeHex:null};
-  dlgRef=React.createRef(); qRef=React.createRef(); loaded=false;
+  dlgRef=React.createRef(); qRef=React.createRef(); drawerRef=React.createRef(); loaded=false;
+  openDrawer=()=>{const d=this.drawerRef.current;d&&!d.open&&d.showModal();};
+  closeDrawer=()=>{const d=this.drawerRef.current;d&&d.open&&d.close();};
   componentDidMount(){
     document.documentElement.setAttribute('data-pui-mode',this.state.mode);
     this.applyAttrs();
@@ -84,24 +86,30 @@ class Component extends DCLogic {
   copy=(id,text)=>{try{navigator.clipboard.writeText(text);}catch(e){}this.setState({copied:id});clearTimeout(this.ct);this.ct=setTimeout(()=>this.setState({copied:null}),1500);};
   renderVals(){
     const s=this.state,narrow=s.w<768;
+    if(s.w>=900&&this.drawerRef.current&&this.drawerRef.current.open)setTimeout(this.closeDrawer,0);
     const results=s.loading?[]:search(s.q),sel=Math.min(s.sel,Math.max(0,results.length-1));
     const groups=[];results.forEach((r,i)=>{let g=groups.find(x=>x.page===r.page);if(!g){g={page:r.page,items:[]};groups.push(g);}const on=i===sel;
       g.items.push({id:'pui-sr-'+i,sel:String(on),href:r.href,section:r.section,snip:r.snip,cls:on?'pui-soft pui-theme':'',edge:on?'color-mix(in oklab,var(--pui-theme) 45%,transparent)':'transparent',snipColor:on?'var(--pui-text)':'var(--pui-text-muted)',
         open:e=>{e.preventDefault();this.go(r);},hover:()=>{if(this.state.sel!==i)this.setState({sel:i});}});});
     const activeIdx=Math.max(0,SECTIONS.findIndex(x=>x.id===s.active));
     return {
-      wide:!narrow,narrow,kbdK:(typeof navigator!=='undefined'&&/Mac/.test(navigator.platform))?'⌘K':'Ctrl K',
+      wide:!narrow,narrow,
+      L:(()=>{const sc=s.w<900,tc=s.w<1100;return{sideCollapsed:sc,sideOpen:!sc,tocCollapsed:tc,tocOpen:!tc,
+        cols:sc?'minmax(0,1fr)':tc?'240px minmax(0,1fr)':'272px minmax(0,1fr) 208px',gap:sc?'0':tc?'40px':'48px',mainTop:s.w<640?'28px':'48px'};})(),
+      D:s.w<640?{w:'100vw',h:'100dvh',m:'0',cardH:'100%',flex:'1',resMax:'none'}:{w:'min(36rem, calc(100vw - 32px))',h:'auto',m:'10vh auto auto',cardH:'auto',flex:'none',resMax:'min(420px, 60vh)'},
+      drawerRef:this.drawerRef,openDrawer:this.openDrawer,closeDrawer:this.closeDrawer,
+      onDrawerClick:e=>{if(e.target===this.drawerRef.current)this.closeDrawer();},kbdK:(typeof navigator!=='undefined'&&/Mac/.test(navigator.platform))?'⌘K':'Ctrl K',
       isLight:s.mode==='light',isDark:s.mode==='dark',modeLabel:s.mode==='light'?'Switch to dark mode':'Switch to light mode',
       toggleMode:()=>this.setState({mode:s.mode==='light'?'dark':'light'}),
       themeHex:s.themeHex||'#0092cd',pickTheme:e=>{const v=e.target.value;document.documentElement.style.setProperty('--pui-theme',v);this.setState({themeHex:v});},
       verLabel:s.ver==='v1'?'v1 (latest)':'v0 (0.23)',
-      versions:[['v1','v1 (latest)'],['v0','v0 (0.23)']].map(([k,l])=>({label:l,checked:String(s.ver===k),checkOpacity:s.ver===k?1:0,pick:()=>{this.setState({ver:k});const m=document.getElementById('pui-ver-menu');m&&m.hidePopover&&m.hidePopover();}})),
+      versions:[['v1','v1 (latest)'],['v0','v0 (0.23)']].map(([k,l])=>({label:l,checked:String(s.ver===k),checkOpacity:s.ver===k?1:0,segCls:s.ver===k?'pui-btn pui-solid pui-inverse':'pui-btn pui-outline pui-surface',pick:()=>{this.setState({ver:k});const m=document.getElementById('pui-ver-menu');m&&m.hidePopover&&m.hidePopover();}})),
       openSearch:()=>this.openSearch(),closeSearch:this.closeSearch,
       nav:NAV.map(([t,ps],i)=>({title:t,open:s.open[i],rot:s.open[i]?'rotate(180deg)':'rotate(0deg)',
         expanded:String(s.open[i]),hidden:!s.open[i],display:s.open[i]?'flex':'none',
         toggle:()=>this.setState(st=>{const a=st.open.slice();a[i]=!a[i];return{open:a};}),
         pages:ps.map(p=>{const cur=p==='Button';return{title:p,slug:slug(p),href:`/docs/v1/${slug(t)}/${slug(p)}`,current:cur?'page':undefined,cls:cur?'pui-soft pui-theme':'',color:cur?'var(--pui-theme-ink)':'var(--pui-text-muted)'};})})),
-      navClick:e=>{const a=e.target.closest&&e.target.closest('a[data-route]');if(a)e.preventDefault();},
+      navClick:e=>{const a=e.target.closest&&e.target.closest('a[data-route]');if(a){e.preventDefault();this.closeDrawer();}},
       stopNav:e=>e.preventDefault(),
       sections:SECTIONS.map(sec=>({id:sec.id,title:sec.title,hash:'#'+sec.id,blocks:sec.blocks.map(b=>{
         const base={isP:b.kind==='p',isEx:b.kind==='ex',isNote:b.kind==='note',isWarn:b.kind==='warn',isTable:b.kind==='table',segs:b.segs||[],rows:(b.rows||[]).map(r=>({cls:r[0],does:r[1]}))};
