@@ -178,6 +178,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin redesign` with the 18 commits from 620b527 to 36fba67 (R-1 closing, the user's review adjustments, the R-2 plan and T-ld-1 to T-ld-5, the plan to prune old library versions), plus this record (user: "Aprovo")
+
 - 2026-09-25: `git push origin v1` in `chrissgon/perfectui` with a743a3d (HANDOFF.md, annotated release tag), a6a86c6 (Tailwind guide) and 652748d (documents marked for the site); `todo.txt` stays uncommitted (user: "Sim")
 
 - 2026-09-25: Delete the 40 git tags of `chrissgon/perfectui` other than `v0.20.1`, `v0.21.1`, `v0.23.0`, `v1.0.0-beta.0`, `v1.0.0-beta.1` (list and command in `docs/engineering/plans/prune-old-library-versions.md`), after the user has deleted the 5 GitHub releases in the web UI; the npm unpublish of the 57 versions up to 0.20.0 is run by the user (user: "Unpublish", "Sim, remova")
