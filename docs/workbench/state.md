@@ -2,8 +2,8 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: design (landing: visual exploration in an external AI design tool from docs/design/briefs/landing.md, then critique, then implementation in code)
-- Updated: 2026-09-23
+- Current phase: design (landing approved in Claude Design, round 2 pending; documentation page runs waiting on the user in Claude Design; Open Graph direction waiting on the user's choice)
+- Updated: 2026-09-24
 
 ## Autonomy
 
@@ -23,8 +23,13 @@
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
 | docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-23 |
-| docs/design/screens/landing.md | design-ui | draft | 2026-09-23 |
-| docs/design/briefs/landing.md (self-contained brief for an external AI design tool; Figma Make first) | design-ui | draft | 2026-09-23 |
+| docs/design/screens/landing.md (written by the retired design-ui; kept as the structural record of the composed Figma frame) | design-ui (retired) | draft | 2026-09-23 |
+| docs/design/briefs/landing.md | design-brief | draft | 2026-09-24 |
+| docs/design/briefs/documentation-page.md | design-brief | draft | 2026-09-24 |
+| docs/design/briefs/og-image.md | design-brief | draft | 2026-09-24 |
+| docs/design/results/landing.md | design-execute | approved | 2026-09-24 |
+| docs/design/results/documentation-page.md | design-execute | draft | 2026-09-24 |
+| docs/design/results/og-image.md | design-execute | draft | 2026-09-24 |
 | docs/engineering/designs/markdown-content-model.md (to revise for the restart: drop Removals and the transitional findings) | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0001-one-collection-per-major-version.md | eng-architecture | draft | 2026-09-23 |
 | docs/engineering/adr/0002-example-block-single-source.md | eng-architecture | draft | 2026-09-23 |
@@ -81,6 +86,8 @@
 
 - 2026-09-23: The WEB code syntax of the 66 `pui` variables in the design file is filled with the custom properties of perfectui.css so the design tool's developer mode shows `var(--pui-…)` (user)
 - 2026-09-23: The landing's visual direction is explored in an external AI design tool from a self-contained brief written by design-ui (Figma Make for the first round; Claude Design and Gamma are the alternatives the user has), because the frame composed through the integration (`Landing / 1280 / light`) was reviewed as structurally right but too basic next to tailwindcss.com and laravel.com. The workbench keeps the guidelines, the brief and the review (core-critique against the brief's criteria); the final page is implemented in code and validated against the brief and the screen document; the composed frame stays the structural reference, and its dark and narrow variants wait for the chosen direction (user)
+- 2026-09-24: The perfectui design system was built in Claude Design from the library repository with an onboarding prompt, and the landing produced there (Claude Design result, direction "editor and canvas" with the display number) is approved; round 2 completes 360 px, dark mode and the remaining sections, with the theme blue as default accent and the supporting line kept as one sentence (user)
+- 2026-09-24: Design skills produce the inputs and a specialized AI design tool or a code prototype produces the design: design-brief writes the brief, design-execute runs it and records the results; design-ui is retired (user)
 
 ## Open questions
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
@@ -106,6 +113,9 @@
 - [x] Search entry point on narrow screens: header icon (user, 2026-09-23)
 
 - [ ] Highlighted-code colours derived from the role inks? (design-system OPEN-1)
+- [ ] Open Graph images: which direction goes to round 2? Recommended: B, "Number" (results/og-image.md)
+- [ ] Documentation page: run the three packs in Claude Design and bring back the screenshots and links (results/documentation-page.md)
+- [ ] Show the v0 version switch before the v0 archive exists? Recommended: design it now, hide it in the build until v0 ships (documentation-page brief OPEN-1)
 - [x] Site type scale: the kit documentation's scale (user, 2026-09-23); layout values (72ch, 1280 frame, header 56, sidebar 272, headings column 208, gutters 16/32) still as proposed, to confirm with the docs page (design-system OPEN-2)
 
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)

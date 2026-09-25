@@ -1,11 +1,13 @@
-# Design brief: SCREEN-1 Landing, for an external design tool
+# Design brief: landing
 
-- Owner: design-ui
+- Owner: design-brief
 - Status: draft
 - Date: 2026-09-23
-- Screen: docs/design/screens/landing.md (SCREEN-1)
-- Tool: Figma Make for the first round (a separate Make file with the design as pasted context or a Make kit); the brief is written for any AI design tool
-- Self-contained: the tool reads nothing but this document and, when it can, the perfectui design file
+- Type: screen
+- For: SCREEN-1 of the flows (the landing at `/`)
+- Values: inline
+- Direction: open: three directions (round 1 run in Figma Make and Claude Design; Claude Design's result approved by the user on 2026-09-24)
+- Lint: ok (2026-09-24)
 
 ## Summary
 
@@ -21,7 +23,7 @@ Explore a creative, animated landing page for perfectui 1.0 at 1280 and 360 px w
 - User review of the frame 462:2 (2026-09-23): "not bad, but too basic" next to tailwindcss.com and laravel.com; the exploration moves to an external AI design tool, the workbench keeps the guidelines and the review, the final page is written in code
 - Library documentation of `@chrissgon/perfectui` 1.0.0-beta.0 (`docs/*.md`): the HTML snippets under Components are copied from it
 
-## Product
+## Subject
 
 perfectui is a CSS and JavaScript library of interface components that ships the bare minimum: no runtime dependencies, no CSS reset, no font import, and no rule that is not attached to a `pui-` class. Behaviour comes from the browser (`<dialog>`, `popover`, `interestfor`, `<details>`), and the optional JavaScript only downloads a fallback for what a browser is missing. The whole stylesheet is 3,155 bytes gzip; the loader is 502 bytes.
 
@@ -107,9 +109,9 @@ Space and shape. Unit 4 px; gaps 8, 12, 16, 24, 32, 48 px. Framed container: rad
 
 Breakpoints (Tailwind defaults): 640, 768, 1024, 1280 px. Below 640 everything is one column.
 
-## Components
+## Content
 
-Real markup of the library; demos render these, not drawings of them. Components keep the library's look (the site never restyles a `pui-` class).
+**Components:** real markup of the library; demos render these, not drawings of them. Components keep the library's look (the site never restyles a `pui-` class).
 
 ```html
 <!-- shape + style + colour -->
@@ -167,9 +169,7 @@ Real markup of the library; demos render these, not drawings of them. Components
 
 Site-only elements, drawn from the values above: header (56 px: mark and wordmark left; Docs link, search icon, version tag "1.0", mode toggle, theme colour picker, GitHub and Figma icons right; on narrow screens the logo, the search icon and the mode toggle stay visible and the rest goes behind a menu control), copy control on the install field (icon becomes a check in success/ink and the label reads "Copied"), code block on page/bg-emphasis, size chart, package-manager tabs, callout with a diff line, footer (wordmark, copyright, tagline "Components the browser already knows how to run.", links Docs, GitHub, Figma, MIT license).
 
-## Page structure
-
-Nine sections in this order; headline, body, demo and call to action are final copy, verbatim.
+**Regions:** the value proposition (hero), the install command with its copy control, the primary call to action, the size block, the components showcase (sections 3 to 5), the further sections (6 and 7), the migration call to action (8), install and links (9) and the footer; nine sections in this order; headline, body, demo and call to action are final copy, verbatim.
 
 - SECTION-1 Hero. Headline: The bare minimum for elegant interfaces. Supporting line: Three classes, no framework, 3.2 kB. Body: A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work. Demo: the three classes `pui-btn`, `pui-solid`, `pui-theme` typed one by one in a code line (about 400 ms per token) while a bare `<button>` takes shape, then style, then colour; after a pause the sequence loops through two other shape and colour pairs; paused on hover. Install command `npm i @chrissgon/perfectui` with a copy control under the body. Calls to action: "Get started" (solid theme button) and "Migrating from 0.x" (outline surface button).
 - SECTION-2 Size, measured. Headline: 3.2 kB. Measured, not promised. Body: `perfectui.css` is 3,155 bytes gzip; the optional JavaScript loader is 502. The bars below are the same measurement run on the published builds of the alternatives. Demo: horizontal bars that grow from zero when the block enters the viewport, perfectui first, numbers counting up, once; one bar per library with CSS and JS as two segments and the version beside the name: perfectui 1.0.0-beta.0 3,155 + 502; Pico 2.1.1 11,640; Beer CSS 5.0.3 17,035 + 5,864; Bootstrap 5.3.8 30,869 + 23,743; UIkit 3.25.24 30,944 + 53,317; Bulma 1.0.4 64,842. Footnote: `gzip -9` of the published builds, measured 2026-09-23. perfectui's bar is theme/fill, the others muted/fill with the JS segment as the soft tint. No call to action.
@@ -181,22 +181,28 @@ Nine sections in this order; headline, body, demo and call to action are final c
 - SECTION-8 Coming from 0.x. Headline: Coming from 0.x? Body: 1.0 is a rewrite: every class is prefixed, styles and colours are separate classes, and the browser replaced the JavaScript. The guide lists every change. Demo: one before/after diff line, `btn style-solid-primary` removed in error/ink and `pui-btn pui-solid pui-theme` added in success/ink. Call to action: "Read the migration guide" (soft theme button).
 - SECTION-9 Install and links. Headline: Install it your way. Body: A package for npm, yarn, pnpm or bun, or two tags from a CDN. Import everything or only the components you use. Demo: tabs per package manager (npm, yarn, pnpm, bun) with the copy control, then the CDN snippet (`<link>` to `dist/perfectui.css` and `<script type="module">` importing `dist/js/index.js`). Call to action: "Get started". The footer follows.
 
+**States:** default; copied (the copy control's icon becomes a check in success ink and reads "Copied" for at least 1 second); no JavaScript (copy control, mode toggle, theme picker and pickers inert, every demo in its finished state); reduced motion (every animation replaced by its final state, the library's 150 ms transitions remain).
+
+**Breakpoints:** 1280 and 360 wide, each in light and dark mode; at 360 the headline, the supporting line, the install command and "Get started" stay inside the first viewport and every section stacks in one column.
+
+**Motion:** as written per section above (typing hero, growing bars, strike-through list, 150 ms transitions); every animation has a final state that carries the same information.
+
 ## Constraints
 
 - Every colour, type size and radius comes from Visual language; the reviewer must be able to name the token of every fill. No gradients other than the two glows; no shadows; no images heavier than 100 KB; no video, canvas or WebGL.
 - Demos are real perfectui markup with real behaviour, not screenshots or redrawn components; the library's components are not restyled.
-- Copy is verbatim from Page structure; no sentence is added, and the words to avoid do not appear.
+- Copy is verbatim from Content; no sentence is added, and the words to avoid do not appear.
 - Contrast: page/text-muted only on page/bg; no white text on theme blue, success or warn under 24 px except inside the library's own solid button; code text is page/text on page/bg-emphasis.
 - Targets at least 24 × 24 px, 40 × 40 px for header icon controls; the focus ring visible on every control; reading order equals the section order at every width.
 - On a 360 px wide screen the headline, the supporting line, the install command and "Get started" stay inside the first viewport, and every section stacks in one column.
 - Motion: every animation has a final state that carries the same information; under `prefers-reduced-motion` only the final states show and the library's 150 ms transitions remain; without JavaScript the copy control, mode toggle, theme picker and pickers are inert and every demo shows its finished state.
-- Header and footer contents are fixed (Components, site-only elements); the search icon stays because search ships with the site.
+- Header and footer contents are fixed (Content, site-only elements); the search icon stays because search ships with the site.
 - Buildable in Nuxt with Tailwind and perfectui using CSS animations and an intersection observer, so that Lighthouse mobile performance stays at or above 90 and accessibility at or above 95.
 
 ## Deliverables
 
 - Round 1: three directions (A, B, C above, or a fourth the tool proposes with its idea in one sentence), one run of the tool per direction, each as one screen at 1280 px in light mode covering the hero, the size block and the three-classes block, with the motion working. The tool is told it is exploring, not implementing: the composed frame is not attached in this round, because a design attachment makes an AI design tool reproduce it as code.
-- Round 2, after the review chooses one direction: the full page at 1280 and 360 px, in light and dark mode, with every animation of Page structure prototyped and the reduced-motion final states; the generated code is a reference for the implementation, not the implementation.
+- Round 2, after the review chooses one direction: the full page at 1280 and 360 px, in light and dark mode, with every animation of Content prototyped and the reduced-motion final states; the generated code is a reference for the implementation, not the implementation.
 
 ## Evaluation criteria
 
@@ -205,27 +211,23 @@ Nine sections in this order; headline, body, demo and call to action are final c
 - CRIT-3: Drama: one element in the hero at a scale nothing else reaches (display type of 72 px or more, or a demo filling half the viewport).
 - CRIT-4: Real demos: every demo is the library's markup with its real behaviour; nothing faked.
 - CRIT-5: Motion with purpose: each animation demonstrates a claim of its section and has a final state; reduced motion honoured.
-- CRIT-6: Copy verbatim: headlines, bodies and calls to action as in Page structure; no invented sentence; no avoided word.
+- CRIT-6: Copy verbatim: headlines, bodies and calls to action as in Content; no invented sentence; no avoided word.
 - CRIT-7: Narrow first viewport: at 360 px the headline, supporting line, install command and "Get started" are visible without scrolling.
 - CRIT-8: Accessibility: contrast pairs as in Constraints; targets; focus ring; reading order.
 - CRIT-9: Scope: nine sections and the shell, nothing more; no "used by", sponsors, assistant or unshipped feature.
 - CRIT-10: Buildable: CSS and intersection-observer motion, no heavy assets; the direction can be implemented in the site's stack within the performance budget.
 
-## How to run
+## Attachments
 
-1. Figma Make is its own file type, not a mode of the design file: in the file browser open Drafts (or the team, on a Full seat) and click "Make". Create one Make file per direction (three for round 1), so each chat builds one page instead of a compromise between three.
-2. In each file, attach this document (drag it into the chat or "+" then "Upload files"). Do not attach the frame `Landing / 1280 / light` (462:2) in round 1: an attached design makes the tool reproduce it as code, which is what the first run did. The frame is attached only in round 2, as the record of section order and copy, with the instruction to keep the chosen direction.
-3. Add the library skill (in the prompt box, "Skills" then "Add skill", upload `skills/build-with-perfectui/SKILL.md` from the perfectui repository) and start the prompt with `/build-with-perfectui`; skills are invoked by that slash command, not by their description. The skill makes the tool link the real stylesheet, which carries the `pui` tokens at runtime; importing the design file's variables into the tool is unnecessary for that reason (it is also a paid-plan feature that needs the file published as a library and flattens the variables into raw CSS values).
-4. Paste the Prompt below with the direction paragraph filled in from Creative direction; run; bring the three results back to the workbench for a critique against CRIT-1 to CRIT-10; choose one direction, or ask for a second round with the critique's findings.
-5. Ask for round 2 on the chosen direction; critique again; record the chosen direction, its file and the review in the screen document; implement in code from the brief and the screen document, and validate the implementation against both.
+- Send: this brief as a file; screenshots of tailwindcss.com and laravel.com as attitude references; the P mark and wordmark.
+- Do not send in round 1: the composed frame `Landing / 1280 / light` (Figma node 462:2); an attached design makes the tool reproduce it. It goes in round 2 only as the record of section order.
 
 ## Prompt
 
 ```text
-/build-with-perfectui
 Build a landing page for perfectui 1.0 that a reader remembers. This is an exploration,
 not an implementation: do not reproduce any existing design, and if you were given one,
-use it only for the order of the sections. Read design-brief-landing.md for the copy
+use it only for the order of the sections. Read the attached brief (design-brief-landing.md) for the copy
 (verbatim), the tokens, the section order and the constraints, then take this direction:
 
 Direction: <paste one of A, B or C from "Creative direction" in the brief>
@@ -251,4 +253,4 @@ page does that a plain three-column layout would not.
 
 ## Readiness
 
-- Ready for round 1 in the external tool: yes.
+- Ready for design-execute: yes; round 1 done, the Claude Design result approved (2026-09-24).
