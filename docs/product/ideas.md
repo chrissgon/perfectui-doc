@@ -38,3 +38,11 @@ It is the real task for the `ops-ci-pipeline` and `ops-pull-request` skills (inv
 ## IDEA-2: A release pipeline for the library (perfectui)
 
 Recorded in the library's repository, `docs/workbench/ideas.md` on branch `v1`: there the critical moment is publishing a version, not merging into `main`.
+
+## IDEA-3: Solid labels that meet AA contrast in light mode
+
+Raised on 2026-09-25 while the pipeline's Lighthouse job measured light mode for the first time; the user asked to keep it for a future adjustment.
+
+- Today (accepted trade-off, 2026-09-24): white labels on `pui-solid` buttons in light mode fall below the 4.5:1 AA ratio for 14 px text: `pui-theme` `#0092cd` 3.50:1, `pui-success` `#16a34a` 3.30:1, `pui-warn` `#d97706` 3.19:1. `pui-error` (4.83:1) and `pui-muted` (4.83:1) pass. The site's axe and Lighthouse tests set these labels aside (`tests/helpers/accepted.ts`).
+- The nearest shades that pass with white, same hue: `#007eb1` (theme), `#12883e` (success), `#b16105` (warn). Alternatives: dark labels on the current shades (theme 5.99:1, success 6.37:1, warn 6.59:1 with black), or bold 14 px and larger text, which only needs 3:1 under WCAG's large-text rule when 18.66 px bold or 24 px.
+- Where it changes: the light values of `--pui-theme`, `--pui-success` and `--pui-warn` in the library's tokens (`@layer pui.tokens`), then a library release; the site then drops the exception in `tests/helpers/accepted.ts`.

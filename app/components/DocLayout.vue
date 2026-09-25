@@ -9,9 +9,10 @@
     </div>
     <!-- The content fills its column; the 72ch reading width applies once the headings column
          sits beside it (user review 2026-09-25). -->
-    <div class="min-w-0 pt-7 pb-16 sm:pt-12 xl:max-w-[72ch]">
+    <!-- The page's main landmark (the landing has its own): screen readers jump here. -->
+    <main class="min-w-0 pt-7 pb-16 sm:pt-12 xl:max-w-[72ch]">
       <slot />
-    </div>
+    </main>
     <div class="hidden xl:sticky xl:top-[65px] xl:block xl:self-start xl:pt-12">
       <slot name="toc" />
     </div>

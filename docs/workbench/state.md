@@ -56,6 +56,7 @@
 
 ## Decisions
 
+- 2026-09-25: The light-mode contrast of `pui-solid` labels on theme, success and warn stays as accepted on 2026-09-24; the shades that would pass are recorded as IDEA-3 in `docs/product/ideas.md` for a future library adjustment (user: "deixe registrado para futuro ajuste"). Lighthouse now measures light and dark explicitly with the same exception as axe
 - 2026-09-25: The library fixed, on its branch `v1` (commits 057ff1c, 0e6a520, a7cc6d0), three defects the site works around; when `libraryRef` moves to a release carrying them, remove the site's `.pui-modal { margin: auto }` in `app/assets/css/main.css` and `applyIndeterminate` in `app/components/content/Example.vue` (library plans `modal-margin-under-resets.md`, `indeterminate-late-markup.md`). The radio fix also corrects the "Free / Pro / Team" example on the live Radio page
 
 - 2026-09-25: No library release for now: the user keeps working on perfectui first. The site stays pinned to library commit 652748d (`libraryRef` in `app/versions.ts`), so documentation changes in the library reach the site only when `libraryRef` moves to a newer commit of branch `v1`, or when a release lets the site follow the installed version's tag (user)
