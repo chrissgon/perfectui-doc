@@ -87,7 +87,7 @@ test("below 1280 px the content fills its column (item 9)", async ({ page }) => 
   }
 });
 
-test("the overlays showcase caps its code and scrolls it vertically, never sideways", async ({ page }) => {
+test("the overlays showcase gives its code one height and scrolls it vertically, never sideways", async ({ page }) => {
   await page.goto("/");
   const panels = page.locator("#overlays [data-example-code]");
   await expect(panels).toHaveCount(4);
@@ -95,8 +95,14 @@ test("the overlays showcase caps its code and scrolls it vertically, never sidew
     const [scrollW, clientW, clientH] = await panel.evaluate((el) => [el.scrollWidth, el.clientWidth, el.clientHeight]);
     expect(scrollW).toBeLessThanOrEqual(clientW);
     expect(clientH).toBeLessThanOrEqual(224);
+    expect(Math.round((await panel.boundingBox())!.height)).toBe(224);
     await expect(panel).toHaveAttribute("tabindex", "0");
   }
   const modal = panels.first();
   expect(await modal.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true);
+  // Cells in a row line up: the Tooltip and Accordion previews are the same height.
+  const previews = page.locator("#overlays [data-example-preview]");
+  const heights = await previews.evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().height)));
+  expect(heights[2]).toBe(heights[3]);
+  expect(heights[0]).toBe(heights[1]);
 });

@@ -44,3 +44,12 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 - Tests: `tests/e2e/review-fixes.spec.ts` excludes the showcase from the no-scroll check and asserts its four panels are at most 224 px high, never wider than their box, focusable, and that the modal's panel scrolls.
 - Checks: lint exit 0; typecheck exit 0; 79 unit passed; 171 Playwright passed including axe and Lighthouse.
 - Verdict: approve.
+
+## Follow-up: one code height in both showcase rows (2026-09-25)
+
+- Intent, quoted: "Faça o mesmo para a seção abaixo também" (the Tooltip and Accordion row).
+- Cause: the cap was a maximum; the Tooltip snippet is shorter than 224 px, so its panel was shorter and its preview taller than the Accordion's.
+- Change: the stacked code panel has a fixed height (`h-56`, 224 px) instead of a maximum, so both rows line up; longer snippets scroll vertically.
+- Tests: `tests/e2e/review-fixes.spec.ts` asserts each panel is 224 px high and that the previews of each row have the same height.
+- Checks: lint exit 0; typecheck exit 0; 79 unit passed; 171 Playwright passed.
+- Verdict: approve.
