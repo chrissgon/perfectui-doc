@@ -441,6 +441,7 @@
   Check: `tests/build/migration-v0-links.spec.ts`: with the v0 button fixture `btn` links to it; without it every name is text; a wide table scrolls in its box at 360 px
   Size: M, because an MDC assumption to confirm
   Milestone: MG1
+  Status: done (2026-09-25) fixture site: btn links to the v0 page, chip is text, inline component renders in a table cell, wide table scrolls at 360 px (2 passed; the build failed before on the unknown component); production links to no v0 page; bun run test 70 unit + 128 browser
 - T-mg-3: Diff highlighting
   Does: enable the `diff` grammar and colour removed and added lines with the error and success inks, markers kept.
   Delivers: REQ-4, AC-4
