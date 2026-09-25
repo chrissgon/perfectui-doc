@@ -12,9 +12,10 @@
     "typecheck": "nuxt typecheck && tsc -p tests/tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "vitest run && playwright test",
+    "test": "vitest run && playwright test --project=chromium",
     "test:unit": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test --project=chromium",
+    "test:slow": "playwright test --project=slow"
   },
   "dependencies": {
     "@chrissgon/perfectui": "1.0.0-beta.1",

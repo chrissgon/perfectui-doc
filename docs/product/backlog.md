@@ -159,6 +159,7 @@
   Check: both test files pass after `bun run generate`
   Size: S, because two test files over an existing build
   Milestone: CM2
+  Status: done (2026-09-25) bun run test:slow 3 passed (add a page, invalid content, empty version; full builds of a project copy, copies removed after); tests/build/static.spec.ts 2 passed; bun run test exit 0 (27 unit, 34 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-16.md: approve with changes; tests in tests/slow and tests/build/static.spec.ts
 - T-cm-17: Getting started and customization pages
   Does: write `content/v1/01.getting-started/` (installation, TypeScript, Tailwind CSS, license) and `02.customization/` (dark mode, theme color) from the library's documentation, examples as `::example`, checked explanatory sentences added.
   Delivers: REQ-1, REQ-3
@@ -529,7 +530,7 @@
 1. CM1 (content model renders), then CM2 and SH1 in parallel (the shell needs the docs layout, T-cm-11).
 2. SH2 while CM3 is written (the landing's top half needs no documentation content).
 3. SH3 (needs the named examples of T-cm-18), MG1, SR1.
-4. Exit of R-1: every milestone's checks green, then a deploy preview for review; deploying to production is an outside action that needs its own approval.
+4. Exit of R-1: every milestone's checks green, including `bun run test:slow` (the full-build tests, run before each milestone review until CI runs them; T-cm-16 review), then a deploy preview for review; deploying to production is an outside action that needs its own approval.
 
 ## Open questions
 
