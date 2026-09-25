@@ -131,6 +131,7 @@
 - [x] Messaging PROOF-1 corrected to `gzip -9 -n`: 3,221 B and 493 B (user, 2026-09-24)
 - [x] One redirect per 0.23 flat URL to the 1.0 page of the same topic (user, 2026-09-24)
 - [ ] Landing SECTION-6 body says "No reset, so nothing overlaps Preflight", which measurement disproved (Preflight removes button fills unless the layer order is declared). Recommended replacement: "Every perfectui rule lives in a cascade layer. Declare the layer order once, and a Tailwind utility or a line of your CSS beats it with no `!important`." (messaging PROOF-7, 2026-09-24)
+- [ ] The library's solid labels fail WCAG AA in light mode (white on theme #0092CD 3.50:1, success #16A34A 3.30:1, warn #D97706 3.19:1; AA needs 4.5:1), so every page with a primary button fails PRD M-4 (0 violations). Options: darken the three light fills in the library (#007EB1, #12883E, #B36205, white labels kept), black labels on those fills in light mode, a site-only theme override, or an exception in the accessibility target. Recommended: darken the fills in the library before 1.0 (T-cm-2 review)
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)

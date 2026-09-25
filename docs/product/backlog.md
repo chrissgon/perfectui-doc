@@ -33,6 +33,7 @@
   Check: `bun run test` runs both runners and each smoke test passes, with no pass-with-no-tests flag
   Size: M, because two runners and a static server to wire
   Milestone: CM1
+  Status: done (2026-09-24) bun run test exit 0: vitest 2 passed (pinned versions), playwright 3 passed (page, axe helper, Lighthouse helper) over the static server; lint and typecheck exit 0; review docs/engineering/reviews/T-cm-2.md: approve with changes, chrome-launcher declared
 - T-cm-3: Versions configuration
   Does: `app/versions.ts` (`v1` latest, label `1.x`; `v0` deprecated, label `0.23`, listed but without content until R-2) and a startup check that exactly one version is latest.
   Delivers: REQ-5, AC-5
