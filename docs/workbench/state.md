@@ -158,6 +158,8 @@
 
 ## Approvals
 
+- 2026-09-25: Deploy preview for R-1 (user, option 1 of the T-mg-5 decision): `git push -u origin redesign` to github.com/chrissgon/perfectui-doc, then a draft pull request redesign → main only to trigger the Netlify Deploy Preview; no merge. Purpose: measure Lighthouse on the host, confirm `gzip` on the build image (T-sh-6) and the generated redirects (ADR-0005).
+
 | Scope | What | Approved | Expires | Status |
 |-------|------|----------|---------|--------|
 | standing | commit approved artifacts and reviewed code on branch `redesign` without asking again (pushes and pull requests excluded) | 2026-09-23 | until revoked | active |
