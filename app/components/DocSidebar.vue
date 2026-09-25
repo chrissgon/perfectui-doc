@@ -17,12 +17,18 @@
           </li>
         </ul>
       </details>
+      <!-- Below 1024 px the header hides GitHub and Figma, so the panel carries them. -->
+      <div class="mt-2 grid gap-0.5 border-t pt-4 lg:hidden" style="border-color: var(--pui-border)">
+        <a :href="site.repository" class="pui-btn pui-link pui-surface justify-start gap-2.5"><SiteIcon name="github" />GitHub</a>
+        <a :href="site.figma" class="pui-btn pui-link pui-surface justify-start gap-2.5"><SiteIcon name="figma" />Figma</a>
+      </div>
     </nav>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { ContentNavigationItem } from "@nuxt/content";
+import { site } from "~/site.config";
 
 // Sections from the content folders (REQ-4); below 1024 px a popover panel opened by the
 // header's menu control (SiteHeader), no script of ours (approved design, handoff documentation-page).

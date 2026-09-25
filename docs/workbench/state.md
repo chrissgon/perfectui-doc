@@ -51,6 +51,8 @@
 
 ## Decisions
 
+- 2026-09-25: Below 1024 px a documentation page's header shows only the sidebar menu (approved export); GitHub and Figma links live inside that sidebar panel and in the footer, satisfying REQ-7 at narrow widths (user, T-sh-4 review finding 1)
+
 - 2026-09-23: Project initialized for the workbench; autonomy every-phase. (core-project-init, confirmed by user)
 - 2026-09-23: perfectui-doc will be radically changed, not only migrated to perfectui v1 and updated; the scope of that change is the user's to define and must be clarified before any engineering work (user)
 - 2026-09-23: Redesign scope (core-clarify round 1): an entirely new design implementing perfectui 1.0; documentation authored in Markdown and rendered from it instead of hand-written Vue pages; a version switcher so older versions stay documented while new ones are added; an AI assistant for conversation, running in the visitor's browser to avoid hosting costs, possibly replacing Algolia search if fast enough (user)

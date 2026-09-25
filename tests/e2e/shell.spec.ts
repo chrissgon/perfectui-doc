@@ -65,7 +65,11 @@ test.describe("site shell (REQ-6, REQ-7, AC-7)", () => {
     await page.setViewportSize({ width: 360, height: 640 });
     await page.goto("/docs/v1/components/button");
     await header(page).getByRole("button", { name: "Documentation menu" }).click();
-    await expect(page.getByRole("navigation", { name: "Documentation" })).toBeVisible();
+    const panel = page.getByRole("navigation", { name: "Documentation" });
+    await expect(panel).toBeVisible();
+    // The header hides GitHub and Figma at this width; the panel carries them (user, 2026-09-25).
+    await expect(panel.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", site.repository);
+    await expect(panel.getByRole("link", { name: "Figma" })).toHaveAttribute("href", site.figma);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(360);
   });
 });

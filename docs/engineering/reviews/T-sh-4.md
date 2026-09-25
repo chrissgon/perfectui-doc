@@ -28,6 +28,10 @@ Every page now sits in one layout with the approved header and footer. The logo 
 - security and data: `v-html` renders only the repository's own SVG files, documented at the call site.
 - tests: header and footer contents are compared link by link between the landing and a docs page; the narrow menus of both page kinds are exercised.
 
+## Follow-up (2026-09-25)
+
+- Finding 1 resolved by the user's answer: below 1024 px the sidebar panel carries GitHub and Figma, and the footer keeps them. `app/components/DocSidebar.vue` renders both links under the sections with `lg:hidden`; `tests/e2e/shell.spec.ts` asserts them in the open panel at 360 px. Checks: `bun run lint` exit 0, `bun run typecheck` exit 0, `bun run test` exit 0 (31 unit, 52 browser).
+
 ## Verdict
 
 approve with changes
