@@ -583,6 +583,7 @@
   Check: the round-trip test over the 28 pages passes; `git -C ../perfectui diff --stat` lists only `docs/` and `MIGRATION.md`; the text differences between the library's previous documents and the port are listed in the review for the user
   Size: M, because 28 pages and a review of wording differences
   Milestone: LD1
+  Status: done (2026-09-25) round trip 29/29 over the 28 pages on the real library after Prettier; library commit 652748d on branch v1 (28 files, +172/-142), not pushed
 
 - T-ld-3: Pages generated before every build
   Does: `scripts/sync-docs.ts` (ref from `libraryRef` or `v<installed version>`; `PERFECTUI_SOURCE`, cache, one archive download), run by `bun run generate` and `bun run dev`; `libraryRef` of v1 pinned to T-ld-2's commit until a library release carries it; `content/v1/` ignored and removed from git; `V0.vue` removed; the landing's links to the guide updated; `tests/repo/content-sources.spec.ts` removed.

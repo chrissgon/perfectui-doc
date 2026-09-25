@@ -196,7 +196,8 @@ export function convertDocument(text: string, ctx: ConvertContext): string {
       if (!heading && !raw.startsWith(">") && !/^[-*|]/.test(raw)) {
         const paragraph = [raw.trim()];
         while (i + 1 < lines.length && lines[i + 1]!.trim()) paragraph.push(lines[++i]!.trim());
-        description = convertLinks(paragraph.join(" "), ctx);
+        // Plain text for the meta description: emphasis markers go, inline code stays.
+        description = convertLinks(paragraph.join(" "), ctx).replace(/(\*\*|__)(.+?)\1/g, "$2");
         continue;
       }
       description = "";
@@ -213,7 +214,10 @@ export function convertDocument(text: string, ctx: ConvertContext): string {
     }
     if (callout) {
       if (raw.startsWith(">")) {
-        out.push(convertLinks(raw.replace(/^>\s?/, ""), ctx));
+        const text = raw.replace(/^>\s?/, "");
+        // An empty quoted line right after the marker keeps Prettier 3.5 from joining the marker
+        // with a line that starts with code; it is not part of the callout.
+        if (text.trim() || out.at(-1) !== `::${callout}`) out.push(convertLinks(text, ctx));
         continue;
       }
       closeCallout();

@@ -60,6 +60,11 @@ describe("document (REQ-4, REQ-8)", () => {
     expect(convert("MIGRATION.md")).toMatch(/tags: \[guide, migration\]\nfrom: 0.23.0\nto: 1.0.0-beta.1\n---/);
   });
 
+  it("keeps the description plain: emphasis is dropped, inline code stays", () => {
+    const page = convert("docs/card.md", "# Card\n\nA card is a **surface**, a `pui-card`.\n");
+    expect(page).toContain('description: "A card is a surface, a `pui-card`."');
+  });
+
   it("gives no description when code comes first, rather than a paragraph further down", () => {
     const page = convert("docs/button.md", "# Button\n\n```html\n<a></a>\n```\n\nLater prose.\n");
     expect(page).toContain('description: ""');
@@ -85,6 +90,11 @@ describe("blocks (REQ-5, REQ-6)", () => {
   it("turns GitHub alerts into callouts", () => {
     expect(convert("docs/installation.md")).toContain("::warning\nPerfect UI no longer exposes anything on `window`.\n::");
     expect(button).toContain("::note\nGroup buttons with `pui-group-row`.\nSee [Card](/docs/v1/components/card).\n::");
+  });
+
+  it("skips the empty quoted line after the alert marker, which keeps Prettier from joining the two", () => {
+    const text = "# Button\n\nA button.\n\n> [!WARNING]\n>\n> `aria-describedby` ties the message.\n";
+    expect(convert("docs/button.md", text)).toContain("::warning\n`aria-describedby` ties the message.\n::");
   });
 
   it("fails on live code that is not html, naming the line (EDGE-5)", () => {
