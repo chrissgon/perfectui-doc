@@ -19,8 +19,7 @@ permissions:
   contents: read
 
 env:
-  # The Netlify preset writes dist/ with _headers and _redirects, as the host serves them.
-  NITRO_PRESET: netlify_static
+  # The folder the tests read and the deploy uploads: the Netlify build of the generate step.
   SITE_DIR: dist
 
 jobs:
@@ -38,7 +37,11 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run lint
       - run: bun run typecheck
+      # The Netlify preset writes dist/ with _headers and _redirects, as the host serves them. Only
+      # here: the fixture site the tests build must keep the default preset and .output/public.
       - run: bun run generate
+        env:
+          NITRO_PRESET: netlify_static
       - run: bun run test:unit
       - run: bunx playwright install --with-deps chromium
       # Lighthouse skips itself here and runs on the deployed preview (the lighthouse job).
