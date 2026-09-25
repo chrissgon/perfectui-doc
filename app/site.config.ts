@@ -4,6 +4,7 @@
  * branch feed the "Edit this page" link.
  */
 export const site = {
+  name: "Perfect UI",
   url: "https://perfectui.netlify.app",
   packageName: "@chrissgon/perfectui",
   repository: "https://github.com/chrissgon/perfectui",

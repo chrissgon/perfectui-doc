@@ -12,4 +12,11 @@
 
 <script setup lang="ts">
 import { latestVersion } from "~/versions";
+
+// The site's own title and description (messaging SECTION-1); T-sh-9 keeps this call.
+usePageMeta({
+  title: "Perfect UI · The bare minimum for elegant interfaces",
+  description:
+    "A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a pui- class; the browser does the work.",
+});
 </script>

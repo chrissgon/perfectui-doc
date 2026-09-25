@@ -58,5 +58,5 @@ const editUrl = computed(
 );
 
 // At setup, so the prerendered HTML carries the meta (lesson from the incremental attempt).
-useSeoMeta({ title: page.value.title, description: page.value.description });
+usePageMeta({ title: page.value.title, description: page.value.description });
 </script>

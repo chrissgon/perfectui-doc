@@ -22,7 +22,8 @@ test.describe("documentation routes (REQ-1, REQ-11, AC-1)", () => {
     await page.goto("/docs/v1/components/button");
     await expect(page).toHaveTitle(/Button/);
     const description = await page.locator('meta[name="description"]').getAttribute("content");
-    expect(description).toMatch(/^The `pui-btn` class turns a/);
+    // Meta content is plain text: the frontmatter's inline-code backticks are dropped (T-sh-5).
+    expect(description).toMatch(/^The pui-btn class turns a/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Button");
   });
 

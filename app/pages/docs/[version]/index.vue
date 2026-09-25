@@ -29,7 +29,7 @@ const missingName = computed(() => missing.value.split("/").pop() ?? "");
 
 const sections = await useDocsNav(version);
 
-useSeoMeta({
+usePageMeta({
   title: `Documentation ${version.label}`,
   description: `Every page of the Perfect UI ${version.label} documentation.`,
 });

@@ -291,6 +291,7 @@
   Check: `tests/build/meta.spec.ts`: the seven tags in `index.html` and in the button page, the latter with its frontmatter values
   Size: S, because one composable and a provided image
   Milestone: SH1
+  Status: done (2026-09-25) tests/build/meta.spec.ts 3 passed (3 failed before); bun run test 31 unit + 52 browser; test:slow 3 passed; lint and typecheck exit 0
 - T-sh-6: Spike: library size at build
   Does: `server/routes/api/library-size.json.get.ts` running `gzip -9 -n` on the installed files; confirm `gzip` exists on the Netlify build image with a deploy preview.
   Delivers: REQ-2, NFR-2, EDGE-7, AC-2
