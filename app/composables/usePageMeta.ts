@@ -14,7 +14,7 @@ export function usePageMeta(meta: { title: string; description: string }) {
     ogTitle: meta.title,
     ogDescription: description,
     ogImage: `${site.url}/og.jpg`,
-    ogUrl: `${site.url}${route.path}`,
+    ogUrl: `${site.url}${route.path.length > 1 ? route.path.replace(/\/+$/, "") : route.path}`,
     ogType: "website",
     twitterCard: "summary_large_image",
   });

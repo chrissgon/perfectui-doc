@@ -1,12 +1,13 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { OUT } from "./paths";
+import { pageFile } from "../helpers/page-file";
 
 // ADR-0006 spike: code colours come from CSS variables bound to the role inks, so they follow
 // the mode (and could follow the theme) without a rebuild.
 test.describe("code colours (REQ-10)", () => {
   test("highlighted spans reference the site's code variables", () => {
-    const html = readFileSync(`${OUT}/docs/v1/components/button/index.html`, "utf8");
+    const html = readFileSync(pageFile(OUT, "/docs/v1/components/button"), "utf8");
     for (const name of ["tag", "attr", "value", "punct"]) {
       expect(html, name).toContain(`var(--site-code-${name})`);
     }

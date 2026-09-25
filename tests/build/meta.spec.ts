@@ -2,8 +2,9 @@ import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { parse } from "yaml";
 import { site } from "../../app/site.config";
+import { pageFile } from "../helpers/page-file";
 
-const html = (path: string) => readFileSync(`.output/public${path}/index.html`, "utf8");
+const html = (path: string) => readFileSync(pageFile(".output/public", path), "utf8");
 const decode = (s: string) =>
   s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, "&");
 

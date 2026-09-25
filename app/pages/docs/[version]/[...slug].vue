@@ -32,7 +32,8 @@ const route = useRoute();
 const version = versions.find((v) => v.id === route.params.version);
 if (!version) throw createError({ statusCode: 404, statusMessage: "Version not found", fatal: true });
 
-const slug = ([] as string[]).concat(route.params.slug ?? []).join("/");
+// Empty segments are dropped: a trailing slash (a host redirect, a typed URL) is the same page.
+const slug = ([] as string[]).concat(route.params.slug ?? []).filter(Boolean).join("/");
 const path = `/docs/${version.id}/${slug}`;
 const collection = version.collection as DocsCollection;
 

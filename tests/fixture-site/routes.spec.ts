@@ -1,19 +1,20 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { OUT, latestVersion, versions } from "./paths";
+import { pageFile } from "../helpers/page-file";
 
 
 test.describe("documentation routes (REQ-1, REQ-11, AC-1)", () => {
   test("every version serves the page under its own segment", () => {
     for (const v of versions) {
-      expect(existsSync(`${OUT}/docs/${v.id}/components/button/index.html`), v.id).toBe(true);
-      expect(existsSync(`${OUT}/docs/${v.id}/index.html`), `${v.id} index`).toBe(true);
+      expect(existsSync(pageFile(OUT, `/docs/${v.id}/components/button`)), v.id).toBe(true);
+      expect(existsSync(pageFile(OUT, `/docs/${v.id}`)), `${v.id} index`).toBe(true);
     }
   });
 
   test("no documentation file exists without a version segment", () => {
     const ids = new Set(versions.map((v) => v.id));
-    const unversioned = readdirSync(`${OUT}/docs`).filter((name) => !ids.has(name));
+    const unversioned = readdirSync(`${OUT}/docs`).filter((name) => !ids.has(name.replace(/\.html$/, "")));
     expect(unversioned).toEqual([]);
   });
 

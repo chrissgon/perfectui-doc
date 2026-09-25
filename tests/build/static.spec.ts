@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 import { versions } from "../../app/versions";
+import { pageFile } from "../helpers/page-file";
 
 // NFR-2, AC-11 on the production site: every documentation route is a static file, the
 // generated files are present, and only configured versions are published (T-cm-22).
@@ -11,7 +12,7 @@ test("every collection route exists as a static HTML file", () => {
   for (const v of versions) {
     const rows = db.prepare(`select path from _content_${v.collection} where path not like '%/.navigation'`).all() as { path: string }[];
     expect(rows.length, v.id).toBeGreaterThan(0);
-    for (const { path } of rows) expect(existsSync(join(".output/public", path, "index.html")), path).toBe(true);
+    for (const { path } of rows) expect(existsSync(pageFile(".output/public", path)), path).toBe(true);
   }
   db.close();
 });

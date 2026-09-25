@@ -5,11 +5,12 @@ import type { DocsCollection, DocVersion } from "~/versions";
 export function useVersionSwitch() {
   const route = useRoute();
   return async (target: DocVersion) => {
-    const relative = relativeDocPath(route.path);
+    const current = route.path.replace(/\/+$/, "");
+    const relative = relativeDocPath(current);
     const candidate = relative ? `/docs/${target.id}/${relative}` : "";
     const exists = candidate
       ? Boolean(await queryCollection(target.collection as DocsCollection).path(candidate).first())
       : true;
-    return navigateTo(switchTarget(route.path, target.id, exists));
+    return navigateTo(switchTarget(current, target.id, exists));
   };
 }

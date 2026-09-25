@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
+import { pageFile } from "../helpers/page-file";
 
 // Migration guide REQ-1, REQ-2, REQ-4, AC-1, AC-2, AC-4: the page is the library's MIGRATION.md
 // at the pinned tag. The source comes from the library checkout next to this repository, or
@@ -22,7 +23,7 @@ const decode = (s: string) => s.replace(/<[^>]+>/g, "").replace(/&#39;|&#x27;/g,
 test("the guide's h2 sequence equals MIGRATION.md at the pinned tag, every h2 with an id", async () => {
   const source = await migrationSource();
   const expected = [...outsideFences(source).matchAll(/^## (.+)$/gm)].map((m) => m[1]!.replace(/`/g, "").trim());
-  const html = readFileSync(`.output/public${PAGE}/index.html`, "utf8");
+  const html = readFileSync(pageFile(".output/public", PAGE), "utf8");
   const article = html.match(/<div[^>]*class="[^"]*doc-prose[\s\S]*<\/article>/)?.[0] ?? html;
   const h2 = [...article.matchAll(/<h2 id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)];
   expect(h2.map((m) => decode(m[2]!))).toEqual(expected);
@@ -32,7 +33,7 @@ test("the guide's h2 sequence equals MIGRATION.md at the pinned tag, every h2 wi
 test("every diff block of the source renders as a highlighted diff", async () => {
   const source = await migrationSource();
   const blocks = (source.match(/^```diff$/gm) ?? []).length;
-  const html = readFileSync(`.output/public${PAGE}/index.html`, "utf8");
+  const html = readFileSync(pageFile(".output/public", PAGE), "utf8");
   expect(blocks).toBe(11);
   expect((html.match(/<pre[^>]*class="[^"]*language-diff/g) ?? []).length).toBe(blocks);
 });

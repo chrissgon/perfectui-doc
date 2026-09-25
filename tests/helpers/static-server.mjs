@@ -17,7 +17,8 @@ const types = {
 
 async function resolveFile(urlPath) {
   const clean = normalize(decodeURIComponent(urlPath.split("?")[0])).replace(/^(\.\.[/\\])+/, "");
-  const candidates = [join(root, clean), join(root, clean, "index.html"), join(root, `${clean}.html`)];
+  const bare = clean.replace(/[/\\]+$/, "");
+  const candidates = [join(root, clean), join(root, clean, "index.html"), join(root, `${bare}.html`)];
   for (const file of candidates) {
     if (!file.startsWith(root)) continue;
     try {

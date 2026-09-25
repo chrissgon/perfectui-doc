@@ -3,13 +3,14 @@ import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 import { DB, OUT, versions } from "./paths";
+import { pageFile } from "../helpers/page-file";
 
 // NFR-2, AC-11: every documentation route is a static file; the generated files are present.
 test("every collection route exists as a static HTML file", () => {
   const db = new DatabaseSync(DB, { readOnly: true });
   for (const v of versions) {
     const rows = db.prepare(`select path from _content_${v.collection} where path not like '%/.navigation'`).all() as { path: string }[];
-    for (const { path } of rows) expect(existsSync(join(OUT, path, "index.html")), path).toBe(true);
+    for (const { path } of rows) expect(existsSync(pageFile(OUT, path)), path).toBe(true);
   }
   db.close();
 });

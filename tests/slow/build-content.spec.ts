@@ -2,6 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "@playwright/test";
 import { generate, projectCopy, removeCopies } from "../helpers/project-copy";
+import { pageFile } from "../helpers/page-file";
 
 // Full builds of a project copy (slow): run with `bun run test:slow`.
 test.describe.configure({ mode: "serial", timeout: 300_000 });
@@ -14,8 +15,8 @@ test("a page added as one Markdown file appears in routes, navigation and search
   const run = generate(root);
   expect(run.status, run.output.slice(-2000)).toBe(0);
   const out = join(root, ".output/public");
-  expect(existsSync(join(out, "docs/v1/general/float/index.html"))).toBe(true);
-  expect(readFileSync(join(out, "docs/v1/components/button/index.html"), "utf8")).toContain('href="/docs/v1/general/float"');
+  expect(existsSync(pageFile(out, "/docs/v1/general/float"))).toBe(true);
+  expect(readFileSync(pageFile(out, "/docs/v1/components/button"), "utf8")).toContain('href="/docs/v1/general/float"');
   const search = JSON.parse(readFileSync(join(out, "api/search-index.json"), "utf8")) as { url: string }[];
   expect(search.map((e) => e.url)).toContain("/docs/v1/general/float");
 });
