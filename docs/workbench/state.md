@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (release R-1 complete on branch `redesign`: 48 of 48 tasks done and reviewed; verified on the Netlify branch deploy https://redesign--perfectui.netlify.app; next: the release decision, merging `redesign` into production)
+- Current phase: engineering, release R-2 planned (one source and versions: T-ld-1 to T-ld-5 in the backlog); checkpoint: the user approves the R-2 plan before implementation. R-1 complete on branch `redesign`, verified on https://redesign--perfectui.netlify.app
 - Updated: 2026-09-25
 
 ## Autonomy
@@ -19,7 +19,7 @@
 | docs/product/specs/landing-and-site-shell.md | product-feature-spec | draft | 2026-09-23 |
 | docs/product/specs/migration-guide.md | product-feature-spec | draft | 2026-09-23 |
 | docs/product/specs/search.md | product-feature-spec | draft | 2026-09-23 |
-| docs/product/roadmap.md | product-roadmap | draft | 2026-09-23 |
+| docs/product/roadmap.md (R-2 redefined 2026-09-25: F-13, F-6; F-7 not planned) | product-roadmap | draft | 2026-09-25 |
 | docs/design/flows.md | design-ux-flows | draft | 2026-09-23 |
 | docs/design/design-system.md | design-system | draft | 2026-09-23 |
 | docs/marketing/messaging.md | mkt-messaging | draft | 2026-09-24 |
@@ -46,10 +46,19 @@
 | docs/engineering/adr/0007-library-size-measured-at-build-with-gzip-n.md | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0008-showcase-renders-named-example-blocks-from-the-docs.md | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0009-client-side-search-with-minisearch.md | eng-architecture | draft | 2026-09-24 |
-| docs/product/backlog.md (release R-1: 46 tasks in four features, 8 milestones) | product-backlog | draft | 2026-09-24 |
-| docs/product/prd.md | product-prd | draft | 2026-09-23 |
+| docs/product/specs/library-docs-and-versions.md | product-feature-spec | draft | 2026-09-25 |
+| docs/engineering/designs/library-docs-and-versions.md | eng-architecture | draft | 2026-09-25 |
+| docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
+| docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
+| docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
+
+- 2026-09-25: The 0.23 site is removed entirely; its documentation is read in the library repository at tag `v0.23.0` (`docs/`); PRD F-7 retired (user)
+- 2026-09-25: One source for the documentation: the library's `docs/` and `MIGRATION.md` are the pages, converted by the site before each build from the installed version's tag (option A, ADR-0010) (user)
+- 2026-09-25: Production: branch `main` is replaced by the new site through a merge commit whose tree is `redesign`'s (option b), at the end of R-2, with its own approval (user)
+- 2026-09-25: The 0.23 flat-URL redirects are removed ("quase nada utiliza perfectui hoje") (user)
+- 2026-09-25: Versions are supported from now on: the header's version badge is the trigger of a version menu (user)
 
 - 2026-09-25: The site's theme-coloured text (`--site-theme-ink`) derives from `--pui-theme` (30% of the text colour mixed in, at least 4.78:1 for every preset), so the theme picker recolours the whole site; the success, warn, error and muted inks stay fixed (user)
 

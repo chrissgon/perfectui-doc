@@ -2,8 +2,8 @@
 
 - Owner: product-backlog
 - Status: draft
-- Updated: 2026-09-24
-- Release: R-1 (1.0 launch) of `docs/product/roadmap.md`; feature order F-1 with F-10, then F-2 and F-12, then F-8 and F-9, then F-3, F-4, F-5
+- Updated: 2026-09-25
+- Release: R-1 (1.0 launch, done) and R-2 (one source and versions) of `docs/product/roadmap.md`; R-1 feature order F-1 with F-10, then F-2 and F-12, then F-8 and F-9, then F-3, F-4, F-5; R-2: F-13, then F-6
 - Branch: `redesign` (orphan; the tree holds only `AGENTS.md`, `docs/`, `LICENSE`, `.gitignore`, so every task builds from nothing)
 - Layout: Nuxt 4 default (`app/` for the application; `content/`, `server/`, `shared/`, `public/`, `tests/` at the root)
 - Rules for every task (state decisions and the T-cm-1 review of the incremental attempt): versions pinned exactly as in the designs; `data-pui-mode` only, never a `dark` class; SEO meta at setup; no browser-only handle at setup without a client guard; no `--passWithNoTests`
@@ -556,12 +556,100 @@
 | REQ-1 to REQ-8, NFR-1 to NFR-3 | T-sr-1 to T-sr-5 (see each task's Delivers) |
 | AC-1 to AC-10 | see each task's Delivers |
 
+## Feature: library documents as the site's pages, and a version menu (`T-ld`)
+
+- Specification: docs/product/specs/library-docs-and-versions.md
+- Design: docs/engineering/designs/library-docs-and-versions.md (ADR-0010)
+- Release: R-2 (one source and versions) of `docs/product/roadmap.md`; F-13, then F-6
+- Rules: the library repository is changed only on its branch `v1`, committed locally; pushing it and releasing it are the user's actions, each approved (AGENTS.md rule 4)
+
+### Tasks
+
+- T-ld-1: Conversion of the summary and of one document
+  Does: `shared/library-docs.ts` with `parseSummary` and `convertDocument` (title, description, heading shift, `html live [name=]`, GitHub alerts, `site:` comments, derived tags, links to pages and to GitHub at the ref), tested on a small fixture library.
+  Delivers: REQ-3, REQ-4, REQ-5, REQ-6, REQ-7, REQ-8, EDGE-2, EDGE-5, EDGE-6, EDGE-7, AC-3, AC-4 (converter cases)
+  Touches: `shared/library-docs.ts`, `tests/unit/library-docs.spec.ts`, `tests/fixtures/library/`
+  Depends on: none
+  Check: `bunx vitest run tests/unit/library-docs.spec.ts` passes, one case per rule and per EDGE, each failure message naming the file and line
+  Size: M, because eight rules and five failures
+  Milestone: LD1
+
+- T-ld-2: The library's documents written from the site's pages
+  Does: a one-time `scripts/port-pages-to-library.ts` writes the library's `docs/*.md` and `MIGRATION.md` from `content/v1/` with the markers (the site's wording wins where the two differ; the 0.23 links become `blob/v0.23.0/docs/` links); the forward conversion of the result equals `content/v1/` except the migration guide's slug and its 0.23 links; committed on the library's branch `v1`, not pushed; the script is deleted after use.
+  Delivers: NFR-1, REQ-10, AC-2, AC-6 (library side)
+  Touches: `scripts/port-pages-to-library.ts` (temporary), `tests/unit/library-docs.spec.ts`, `../perfectui/docs/*.md`, `../perfectui/MIGRATION.md`
+  Depends on: T-ld-1
+  Check: the round-trip test over the 28 pages passes; `git -C ../perfectui diff --stat` lists only `docs/` and `MIGRATION.md`; the text differences between the library's previous documents and the port are listed in the review for the user
+  Size: M, because 28 pages and a review of wording differences
+  Milestone: LD1
+
+- T-ld-3: Pages generated before every build
+  Does: `scripts/sync-docs.ts` (ref from `libraryRef` or `v<installed version>`; `PERFECTUI_SOURCE`, cache, one archive download), run by `bun run generate` and `bun run dev`; `libraryRef` of v1 pinned to T-ld-2's commit until a library release carries it; `content/v1/` ignored and removed from git; `V0.vue` removed; the landing's links to the guide updated; `tests/repo/content-sources.spec.ts` removed.
+  Delivers: REQ-1, REQ-2, NFR-2, EDGE-1, EDGE-3, EDGE-4, AC-1, AC-6 (site side), AC-8
+  Touches: `scripts/sync-docs.ts`, `app/versions.ts`, `package.json`, `.gitignore`, `content/v1/`, `content/landing.yml`, `app/components/content/V0.vue`, `tests/build/`, `tests/repo/content-sources.spec.ts`, `netlify.toml`
+  Depends on: T-ld-2; on the host, the library commit pushed (user approval)
+  Check: `bun run generate` from a clean clone with `PERFECTUI_SOURCE` unset downloads one archive and publishes every page; `git ls-files content/v1` is empty; `bun run test` passes; the sync time with the cache is recorded (at most 5 s)
+  Size: M, because the fetch, the removal and the build wiring
+  Milestone: LD1
+
+- T-ld-4: Redirects without the 0.23 flat URLs
+  Does: `_redirects` keeps `/docs` and `/docs/<major>` and the unversioned splat, and drops one rule per page.
+  Delivers: REQ-11, AC-7
+  Touches: `server/routes/_redirects.get.ts`, `tests/fixture-site/routes.spec.ts`, ADR-0005 (status note)
+  Depends on: none
+  Check: `tests/fixture-site/routes.spec.ts` asserts no `/docs/<slug>` page rule and the kept rules
+  Size: S, because one generator
+  Milestone: LD2
+
+- T-ld-5: Version menu on the header badge
+  Does: `VersionMenu` (`pui-dropdown` popover opened by the badge) listing `versions` with the current one marked and `archivedVersions` (0.23 on GitHub); a documented major switches through `useVersionSwitch`; the fixture site with two majors exercises the switch.
+  Delivers: REQ-9, EDGE-8, AC-5
+  Touches: `app/components/VersionMenu.vue`, `app/components/SiteHeader.vue`, `app/versions.ts`, `app/composables/useVersionSwitch.ts`, `tests/e2e/version-menu.spec.ts`, `tests/fixture-site/version-switch.spec.ts`
+  Depends on: T-ld-3
+  Check: the menu opens from the badge with the keyboard and the pointer, lists 1.x (current) and 0.23 (GitHub, `tree/v0.23.0/docs`); in the fixture site, switching on a shared page keeps the path and on a missing page lands on the first page with the notice; axe 0 violations with the menu open
+  Size: M, because a menu, its states and the switch end to end
+  Milestone: LD2
+
+### Order
+
+1. T-ld-1, then T-ld-2 (the round trip needs the converter), then T-ld-3 (the site can drop its copies only after the round trip holds).
+2. T-ld-4 at any time; T-ld-5 after T-ld-3 (the menu's second entry is the archived GitHub link, and the switch reads generated pages).
+
+### Milestones
+
+- LD1 One source: T-ld-1 to T-ld-3 → usable state: every page comes from the library at a pinned ref and the site repository holds no page
+- LD2 Versions and cleanup: T-ld-4, T-ld-5 → usable state: the badge is the version menu and no 0.23 redirect remains
+
+### Coverage
+
+| Id | Delivered by |
+|----|--------------|
+| REQ-1, REQ-2 | T-ld-3 |
+| REQ-3 to REQ-8 | T-ld-1 |
+| REQ-9 | T-ld-5 |
+| REQ-10 | T-ld-2 |
+| REQ-11 | T-ld-4 |
+| NFR-1 | T-ld-2 |
+| NFR-2 | T-ld-3 |
+| EDGE-1, EDGE-3, EDGE-4 | T-ld-3 |
+| EDGE-2, EDGE-5, EDGE-6, EDGE-7 | T-ld-1 |
+| EDGE-8 | T-ld-5 |
+| AC-1, AC-8 | T-ld-3 |
+| AC-2 | T-ld-2 |
+| AC-3 | T-ld-1 |
+| AC-4 | T-ld-1 (converter cases), T-ld-3 (EDGE-1, EDGE-4) |
+| AC-5 | T-ld-5 |
+| AC-6 | T-ld-2 (library), T-ld-3 (site) |
+| AC-7 | T-ld-4 |
+
 ## Release order across features
 
 1. CM1 (content model renders), then CM2 and SH1 in parallel (the shell needs the docs layout, T-cm-11).
 2. SH2 while CM3 is written (the landing's top half needs no documentation content).
 3. SH3 (needs the named examples of T-cm-18), MG1, SR1.
 4. Exit of R-1: every milestone's checks green, including `bun run test:slow` (the full-build tests, run before each milestone review until CI runs them; T-cm-16 review), then a deploy preview for review; deploying to production is an outside action that needs its own approval.
+
+5. R-2: LD1, then LD2; then the release: a merge commit on `main` whose tree is `redesign`'s (the 0.23 site removed), and the Algolia variables removed from Netlify. Both are outside actions that need the user's approval of the exact payload.
 
 ## Open questions
 
