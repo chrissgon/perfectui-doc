@@ -59,6 +59,7 @@ describe.skipIf(!existsSync(LIBRARY_DOCS))(`content written from the library doc
   it("every v1 page has a source, except the migration guide", () => {
     const pages = readdirSync("content/v1", { recursive: true, encoding: "utf8" })
       .filter((f) => f.endsWith(".md"))
+      // The migration guide's source is MIGRATION.md at the tag (tests/build/migration-headings.spec.ts).
       .filter((f) => !f.includes("migrating-from-0-23"));
     expect(pages.filter((p) => !(p in sources))).toEqual([]);
   });

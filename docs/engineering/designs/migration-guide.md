@@ -13,7 +13,7 @@ The guide is one Markdown page of the 1.0 content, copied by hand from the libra
 ## Sources
 
 - `docs/product/specs/migration-guide.md` (REQ-1 to REQ-6, NFR-1, EDGE-1 to EDGE-6, AC-1 to AC-6)
-- The library's `MIGRATION.md` at tag `v1.0.0-beta.1` (Why, sections 1 to 8, Known trade-offs; nine ```diff blocks; mapping tables in sections 3, 4, 7)
+- The library's `MIGRATION.md` at tag `v1.0.0-beta.1` (Why, sections 1 to 8, Known trade-offs; eleven ```diff blocks (nine in the first count; corrected 2026-09-25, T-mg-4); mapping tables in sections 3, 4, 7)
 - `docs/engineering/designs/markdown-content-model.md` (schema, validator, collections, code theme of ADR-0006); `docs/design/handoff/documentation-page.md` (tables with `pui-table`, callouts)
 - State decisions: the package does not ship `MIGRATION.md`, the site keeps its own copy (2026-09-23); the site pins 1.0.0-beta.1 (2026-09-24)
 
@@ -31,7 +31,7 @@ The guide is one Markdown page of the 1.0 content, copied by hand from the libra
 
 | Component | Responsibility | Location | Inputs | Outputs | Satisfies |
 |-----------|----------------|----------|--------|---------|-----------|
-| Guide page | the guide's content, headings with anchors, three mapping tables, nine diff blocks | `content/v1/01.getting-started/04.migrating-from-0-23.md` | `MIGRATION.md` (by hand) | Markdown | REQ-1, REQ-2, REQ-6, EDGE-6 |
+| Guide page | the guide's content, headings with anchors, three mapping tables, eleven diff blocks | `content/v1/01.getting-started/04.migrating-from-0-23.md` | `MIGRATION.md` (by hand) | Markdown | REQ-1, REQ-2, REQ-6, EDGE-6 |
 | Schema fields | `from`, `to` (optional strings) | `content.config.ts` (docs schema) | frontmatter | queryable fields | REQ-5 |
 | Version check | fail when `to` differs from the installed `@chrissgon/perfectui` version | `server/utils/validateDocs.ts` | page frontmatter, `node_modules/@chrissgon/perfectui/package.json` | error naming file, `to` and installed version | REQ-5, EDGE-3 |
 | Page header range | "applies to <from> → <to>" under the description | `app/components/DocHeader.vue` (optional `from`, `to` props) | page fields | header line | REQ-5 |
@@ -86,7 +86,7 @@ A mapping table row in Markdown: `| :v0{name="btn" to="components/button"} | pui
 | AC-1 | the page exists at its URL and appears in the getting-started section of the v1 navigation | build assertion + e2e | `tests/e2e/migration-guide.spec.ts` |
 | AC-2 | fetch `MIGRATION.md` at the pinned tag and compare its h2 sequence with the page's; every heading has an id | build test | `tests/build/migration-headings.spec.ts` |
 | AC-3 | build with and without a v0 fixture; `btn` links to `/docs/v0/components/button` only in the first; no dead link in either | build assertion | `tests/build/migration-v0-links.spec.ts` |
-| AC-4 | nine diff blocks in the static HTML; removed and added lines carry distinct classes and keep `-` and `+` | build assertion | `tests/build/migration-diff.spec.ts` |
+| AC-4 | eleven diff blocks in the static HTML; removed and added lines carry distinct classes and keep `-` and `+` | build assertion | `tests/build/migration-diff.spec.ts` |
 | AC-5 | build with `to` equal to the installed version shows "applies to 0.23.0 → 1.0.0-beta.1"; a fixture with a different `to` fails naming file and both versions | build assertion | `tests/build/validation.spec.ts` |
 | AC-6 | Lighthouse and axe at 360 px; page scroll width equals the viewport; each table's box scrolls | build test + e2e | `tests/quality/lighthouse.spec.ts`, `tests/e2e/migration-guide.spec.ts` |
 

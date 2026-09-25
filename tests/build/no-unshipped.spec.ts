@@ -43,7 +43,7 @@ test("every section of the landing copy is rendered, and nothing else", () => {
 
 // Calls to action whose page is written in a later task; each entry fails this test as soon as
 // its page exists, so the list cannot go stale.
-const pending: Record<string, string> = { "/docs/getting-started/migrating-from-0-23": "T-mg-1" };
+const pending: Record<string, string> = {};
 
 test("every call to action of the copy renders, except pages still to be written", () => {
   const page = html("");

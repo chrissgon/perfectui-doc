@@ -34,7 +34,7 @@ A documentation page that carries the library's migration guide (`MIGRATION.md` 
 - REQ-1: The guide is one Markdown page in the 1.0 content folder, inside the getting-started section, rendered at `/docs/v1/<section>/<slug>` by the content model and listed in the 1.0 navigation. Source: PRD F-4; content-model spec REQ-1, REQ-4.
 - REQ-2: The page contains the "Why" section, the eight numbered sections and "Known trade-offs" of the library's `MIGRATION.md`, with the same headings in the same order, each heading with an anchor. Source: library `MIGRATION.md`.
 - REQ-3: The three mapping tables (style split, components, removed items) are rendered as tables with the 0.23 name in the first column and the 1.0 replacement in the second; a 0.23 component name links to that component's v0 page when the v0 content exists in the build, and is plain text otherwise. Source: `MIGRATION.md` sections 3, 4, 7; PRD F-7 (v0 in phase P-2); content-model spec REQ-11.
-- REQ-4: Every ```diff block of the guide is highlighted at build time with removed lines and added lines visually distinct (colour and a `-` or `+` marker), using the content model's highlighter. Source: `MIGRATION.md` (nine ```diff blocks); content-model spec REQ-10.
+- REQ-4: Every ```diff block of the guide is highlighted at build time with removed lines and added lines visually distinct (colour and a `-` or `+` marker), using the content model's highlighter. Source: `MIGRATION.md` (eleven ```diff blocks; first counted as nine, corrected 2026-09-25); content-model spec REQ-10.
 - REQ-5: The page frontmatter states the library version range it applies to (`from: 0.23.0`, `to: <installed 1.0 version>`), rendered in the page header; a build check fails when `to` differs from the installed package version. Source: PRD constraint (pinned library version); PRD R-1 (beta may change before launch).
 - REQ-6: The guide page is reachable in one click from the landing (landing spec REQ-4) and from the 1.0 navigation. Source: PRD F-4; landing spec REQ-4.
 
@@ -76,7 +76,7 @@ A documentation page that carries the library's migration guide (`MIGRATION.md` 
   Covers: REQ-3
 - AC-4:
   Given the generated guide page
-  When the nine diff blocks are inspected
+  When the eleven diff blocks are inspected
   Then removed and added lines carry distinct classes or colours and their `-` and `+` markers, produced at build time (no highlighting script runs in the browser)
   Covers: REQ-4
 - AC-5:

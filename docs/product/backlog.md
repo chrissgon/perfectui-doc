@@ -452,13 +452,14 @@
   Milestone: MG1
   Status: done (2026-09-25) tests/fixture-site/migration-diff.spec.ts passed (failed before: no diff grammar, then markers in the punctuation colour); bun run test 70 unit + 129 browser
 - T-mg-4: The guide page
-  Does: `content/v1/01.getting-started/04.migrating-from-0-23.md` from `MIGRATION.md`, tables with `:v0`, nine diff blocks, `changed: "1.0"`; the heading sync test.
+  Does: `content/v1/01.getting-started/04.migrating-from-0-23.md` from `MIGRATION.md`, tables with `:v0`, eleven diff blocks, `changed: "1.0"`; the heading sync test.
   Delivers: REQ-1, REQ-2, REQ-6, EDGE-6, AC-1, AC-2
   Touches: `content/v1/01.getting-started/04.migrating-from-0-23.md`, `tests/build/migration-headings.spec.ts`
   Depends on: T-mg-1, T-mg-2, T-mg-3
-  Check: the page is in the getting-started navigation; its h2 sequence equals `MIGRATION.md` at the pinned tag; nine diff blocks render
+  Check: the page is in the getting-started navigation; its h2 sequence equals `MIGRATION.md` at the pinned tag; eleven diff blocks render
   Size: M, because a long page with three tables
   Milestone: MG1
+  Status: done (2026-09-25) tests/build/migration-headings.spec.ts 3 passed (h2 sequence = MIGRATION.md at v1.0.0-beta.1, 11 diff blocks, getting-started navigation, range and badge); the CTA ratchet flagged the guide and its pending entry was removed; bun run test 70 unit + 132 browser
 - T-mg-5: Guide quality and switch
   Does: Lighthouse, axe and scroll checks at 360 px; the switch to v0 lands on the v0 index with the notice.
   Delivers: NFR-1, EDGE-4, AC-6
