@@ -187,6 +187,10 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin main` with 0f09967 (pipeline ideas), 384803f (library fixes that retire two site workarounds) and this record (user: "Pode fazer")
+
+- 2026-09-25: `git push origin v1` in `chrissgon/perfectui` with 92617ae (homepage and README at perfectui.dev), caa4478 (release pipeline idea), 057ff1c (radio and switch fill), 0e6a520 (modal margin under resets), a7cc6d0 (mixed state on checkboxes inserted after load) and 4dce7a9 (fallback guard removed); `todo.txt` stays uncommitted (user: "Pode fazer")
+
 - 2026-09-25: `git push origin main` with e4e7e97 (site URL https://perfectui.dev) once the domain served HTTPS, as agreed; the user's notice that https://perfectui.dev works was the signal (user)
 
 - 2026-09-25: `git push origin main` with the release record (0fcf4a5, cherry-picked onto the merge of pull request #1) and this entry; work continues on `main` (user: "Sim")
