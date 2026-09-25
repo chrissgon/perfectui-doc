@@ -1,6 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 import { installCommand } from "../../app/site.config";
 
+// The hero's command; the install section has its own (tested in landing-migration.spec.ts).
+const hero = (page: Page) => page.locator("#hero");
 const clipboard = (page: Page) => page.evaluate(() => navigator.clipboard.readText());
 const denyClipboard = (page: Page) =>
   page.addInitScript(() => {
@@ -16,22 +18,22 @@ test.describe("copy command (REQ-3, EDGE-9, AC-3)", () => {
 
   test("a click copies the command and reports Copied for at least 1 s", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Copy install command" }).click();
+    await hero(page).getByRole("button", { name: "Copy install command" }).click();
     expect(await clipboard(page)).toBe(installCommand("npm"));
-    const copied = page.getByRole("button", { name: "Copied" });
+    const copied = hero(page).getByRole("button", { name: "Copied" });
     await expect(copied).toBeVisible();
     await page.waitForTimeout(1000);
     await expect(copied).toBeVisible();
-    await expect(page.getByRole("status").filter({ hasText: "Copied" })).toHaveCount(1);
-    await expect(page.getByRole("button", { name: "Copy install command" })).toBeVisible({ timeout: 2000 });
+    await expect(hero(page).getByRole("status").filter({ hasText: "Copied" })).toHaveCount(1);
+    await expect(hero(page).getByRole("button", { name: "Copy install command" })).toBeVisible({ timeout: 2000 });
   });
 
   test("the keyboard copies the command", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Copy install command" }).focus();
+    await hero(page).getByRole("button", { name: "Copy install command" }).focus();
     await page.keyboard.press("Enter");
     expect(await clipboard(page)).toBe(installCommand("npm"));
-    await expect(page.getByRole("button", { name: "Copied" })).toBeFocused();
+    await expect(hero(page).getByRole("button", { name: "Copied" })).toBeFocused();
   });
 
   test("without clipboard access the command is selected, with no dialog", async ({ page }) => {
@@ -39,7 +41,7 @@ test.describe("copy command (REQ-3, EDGE-9, AC-3)", () => {
     let dialogs = 0;
     page.on("dialog", () => dialogs++);
     await page.goto("/");
-    await page.getByRole("button", { name: "Copy install command" }).click();
+    await hero(page).getByRole("button", { name: "Copy install command" }).click();
     const selected = await page.evaluate(() => {
       const el = document.activeElement as HTMLInputElement;
       return el.value.slice(el.selectionStart ?? 0, el.selectionEnd ?? 0);
@@ -62,8 +64,8 @@ test.describe("copy command (REQ-3, EDGE-9, AC-3)", () => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto("/");
-    await expect(page.getByRole("textbox", { name: "Install command" })).toHaveValue(installCommand("npm"));
-    await expect(page.getByRole("button", { name: /Copy install command|Copied/ })).toHaveCount(0);
+    await expect(hero(page).getByRole("textbox", { name: "Install command" })).toHaveValue(installCommand("npm"));
+    await expect(hero(page).getByRole("button", { name: /Copy install command|Copied/ })).toHaveCount(0);
     await context.close();
   });
 });

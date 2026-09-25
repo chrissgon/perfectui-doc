@@ -6,6 +6,8 @@
     <LandingModeThemeDemo :section="section('mode-theme')" :version="latestVersion.id" :pages="pages" />
     <LandingTailwindDemo :section="section('tailwind')" :version="latestVersion.id" :pages="pages" />
     <LandingStrikeList :section="section('nothing-to-undo')" />
+    <LandingMigrationCallout :section="section('migration')" :version="latestVersion.id" :pages="pages" />
+    <LandingInstallTabs :section="section('install')" :version="latestVersion.id" :pages="pages" :library-version="size.version" />
   </main>
 </template>
 

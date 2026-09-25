@@ -371,6 +371,7 @@
   Check: `tests/e2e/landing-migration.spec.ts`: the guide link is visible before the end of the showcase and opens the guide; tabs by arrow keys
   Size: S, because two static sections with copy controls
   Milestone: SH3
+  Status: done (2026-09-25) tests/e2e/landing-migration.spec.ts 5 passed (4 failed before); the guide-link case asserts no dead link until T-mg-1 builds the guide; bun run test 40 unit + 80 browser; lint and typecheck exit 0
 - T-sh-15: Landing robustness checks
   Does: tests for JavaScript disabled, 320 px width and unshipped features.
   Delivers: NFR-3, EDGE-1, EDGE-2, AC-6, AC-12
