@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto grid max-w-7xl gap-8 p-8 lg:grid-cols-[272px_minmax(0,1fr)]">
+  <div class="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)] gap-8 p-4 sm:p-8 lg:grid-cols-[272px_minmax(0,1fr)]">
     <!-- Two columns until the documentation layout (T-cm-11). -->
     <DocSidebar :sections="sections" :current-path="path" />
     <article v-if="page">

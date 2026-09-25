@@ -122,6 +122,7 @@
   Check: `tests/e2e/example.spec.ts` (complete): tabs by keyboard, copy, a long snippet scrolls without widening the page; `tests/repo/no-inline-examples.spec.ts` finds no example HTML string under `app/`
   Size: M, because interaction and states on top of the spike
   Milestone: CM2
+  Status: done (2026-09-24) tests/e2e/example.spec.ts 6 passed (five failed before the implementation; the 360 px test caught the page widening to 2032 px, fixed in the page grid); tests/repo/no-inline-examples.spec.ts 2 passed; bun run test exit 0 (21 unit, 22 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-12.md: approve with changes
 - T-cm-13: Content validator
   Does: `server/utils/validateDocs.ts` for EDGE-2, EDGE-3, EDGE-4, EDGE-6 (failures) and EDGE-9 (warning), messages naming file and cause; rows whose path ends in `/.navigation` (the indexed `.navigation.yml` files) are not pages and are skipped; an `::example` holds exactly one fenced block (T-cm-5 review); two latest-version pages with the same slug in different sections warn, because the flat 0.23 redirect can only point to one (T-cm-8 review).
   Delivers: REQ-2, EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10
@@ -303,7 +304,7 @@
   Delivers: REQ-3, EDGE-3, EDGE-9, AC-3
   Touches: `app/composables/useMotion.ts`, `app/components/CopyCommand.vue`
   Depends on: T-cm-2
-  Check: `tests/e2e/copy.spec.ts`: click and keyboard copy, feedback at least 1 s, fallback selection with the clipboard denied; a unit test shows no timer before mount
+  Check: `tests/e2e/copy.spec.ts`: click and keyboard copy, feedback at least 1 s, fallback selection with the clipboard denied (also for the documentation example block, T-cm-12 review); a unit test shows no timer before mount
   Size: M, because shared behaviour every section uses
   Milestone: SH2
 - T-sh-9: Hero
