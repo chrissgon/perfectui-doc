@@ -49,3 +49,12 @@ test("a landing example that names a missing documentation example fails the bui
   expect(run.status).not.toBe(0);
   expect(run.output).toContain('no example named "basic" in /docs/v1/components/modal');
 });
+
+test("a version range whose `to` is not the installed library fails the build (migration guide AC-5)", () => {
+  const root = projectCopy({
+    "content/v1/01.getting-started/90.range.md": "---\ntitle: R\ndescription: R.\nfrom: 0.23.0\nto: 1.0.0\n---\n\n## One\n",
+  });
+  const run = generate(root);
+  expect(run.status).not.toBe(0);
+  expect(run.output).toContain('v1/01.getting-started/90.range.md: "to" is 1.0.0 but the installed @chrissgon/perfectui is 1.0.0-beta.1');
+});

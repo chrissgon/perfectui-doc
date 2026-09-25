@@ -11,6 +11,9 @@
     <!-- Escaped text with `inline code` turned into <code>. -->
     <!-- eslint-disable-next-line vue/no-v-html -->
     <p class="mt-3 text-base leading-6" style="color: var(--pui-text-muted)" v-html="descriptionHtml" />
+    <p v-if="from && to" data-range class="mt-2 font-mono text-sm" style="color: var(--pui-text-muted)">
+      Applies to {{ from }} → {{ to }}
+    </p>
   </header>
 </template>
 
@@ -22,6 +25,9 @@ const props = defineProps<{
   description: string;
   since?: string;
   changed?: string;
+  /** Version range of a migration page (migration-guide design). */
+  from?: string;
+  to?: string;
 }>();
 
 const escape = (text: string) =>

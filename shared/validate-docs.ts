@@ -41,10 +41,13 @@ function majorOf(version: string): number {
   return Number.parseInt(version.replace(/^v/, ""), 10);
 }
 
+const VERSION = /^\d+\.\d+\.\d+(?:-[\w.]+)?$/;
+
 export function validateDocs(
   contentDir: string,
   versions: readonly DocVersion[],
   components: readonly string[],
+  options: { libraryVersion?: string } = {},
 ): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -67,6 +70,14 @@ export function validateDocs(
         if (typeof front[field] !== "string" || !front[field].trim()) {
           errors.push(`${file}: missing frontmatter field "${field}"`);
         }
+      }
+
+      // A version range (the migration guide): `from` is a version, `to` the installed library.
+      if (front.from !== undefined && !VERSION.test(String(front.from))) {
+        errors.push(`${file}: "from" is not a version: ${front.from}`);
+      }
+      if (front.to !== undefined && options.libraryVersion && String(front.to) !== options.libraryVersion) {
+        errors.push(`${file}: "to" is ${front.to} but the installed @chrissgon/perfectui is ${options.libraryVersion}`);
       }
       for (const field of ["since", "changed"]) {
         const value = front[field];

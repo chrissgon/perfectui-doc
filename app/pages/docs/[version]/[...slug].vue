@@ -10,6 +10,8 @@
         :description="page.description"
         :since="page.since"
         :changed="page.changed"
+        :from="page.from"
+        :to="page.to"
       />
       <DocToc :links="tocLinks" mode="disclosure" />
       <ContentRenderer :value="page" class="doc-prose" />

@@ -432,6 +432,7 @@
   Check: `tests/build/validation.spec.ts` (extended): a mismatched `to` fails naming the file and both versions; a matching one shows "applies to 0.23.0 → 1.0.0-beta.1"
   Size: M, because three components change together
   Milestone: MG1
+  Status: done (2026-09-25) validate-docs 10 passed (2 failed before); fixture range test passed; slow: mismatched to fails naming both versions (5 passed); bun run test 70 unit + 125 browser
 - T-mg-2: Table wrapper and v0 links
   Does: `ProseTable` (scroll box, `pui-table`) and the inline `V0` component; confirm an inline component renders inside a table cell.
   Delivers: REQ-3, EDGE-1, EDGE-2, EDGE-5, AC-3

@@ -8,6 +8,9 @@ const docsSchema = z.object({
   tags: z.array(z.string()).default([]),
   since: z.string().optional(),
   changed: z.string().optional(),
+  // A version range, for the migration guide (migration-guide design, REQ-5).
+  from: z.string().optional(),
+  to: z.string().optional(),
 });
 
 const link = z.object({ label: z.string(), to: z.string() });

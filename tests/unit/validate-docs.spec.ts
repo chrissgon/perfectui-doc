@@ -74,3 +74,27 @@ describe("content validator (EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9, AC-10)", ()
     ]);
   });
 });
+
+// Migration guide REQ-5, EDGE-3, AC-5: the version range must match the installed library.
+describe("version range of a page", () => {
+  const guide = (range: string) => ({ "v1/01.getting-started/04.guide.md": page(`title: G\ndescription: G.\n${range}`) });
+
+  it("accepts a `to` equal to the installed library version", () => {
+    const root = tree(guide("from: 0.23.0\nto: 1.0.0-beta.1"));
+    expect(validateDocs(root, versions, COMPONENTS, { libraryVersion: "1.0.0-beta.1" }).errors).toEqual([]);
+  });
+
+  it("fails on a mismatched `to`, naming the file and both versions", () => {
+    const root = tree(guide("from: 0.23.0\nto: 1.0.0"));
+    expect(validateDocs(root, versions, COMPONENTS, { libraryVersion: "1.0.0-beta.1" }).errors).toEqual([
+      'v1/01.getting-started/04.guide.md: "to" is 1.0.0 but the installed @chrissgon/perfectui is 1.0.0-beta.1',
+    ]);
+  });
+
+  it("fails on a `from` that is not a version", () => {
+    const root = tree(guide("from: soon\nto: 1.0.0-beta.1"));
+    expect(validateDocs(root, versions, COMPONENTS, { libraryVersion: "1.0.0-beta.1" }).errors).toEqual([
+      'v1/01.getting-started/04.guide.md: "from" is not a version: soon',
+    ]);
+  });
+});

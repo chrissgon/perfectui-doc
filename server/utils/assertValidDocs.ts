@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { versions } from "../../app/versions";
 import { validateDocs } from "../../shared/validate-docs";
@@ -16,7 +16,8 @@ export function assertValidDocs(): void {
   const components = readdirSync(join(root, "app/components/content"))
     .filter((name) => name.endsWith(".vue"))
     .map((name) => name.replace(/\.vue$/, "").replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase());
-  const { errors, warnings } = validateDocs(join(root, "content"), versions, components);
+  const libraryVersion = (JSON.parse(readFileSync(join(root, "node_modules/@chrissgon/perfectui/package.json"), "utf8")) as { version: string }).version;
+  const { errors, warnings } = validateDocs(join(root, "content"), versions, components, { libraryVersion });
   for (const warning of warnings) console.warn(`[docs] warning: ${warning}`);
   if (errors.length) throw new Error(`[docs] invalid content:\n${errors.join("\n")}`);
   checked = true;
