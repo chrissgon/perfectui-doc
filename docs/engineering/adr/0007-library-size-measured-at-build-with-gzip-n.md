@@ -27,3 +27,9 @@ Option A. The footnote reads "`gzip -9 -n` of the published builds; perfectui me
 
 - The generator fails the build when a file or `gzip` is missing, naming it (EDGE-7).
 - Messaging PROOF-1 was corrected to 3,221 B and 493 B for 1.0.0-beta.1 (user, 2026-09-24); the page never prints a typed number for perfectui.
+
+## Spike result (T-sh-6, 2026-09-25)
+
+- Local build (macOS, Apple gzip 479): `api/library-size.json` is `{ "version": "1.0.0-beta.1", "css": 3221, "js": 493, "method": "gzip -9 -n" }`, equal to the build test's own `gzip -9 -n` run.
+- Still to confirm on the first Netlify deploy preview: `gzip` exists on the build image and GNU gzip gives the same bytes. If it differs by a few bytes, NFR-2 still holds (build and test share the machine), but the test's pinned 3,221 and 493 for 1.0.0-beta.1 must be relaxed to the same-machine comparison.
+

@@ -300,6 +300,7 @@
   Check: `tests/build/library-size.spec.ts`: the JSON equals the test's own `gzip -9 -n` numbers (3,221 and 493 for 1.0.0-beta.1); a missing file fails the build naming it
   Size: M, because an environment assumption to confirm
   Milestone: SH2
+  Status: done (2026-09-25) tests/build/library-size.spec.ts 1 passed and tests/unit/library-size.spec.ts 2 passed (unit failed before: module missing); JSON 3221/493 with macOS gzip; bun run test 33 unit + 53 browser; Netlify gzip confirmation pending the first deploy preview (needs approval)
 - T-sh-7: Landing copy collection
   Does: `content/landing.yml` with the nine sections verbatim from messaging and the `landing` data collection; the page fails the build on a missing or extra section id.
   Delivers: REQ-1, REQ-4
