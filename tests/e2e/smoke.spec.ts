@@ -5,7 +5,7 @@ import { lighthouseScores } from "../helpers/lighthouse";
 test("the generated home page renders with the library's button", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  const bg = await page.locator(".pui-btn").first().evaluate((el) => getComputedStyle(el).backgroundColor);
+  const bg = await page.getByRole("button", { name: "Get started" }).evaluate((el) => getComputedStyle(el).backgroundColor);
   expect(bg).not.toBe("rgba(0, 0, 0, 0)");
 });
 

@@ -264,6 +264,7 @@
   Check: `tests/e2e/mode.spec.ts`: no cookie leaves the attribute absent and follows `prefers-color-scheme`; a stored cookie renders that mode on first paint; the toggle cycles three states; no `dark` class anywhere
   Size: M, because a script ordering assumption and three states
   Milestone: SH1
+  Status: done (2026-09-25) tests/e2e/mode.spec.ts 6 passed (6 failed before); bun run test 31 unit + 40 browser; lint and typecheck exit 0
 - T-sh-3: Theme picker
   Does: `ThemePicker` with the presets and a colour input; sets `--pui-theme` on `<html>` and in session storage.
   Delivers: REQ-9, EDGE-6, AC-9
