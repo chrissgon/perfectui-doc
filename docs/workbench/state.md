@@ -180,6 +180,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin redesign` with e8f315a (the pruning plan marked done) and this record, before the user opens the pull request `redesign` → `main` (user: "Sim")
+
 - 2026-09-25: On `redesign`, `git merge -s ours --allow-unrelated-histories origin/main` (joins the 0.23 history with no file of it) and `git push origin redesign`, so the user can open and merge a pull request `redesign` → `main` (user: "Pode fazer o merge")
 
 - 2026-09-25: `git push origin redesign` with the 18 commits from 620b527 to 36fba67 (R-1 closing, the user's review adjustments, the R-2 plan and T-ld-1 to T-ld-5, the plan to prune old library versions), plus this record (user: "Aprovo")
