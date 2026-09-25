@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "@playwright/test";
 import { generate, projectCopy, removeCopies } from "../helpers/project-copy";
@@ -39,4 +39,13 @@ test("a version with no page fails the build instead of publishing an empty inde
   const run = generate(root);
   expect(run.status).not.toBe(0);
   expect(run.output).toContain("search document set is empty for v0");
+});
+
+test("a landing example that names a missing documentation example fails the build (ADR-0008)", () => {
+  const root = projectCopy({}, []);
+  const modal = join(root, "content/v1/04.components/08.modal.md");
+  writeFileSync(modal, readFileSync(modal, "utf8").replace('::example{name="basic"}', "::example"));
+  const run = generate(root);
+  expect(run.status).not.toBe(0);
+  expect(run.output).toContain('no example named "basic" in /docs/v1/components/modal');
 });

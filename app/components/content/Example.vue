@@ -1,6 +1,10 @@
 <template>
-  <div data-example class="example my-6 overflow-hidden rounded-[9px] border" style="border-color: var(--pui-border)">
-    <div class="flex items-center border-b px-3" style="border-color: var(--pui-border)">
+  <div
+    data-example
+    :class="stacked ? 'example flex h-full flex-col' : 'example my-6 overflow-hidden rounded-[9px] border'"
+    style="border-color: var(--pui-border)"
+  >
+    <div v-if="!stacked" class="flex items-center border-b px-3" style="border-color: var(--pui-border)">
       <div role="tablist" aria-label="Example" class="flex" @keydown="onKeydown">
         <button
           v-for="tab in tabs"
@@ -27,10 +31,10 @@
     <div
       :id="`${uid}-preview`"
       data-example-preview
-      role="tabpanel"
-      :aria-labelledby="`${uid}-preview-tab`"
-      :hidden="active !== 'preview'"
-      class="example-canvas overflow-x-auto p-8"
+      :role="stacked ? undefined : 'tabpanel'"
+      :aria-labelledby="stacked ? undefined : `${uid}-preview-tab`"
+      :hidden="!stacked && active !== 'preview'"
+      :class="['example-canvas overflow-x-auto', stacked ? 'grid min-h-44 flex-1 place-items-center px-[clamp(16px,4vw,48px)] py-6' : 'p-8']"
     >
       <!-- The snippet is the page author's own Markdown, rendered at build time (ADR-0002). -->
       <!-- eslint-disable-next-line vue/no-v-html -->
@@ -40,10 +44,12 @@
       :id="`${uid}-code`"
       ref="codePanel"
       data-example-code
-      role="tabpanel"
-      :aria-labelledby="`${uid}-code-tab`"
-      :hidden="active !== 'code'"
-      class="overflow-x-auto p-4 font-mono text-sm"
+      :role="stacked ? undefined : 'tabpanel'"
+      :aria-labelledby="stacked ? undefined : `${uid}-code-tab`"
+      :hidden="!stacked && active !== 'code'"
+      :class="['overflow-x-auto p-4 font-mono', stacked ? 'max-h-40 overflow-y-auto border-t text-[13px]' : 'text-sm']"
+      :tabindex="stacked ? 0 : undefined"
+      :aria-label="stacked ? 'Example code' : undefined"
       style="background: var(--pui-bg-emphasis)"
     >
       <slot />
@@ -57,7 +63,9 @@ import { scopeExample } from "#shared/example-scope";
 
 // ADR-0002: one fenced block in the default slot gives the live preview (the raw text kept in
 // the rendered <pre>'s `code` prop) and the code tab (the slot, highlighted at build time).
-withDefaults(defineProps<{ lang?: string }>(), { lang: "html" });
+// `stacked` (the landing's showcase, ExampleRef): preview above code, no tabs and no copy.
+const props = withDefaults(defineProps<{ lang?: string; layout?: "tabs" | "stacked" }>(), { lang: "html", layout: "tabs" });
+const stacked = computed(() => props.layout === "stacked");
 const slots = useSlots();
 const uid = useId();
 

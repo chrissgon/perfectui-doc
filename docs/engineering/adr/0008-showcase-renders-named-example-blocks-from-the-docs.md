@@ -1,6 +1,6 @@
 # ADR-0008: The landing's showcase renders named example blocks from the documentation
 
-- Status: proposed
+- Status: accepted (spike T-sh-11, 2026-09-25)
 - Date: 2026-09-24
 - Serves: REQ-5, NFR-1
 
@@ -27,3 +27,10 @@ Option A, with B as the fallback.
 
 - The four overlay examples are named in their pages (`modal/basic`, `dropdown/basic`, `tooltip/basic`, `accordion/basic`).
 - AC-5's repository check also asserts that every `ExampleRef` name exists in the content at build.
+
+## Spike result (T-sh-11, 2026-09-25)
+
+- Option A holds. A page's stored body is a `minimark` tree (`[tag, props, ...children]`); `ExampleRef` finds the `example` node whose `name` matches, keeps the body's `style` node (the highlighting classes), and renders that body with `ContentRenderer`. The node's props gain `layout: "stacked"`, which `Example` renders as preview above code with no tabs, the export's look.
+- A missing page or name throws during prerender and `failOnError` stops the build (slow test: removing `name="basic"` from the modal page fails with `no example named "basic" in /docs/v1/components/modal`).
+- The fixture site (T-cm-22) renders a stub home page, since its content has none of the named examples.
+

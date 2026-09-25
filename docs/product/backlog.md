@@ -350,6 +350,7 @@
   Check: `tests/e2e/showcase.spec.ts`: four live components open and close natively; a missing name fails the build
   Size: L, because an assumption of the design plus a section
   Milestone: SH3
+  Status: done (2026-09-25) tests/e2e/showcase.spec.ts 10 passed (6 failed before); slow: a missing name fails the build (4 passed); ADR-0008 accepted; bun run test 67 unit + 109 browser
 - T-sh-12: Class picker and mode and theme demo
   Does: `ClassPicker` (chips with `aria-pressed`, live element, highlighted token) and `ModeThemeDemo` (section-scoped mode and theme).
   Delivers: REQ-5, AC-5

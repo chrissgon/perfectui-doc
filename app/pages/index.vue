@@ -3,6 +3,7 @@
     <LandingHero :section="section('hero')" :size="size" :bars="bars" :version="latestVersion.id" :pages="pages" />
     <LandingSizeChart :section="section('size')" :perfectui="size" />
     <LandingClassPicker :section="section('classes')" :version="latestVersion.id" :pages="pages" />
+    <LandingOverlaysShowcase :section="section('overlays')" />
     <LandingModeThemeDemo :section="section('mode-theme')" :version="latestVersion.id" :pages="pages" />
     <LandingTailwindDemo :section="section('tailwind')" :version="latestVersion.id" :pages="pages" />
     <LandingStrikeList :section="section('nothing-to-undo')" />

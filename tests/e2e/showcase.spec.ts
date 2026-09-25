@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 
 const shapes = [["button", "btn"], ["chip", "chip"], ["badge", "badge"]] as const;
@@ -72,5 +73,64 @@ test.describe("mode and theme demo", () => {
     expect(await page.evaluate(() => document.documentElement.style.getPropertyValue("--pui-theme"))).toBe("");
     expect(await outside.evaluate((el) => getComputedStyle(el).backgroundColor)).toBe(outsideBg);
     expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(bodyBg);
+  });
+});
+
+// REQ-5, AC-5, ADR-0008: the overlays come from the documentation's named examples and work
+// with no script of the landing's.
+test.describe("overlays showcase", () => {
+  const overlays = (page: Page) => page.locator("#overlays");
+
+  test("renders the four named examples from their documentation pages", async ({ page }) => {
+    await page.goto("/");
+    await expect(overlays(page).locator("[data-example]")).toHaveCount(4);
+    for (const label of ["Modal", "Dropdown", "Tooltip", "Accordion"]) {
+      await expect(overlays(page).getByText(label, { exact: true })).toBeVisible();
+    }
+    await expect(overlays(page).getByText("no JavaScript of yours")).toHaveCount(4);
+  });
+
+  test("the modal opens and closes natively", async ({ page }) => {
+    await page.goto("/");
+    await overlays(page).getByRole("button", { name: "Delete project" }).click();
+    const dialog = page.locator("#overlays dialog[open]");
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+  });
+
+  test("the dropdown opens and closes natively", async ({ page }) => {
+    await page.goto("/");
+    await overlays(page).getByRole("button", { name: "Menu" }).click();
+    const panel = overlays(page).locator(".pui-dropdown:popover-open");
+    await expect(panel).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(panel).toHaveCount(0);
+  });
+
+  test("the tooltip opens on focus and closes on blur", async ({ page }) => {
+    await page.goto("/");
+    await overlays(page).getByRole("button", { name: "?" }).focus();
+    const tip = overlays(page).locator(".pui-tooltip:popover-open");
+    await expect(tip).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(tip).toHaveCount(0);
+  });
+
+  test("the accordion opens and closes natively", async ({ page }) => {
+    await page.goto("/");
+    const item = overlays(page).locator("details").first();
+    const open = () => item.evaluate((el) => (el as HTMLDetailsElement).open);
+    const before = await open();
+    await item.locator("summary").click();
+    expect(await open()).toBe(!before);
+    await item.locator("summary").click();
+    expect(await open()).toBe(before);
+  });
+
+  test("the landing holds no example HTML of its own", () => {
+    const source = readFileSync("app/components/landing/OverlaysShowcase.vue", "utf8");
+    // Labels may name "<dialog>"; markup would need closing tags or overlay attributes.
+    expect(source).not.toMatch(/<\/(dialog|details)>|popover=|popovertarget=|commandfor=|interestfor=/);
   });
 });
