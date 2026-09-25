@@ -27,3 +27,12 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 
 ## Outside the change
 - None.
+
+## Follow-up: theme-coloured text follows the theme (2026-09-25)
+
+- Intent, quoted: "Eu mudei a cor do tema, e todos os textos deveriam mudar, mas muitos ainda ficaram azuis."
+- Cause: `--site-theme-ink` in `app/assets/css/main.css` was a fixed `light-dark(#00628b, #6bc9f5)`, chosen while the picker accepted any colour (EDGE-6); the section label, the current sidebar and headings links, links in prose and highlighted code tags read it.
+- Change: `--site-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 30%)`, the library's ink recipe with more text colour. Measured in Chromium for the five presets in both modes, on the page, a soft theme fill and the code background: minimum 4.78:1 (violet in dark mode on the code background); 25% would give 4.34:1.
+- Tests: `tests/e2e/theme.spec.ts` checks that the section label and the current sidebar and headings links change colour with a preset; `tests/fixture-site/code-colours.spec.ts` no longer pins the two fixed values and checks the tag colour follows mode and theme (a deliberate behaviour change, not a weakened test).
+- Checks: lint exit 0; typecheck exit 0; 79 unit passed; 170 Playwright passed including axe and Lighthouse.
+- Verdict: approve.

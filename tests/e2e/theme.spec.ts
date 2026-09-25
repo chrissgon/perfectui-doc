@@ -48,6 +48,20 @@ test.describe("theme picker (REQ-9, EDGE-6, AC-9)", () => {
     await expect.poll(() => bg(page, getStarted)).toBe(initial);
   });
 
+  test("the site's own theme-coloured text follows the picked colour (user review 2026-09-25)", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto("/docs/v1/getting-started/typescript");
+    const texts = [
+      page.getByRole("navigation", { name: "Documentation" }).locator('[aria-current="page"]'),
+      page.getByRole("navigation", { name: "On this page" }).locator('[aria-current="location"]'),
+      page.locator("article p").filter({ hasText: /^\s*Getting Started\s*$/ }).first(),
+    ];
+    const colours = () => Promise.all(texts.map((t) => t.evaluate((el) => getComputedStyle(el).color)));
+    const before = await colours();
+    await pick(page, "Warn");
+    await expect.poll(async () => (await colours()).every((c, i) => c !== before[i])).toBe(true);
+  });
+
   test("the picker offers the five presets and no free colour input (user review 2026-09-25)", async ({ page }) => {
     await page.goto("/");
     await picker(page).click();

@@ -43,9 +43,14 @@
   }
 }
 
-/* Site tokens for text in a role colour (design system inks; handoff token table). */
+/*
+ * Site tokens for text in a role colour (design system inks; handoff token table). The theme ink
+ * follows the picked --pui-theme (user review 2026-09-25), the library's own ink recipe with more
+ * of the text colour: at 30% every preset reads at least 4.78:1 in both modes, on the page, on a
+ * soft theme fill and on the code background.
+ */
 :root {
-  --site-theme-ink: light-dark(#00628b, #6bc9f5);
+  --site-theme-ink: color-mix(in oklab, var(--pui-theme), var(--pui-text) 30%);
   --site-success-ink: light-dark(#0b6e2f, #71d588);
   --site-warn-ink: light-dark(#934f03, #f9b867);
   --site-error-ink: light-dark(#951616, #fa7b73);
