@@ -62,3 +62,11 @@ Verdict: approve with changes (one low finding recorded, no fix needed now).
 - Tests: `tests/e2e/review-fixes.spec.ts` copies from a documentation block and from a showcase cell, checks the tabbed example has no second control, and checks the divider's colour is `--pui-border`.
 - Checks: lint exit 0 (no warnings); typecheck exit 0; 79 unit passed; 175 Playwright passed before the lint-only edit to `ProsePre.vue`, then the 22 copy, prose and review tests again.
 - Verdict: approve.
+
+## Follow-up: glass header (2026-09-25)
+
+- Intent, quoted: "Coloque um efeito de glass no fundo do header, não apenas uma cor sólida."
+- Change: `app/components/SiteHeader.vue` paints `color-mix(in oklab, var(--pui-bg) 72%, transparent)` over `backdrop-filter: blur(14px) saturate(160%)`, and falls back to the opaque page colour where backdrop filters are unsupported. The header's menus and the search dialog open in the top layer, so the filter does not become their containing block.
+- Tests: `tests/e2e/review-fixes.spec.ts` checks the blur and a translucent background; screenshots over the inverse band in both modes show the text readable.
+- Checks: lint exit 0; typecheck exit 0; 79 unit passed; 176 Playwright passed including axe and Lighthouse.
+- Verdict: approve.

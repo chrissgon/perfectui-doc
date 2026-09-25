@@ -1,5 +1,8 @@
 <template>
-  <header class="sticky top-0 z-20 border-b" style="background: var(--pui-bg); border-color: var(--pui-border)">
+  <!-- Glass (user review 2026-09-25): the page shows through, blurred, under a translucent
+       page colour. Menus and dialogs open in the top layer, so the backdrop filter does not
+       become their containing block. -->
+  <header class="site-glass sticky top-0 z-20 border-b" style="border-color: var(--pui-border)">
     <div :class="['mx-auto flex h-16 items-center justify-between gap-1 px-2 sm:gap-3 sm:px-6', wide ? 'max-w-[1440px]' : 'max-w-[1200px]']">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="pui-btn pui-link pui-surface px-1" aria-label="Perfect UI home">
@@ -71,3 +74,17 @@ const onDocPage = computed(() => /^\/docs\/[^/]+\/.+/.test(route.path));
 const wide = onDocs;
 const menuId = useId();
 </script>
+
+<style scoped>
+.site-glass {
+  background: color-mix(in oklab, var(--pui-bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+/* Without backdrop filters the header stays opaque, so its text never sits on bare content. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-glass {
+    background: var(--pui-bg);
+  }
+}
+</style>

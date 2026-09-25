@@ -146,3 +146,14 @@ test("the showcase's code panel is divided by the border colour, not the text co
   });
   expect(border).toBe(expected);
 });
+
+test("the header is glass: a translucent page colour over a blurred backdrop (user review 2026-09-25)", async ({ page }) => {
+  await page.goto("/");
+  const [background, filter] = await page.locator("header").first().evaluate((el) => {
+    const style = getComputedStyle(el);
+    return [style.backgroundColor, style.backdropFilter];
+  });
+  expect(filter).toContain("blur(14px)");
+  // A colour with alpha below 1, whatever the notation the browser returns.
+  expect(background).toMatch(/\/ 0\.\d+\)|rgba\(.*, 0\.\d+\)/);
+});
