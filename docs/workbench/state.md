@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (architecture: content model revised; landing and site shell, migration guide and search designs next; then the backlog)
+- Current phase: engineering (architecture of release R-1 designed: content model, landing and shell, migration guide, search; product-backlog next)
 - Updated: 2026-09-24
 
 ## Autonomy
@@ -40,6 +40,12 @@
 | docs/engineering/adr/0004-navigation-from-folders-and-numeric-prefixes.md | eng-architecture | approved | 2026-09-23 |
 | docs/engineering/adr/0005-unversioned-redirects-as-generated-netlify-rules.md | eng-architecture | draft | 2026-09-24 |
 | docs/engineering/adr/0006-code-highlighting-with-css-variables.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/designs/landing-and-site-shell.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/designs/migration-guide.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/designs/search.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/adr/0007-library-size-measured-at-build-with-gzip-n.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/adr/0008-showcase-renders-named-example-blocks-from-the-docs.md | eng-architecture | draft | 2026-09-24 |
+| docs/engineering/adr/0009-client-side-search-with-minisearch.md | eng-architecture | draft | 2026-09-24 |
 | docs/product/backlog.md (superseded by the restart; to re-cut after the PRD) | product-backlog | draft | 2026-09-23 |
 | docs/product/prd.md | product-prd | draft | 2026-09-23 |
 
@@ -119,6 +125,9 @@
 - [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
 - [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
 
+- [ ] Mode toggle: cycle light → dark → system, or light ↔ dark only? Recommended: the three-step cycle (landing-and-site-shell design Q1)
+- [ ] Correct messaging PROOF-1 to the competitors' method (`gzip -9 -n`: 3,221 B and 493 B for 1.0.0-beta.1)? Recommended: yes (landing-and-site-shell design Q2, ADR-0007)
+- [ ] Keep one redirect per 0.23 flat URL (`/docs/tooltip` → `/docs/v1/components/tooltip`) so inbound links keep working? Recommended: yes (content-model design Q1, ADR-0005)
 - [ ] Start converting the 32 v0 pages during release 1, in parallel, once the content model renders? (roadmap OPEN-1)
 
 - [x] `/docs` is its own index page and every version is served under its own segment, `/docs/<major>/<section>/<slug>`, with `/docs/...` redirecting to the current major (user, 2026-09-23; flows OPEN-1 and the URL scheme decision)

@@ -57,7 +57,7 @@ Documentation is Markdown under `content/v1/` and `content/v0/`, two Nuxt Conten
 | Content validator | checks the collections for the edge cases the engine does not enforce | `server/utils/validateDocs.ts` | all collections, versions configuration | ok, or an error naming file and cause | EDGE-2, EDGE-3, EDGE-4, EDGE-6, EDGE-9 |
 | Search document generator | the search document set | `server/routes/api/search-index.json.get.ts` | collections, versions | `api/search-index.json` | REQ-8, EDGE-8 |
 | Assistant corpus generator | the corpus split by heading | `server/routes/api/assistant-corpus.json.get.ts` | collections, versions | `api/assistant-corpus.json` | REQ-8, EDGE-8 |
-| Redirects generator | the Netlify redirect rules for unversioned paths | `server/routes/_redirects.get.ts` | versions configuration | `_redirects` at the output root | REQ-1, REQ-5 |
+| Redirects generator | the Netlify redirect rules for unversioned paths and for the 0.23 site's flat URLs | `server/routes/_redirects.get.ts` | versions configuration, latest collection | `_redirects` at the output root | REQ-1, REQ-5 |
 | Build configuration | content module, prerender routes, fail on error, Tailwind, fonts | `nuxt.config.ts` | none | static output | NFR-2, EDGE-8 |
 
 ## Data or content model
@@ -120,7 +120,7 @@ export const versions = [
 | Path | Produced by | Shape (example) | Serves |
 |------|-------------|-----------------|--------|
 | `content/<major>/<nn>.<section>/<nn>.<slug>.md` | authors | frontmatter `title`, `description`, `tags`, `since?`, `changed?`; body with `::example`, `::note`, `::warning` | REQ-1, REQ-2, NFR-1 |
-| `.output/public/_redirects` | redirects generator | `/docs /docs/v1 301` then `/docs/* /docs/v1/:splat 301`; non-forced, so existing versioned files are served first (Netlify shadowing) | REQ-1, REQ-5 |
+| `.output/public/_redirects` | redirects generator | one line per latest page for the 0.23 site's flat URL (`/docs/tooltip /docs/v1/components/tooltip 301`), then `/docs /docs/v1 301` and `/docs/* /docs/v1/:splat 301`; non-forced, so existing versioned files are served first (Netlify shadowing) | REQ-1, REQ-5 |
 | `.output/public/api/search-index.json` | search generator | `[{ "id", "version": "v1", "url": "/docs/v1/components/button#styles", "title", "section": "Components", "titles": ["Button", "Styles"], "content": "…" }]` | REQ-8 |
 | `.output/public/api/assistant-corpus.json` | corpus generator | `[{ "id", "version", "url", "titles": [...], "level": 2, "content": "…" }]` from `queryCollectionSearchSections` | REQ-8 |
 
@@ -168,7 +168,7 @@ export const versions = [
 
 | AC | Check | Type | Command or location |
 |----|-------|------|---------------------|
-| AC-1 | fixtures `components/button.md` in both versions; assert `docs/v1/components/button/index.html` and `docs/v0/...` exist, no `docs/components/...` file, and `_redirects` holds exactly the two rules for `v1` | build assertion | `tests/build/routes.spec.ts` |
+| AC-1 | fixtures `components/button.md` in both versions; assert `docs/v1/components/button/index.html` and `docs/v0/...` exist, no `docs/components/...` file, and `_redirects` holds one flat rule per v1 page (`/docs/button /docs/v1/components/button 301`) followed by the two rules for `v1` | build assertion | `tests/build/routes.spec.ts` |
 | AC-2 | fixtures with `since` and `changed`; assert badge texts; query returns both fields | e2e + unit | `tests/e2e/badges.spec.ts`, `tests/unit/schema.spec.ts` |
 | AC-3 | page with one `::example`; preview renders a `pui-btn`, the code tab holds Shiki markup in the static HTML; no example HTML string under `app/` | e2e + repository check | `tests/e2e/example.spec.ts`, `tests/repo/no-inline-examples.spec.ts` |
 | AC-4 | fixtures with three prefixed sections; navigation in prefix order with `.navigation.yml` titles, URLs without prefixes; no file under `app/` lists sections | e2e + repository check | `tests/e2e/navigation.spec.ts` |
@@ -210,4 +210,5 @@ export const versions = [
 
 ## Open questions
 
-- none: the specification's open items that touch this feature are resolved; OPEN-6 (browser matrix) and OPEN-7 (older-version banner) do not block it and are handled in release R-2.
+- Q1 (engineering, flagged for the user): the 0.23 site's flat URLs (`https://perfectui.netlify.app/docs/tooltip`, linked from the library's README and search engines) get one redirect each to the 1.0 page of the same topic, so inbound links keep working. Blocks: nothing. Recommended: keep, as designed.
+- Other items: the specification's open items that touch this feature are resolved; OPEN-6 (browser matrix) and OPEN-7 (older-version banner) do not block it and are handled in release R-2.

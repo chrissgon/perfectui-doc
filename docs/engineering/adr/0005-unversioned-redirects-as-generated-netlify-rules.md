@@ -11,7 +11,7 @@ Every documentation page lives under `/docs/<major>/...` and `/docs` plus any un
 ## Options
 
 ### Option A: a server route `/_redirects`, prerendered, that writes the rules from the versions configuration
-- Consequences: two non-forced rules (`/docs /docs/v<latest> 301`, `/docs/* /docs/v<latest>/:splat 301`) generated at build; versioned files shadow the splat, so there is no loop; changing the latest version changes the file with no edit elsewhere; relies on Nitro writing a `text/plain` prerendered route to a file named `_redirects` (to verify; fallback: the same content written by a `nitro` `prerender:done` hook).
+- Consequences: one rule per page of the latest version for the 0.23 site's flat URLs (`/docs/<slug> /docs/v<latest>/<section>/<slug> 301`, from the latest collection; the 0.23 site at perfectui.netlify.app served `/docs/<slug>`), then two non-forced rules (`/docs /docs/v<latest> 301`, `/docs/* /docs/v<latest>/:splat 301`), all generated at build; versioned files shadow the splat, so there is no loop; changing the latest version changes the file with no edit elsewhere; relies on Nitro writing a `text/plain` prerendered route to a file named `_redirects` (to verify; fallback: the same content written by a `nitro` `prerender:done` hook).
 
 ### Option B: a hand-written `public/_redirects`
 - Consequences: simplest; but the latest version id is written in a second file, breaking REQ-5 and AC-5, and a new major needs a manual edit that nothing checks.
@@ -25,6 +25,7 @@ Option A.
 
 ## Consequences
 
-- `nitro.prerender.routes` lists `/_redirects`; the build test AC-1 asserts the file's exact two lines for the configured latest version.
+- `nitro.prerender.routes` lists `/_redirects`; the build test AC-1 asserts the flat rules and the two general lines for the configured latest version.
+- Links to the 0.23 site from the library's README and from search engines keep landing on the page of the same topic.
 - A mistyped versioned path such as `/docs/v1/missing` gets the site's 404, not a redirect loop.
 - If the site ever leaves Netlify, only this generator changes.
