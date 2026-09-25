@@ -31,7 +31,11 @@ Performance fails. Lighthouse's median on the local CDN-like server is 89, again
 - security and data: none.
 - tests: the fixme is visible in every run's summary ("1 skipped").
 
+## Follow-up (2026-09-25)
+
+- The user chose option (a). On the Netlify branch deploy the guide first scored 71–82, with CLS 0.38: documentation pages lost their content after hydration behind Netlify's trailing-slash redirect (root cause and fix in `docs/engineering/reviews/fix-trailing-slash.md`, commit 1e1ba8c). After the fix, on the host, medians of three runs: migration guide 99, Button page 100, landing 94; accessibility 98 to 100; CLS 0 on documentation pages. Finding 1 is resolved; the local Lighthouse case stays `fixme`, with its comment updated to the host result.
+
 ## Verdict
 
-request changes
+approve (after the follow-up)
 Next: the user's decision on the guide's performance; then SR1 (search)

@@ -2,7 +2,7 @@
 
 - Project: perfectui-doc
 - Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
-- Current phase: engineering (R-1: all 8 milestones implemented and reviewed, 47 of 48 tasks done; T-mg-5 blocked on the migration guide's Lighthouse performance (89 locally), to be measured on the Netlify branch deploy of `redesign`, which builds on the next approved push)
+- Current phase: engineering (release R-1 complete on branch `redesign`: 48 of 48 tasks done and reviewed; verified on the Netlify branch deploy https://redesign--perfectui.netlify.app; next: the release decision, merging `redesign` into production)
 - Updated: 2026-09-25
 
 ## Autonomy
@@ -50,6 +50,8 @@
 | docs/product/prd.md | product-prd | draft | 2026-09-23 |
 
 ## Decisions
+
+- 2026-09-25: Lighthouse mobile on the Netlify branch deploy after the trailing-slash fix, median of 3: landing 94, Button page 100, migration guide 99; accessibility 98-100; T-mg-5 closed on the host measurement (user's option 1)
 
 - 2026-09-25: Verified on the Netlify branch deploy https://redesign--perfectui.netlify.app: library size 3,221 and 493 B (ADR-0007 accepted); the 0.23 redirects answer 301 to the versioned pages and unknown paths 404 (ADR-0005's shadowing assumption holds); documentation pages lost their content after hydration behind Netlify's trailing-slash redirect, fixed in 1e1ba8c (eng-root-cause)
 

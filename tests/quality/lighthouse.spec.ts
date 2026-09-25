@@ -17,10 +17,10 @@ test("the landing scores performance ≥ 90 and accessibility ≥ 95 on mobile",
   expect(scores.accessibility).toBeGreaterThanOrEqual(95);
 });
 
-// Migration guide NFR-1, AC-6. Not met yet: the median is 89 on the local CDN-like server (FCP
-// 2.8 s under simulated slow 4G), where the runtime and fonts share the link with a long page.
-// Blocked in T-mg-5 until the user decides (deploy preview measurement, or partial hydration of
-// documentation prose); marked fixme so every run reports it.
+// Migration guide NFR-1, AC-6. Verified on the host instead (user's decision, T-mg-5): on the
+// Netlify branch deploy the guide scores 99 (median of 3) once the trailing-slash defect was fixed;
+// the local simulation reads 89 for this long page. Kept as fixme so every run shows the gap
+// between the local proxy and the host.
 test.fixme("the migration guide scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);
   const scores = await lighthouseScores(`${baseURL}/docs/v1/getting-started/migrating-from-0-23`, 3);
