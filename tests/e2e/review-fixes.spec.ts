@@ -153,7 +153,7 @@ test("the header is glass: a translucent page colour over a blurred backdrop (us
     const style = getComputedStyle(el);
     return [style.backgroundColor, style.backdropFilter];
   });
-  expect(filter).toContain("blur(14px)");
+  expect(filter).toContain("blur(8px)");
   // A colour with alpha below 1, whatever the notation the browser returns.
   expect(background).toMatch(/\/ 0\.\d+\)|rgba\(.*, 0\.\d+\)/);
 });

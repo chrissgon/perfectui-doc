@@ -77,9 +77,9 @@ const menuId = useId();
 
 <style scoped>
 .site-glass {
-  background: color-mix(in oklab, var(--pui-bg) 72%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  backdrop-filter: blur(14px) saturate(160%);
+  background: color-mix(in oklab, var(--pui-bg) 85%, transparent);
+  -webkit-backdrop-filter: blur(8px) saturate(160%);
+  backdrop-filter: blur(8px) saturate(160%);
 }
 /* Without backdrop filters the header stays opaque, so its text never sits on bare content. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
