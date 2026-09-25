@@ -468,6 +468,7 @@
   Check: performance ≥ 90, accessibility ≥ 95, 0 violations except the accepted library trade-off (solid theme, success and warn labels in light mode), page scroll width equals the viewport
   Size: S, because checks over one page
   Milestone: MG1
+  Status: blocked (2026-09-25) axe 0 violations light and dark (after focusable code blocks), 360 px and table boxes pass; Lighthouse performance median 89 < 90 on the local CDN-like server: needs the user's decision (deploy preview or partial hydration)
 
 ### Order
 

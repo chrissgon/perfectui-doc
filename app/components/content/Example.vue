@@ -48,7 +48,7 @@
       :aria-labelledby="stacked ? undefined : `${uid}-code-tab`"
       :hidden="!stacked && active !== 'code'"
       :class="['overflow-x-auto p-4 font-mono', stacked ? 'max-h-40 overflow-y-auto border-t text-[13px]' : 'text-sm']"
-      :tabindex="stacked ? 0 : undefined"
+      tabindex="0"
       :aria-label="stacked ? 'Example code' : undefined"
       style="background: var(--pui-bg-emphasis)"
     >
@@ -66,6 +66,8 @@ import { scopeExample } from "#shared/example-scope";
 // `stacked` (the landing's showcase, ExampleRef): preview above code, no tabs and no copy.
 const props = withDefaults(defineProps<{ lang?: string; layout?: "tabs" | "stacked" }>(), { lang: "html", layout: "tabs" });
 const stacked = computed(() => props.layout === "stacked");
+// The code panel is the focusable region; the block's own <pre> need not be (ProsePre).
+provide("in-example", true);
 const slots = useSlots();
 const uid = useId();
 
