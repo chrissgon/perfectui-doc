@@ -8,7 +8,8 @@
     <span class="flex items-center gap-2"><SiteIcon name="search" /><span class="max-lg:hidden">Search</span></span>
     <kbd class="rounded border px-1.5 py-0.5 font-mono text-xs max-lg:hidden" style="border-color: var(--pui-border)">{{ shortcut }}</kbd>
   </button>
-  <SearchDialog ref="dialog" :version="version" />
+  <!-- Loaded on first open: the dialog, the search code and MiniSearch are their own chunks (NFR-2). -->
+  <LazySearchDialog v-if="wanted" ref="dialog" :version="version" />
 </template>
 
 <script setup lang="ts">
@@ -21,7 +22,16 @@ const version = computed(() => versions.find((v) => route.path.startsWith(`/docs
 
 const dialog = ref<{ open: (query?: string) => void } | null>(null);
 const shortcut = ref("Ctrl K");
-const open = (query?: string) => dialog.value?.open(query);
+const wanted = ref(false);
+let pending: string | undefined;
+
+function open(query?: string) {
+  if (dialog.value) return dialog.value.open(query);
+  pending = query;
+  wanted.value = true;
+}
+// The first open waits for the dialog's chunk, then opens it.
+watch(dialog, (component) => component?.open(pending));
 
 // A text field keeps its slash (EDGE-8).
 const typing = (target: EventTarget | null) =>

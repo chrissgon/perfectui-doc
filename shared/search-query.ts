@@ -26,7 +26,8 @@ const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&
 
 /** A window of the text around the first matched term, escaped, with every matched term marked. */
 export function snippet(content: string, terms: string[]): string {
-  const text = content.replace(/\s+/g, " ").trim();
+  // Markdown inline-code backticks are not part of the text a reader sees.
+  const text = content.replace(/`/g, "").replace(/\s+/g, " ").trim();
   const pattern = terms.length ? new RegExp(terms.map(escapeRegExp).sort((a, b) => b.length - a.length).join("|"), "gi") : null;
   const first = pattern ? text.search(pattern) : -1;
   const start = first > BEFORE ? first - BEFORE : 0;

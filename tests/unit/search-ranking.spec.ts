@@ -59,3 +59,9 @@ describe("query preparation", () => {
     expect(prepareQuery("x".repeat(250))).toHaveLength(200);
   });
 });
+
+describe("snippets", () => {
+  it("show the text without Markdown backticks", () => {
+    expect(runSearch(index, "dialog").every((r) => !r.snippet.includes("`"))).toBe(true);
+  });
+});

@@ -529,6 +529,7 @@
   Check: `tests/e2e/search-results.spec.ts`, `search-keyboard.spec.ts`, `search-states.spec.ts`, `search-version.spec.ts` pass; only the site's static files are requested
   Size: L, because many states and accessibility behaviour in one component
   Milestone: SR1
+  Status: done (2026-09-25) search-results, search-keyboard, search-states, search-version 11 passed (failed before), plus a hover-then-Enter case; dialog loads lazily; bun run test 79 unit + 153 browser
 - T-sr-5: Search quality
   Does: latency under 4× CPU throttling, first-open size, axe with the dialog open.
   Delivers: NFR-1, NFR-2, NFR-3, AC-8, AC-9, AC-10
