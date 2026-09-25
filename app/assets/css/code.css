@@ -5,9 +5,9 @@
  */
 :root {
   --site-code-text: var(--pui-text);
-  --site-code-tag: light-dark(#00628b, #6bc9f5); /* theme/ink */
-  --site-code-attr: light-dark(#934f03, #f9b867); /* warn/ink */
-  --site-code-value: light-dark(#0b6e2f, #71d588); /* success/ink */
-  --site-code-punct: light-dark(#464b55, #b4b9c3); /* muted/ink: text-muted fails AA on the code background */
-  --site-code-deleted: light-dark(#951616, #fa7b73); /* error/ink */
+  --site-code-tag: var(--site-theme-ink);
+  --site-code-attr: var(--site-warn-ink);
+  --site-code-value: var(--site-success-ink);
+  --site-code-punct: var(--site-muted-ink); /* text-muted fails AA on the code background */
+  --site-code-deleted: var(--site-error-ink);
 }

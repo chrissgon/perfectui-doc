@@ -105,6 +105,7 @@
   Check: `tests/e2e/badges.spec.ts`: the chip fixture shows "Added in 1.0", a `changed` fixture shows "Changed in 1.0"
   Size: S, because one component with a clear contract
   Milestone: CM2
+  Status: done (2026-09-24) tests/e2e/badges.spec.ts 3 passed (the two badge tests failed before the component existed); bun run test exit 0 (19 unit, 18 browser); lint and typecheck exit 0; review docs/engineering/reviews/T-cm-10.md: approve with changes; site ink tokens added
 - T-cm-11: Documentation layout, on-page headings and pager
   Does: `app/layouts/docs.vue` (three columns at 1280 px as the handoff, headings as a disclosure below 1024 px), `DocToc` with the current heading highlighted, `DocPager` with previous, next and the edit link.
   Delivers: REQ-4, NFR-3

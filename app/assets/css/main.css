@@ -19,6 +19,15 @@
   --font-mono: "Fira Code", ui-monospace, monospace;
 }
 
+/* Site tokens for text in a role colour (design system inks; handoff token table). */
+:root {
+  --site-theme-ink: light-dark(#00628b, #6bc9f5);
+  --site-success-ink: light-dark(#0b6e2f, #71d588);
+  --site-warn-ink: light-dark(#934f03, #f9b867);
+  --site-error-ink: light-dark(#951616, #fa7b73);
+  --site-muted-ink: light-dark(#464b55, #b4b9c3);
+}
+
 body {
   background: var(--pui-bg);
   color: var(--pui-text);

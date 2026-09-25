@@ -3,9 +3,14 @@
     <!-- Two columns until the documentation layout (T-cm-11). -->
     <DocSidebar :sections="sections" :current-path="path" />
     <article v-if="page">
-      <h1 class="text-4xl font-semibold">{{ page.title }}</h1>
-      <p class="mt-2">{{ page.description }}</p>
-      <ContentRenderer :value="page" class="mt-8" />
+      <DocHeader
+        :section="sectionTitle"
+        :title="page.title"
+        :description="page.description"
+        :since="page.since"
+        :changed="page.changed"
+      />
+      <ContentRenderer :value="page" />
     </article>
   </div>
 </template>
@@ -29,6 +34,9 @@ if (!page.value || path.endsWith("/.navigation")) {
 }
 
 const sections = await useDocsNav(version);
+const sectionTitle = computed(
+  () => sections.value.find((s) => s.children?.some((p) => p.path === path))?.title,
+);
 
 // At setup, so the prerendered HTML carries the meta (lesson from the incremental attempt).
 useSeoMeta({ title: page.value.title, description: page.value.description });
