@@ -593,6 +593,7 @@
   Check: `bun run generate` from a clean clone with `PERFECTUI_SOURCE` unset downloads one archive and publishes every page; `git ls-files content/v1` is empty; `bun run test` passes; the sync time with the cache is recorded (at most 5 s)
   Size: M, because the fetch, the removal and the build wiring
   Milestone: LD1
+  Status: done (2026-09-25) bun run test 77 unit + 166 browser passed; sync from a local checkout 6 ms; download build 1 archive request, 1150 ms, then 1 ms from the cache; git ls-files content/v1 empty; host builds need the library commit 652748d pushed
 
 - T-ld-4: Redirects without the 0.23 flat URLs
   Does: `_redirects` keeps `/docs` and `/docs/<major>` and the unversioned splat, and drops one rule per page.

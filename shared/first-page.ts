@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const strip = (name: string) => name.replace(/^\d+\./, "");
@@ -10,6 +10,8 @@ const strip = (name: string) => name.replace(/^\d+\./, "");
  */
 export function firstPageRoute(contentDir: string, versionId: string): string | undefined {
   const root = join(contentDir, versionId);
+  // Before the first sync (a fresh clone running `nuxt prepare`) the folder does not exist yet.
+  if (!existsSync(root)) return undefined;
   const sections = readdirSync(root, { withFileTypes: true })
     .filter((e) => e.isDirectory())
     .map((e) => e.name)

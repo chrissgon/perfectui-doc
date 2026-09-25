@@ -2,6 +2,7 @@
 
 - Owner: eng-architecture
 - Status: draft
+- Superseded in part (2026-09-25): the `V0` component and the `:v0` links were removed with PRD F-7; the guide's 0.23 names are ordinary links to the 0.23 documents on GitHub (docs/engineering/designs/library-docs-and-versions.md, REQ-10).
 - Date: 2026-09-24
 - Specification: docs/product/specs/migration-guide.md
 - Frameworks and versions relied on: as `docs/engineering/designs/markdown-content-model.md`; Nuxt Content prose components (a `ProseTable` component in `app/components/content/` replaces the default table renderer; content.nuxt.com, components/prose, accessed 2026-09-23); Shiki's `diff` grammar (listed in the highlight `langs`)

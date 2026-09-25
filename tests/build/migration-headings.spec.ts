@@ -7,7 +7,7 @@ import { pageFile } from "../helpers/page-file";
 // at the pinned tag. The source comes from the library checkout next to this repository, or
 // from GitHub at the tag.
 const TAG = `v${JSON.parse(readFileSync("node_modules/@chrissgon/perfectui/package.json", "utf8")).version}`;
-const PAGE = "/docs/v1/getting-started/migrating-from-0-23";
+const PAGE = "/docs/v1/getting-started/migrating-from-0-x";
 
 async function migrationSource(): Promise<string> {
   const local = process.env.PERFECTUI_REPO ?? "../perfectui";

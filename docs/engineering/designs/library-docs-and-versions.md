@@ -71,7 +71,7 @@ The generated pages keep the content model unchanged (content-model spec REQ-1 t
 ### Files and generated artifacts
 | Path | Produced by | Shape (example) | Consumed by | Serves |
 |------|-------------|-----------------|-------------|--------|
-| `content/v1/**` (ignored) | sync step | `04.components/03.button.md` with `title`, `description`, `tags`, `::example` | Nuxt Content | REQ-1 |
+| `content/v1/**` (ignored by git; re-included for Tailwind's scanner by `.ignore`) | sync step | `04.components/03.button.md` with `title`, `description`, `tags`, `::example` | Nuxt Content | REQ-1 |
 | `.cache/library/<ref>/` (ignored) | library source | `docs/`, `MIGRATION.md` from the archive | sync step | NFR-2 |
 | `_redirects` | redirect route | `/docs/v1 /docs/v1/getting-started/installation 301!` | Netlify | REQ-11 |
 

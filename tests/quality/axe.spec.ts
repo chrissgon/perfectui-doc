@@ -6,7 +6,7 @@ import { openSearch, results, searchInput } from "../helpers/search";
 // 0 WCAG 2.2 AA violations but for the accepted trade-off: the Button page (content model NFR-3,
 // AC-12, T-cm-20), the landing (NFR-1, AC-11, T-sh-16) and the migration guide (AC-6, T-mg-5),
 // in both modes.
-const pages = { "Button page": "/docs/v1/components/button", landing: "/", "migration guide": "/docs/v1/getting-started/migrating-from-0-23" };
+const pages = { "Button page": "/docs/v1/components/button", landing: "/", "migration guide": "/docs/v1/getting-started/migrating-from-0-x" };
 
 for (const [name, path] of Object.entries(pages)) for (const mode of ["light", "dark"] as const) {
   test(`the ${name} has no WCAG 2.2 AA violation in ${mode} mode`, async ({ page }) => {

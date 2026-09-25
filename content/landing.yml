@@ -7,7 +7,7 @@ sections:
     headline: The bare minimum for elegant interfaces.
     body: "Three classes, no framework, {css.kB}. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work."
     cta: { label: Get started, to: /docs }
-    secondary: { label: Migrating from 0.x, to: /docs/getting-started/migrating-from-0-23 }
+    secondary: { label: Migrating from 0.x, to: /docs/getting-started/migrating-from-0-x }
   - id: size
     headline: "{css.kB}. Measured, not promised."
     body: "`perfectui.css` is {css.bytes} bytes gzip; the optional JavaScript loader is {js.bytes}. The bars below are the same measurement run on the published builds of the alternatives."
@@ -32,7 +32,7 @@ sections:
   - id: migration
     headline: Coming from 0.x?
     body: "1.0 is a rewrite: every class is prefixed, styles and colours are separate classes, and the browser replaced the JavaScript. The guide lists every change."
-    cta: { label: Read the migration guide, to: /docs/getting-started/migrating-from-0-23 }
+    cta: { label: Read the migration guide, to: /docs/getting-started/migrating-from-0-x }
   - id: install
     headline: Install it your way.
     body: "A package for npm, yarn, pnpm or bun, or two tags from a CDN. Import everything or only the components you use."

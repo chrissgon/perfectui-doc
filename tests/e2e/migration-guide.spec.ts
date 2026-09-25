@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const PAGE = "/docs/v1/getting-started/migrating-from-0-23";
+const PAGE = "/docs/v1/getting-started/migrating-from-0-x";
 
 // Migration guide NFR-1, EDGE-5, AC-6: the long page with its tables reads on a phone.
 test("at 360 px the page does not scroll sideways and each wide table scrolls in its box", async ({ page }) => {

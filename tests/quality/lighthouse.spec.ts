@@ -23,7 +23,7 @@ test("the landing scores performance ≥ 90 and accessibility ≥ 95 on mobile",
 // between the local proxy and the host.
 test.fixme("the migration guide scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);
-  const scores = await lighthouseScores(`${baseURL}/docs/v1/getting-started/migrating-from-0-23`, 3);
+  const scores = await lighthouseScores(`${baseURL}/docs/v1/getting-started/migrating-from-0-x`, 3);
   expect(scores.performance).toBeGreaterThanOrEqual(90);
   expect(scores.accessibility).toBeGreaterThanOrEqual(95);
 });

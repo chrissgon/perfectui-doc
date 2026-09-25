@@ -4,7 +4,7 @@ import { expect, test } from "@playwright/test";
 import { installCommand, site } from "../../app/site.config";
 import { pageFile } from "../helpers/page-file";
 
-const guide = "/docs/v1/getting-started/migrating-from-0-23";
+const guide = "/docs/v1/getting-started/migrating-from-0-x";
 const guideBuilt = existsSync(pageFile(".output/public", guide));
 
 // REQ-4, AC-4: a 0.23 user reaches the guide from the landing.

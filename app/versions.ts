@@ -14,12 +14,19 @@ export interface DocVersion {
   collection: string;
   latest: boolean;
   deprecated?: boolean;
+  /**
+   * The library git ref this major's pages are generated from (ADR-0010). Unset for the latest
+   * major, which follows the installed version's tag, `v<version>`.
+   */
+  libraryRef?: string;
 }
 
 export const versions: readonly DocVersion[] = [
-  { id: "v1", label: "1.x", collection: "docs_v1", latest: true },
-  // v0 (0.23) is listed again when its converted pages ship in release R-2; a listed version with
-  // no page fails the build (EDGE-8). The test fixture site lists it (tests/fixtures/site).
+  // Pinned to the library commit that adds the conversion markers until a release carries them
+  // (spec library-docs-and-versions ASSUMPTION-1); then this line loses `libraryRef`.
+  { id: "v1", label: "1.x", collection: "docs_v1", latest: true, libraryRef: "652748d75d42f25a6396173c8e4f8a59487c6299" },
+  // 0.23 is not a documented major: its documents stay in the library at tag v0.23.0 (PRD F-7,
+  // retired). The test fixture site lists a v0 to exercise two majors (tests/fixtures/site).
 ];
 
 /** The latest version; fails naming this file unless exactly one version is latest (EDGE-8). */
