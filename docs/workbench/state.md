@@ -160,6 +160,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin redesign` with commit a86fde7 (Node's built-in SQLite, better-sqlite3 removed) to retry the Netlify branch deploy (user)
+
 - 2026-09-25: `git push origin redesign` with the SR1 commits (T-sr-1 to T-sr-5), the state update and the header wordmark change; it triggers the Netlify branch deploy of `redesign` for T-mg-5's measurement (user)
 
 - 2026-09-25: Deploy preview for R-1 (user, option 1 of the T-mg-5 decision): `git push -u origin redesign` to github.com/chrissgon/perfectui-doc, then a draft pull request redesign → main only to trigger the Netlify Deploy Preview; no merge. Purpose: measure Lighthouse on the host, confirm `gzip` on the build image (T-sh-6) and the generated redirects (ADR-0005).
