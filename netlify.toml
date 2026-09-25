@@ -1,3 +1,5 @@
+# Netlify's own builds are stopped (2026-09-25): GitHub Actions builds, tests and deploys dist/
+# (.github/workflows/ci.yml). This section documents the build and serves a manual `netlify build`.
 [build]
   command = "bun run generate"
   # On Netlify, Nitro detects the platform and uses its netlify-static preset, which writes the

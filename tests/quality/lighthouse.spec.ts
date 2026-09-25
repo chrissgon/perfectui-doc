@@ -1,6 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { lighthouseScores } from "../helpers/lighthouse";
 
+// On a CI runner the local simulation sits near its floor, so CI measures the deploy instead
+// (`SITE_URL`, set by the workflow's lighthouse job); locally both work.
+test.skip(!!process.env.CI && !process.env.SITE_URL, "CI measures the deployed preview, not the runner");
+
 // NFR-3, AC-12 (content model) and PRD M-4: mobile Lighthouse on the Button page's static file.
 test("the Button page scores performance ≥ 90 and accessibility ≥ 95 on mobile", async ({ baseURL }) => {
   test.setTimeout(180_000);

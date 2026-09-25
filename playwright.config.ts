@@ -1,7 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
+import { SITE_DIR } from "./tests/helpers/site-dir";
 
 const PORT = 4173;
 const FIXTURE_PORT = 4174;
+// A deployed site to measure instead of the local build (CI sets it to the deploy's URL for
+// Lighthouse); no local server starts then.
+const SITE_URL = process.env.SITE_URL?.replace(/\/$/, "");
+const BASE_URL = SITE_URL ?? `http://localhost:${PORT}`;
 
 // Browser and build tests run against static output: the production site (`bun run generate`
 // first) and the fixture site built from tests/fixtures/site by its web server.
@@ -13,14 +18,14 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${PORT}` },
+      use: { ...devices["Desktop Chrome"], baseURL: BASE_URL },
       testIgnore: ["slow/**", "fixture-site/**", "quality/**"],
     },
     // Lighthouse and axe run after the other browser tests, one at a time, so no parallel test
     // competes for the CPU during a measurement.
     {
       name: "quality",
-      use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${PORT}` },
+      use: { ...devices["Desktop Chrome"], baseURL: BASE_URL },
       testMatch: ["quality/**/*.spec.ts"],
       dependencies: ["chromium", "fixtures"],
       fullyParallel: false,
@@ -36,9 +41,9 @@ export default defineConfig({
     // Full builds of a project copy; run with `bun run test:slow`.
     { name: "slow", testMatch: ["slow/**/*.spec.ts"] },
   ],
-  webServer: [
+  webServer: SITE_URL ? [] : [
     {
-      command: `node tests/helpers/static-server.mjs .output/public ${PORT}`,
+      command: `node tests/helpers/static-server.mjs ${SITE_DIR} ${PORT}`,
       url: `http://localhost:${PORT}/`,
       reuseExistingServer: !process.env.CI,
     },

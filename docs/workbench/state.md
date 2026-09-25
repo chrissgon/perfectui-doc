@@ -157,6 +157,7 @@
 - [x] Does the header keep a Figma link? Yes (user, 2026-09-23)
 - [x] Search in phase 1 or phase 2? Quality targets (performance, accessibility)? Adoption target? (PRD OPEN-1 to OPEN-3, answered 2026-09-23)
 - [x] Amend REQ-2 and REQ-4 of the content-model spec to folder-based sections and numeric-prefix ordering, as ADR-0004 proposes? (design open question 1)
+- [ ] Skill gap: a delivery pipeline for the site (IDEA-1) → ops-ci-pipeline (planned, not installed); recommended: build it with core-skill-creator on this task
 
 - [x] Search latency (100 ms under 4x CPU throttling) and first-open size budget (300 KB compressed) as recommended? Yes (user, 2026-09-23)
 - [x] Keep the migration guide as a must for launch? Yes; only the npm package does not ship it (user, 2026-09-23)
@@ -186,6 +187,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-25: `git push origin ci-pipeline` and a pull request `ci-pipeline` → `main` with the delivery pipeline (IDEA-1); the workflow deploys a preview with the user's Netlify token, and the user merges (user: "Certo" to the Q3 plan: "abro o PR e acompanho o CI até ficar verde")
 
 - 2026-09-25: `git push origin main` with 0f09967 (pipeline ideas), 384803f (library fixes that retire two site workarounds) and this record (user: "Pode fazer")
 

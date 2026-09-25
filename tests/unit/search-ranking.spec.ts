@@ -4,9 +4,10 @@ import MiniSearch from "minisearch";
 import { searchOptions } from "../../shared/search-options";
 import { prepareQuery, runSearch } from "../../shared/search-query";
 import type { SearchDocument } from "../../shared/search-set";
+import { SITE_DIR } from "../helpers/site-dir";
 
 // Search REQ-2, REQ-3, REQ-5, EDGE-3, EDGE-4, AC-5, over the index `bun run generate` built.
-const FILE = ".output/public/api/search/v1.json";
+const FILE = `${SITE_DIR}/api/search/v1.json`;
 let index: MiniSearch<SearchDocument>;
 
 beforeAll(() => {

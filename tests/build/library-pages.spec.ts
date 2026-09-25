@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { pageFile } from "../helpers/page-file";
+import { SITE_DIR } from "../helpers/site-dir";
 
 // Spec library-docs-and-versions AC-1: the pages come from the library at build time; the site
 // repository keeps none, and every generated page is published.
@@ -14,6 +15,6 @@ test("every generated page is published under its versioned URL", () => {
   expect(pages).toHaveLength(28);
   for (const page of pages) {
     const route = "/docs/v1/" + page.replace(/\d+\./g, "").replace(/\.md$/, "");
-    expect(existsSync(pageFile(".output/public", route)), route).toBe(true);
+    expect(existsSync(pageFile(SITE_DIR, route)), route).toBe(true);
   }
 });

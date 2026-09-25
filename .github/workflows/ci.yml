@@ -1,0 +1,106 @@
+# Build once, test that build, deploy the same files (IDEA-1 in docs/product/ideas.md).
+# A pull request gets a preview at https://pr-<number>--perfectui.netlify.app; a push to main
+# deploys production (https://perfectui.dev). Netlify's own builds are stopped: this workflow is
+# the only way a build reaches the site. `main` requires the check, deploy and lighthouse jobs.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# A new push to a pull request cancels its older run; production deploys never cancel each other.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  # The Netlify preset writes dist/ with _headers and _redirects, as the host serves them.
+  NITRO_PRESET: netlify_static
+  SITE_DIR: dist
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.21
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run typecheck
+      - run: bun run generate
+      - run: bun run test:unit
+      - run: bunx playwright install --with-deps chromium
+      # Lighthouse skips itself here and runs on the deployed preview (the lighthouse job).
+      - run: bunx playwright test --project=chromium --project=fixtures --project=quality
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-results
+          path: test-results/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist/
+          include-hidden-files: true
+          retention-days: 7
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment:
+      name: ${{ github.event_name == 'push' && 'production' || 'preview' }}
+      url: ${{ steps.deploy.outputs.url }}
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          TARGET: ${{ github.event_name == 'push' && '--prod' || format('--alias=pr-{0}', github.event.pull_request.number) }}
+          MESSAGE: ${{ github.event.pull_request.title || github.event.head_commit.message }}
+        run: |
+          npx --yes netlify-cli@27.10.0 deploy --no-build --dir dist $TARGET \
+            --message "${MESSAGE%%$'\n'*}" --json > deploy.json
+          # Production answers at the site's URL; a preview at its alias's unique URL.
+          if [ "$TARGET" = "--prod" ]; then url=$(jq -r .url deploy.json); else url=$(jq -r .deploy_url deploy.json); fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed: $url" >> "$GITHUB_STEP_SUMMARY"
+
+  lighthouse:
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.21
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: bun install --frozen-lockfile
+      - run: bunx playwright install --with-deps chromium
+      - run: bunx playwright test tests/quality/lighthouse.spec.ts --project=quality --no-deps
+        env:
+          SITE_URL: ${{ needs.deploy.outputs.url }}

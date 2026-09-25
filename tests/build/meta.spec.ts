@@ -3,8 +3,9 @@ import { expect, test } from "@playwright/test";
 import { parse } from "yaml";
 import { site } from "../../app/site.config";
 import { pageFile } from "../helpers/page-file";
+import { SITE_DIR } from "../helpers/site-dir";
 
-const html = (path: string) => readFileSync(pageFile(".output/public", path), "utf8");
+const html = (path: string) => readFileSync(pageFile(SITE_DIR, path), "utf8");
 const decode = (s: string) =>
   s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, "&");
 
@@ -54,7 +55,7 @@ test.describe("page metadata", () => {
   });
 
   test("the share image is the 1200 × 630 JPG", () => {
-    const jpg = readFileSync(".output/public/og.jpg");
+    const jpg = readFileSync(`${SITE_DIR}/og.jpg`);
     expect(jpg.subarray(0, 3)).toEqual(Buffer.from([0xff, 0xd8, 0xff]));
     expect(jpg.equals(readFileSync("docs/design/results/og-image/final/og-1200x630.jpg"))).toBe(true);
   });

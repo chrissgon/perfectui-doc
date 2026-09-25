@@ -27,6 +27,10 @@ Raised by the user on 2026-09-25, quoted:
 - Q5. Protection rules on `main`: a pull request required, the checks above required, no direct push, and at least one approval? With one maintainer, a required approval blocks every merge, so the rule is "checks green", not "someone approved". Recommended: require the checks and linear history; no required approver.
 - Q6. The library's pinned ref (`libraryRef` in `app/versions.ts`): should the pipeline raise a pull request when the library publishes a release, so the site moves to the new tag? Recommended: yes, as a later step (Renovate, or a small workflow in the library that opens the pull request here).
 
+### Decided (user, 2026-09-25)
+
+Q1 previews per pull request, no `dev` branch; Q2 no Docker at all (the user removed it: the runner image and a pinned Playwright give the same browsers); Q3 GitHub Actions builds once, tests that build and deploys the same `dist/` with the Netlify CLI, Netlify's builds stopped; Q4 the checks as recommended, Lighthouse on the deployed preview; Q5 a ruleset on `main` (pull request, the `check`, `deploy` and `lighthouse` checks, linear history, no approver, no bypass); Q6 yes, later. The user created the Netlify token and the repository secrets, stopped Netlify's builds and applied the ruleset. Implemented on branch `ci-pipeline` (`.github/workflows/ci.yml`).
+
 ### Where this goes in the workbench
 
 It is the real task for the `ops-ci-pipeline` and `ops-pull-request` skills (inventory waves 4 and 1), which are built only alongside a real project.
