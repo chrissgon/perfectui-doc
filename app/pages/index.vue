@@ -4,6 +4,7 @@
          the button keeps its fill and w-full wins. -->
     <h1 class="text-4xl font-semibold">Perfect UI</h1>
     <p class="mt-4"><NuxtLink :to="`/docs/${latestVersion.id}`">Documentation</NuxtLink></p>
+    <CopyCommand class="mt-6" :text="installCommand('npm')" />
     <button id="layer-check" class="pui-btn pui-solid pui-theme mt-6 w-full">
       Get started
     </button>
@@ -11,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { installCommand } from "~/site.config";
 import { latestVersion } from "~/versions";
 
 // The site's own title and description (messaging SECTION-1); T-sh-9 keeps this call.

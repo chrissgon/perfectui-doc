@@ -318,6 +318,7 @@
   Check: `tests/e2e/copy.spec.ts`: click and keyboard copy, feedback at least 1 s, fallback selection with the clipboard denied (also for the documentation example block, T-cm-12 review); a unit test shows no timer before mount
   Size: M, because shared behaviour every section uses
   Milestone: SH2
+  Status: done (2026-09-25) tests/e2e/copy.spec.ts 5 passed (4 failed before; the example-block fallback already held); tests/unit/motion.spec.ts 1 passed and fails with a planted setup timer; bun run test 40 unit + 58 browser; lint and typecheck exit 0
 - T-sh-9: Hero
   Does: `LandingHero` and `ClassCycleDemo` with the handoff's timings; the server renders the first combination complete.
   Delivers: REQ-1, AC-1
