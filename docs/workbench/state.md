@@ -50,6 +50,7 @@
 | docs/engineering/designs/library-docs-and-versions.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0) | none (ordinary work) | done | 2026-09-25 |
+| docs/product/ideas.md (IDEA-1 delivery pipeline for the site; IDEA-2 pointer to the library's release pipeline) | none (ordinary work) | draft | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
