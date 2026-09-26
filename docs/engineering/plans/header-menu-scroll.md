@@ -56,3 +56,21 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 
 ### Found on the way
 - Playwright's WebKit never fires `load` or `DOMContentLoaded` on the built site served by `tests/helpers/static-server.mjs` (the same pages load through Playwright's routing); a local WebKit project for the site needs another server or routing.
+
+## Failing tests
+
+- Owner: eng-unit-tests
+- Command: `bun run build && bunx playwright test tests/sticky-overlays.spec.ts` in `perfectui` (branch `fix/dropdown-scroll-flip`, commit 7bbb000); runtimes: Chromium and WebKit 26.6 (the library's two Playwright projects)
+- Files: `perfectui` `tests/sticky-overlays.spec.ts`, `tests/fixtures/sticky-overlays.html` (a sticky header with a dropdown and a tooltip, a dropdown fixed at the bottom of the viewport, one fixed at its right edge; 390 × 844)
+
+| Test | Source | Expected before the change | Observed before (per runtime) |
+|------|--------|----------------------------|-------------------------------|
+| a dropdown opened from a sticky header stays under its trigger after scrolling 1200 px | Root cause › Reproduction; What a fix must preserve (the bug case) | fails now in WebKit | Chromium: passes; WebKit: `Expected: 4` `Received: -66` |
+| a dropdown opened from a sticky header stays under its trigger after scrolling 600 px | What a fix must preserve | passes now | passes in both |
+| a tooltip on a sticky header keeps its side after scrolling past a viewport | Root cause › Reach (tooltip.css, same rule) | fails now in WebKit | Chromium: passes; WebKit: `Expected: true` `Received: false` |
+| a dropdown with no room below its trigger still opens above it | What a fix must preserve (flip-block) | passes now | Chromium: **fails**, `Expected: <= 800.5` `Received: 867`; WebKit: passes |
+| a dropdown with no room on its end side still flips to the start side | What a fix must preserve (flip-inline) | passes now | passes in both |
+
+- Result before the change: 3 failed, 7 passed. Two failures are the `fails now` rows; the third is a preserved behaviour that does not hold today in Chromium.
+- Found while writing the tests: in Chromium the `absolute` panel's box is the whole scrollable document (4,060 px here), so a panel below a trigger fixed at the viewport's bottom "fits" and never flips: it opens under the screen's edge, out of reach. WebKit flips it. Same family as the reported bug: an `absolute` panel measured against the document while its trigger does not scroll. Probe (not part of the suite): with `.pui-dropdown { position: fixed }` both cases pass in both engines (bottom menu ends at 797, above the trigger at 800; header menu at top 52 after 1,200 px).
+- Pending decisions: whether the Chromium bottom-edge case joins this fix (recommended: yes, the same cause from the other side, and the fix under consideration covers both), or goes to the backlog with the test marked `fixme`.
