@@ -23,6 +23,7 @@ Suggested fix: none
 | `scrollY` 1200 | panel top 54, `end span-start` | **panel top -17, `start span-start`** (above the button, off screen) |
 
 The built site, served the same way, shows the same in WebKit: panel top 54 at 600, -115 from 900 (the first section is 897 px tall); Chromium keeps 54 at every position.
+On the device (user, 2026-09-26, iPhone, perfectui.netlify.app): at the top of the landing the panel opens under the button; after scrolling into the second section its bottom edge shows above the header, under the status bar, which is the flipped position measured here.
 
 ### Cause
 `perfectui` `src/css/components/dropdown.css:27` `position: absolute;` with `:31` `position-try-fallbacks: flip-block, flip-inline;`
