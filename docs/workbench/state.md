@@ -1,7 +1,7 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: none (phases run skill by skill: product, then design, then engineering, then AI)
+- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26, iPhone screenshot); phase 1 root cause: not reproduced in Chromium or WebKit 26.6 (Playwright), waiting on the user for the device conditions
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
@@ -147,6 +147,7 @@
 - 2026-09-24: The library's light-mode solid labels (theme, success, warn) stay below WCAG AA as an accepted trade-off for 1.0, because the darker fills that pass read too dark; accessibility checks exclude only that rule on those elements; revisiting it is a later library change (user)
 
 ## Open questions
+- [ ] header-menu-scroll: iOS version and browser, whether the panel comes back when scrolling stops, and whether desktop Safari shows it (root cause not reproduced off the device)
 - [x] What does the radical change of perfectui-doc include and exclude? Run core-clarify with the user before flow-improve-code or flow-build-feature
 - [x] Versioning model: versions as content folders in one site, or one deployment per version with a switcher across them? (core-clarify round 2)
 - [x] Markdown pipeline: a content module with components inside Markdown, or custom Markdown-to-HTML rendering? (core-clarify round 2)
