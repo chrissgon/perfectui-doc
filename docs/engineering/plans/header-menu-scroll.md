@@ -138,3 +138,11 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 - Recommendation: A in `perfectui`, plus D in perfectui-doc until `libraryRef` moves to a release with A (releases on hold), then removed like the modal margin workaround.
 - Scratch: two worktrees under `/tmp/hms-*` and a temporary edit of `app/assets/css/main.css`, all removed; `git status` clean in both repositories.
 - Waiting: the user's choice.
+
+## Change
+
+- Owner: eng-implement
+- Decision: option A only (user, 2026-09-26: "Pode aplicar apenas a opção A. O site será corrigido quando subirmos uma nova versão"); ADR-0002 accepted.
+- `perfectui` `src/css/components/dropdown.css` and `src/css/components/tooltip.css`: the native path's `position: absolute` becomes `position: fixed`, with a comment pointing to ADR-0002 (commit 9ff2f9c on `fix/dropdown-scroll-flip`, local).
+- Checks with the change: `bunx playwright test tests/sticky-overlays.spec.ts`: 10 passed (the three failures of the Failing tests section now pass); `bun run lint`: clean; `CI=1 bun run test`: build, "ssr: 7 entries imported in Node, no DOM required", "exports: 7 documented specifiers all resolve", 86 passed; `bun run size`: `perfectui.css` 3,264 B (was 3,265), `js/index.js` 487 B.
+- perfectui-doc: no change; the header menu keeps flipping in WebKit until `libraryRef` and the `@chrissgon/perfectui` dependency move to a release carrying 9ff2f9c.

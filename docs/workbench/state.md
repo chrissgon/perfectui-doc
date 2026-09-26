@@ -1,7 +1,7 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 options measured, ADR-0002 proposed in `perfectui`, waiting at its checkpoint
+- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 implemented in `perfectui` (9ff2f9c, local), waiting at its checkpoint
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
@@ -57,6 +57,7 @@
 
 ## Decisions
 
+- 2026-09-26: The header menu that flips above the header in WebKit is fixed in the library only (`perfectui` ADR-0002, overlays `position: fixed`); the site takes the fix with the next library release, with no interim override (user: "O site será corrigido quando subirmos uma nova versão"). When `libraryRef` moves, check the header menu, the theme picker and the version menu after scrolling past the first section in Safari or iOS
 - 2026-09-25: Delivery runs through GitHub Actions (`.github/workflows/ci.yml`): a pull request gets a Netlify preview after its checks pass; `main` is protected and deploys production on merge; Netlify no longer builds. Every change, records included, now reaches `main` through a pull request the user merges (plan `delivery-pipeline.md`)
 - 2026-09-25: The light-mode contrast of `pui-solid` labels on theme, success and warn stays as accepted on 2026-09-24; the shades that would pass are recorded as IDEA-3 in `docs/product/ideas.md` for a future library adjustment (user: "deixe registrado para futuro ajuste"). Lighthouse now measures light and dark explicitly with the same exception as axe
 - 2026-09-25: The library fixed, on its branch `v1` (commits 057ff1c, 0e6a520, a7cc6d0), three defects the site works around; when `libraryRef` moves to a release carrying them, remove the site's `.pui-modal { margin: auto }` in `app/assets/css/main.css` and `applyIndeterminate` in `app/components/content/Example.vue` (library plans `modal-margin-under-resets.md`, `indeterminate-late-markup.md`). The radio fix also corrects the "Free / Pro / Team" example on the live Radio page
