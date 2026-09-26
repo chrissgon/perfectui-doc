@@ -121,3 +121,20 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 - A trigger inside a transformed or filtered ancestor: a top-layer popover is not contained by ancestors, so `fixed` still refers to the viewport; check with the site's glass header (`backdrop-filter`) during integration tests.
 - Older engines without `position-area` keep the fallback; the `@supports` guard is unchanged. Settled by construction.
 - The tooltip opens on hover and focus through `interestfor` (a fallback in WebKit 26.6): its placement goes through the same CSS, covered by the phase 2 test.
+
+## Options and decision
+
+- Owner: eng-tradeoffs
+- Decision record: `perfectui` `docs/engineering/adr/0002-overlays-positioned-against-the-viewport.md` (proposed, commit dfafd13)
+
+| Option | Tests (sticky + fallbacks, both engines) | In-flow trigger follows while scrolling | `perfectui.css` gzip | Rules |
+|--------|------------------------------------------|------------------------------------------|----------------------|-------|
+| A: `position: fixed` on the native path (library) | 28 passed | yes, 4 px gap at 0, 100, 400 px | 3,264 B (−1) | none crossed |
+| B: no `position-try-fallbacks` (library) | 24 passed, 4 failed (edge flips lost) | — | 3,231 B (−34) | breaks the §6 promise |
+| C: script re-placing native overlays on scroll | not prototyped | — | — | crosses rule 7 while A passes |
+| D: override in the site's CSS | header menu top 54 at 0, 1,200, 3,000 px; docs example gap 4 → 4 (WebKit and Chromium, built site through routing) | yes | site only | none; fixes one site |
+| E: document the limitation | reported case stays broken | — | — | — |
+
+- Recommendation: A in `perfectui`, plus D in perfectui-doc until `libraryRef` moves to a release with A (releases on hold), then removed like the modal margin workaround.
+- Scratch: two worktrees under `/tmp/hms-*` and a temporary edit of `app/assets/css/main.css`, all removed; `git status` clean in both repositories.
+- Waiting: the user's choice.
