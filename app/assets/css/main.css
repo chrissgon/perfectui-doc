@@ -55,17 +55,6 @@
 }
 
 /*
- * Tailwind's Preflight sets margin: 0 on every element, <dialog> included, which undoes the
- * browser's centring of a modal; the library relies on that default and sets no margin, so the
- * layer order alone does not protect it. Restored above the library, below the utilities.
- */
-@layer components {
-  .pui-modal {
-    margin: auto;
-  }
-}
-
-/*
  * Site tokens for text in a role colour (design system inks; handoff token table). The theme ink
  * follows the picked --pui-theme (user review 2026-09-25), the library's own ink recipe with more
  * of the text colour: at 30% every preset reads at least 4.78:1 in both modes, on the page, on a

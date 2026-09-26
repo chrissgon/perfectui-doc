@@ -1,9 +1,9 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: flow-launch (written with this launch) for Perfect UI 1.0.0 (user, 2026-09-26): phase 1 release done (npm `latest` 1.0.0 with trusted publishing, GitHub release v1.0.0); next: phase 2 site on 1.0.0, and the LinkedIn series (Monday 2026-09-28 09:00 teaser, Tuesday 2026-09-29 09:00 launch, America/Sao_Paulo)
+- Current flow: flow-launch (written with this launch) for Perfect UI 1.0.0 (user, 2026-09-26): phase 1 release done (npm `latest` 1.0.0 with trusted publishing, GitHub release v1.0.0, launch image added to its notes); phase 2 site on 1.0.0 done (pull request #7); phase 3 LinkedIn series scheduled (teaser Monday 2026-09-28 09:00, launch Tuesday 2026-09-29 09:00, America/Sao_Paulo, launchd jobs `linkedin-teaser-1-0-0` and `linkedin-launch-1-0-0`); next: phase 4, read the results a week after the launch against the baseline in `docs/marketing/launch-plan.md`
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
-- Updated: 2026-09-25
+- Updated: 2026-09-26
 
 ## Autonomy
 
@@ -206,6 +206,7 @@
 - 2026-09-26: LinkedIn post C, the launch, scheduled the same way (job `linkedin-launch-1-0-0`) for 2026-09-29 09:00 America/Sao_Paulo, idempotency key `linkedin-launch-1.0.0`: text `docs/marketing/posts/linkedin-1.0.0.txt` (sha256 1a807913181549d8…), image `docs/marketing/posts/images/linkedin-1.0.0.png` (sha256 f303888c42170af7…), public (user: "C. Aprovo")
 
 - 2026-09-26: in `chrissgon/perfectui`, the launch image at the top of the v1.0.0 release notes (`git push origin main`, ef084d5, then `gh release edit v1.0.0`); executed 2026-09-26 (user: "A. 1. Aprovo 2. Aprovo")
+- 2026-09-26: `git push origin site/perfectui-1.0.0` and a pull request to `main`: perfectui 1.0.0, `libraryRef` at the library commit that fixes the migration guide target (93b8b51, pushed to the library's `main` with approval), the modal workaround removed, the indeterminate workaround kept (IDEA-4); the user merges and checks the header menus on iOS (user: "Sim")
 
 - 2026-09-26: `git push origin feat/seo-canonical-domain` and a pull request to `main` with the alias redirect, canonical links, sitemap and robots.txt, as proposed in the conversation; the user merges (user: "Siga com essa PR")
 

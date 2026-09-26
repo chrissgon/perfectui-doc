@@ -11,7 +11,7 @@ describe("package.json", () => {
     expect(ranged).toEqual([]);
   });
 
-  it("uses perfectui 1.0.0-beta.1", () => {
-    expect(all["@chrissgon/perfectui"]).toBe("1.0.0-beta.1");
+  it("uses perfectui 1.0.0", () => {
+    expect(all["@chrissgon/perfectui"]).toBe("1.0.0");
   });
 });

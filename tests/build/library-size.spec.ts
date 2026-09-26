@@ -12,7 +12,7 @@ test("api/library-size.json equals gzip -9 -n of the installed files", () => {
   const version = JSON.parse(readFileSync(`${pkg}/package.json`, "utf8")).version;
   expect(size).toMatchObject({ version, css: gz("dist/perfectui.css"), js: gz("dist/js/index.js"), method: "gzip -9 -n" });
   expect(Number.isNaN(Date.parse(size.measuredAt))).toBe(false);
-  if (version === "1.0.0-beta.1") expect([size.css, size.js]).toEqual([3221, 493]);
+  if (version === "1.0.0") expect([size.css, size.js]).toEqual([3256, 493]);
 });
 
 // REQ-2, AC-2: the landing prints the JSON's numbers, with the version and the method in the
