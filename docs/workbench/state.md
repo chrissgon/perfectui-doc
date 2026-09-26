@@ -54,14 +54,16 @@
 | docs/design/briefs/linkedin-teaser-1.0.md (Monday image: edit of the Figma thumbnail, components, logo and code example only, no Pro plan card) | design-brief | draft | 2026-09-26 |
 | docs/design/briefs/linkedin-launch-1.0.md | design-brief | draft | 2026-09-26 |
 | docs/marketing/launch-plan.md (Perfect UI 1.0.0: release, site, LinkedIn series Monday and Tuesday) | mkt-launch-plan (written with this launch) | draft | 2026-09-26 |
-| docs/marketing/posts/linkedin-teaser-1.0.0.txt and images/linkedin-teaser-1.0.0.png (Monday teaser, bilingual; image: the Perfect UI Figma thumbnail from the user, converted from WebP) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
-| docs/marketing/posts/linkedin-1.0.0.txt (Tuesday launch post, bilingual) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
+| docs/marketing/posts/linkedin-teaser-1.0.0.txt and images/linkedin-teaser-1.0.0.png (Monday teaser, bilingual; image: Claude Design edit of the Figma thumbnail, kept as images/perfectui-thumbnail-figma.png) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
+| docs/marketing/posts/linkedin-1.0.0.txt and images/linkedin-1.0.0.png (Tuesday launch post, bilingual; image: direction B, "The race") |
+| docs/marketing/posts/images/github-release-1.0.0.png (1200 × 627, direction A, "The number", for the GitHub release v1.0.0) | design-brief → Claude Design (user) | approved | 2026-09-26 | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
 | docs/product/ideas.md (IDEA-1 delivery pipeline for the site; IDEA-2 pointer to the library's release pipeline) | none (ordinary work) | draft | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
 
+- 2026-09-26: Launch images (user, delivered from Claude Design): Monday teaser = the edited thumbnail with "Perfect UI 1.0" and "3.2 kB" in place of the code example; Tuesday launch = direction B, "The race", with the install command added; GitHub release = direction A, "The number", landscape. The teaser brief's code example requirement is superseded by the delivered image
 - 2026-09-26: Search engines still ranked perfectui.netlify.app first with the 0.23 content (user report): the Netlify subdomain now redirects to https://perfectui.dev (301 in `_redirects`, from `site.aliasHosts`), every page names its canonical address, and `sitemap.xml` and `robots.txt` are generated. The user then adds perfectui.dev to Google Search Console (Domain property, DNS TXT), submits the sitemap and, optionally, uses Change of Address from a perfectui.netlify.app URL-prefix property
 - 2026-09-26: The header menu that flips above the header in WebKit is fixed in the library only (`perfectui` ADR-0002, overlays `position: fixed`); the site takes the fix with the next library release, with no interim override (user: "O site será corrigido quando subirmos uma nova versão"). When `libraryRef` moves, check the header menu, the theme picker and the version menu after scrolling past the first section in Safari or iOS
 - 2026-09-25: Delivery runs through GitHub Actions (`.github/workflows/ci.yml`): a pull request gets a Netlify preview after its checks pass; `main` is protected and deploys production on merge; Netlify no longer builds. Every change, records included, now reaches `main` through a pull request the user merges (plan `delivery-pipeline.md`)

@@ -12,12 +12,12 @@
 
 ## Summary
 
-Edit the existing Perfect UI thumbnail (the Figma cover, attached as `linkedin-teaser-1.0.0.png`, 2000 × 1422) into the image of Monday's teaser post. Keep the isometric wall of components, the Perfect UI logo and the code example; remove the headline and the supporting line, which are in English while the post is bilingual, and remove the "Pro plan" pricing card, which makes a free library look paid. Recompose to portrait for the feed. One round, one result: this is an edit, not an exploration.
+Edit the existing Perfect UI thumbnail (the Figma cover, attached as `perfectui-thumbnail-figma.png`, 2000 × 1422) into the image of Monday's teaser post. Keep the isometric wall of components, the Perfect UI logo and the code example; remove the headline and the supporting line, which are in English while the post is bilingual, and remove the "Pro plan" pricing card, which makes a free library look paid. Recompose to portrait for the feed. One round, one result: this is an edit, not an exploration.
 
 ## Sources
 
 - The user's decision, 2026-09-26: "modificar a imagem, mantendo apenas os componentes e removendo o card de Pro Plan para evitar parecer que é algo pago, a logo do perfectui deve ser mantida e o exemplo de código também"
-- The existing thumbnail, received from the user on 2026-09-26 and kept at `docs/marketing/posts/images/linkedin-teaser-1.0.0.png`
+- The existing thumbnail, received from the user on 2026-09-26 and kept at `docs/marketing/posts/images/perfectui-thumbnail-figma.png`
 - `docs/marketing/posts/linkedin-teaser-1.0.0.txt`: the approved post text, which carries the message in both languages
 - `docs/design/briefs/linkedin-launch-1.0.md` Visual language: the colours and type of the dark launch images
 - `docs/marketing/messaging.md`: voice (no exclamation marks, what the library does not do is a feature)
@@ -97,13 +97,13 @@ Type: Inter for text (the logo's neighbourhood and the component text) and Fira 
 
 ## Attachments
 
-- Send: this brief and the original thumbnail `linkedin-teaser-1.0.0.png` (this round is an edit of it, so the tool must see it).
+- Send: this brief and the original thumbnail `perfectui-thumbnail-figma.png` (this round is an edit of it, so the tool must see it).
 - Do not send: the launch image brief or any launch image, to keep the two posts distinct.
 
 ## Prompt
 
 ```text
-Edit the attached Perfect UI thumbnail (linkedin-teaser-1.0.0.png) into a portrait image for
+Edit the attached Perfect UI thumbnail (perfectui-thumbnail-figma.png) into a portrait image for
 a LinkedIn post, 1080 x 1350. This is an edit, not a new design: keep the isometric wall of
 components, the dark background with its blue glow, the class labels on dotted leader lines,
 the Perfect UI logo at the top left and the code example <button class="pui-btn pui-solid
