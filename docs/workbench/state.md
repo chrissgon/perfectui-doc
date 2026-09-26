@@ -201,6 +201,8 @@
 
 ## Approvals
 
+- 2026-09-26: `git push -u origin launch/v1.0.0` and a pull request `launch/v1.0.0` → `main` with the launch records (plan, LinkedIn posts, briefs, images, approvals), title `docs(marketing): Perfect UI 1.0.0 launch plan, LinkedIn series and images`; the user merges (user: "Prossiga")
+
 - 2026-09-26: LinkedIn post B, the teaser, scheduled through `providers/scheduler/launchd.py` (job `linkedin-teaser-1-0-0`) for 2026-09-28 09:00 America/Sao_Paulo, published by `providers/publisher/linkedin.py` with idempotency key `linkedin-teaser-1.0.0`: text `docs/marketing/posts/linkedin-teaser-1.0.0.txt` (sha256 01b72697d94ec45e…), image `docs/marketing/posts/images/linkedin-teaser-1.0.0.png` (sha256 73661ee25c131a6b…), public, on the user's profile (user: "B. Aprovo")
 
 - 2026-09-26: LinkedIn post C, the launch, scheduled the same way (job `linkedin-launch-1-0-0`) for 2026-09-29 09:00 America/Sao_Paulo, idempotency key `linkedin-launch-1.0.0`: text `docs/marketing/posts/linkedin-1.0.0.txt` (sha256 1a807913181549d8…), image `docs/marketing/posts/images/linkedin-1.0.0.png` (sha256 f303888c42170af7…), public (user: "C. Aprovo")
