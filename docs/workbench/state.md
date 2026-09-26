@@ -191,6 +191,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin record-pipeline` and a pull request `record-pipeline` → `main` opened with the GitHub CLI (the plan `delivery-pipeline.md` and these records); the user merges (user: "Instalei o github cli, pode abrir a PR")
+
 - 2026-09-25: `git push origin ci-pipeline` and a pull request `ci-pipeline` → `main` with the delivery pipeline (IDEA-1); the workflow deploys a preview with the user's Netlify token, and the user merges (user: "Certo" to the Q3 plan: "abro o PR e acompanho o CI até ficar verde")
 
 - 2026-09-25: `git push origin main` with 0f09967 (pipeline ideas), 384803f (library fixes that retire two site workarounds) and this record (user: "Pode fazer")
