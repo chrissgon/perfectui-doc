@@ -17,4 +17,4 @@
   - `landmark-one-main` fixed: documentation pages get a `<main>` (05952f9)
   - 36197178142 green; merged by the user as 51b7548; production run 36197878446 green, https://perfectui.dev serves the new build
 - Settings applied by the user: Netlify token, `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` secrets, Netlify builds stopped, ruleset on `main` (all done 2026-09-25)
-- Follow-ups: the actions pinned at v4 run on Node 20 and GitHub forces them onto Node 24 with a deprecation warning; move to their current majors in a later change
+- Follow-ups: the actions pinned at v4 ran on Node 20 and GitHub forced them onto Node 24 with a deprecation warning; moved to their current majors (checkout v7, setup-node v7, upload-artifact v7, download-artifact v8) on 2026-09-25 after reading each major's release notes: none changes this workflow's use (artifacts downloaded by name; download-artifact v8 now fails on a digest mismatch, which is safer)

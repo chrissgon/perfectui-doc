@@ -191,6 +191,8 @@
 
 ## Approvals
 
+- 2026-09-25: `git push origin ci/actions-node24` and a pull request `ci/actions-node24` → `main` titled "ci: move the actions to their Node 24 majors", body as shown; the user merges (user: "Sim")
+
 - 2026-09-25: `git push origin record-pipeline` and a pull request `record-pipeline` → `main` opened with the GitHub CLI (the plan `delivery-pipeline.md` and these records); the user merges (user: "Instalei o github cli, pode abrir a PR")
 
 - 2026-09-25: `git push origin ci-pipeline` and a pull request `ci-pipeline` → `main` with the delivery pipeline (IDEA-1); the workflow deploys a preview with the user's Netlify token, and the user merges (user: "Certo" to the Q3 plan: "abro o PR e acompanho o CI até ficar verde")
