@@ -45,6 +45,6 @@ test("the guide is in the getting-started navigation, after Tailwind CSS", async
   const nav = page.getByRole("navigation", { name: "Documentation" });
   const links = nav.locator("details", { hasText: "Getting Started" }).getByRole("link");
   await expect(links).toHaveText(["Installation", "TypeScript", "Tailwind CSS", "Migrating from 0.x", "License"]);
-  await expect(page.locator("[data-doc-header] [data-range]")).toHaveText("Applies to 0.23.0 → 1.0.0-beta.1");
+  await expect(page.locator("[data-doc-header] [data-range]")).toHaveText("Applies to 0.23.0 → 1.0.0");
   await expect(page.locator("[data-doc-header]")).toContainText("Changed in 1.0");
 });
