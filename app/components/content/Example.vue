@@ -38,7 +38,7 @@
     >
       <!-- The snippet is the page author's own Markdown, rendered at build time (ADR-0002). -->
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div ref="previewEl" class="flex flex-wrap items-center justify-center gap-3" v-html="preview" />
+      <div class="flex flex-wrap items-center justify-center gap-3" v-html="preview" />
     </div>
     <!-- The showcase's code scrolls under a copy icon that stays in its corner. -->
     <div v-if="stacked" class="relative border-t" style="border-color: var(--pui-border)">
@@ -107,18 +107,6 @@ const snippet = computed(() => findCode(slots.default?.() ?? [])?.trim() ?? "");
 // The live preview gets its own ids and group names, so two examples on a page never open each
 // other's overlays; the code tab and the copy keep the author's HTML.
 const preview = computed(() => scopeExample(snippet.value, uid.replace(/[^\w-]/g, "")));
-
-// Hydration re-assigns v-html, so the preview's elements are new after mount, and the library's
-// indeterminate fallback only applies itself at load and on the next pointer or focus event. The
-// block applies the attribute to its own checkboxes, as the library documents it.
-const previewEl = ref<HTMLElement | null>(null);
-function applyIndeterminate() {
-  for (const box of previewEl.value?.querySelectorAll<HTMLInputElement>("input[type=checkbox][indeterminate]") ?? []) {
-    box.indeterminate = true;
-  }
-}
-onMounted(applyIndeterminate);
-watch(preview, () => nextTick(applyIndeterminate));
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
