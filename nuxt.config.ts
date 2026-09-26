@@ -65,7 +65,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+      // Square raster icons: search engines show a favicon only when it is 1:1 and a
+      // multiple of 48 px; favicon.ico also answers browsers that ask for it by name.
+      link: [
+        { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+        { rel: "icon", type: "image/png", href: "/icon-192.png", sizes: "192x192" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      ],
     },
   },
 });

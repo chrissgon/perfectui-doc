@@ -194,6 +194,8 @@
 
 ## Approvals
 
+- 2026-09-26: `git push -u origin feat/favicon` and a pull request `feat/favicon` → `main` replacing the 500 × 703 SVG favicon with square raster icons (favicon.ico 16/32/48, icon-192.png, apple-touch-icon.png) from the user's new mark, title `feat(site): square raster favicon from the new Perfect UI mark`; the user merges (user: "Yes")
+
 - 2026-09-26: `git push origin site/perfectui-1.0.0` and a pull request to `main`: perfectui 1.0.0, `libraryRef` at the library commit that fixes the migration guide target (93b8b51, pushed to the library's `main` with approval), the modal workaround removed, the indeterminate workaround kept (IDEA-4); the user merges and checks the header menus on iOS (user: "Sim")
 
 - 2026-09-26: `git push origin feat/seo-canonical-domain` and a pull request to `main` with the alias redirect, canonical links, sitemap and robots.txt, as proposed in the conversation; the user merges (user: "Siga com essa PR")
