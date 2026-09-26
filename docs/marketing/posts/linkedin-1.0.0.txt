@@ -1,0 +1,28 @@
+Perfect UI 1.0 está no ar. / Perfect UI 1.0 is out.
+3,2 kB de CSS, sem reset, sem dependências. / 3.2 kB of CSS, no reset, no dependencies.
+
+🇧🇷 pt-br
+
+Reescrevi o Perfect UI do zero. A biblioteca inteira tem 3,2 kB de CSS e 0,5 kB de JavaScript (gzip): sem reset de CSS, sem fonte importada, sem dependências e nenhuma regra fora de uma classe pui-.
+
+O navegador faz o trabalho: o modal é um <dialog>, o dropdown é um popover, o tooltip usa interestfor e o accordion é um <details>. O JavaScript só entra para o que o navegador ainda não tem.
+
+Cada elemento são três classes: forma, estilo e cor. O dark mode segue o sistema sem configuração, e tudo fica dentro de @layer, então o Tailwind ou o seu próprio CSS vencem sem !important.
+
+Medido, não prometido: menor que Pico, Beer CSS, Bootstrap, UIkit e Bulma, medidos do mesmo jeito.
+
+Quem usa a 0.x tem um guia de migração passo a passo no site.
+
+🇺🇸 en-us
+
+I rewrote Perfect UI from scratch. The whole library is 3.2 kB of CSS and 0.5 kB of JavaScript (gzip): no CSS reset, no font import, no dependencies, and no rule outside a pui- class.
+
+The browser does the work: the modal is a <dialog>, the dropdown is a popover, the tooltip uses interestfor, and the accordion is a <details>. JavaScript only fills in what a browser is missing.
+
+Each element is three classes: shape, style and colour. Dark mode follows the system with nothing to configure, and everything lives in @layer, so Tailwind or your own CSS win without !important.
+
+Measured, not promised: smaller than Pico, Beer CSS, Bootstrap, UIkit and Bulma, measured the same way.
+
+On 0.x? The site has a step-by-step migration guide.
+
+👉 https://perfectui.dev
