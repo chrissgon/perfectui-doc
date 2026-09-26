@@ -72,3 +72,25 @@ test.describe("page metadata", () => {
     expect(jpg.equals(readFileSync("docs/design/results/og-image/final/og-1200x630.jpg"))).toBe(true);
   });
 });
+
+// Search engines show a favicon only when it is square and a multiple of 48 px.
+test.describe("favicon", () => {
+  const sizesOf = (file: string): Array<[number, number]> => {
+    const bytes = readFileSync(`${SITE_DIR}${file}`);
+    if (file.endsWith(".png")) return [[bytes.readUInt32BE(16), bytes.readUInt32BE(20)]];
+    // ICO directory: 6-byte header, then 16 bytes per image; 0 means 256.
+    return Array.from({ length: bytes.readUInt16LE(4) }, (_, i) => {
+      const at = 6 + i * 16;
+      return [bytes[at] || 256, bytes[at + 1] || 256] as [number, number];
+    });
+  };
+
+  test("every linked icon exists and is square, with one icon a multiple of 48 px", () => {
+    const links = [...html("").matchAll(/<link[^>]*rel="(?:icon|apple-touch-icon)"[^>]*>/g)].map((m) => m[0]);
+    const hrefs = links.map((l) => l.match(/href="([^"]+)"/)![1]!);
+    expect(hrefs).toEqual(expect.arrayContaining(["/favicon.ico", "/icon-192.png", "/apple-touch-icon.png"]));
+    const sizes = hrefs.flatMap(sizesOf);
+    for (const [w, h] of sizes) expect(w, `${w}x${h}`).toBe(h);
+    expect(sizes.some(([w]) => w % 48 === 0)).toBe(true);
+  });
+});
