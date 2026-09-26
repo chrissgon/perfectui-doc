@@ -163,3 +163,20 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 - The glass header's `backdrop-filter` does not contain the fixed panels (Impact › Risks): settled.
 - Full check with the change: `CI=1 bun run test` in `perfectui`: 86 passed, SSR and exports checks pass (phase 5).
 - No scratch left: worktrees pruned, the site's `node_modules` restored, `git status` clean in both repositories.
+
+## Docs
+
+- Owner: eng-docs
+- Documents checked against the change: `perfectui` `docs/dropdown.md`, `docs/tooltip.md`, `ARCHITECTURE.md`, `README.md`, `MIGRATION.md` (grep `anchor`, `placement`, `flip`, `sticky`, `viewport`, `position`)
+
+| Document | Sentence before | After | Why |
+|----------|-----------------|-------|-----|
+| `docs/dropdown.md` §Placement | "Placement uses CSS anchor positioning. Browsers that do not have it yet get the same placement, including the direction classes, from the fallback in the script." | adds: "Either way the panel is placed against the viewport, so a menu opened from a sticky header or a fixed bar stays next to its trigger while the page scrolls, and flips only when the screen has no room." | the case the fix makes true, verified by `tests/sticky-overlays.spec.ts` (10 passed, both engines) and on the site (Integration tests) |
+| `docs/dropdown.md` §Placement | "Each one flips to the opposite side when the preferred one does not fit, so a menu never opens off screen." | unchanged | was false for non-scrolling triggers, true now |
+| `docs/tooltip.md` §Placement | "The tooltip sits above its trigger and flips below when there is no room." | unchanged | was false for a sticky trigger in WebKit, true now (the tooltip test passes) |
+| `ARCHITECTURE.md` §6 Overlay placement | "…so both paths place an overlay the same way." | adds: "Both place it against the viewport (`position: fixed` in the top layer): with `absolute` the flip was tested against the document, which WebKit and Chromium each got wrong for triggers that do not scroll (ADR-0002)." | the design rule behind the fix, where the next reader looks |
+
+- Checks: `bunx prettier --check docs/dropdown.md ARCHITECTURE.md` passes; the site converts it (`PERFECTUI_SOURCE=../perfectui bun run docs:sync` in perfectui-doc: 28 pages, the sentence on the Dropdown page). Commit `perfectui` d628495.
+- Changelog: generated from commits by `changelogen`; the entry comes from `fix(overlays): place dropdowns and tooltips against the viewport`.
+- Follow-ups outside this repository: perfectui-doc takes the fix with the next release; then check the three header menus after scrolling past the first section in Safari or iOS (state file, Decisions).
+- Proposed, not written: none.
