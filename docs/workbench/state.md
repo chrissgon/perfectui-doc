@@ -51,6 +51,7 @@
 | docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0) | none (ordinary work) | done | 2026-09-25 |
 | docs/engineering/plans/delivery-pipeline.md (the pipeline, its runs and the settings the user applied) | ops-ci-pipeline | done | 2026-09-25 |
+| docs/design/briefs/linkedin-teaser-1.0.md (Monday image: edit of the Figma thumbnail, components, logo and code example only, no Pro plan card) | design-brief | draft | 2026-09-26 |
 | docs/design/briefs/linkedin-launch-1.0.md | design-brief | draft | 2026-09-26 |
 | docs/marketing/launch-plan.md (Perfect UI 1.0.0: release, site, LinkedIn series Monday and Tuesday) | mkt-launch-plan (written with this launch) | draft | 2026-09-26 |
 | docs/marketing/posts/linkedin-teaser-1.0.0.txt and images/linkedin-teaser-1.0.0.png (Monday teaser, bilingual; image: the Perfect UI Figma thumbnail from the user, converted from WebP) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
