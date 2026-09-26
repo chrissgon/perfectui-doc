@@ -180,3 +180,9 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 - Changelog: generated from commits by `changelogen`; the entry comes from `fix(overlays): place dropdowns and tooltips against the viewport`.
 - Follow-ups outside this repository: perfectui-doc takes the fix with the next release; then check the three header menus after scrolling past the first section in Safari or iOS (state file, Decisions).
 - Proposed, not written: none.
+
+## Review
+
+- Owner: eng-code-review
+- Record: `perfectui` `docs/engineering/reviews/fix-dropdown-scroll-flip.md` (commit 872518d): verdict approve, no finding; lint 0, typecheck 0, `CI=1 bun run test` 0 (86 passed, SSR and exports checks); the bug-fix checklist filled (fix at the cause, regression tests fail on dfafd13 and pass now).
+- Outside the change: a WebKit project for the site needs Playwright routing or another server (proposed backlog item).
