@@ -1,7 +1,7 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 approved (user, 2026-09-26: the library goes straight to `v1`); phase 6 approved (user, 2026-09-26); phase 7 approved (user, 2026-09-26); phase 8 review approved the change (`perfectui` 872518d), waiting at its checkpoint
+- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 approved (user, 2026-09-26: the library goes straight to `v1`); phase 6 approved (user, 2026-09-26); phase 7 approved (user, 2026-09-26); phase 8 approved; phase 9 delivered: the library fix pushed to `perfectui` `v1` (ec26af5), the records in a pull request here
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
@@ -192,6 +192,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-26: `git push origin v1` in `chrissgon/perfectui` (fast-forward to the overlay fix: 7bbb000, dfafd13, 9ff2f9c, d628495, 872518d, ec26af5), and `git push origin fix/header-menu-scroll` with a pull request `fix/header-menu-scroll` → `main` carrying the plan, the reproduction and these records; the user merges (user: "Pode subir tudo na v1 diretamente", then "Sim" to both payloads)
 
 - 2026-09-25: `git push origin ci/actions-node24` and a pull request `ci/actions-node24` → `main` titled "ci: move the actions to their Node 24 majors", body as shown; the user merges (user: "Sim")
 
