@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
+import { site } from "../../app/site.config";
 import { OUT, latestVersion, versions } from "./paths";
 import { pageFile } from "../helpers/page-file";
 
@@ -41,7 +42,9 @@ test.describe("redirects for unversioned paths (REQ-1, REQ-5, AC-1, ADR-0005)", 
     const latest = `/docs/${latestVersion.id}`;
     // One rule per 0.23 page is gone (spec library-docs-and-versions REQ-11): only the three kinds remain.
     expect(lines.filter((l) => /^\/docs\/[a-z-]+ /.test(l) && !/^\/docs\/v\d+ /.test(l))).toEqual([]);
-    expect(lines).toHaveLength(versions.length + 2);
+    // The alias hosts come first (search engines, 2026-09-26), then one rule per version, then two.
+    expect(lines.slice(0, site.aliasHosts.length)).toEqual(site.aliasHosts.map((h) => `https://${h}/* ${site.url}/:splat 301!`));
+    expect(lines).toHaveLength(site.aliasHosts.length + versions.length + 2);
     // The index is forced: the build writes it as a redirect page, which would be served first.
     expect(lines).toContain(`${latest} ${latest}/getting-started/installation 301!`);
     expect(lines).toContain("/docs/v0 /docs/v0/components/button 301!");

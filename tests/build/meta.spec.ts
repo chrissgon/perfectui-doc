@@ -54,6 +54,18 @@ test.describe("page metadata", () => {
     expect(h.twitterCard).toBe("summary_large_image");
   });
 
+  // Search engines treat the alias host (perfectui.netlify.app) and trailing-slash copies as this
+  // page: the canonical link names the address on the site's domain, the same as og:url.
+  for (const [name, path, url] of [
+    ["the landing", "", `${site.url}/`],
+    ["a documentation page", "/docs/v1/components/button", `${site.url}/docs/v1/components/button`],
+  ] as const) {
+    test(`${name} names its address on the site's domain as canonical`, () => {
+      const links = [...html(path).matchAll(/<link[^>]*rel="canonical"[^>]*>/g)].map((m) => m[0].match(/href="([^"]*)"/)?.[1]);
+      expect(links).toEqual([url]);
+    });
+  }
+
   test("the share image is the 1200 × 630 JPG", () => {
     const jpg = readFileSync(`${SITE_DIR}/og.jpg`);
     expect(jpg.subarray(0, 3)).toEqual(Buffer.from([0xff, 0xd8, 0xff]));

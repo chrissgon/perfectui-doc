@@ -6,6 +6,9 @@
 export const site = {
   name: "Perfect UI",
   url: "https://perfectui.dev",
+  // Hosts that serve the same deploy and must send readers and search engines to `url`
+  // (301 in _redirects): the Netlify subdomain was the address before the domain.
+  aliasHosts: ["perfectui.netlify.app"],
   packageName: "@chrissgon/perfectui",
   repository: "https://github.com/chrissgon/perfectui",
   figma: "https://www.figma.com/file/szD991W25tQxPuqhfRektk/PerfectUI",
