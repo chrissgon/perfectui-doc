@@ -40,7 +40,7 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 
 ### Reach
 - Triggers: a Perfect UI dropdown or tooltip (both `position: absolute` with `position-try-fallbacks`) whose anchor stays on screen while the page scrolls more than about a viewport: sticky or fixed headers, toolbars, floating buttons; WebKit only (Safari on macOS, every browser on iOS).
-- Seen today at: https://perfectui.dev below 1024 px, the header's three-dot menu on the landing (reported). The theme picker (`ThemePicker.vue`) and the version menu (`VersionMenu.vue`) are `pui-dropdown`s in the same header: same mechanism, not measured separately.
+- Seen today at: https://perfectui.dev below 1024 px, the header's three-dot menu on the landing (reported). The theme picker (`ThemePicker.vue`) and the version menu (`VersionMenu.vue`) flip too (measured in phase 6: panel top -40 and -65 at `scrollY` 1200 in WebKit).
 - Same assumption elsewhere: `perfectui` `src/css/components/tooltip.css:27` and `:31` (`position: absolute`, `flip-block`); searched `src/css/components` for `position-try-fallbacks` and `position: absolute`. `timeline.css:23` is absolute but not anchored.
 
 ### Why it escaped
@@ -146,3 +146,20 @@ The open panel sits in the top layer with `position: absolute`, so its containin
 - `perfectui` `src/css/components/dropdown.css` and `src/css/components/tooltip.css`: the native path's `position: absolute` becomes `position: fixed`, with a comment pointing to ADR-0002 (commit 9ff2f9c on `fix/dropdown-scroll-flip`, local).
 - Checks with the change: `bunx playwright test tests/sticky-overlays.spec.ts`: 10 passed (the three failures of the Failing tests section now pass); `bun run lint`: clean; `CI=1 bun run test`: build, "ssr: 7 entries imported in Node, no DOM required", "exports: 7 documented specifiers all resolve", 86 passed; `bun run size`: `perfectui.css` 3,264 B (was 3,265), `js/index.js` 487 B.
 - perfectui-doc: no change; the header menu keeps flipping in WebKit until `libraryRef` and the `@chrissgon/perfectui` dependency move to a release carrying 9ff2f9c.
+
+## Integration tests
+
+- Owner: eng-integration-tests
+- File: `perfectui` `tests/sticky-overlays.spec.ts` (through `tests/fixtures/sticky-overlays.html` loading the built `dist/`, served by `scripts/serve.mjs`), runtimes Chromium and WebKit 26.6: 10 passed with the change
+- Against the code before the change (`perfectui` dfafd13, worktree `/tmp/hms-before`, removed; `sticky-overlays.spec.ts` and `fallbacks.spec.ts`): new behaviour 3 failed (Chromium "a dropdown with no room below its trigger still opens above it"; WebKit "a dropdown opened from a sticky header stays under its trigger after scrolling 1200 px" and "a tooltip on a sticky header keeps its side after scrolling past a viewport"); preserved behaviour 25 passed
+- Through the real site (perfectui-doc built with the fixed `dist/` copied into `node_modules/@chrissgon/perfectui` for the run, then restored and compared byte for byte; served through Playwright's routing; 390 × 844; glass header with `backdrop-filter`):
+
+| Header menu | WebKit before (0 → 1,200 px) | WebKit after (0 → 1,200 → 3,000 px) | Chromium before and after |
+|-------------|------------------------------|-------------------------------------|---------------------------|
+| three-dot menu | 54 → -115 | 54 → 54 → 54 | 54 at every position |
+| theme picker | 54 → -40 | 54 → 54 → 54 | 54 at every position |
+| version menu | 46 → -65 | 46 → 46 → 46 | 47 at every position |
+
+- The glass header's `backdrop-filter` does not contain the fixed panels (Impact › Risks): settled.
+- Full check with the change: `CI=1 bun run test` in `perfectui`: 86 passed, SSR and exports checks pass (phase 5).
+- No scratch left: worktrees pruned, the site's `node_modules` restored, `git status` clean in both repositories.

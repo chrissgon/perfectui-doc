@@ -1,7 +1,7 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 implemented in `perfectui` (9ff2f9c, local), waiting at its checkpoint
+- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 approved (user, 2026-09-26: the library goes straight to `v1`); phase 6 integration tests done, waiting at its checkpoint
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
