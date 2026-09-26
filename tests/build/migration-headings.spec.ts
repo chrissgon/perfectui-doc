@@ -23,7 +23,9 @@ const decode = (s: string) => s.replace(/<[^>]+>/g, "").replace(/&#39;|&#x27;/g,
 
 test("the guide's h2 sequence equals MIGRATION.md at the pinned tag, every h2 with an id", async () => {
   const source = await migrationSource();
-  const expected = [...outsideFences(source).matchAll(/^## (.+)$/gm)].map((m) => m[1]!.replace(/`/g, "").trim());
+  // The site's converter renders "##" and "###" as h2 (shared/library-docs.ts: a level of 3 or
+  // more moves up one); since 1.0.0 the guide's sections are "###" under its "#" title.
+  const expected = [...outsideFences(source).matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]!.replace(/`/g, "").trim());
   const html = readFileSync(pageFile(SITE_DIR, PAGE), "utf8");
   const article = html.match(/<div[^>]*class="[^"]*doc-prose[\s\S]*<\/article>/)?.[0] ?? html;
   const h2 = [...article.matchAll(/<h2 id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)];
