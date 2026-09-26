@@ -194,6 +194,8 @@
 
 ## Approvals
 
+- 2026-09-26: `git push origin site/perfectui-1.0.0` and a pull request to `main`: perfectui 1.0.0, `libraryRef` at the library commit that fixes the migration guide target (93b8b51, pushed to the library's `main` with approval), the modal workaround removed, the indeterminate workaround kept (IDEA-4); the user merges and checks the header menus on iOS (user: "Sim")
+
 - 2026-09-26: `git push origin feat/seo-canonical-domain` and a pull request to `main` with the alias redirect, canonical links, sitemap and robots.txt, as proposed in the conversation; the user merges (user: "Siga com essa PR")
 
 - 2026-09-26: `git push origin v1` in `chrissgon/perfectui` (fast-forward to the overlay fix: 7bbb000, dfafd13, 9ff2f9c, d628495, 872518d, ec26af5), and `git push origin fix/header-menu-scroll` with a pull request `fix/header-menu-scroll` → `main` carrying the plan, the reproduction and these records; the user merges (user: "Pode subir tudo na v1 diretamente", then "Sim" to both payloads)

@@ -108,9 +108,10 @@ const snippet = computed(() => findCode(slots.default?.() ?? [])?.trim() ?? "");
 // other's overlays; the code tab and the copy keep the author's HTML.
 const preview = computed(() => scopeExample(snippet.value, uid.replace(/[^\w-]/g, "")));
 
-// Hydration re-assigns v-html, so the preview's elements are new after mount, and the library's
-// indeterminate fallback only applies itself at load and on the next pointer or focus event. The
-// block applies the attribute to its own checkboxes, as the library documents it.
+// Hydration re-assigns v-html, so the preview's elements are new after mount. perfectui 1.0.0
+// applies the attribute to checkboxes inserted later (ADR-0001), but without this block the
+// site's "indeterminate checkbox example" test still failed about one run in three under a
+// parallel load (2026-09-26); kept until that is explained (docs/product/ideas.md, IDEA-4).
 const previewEl = ref<HTMLElement | null>(null);
 function applyIndeterminate() {
   for (const box of previewEl.value?.querySelectorAll<HTMLInputElement>("input[type=checkbox][indeterminate]") ?? []) {
