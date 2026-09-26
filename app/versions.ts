@@ -23,9 +23,10 @@ export interface DocVersion {
 }
 
 export const versions: readonly DocVersion[] = [
-  // Pinned to the library commit that adds the conversion markers until a release carries them
-  // (spec library-docs-and-versions ASSUMPTION-1); then this line loses `libraryRef`.
-  { id: "v1", label: "1.x", collection: "docs_v1", latest: true, libraryRef: "652748d75d42f25a6396173c8e4f8a59487c6299" },
+  // Pinned to the release tag v1.0.0, the first release carrying the conversion markers (spec
+  // library-docs-and-versions ASSUMPTION-1). It names the installed version's tag, so leaving
+  // `libraryRef` unset would read the same pages; move it together with the pin in package.json.
+  { id: "v1", label: "1.x", collection: "docs_v1", latest: true, libraryRef: "v1.0.0" },
   // 0.23 is not a documented major: its documents stay in the library at tag v0.23.0 (PRD F-7,
   // retired). The test fixture site lists a v0 to exercise two majors (tests/fixtures/site).
 ];
