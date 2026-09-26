@@ -53,6 +53,7 @@
 | docs/engineering/plans/delivery-pipeline.md (the pipeline, its runs and the settings the user applied) | ops-ci-pipeline | done | 2026-09-25 |
 | docs/design/briefs/linkedin-launch-1.0.md | design-brief | draft | 2026-09-26 |
 | docs/marketing/launch-plan.md (Perfect UI 1.0.0: release, site, LinkedIn series Monday and Tuesday) | mkt-launch-plan (written with this launch) | draft | 2026-09-26 |
+| docs/marketing/posts/linkedin-teaser-1.0.0.txt and images/linkedin-teaser-1.0.0.png (Monday teaser, bilingual; image: the Perfect UI Figma thumbnail from the user, converted from WebP) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
 | docs/marketing/posts/linkedin-1.0.0.txt (Tuesday launch post, bilingual) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
 | docs/product/ideas.md (IDEA-1 delivery pipeline for the site; IDEA-2 pointer to the library's release pipeline) | none (ordinary work) | draft | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
