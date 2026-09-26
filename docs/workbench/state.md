@@ -1,7 +1,7 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: flow-fix-bug (draft, written alongside this task) on "the header menu (three dots) disappears above the header when the page scrolls" (user, 2026-09-26); phase 1 root cause approved (user, 2026-09-26); phase 2 approved with the Chromium bottom-edge case in scope (user, 2026-09-26); phase 3 approved (user, 2026-09-26); phase 4 decided (option A only, user 2026-09-26); phase 5 approved (user, 2026-09-26: the library goes straight to `v1`); phase 6 approved (user, 2026-09-26); phase 7 approved (user, 2026-09-26); phase 8 approved; phase 9 delivered: the library fix pushed to `perfectui` `v1` (ec26af5), the records in a pull request here
+- Current flow: none (flow-fix-bug on the header menu closed 2026-09-26: fix in `perfectui` `v1` ec26af5, records merged here in #5; the site takes the fix with the next library release)
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
 - Updated: 2026-09-25
 
@@ -57,6 +57,7 @@
 
 ## Decisions
 
+- 2026-09-26: Search engines still ranked perfectui.netlify.app first with the 0.23 content (user report): the Netlify subdomain now redirects to https://perfectui.dev (301 in `_redirects`, from `site.aliasHosts`), every page names its canonical address, and `sitemap.xml` and `robots.txt` are generated. The user then adds perfectui.dev to Google Search Console (Domain property, DNS TXT), submits the sitemap and, optionally, uses Change of Address from a perfectui.netlify.app URL-prefix property
 - 2026-09-26: The header menu that flips above the header in WebKit is fixed in the library only (`perfectui` ADR-0002, overlays `position: fixed`); the site takes the fix with the next library release, with no interim override (user: "O site será corrigido quando subirmos uma nova versão"). When `libraryRef` moves, check the header menu, the theme picker and the version menu after scrolling past the first section in Safari or iOS
 - 2026-09-25: Delivery runs through GitHub Actions (`.github/workflows/ci.yml`): a pull request gets a Netlify preview after its checks pass; `main` is protected and deploys production on merge; Netlify no longer builds. Every change, records included, now reaches `main` through a pull request the user merges (plan `delivery-pipeline.md`)
 - 2026-09-25: The light-mode contrast of `pui-solid` labels on theme, success and warn stays as accepted on 2026-09-24; the shades that would pass are recorded as IDEA-3 in `docs/product/ideas.md` for a future library adjustment (user: "deixe registrado para futuro ajuste"). Lighthouse now measures light and dark explicitly with the same exception as axe
@@ -192,6 +193,8 @@
 - [x] Landing messaging: compared libraries named with versions and date; headline "The bare minimum for elegant interfaces" with "Three classes, no framework, 3.2 kB" beneath; no "used by" section (user, 2026-09-23)
 
 ## Approvals
+
+- 2026-09-26: `git push origin feat/seo-canonical-domain` and a pull request to `main` with the alias redirect, canonical links, sitemap and robots.txt, as proposed in the conversation; the user merges (user: "Siga com essa PR")
 
 - 2026-09-26: `git push origin v1` in `chrissgon/perfectui` (fast-forward to the overlay fix: 7bbb000, dfafd13, 9ff2f9c, d628495, 872518d, ec26af5), and `git push origin fix/header-menu-scroll` with a pull request `fix/header-menu-scroll` → `main` carrying the plan, the reproduction and these records; the user merges (user: "Pode subir tudo na v1 diretamente", then "Sim" to both payloads)
 

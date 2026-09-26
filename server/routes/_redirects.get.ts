@@ -1,3 +1,4 @@
+import { site } from "../../app/site.config";
 import { latestVersion, versions } from "../../app/versions";
 import { firstPageRoute } from "../../shared/first-page";
 import { assertValidDocs } from "../utils/assertValidDocs";
@@ -8,6 +9,8 @@ import { assertValidDocs } from "../utils/assertValidDocs";
  *    forced: the build also writes the index as a redirect page, which would otherwise be served.
  * 2. `/docs` to the latest major's first page, and any unversioned `/docs/...` path to the same
  *    path under the latest major; not forced, so the versioned files are served first.
+ * 0. Every alias host (the Netlify subdomain) to the same path on the site's domain, forced and
+ *    first, so no other rule answers on the alias. Deploy previews have their own hosts.
  * The 0.23 site's flat URLs (`/docs/<slug>`) have no rule since it was retired (spec
  * library-docs-and-versions REQ-11).
  */
@@ -24,6 +27,7 @@ export default defineEventHandler((event) => {
   }
 
   const lines = [
+    ...site.aliasHosts.map((host) => `https://${host}/* ${site.url}/:splat 301!`),
     ...[...homes].map(([id, home]) => `/docs/${id} ${home} 301!`),
     `/docs ${homes.get(latestVersion.id) ?? latest} 301`,
     `/docs/* ${latest}/:splat 301`,

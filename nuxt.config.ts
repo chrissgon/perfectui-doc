@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       crawlLinks: true,
       // Each version's index (a redirect) and first page; the crawler follows the first page's
       // sidebar to every other page.
-      routes: ["/", ...versions.map((v) => `/docs/${v.id}`), ...versions.flatMap((v) => firstPageRoute("content", v.id) ?? []), "/_redirects", "/api/search-index.json", "/api/assistant-corpus.json", "/api/library-size.json", ...versions.map((v) => `/api/search/${v.id}.json`)],
+      routes: ["/", ...versions.map((v) => `/docs/${v.id}`), ...versions.flatMap((v) => firstPageRoute("content", v.id) ?? []), "/_redirects", "/sitemap.xml", "/robots.txt", "/api/search-index.json", "/api/assistant-corpus.json", "/api/library-size.json", ...versions.map((v) => `/api/search/${v.id}.json`)],
     },
   },
 
