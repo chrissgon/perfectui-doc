@@ -1,0 +1,16 @@
+Amanhã sai o Perfect UI 1.0. / Perfect UI 1.0 ships tomorrow.
+Uma biblioteca de componentes com 3,2 kB de CSS. / A component library in 3.2 kB of CSS.
+
+🇧🇷 pt-br
+
+Passei os últimos meses reescrevendo o Perfect UI do zero, com uma regra: o mínimo necessário. Sem reset de CSS, sem fonte importada, sem dependências, e o comportamento vindo do próprio navegador.
+
+Amanhã a 1.0 sai oficialmente. A documentação já está no ar.
+
+🇺🇸 en-us
+
+I've spent the last months rewriting Perfect UI from scratch with one rule: the bare minimum. No CSS reset, no font import, no dependencies, and behaviour that comes from the browser itself.
+
+1.0 ships tomorrow. The documentation is already live.
+
+👉 https://perfectui.dev

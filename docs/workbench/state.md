@@ -1,9 +1,9 @@
 # Workbench state
 
 - Project: perfectui-doc
-- Current flow: none (flow-fix-bug on the header menu closed 2026-09-26: fix in `perfectui` `v1` ec26af5, records merged here in #5; the site takes the fix with the next library release)
+- Current flow: flow-launch (written with this launch) for Perfect UI 1.0.0 (user, 2026-09-26): phase 1 release done (npm `latest` 1.0.0 with trusted publishing, GitHub release v1.0.0, launch image added to its notes); phase 2 site on 1.0.0 done (pull request #7); phase 3 LinkedIn series scheduled (teaser Monday 2026-09-28 09:00, launch Tuesday 2026-09-29 09:00, America/Sao_Paulo, launchd jobs `linkedin-teaser-1-0-0` and `linkedin-launch-1-0-0`); next: phase 4, read the results a week after the launch against the baseline in `docs/marketing/launch-plan.md`
 - Current phase: released. R-1 and R-2 are live on https://perfectui.dev (the user's domain, bought 2026-09-25; Netlify, from branch `main`) (pull request `redesign` → `main`, merged by the user on 2026-09-25); next: R-3 (assistant experiment) when the user asks; the next library release is on hold while the user works on perfectui (see Decisions); work continues on branch `main`
-- Updated: 2026-09-25
+- Updated: 2026-09-26
 
 ## Autonomy
 
@@ -51,12 +51,19 @@
 | docs/engineering/adr/0010-pages-generated-from-the-library-before-the-build.md | eng-architecture | draft | 2026-09-25 |
 | docs/engineering/plans/prune-old-library-versions.md (40 git tags, 5 GitHub releases, 57 npm versions up to 0.20.0) | none (ordinary work) | done | 2026-09-25 |
 | docs/engineering/plans/delivery-pipeline.md (the pipeline, its runs and the settings the user applied) | ops-ci-pipeline | done | 2026-09-25 |
+| docs/design/briefs/linkedin-teaser-1.0.md (Monday image: edit of the Figma thumbnail, components, logo and code example only, no Pro plan card) | design-brief | draft | 2026-09-26 |
+| docs/design/briefs/linkedin-launch-1.0.md | design-brief | draft | 2026-09-26 |
+| docs/marketing/launch-plan.md (Perfect UI 1.0.0: release, site, LinkedIn series Monday and Tuesday) | mkt-launch-plan (written with this launch) | draft | 2026-09-26 |
+| docs/marketing/posts/linkedin-teaser-1.0.0.txt and images/linkedin-teaser-1.0.0.png (Monday teaser, bilingual; image: Claude Design edit of the Figma thumbnail, kept as images/perfectui-thumbnail-figma.png) | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
+| docs/marketing/posts/linkedin-1.0.0.txt and images/linkedin-1.0.0.png (Tuesday launch post, bilingual; image: direction B, "The race") |
+| docs/marketing/posts/images/github-release-1.0.0.png (1200 × 627, direction A, "The number", for the GitHub release v1.0.0) | design-brief → Claude Design (user) | approved | 2026-09-26 | mkt-social-copy (written with this launch) | approved | 2026-09-26 |
 | docs/product/ideas.md (IDEA-1 delivery pipeline for the site; IDEA-2 pointer to the library's release pipeline) | none (ordinary work) | draft | 2026-09-25 |
 | docs/product/backlog.md (R-1: 48 tasks done; R-2: 5 tasks T-ld-1 to T-ld-5, milestones LD1 and LD2) | product-backlog | draft | 2026-09-25 |
 | docs/product/prd.md (F-13 added, F-6 revised, F-7 retired, P-2 redefined on 2026-09-25) | product-prd | draft | 2026-09-25 |
 
 ## Decisions
 
+- 2026-09-26: Launch images (user, delivered from Claude Design): Monday teaser = the edited thumbnail with "Perfect UI 1.0" and "3.2 kB" in place of the code example; Tuesday launch = direction B, "The race", with the install command added; GitHub release = direction A, "The number", landscape. The teaser brief's code example requirement is superseded by the delivered image
 - 2026-09-26: Search engines still ranked perfectui.netlify.app first with the 0.23 content (user report): the Netlify subdomain now redirects to https://perfectui.dev (301 in `_redirects`, from `site.aliasHosts`), every page names its canonical address, and `sitemap.xml` and `robots.txt` are generated. The user then adds perfectui.dev to Google Search Console (Domain property, DNS TXT), submits the sitemap and, optionally, uses Change of Address from a perfectui.netlify.app URL-prefix property
 - 2026-09-26: The header menu that flips above the header in WebKit is fixed in the library only (`perfectui` ADR-0002, overlays `position: fixed`); the site takes the fix with the next library release, with no interim override (user: "O site será corrigido quando subirmos uma nova versão"). When `libraryRef` moves, check the header menu, the theme picker and the version menu after scrolling past the first section in Safari or iOS
 - 2026-09-25: Delivery runs through GitHub Actions (`.github/workflows/ci.yml`): a pull request gets a Netlify preview after its checks pass; `main` is protected and deploys production on merge; Netlify no longer builds. Every change, records included, now reaches `main` through a pull request the user merges (plan `delivery-pipeline.md`)
@@ -196,6 +203,13 @@
 
 - 2026-09-26: `git push -u origin feat/favicon` and a pull request `feat/favicon` → `main` replacing the 500 × 703 SVG favicon with square raster icons (favicon.ico 16/32/48, icon-192.png, apple-touch-icon.png) from the user's new mark, title `feat(site): square raster favicon from the new Perfect UI mark`; the user merges (user: "Yes")
 
+- 2026-09-26: `git push -u origin launch/v1.0.0` and a pull request `launch/v1.0.0` → `main` with the launch records (plan, LinkedIn posts, briefs, images, approvals), title `docs(marketing): Perfect UI 1.0.0 launch plan, LinkedIn series and images`; the user merges (user: "Prossiga")
+
+- 2026-09-26: LinkedIn post B, the teaser, scheduled through `providers/scheduler/launchd.py` (job `linkedin-teaser-1-0-0`) for 2026-09-28 09:00 America/Sao_Paulo, published by `providers/publisher/linkedin.py` with idempotency key `linkedin-teaser-1.0.0`: text `docs/marketing/posts/linkedin-teaser-1.0.0.txt` (sha256 01b72697d94ec45e…), image `docs/marketing/posts/images/linkedin-teaser-1.0.0.png` (sha256 73661ee25c131a6b…), public, on the user's profile (user: "B. Aprovo")
+
+- 2026-09-26: LinkedIn post C, the launch, scheduled the same way (job `linkedin-launch-1-0-0`) for 2026-09-29 09:00 America/Sao_Paulo, idempotency key `linkedin-launch-1.0.0`: text `docs/marketing/posts/linkedin-1.0.0.txt` (sha256 1a807913181549d8…), image `docs/marketing/posts/images/linkedin-1.0.0.png` (sha256 f303888c42170af7…), public (user: "C. Aprovo")
+
+- 2026-09-26: in `chrissgon/perfectui`, the launch image at the top of the v1.0.0 release notes (`git push origin main`, ef084d5, then `gh release edit v1.0.0`); executed 2026-09-26 (user: "A. 1. Aprovo 2. Aprovo")
 - 2026-09-26: `git push origin site/perfectui-1.0.0` and a pull request to `main`: perfectui 1.0.0, `libraryRef` at the library commit that fixes the migration guide target (93b8b51, pushed to the library's `main` with approval), the modal workaround removed, the indeterminate workaround kept (IDEA-4); the user merges and checks the header menus on iOS (user: "Sim")
 
 - 2026-09-26: `git push origin feat/seo-canonical-domain` and a pull request to `main` with the alias redirect, canonical links, sitemap and robots.txt, as proposed in the conversation; the user merges (user: "Siga com essa PR")
