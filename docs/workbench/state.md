@@ -201,6 +201,8 @@
 
 ## Approvals
 
+- 2026-09-27: `git push -u origin fix/search-favicon` and a pull request `fix/search-favicon` → `main`, title `test(site): hold the favicon to Google's current rules and keep its URLs stable`: a test that requires exactly the three linked icon paths, square icons and one larger than 48 px, so an SVG favicon or renamed icons fail the build; no icon changes (the live icons are right, Google still shows the deleted SVG until it recrawls, requested by the user in Search Console); the user merges (user: "Tudo bem, pode commitar e subir esse teste")
+
 - 2026-09-26: `git push -u origin feat/favicon` and a pull request `feat/favicon` → `main` replacing the 500 × 703 SVG favicon with square raster icons (favicon.ico 16/32/48, icon-192.png, apple-touch-icon.png) from the user's new mark, title `feat(site): square raster favicon from the new Perfect UI mark`; the user merges (user: "Yes")
 
 - 2026-09-26: `git push -u origin launch/v1.0.0` and a pull request `launch/v1.0.0` → `main` with the launch records (plan, LinkedIn posts, briefs, images, approvals), title `docs(marketing): Perfect UI 1.0.0 launch plan, LinkedIn series and images`; the user merges (user: "Prossiga")
