@@ -73,7 +73,9 @@ test.describe("page metadata", () => {
   });
 });
 
-// Search engines show a favicon only when it is square and a multiple of 48 px.
+// Google Search shows a favicon only when it is square and in a supported raster format, and
+// recommends one larger than 48x48; its URL must be stable. Source: "Define a favicon to show in
+// search results", developers.google.com/search/docs/appearance/favicon-in-search (2026-08-28).
 test.describe("favicon", () => {
   const sizesOf = (file: string): Array<[number, number]> => {
     const bytes = readFileSync(`${SITE_DIR}${file}`);
@@ -85,12 +87,13 @@ test.describe("favicon", () => {
     });
   };
 
-  test("every linked icon exists and is square, with one icon a multiple of 48 px", () => {
-    const links = [...html("").matchAll(/<link[^>]*rel="(?:icon|apple-touch-icon)"[^>]*>/g)].map((m) => m[0]);
+  test("the home page links only the stable raster icons, all square, one larger than 48 px", () => {
+    const links = [...html("").matchAll(/<link[^>]*rel="[^"]*icon[^"]*"[^>]*>/g)].map((m) => m[0]);
     const hrefs = links.map((l) => l.match(/href="([^"]+)"/)![1]!);
-    expect(hrefs).toEqual(expect.arrayContaining(["/favicon.ico", "/icon-192.png", "/apple-touch-icon.png"]));
+    // Exact list: an SVG icon (unsupported by Google Search) or a renamed file fails here.
+    expect([...hrefs].sort()).toEqual(["/apple-touch-icon.png", "/favicon.ico", "/icon-192.png"]);
     const sizes = hrefs.flatMap(sizesOf);
     for (const [w, h] of sizes) expect(w, `${w}x${h}`).toBe(h);
-    expect(sizes.some(([w]) => w % 48 === 0)).toBe(true);
+    expect(sizes.some(([w]) => w > 48)).toBe(true);
   });
 });

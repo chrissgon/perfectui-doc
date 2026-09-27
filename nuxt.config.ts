@@ -65,8 +65,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      // Square raster icons: search engines show a favicon only when it is 1:1 and a
-      // multiple of 48 px; favicon.ico also answers browsers that ask for it by name.
+      // Google Search shows a favicon only when it is square, in a format it supports (BMP,
+      // GIF, ICO, PNG, JPEG, PPM, TIFF: not SVG), and recommends one larger than 48x48; the
+      // URLs must stay stable, so keep these paths when the artwork changes. favicon.ico also
+      // answers browsers that ask for it by name.
       link: [
         { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
         { rel: "icon", type: "image/png", href: "/icon-192.png", sizes: "192x192" },
