@@ -28,8 +28,9 @@
             <span class="font-mono text-xs" style="color: var(--pui-text-muted)">{{ row.version }}</span>
           </div>
           <div aria-hidden="true" class="flex h-7 min-w-0 gap-0.5 max-[719px]:order-3 max-[719px]:flex-[1_1_100%] min-[720px]:flex-1">
-            <div :class="['rounded-l-[3px]', i === 0 ? 'seg-css-perfectui' : 'seg-css']" :style="{ width: `${(row.css / max) * 100 * progress(i)}%` }" />
-            <div :class="['rounded-r-[3px]', i === 0 ? 'seg-js-perfectui' : 'seg-js']" :style="{ width: `${(row.js / max) * 100 * progress(i)}%` }" />
+            <!-- A library without JavaScript is one segment, rounded at both ends (user, 2026-09-28). -->
+            <div :class="[row.js ? 'rounded-l-[3px]' : 'rounded-[3px]', i === 0 ? 'seg-css-perfectui' : 'seg-css']" :style="{ width: `${(row.css / max) * 100 * progress(i)}%` }" data-seg="css" />
+            <div v-if="row.js" :class="['rounded-r-[3px]', i === 0 ? 'seg-js-perfectui' : 'seg-js']" :style="{ width: `${(row.js / max) * 100 * progress(i)}%` }" data-seg="js" />
           </div>
           <div class="min-w-[150px] flex-none text-right font-mono tabular-nums">
             <span class="text-xl font-semibold">{{ fmt((row.css + row.js) * progress(i)) }}</span>

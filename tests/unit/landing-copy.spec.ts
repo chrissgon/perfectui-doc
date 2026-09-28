@@ -38,7 +38,7 @@ describe("landing copy", () => {
   it("no byte count is typed in the copy", () => {
     const text = copy.sections.map((s) => `${s.headline} ${s.body}`).join(" ");
     expect(text).not.toMatch(/3[.,]2|3,221|\b493\b/);
-    expect(fillSize("{css.kB} · {css.bytes} · {js.bytes}", { css: 12345, js: 50 })).toBe("12.3 kB · 12,345 · 50");
+    expect(fillSize("{total.kB} · {css.kB} · {css.bytes} · {js.bytes}", { css: 12345, js: 50 })).toBe("12.4 kB · 12.3 kB · 12,345 · 50");
   });
 
   it("a missing or extra section id fails naming it", () => {

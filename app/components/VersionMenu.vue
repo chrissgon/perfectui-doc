@@ -1,9 +1,10 @@
 <template>
   <div class="inline-flex">
-    <!-- The version badge is the menu's trigger (user, 2026-09-25). -->
+    <!-- The version badge is the menu's trigger (user, 2026-09-25), chip-sized (user, 2026-09-28);
+         narrower padding below 640 px so the header fits 320 px. -->
     <button
       type="button"
-      class="pui-badge pui-soft pui-theme inline-flex cursor-pointer items-center gap-1"
+      class="pui-chip pui-soft pui-theme inline-flex cursor-pointer items-center gap-1 max-sm:px-2"
       :aria-label="`Version ${current.label}, choose another`"
       :popovertarget="menuId"
     >

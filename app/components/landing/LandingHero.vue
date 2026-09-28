@@ -69,11 +69,12 @@ const props = defineProps<{
 const primary = computed(() => props.section.cta && ctaTarget(props.section.cta.to, props.version, props.pages));
 const secondary = computed(() => props.section.secondary && ctaTarget(props.section.secondary.to, props.version, props.pages));
 
-// The copy's body is "<lead> {css.kB}. <paragraph>": the lead and the number form the display line.
-const parts = computed(() => props.section.body.split(/(?<=\{css\.kB\}\.) /));
-const lead = computed(() => parts.value[0]!.replace(/\s*\{css\.kB\}\.$/, ""));
+// The copy's body is "<lead> {total.kB}. <paragraph>": the lead and the number form the display line.
+const parts = computed(() => props.section.body.split(/(?<=\{total\.kB\}\.) /));
+const lead = computed(() => parts.value[0]!.replace(/\s*\{total\.kB\}\.$/, ""));
 const paragraph = computed(() => fillSize(parts.value[1] ?? "", props.size));
-const number = computed(() => (props.size.css / 1000).toFixed(1));
+// The whole library, CSS and JavaScript, like the size chart's total (user, 2026-09-28).
+const number = computed(() => ((props.size.css + props.size.js) / 1000).toFixed(1));
 
 // Bars scale from 0.35 to 1 and fade from 0.25 to 1 with the hero's visible ratio (handoff Motion).
 const root = ref<HTMLElement | null>(null);

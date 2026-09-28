@@ -201,6 +201,10 @@
 
 ## Approvals
 
+- 2026-09-28: `git push -u origin fix/landing-total-size-version-chip` and a pull request to `main`: the hero and the size headline show the whole library (CSS and JavaScript, `{total.kB}`, 3.7 kB for 1.0.0), bars without JavaScript are one segment rounded at both ends, the version menu trigger is chip-sized, messaging and both LinkedIn texts updated to 3.7 kB (3,256 B CSS + 493 B JS, `gzip -9 -n` of 1.0.0); the user merges (user: "Abra a PR com os ajustes do perfectui-doc tambem")
+
+- 2026-09-28: LinkedIn posts B (teaser, job `linkedin-teaser-1-0-0`) and C (launch, job `linkedin-launch-1-0-0`) cancelled at 08:50, ten minutes before the teaser's run, because their texts said 3.2 kB of CSS; nothing was published. The approvals of 2026-09-26 for B and C no longer apply: the texts changed and the user is sending new images, so both need a new preview, approval and schedule (user: "Cancele os dois posts, vou te mandar as novas artes").
+
 - 2026-09-27: `git push -u origin fix/search-favicon` and a pull request `fix/search-favicon` → `main`, title `test(site): hold the favicon to Google's current rules and keep its URLs stable`: a test that requires exactly the three linked icon paths, square icons and one larger than 48 px, so an SVG favicon or renamed icons fail the build; no icon changes (the live icons are right, Google still shows the deleted SVG until it recrawls, requested by the user in Search Console); the user merges (user: "Tudo bem, pode commitar e subir esse teste")
 
 - 2026-09-26: `git push -u origin feat/favicon` and a pull request `feat/favicon` → `main` replacing the 500 × 703 SVG favicon with square raster icons (favicon.ico 16/32/48, icon-192.png, apple-touch-icon.png) from the user's new mark, title `feat(site): square raster favicon from the new Perfect UI mark`; the user merges (user: "Yes")
