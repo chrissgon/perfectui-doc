@@ -25,4 +25,4 @@ Measured, not promised: smaller than Pico, Beer CSS, Bootstrap, UIkit and Bulma,
 
 On 0.x? The site has a step-by-step migration guide.
 
-👉 https://perfectui.dev
+👇 Link nos comentários / Link in the comments

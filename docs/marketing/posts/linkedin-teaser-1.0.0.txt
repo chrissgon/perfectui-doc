@@ -3,13 +3,13 @@ Uma biblioteca de componentes com 3,7 kB de CSS e JavaScript. / A component libr
 
 🇧🇷 pt-br
 
-Passei os últimos meses reescrevendo o Perfect UI do zero, com uma regra: o mínimo necessário. Sem reset de CSS, sem fonte importada, sem dependências, e o comportamento vindo do próprio navegador.
+Passei as últimas semanas reescrevendo o Perfect UI do zero, com uma regra: o mínimo necessário. Sem reset de CSS, sem fonte importada, sem dependências, e o comportamento vindo do próprio navegador.
 
 Amanhã a 1.0 sai oficialmente. A documentação já está no ar.
 
 🇺🇸 en-us
 
-I've spent the last months rewriting Perfect UI from scratch with one rule: the bare minimum. No CSS reset, no font import, no dependencies, and behaviour that comes from the browser itself.
+I've spent the last few weeks rewriting Perfect UI from scratch with one rule: the bare minimum. No CSS reset, no font import, no dependencies, and behaviour that comes from the browser itself.
 
 1.0 ships tomorrow. The documentation is already live.
 
