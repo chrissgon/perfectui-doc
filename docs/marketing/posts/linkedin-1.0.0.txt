@@ -1,9 +1,9 @@
 Perfect UI 1.0 está no ar. / Perfect UI 1.0 is out.
-3,2 kB de CSS, sem reset, sem dependências. / 3.2 kB of CSS, no reset, no dependencies.
+3,7 kB de CSS e JavaScript, sem reset, sem dependências. / 3.7 kB of CSS and JavaScript, no reset, no dependencies.
 
 🇧🇷 pt-br
 
-Reescrevi o Perfect UI do zero. A biblioteca inteira tem 3,2 kB de CSS e 0,5 kB de JavaScript (gzip): sem reset de CSS, sem fonte importada, sem dependências e nenhuma regra fora de uma classe pui-.
+Reescrevi o Perfect UI do zero. A biblioteca inteira tem 3,7 kB (gzip), 3,3 kB de CSS e 0,5 kB de JavaScript: sem reset de CSS, sem fonte importada, sem dependências e nenhuma regra fora de uma classe pui-.
 
 O navegador faz o trabalho: o modal é um <dialog>, o dropdown é um popover, o tooltip usa interestfor e o accordion é um <details>. O JavaScript só entra para o que o navegador ainda não tem.
 
@@ -15,7 +15,7 @@ Quem usa a 0.x tem um guia de migração passo a passo no site.
 
 🇺🇸 en-us
 
-I rewrote Perfect UI from scratch. The whole library is 3.2 kB of CSS and 0.5 kB of JavaScript (gzip): no CSS reset, no font import, no dependencies, and no rule outside a pui- class.
+I rewrote Perfect UI from scratch. The whole library is 3.7 kB (gzip), 3.3 kB of CSS and 0.5 kB of JavaScript: no CSS reset, no font import, no dependencies, and no rule outside a pui- class.
 
 The browser does the work: the modal is a <dialog>, the dropdown is a popover, the tooltip uses interestfor, and the accordion is a <details>. JavaScript only fills in what a browser is missing.
 

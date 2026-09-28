@@ -7,7 +7,7 @@
 
 ## Summary
 
-The page speaks to developers evaluating a lightweight component library and to 0.23 users deciding whether to migrate. It promises the bare minimum: components that weigh 3.2 kB, take their behaviour from the browser, and leave the rest of the page alone; every claim on it is a measurement or a documented behaviour.
+The page speaks to developers evaluating a lightweight component library and to 0.23 users deciding whether to migrate. It promises the bare minimum: components that weigh 3.7 kB, take their behaviour from the browser, and leave the rest of the page alone; every claim on it is a measurement or a documented behaviour.
 
 ## Sources
 
@@ -30,7 +30,7 @@ The page speaks to developers evaluating a lightweight component library and to 
 
 ## Promise
 
-Components with the bare minimum: no reset, no font, no runtime dependencies, behaviour from the browser, 3.2 kB of CSS. Source: README ("ships the bare minimum" sentence); measurement 2026-09-23.
+Components with the bare minimum: no reset, no font, no runtime dependencies, behaviour from the browser, 3.7 kB of CSS and JavaScript. Source: README ("ships the bare minimum" sentence); measurement 2026-09-28 of 1.0.0.
 
 ## Voice
 
@@ -40,7 +40,7 @@ Components with the bare minimum: no reset, no font, no runtime dependencies, be
 
 ## Proof points
 
-- PROOF-1: The whole library is 3.2 kB of CSS (3,221 B) and 0.5 kB of JavaScript (493 B), gzip. Evidence: `gzip -9 -n` of `dist/perfectui.css` and `dist/js/index.js` of 1.0.0-beta.1, 2026-09-24, the same method as the competitors (ADR-0007); the site recomputes the number at build time (PRD M-3) and prints the method and the version next to it. Source: measurement 2026-09-23; PRD M-3.
+- PROOF-1: The whole library is 3.7 kB gzip: 3.3 kB of CSS (3,256 B) and 0.5 kB of JavaScript (493 B), 3,749 B together; the page's headline number is that total (user, 2026-09-28). Evidence: `gzip -9 -n` of `dist/perfectui.css` and `dist/js/index.js` of 1.0.0, 2026-09-28 (1.0.0-beta.1 measured 3,221 B of CSS on 2026-09-24), the same method as the competitors (ADR-0007); the site recomputes the number at build time (PRD M-3) and prints the method and the version next to it. Source: measurement 2026-09-23; PRD M-3.
 - PROOF-2: Measured the same way, perfectui is smaller than every alternative in the research brief: Pico 11,640 B, Beer CSS 17,035 B + 5,864 B, Bootstrap 30,869 B + 23,743 B, UIkit 30,944 B + 53,317 B, Bulma 64,842 B. Evidence: research brief table, `gzip -9` of the published CDN builds at the pinned versions, 2026-09-23; competitors' numbers are static on the page with their versions and the date. Source: research brief §4.
 - PROOF-3: No runtime dependencies, no CSS reset, no font import, and no rule that is not attached to a `pui-` class. Evidence: README statement; `perfectui.css` `:root` sets only `--pui-*` custom properties and `color-scheme`; the stylesheet has no element selectors outside `pui-` classes (DESIGN-SYSTEM "How to read this"). Source: README; `dist/perfectui.css`.
 - PROOF-4: An element is up to three independent classes: a shape, a style and a colour; 7 colours × 4 styles = 28 combinations per shape. Evidence: README "Writing a component"; DESIGN-SYSTEM §2 (seven roles) and §3 (four styles). Source: README; DESIGN-SYSTEM §2, §3.
@@ -54,8 +54,8 @@ Components with the bare minimum: no reset, no font, no runtime dependencies, be
 
 ## Sections
 
-- SECTION-1: Hero. Purpose: the reader knows in one screen what perfectui is and can install it. Proof: PROOF-1, PROOF-3. Headline: The bare minimum for elegant interfaces. Body: Three classes, no framework, 3.2 kB. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work. Demo: the three classes `pui-btn pui-solid pui-theme` typed one by one in a code line while a bare `<button>` on the right takes shape, then style, then colour; the sequence loops through other shapes and colours; reduced motion shows the final state. Install command `npm i @chrissgon/perfectui` with a copy control beneath the body. CTA: Get started → /docs; secondary: Migrating from 0.x → the migration guide. Source: README; measurement 2026-09-23; PRD F-3, F-4; flows SCREEN-1 regions.
-- SECTION-2: Size, measured. Purpose: the reader believes the size because the method is on the page. Proof: PROOF-1, PROOF-2. Headline: 3.2 kB. Measured, not promised. Body: `perfectui.css` is 3,221 bytes gzip; the optional JavaScript loader is 493. The bars below are the same measurement run on the published builds of the alternatives. Demo: horizontal bars that grow on scroll, one per library (perfectui, Pico, Beer CSS, Bootstrap, UIkit, Bulma), CSS and JS as two segments, version labels, and a footnote with the command and the date; perfectui's bar is computed at build time from the installed package. CTA: none. Source: measurement 2026-09-23; research brief §4; PRD M-3.
+- SECTION-1: Hero. Purpose: the reader knows in one screen what perfectui is and can install it. Proof: PROOF-1, PROOF-3. Headline: The bare minimum for elegant interfaces. Body: Three classes, no framework, 3.7 kB. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work. Demo: the three classes `pui-btn pui-solid pui-theme` typed one by one in a code line while a bare `<button>` on the right takes shape, then style, then colour; the sequence loops through other shapes and colours; reduced motion shows the final state. Install command `npm i @chrissgon/perfectui` with a copy control beneath the body. CTA: Get started → /docs; secondary: Migrating from 0.x → the migration guide. Source: README; measurement 2026-09-23; PRD F-3, F-4; flows SCREEN-1 regions.
+- SECTION-2: Size, measured. Purpose: the reader believes the size because the method is on the page. Proof: PROOF-1, PROOF-2. Headline: 3.7 kB. Measured, not promised. Body: `perfectui.css` is 3,221 bytes gzip; the optional JavaScript loader is 493. The bars below are the same measurement run on the published builds of the alternatives. Demo: horizontal bars that grow on scroll, one per library (perfectui, Pico, Beer CSS, Bootstrap, UIkit, Bulma), CSS and JS as two segments, version labels, and a footnote with the command and the date; perfectui's bar is computed at build time from the installed package. CTA: none. Source: measurement 2026-09-23; research brief §4; PRD M-3.
 - SECTION-3: Three classes. Purpose: the reader understands the model without reading the docs. Proof: PROOF-4. Headline: A shape, a style, a colour. Body: Every element is up to three classes you can combine freely: what it is, how the colour is applied, which colour. Seven colours and four styles give 28 looks per shape, and adding a colour never multiplies your classes. Demo: an interactive picker with three rows of chips (shape: button, chip, badge; style: solid, soft, outline, link; colour: the seven roles); the live element and the code line `class="pui-btn pui-solid pui-theme"` update on every choice, with a small transition on the element. CTA: See the components → /docs/v1/components/button. Source: README "Writing a component"; DESIGN-SYSTEM §2, §3.
 - SECTION-4: The browser does the work. Purpose: the reader sees overlays working with no script of theirs. Proof: PROOF-5. Headline: Overlays without a plugin. Body: Modals are `<dialog>`, menus are `popover`, tooltips are `interestfor`, accordions are `<details>`. The optional loader downloads a fallback only when a browser is missing one of them. Demo: four small live examples side by side (modal, dropdown, tooltip, accordion), each with the HTML that drives it and a "no JavaScript of yours" label; opening one animates it as the browser does. CTA: none. Source: MIGRATION.md §4; README; fallbacks listing.
 - SECTION-5: Dark mode and theme. Purpose: the reader sees the whole page change with one attribute and one variable. Proof: PROOF-6. Headline: One attribute for dark mode. One variable for your colour. Body: With no attribute, perfectui follows the operating system. Set `data-pui-mode` to choose, and `--pui-theme` to make every component yours. Demo: a mode switch and a colour picker that change the section's components live, with the two lines of code beneath (`<html data-pui-mode="dark">`, `--pui-theme: #7c3aed`); the transition is the library's own 150 ms. CTA: Dark mode docs → /docs/v1/customization/dark-mode. Source: docs/darkmode.md; MIGRATION.md §5, §6; DESIGN-SYSTEM §5.
@@ -67,7 +67,7 @@ Components with the bare minimum: no reset, no font, no runtime dependencies, be
 ## Taglines
 
 - The bare minimum for elegant interfaces.
-- Three classes, no framework, 3.2 kB.
+- Three classes, no framework, 3.7 kB.
 - Components the browser already knows how to run.
 
 ## Words
@@ -78,7 +78,7 @@ Components with the bare minimum: no reset, no font, no runtime dependencies, be
 ## Open questions
 
 - OPEN-1 (resolved 2026-09-23): the size bars name Pico, Beer CSS, Bootstrap, UIkit and Bulma with versions and the measurement date (user). Blocks: nothing. Recommended: as decided.
-- OPEN-2 (resolved 2026-09-23): headline "The bare minimum for elegant interfaces", supporting line "Three classes, no framework, 3.2 kB" (user). Blocks: nothing. Recommended: as decided.
+- OPEN-2 (resolved 2026-09-23): headline "The bare minimum for elegant interfaces", supporting line "Three classes, no framework, 3.2 kB" (user); the number became the CSS and JavaScript total, 3.7 kB (user, 2026-09-28). Blocks: nothing. Recommended: as decided.
 - OPEN-3 (resolved 2026-09-23): no "used by" or sponsors section (user). Blocks: nothing. Recommended: as decided.
 
 ## Readiness

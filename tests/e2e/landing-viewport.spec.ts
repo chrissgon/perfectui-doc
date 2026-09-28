@@ -31,7 +31,7 @@ for (const [width, height] of [[360, 640], [1280, 800]] as const) {
 test("the size in the hero comes from the build's measurement", async ({ page, request }) => {
   const size = await (await request.get("/api/library-size.json")).json();
   await page.goto("/");
-  await expect(page.locator("#hero")).toContainText(`${(size.css / 1000).toFixed(1)} kB`);
+  await expect(page.locator("#hero")).toContainText(`${((size.css + size.js) / 1000).toFixed(1)} kB`);
 });
 
 test("the class cycle renders its first combination complete without JavaScript", async ({ browser }) => {

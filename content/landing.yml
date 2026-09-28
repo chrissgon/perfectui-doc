@@ -1,15 +1,15 @@
 # The landing's copy, verbatim from docs/marketing/messaging.md (SECTION-1 to SECTION-9).
-# Sizes are placeholders filled from the build's measurement: {css.kB}, {css.bytes}, {js.bytes}.
+# Sizes are placeholders filled from the build's measurement: {total.kB} (CSS and JavaScript), {css.kB}, {css.bytes}, {js.bytes}.
 # Links are documentation paths without a version; the page resolves them to the latest one.
 tagline: Components the browser already knows how to run.
 sections:
   - id: hero
     headline: The bare minimum for elegant interfaces.
-    body: "Three classes, no framework, {css.kB}. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work."
+    body: "Three classes, no framework, {total.kB}. A CSS and JavaScript library with no reset, no font, no runtime dependencies and no rule outside a `pui-` class; the browser does the work."
     cta: { label: Get started, to: /docs }
     secondary: { label: Migrating from 0.x, to: /docs/getting-started/migrating-from-0-x }
   - id: size
-    headline: "{css.kB}. Measured, not promised."
+    headline: "{total.kB}. Measured, not promised."
     body: "`perfectui.css` is {css.bytes} bytes gzip; the optional JavaScript loader is {js.bytes}. The bars below are the same measurement run on the published builds of the alternatives."
   - id: classes
     headline: A shape, a style, a colour.

@@ -43,6 +43,6 @@ const bars = totals.map((t) => (t / Math.max(...totals)) * 100);
 const hero = section("hero");
 usePageMeta({
   title: `Perfect UI · ${hero.headline.replace(/\.$/, "")}`,
-  description: hero.body.split(/(?<=\{css\.kB\}\.) /)[1] ?? "",
+  description: hero.body.split(/(?<=\{total\.kB\}\.) /)[1] ?? "",
 });
 </script>

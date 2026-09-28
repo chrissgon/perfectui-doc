@@ -48,11 +48,13 @@ export function assertSections(copy: LandingCopy, rendered: readonly string[]): 
 
 /**
  * Replaces the size placeholders with the build's measurement (REQ-2: no typed number):
- * `{css.kB}` → "3.2 kB", `{css.bytes}` → "3,221", `{js.bytes}` → "493".
+ * `{total.kB}` → "3.7 kB" (CSS and JavaScript), `{css.kB}` → "3.2 kB", `{css.bytes}` → "3,221",
+ * `{js.bytes}` → "493".
  */
 export function fillSize(text: string, size: { css: number; js: number }): string {
   const bytes = (n: number) => n.toLocaleString("en-US");
   return text
+    .replaceAll("{total.kB}", `${((size.css + size.js) / 1000).toFixed(1)} kB`)
     .replaceAll("{css.kB}", `${(size.css / 1000).toFixed(1)} kB`)
     .replaceAll("{css.bytes}", bytes(size.css))
     .replaceAll("{js.bytes}", bytes(size.js));

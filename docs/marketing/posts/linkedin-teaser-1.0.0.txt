@@ -1,5 +1,5 @@
 Amanhã sai o Perfect UI 1.0. / Perfect UI 1.0 ships tomorrow.
-Uma biblioteca de componentes com 3,2 kB de CSS. / A component library in 3.2 kB of CSS.
+Uma biblioteca de componentes com 3,7 kB de CSS e JavaScript. / A component library in 3.7 kB of CSS and JavaScript.
 
 🇧🇷 pt-br
 
