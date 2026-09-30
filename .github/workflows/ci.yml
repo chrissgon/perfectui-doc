@@ -1,4 +1,5 @@
-# Build once, test that build, deploy the same files (IDEA-1 in docs/product/ideas.md).
+# Build once, test that build, deploy the same files (IDEA-1 in docs/product/ideas.md), with the MCP
+# function at /api/mcp.
 # A pull request gets a preview at https://pr-<number>--perfectui.netlify.app; a push to main
 # deploys production (https://perfectui.dev). Netlify's own builds are stopped: this workflow is
 # the only way a build reaches the site. `main` requires the check, deploy and lighthouse jobs.
@@ -69,6 +70,16 @@ jobs:
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     steps:
+      # The MCP function (netlify/functions/mcp.mts) is bundled from the source and its installed
+      # dependencies by the deploy command, so this job needs the repository and node_modules; the
+      # site itself is the tested dist/ from the check job. No scripts: nothing here builds the site.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.21
+      - run: bun install --frozen-lockfile --ignore-scripts
       - uses: actions/download-artifact@v8
         with:
           name: site
@@ -83,7 +94,7 @@ jobs:
           TARGET: ${{ github.event_name == 'push' && '--prod' || format('--alias=pr-{0}', github.event.pull_request.number) }}
           MESSAGE: ${{ github.event.pull_request.title || github.event.head_commit.message }}
         run: |
-          npx --yes netlify-cli@27.10.0 deploy --no-build --dir dist $TARGET \
+          npx --yes netlify-cli@27.10.0 deploy --no-build --dir dist --functions netlify/functions $TARGET \
             --message "${MESSAGE%%$'\n'*}" --json > deploy.json
           # Production answers at the site's URL; a preview at its alias's unique URL.
           if [ "$TARGET" = "--prod" ]; then url=$(jq -r .url deploy.json); else url=$(jq -r .deploy_url deploy.json); fi
