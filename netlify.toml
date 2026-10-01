@@ -9,3 +9,10 @@
 [build.environment]
   # Nuxt 4.5.2 requires Node ^22.19.0 || ^24.11.0 || >=26.0.0
   NODE_VERSION = "24"
+
+# The MCP server at /api/mcp (netlify/functions/mcp.mts): its route and rate limit are in the function's
+# `config`, and the CI deploy step uploads it with the site. The deploy traces its imports (nft), so the
+# zip carries @chrissgon/perfectui-mcp as installed, with the corpus file the package reads next to its
+# code (checked with `netlify functions:build`).
+[functions]
+  directory = "netlify/functions"
